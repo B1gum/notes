@@ -1,0 +1,442 @@
+\documentclass[12pt]{article}
+\usepackage[danish]{babel}
+\usepackage{amsfonts, amssymb, mathtools, amsthm, amsmath}
+\usepackage{graphicx, pgfplots}
+\usepackage{url}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{sagetex}
+\usepackage{lastpage}
+
+%loaded last
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{siunitx}
+  \sisetup{exponent-product = \cdot,
+    output-decimal-marker = {,}}
+
+%Giles Castelles incfig
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+  \def\svgwidth{#1\columnwidth}
+  \import{../figures/}{#2.pdf_tex}
+}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\thepage}
+\fancyhead[C]{\leftmark}
+
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{every axis/.append style={
+  axis x line=middle,    % put the x axis in the middle
+  axis y line=middle,    % put the y axis in the middle
+  axis line style={<->,color=black}, % arrows on the axis
+}}
+
+\usepackage{thmtools}
+\usepackage{tcolorbox}
+  \tcbuselibrary{skins, breakable}
+  \tcbset{
+    space to upper=1em,
+    space to lower=1em,
+  }
+
+\theoremstyle{definition}
+
+\newtcolorbox[auto counter]{definition}[1][]{%
+  breakable,
+  colframe=ForestGreen,  %frame color
+  colback=ForestGreen!5, %background color
+  colbacktitle=ForestGreen!25, %background color for title
+  coltitle=ForestGreen!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{ForestGreen},  %display left line
+  title=Definition \thetcbcounter: #1,
+}
+
+\newtcolorbox{greenline}{%
+  breakable,
+  colframe=ForestGreen,  %frame color
+  colback=white,          %remove background color
+  left=1em,              %space on left side in box
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{ForestGreen},  %display left line
+}
+
+\newtcolorbox[auto counter, number within=section]{eks}[1][]{%
+  brekable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,            %space on left side in box,
+  enhanced,            %more options
+  frame hidden,        %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Eksempel \thetcbcounter: #1
+}
+
+\newtcolorbox{blueline}{%
+  breakable,
+  colframe=NavyBlue,     %frame color
+  colback=white,         %remove background
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+}
+
+\newtcolorbox{teo}[1][]{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=RawSienna!5, %background color
+  colbacktitle=RawSienna!25,    %background color for title
+  coltitle=RawSienna!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+  title=Teori: #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{sæt}[1][]{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=RawSienna!5, %background color
+  colbacktitle=RawSienna!25,    %background color for title
+  coltitle=RawSienna!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+  title=Sætning \thetcbcounter: #1,
+  before lower={\textbf{Bevis:}\par\vspace{0.5em}},
+  colbacklower=RawSienna!25,
+}
+
+\newtcolorbox{redline}{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=white,       %Remove background color
+  left=1em,            %space on left side in box,
+  enhanced,            %more options
+  frame hidden,        %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+}
+
+\newtcolorbox{for}[1][]{%
+  breakable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Forklaring #1,
+}
+
+\newtcolorbox{bem}{%
+  breakable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Bemærkning:,
+}
+
+\makeatother
+\def\@lecture{}%
+\newcommand{\lecture}[3]{
+  \ifthenelse{\isempty{#3}}{%
+    \def\@lecture{Lecture #1}%
+  }{%
+    \def\@lecture{Lecture #1: #3}%
+  }%
+  \subsection*{\makebox[\textwidth][l]{\@lecture \hfill \normalfont\small\textsf{#2}}}
+}
+
+\makeatletter
+
+\newcommand{\opgave}[1]{%
+ \def\@opgave{#1}%
+ \subsection*{Opgave #1}
+}
+
+\makeatother
+
+%Format lim the same way in intext and in display
+\let\svlim\lim\def\lim{\svlim\limits}
+
+% horizontal rule
+\newcommand\hr{
+\noindent\rule[0.5ex]{\linewidth}{0.5pt}
+}
+
+\title{TØ-opgaver uge 12}
+\author{Noah Rahbek Bigum Hansen}
+\date{13. November 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Prøveeksamensopgave 21}
+Betragt en stokastisk variabel $X$ med
+\[ 
+P(X = 5) = \frac{4}{10}, \qquad P(X = 10) = \frac{3}{10}, \qquad P(X = 15) = \frac{2}{10}, \qquad P(X = 20) = \frac{1}{10}
+.\]
+Udregn middelværdien af $X$ (expected value):
+\[ 
+  E[X] = k
+.\]
+Hvor $k$ er et helt tal mellem 0 og 99.
+\bigbreak
+For en stokastisk variabel $X$ med sandsynlighedsfunktion $p$ findes middelværdien som
+\[ 
+  E[X] =  \sum_{n=1}^{n} x_n p(x_n)
+.\]
+Altså fås at
+\[ 
+  E[X] = 5 \cdot \frac{4}{10} + 10 \cdot \frac{3}{10} + 15 \cdot \frac{2}{10} + 20 \cdot  \frac{1}{10} = \frac{100}{10} = 10
+,\]
+hvilket giver at $k = 10$.
+
+
+\section*{Opg. A}
+Betragt en mønt med sandsynlighed \num{0,7} for krone og \num{0,3} for plat. Antag at mønten kastes 12 gange og lad $X$ betegne antallet af kroner observeret.
+
+\subsection*{1.}
+Udregn middelværdien af $X$.
+\bigbreak
+Idet der kun er to udfald (success (krone) eller fiasko (plat)) må $X$ være binomialfordelt. For en binomialfordeling er
+\[ 
+  E[X] = np = 12 \cdot \num{0,7} = \num{8,4} 
+.\]
+
+\subsection*{2.}
+Udregn variansen af $X$.
+\bigbreak
+For en binomialfordeling er variansen givet som
+\[ 
+  \mathrm{Var}(X) = np(1-p) = \num{8,4}(1-\num{0,7}) = \num{2,52}  
+.\]
+
+
+\subsection*{3.}
+Udregn standardafvigelsen af $X$.
+\bigbreak
+Standardafvigelsen er defineret som
+\[ 
+  \mathrm{SD}(X) = \sqrt{\mathrm{Var}(X)} = \sqrt{\num{2,52}} = \num{1,59} 
+.\]
+
+
+
+\section*{Prøveeksamensopgave 22}
+Lad $X$ betegne en Bernoullifordelt stokastisk variabel med parameter $p = \frac{1}{2}$. Udregn
+\[ 
+E(30(X-1)^2) = k
+.\]
+Hvor $k$ er et helt tal mellem 0 og 99.
+\bigbreak
+Vi kan omskrive udtrykket for middelværdien fra opgaven til
+\[ 
+  E \left[ 30(X-1)^2 \right] = 30 \cdot E[(X-1)^2]
+.\]
+Siden $X$ er Bernoulli-fordelt med $p = \frac{1}{2}$ så tager $X$ værdierne
+\begin{itemize}
+  \item 1 med sandsynlighed $\frac{1}{2}$ og
+  \item 0 med sandsynlighed $\frac{1}{2}$.
+\end{itemize}
+Vi beregner $(X-1)^2$ for begge tilfælde som 
+\begin{align*}
+  X &= 1: &\qquad (1-1)^2 &= 0 \\
+  X &= 0: &\qquad (0-1)^2 &= 1
+.\end{align*}
+Idet de to tilfælde af $(X-1)^2$ har sandsynlighedsparameter $p = \frac{1}{2}$ forekommer de to tilfælde lige hyppigt og middelværdien findes derfor som
+\[ 
+E \left[ (X-1)^2 \right] = 0 \cdot \frac{1}{2} + 1 \cdot \frac{1}{2} = \frac{1}{2}
+.\]
+Og dermed får vi
+\[ 
+k = 30E \left[ (X-1)^2 \right] = 30 \cdot \frac{1}{2} = 15
+.\]
+Altså er $k = 15$.
+
+
+\section*{Opg. B}
+For en given dyreart af hunkøn er der sandsynlighed \num{0,29} for ikke få et afkom i et givet år. Derudover, er det sandsynlighed \num{0,23} for at få 1 afkom, sandsynlighed \num{0,18} for at få 2 afkom, sandsynlighed \num{0,16} for at få 3 afkom og sandsynlighed \num{0,14} for at få 4 afkom. Hvor mange afkom fås om året i middel? Hvor stor varians er der?
+\bigbreak
+Vi benytter at middelværdien er det vægtede gennemsnit af sandsynlighedsfunktionen og værdierne af den stokastiske variabel $X_n$ vi har altså at
+\[ 
+  E[X] = 0 \cdot \num{0,29} + 1 \cdot \num{0,23} + 2 \cdot \num{0,18} + 3 \cdot \num{0,16} + 4 \cdot \num{0,14} = \num{1,63} 
+.\]
+Altså fås i gennemsnit \num{1,63} unger i populationen.
+
+Variansen er defineret som
+\[ 
+  \mathrm{Var}(X) = E \left[ X^2 \right] - E[X]^2
+.\]
+Vi skal altså først finde $E \left[ X^2 \right]$ og vi sætter derfor blot funktionen ind som
+\[ 
+E \left[ X^2 \right] = 0^2 \cdot \num{0,29} + 1^2 \cdot \num{0,23} + 2^2 \cdot \num{0,18} + 3^2 \cdot \num{0,16} + 4^2 \cdot \num{0,14}  = \num{4,63} 
+.\]
+Vi har derfor at
+\[ 
+  \mathrm{Var}(X) = \num{4,63} - \num{1,63}^2 = \num{1,97} 
+.\]
+
+
+\section*{Opg. C}
+Et lotteri udlover en første præmie på \num{100000} kr., to anden præmier på \num{40000} kr. og to tredje præmier på \num{10000} kr. Der bliver i alt produceret \num{2000000} loder. Find middelgevindsten ved at få et lod i lotteriet. Vil det være værd at deltage i lotteriet hvis det koster 1 kr. for et lod?
+\bigbreak
+Vi benytter samme formel som ovenfor og får
+\[ 
+  E[X] = \num{100000} \cdot \frac{1}{\num{2000000}} + \num{40000} \cdot \frac{2}{\num{2000000}} + \num{10000} \cdot \frac{2}{\num{2000000}} = \num{0,1} 
+.\]
+Altså er middelgevinsten $E[X] = \num{0,1}$ og det er derfor ikke værd at deltage i lotteriet selv hvis et lod kun koster 1 kr.
+
+\section*{Opg. 1.23}
+You have \$\num{1000}, and a certain commodity presently sells for \$2 per ounce. Suppose that after one week the commodity will sell for either \$1 or \$4 an ounce, with these two possibilities being equally likely.
+
+\subsection*{(a)}
+If your objective is to maximize the expected amount of money that you possess at the end of the week, what strategy should you employ?
+\textit{Bemærk:} der er to mulige strategier, (1) behold pengene, (2) køb og sælg så efter en uge
+\bigbreak
+Vi benytter samme teknik som i Prøveeksamensopgave 22. Først findes mængden af varen der kan købes som
+\[ 
+  \frac{\$ 1000}{\$2 \unit{Oz^{-1}}} = 500 \unit{Oz}
+.\]
+Altså er middelværdien
+\[ 
+  E[X] = 500\cdot 1 \cdot \frac{1}{2} + 500 \cdot 4 \cdot \frac{1}{2} = \$ 1250 
+.\]
+Altså er den bedste strategi at købe de 500 Oz. i dag og så sælge dem om en uge.
+
+
+\subsection*{(b)}
+If your objective is to maximize the expected amount of the commodity that you possess at the end of the week, what strategy should you employ?
+\textit{Bemærk:} Der er to mulige strategier (1) Køb med det samme og behold, (2) køb efter en uge.
+\bigbreak
+Idet prisen forventeligt er højere om 1 uge end i dag qua svaret på sidste opgave må det bedste i dette tilfælde være at købe 500 Oz. med det samme.
+
+\section*{Opg. 1.21}
+Four busses carrying 148 students from the same school arrive at a football stadium. The busses carry 40, 33, 25 and 50 students. One of the students is randomly selected. Led $X$ denote the number of students who were on the bus carrying the randomly selected student. One of the 4 bus drivers is also randomly selected. Let $Y$ denote the number of studens on her bus.
+
+\subsection*{(a)}
+Which of $E[X]$ or $E[Y]$ do you think is larger? Why?
+\bigbreak
+Jeg tror at $E[X]$ er størst fordi flest elever har været på de busser med flest elever.
+
+\subsection*{(b)}
+Compute $E[X]$ and $E[Y]$
+\textit{Bemærk:} Udregn først sandsynlighedsfunktionerne for $X$ og $Y$ og derefter de tilhørende middelværdier
+\bigbreak
+Sandsynlighedsfunktionen for $E[Y]$ må være
+\[ 
+p = \frac{1}{4}
+\]
+og for $E[X]$ må den være
+\[ 
+P(X = 40) = \frac{40}{148}; \quad P(X = 33) = \frac{33}{148}; \quad P(X = 25) = \frac{25}{148}; \quad P(X = 50) = \frac{50}{148}
+.\]
+Vi har derfor
+\[ 
+  E[X] = \frac{40^2}{148} + \frac{33^2}{148} + \frac{25^2}{148} + \frac{50^2}{148} = \num{39,28}
+\]
+og for $E[Y]$ må den være
+\[ 
+  E[Y] = 40 \cdot \frac{1}{4} + 33 \cdot \frac{1}{4} + 25 \cdot \frac{1}{4} + 50 \cdot \frac{1}{4} = 37
+.\]
+Og derfor er det korrekt at $E[X] = \num{39,28} > 37 = E[Y]$. 
+
+
+\section*{Opg. 1.32}
+To determine whether they have a certain disease, 100 people are to have their blood tested. However, rather than testing each individual seperately, it has been decided first to place the people into groups of 10. The blood samples of the 10 people in each group will be pooled and analyzed together. If the test is negative, one test will suffice for the 10 people, whereas if the test is positive, each of the 10 people will also be individually tested and, in all, 11 tests will be make on this group. Assume that the probability that a person has the disease \num{0,1} for all people, independently of one another, and compute the expected number of tests necessary for each group. (Note that we are assuming that the pooled test will be positive if at least one person in the pool has the disease.)
+
+\textit{Bemærk:} Der er kun to muligheder: Enten 1 eller 11 tests
+\bigbreak
+Først findes antallet af forventede positiver i blandt de 10 første tests. Vi benytter formlen for middelværdien i en binomialfordeling som
+\[ 
+  E[X] = np = 10\cdot \num{0,1} = 1
+.\]
+I det ene tilfælde ud af de 10 første tests skal der køres en ekstra test. Altså køres $9\cdot \qty{1}{tests}  + 1 \cdot \qty{11}{tests}  = \qty{20}{tests}$. 
+
+
+\section*{Opg. E}
+Lad $X$ være en boinomialfordelt stokastisk variabel med middelværdi 6 og varians \num{2,4}. Find $P(X=5)$.
+\bigbreak
+Vi benytter formlerne for middelværdien og variansen af en binomialfordeling så
+\begin{align*}
+  E[X] = np &= 6 \\
+  p &= \frac{6}{n} \\
+  \mathrm{Var}(X) = n \cdot \frac{6}{n} (1 - \frac{6}{n}) &= \num{2,4} \\
+  6(1-\frac{6}{n}) &= \num{2,4}  \\
+  6 - \frac{36}{n} &= \num{2,4} \\
+  n &= \frac{36}{3,6} = 10 \\
+  p &= \frac{6}{10} = \num{0,6}  \\
+.\end{align*}
+Altså har vi at $n = 10$ og $p = \num{0,6}$. Vi kan nu benytte formlen for sandsynligheden for at få den stokastiske variabel er en fast værdi som
+\[ 
+  P(X = 5) = \binom{10}{5}\num{0,6}^5(1-\num{0,6})^{10-5} = \num{0,2007} 
+.\]
+Altså er sandsynligheden for at den stokastiske variabel antager værdien $X = 5$, $P(X = 5) = \num{0,2007}$
+
+\section*{Opg. F}
+Antag $X$ er en stokastisk variabel der kun antager værdierne 0 og 1. Antag $E[X] = 3\cdot \mathrm{Var}(X)$. Find $P(X = 0)$.
+\bigbreak
+Vi ved at middelværdien for en Bernoullifordeling er givet som
+\[ 
+  E[X] = p
+.\]
+Og variansen for en Bernoullifordeling er
+\[ 
+  \mathrm{Var}(X) = p(1-p)
+.\]
+Sætter vi dette ind i udtrykket fra opgaven fås at
+\begin{align*}
+  p &= 3p(1-p) \\
+  p &= 3p - 3p^2 \\
+  1 &= 3 - 3p \\
+  3p &= 2 \\
+  p &= \frac{2}{3}
+.\end{align*}
+Og idet der for en Bernoullifordeling gælder, at
+\[ 
+p = P(X = 1)
+\]
+og hele udfaldsrummet har den samlede sandsynlighed og de eneste to mulige udfald er 0 og 1 må det gælde at
+\[ 
+P(X = 0) = 1 - P(X = 1) = 1 - \frac{2}{3} = \frac{1}{3}.
+.\]
+\end{document}

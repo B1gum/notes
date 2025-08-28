@@ -1,0 +1,297 @@
+\documentclass[12pt]{article}
+\usepackage[danish]{babel}
+\usepackage{amsfonts, amssymb, mathtools, amsthm, amsmath}
+\usepackage{graphicx, pgfplots}
+\usepackage{url}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{sagetex}
+
+%loaded last
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{siunitx}
+  \sisetup{exponent-product = \cdot,
+    output-decimal-marker = {,}}
+
+%Giles Castelles incfig
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+  \def\svgwidth{#1\columnwidth}
+  \import{../figures/}{#2.pdf_tex}
+}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\thepage}
+\fancyhead[C]{\leftmark}
+
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{every axis/.append style={
+  axis x line=middle,    % put the x axis in the middle
+  axis y line=middle,    % put the y axis in the middle
+  axis line style={<->,color=black}, % arrows on the axis
+}}
+
+\usepackage{thmtools}
+\usepackage{tcolorbox}
+  \tcbuselibrary{skins, breakable}
+  \tcbset{
+    space to upper=1em,
+    space to lower=1em,
+  }
+
+\theoremstyle{definition}
+
+\newtcolorbox[auto counter]{definition}[1][]{%
+  breakable,
+  colframe=ForestGreen,  %frame color
+  colback=ForestGreen!5, %background color
+  colbacktitle=ForestGreen!25, %background color for title
+  coltitle=ForestGreen!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{ForestGreen},  %display left line
+  title=Definition \thetcbcounter: #1,
+}
+
+\newtcolorbox{greenline}{%
+  breakable,
+  colframe=ForestGreen,  %frame color
+  colback=white,          %remove background color
+  left=1em,              %space on left side in box
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{ForestGreen},  %display left line
+}
+
+\newtcolorbox[auto counter, number within=section]{eks}[1][]{%
+  brekable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,            %space on left side in box,
+  enhanced,            %more options
+  frame hidden,        %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Eksempel \thetcbcounter: #1
+}
+
+\newtcolorbox{blueline}{%
+  breakable,
+  colframe=NavyBlue,     %frame color
+  colback=white,         %remove background
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+}
+
+\newtcolorbox{teo}[1][]{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=RawSienna!5, %background color
+  colbacktitle=RawSienna!25,    %background color for title
+  coltitle=RawSienna!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+  title=Teori: #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{sæt}[1][]{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=RawSienna!5, %background color
+  colbacktitle=RawSienna!25,    %background color for title
+  coltitle=RawSienna!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+  title=Sætning \thetcbcounter: #1,
+  before lower={\textbf{Bevis:}\par\vspace{0.5em}},
+  colbacklower=RawSienna!25,
+}
+
+\newtcolorbox{redline}{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=white,       %Remove background color
+  left=1em,            %space on left side in box,
+  enhanced,            %more options
+  frame hidden,        %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+}
+
+\newtcolorbox{for}[1][]{%
+  breakable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Forklaring #1,
+}
+
+\newtcolorbox{bem}{%
+  breakable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Bemærkning:,
+}
+
+\makeatother
+\def\@lecture{}%
+\newcommand{\lecture}[3]{
+  \ifthenelse{\isempty{#3}}{%
+    \def\@lecture{Lecture #1}%
+  }{%
+    \def\@lecture{Lecture #1: #3}%
+  }%
+  \subsection*{\makebox[\textwidth][l]{\@lecture \hfill \normalfont\small\textsf{#2}}}
+}
+
+\makeatletter
+
+\newcommand{\opgave}[1]{%
+ \def\@opgave{#1}%
+ \subsection*{Opgave #1}
+}
+
+\makeatother
+
+%Format lim the same way in intext and in display
+\let\svlim\lim\def\lim{\svlim\limits}
+
+% horizontal rule
+\newcommand\hr{
+\noindent\rule[0.5ex]{\linewidth}{0.5pt}
+}
+
+\title{Opgaver til forelæsning 18}
+\author{Noah Rahbek Bigum Hansen}
+\date{19. November 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Opg. 9.13}
+Show that the angle $\alpha$ between a plumb line and the direction of the earth's center is well approximated by $\tan \alpha = \frac{R_c \Omega^2 \sin 2\theta}{2g}$, where $g$ is the observed free-fall acceleration and we assume the earth is perfectly spherically symmetric. Estimate the maximum and minimum values of the magnitude of $\alpha$.
+\bigbreak
+Vi har en effektiv tyngdeacceleration på jorden givet ved
+\[ 
+g_{eff} = g_0 + \Omega^2R \sin \theta \hat{\rho}
+.\]
+Denne har en radiel komponent, $g_{rad}$, og en tangentiel komponent, $g_{tan}$, der svarer til hhv.
+\[ 
+g_{rad} = g_0 - \Omega^2R \sin^2 \theta
+\]
+og
+\[ 
+g_{tan} = \Omega^2 R \sin \theta \cos \theta
+.\]
+Dermed bliver
+\begin{align*}
+  \tan \alpha &= \frac{g_{tan}}{g_{rad}} \\
+  &= \frac{\Omega^2 R \sin \theta \cos \theta}{g_0 - \Omega^2 R \sin^2 \theta} \\
+  &\approx \frac{\Omega^2 R \sin \theta \cos\theta}{g_0} \\
+  &= \frac{\Omega^2 R}{2g_0} \sin 2\theta
+.\end{align*}
+Hvilket skulle vises. $\alpha$ har et minimum for $\sin 2\theta = 0 \implies\theta = 0$, hvor $\alpha = 0$. $\alpha$'s maximum er ved $\sin 2 \theta = 1 \implies \theta  = \frac{\pi}{4} = \ang{45}$, hvo $\alpha = \tan^{-1} \frac{\Omega^2 R}{2g_0}$
+
+
+\section*{Opg. 9.25}
+A high-speed train is travelling at a constant \qty{150}{m \per s} (about \qty{300}{mph}) on a straight, horizontal track across the South Pole. Find the angle between a plumb line suspended from the ceiling inside the train and another inside a hut on the ground. In what direction is the plumb line on the train deflected.
+\bigbreak
+Vi har $\dot{y} = v_{y0}$ og $\theta = \pi$, da vi er ved sydpolen. Dermed bliver bevægelsesligningerne i alle retninger (9.53) i notatet
+\begin{align*}
+  \ddot{x} &= 2\Omega v_{y0} \cos \theta = -2\Omega v_{y0}\\
+  \ddot{y} &= 0 \\
+  \ddot{z} &= -g
+.\end{align*}
+Da bliver $\tan(\alpha)$
+\[ 
+\tan \alpha = \frac{2\Omega v_{y0}}{g}
+.\]
+Denne vinkel, $\alpha$, er vinklen som loddet på toget laver til et tilsvarende lod i et stillestående system (huset). Loddet i toget bliver peger desuden lidt mod ``højre'' grundet corioliskraften pr. højrehåndreglen.
+
+
+
+\section*{Opg. 9.26}
+In Section 9.8, we used a method of successive approximations to find the orbit of an object that is dropped from rest, correct to first order in the earth's angular velocity $\Omega$. Show in the same way that if an object is thrown with initial velocity, $v_0$ from a point $O$ on the earth's surface at colatitude $\theta$, that to first order in $\Omega$ its orbit is
+\begin{align*}
+  x &= v_{x0}t + \Omega(v_{y0} \cos \theta - v_{z0} \sin\theta)t^2 + \frac{1}{3} \Omega gt^3 \sin \theta \\
+  y &= v_{y0}t - \Omega(v_{x0} \cos \theta)t^2 \\
+  z &= v_{z0}t - \frac{1}{2}gt^2 + \Omega(v_{x0} \sin \theta)t^2
+.\end{align*}
+[First solve the equations of motion in zeroth order, that is, ignoring $\Omega$ entirely. Substitute your zeroth-order solution for $\dot{x}$, $\dot{y}$, and $\dot{z}$ into the right side of the equations above and integrate to give the next approximation. Assume that $v_0$ is small enough that air resistance is negligible and that $g$ is a constant throughout the flight.]
+\bigbreak
+Givet $\dot{r} = (\dot{x}, \dot{y}, \dot{z}) = (v_{x0}, v_{y0}, v_{z0})$ har vi
+\begin{align*}
+  \ddot{x} &= 2\Omega(\dot{y} \cos \theta - \dot{z} \sin \theta) \\
+  \ddot{y} &= -2\Omega \dot{x} \cos \theta \\
+  \ddot{z} &= -g + 2\Omega \dot{x} \sin \theta
+.\end{align*}
+0.-ordens approksimationen bliver da
+\begin{align*}
+  \ddot{x} &= 0, &\quad \ddot{y} &= 0, &\quad \ddot{z} &= -g \\
+  && &\Downarrow && \\
+  \dot{x} &= v_{x0}, &\quad \ddot{y} &= v_{y0}, &\quad \ddot{z} &= -gt + v_{z0} \\
+  && &\Downarrow && \\
+  x &= v_{x0}t, &\quad y &= v_{y0}t, &\quad z &= h - gt^2 + v_{z0}t
+.\end{align*}
+Disse kan indsættes i vores bevægelsesligninger som
+\begin{align*}
+  \ddot{x} &= 2\Omega(v_{y0} \cos \theta - (v_{z0} - gt) \sin \theta) \\
+  \ddot{y} &= -2\Omega v_{x0} \cos \theta \\
+  \ddot{z} &= -g + 2\Omega v_{x0} \sin\theta \\
+  \\
+           &\Downarrow \\
+  \\
+  \dot{x} &= 2\Omega (v_{y0}t \cos \theta - (v_{z0}t - \frac{1}{2}gt^2)\sin\theta) + v_{x0}\\
+  \dot{y} &= -2\Omega v_{x0}t \cos \theta + v_{y0}\\
+  \dot{z} &= -gt + 2\Omega v_{x0}t \sin\theta + v_{z0}\\
+  \\
+          &\Downarrow \\
+  \\
+  x &= v_{x0}t + 2\Omega \left( \frac{1}{2}t^2 v_{y0} \cos\theta - \left( \frac{1}{2}v_{z0}t^2 - \frac{1}{6}gt^3 \right) \sin \theta \right) \\
+    &= v_{x0}t + \Omega \left( t^2 \left( v_{y0}\cos\theta - v_{z0} \sin \theta \right) + \frac{1}{3} gt^3 \sin\theta \right) \\
+  y &= v_{y0}t -\Omega v_{x0} t^2 \cos \theta \\
+  z &= v_{z0}t -\frac{1}{2}gt^2 + \Omega v_{x0}t^2 \sin \theta
+.\end{align*}
+Hvilket skulle vises.
+\end{document}

@@ -1,0 +1,106 @@
+\section{Fluidmekanik}
+
+\begin{table}[ht]
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Givet}                   & \textbf{Ønsker at finde}         & \textbf{Relevante formler} \\ \hline
+Masse, volumen                   & Densitet                         & \ref{afs:dens}             \\ \hline
+Kraft, areal                     & Tryk                             & \ref{afs:trykdef}          \\ \hline
+Densitet, højdeforskel           & Trykforskel                      & \ref{afs:trykfor}          \\ \hline
+Densitet, dybde                  & Tryk til dybde                   & \ref{afs:trykdyb}          \\ \hline
+Densitet, volumen                & Opdriftskraft                    & \ref{afs:ark}              \\ \hline
+Areal, strømningshastighed       & Volumenstrømningshastighed       & \ref{afs:volstr}           \\ \hline
+Tryk, densitet, dybde, hastighed & Tryk, densitet, dybde, hastighed & \ref{afs:bern}             \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Densitet og tryk (12.1-12.2)}
+
+\subsubsection{Densiteten af et homogent legeme} \label{afs:dens}
+Givet et homogent legemes masse $m$ og dets volumen $V$ kan densitet $\rho$ findes som
+\[ 
+\rho = \frac{m}{V}
+.\]
+
+
+\subsubsection{Definition af tryk i en væske} \label{afs:trykdef}
+Trykket $p$ i en væske er defineret som
+\[ 
+p = \frac{\mathrm{d}F_{\perp}}{\mathrm{d}A} 
+.\]
+Hvor $\mathrm{d}F_{\perp}$ er normalkraften udøvet af en væske på en lille overflade med overfladeareal $\mathrm{d}A$.
+
+
+\subsubsection{Trykforskel mellem to punkter i en væske med uniform densitet} \label{afs:trykfor}
+Trykforskellen $p_2 - p_1$ mellem to punkter i en væske med uniform densitet er givet ved
+\[ 
+p_2 - p_1 = -\rho g(y_2 - y_1)
+.\]
+Hvor $\rho$ er den uniforme densitet, $g$ er tyngdeaccelerationen og $y_2$ og $y_1$ er højden til to forskellige punkter. 
+
+
+\subsubsection{Trykket til en given dybde i en væske med uniform densitet} \label{afs:trykdyb}
+Givet et initialtryk $p_0$, en densitet $\rho$ og dybden $h$ kan trykket $p$ findes som
+\[ 
+p = p_0 + \rho gh
+.\]
+
+
+\subsubsection{Pascals lov}
+Pascals lov siger at: ``Tryk, der påføres en indelukket væske, overføres uformindsket til alle dele af væsken og væggene i det beholdende kar.''
+
+
+\subsubsection{Absolut tryk og overtryk (manometertryk)}
+Det totale tryk (inkl. atmosfærisk tryk) kaldes normalt for absolut tryk og \textit{overtrykket} ift. atmosfærisk tryk (altså det totale tryk minus det absolutte tryk) kaldes normalt overtrykket eller manometertrykket.
+
+
+\subsection{Opdrift (12.3)}
+
+\subsubsection{Arkimedes princip}
+Arkimedes princip siger at: ``Når en genstand er helt eller delvist nedsænket i en væske, udøver væsken en opadrettet kraft på genstanden, der er lig med vægten af den væske, som genstanden fortrænger.''
+
+
+\subsubsection{Matematisk formulering af Arkimedes princip} \label{afs:ark}
+Givet densiteten af en uniform væske $\rho$, volumenet af den fortrængte væske $V$ og tyngdeaccelerationen $g$ kan opdriftskraften $F_{b}$ findes som
+\[
+F_b = \rho Vg
+.\]
+
+\subsection{Væskestrømning (Eng: \textit{Fluid Flow}) (12.4)}
+
+\subsubsection{Ideele væsker}
+En \textit{ideel} væske er en matematisk model der simplificerer fluidmekanik. Det antages at en ideel væske er
+\begin{itemize}
+  \item \textbf{Inkompressibel}: Altså at væskens densitet ikke kan ændres
+  \item \textbf{Inviskos}: Altså at væsken ingen indre friktion har
+\end{itemize}
+De fleste væsker kan under normale omstændigheder antages at være inkompressible -- det samme gør sig gældende for gasser, så længe trykforskellene ikke er for store. Inviskositet er et rimeligt krav for letflydende væsker og gasser såfremt de andre kræfter der virker på væsken eller gassen er væsentligt større end den interne friktion ville være.
+
+
+\subsubsection{Kontinuitetsligningen} \label{afs:kontin}
+Kontinuitetsligningen for en inkompressibel væske er
+\[ 
+A_1v_1 = A_2v_2
+.\]
+Hvor $v_1$ og $v_2$ er strømningshastigheden to forskellige steder og $A_1$ og $A_2$ er tværsnitsarealerne de samme to steder. 
+
+
+\subsubsection{Volumenstrømningshastighed} \label{afs:volstr}
+Produktet $Av$ fra \ref{afs:kontin}: \nameref{afs:kontin} er lig volumenstrømningshastigheden $\frac{\mathrm{d}V}{\mathrm{d}t}$. Altså
+\[ 
+\frac{\mathrm{d}V}{\mathrm{d}t} = Av
+.\]
+
+
+\subsection{Bernoullis ligning (12.5)}
+
+\subsubsection{Bernoullis ligning} \label{afs:bern}
+Bernoullis ligning er
+\[ 
+  p + \rho gy + \frac{1}{2}\rho v^2 = \text{const.}
+.\]
+Hvor $p$ er trykket, $\rho$ er væskens densitet, $g$ er tyngdeaccelerationen, $y$ er elevationen og $v$ er hastigheden. \textbf{Bemærk}: Bernoullis ligning gælder kun for idelle væsker med stationær strømning. Denne kan også skrives som
+\[ 
+p_1 + \rho g y_1 + \frac{1}{2} \rho v_1^2 = p_2 + \rho g y_2 + \frac{1}{2} \rho v_2^2
+.\]
+

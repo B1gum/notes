@@ -1,0 +1,191 @@
+\section{Kendte fordelinger}
+
+
+\subsection{Diskrete stokastiske variable}
+\begin{table}[ht]
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Fordeling} &
+  \textbf{Eksperiment, der beskriver fordelingen} \\ \hline
+\textit{Bernoullifordelingen} &
+  \begin{tabular}[c]{@{}l@{}}Et tilfældigt eksperiment med to outcomes.\\ Success med sandsynlighed $p$ og fiasko\\ med sandsynlighed $1-p$.\end{tabular} \\ \hline
+\textit{Binomialfordelingen} &
+  \begin{tabular}[c]{@{}l@{}}Beskriver antallet af successer ved $n$\\ uafhængige Bernoulli-forsøg, hvor hvert\\ har samme sandsynlighed $p$ for success.\end{tabular} \\ \hline
+\textit{Poissonfordelingen} &
+  \begin{tabular}[c]{@{}l@{}}En fordeling, der modellerer antallet af \\ gange en hændelse sker på et givent tids-\\ interval. Specielt bruges det for diskrete\\ uafhængige begivenheder, der sker med\\ konstant rate. Eksempelvis radioaktivt\\ henfald.\end{tabular} \\ \hline
+\textit{Den geometriske fordeling} &
+  \begin{tabular}[c]{@{}l@{}}En fordeling, der modellerer antallet af\\ forsøg, der behøves for at få den første\\ success i en række uafhængige Bernoulli-\\ forsøg, med success-sandsynlighed $p$.\end{tabular} \\ \hline
+\textit{Den negative binomialfordeling} &
+  \begin{tabular}[c]{@{}l@{}}En fordeling, der modellerer antallet af\\ forsøg, der behøves for at få $r$ successer\\ i en række uafhængige Bernoulli-forsøg\\ med success-sandsynlighed $p$.\end{tabular} \\ \hline
+\end{tabular}
+\end{table}
+
+
+\subsubsection{Bernoullifordelingen}
+\underline{\hyperref[afs:forber]{Bernoullifordelingen}}. En stokastisk variabel $X$ der kun antager værdierne 0 og 1 siges at være \textit{Bernoullifordelt} med parameter $p$, hvor $p = P(X = 1)$. Denne har sandsynlighedsfunktion givet ved:
+\[ 
+P(X = x) = \begin{cases}
+p & \text{for } x = 1, \\
+1 - p & \text{for } x = 0
+.\end{cases}
+\]
+og fordelignsfunktion givet ved
+\[ 
+F_X(x) = \begin{cases}
+0 & \text{for } x < 0, \\
+1 - p & \text{for } 0 \leq x \leq 1, \\
+1 & \text{for } x \geq 1
+.\end{cases}
+\]
+For bernoullifordelingen gælder
+\begin{align*}
+  E[X] &= p \\
+  \mathrm{Var}(X) &= p - p^2
+.\end{align*}
+
+
+\subsubsection{Binomialfordelingen}
+\underline{\hyperref[afs:forbin]{Binomialfordelingen}}. Lad $0 \leq p \leq 1$ og $n = 1, 2, 3, \ldots$. En stokastisk variabel $X$ siges da at være \textit{binomialfordelt} med parametre $(n,p)$, hvis $X$ har en sandsynlighedsfunktion givet som
+\[ 
+p(i) = \binom{n}{i}p^{i}(1-p)^{n-i}, \qquad \text{for} \qquad i = 0, 1, 2, \ldots , n.
+.\]
+$p$ er sandsynligheden for en success så vi har altså fået $i$ successer $n-i$ fiaskoer og $\binom{n}{i}$ er antallet af permutationer af de $i$ successer. 
+Fordelingsfunktionen for binomialfordelingen er givet ved
+\[ 
+F_X(k) = P(X \leq k) = \sum_{i = 0}^{\left\lfloor k \right\rfloor} \binom{n}{i} p^{i}(1-p)^{n-i}
+\]
+For $k \in \mathbb{R}$.
+For binomialfordelingen gælder
+\begin{align*}
+  E[X] &= np \\
+  \mathrm{Var}(X) &= np(1-p)
+.\end{align*}
+
+
+
+\subsubsection{Poissonfordelingen}
+\underline{\hyperref[afs:forpoi]{Poissonfordelingen}}. Lad $\lambda >0$. Så siges en stokastisk variabel $X$ at være \textit{Poissonfordelt} med parameter $\lambda$ hvis sandsynlighedsfunktion $p$ er givet ved
+\[ 
+p(i) = \frac{e^{-\lambda i} \lambda^{i}}{i!} \qquad \text{for} \qquad i = 0, 1, 2,\ldots 
+\]
+og fordelingsfunktion givet ved
+\[ 
+F_X(k) = \sum_{i = 0}^{\left\lfloor k \right\rfloor } \frac{\lambda^{i}e^{-\lambda}}{i!}
+.\]
+For Poissonfordelingen gælder
+\begin{align*}
+  E[X] &= \lambda \\
+  \mathrm{Var}(X) &= \lambda
+.\end{align*}
+
+
+\subsubsection{Den geometriske fordeling}
+\underline{\hyperref[afs:forgeo]{Den geometriske fordeling}}. Lad $0 < p < 1$ så siges en stokastisk variabel $X$ at være geometrisk fordelt med sandsynlighedsparameter $p$ hvis sandsynlighedsfunktion er givet ved
+\[ 
+p(n) = p(1-p)^{n-1}, \qquad n = 1,2,3,\ldots 
+\]
+og fordelignsfunktion givet ved
+\[ 
+F_X(k) = P(X \leq k) 1 - (1-p)^{k}, \qquad k = 1, 2, 3, \ldots 
+\]
+for $k < 1, F_X(K) = 0$.
+For den geometriske fordeling gælder
+\begin{align*}
+  E[X] &= \frac{1}{p} \\
+  \mathrm{Var}(X) &= \frac{1-p}{p^2}
+.\end{align*}
+
+
+
+\subsubsection{Den negative binomialfordeling}
+\underline{\hyperref[afs:fornegbin]{Den negative binomialfordeling}} er beskrevet med sandsynlighedsparameter $p$ og antalsparameter $r$, $(p,r)$. Sandsynlighedsfunktionen er givet som
+\[ 
+P(X) = \binom{r-1}{n-1}p^{r}(1-p)^{n-r}, \qquad n = r, r+1, \ldots 
+\]
+og fordelingsfunktion givet ved
+\[ 
+F_X(k) = P(X \leq k) = \sum_{i = 0}^{\left\lfloor k \right\rfloor} \binom{i + r -1}{r - 1}p^{r}(1-p)^{i}, \qquad k = 0, 1, 2, \ldots 
+.\]
+For den negative binomialfordeling gælder
+\begin{align*}
+  E[X] &= \frac{r}{p} \\
+  \mathrm{Var}(X) = r \cdot \frac{1-p}{p^2}
+.\end{align*}
+
+
+\subsection{Kontinuerte stokastiske variable}
+\begin{table}[ht]
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Fordeling}               & \textbf{Eksperiment, der beskriver fordelingen}                                                                                \\ \hline
+\textit{Den uniforme fordeling} &
+  \begin{tabular}[c]{@{}l@{}}Den uniforme fordeling beskriver en stokastisk\\ variabel der har lige stor sandsynlighed for at\\ være enhver given værdi i et interval.\end{tabular} \\ \hline
+\textit{Normalfordelingen}       & \begin{tabular}[c]{@{}l@{}}Modellerer mange naturlige fænomener såsom\\ højder, vægte og målefejl. Klokke-kurven.\end{tabular} \\ \hline
+\textit{Eksponentialfordelingen} & \begin{tabular}[c]{@{}l@{}}Eksponentialfordelingen beskriver ventetiden\\ mellem hændelser i en Poisson-process.\end{tabular}  \\ \hline
+\textit{Gammafordelingen}        & \begin{tabular}[c]{@{}l@{}}Gammafordelingen modellerer tiden indtil $k$\\ hændelser sker i en Poisson-process.\end{tabular}    \\ \hline
+\end{tabular}
+\end{table}
+
+
+\subsubsection{Den uniforme fordeling}
+\underline{\hyperref[afs:foruni]{Den uniforme fordeling}}. Lad $\alpha < \beta$. En stokastisk variabel $X$ siges at være uniformfordelt på intervallet $(\alpha, \beta)$, hvis $X$ er kontinuert med tæthedsfunktion
+\[ 
+f(x) = \frac{1}{\beta - \alpha}, \quad \text{for } \alpha < x < \beta \quad \text{og} \quad f(x) = 0 \text{ ellers}
+.\]
+Denne har fordelignsfunktion givet som
+\[ 
+F(x) = \frac{x - \alpha}{\beta - \alpha}, \quad \text{for} \quad \alpha \leq x \leq \beta
+.\]
+For denne gælder, at
+\begin{align*}
+  E[X] &= \frac{\alpha + \beta}{2} \\
+  \mathrm{Var}(X) &= \frac{\beta - \alpha}{12}
+.\end{align*}
+
+
+\subsubsection{Normalfordelingen}
+\underline{\hyperref[afs:fornor]{Normalfordelingen}}. Lad $\mu \in \mathbb{R}$ og $\sigma^2 \geq 0$. En stokastisk variabel $X$ siges at være normalfordelt med parametre $\mu$ og $\sigma^2$, hvis $X$ har tæthedsfunktion givet ved
+\[ 
+f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{\frac{(x-\mu)^2}{2\sigma^2}}, \text{ for alle } x
+.\]
+Hvis $\mu = 0$ og $\sigma^2 = 1$ siges $X$ endvidere at være standard-normalfordelt. Normalfordelingen har fordelingnsfunktion (se evt. \autoref{fig:F13_1}) givet ved
+\[ 
+\Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{x} e^{\frac{s^2}{2}} \, \mathrm{d}s
+.\]
+For normalfordelingen gælder
+\begin{align*}
+  E[X] &= \mu \\
+  \mathrm{Var}(X) &= \sigma^2
+.\end{align*}
+
+
+\subsubsection{Eksponentialfordelingen}
+\underline{\hyperref[afs:foreks]{Eksponentialfordelingen}}. Lad $\lambda > 0$. En stokastisk variabel $X$ siges at være eksponentialfordelt med parameter $\lambda$, hvis $X$ har tæthedsfunktion givet ved
+\[ 
+  f(x) = \lambda e^{-\lambda x}, \qquad \text{for } x > 0 \text{ og } f(x) = 0, \text{ ellers}
+.\]
+Denne har fordelingsfunktion givet ved:
+\[ 
+F(x) = 1 - e^{-\lambda x}, \text{ for } x > 0
+.\]
+For eksponentialfordelingen gælder at
+\begin{align*}
+  E[X] &= \frac{1}{\lambda} \\
+  \mathrm{Var}(X) &= \frac{1}{\lambda^2}
+.\end{align*}
+
+
+\subsubsection{Gammafordelingen}
+\underline{\hyperref[afs:forgam]{Gammafordelingen}}. Lad $\alpha, \lambda > 0$. En stokastisk variabel $X$ siges at være gammafordelt med parametre $(\alpha, \lambda)$, hvis $X$ har tæthedsfunktion $f$ givet ved
+\[ 
+f(x) = \frac{\lambda e^{- \lambda x} (\lambda x)^{\alpha - 1}}{\Gamma(\alpha)}, \text{ for } x > 0
+.\]
+Denne har fordelingsfunktion givet ved
+\[
+  F_X(x) = P(X \leq x) = \frac{1}{\Gamma(k)} \int_{0}^{x} \lambda^{k} t^{k-1} e^{-\lambda t} \, \mathrm{d}t
+.\]
+For gammafordelingen gælder
+\begin{align*}
+  E[X] &= \frac{\alpha}{\lambda} \\
+  \mathrm{Var}(X) &= \frac{\alpha}{\lambda^2}
+.\end{align*}

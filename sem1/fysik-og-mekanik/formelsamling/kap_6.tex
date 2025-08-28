@@ -1,0 +1,88 @@
+\section{Arbejde og kinetisk energi}
+
+\begin{table}[ht]
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Givet}                    & \textbf{Ønsker at finde} & \textbf{Relevante formler} \\ \hline
+Kraft, strækning, (vinkel) & Arbejde & \begin{tabular}[c]{@{}l@{}}\ref{afs:w1d} – 1 dimension\\ \ref{afs:w2d} – flere dimensioner\end{tabular}          \\ \hline
+Masse, hastighed                  & Kinetisk energi          & \ref{afs:enkin}            \\ \hline
+Forskel mellem kinetiske energier & Arbejde                  & \ref{afs:wetheo}           \\ \hline
+Kraft, strækning                  & Arbejde                  & \ref{afs:wvf}              \\ \hline
+Kraft, strækning, vinkel          & Arbejde                  & \ref{afs:wetheocur}        \\ \hline
+Ændring i arbejde, tid     & Effekt  & \begin{tabular}[c]{@{}l@{}}\ref{afs:aveff} – gennemsnitseffekt\\ \ref{afs:inseff} – øjeblikseffekt\end{tabular} \\ \hline
+Kraft, hastighed                  & Effekt                   & \ref{afs:inseff}           \\ \hline
+\end{tabular}
+\end{table}
+
+
+\subsection{Arbejde af konstante kræter (6.1-6.2)}
+
+\subsubsection{Arbejde i 1 dimension} \label{afs:w1d}
+Arbejdet $W$ udført af en konstant kraft $F$ over en strækning $s$ kan findes som
+\[ 
+W = Fs
+.\]
+
+\subsubsection{Arbejde i flere dimensioner} \label{afs:w2d}
+Arbejdet $W$ udført af en konstant kraft $F$ over en strækning $s$ med en vinkel $\phi$ mellem $F$ og $s$ er
+\[ 
+W = Fs \cos\phi
+.\]
+
+Dette er i øvrigt det samme som prikproduktet mellem kraft-vektoren $\Vec{F}$ og strækningsvektoren $\Vec{s}$. Altså
+\[ 
+W = \Vec{F} \cdot \Vec{s}
+.\]
+
+\subsubsection{Kinetisk energi} \label{afs:enkin} 
+Den kinetiske energi $K$ af et objekt med masse $m$ og hastighed $v$ kan findes som
+\[ 
+K = \frac{1}{2}mv^2
+.\]
+
+
+\subsubsection{Arbejde-energi-teoremet} \label{afs:wetheo}
+Arbejde-energi-teoremet lyder, at arbejdet $W_{tot}$ udført af den resulterende kraft på en partikel tilsvarer ændringen i partiklens energi $\Delta K$. Altså
+\[ 
+W_{tot} = \Delta K = K_2 - K_1
+.\]
+Dette betyder bl.a. at den kinetiske energi af en partikel netopsvarer til alt det arbejde der er udført på partiklen siden stilstand.
+
+
+\subsection{Arbejde og energi for variable kræfter (6.3)}
+
+\subsubsection{Arbejde af variabel kraft} \label{afs:wvf}
+For en 1-dimensional variabel kraft $F_x$, der virker fra $x_1$ til $x_2$ er det totale arbejde udført af kraften givet som
+\[ 
+W = \int_{x_1}^{x_2} F_x \, \mathrm{d}x
+.\]
+Det ses også at såfremt kraften er konstant simplificeres udtrykket ovenfor til arbejdet for en konstant kraft
+\[ 
+W = \int_{x_1}^{x_2} F_x \, \mathrm{d}x = F_x \int_{x_1}^{x_2} \, \mathrm{d}x = F_x(x_2-x_1)
+.\]
+
+\subsubsection{Arbejde-energi-teoremet for bevægelse langs en kurve} \label{afs:wetheocur}
+Givet en partikel der bevæger sig langs en kurve fra $P_1$ til $P_2$ kan kurven deles op i en række små forskydninger $\mathrm{d}\Vec{I}$. Kaldes kraften ved hver lille forskydning $\mathrm{d}\Vec{I}$ for $\Vec{F}$ og vinklen mellem $\Vec{F}$ og $\mathrm{d}\Vec{I}$ for $\phi$ kan det totale arbejde findes som
+\[ 
+W = \int_{P_1}^{P_2} \Vec{F} \cdot \, \mathrm{d}\Vec{I} = \int_{P_1}^{P_2} F \cdot \cos\phi \, \mathrm{d}I
+.\]
+
+\subsection{Effekt (6.4)}
+
+\subsubsection{Gennemsnitseffekt} \label{afs:aveff}
+Givet en ændring i arbejde $\Delta W$ og en ændring i tid $\Delta t$ kan den gennemsnitlige effekt af arbejdet $P_{avg.}$ findes som
+\[ 
+  P_{avg.} = \frac{\Delta W}{\Delta t}
+.\]
+
+\subsubsection{Øjeblikseffekt} \label{afs:inseff}
+For en ændring i arbejde $\Delta W$ og en ændring i tid $\Delta t$ kan øjeblikseffekten $P$ findes som
+\[ 
+P = \lim_{\Delta t \to 0} \frac{\Delta W}{\Delta t} = \frac{\mathrm{d}W}{\mathrm{d}t}
+.\]
+
+For en kraft $\Vec{F}$ der udfører et arbejde på en partikel med en hastighed $\Vec{v}$ kan øjeblikseffekten i øvrigt findes som
+\[ 
+P = \Vec{F} \cdot \Vec{v}
+.\]
+

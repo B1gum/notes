@@ -1,0 +1,233 @@
+\lecture{2}{2. September 2024}{Integration}
+
+\section{Integration ved substitution (7.2)} \label{afs:intsub}
+Integration ved substitution kan forstås som kædereglens inverse. 
+\begin{definition} [Integration ved substitution]
+  Lad $f$ og $g$ være funktioner. Med substitutionen $u = g(x)$ er
+  \[ 
+  \int f(g(x))g'(x)\, \mathrm{d}x = \int f(u) \, \mathrm{d}u = F(u) = F(g(x))
+  \]
+  hvor $F$ er en stamfunktion til $f$. Ofte skrives
+  \[ 
+  \mathrm{d}u = g'(x) \, \mathrm{d}x 
+  .\]
+  Hvilket gør det lettere at huske formlen.
+\end{definition}
+
+\begin{eks} [Et simpelt eksempel]
+  Vi ønsker at bestemme
+  \[ 
+  \int 8x \left( 4x^2 + 8 \right)^{6} \, \mathrm{d}x
+  .\]
+  Vi sætter $u = 4x^2 + 8$ og får dermed $\mathrm{d}u = 8x \, \mathrm{d}x$. Dermed fås
+  \[ 
+  \int u^{6} \, \mathrm{d}u = \frac{u^{7}}{7}
+  .\]
+  Sættes definitionen af $u$ ind i det ovenstående fås
+  \[ 
+  \int 8x \left( 4x^2 + 8 \right)^{6} = \frac{u^{7}}{7} = \frac{\left( 4x^2 + 8 \right)^{7}}{6}
+  .\]
+\end{eks}
+
+\begin{eks} [Et mere kompliceret eksempel]
+  Vi ønsker at finde
+  \[ 
+  \int x^3 \sqrt{3x^{4} + 10} \, \mathrm{d}x 
+  .\]
+  Vi sætter $u = 3x^{4} + 10$ og får dermed $\mathrm{d}u = 12x^3$. Ved at gange integralet fra før med $1 = \frac{12}{12}$ bliver integralet til
+  \[ 
+  \frac{1}{12}\int \sqrt{3x^{4} + 10} 12x^3 \, \mathrm{d}x
+  .\]
+  Dernæst kan $u$ indsættes som
+  \[ 
+  \frac{1}{12} \int \sqrt{u} \, \mathrm{d}u = \frac{1}{12} \left( \frac{2}{3} u^{\frac{3}{2}} \right) = \frac{1}{18} u^{\frac{3}{2}}
+  .\]
+  Definitionen af $u$ kan nu indsættes igen som
+  \[ 
+  \int x^3 \sqrt{3x^{4} + 10} \, \mathrm{d}x = \frac{1}{18} \left( 3x^{4} + 10 \right)^{\frac{3}{2}}
+  .\]
+\end{eks}
+
+\section{Fundamentalsætningen for calculus (7.4)}
+
+\begin{definition} [Bestemte integraler]
+  Hvis $f$ er en positiv funktion så angiver det bestemte integral 
+  \[ 
+  \int_{a}^{b} f(x) \, \mathrm{d}x 
+  \]
+  arealet mellem $x$-aksen og funktionen $f$ over intervallet $[a,b]$.
+\end{definition}
+
+\begin{sæt} [Fundmentalsætningen for calculus]
+  Hvis $f$ er en kontinuert funktion på intervallet $[a,b]$, og $F$ er en stamfunktion til $f$ så er
+  \[ 
+  \int_{a}^{b} f(x) \, \mathrm{d}x = F(b) - F(a) = F(x) \bigg|_a^{b}
+  .\]
+\end{sæt}
+
+\begin{eks} [Simpelt bestemt integral]
+  Vi ønsker at finde $\int_{1}^{3} 3x^2 \, \mathrm{d}x$.
+  \bigbreak
+  Først bestemmes det ubestemte integral som
+  \[ 
+  \int 3x^2 \, \mathrm{d}x = x^3
+  .\]
+  Dernæst benyttes fundamentalsætningen for calculus som
+  \[ 
+  \int_{1}^{3} 3x^2 \, \mathrm{d}x = 3^3 - 1^3 = 26
+  .\]
+\end{eks}
+
+\begin{eks} [Et mere bøvlet bestemt integral]
+  Vi ønsker at finde $\int_{0}^{4} 2x \sqrt{16 - x^2}\, \mathrm{d}x $.
+  \bigbreak
+  Først findes det ubestemte integral ved at sætte $u = 16 - x^2$ og dermed får $\mathrm{d}u = -2x \, \mathrm{d}x$. Vi kan altså skrive integralet som
+  \[ 
+  \int 2x \sqrt{16-x^2} \, \mathrm{d}x = -\int \sqrt{u} \mathrm{d}u = -\int u^{\frac{1}{2}} \mathrm{d}u
+  .\]
+  Dette integral løses nu som normalt som
+  \[ 
+  -\int u^{\frac{1}{2}} \mathrm{d}u = -\frac{2}{3} u^{\frac{3}{2}} + c
+  .\]
+  Dermed kan substitutionen sættes tilbage ind som
+  \[ 
+  -\frac{2}{3} \left( 16-x^2 \right)^{\frac{3}{2}} + c
+  .\]
+  Og slutteligt kan integrationsgrænserne igen indsættes som
+  \begin{align*}
+  \int_{0}^{4} 2x \sqrt{16-x^2} \, \mathrm{d}x &= -\frac{2}{3} \left( 16-x^2 \right)^{\frac{3}{2}} \bigg|_0^{4} \\
+  &= -\frac{2}{3} \left( \left( 16-4^2 \right)^{\frac{3}{2}} - \left( 16-0^2 \right)^{\frac{3}{2}} \right) \\
+  &= -\frac{2}{3}\left( 0^{\frac{3}{2}} - 16^{\frac{3}{2}} \right) \\
+  &= \frac{2}{3} \cdot 16^{\frac{3}{2}} \\
+  &= \frac{2}{3} \cdot 16 \cdot \sqrt{16} \\
+  &= \frac{128}{3}
+  .\end{align*}
+\end{eks}
+\textit{Note fra Basse:} Hvis man laver en fortegnsfejl til eksamen er det vigtigt at man laver en mere -- så passer pengene. Man skal altid have et lige antal fortegnsfejl.
+
+\section{Delvis integration (8.1)}
+Delvis integration er produktreglens pendant på samme måde som integration ved substitution er kædereglens pendant.
+\begin{sæt} [Delvis integration] \label{afs:delint}
+  Der gælder
+  \[
+    \int u(x)v'(x) = u(x)v(x) - \int u'(x)v(x) \, \mathrm{d}x
+  .\]
+  Med $\mathrm{d}u = u'(x) \, \mathrm{d}x$ og $\mathrm{d}v = v'(x) \, \mathrm{d}x$ kan det ovenstående skrives som
+  \[ 
+  \int u \mathrm{d}v = uv - \int v \mathrm{d}u
+  .\]
+\end{sæt}
+
+\begin{eks} [Simpelt integral med delvis integration]
+  Vi ønsker at bestemme
+  \[ 
+  \int x e^{-2x} \, \mathrm{d}x
+  .\]
+  \bigbreak
+  Vi sætter $u = x$ og $\mathrm{d}v = e^{-2x}$. Vi ønsker at finde et udtryk for $v$ og derfor integreres $\mathrm{d}v = e^{-2x}$ som
+  \[ 
+  \int e^{-2x} \, \mathrm{d}x = -\frac{1}{2}e^{-2x}
+  .\]
+  Vi får dermed
+  \[ 
+  \int x e^{-2x} = x \cdot -\frac{1}{2}e^{-2x} - \int -\frac{1}{2} e^{-2x} \, \mathrm{d}x = -\frac{1}{2}x e^{-2x} + \frac{1}{2} \int e^{-2x} \, \mathrm{d}x
+  .\]
+  Vi har tidligere fundet $\int e^{-2x} \, \mathrm{d}x  = -\frac{1}{2}e^{-2x}$. Dermed bliver det ovenstående
+  \begin{align*}
+  \int x e^{-2x} \, \mathrm{d}x &= -\frac{1}{2}x e^{-2x} + \frac{1}{2} \cdot \left( -\frac{1}{2}e^{-2x} \right) \\
+  &= -\frac{1}{2}x e^{-2x} - \frac{1}{4}e^{-2x}
+  .\end{align*} 
+\end{eks}
+
+\begin{eks} [Et mere kompliceret eksempel med delvis integration]
+  Vi ønsker at finde
+  \[ 
+  \int \ln 2x \, \mathrm{d}x
+  .\]
+  \bigbreak
+  Vi sætter $u = \ln 2x$ og dermed fås $\mathrm{d}u = \frac{1}{2x} \cdot 2 \, \mathrm{d}x = x \, \mathrm{d} \frac{1}{x} $ dermed fås $\mathrm{d}v = \mathrm{d}x$. Dermed bliver det ovenstående til
+  \begin{align*}
+  \int \ln 2x \, \mathrm{d}x &= \ln (2x) \cdot x - \int x \cdot \frac{1}{x} \, \mathrm{d}x  \\
+  &= \ln (2x) \cdot x - x \\
+  &= x \left( \ln (2x) - 1 \right)
+  .\end{align*}  
+\end{eks}
+
+\begin{eks} [Dobbelt delvis integation]
+  Vi ønsker at finde
+  \[ 
+  \int x^2 e^{x} \, \mathrm{d}x 
+  .\]
+  \bigbreak
+  Vi sætter $u = x^2$ og $\mathrm{d}v = e^{x}$. Dermed fås $\mathrm{d}u = 2x$ og $v = e^{x}$. Det ovenstående integral bliver derfor
+  \[
+  \int x^2 e^{x} \, \mathrm{d}x = x^2 e^{x} - 2\int x  e^{x} \, \mathrm{d}x
+  .\]
+  Vi kan dernæst løse $\int x e^{x} \, \mathrm{d}x$ med delvis integration ved at sætte $u = x$, $\mathrm{d}u = \mathrm{d}x$, $\mathrm{d}v = e^{x} \, \mathrm{d}x $ og dermed $v = e^{x}$. Vi får dermed
+  \[
+    \int x e^{x} \, \mathrm{d}x = x e^{x} - \int e^{x} \, \mathrm{d}x = x e^{x} - e^{x} = e^{x} \left( x - 1 \right)
+  .\]
+  Dette kan sættes tilbage ind i det første integral som
+  \[ 
+  x^2 e^{x} - 2 \int x e^{x} \, \mathrm{d}x = x^2 e^{x} - 2 e^{x} \left( x-1 \right) = e^{x} \left( x^2 - 2(x-1) \right)
+  .\]
+\end{eks}
+
+\begin{eks} [Et hurtigt integral med delvis integration]
+  Hvis vi ønsker at finde
+  \[ 
+  \int \sin(x) e^{x} \, \mathrm{d}x 
+  \]
+  kan vi sætte $u = \sin x$ og dermed få $\mathrm{d}u = \cos x$. Dette virker umiddelbart ikke til at give et nemmere integral men hvis formlen bruges igen fås $\mathrm{d\,d}u = -\sin(x)$ og vha. delvis integration fås dermed et udtryk hvor det samme integral står på begge sider af lighedstegnet og løsningen til dette integral kan derfor isoleres herfra. Dermed kan integralet løses uden egentligt at beregne et integral. Dette er vist nedenfor
+  \begin{align*}
+    \int \sin x e^{x}\, \mathrm{d}x &= \sin x e^{x} - \int \cos x e^{x} \, \mathrm{d}x \\
+    \int \cos x e^{x} \, \mathrm{d}x &= \cos x e^{x} - \int - \sin x e^{x} \, \mathrm{d}x \\
+    \int \sin x e^{x} \, \mathrm{d}x &= \sin x e^{x} - \cos x e^{x} - \int \sin x e^{x} \, \mathrm{d}x  \\
+    2 \int \sin xe^{x} \, \mathrm{d}x &= \sin x e^{x} - \cos x e^{x} \\
+    \int \sin xe^{x} \, \mathrm{d}x &= \frac{\sin x e^{x} - \cos x e^{x}}{2}
+  .\end{align*}
+\end{eks}
+
+\section{Uegentlige integraler}
+Et uegentligt integral er ethvert integral, der har enten $\infty$, $-\infty$ eller begge som en af eller begge sine integrationsgrænser.
+\begin{sæt} [Uegentlige integraler]
+  For et integral med øvre integrationsgrænse på $\infty$ har vi
+  \[ 
+  \int_{a}^{\infty} f(x) \, \mathrm{d}x = \lim_{b \to \infty } \int_{a}^{b} f(x) \, \mathrm{d}x
+  .\]
+  Og tilsvarende for et integral med nedre integrationsgrænse på $-\infty$ har vi
+  \[ 
+  \int_{-\infty}^{b} f(x) \, \mathrm{d}x = \lim_{a\to -\infty} \int_{a}^{b} f(x) \, \mathrm{d}x 
+  .\]
+  For et integral med funktionsgrænser på $-\infty$ og $\infty$ har vi i stedet
+  \[ 
+  \int_{-\infty}^{\infty} f(x) \, \mathrm{d}x = \int_{-\infty}^{0} f(x) \, \mathrm{d}x + \int_{0}^{\infty} f(x) \, \mathrm{d}x 
+  .\]
+\end{sæt}
+
+\begin{eks} [Eksempel på beregning af et uegentligt integral]
+  Vi ønsker at finde
+  \[ 
+  \int_{1}^{\infty} x^{-\frac{3}{2}} 
+  .\]
+  \bigbreak
+  Først benyttes sætningen fra ovenfor så vi får at
+  \[ 
+    \int_{1}^{\infty} x^{-\frac{3}{2}} \, \mathrm{d}x = \lim_{b \to \infty} \int_{1}^{b} x^{-\frac{3}{2}}\, \mathrm{d}x 
+  .\]
+  Vi bestemmer dernæst integralet som
+  \[ 
+  \int_{1}^{\infty } x^{-\frac{3}{2}} \, \mathrm{d}x = -2 x^{-\frac{1}{2}} \bigg|_{1}^{\infty} = -2 \left( \frac{1}{\sqrt{b}} - 1 \right) = 2 \left( 1 - \frac{1}{\sqrt{b}}\right)
+  .\]
+  Vi lader derefter $b \to \infty$ vi får dermed
+  \[
+  \lim_{b \to \infty} \sqrt{b} = \infty
+  .\]
+  Vi får dermed
+  \begin{align*}
+  \int_{1}^{\infty} x^{-\frac{3}{2}} \, \mathrm{d}x &= 2 \left( 1 - \frac{1}{\infty } \right) \\
+  &= 2 \cdot 1 \\
+  &= 2
+  .\end{align*}
+  Dermed er løsningen fundet.
+\end{eks}

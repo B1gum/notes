@@ -1,0 +1,291 @@
+\documentclass[12pt]{article}
+\usepackage[danish]{babel}
+\usepackage{amsfonts, amssymb, mathtools, amsthm, amsmath}
+\usepackage{graphicx, pgfplots}
+\usepackage{url}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{sagetex}
+\usepackage{lastpage}
+
+%loaded last
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{siunitx}
+  \sisetup{exponent-product = \cdot,
+    output-decimal-marker = {,}}
+
+%Giles Castelles incfig
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+  \def\svgwidth{#1\columnwidth}
+  \import{../figures/}{#2.pdf_tex}
+}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\thepage}
+\fancyhead[C]{\leftmark}
+
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{every axis/.append style={
+  axis x line=middle,    % put the x axis in the middle
+  axis y line=middle,    % put the y axis in the middle
+  axis line style={<->,color=black}, % arrows on the axis
+}}
+
+\usepackage{thmtools}
+\usepackage{tcolorbox}
+  \tcbuselibrary{skins, breakable}
+  \tcbset{
+    space to upper=1em,
+    space to lower=1em,
+  }
+
+\theoremstyle{definition}
+
+\newtcolorbox[auto counter]{definition}[1][]{%
+  breakable,
+  colframe=ForestGreen,  %frame color
+  colback=ForestGreen!5, %background color
+  colbacktitle=ForestGreen!25, %background color for title
+  coltitle=ForestGreen!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{ForestGreen},  %display left line
+  title=Definition \thetcbcounter: #1,
+}
+
+\newtcolorbox{greenline}{%
+  breakable,
+  colframe=ForestGreen,  %frame color
+  colback=white,          %remove background color
+  left=1em,              %space on left side in box
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{ForestGreen},  %display left line
+}
+
+\newtcolorbox[auto counter, number within=section]{eks}[1][]{%
+  brekable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,            %space on left side in box,
+  enhanced,            %more options
+  frame hidden,        %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Eksempel \thetcbcounter: #1
+}
+
+\newtcolorbox{blueline}{%
+  breakable,
+  colframe=NavyBlue,     %frame color
+  colback=white,         %remove background
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+}
+
+\newtcolorbox{teo}[1][]{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=RawSienna!5, %background color
+  colbacktitle=RawSienna!25,    %background color for title
+  coltitle=RawSienna!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+  title=Teori: #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{sæt}[1][]{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=RawSienna!5, %background color
+  colbacktitle=RawSienna!25,    %background color for title
+  coltitle=RawSienna!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+  title=Sætning \thetcbcounter: #1,
+  before lower={\textbf{Bevis:}\par\vspace{0.5em}},
+  colbacklower=RawSienna!25,
+}
+
+\newtcolorbox{redline}{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=white,       %Remove background color
+  left=1em,            %space on left side in box,
+  enhanced,            %more options
+  frame hidden,        %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+}
+
+\newtcolorbox{for}[1][]{%
+  breakable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Forklaring #1,
+}
+
+\newtcolorbox{bem}{%
+  breakable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Bemærkning:,
+}
+
+\makeatother
+\def\@lecture{}%
+\newcommand{\lecture}[3]{
+  \ifthenelse{\isempty{#3}}{%
+    \def\@lecture{Lecture #1}%
+  }{%
+    \def\@lecture{Lecture #1: #3}%
+  }%
+  \subsection*{\makebox[\textwidth][l]{\@lecture \hfill \normalfont\small\textsf{#2}}}
+}
+
+\makeatletter
+
+\newcommand{\opgave}[1]{%
+ \def\@opgave{#1}%
+ \subsection*{Opgave #1}
+}
+
+\makeatother
+
+%Format lim the same way in intext and in display
+\let\svlim\lim\def\lim{\svlim\limits}
+
+% horizontal rule
+\newcommand\hr{
+\noindent\rule[0.5ex]{\linewidth}{0.5pt}
+}
+
+\title{Afleveringsopgave uge 12}
+\author{Noah Rahbek Bigum Hansen}
+\date{14. November 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Opg. 1.39}
+If $E[X] = 3$ and $\mathrm{Var}(x) = 1$, find
+
+\subsection*{(a)}
+\[ 
+  E \left[ (4X-1)^2 \right]
+\]
+\bigbreak
+Først udvides argumentet til middelværdi-operatoren som
+\[ 
+  (4X-1)^2 = 16X^2 - 8X + 1
+.\]
+Vi kan dernæst omskrive udtrykket fra opgaven til
+\[ 
+  E \left[ (4X-1)^2 \right] = 16E \left[X^2 \right] - 8E[X] + 1
+.\]
+Vi har brug for at finde $E \left[ X^2 \right]$ for at kunne komme videre. For at finde værdien heraf bruger vi at variansen er givet som
+\[
+  \mathrm{Var}(X) = E \left[ X^2 \right] - E[X]^2
+.\]
+Sættes kendte størrelser ind i formlen fås at
+\begin{align*}
+  1 &= E \left[ X^2 \right] - 3^2 \\
+  E \left[ X^2 \right] &= 10
+.\end{align*}
+Og da bliver det trivielt at løse udtrykket fra opgaven som
+\[ 
+  E \left[ (4X-1)^2 \right] = 16E \left[ X^2 \right] - 8E[X] + 1 = 16 \cdot 10 - 8\cdot 3 + 1 = 137
+.\]
+Altså er svaret 137.
+
+\subsection*{(b)}
+\[ 
+  \mathrm{Var}(5-2X)
+\]
+\bigbreak
+Vi bruger at følgende sammenhæng gælder for variansen
+\[ 
+  \mathrm{Var}(aX + b) = a^2\mathrm{Var}(X)
+\]
+og får at
+\[ 
+  \mathrm{Var}(5-2X) = (-2)^2\cdot \mathrm{Var}(X) = 4\cdot 1 = 4
+.\]
+Altså er svaret 4.
+
+
+
+\section*{Opg. D}
+To typer antibiotika bliver sammenlignet mod mellemørebetændelse. Det ene (Aoxicillin) et billigt, men ikke så effektivt. Det andet (Cefalor) er effektivt, men også lidt dyrere. I det følgende vil vi regne på hvilken behandling der er at foretrække ud fra et økonomisk synspunkt. Det oplyses at:
+
+\vspace{14pt}
+
+For Amoxicillin er der sandsynlighed \num{0,75} for at blive rask. Hvis patienten bliver rask af behandlingen, er udgiften 60 kr., hvorimod hvis patienten ikke bliver rask af behandlingen er de samlede udgifter 96 kr.
+
+\vspace{14pt}
+
+For Cefalor er der sandsynlighed \num{0,9} for at blive rask. Hvis patienten bliver rask af behandlingen, er udgiften 70 kr., hvorimod hvis patienten ikke bliver rask af behandlingen er de samlede omkostninger 106 kr.
+
+\vspace{14pt}
+
+Udregn middelomkostningerne for de to typer af antibiotika Amoxicillin og Cefalor.  Hvilken type skal vi vælge, hvis vi vil minimere udgifterne?
+\bigbreak
+Middelomkostningerne, $E[X]$, forbundet med en given type medicin må være det sandsynlighedsvægtede gennemsnit af omkostningerne så
+\[ 
+  E[X] = P(\mathrm{rask}) \cdot X_{rask} + P(\mathrm{syg}) \cdot X_{syg}
+.\]
+For Aoxicillin er dette
+\[ 
+  E[A] = \num{0,75} \cdot 60 + (1-\num{0,75}) \cdot 96 = 69 
+.\]
+Altså er den forventede omkostning for Aoxicillin-kuren 69 kr. Det samme kan gøres for Cefalor, med samme fremgangsmåde, som
+\[ 
+  E[C] = \num{0,9} \cdot 70 + (1-\num{0,9}) \cdot 106 = \num{73,6} 
+.\]
+Den forventede omkostning for Cefalor-kuren må da være \num{73,6} kr. Derfor må det også gælde at Aoxicillin kuren er bedst ift. at minimere udgifterne idet $E[A] = 69 < E[C] = \num{73,6}$.
+
+
+\end{document}

@@ -1,0 +1,87 @@
+\section{Bevægelse langs en ret linje}
+
+\begin{table}[ht]
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Givet}                                            & \textbf{Ønsker at finde} & \textbf{Relevante formler} \\ \hline
+Strækning og tid & Hastighed    & \begin{tabular}[c]{@{}l@{}}\ref{afs:gnshas} – Gennemsnitlig hastighed\\ \ref{afs:inshas} – Øjeblikshastighed\end{tabular}       \\ \hline
+Hastighed og tid & Acceleration & \begin{tabular}[c]{@{}l@{}}\ref{afs:gnsacc} – Gennemsnitlig acceleration\\ \ref{afs:insacc} – Øjebliksacceleration\end{tabular} \\ \hline
+Konstant acceleration, starthastighed, tid                & Sluthastighed            & \ref{afs:velconacc}        \\ \hline
+Konstant acceleration, tid, starthastighed, startposition & Slutposition             & \ref{afs:posconacc}        \\ \hline
+Acceleration, starthastighed, tid                         & Sluthastighed            & \ref{afs:hasacc}           \\ \hline
+Hastighed, startposition, tid                             & Slutposition             & \ref{afs:poshas}           \\ \hline
+\end{tabular}
+\end{table}
+
+
+\subsection{Strækning, tid og hastighed (2.1-2)}
+
+\subsubsection{Gennemsnitlig hastighed} \label{afs:gnshas}
+Den gennemsnitlige hastighed er givet som ændringen i strækning $\Delta x = x_2 - x_1$ over ændringen i tid $\Delta t = t_2 - t_1$. Altså har vi at
+\[ 
+v_{av_x} = \frac{\Delta x}{\Delta t} = \frac{x_2 - x_1}{t_2 - t_1}
+.\]
+
+\subsubsection{Øjeblikshastighed (Eng: \textit{Instantaneous velocity})} \label{afs:inshas} 
+Øjeblikshastigheden i $x$-retningen $v_x$ er givet ved den gennemsnitlige hastighed når $\Delta \to 0$. Altså
+\[ 
+v_x = \lim_{\Delta t \to 0} \frac{\Delta x}{\Delta t} = \frac{\mathrm{d}x}{\mathrm{d}t}
+.\]
+
+\subsection{Acceleration (2.3)}
+
+\subsubsection{Gennemsnitlig acceleration} \label{afs:gnsacc}
+Vi betragter en partikel der bevæger sig langs $x$-aksen. Lad $P_1$ angive et punkt hvor partiklen har hastighed $v_{1x}$ til tiden $t_1$ og $P_2$ angive et tilsvarende punkt hvor partiklen istedet har hastigheden $v_{2x}$ til tiden $t_2$. Idet partiklen bevæger sig fra $P_1$ til $P_2$ på $\Delta t = t_2 - t_1$ og ændrer sin hastighed med $\Delta v_x = v_{2x} - v_{1x}$ så er den gennemsnitlige acceleration givet som
+\[ 
+a_{av_x} = \frac{\Delta v_x}{\Delta t} = \frac{v_{2x} - v_{1x}}{t_2 - t_1}
+.\]
+
+\subsubsection{Øjebliksacceleration (Eng: \textit{Instantaneous acceleration})} \label{afs:insacc}
+Øjebliksaccelerationen i $x$-retningen $a_x$ er defineret som den gennemsnitlige acceleration når $\Delta t \to 0$. Altså
+\[ 
+a_x = \lim_{\Delta t \to 0} \frac{\Delta v_x}{\Delta t} = \frac{\mathrm{d}v_x}{\mathrm{d}t}
+.\]
+
+
+\subsection{Bevægelse med konstant acceleration}
+
+\subsubsection{Hastighed ved konstant acceleration} \label{afs:velconacc}
+Vi betragter en partikel, der bevæger sig langs x-aksen. Lad $v_{0x}$ være partiklens hastighed til $t = 0$, $a_x$ være partiklens \textit{konstante} acceleration og $t$ være tiden. Hastigheden i $x$-retningen $v_x$ til tiden $t$ er da givet som
+\[ 
+v_x = v_{0x} + a_xt
+.\]
+
+Har man i stedet fået givet to punkter $x$ og $x_0$ men ingen tid $t$ kan følgende formel benyttes i stedet
+\[ 
+v_x^2 = v_{0x}^2 + 2a_x(x-x_0)
+.\]
+
+
+\subsubsection{Position ved konstant acceleration} \label{afs:posconacc}
+Vi betragter en partikel, der bevæger sig langs x-aksen. Lad $x_0$ være partiklens position til $t = 0$, $v_{0x}$ være partiklens hastighed til $t = 0$, $a_x$ være partiklens \textit{konstante} acceleration og $t$ være tiden. Positionen af partiklen til tiden $t$ er da givet som
+\[ 
+x = x_0 + v_{0x}t + \frac{1}{2}a_xt^2
+.\]
+
+Har man ikke fået opgivet den konstante acceleration $a_x$ men i stedet en start og en sluthastighed $v_{0x}$ og $v_x$ kan følgende formel benyttes
+\[ 
+x-x_0 = \frac{1}{2}(v_{0x} + v_x)t
+.\]
+Her er det værd at bemærke at formlen ovenfor kun kan benyttes for konstant acceleration, dette gælder selvom denne acceleration ikke er givet.
+
+
+\subsection{Hastighed og position ved integration (2.6)}
+
+\subsubsection{Hastighed som integralet af acceleration} \label{afs:hasacc}
+Har man fået oplyst en funktion $a_x$ der beskriver accelerationen som funktion af tid samt en initialhastighed $v_{0x}$ kan hastigheden $v_x$ til tiden $t$ findes som
+\[ 
+v_x = v_{0x} + \int_{0}^{t} a_x \, \mathrm{d}t 
+.\]
+
+
+\subsubsection{Position som integralet af hastighed} \label{afs:poshas}
+Har man fået oplyst en funktion $v_x$ der beskriver hastigheden som funktion af tid samt en initialposition $x_{0}$ kan positionen $x$ til tiden $t$ findes som
+\[ 
+x = x_0 + \int_{0}^{t} v_x \, \mathrm{d}t 
+.\]
+

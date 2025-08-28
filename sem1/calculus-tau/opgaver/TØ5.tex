@@ -1,0 +1,183 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage{latexsym, amsfonts, amssymb, amsthm, amsmath, siunitx, graphicx, pgfplots}
+
+\pdfsuppresswarningpagegroup=1
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{every axis/.append style={
+  axis x line=middle,    % put the x axis in the middle
+  axis y line=middle,    % put the y axis in the middle
+  axis line style={<->,color=black}, % arrows on the axis
+}}
+
+\title{TØ-opgaver uge 5}
+\author{Noah Rahbek Bigum Hansen}
+\date{26. september - 2025}
+
+\begin{document}
+
+\maketitle
+
+\section*{Opg. 1}
+Afgør om talfølgen $a_n = \left( \frac{n+1}{2n} \right) \left( 1 - \frac{1}{n} \right) $ konvergerer eller divergerer.  I tilfælde af konvergens, find grænseværdien.
+\bigbreak
+Idet det gælder at:
+\[
+\lim_{n \to \infty} a_n b_n = ab
+.\] 
+For $a_n \to a$ og $b_n \to b$.
+Kan vi starte med undersøge den første parentes. Her har vi:
+\[
+\lim_{n \to \infty} \frac{n+1}{2n} = \frac{1}{2}
+.\] 
+Og for den anden parentes har vi:
+\[
+\lim_{n \to \infty} 1 - \frac{1}{n} = 1 - 0 = 1
+.\] 
+Altså har vi:
+\[
+\lim_{n \to \infty} a_n b_n = ab = \frac{1}{2}\cdot 1 = \frac{1}{2}
+.\] 
+
+\section*{Opg. 2}
+Afgør om talfølgen $a_n = n - \frac{1}{n}$ er monoton (voksende eller aftagende), om den er begrænset og om den konvergerer.
+\bigbreak
+Det kan hurtigt ses at vi ved at indsætte en større $n$-værdi altid får et større tal da første led stiger med mindst 1 pr. $n$-værdi og 2.-led maksimalt trækker 1 fra (dog i praksis noget mindre end 1 for selv relativt lave $n$-værdier). Dette betyder altså at $a_n$ er strengt voksende den er dog ikke begrænset med samme argument som ovenfor og den konvergerer derfor ikke.
+
+\section*{Opg. 3}
+Afgør om talfølgen $a_n = \frac{2^n-1}{2^n}$ er monoton (voksende eller aftagende), om den er begrænset og om den konvergerer.
+\bigbreak
+Denne splittes op:
+\[
+a_n = \frac{2^n}{2^n} - \frac{1}{2^n}
+.\] 
+Og her har vi:
+\begin{align*}
+  \lim_{n \to \infty} \frac{2^n}{2^n} = 1 \\
+\end{align*}
+  Og
+\begin{align*}
+  \lim_{n \to \infty} \frac{1}{2^n} = 0
+.\end{align*}
+Og altså:
+\[
+a = 1-0 = 1
+.\] 
+Dette er både den laveste øvre grænse og den værdi som den strengt voksende talfølge konvergerer mod.
+
+
+\section*{Opg. 4}
+Bestem værdien af rækken $\sum_{n=0}^{\infty} \frac{\cos\left( \pi n \right)}{5^n}$. \textit{Hint: overvej først hvilke værdier} $\cos(\pi n)$ \textit{tager.}
+\bigbreak
+De første værdier af rækken opskrives:
+\begin{align*}
+  s_0 &= \frac{\cos\left( 0 \right) }{5^0} = \frac{1}{1} \\
+  s_1 &= \frac{\cos \left( \pi \right)}{5} = -\frac{1}{5}\\
+  s_2 &= \frac{\cos\left( 2\pi \right) }{5^2} = \frac{1}{25} \\
+  s_3 &= \frac{\cos\left( 3\pi \right) }{5^3} = -\frac{1}{125} \\
+  s_4 &= \frac{\cos\left( 4\pi \right) }{5^4} = \frac{1}{625}
+.\end{align*} 
+Det indses hurtigt at rækken er absolut konvergent da den i så fald ville aftage hurtigere end eksempelvis $\frac{1}{n^2}$ som er kendt som konvergent. Rækken kan omskrives til:
+\[
+  \left( \frac{1}{5} \right)^n 
+.\] 
+Hvilket hurtigt kan ses værende en geometrisk række med $z = \frac{1}{5}$. Altså har vi løsningssummen som:
+\[
+s = \frac{1}{1+\frac{1}{5}} = \frac{5}{6}
+.\] 
+Altså konvergerer summen til værdien $\frac{5}{6}$.
+
+
+\section*{Opg. 5}
+Brug sammenligningskriteriet til at afgøre om rækken $\sum_{n=2}^{\infty} \frac{1}{\sqrt{n}-1}$ konvergerer eller divergerer. 
+\bigbreak
+For hver $n$-værdi vil rækken i opgaven antage en større værdi end rækken $\frac{1}{\sqrt{n} }$. Da $\frac{1}{\sqrt{n}} = \frac{1}{n^{\frac{1}{2}}}$ og eksponenten til $n$ derfor er mindre end 1 vil  $\frac{1}{\sqrt{n}}$ divergere og da rækken i opgaven er større til alle $n$-værdier vil denne også divergere.
+
+\section*{Opg. 6}
+Brug kvotientkriteriet til at afgøre om rækken $\sum_{n=1}^{\infty} \frac{2^n}{n!}$ konvergerer eller divergerer.
+\bigbreak
+Kvotientkriteriet siger at hvis der gælder:
+\[
+\lim_{n \to \infty} |\frac{a_{n+1}}{a_n}| = R
+.\] 
+Udtrykket indsættes:
+\[
+R = \lim_{n \to \infty} \frac{2^{n+1}\cdot n!}{\left( n+1 \right)! \cdot 2^n} = \lim_{n \to \infty} \frac{2}{n+1} = 0
+\] 
+Altså konvergerer udtrykket
+
+\section*{Opg. 7}
+Brug kvotientkriteriet til at afgøre om rækken $\sum_{n=1}^{\infty} \frac{2^{n+1}}{3^{n-1}n}$ konvergerer eller divergerer.
+\bigbreak
+Samme fremgangsmåde som ovenfor benyttes:
+\[
+R = \lim_{n \to \infty} \frac{2^{n+2}\cdot 3^{n-1}n}{3^n n \cdot 2^{n+1}} = \frac{2}{3} 
+.\] 
+Da $\frac{2}{3}<1$ har vi altså at serien konvergerer.
+
+\section*{Prøveeksamenssættet opg. 7}
+Bestem summen af følgende uendelige række:
+\[
+\sum_{n=0}^{\infty} \frac{5^n}{6^n}
+.\] 
+Dit svar skal være et helt tal mellem 0 og 99.
+\bigbreak
+Det indses hurtigt at summen kan skrives som:
+\[
+\sum_{n=0}^{\infty} \frac{5^n}{6^n} = \sum_{n=0}^{\infty} \left( \frac{5}{6} \right)^n
+.\] 
+Hvilket er en geometrisk række med $a=0$ og  $z=\frac{5}{6}$. Altså konvergerer denne til:
+\[
+\frac{1}{1-\frac{5}{6}} = 6
+.\] 
+
+\section*{Prøveeksamenssættet opg. 8}
+Bestem grænseværdien:
+\[
+  \lim_{n \to \infty} \left[ -76e^{\frac{5}{n}} \sin\left( \frac{2n\pi}{n+2} \right) + 47\left( e^{\frac{2n}{n^2+1}}-\cos\left( \pi-\frac{4}{n} \right)  \right)  \right]  
+.\] 
+Dit svar skal være et helt tal mellem 0 og 99.
+\bigbreak
+Først iagttages 1.-leddet:
+\[
+\lim_{n \to \infty} -76e^{\frac{5}{n}}\sin\left( \frac{2n\pi}{n+2} \right) 
+.\]
+Her betragtes først den første del af produktet:
+\[
+  \lim_{n \to \infty} -76e^{\frac{5}{n}} = -76e^{\frac{5}{\infty}} = -76
+.\] 
+Den anden del af produktet kan skrives som:
+\[
+\sin\left( 2\pi \lim_{n \to \infty} \frac{n}{n+2} \right) = \sin(2\pi) = 0
+.\] 
+Altså bliver første led:
+\[
+\lim_{n \to \infty} -76e^{\frac{5}{n}}\sin\left( \frac{2n\pi}{n+2} \right) = -76\cdot 0 = 0 
+.\]
+Vi kan dernæst kigge på 1.-leddet i parentesen, herefter kaldt 2.-leddet. For $n \to \infty$ har vi:
+\[
+2\cdot \lim_{n \to \infty} \frac{n}{n^2+1} = 2\cdot 0 = 0
+.\] 
+Altså har vi $e^0 = 1$. For 2.-leddet inde i parentesen, herefter kaldt 3.-leddet har vi for  $n \to \infty$:
+\[
+\lim_{n \to \infty} \cos \left( \pi-\frac{4}{n} \right) = \cos(\pi) = -1
+.\] 
+Altså har vi for parentesen:
+\[
+47\left( e^{\frac{2n}{n^2+1}}-\cos\left( \pi-\frac{4}{n} \right)  \right) = 47\left( 1 - (-1= \right)  = 94
+.\] 
+Altså konvergerer summen til 94.
+
+
+\end{document}

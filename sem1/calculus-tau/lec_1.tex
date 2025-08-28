@@ -1,0 +1,102 @@
+\lecture{1}{26. August 2024}{Differentialregning og stamfunktioner}
+
+Et kritisk punkt er ethvert punkt med en hældning på 0.
+\begin{definition} [Definition af kritisk punkt]
+  $c$ er et kritisk punkt for $f$ hvis $f'(c) = 0$
+\end{definition}
+
+
+\section{Globale ekstrema (6.1)}
+Vi har generelt, at et globalt ekstrema for en funktion kun kan indtræffe i kritiske punkter eller i endepunkter for en funktion. Altså kan alle globale ekstrema findes ved at undersøge alle kritiske punkter og begge (eller det ene eller ingen afhængigt af funktionen) endepunkter kan alle globale ekstrema findes.
+
+\begin{eks} [Maksimum for en funktion]
+  Vi ønsker at finde maksimum for funktionen
+  \[ 
+  f(x) = 3x^{\frac{2}{3}} - 3x^{\frac{5}{3}}
+  \]
+  på intervallet [0,8].
+
+  For at gøre dette findes den afledte $f'$ som
+  \[ 
+  f'(x) = 2x^{-\frac{1}{3}} - 5x^{\frac{2}{3}}
+  .\]
+  Denne sættes dernæst lig 0 som
+  \[ 
+  f'(x) = 0 = 2x^{-\frac{1}{3}} - 5x^{\frac{2}{3}}
+  .\]
+  Dernæst kan $x$ isoleres som
+  \begin{align*}
+    5x^{\frac{2}{3}} &= 2x^{-\frac{1}{3}} \\
+    5x &= 2 \\
+    x &= \frac{2}{5}
+  .\end{align*}
+  Altså er funktionens kritiske punkt i intervallet fundet til $x = \frac{2}{5}$. Vi skal altså evaluere funktionen i det kritiske punkt $x = 2 / 5$ og i begge endepunkterne $x = 0$ og $x = 8$. Vi får altså at
+  \begin{align*}
+    f(0) &= 0 \\
+    f(8) &= 12 - 96 = -84 \\
+    f(\frac{2}{5}) &= \num{0,977} 
+  .\end{align*}
+  Altså er det kritiske punkt $x = 2 / 5$ altså et maksimum. 
+\end{eks}
+
+
+\section{Maksimeringsproblemer (6.2)}
+
+\begin{eks} [Maksimeringsproblem i to variable]
+  Vi ønsker at finde to positive tal $x$ og $y$ der opfylder
+  \[ 
+  x + 3y = 30
+  \]
+  så $x^2y$ bliver maksimeret.
+  \bigbreak
+  Vi ønsker altså at maksimere
+  \[ 
+  m(x,y) = x^2y
+  \]
+  For $x+3y = 30$. Altså findes først et udtryk for $y$ som
+  \[ 
+  x + 3y = 30 \implies y = 10 - \frac{x}{3}
+  .\]
+  Dette indsættes i $m(x,y)$ som
+  \[ 
+  m(x,y) = x^2 \cdot \left( 10 - \frac{x}{3} \right) = 10x^2 - \frac{x^3}{3}
+  .\]
+  Vi ønsker nu at finde optimeringsgrænserne. Vi ved at $x, y < 0$. Vi har fra før at
+  \begin{align*}
+    y &> 0 \\
+    10 - \frac{x}{3} &> 0 \\
+    10 &> \frac{x}{3} \\
+    x &< 30
+  .\end{align*}
+  Vi har altså, at $0 < x < 30$. Dermed skal $m(x,y)$ maksimeres for $0 < x < 30$. Vi finder de kritiske punkter som
+  \begin{align*}
+    0 &= m'(x,y) \\
+    0 &= 20x - x^2 \\
+    0 &= x(20 - x)
+  .\end{align*}
+  Altså er $x = 0$ og $x = 20$ løsninger, dog forkastes $x = 0$ da denne ikke er inde for optimeringsgrænsen. Vi kan dermed evaluere funktionen i begge endepunkter og i det kritiske punkt som
+  \begin{align*}
+    f(0) &= 0 \\
+    f(30) &= 0 \\
+    f(20) &= \num{1333,33}\ldots  
+  .\end{align*}
+  Altså er funktionen maksimeret i $x = 20$. Dette tilsvarer en værdi af $y$ på
+  \begin{align*}
+    y &= 10 - \frac{20}{3} \\
+    &= \frac{30-20}{3} \\
+    &= \frac{10}{3}
+  .\end{align*}
+\end{eks}
+
+\section{Stamfunktioner og ubestemte integraler (7.1)}
+\begin{definition} [Stamfunktion]
+  $F(x)$ er en stamfunktion til $f(x)$ hvis der gælder at $F'(x) = f(x)$.
+\end{definition}
+
+\begin{definition} [Ubestemt integrale]
+  Lad $F(x)$ være en stamfunktion til $f(x)$. Så er det ubestemte integrale af $f(x)$ givet ved
+  \[ 
+  \int f(x) \, \mathrm{d}x  = F(x) + C
+  \]
+  Hvor $C$ er en konstant.
+\end{definition}

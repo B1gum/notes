@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="285.83mm" height="138.71mm" version="1.1" viewBox="0 0 285.83 138.71" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <pattern id="pattern25" patternTransform="matrix(.18337 0 0 .18337 -108.49 -94.424)" preserveAspectRatio="xMidYMid" xlink:href="#Wave"/>
+  <pattern id="Wave" width="24" height="10" fill="#000000" patternUnits="userSpaceOnUse" preserveAspectRatio="xMidYMid">
+   <g id="wave_g">
+    <path d="m12-2c-2.8333 0-4.832 1.4355-6.582 2.6855-1.75 1.25-3.2513 2.3145-5.418 2.3145v2c2.8333 0 4.832-1.4355 6.582-2.6855 1.75-1.25 3.2513-2.3145 5.418-2.3145 2.1667 0 3.668 1.0645 5.418 2.3145 1.75 1.25 3.7487 2.6855 6.582 2.6855v-2c-2.1667 0-3.668-1.0645-5.418-2.3145-1.75-1.25-3.7487-2.6855-6.582-2.6855z"/>
+    <path d="m12 3c-2.8333 0-4.832 1.4355-6.582 2.6855-1.75 1.25-3.2513 2.3145-5.418 2.3145v2c2.8333 0 4.832-1.4355 6.582-2.6855 1.75-1.25 3.2513-2.3145 5.418-2.3145 2.1667 0 3.668 1.0645 5.418 2.3145 1.75 1.25 3.7487 2.6855 6.582 2.6855v-2c-2.1667 0-3.668-1.0645-5.418-2.3145-1.75-1.25-3.7487-2.6855-6.582-2.6855z"/>
+    <path d="m12 8c-2.8333 0-4.832 1.4355-6.582 2.6855-1.75 1.25-3.2513 2.3145-5.418 2.3145v2c2.8333 0 4.832-1.4355 6.582-2.6855 1.75-1.25 3.2513-2.3145 5.418-2.3145 2.1667 0 3.668 1.0645 5.418 2.3145s3.7487 2.6855 6.582 2.6855v-2c-2.1667 0-3.668-1.0645-5.418-2.3145-1.75-1.25-3.7487-2.6855-6.582-2.6855z"/>
+   </g>
+  </pattern>
+  <pattern id="pattern25-6" patternTransform="matrix(.18337 0 0 .18337 -95.512 -18.777)" preserveAspectRatio="xMidYMid" xlink:href="#Wave-0"/>
+  <pattern id="Wave-0" width="24" height="10" fill="#000000" patternUnits="userSpaceOnUse" preserveAspectRatio="xMidYMid">
+   <g>
+    <path d="m12-2c-2.8333 0-4.832 1.4355-6.582 2.6855-1.75 1.25-3.2513 2.3145-5.418 2.3145v2c2.8333 0 4.832-1.4355 6.582-2.6855 1.75-1.25 3.2513-2.3145 5.418-2.3145 2.1667 0 3.668 1.0645 5.418 2.3145 1.75 1.25 3.7487 2.6855 6.582 2.6855v-2c-2.1667 0-3.668-1.0645-5.418-2.3145-1.75-1.25-3.7487-2.6855-6.582-2.6855z"/>
+    <path d="m12 3c-2.8333 0-4.832 1.4355-6.582 2.6855-1.75 1.25-3.2513 2.3145-5.418 2.3145v2c2.8333 0 4.832-1.4355 6.582-2.6855 1.75-1.25 3.2513-2.3145 5.418-2.3145 2.1667 0 3.668 1.0645 5.418 2.3145 1.75 1.25 3.7487 2.6855 6.582 2.6855v-2c-2.1667 0-3.668-1.0645-5.418-2.3145-1.75-1.25-3.7487-2.6855-6.582-2.6855z"/>
+    <path d="m12 8c-2.8333 0-4.832 1.4355-6.582 2.6855-1.75 1.25-3.2513 2.3145-5.418 2.3145v2c2.8333 0 4.832-1.4355 6.582-2.6855 1.75-1.25 3.2513-2.3145 5.418-2.3145 2.1667 0 3.668 1.0645 5.418 2.3145s3.7487 2.6855 6.582 2.6855v-2c-2.1667 0-3.668-1.0645-5.418-2.3145-1.75-1.25-3.7487-2.6855-6.582-2.6855z"/>
+   </g>
+  </pattern>
+ </defs>
+ <g transform="translate(33.162 -76.315)">
+  <g stroke="#000" stroke-width="1.667">
+   <path d="m-33.162 163.35h162.69"/>
+   <path d="m129.86 163.49h51.99"/>
+   <circle cx="24.692" cy="163.35" r="12.147"/>
+  </g>
+  <g stroke="#000">
+   <g stroke-width="1.667">
+    <circle cx="161.27" cy="117.59" r="12.147" fill="url(#pattern25)"/>
+    <circle cx="174.25" cy="193.24" r="12.147" fill="url(#pattern25-6)"/>
+    <circle cx="99.756" cy="163.35" r="12.147"/>
+   </g>
+   <path transform="matrix(1.667 0 0 1.667 -53.84 -59.351)" d="m73.692 133.59-8.6362 4.9861v-9.9722l4.3181 2.493z"/>
+  </g>
+  <g fill="#000000" font-size="5.2928px" stroke="#000000" stroke-width=".3334">
+   <text x="9.7882195" y="143.89896" xml:space="preserve"><tspan x="9.7882195" y="143.89896" stroke-width=".3334">$m_R$</tspan></text>
+   <text x="87.265854" y="143.89896" xml:space="preserve"><tspan x="87.265854" y="143.89896" stroke-width=".3334">$m_D$</tspan></text>
+   <text x="-33.270115" y="185.9382" xml:space="preserve"><tspan x="-33.270115" y="185.9382" stroke-width=".3334">$v_{Rb} = \qty{14,0}{\frac{m}{s}}$</tspan></text>
+   <text x="151.42009" y="138.42783" xml:space="preserve"><tspan x="151.42009" y="138.42783" stroke-width=".3334">$v_{Ra} = \qty{8,0}{\frac{m}{s}}$</tspan></text>
+   <text x="151.01636" y="212.34509" xml:space="preserve"><tspan x="151.01636" y="212.34509" stroke-width=".3334">$v_{Da}$</tspan></text>
+   <text x="80.369141" y="183.08583" xml:space="preserve"><tspan x="80.369141" y="183.08583" stroke-width=".3334">$v_{Db} = 0$</tspan></text>
+  </g>
+  <g fill="none">
+   <g stroke="#000">
+    <path d="m129.53 163.35 49.58-70.946-0.20231-0.6069" stroke-dasharray="1.66703, 3.33405" stroke-width="1.667" style="paint-order:normal"/>
+    <path transform="matrix(1.667 0 0 1.667 -60.257 -75.61)" d="m149.16 103.36-11.144-5.145 10.028-7.0783 0.55809 6.1116z" stroke-dasharray="1, 2" style="paint-order:normal"/>
+    <path d="m129.53 163.35 59.699 39.426v-0.56772" stroke-dasharray="1.66703, 3.33405" stroke-width="1.667" style="paint-order:normal"/>
+    <path transform="matrix(1.667 0 0 1.667 -51.814 -89.684)" d="m149.16 169.92 5.5185 12.515-13.597-1.4783 4.0395-5.5183z" stroke-dasharray="1, 2" style="paint-order:normal"/>
+    <path d="m140.11 148.11a20.542 16.178 0 0 1 10.378 14.058h-20.542z" stroke-width=".95822" style="paint-order:normal"/>
+    <path d="m150.79 163.64a20.542 16.178 0 0 1-5.0789 10.65l-15.463-10.65z" stroke-width=".95822" style="paint-order:normal"/>
+   </g>
+   <text x="150.34209" y="159.35373" font-size="5.2928px" stroke="#000000" stroke-width=".49511" style="paint-order:normal" xml:space="preserve"><tspan x="150.34209" y="159.35373" stroke-width=".49511">$\ang{55,1}$</tspan></text>
+   <text x="150.34209" y="172.17079" font-size="5.2928px" stroke="#000000" stroke-width=".49511" style="paint-order:normal" xml:space="preserve"><tspan x="150.34209" y="172.17079" stroke-width=".49511">$\theta$</tspan></text>
+  </g>
+ </g>
+</svg>

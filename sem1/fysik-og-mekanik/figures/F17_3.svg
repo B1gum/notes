@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="157.5497mm"
+   height="108.68233mm"
+   viewBox="0 0 157.5497 108.68233"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1"
+     transform="translate(-51.410255,-124.83345)">
+    <ellipse
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-dasharray:none;stroke-opacity:1"
+       id="path1"
+       cx="105"
+       cy="143.03003"
+       rx="53.089745"
+       ry="17.696583" />
+    <ellipse
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-dasharray:none;stroke-opacity:1"
+       id="path1-2"
+       cx="105"
+       cy="215.3192"
+       rx="53.089745"
+       ry="17.696583" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-dasharray:none;stroke-opacity:1"
+       d="M 51.910255,143.03003 V 215.3192"
+       id="path2" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-dasharray:none;stroke-opacity:1"
+       d="M 158.08974,143.03003 V 215.3192"
+       id="path3" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+       id="path4"
+       cx="158.08974"
+       cy="179.17462"
+       r="1.4437482" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 158.08974,179.17461 h 22.6249"
+       id="path5" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 180.71464,179.17461 -4.84172,-2.79537"
+       id="path6" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 180.69756,179.20419 175.89,181.97984"
+       id="path7" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 158.08974,179.17462 v 22.6249"
+       id="path5-3" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 158.08974,201.79952 2.79537,-4.84173"
+       id="path6-2" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 158.06016,201.78244 -2.77565,-4.80756"
+       id="path7-6" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 158.54349,180.09564 -9.67682,-20.45105"
+       id="path5-1" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 148.86667,159.64459 -0.32447,3.96529 -0.13148,1.60682"
+       id="path6-7" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 148.90072,159.64738 4.56518,3.15847"
+       id="path7-2" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-dasharray:none;stroke-opacity:1"
+       x="160.44481"
+       y="201.0692"
+       id="text7"><tspan
+         id="tspan7"
+         style="stroke:none;stroke-width:0.4"
+         x="160.44481"
+         y="201.0692">$F_g = mg$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-dasharray:none;stroke-opacity:1"
+       x="161.53494"
+       y="185.14333"
+       id="text7-3"><tspan
+         id="tspan7-5"
+         style="stroke:none;stroke-width:0.4"
+         x="161.53494"
+         y="185.14333">$F_{cp} = \frac{v^2}{R}m$</tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-dasharray:none;stroke-opacity:1"
+       id="path9"
+       transform="rotate(-90)"
+       d="m -168.68961,153.09331 a 11.614636,11.614636 0 0 1 1.12948,4.93918" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.4;stroke-dasharray:none;stroke-opacity:1"
+       x="148.20708"
+       y="171.9389"
+       id="text9"><tspan
+         id="tspan9"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.4"
+         x="148.20708"
+         y="171.9389">$\theta$</tspan></text>
+  </g>
+</svg>

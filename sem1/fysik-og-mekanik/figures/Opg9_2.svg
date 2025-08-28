@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   sodipodi:docname="Opg9_2.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.92175859"
+     inkscape:cx="390.55779"
+     inkscape:cy="489.82456"
+     inkscape:window-width="1440"
+     inkscape:window-height="900"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Lag 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:none;stroke-width:1;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-dasharray:none"
+       id="path1"
+       cx="72.93689"
+       cy="85.369308"
+       r="43.099072" />
+    <circle
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.781936;stroke-dasharray:none;stroke-opacity:1"
+       id="path1-9"
+       cx="72.93689"
+       cy="85.369308"
+       r="33.700695" />
+    <text
+       xml:space="preserve"
+       style="font-size:5.28469px;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.333;stroke-dasharray:none;stroke-opacity:1"
+       x="54.568192"
+       y="80.521393"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="stroke-width:0.333;stroke-dasharray:none"
+         x="54.568192"
+         y="80.521393">$$curvearrowleft$</tspan></text>
+    <ellipse
+       style="fill:#040404;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+       id="path2"
+       cx="72.93689"
+       cy="85.369308"
+       rx="1.7139148"
+       ry="1.5768014" />
+    <ellipse
+       style="fill:#040404;fill-opacity:1;stroke:#000000;stroke-width:0.0779308;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1"
+       cx="72.93689"
+       cy="123.87447"
+       rx="0.66783333"
+       ry="0.61440665" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+       d="m 72.936888,124.48888 v 1.62652 -0.0625 l 0.7068,2.0316"
+       id="path3" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+       d="m 72.936888,126.1154 -0.706798,2.00196"
+       id="path4" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+       d="m 71.574786,125.14648 2.750471,0.0625"
+       id="path5" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+       d="m 72.724851,139.13214 v -7.50135 l 2.518103,2.67905 -2.518103,-2.58975 -1.908209,1.87534"
+       id="path6" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.204466;stroke-dasharray:none;stroke-opacity:1"
+       d="m 72.724132,141.57015 v 7.81512 l 2.526144,-2.79111 -2.526144,2.69807 -1.9143,-1.95378"
+       id="path6-0" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+       x="78.652832"
+       y="136.94476"
+       id="text6"><tspan
+         sodipodi:role="line"
+         id="tspan6"
+         style="stroke-width:0.2;stroke-dasharray:none"
+         x="78.652832"
+         y="136.94476">$F_N$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+       x="78.652832"
+       y="146.29033"
+       id="text6-5"><tspan
+         sodipodi:role="line"
+         id="tspan6-2"
+         style="stroke-width:0.2;stroke-dasharray:none"
+         x="78.652832"
+         y="146.29033">$F_c = mR\omega^2$</tspan></text>
+  </g>
+</svg>

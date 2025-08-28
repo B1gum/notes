@@ -1,0 +1,91 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage{latexsym, amsfonts, amssymb, amsthm, amsmath, siunitx, graphicx, pgfplots}
+
+\usepackage{sagetex}
+
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{every axis/.append style={
+		axis x line=middle,    % put the x axis in the middle
+		axis y line=middle,    % put the y axis in the middle
+		axis line style={<->,color=black}, % arrows on the axis
+	}}
+
+\title{Afleveringsopgave uge 4}
+\author{Noah Rahbek Bigum Hansen}
+\date{22. / 9. - 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Opgave 4.18}
+
+Givet ligningen:
+\[
+2z^2+4z+8=0
+.\] 
+Ønskes fundet begge de komplekse løsnigner. Derudover ønskes at finde den polære form for de komplekse løsninger. \\
+For andengradsligniner gælder at de har to komplekse løsninger er givet ved:
+	\[
+		z = \frac{-b \pm \sqrt{b^2-4ac}}{2a} 
+	.\] 
+Først simplificeres den givne ligning ved division med 2:
+		\[
+		z^2+2+4=0
+		.\] 
+
+Koefficienterne fra denne givne ligning indsættes i løsningsformlen for andengradsligniner:
+	\[
+		z = \frac{-2 \pm \sqrt{2^2-4\cdot 4}}{2} = -1 \pm \frac{i\sqrt{12}}{2} 	.\] 
+2.-leddet simplificeres:
+	\[
+	z = -1 \pm \frac{2i\sqrt{3}}{2} = -1 \pm i\sqrt{3} 
+	.\]
+Den absolutte værdi findes:
+	\[
+	|z| = \sqrt{1^2 + (\sqrt{3})^2} = \sqrt{4} = 2 
+	.\] 
+Og dernæst skal argumentet findes. Det kan hurtigt ses at de to løsninger ligger i hhv. 2.- og 3.-kvadrant i et koordinatsystem. Her vil blot findes argumentet til løsningen i 2.-kvadrant idet argumentet til løsningen i 3.kvadrant blot er løsningen i 2.-kvadrants multipliceret med $-1$. For at finde løsningen omtalt før starter vi med at 'dreje' koordinatsystemet 90 grader, hvilket der tages højde for ved at addere det endelige resultet med  $\frac{1}{2}\pi$:
+	\[
+	\arg(z) = \pm \frac{1}{2}\pi + \alpha
+	.\] 
+Denne vinkel, $\alpha$ kan findes vha. simpel trignometri, idet vi har:
+	\[
+		|z|\sin{\alpha} = 1
+	.\] 
+Altså har vi:
+	\[
+		\alpha = \sin^{-1}\left( \frac{1}{2} \right) = \frac{\pi}{6}
+	.\] 
+Og dermed fås:
+	\[
+	\arg(z) = \pm \frac{2}{3}\pi
+	.\] 
+Nu er opgaven streng talt løst, men for god ordens skyld opskrives løsningerne også på polær form:
+	\[
+	z = 2e^{\pm \left( \frac{2}{3} i \pi \right) }
+	.\] 
+\end{document}

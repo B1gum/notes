@@ -1,0 +1,122 @@
+\section{Rotationsdynamik}
+
+\begin{table}[ht]
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Givet}                           & \textbf{Ønsker at finde}      & \textbf{Relevante formler}   \\ \hline
+Kraft, "arm" eller vinkel og afstand     & Kraftmomentets størrelse      & \ref{afs:strkramom}          \\ \hline
+Kraft, arm                               & Kraftmomentvektoren           & \ref{afs:kramomvek}          \\ \hline
+Inertimoment, vinkelacceleration         & Kraftmoment                   & \ref{afs:new2rig}            \\ \hline
+\begin{tabular}[c]{@{}l@{}}Masse, hastighed af massemidtpunkt,\\ inertimoment, vinkelhastighed\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Kinetisk energi for legeme\\ med rotationel og translatorisk\\ bevægelse\end{tabular} &
+  \ref{afs:erottrans} \\ \hline
+Radius, vinkelhastighed (ingen glidning) & Hastighed                     & \ref{afs:ruluglid}           \\ \hline
+Kraftmoment, start- og slutvinkel        & Arbejde udført af kraftmoment & \ref{afs:wortor}             \\ \hline
+\begin{tabular}[c]{@{}l@{}}Konstant kraftmoment, start- og\\ slutvinkel\end{tabular} &
+  Arbejde udført af kraftmoment &
+  \ref{afs:wortorkon} \\ \hline
+Inertimoment, vinkelhastighed            & Samlet arbejde                & \ref{afs:wortorvinhasinemom} \\ \hline
+Kraftmoment, vinkelhastighed             & Effekt                        & \ref{afs:effkramom}          \\ \hline
+Afstand, impuls                          & Impulsmoment                  & \ref{afs:impmomtanimp}       \\ \hline
+Afstand, masse, hastighed                & Impulsmoment                  & \ref{afs:impmomtanimp}       \\ \hline
+Inertimoment, vinkelhastighed            & Impulsmoment                  & \ref{afs:impmomvinhas}       \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Kraftmoment (10.1)}
+
+\subsubsection{Størrelsen af kraftmomentet} \label{afs:strkramom}
+Størrelsen på kraftmomentet $\tau$ forårsaget af kraften $\Vec{F}$ omkring punktet $O$ kan findes som
+\[ 
+\tau = Fl = rF \sin\phi = F_{\text{tan}} r
+.\]
+Hvor $F$ er størrelsen på $\Vec{F}$, $l$ er ``armen'' til $\Vec{F}$, $r$ er størrelsen på stedvektoren fra $O$ til $\Vec{F}$, $\phi$ er vinklen mellem $\Vec{r}$ og $\Vec{F}$ og $F_{\text{tan}}$ er den tangentielle komposant af $\Vec{F}$.
+
+
+\subsubsection{Kraftmomentvektoren} \label{afs:kramomvek}
+Kraftmomentvektoren $\Vec{\tau}$ forårsaget af $\Vec{F}$ omkring punktet $O$ kan findes som
+\[ 
+\Vec{\tau} = \Vec{r} \times \Vec{F}
+.\]
+Hvor $\Vec{r}$ er stedvektoren fra $O$ til $\Vec{F}$.
+
+
+\subsection{Kraftmoment og vinkelacceleration for et rigidt legeme (10.2)}
+
+\subsubsection{Newtons 2. lov et rigidt legeme} \label{afs:new2rig}
+Givet inertimomentet $I$ og vinkelaccelerationen omkring $z$-aksen $\alpha_z$ kan det samlede kraftmoment omkring $z$-aksen $\sum\tau_z$ findes som
+\[ 
+\sum \tau_z = I \alpha_z
+.\]
+
+\subsection{Rotation for et rigidt legeme omkring en akse i bevægelse (10.3)}
+
+\subsubsection{Kinetisk energi for et legeme med rotationel og translatorisk bevægelse} \label{afs:erottrans}
+Givet massen af legemet $M$, massemidtpunktets hastighed $v_{\text{cm}}$, inertimomentet omkring omdrejningsaksen igennem massemidtpunktet $I_{\text{cm}}$ og vinkelhastigheden $\omega$ kan den samlede kinetiske energi $K$ findes som
+\[ 
+K = \frac{1}{2}Mv_{\text{cm}}^2 + \frac{1}{2}I_{\text{cm}}\omega^2
+.\]
+
+
+\subsubsection{Rulning uden glid (Eng: \textit{Rolling without slipping})} \label{afs:ruluglid}
+Givet radiussen $R$ og vinkelhastigheden $\omega$ for et hjul kan massemidtpunktets hastighed $v_{\text{cm}}$ findes som 
+\[ 
+v_{\text{cm}} = R\omega
+.\]
+
+
+\subsection{Arbejde og effekt for roterende bevægelse (10.4)}
+
+\subsubsection{Arbejdet udført af et kraftmoment} \label{afs:wortor}
+Arbejdet $W$ udført af kraftmomentet $\tau_z$ kan findes som integralet af kraftmomentet ift. vinklen $\theta$ som
+\[ 
+W = \int_{\theta_1}^{\theta_2} \tau_z \, \mathrm{d}\theta
+.\]
+Hvor $\theta_1$ og $\theta_2$ er start- og slutvinklen
+
+
+\subsubsection{Arbejdet udført af et konstant kraftmoment} \label{afs:wortorkon}
+Holdes kraftmomentet $\tau_z$ konstant kan det vises at resultatet fra \ref{afs:wortor}: \nameref{afs:wortor} reduceres til
+\[ 
+W = \tau_z (\theta_2 - \theta_1) = \tau_z \Delta \theta
+.\]
+
+
+\subsubsection{Arbejdet udført af et kraftmoment givet vinkelhastighed og inertimoment} \label{afs:wortorvinhasinemom}
+Givet et inertimoment $I$ og en start- og slutwinkelhastighed $\omega_1$ og $\omega_2$ kan det totale arbejde $W_{\text{tot}}$ udført af kraftmomentet findes som
+\[ 
+W_{\text{tot}} = \int_{\omega_1}^{\omega_2} I\omega_z \, \mathrm{d}\omega_z = \frac{1}{2}I \omega_2^2 - \frac{1}{2}I\omega_1^2
+.\]
+
+
+\subsubsection{Effekten af et kraftmoment} \label{afs:effkramom}
+For et kraftmoment $\tau_z$ der virker omkring et legemes rotationsakse og vinkelhastigheden $\omega_z$ om selvsamme rotationsakse kan effekten $P$ forårsaget af kraftmomentet findes som
+\[ 
+P = \tau_z \omega_z
+.\]
+
+\subsection{Impulsmoment (10.5)}
+
+\subsubsection{Impulsmomentet givet tangentiel impuls eller -hastighed} \label{afs:impmomtanimp}
+Givet positionsvektoren $\Vec{r}$ og den tangentielle impuls $\Vec{p}$ eller den tangentielle hastighed $\Vec{v}$ kan impulsmomentet $\Vec{L}$ findes som
+\[ 
+\Vec{L} = \Vec{r} \times \Vec{p} = \Vec{r} \times m \Vec{v}
+.\]
+
+\subsubsection{Impulsmomentet givet vinkelhastighed} \label{afs:impmomvinhas}
+Givet inertimomentet $I$ og vinkelhastigheden $\Vec{\omega}$ kan impulsmomentet $\Vec{L}$ findes som
+\[ 
+\Vec{L} = I \Vec{\omega}
+.\]
+
+
+\subsubsection{Sammenhæng mellem impulsmoment og kraftmoment}
+Det gælder at
+\[ 
+\sum \Vec{\tau} = \frac{\mathrm{d}\Vec{L}}{\mathrm{d}t} 
+.\]
+Hvor $\sum \Vec{\tau}$ er summen af kraftmomenterne og $\frac{\mathrm{d}\Vec{L}}{\mathrm{d}t}$ er ændringen i impulsmoment over tid.
+
+
+\subsection{Konservation af impulsmoment (10.6)}
+Når summen af kraftmomenter der virker på et system er 0 og massen af systemet ikke ændrer sig (altså at systemet er lukket) så er det totale impulsmoment konserveret.

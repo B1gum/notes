@@ -1,0 +1,302 @@
+\lecture{6}{30. September 2024}{Første ordens differentialligninger}
+
+\section{Første ordens differentialligninger}
+Vi betragter en differentialligning på typen
+\[ 
+\frac{\mathrm{d}y}{\mathrm{d}x} = f(x,y)
+.\]
+En løsning er en funktion, $y$, defineret på et åbent interval $I$, så
+\[ 
+y'(x) = f(x, y(x)), \quad \text{for alle } x \text{ i } I
+.\]
+Typisk eksisterer der mange løsninger, som vi stadig vil betegne som $y$.
+
+Løsningerne kan visualiseret i et såkaldt retningsfelt, hvor hvert punkt $(x_0, y_0$ kan tegnes med en pil med hældning $f(x_0, y_0)$. Sådanne retningsfelter kan være med til at give en intuitiv id eom opførslen af differentialligningernes løsninger.
+
+\subsection{Seperable differentialligninger}
+Differentialligningen
+\[ 
+\frac{\mathrm{d}y}{\mathrm{d}x} = f(x,y)
+\]
+kaldes seperabel, hvis
+\[ 
+f(x,y) = \frac{g(x)}{h(y)}
+.\]
+
+\begin{eks} [Eksempel på seperabel og ikke-seperabel differentialligning]
+  Vi betragter differentiallignigningen
+  \[ 
+  \frac{\mathrm{d}y}{\mathrm{d}x} = (x-5)y
+  .\]
+  Denne er seperabel med $g(x) = x-5$ og $h(y) = y^{-1}$.
+  \bigbreak
+  Betragtes i stedet
+  \[ 
+  \frac{\mathrm{d}y}{\mathrm{d}x} = 1+xy
+  .\]
+  Denne er ikke seperabel, idet den ikke kan skrives på den rigtige form.
+\end{eks}
+
+\begin{sæt} [Løsning af seperabel ligning]
+  For en seperabel differentialligning
+  \[ 
+  \frac{\mathrm{d}y}{\mathrm{d}x} = \frac{g(x)}{h(y)}, \quad \text{med } h(y) \neq 0
+  \]
+  hvor $G$ er stamfunktionen til $g$ og $H$ er stamfunktionen til $h$ så gælder
+  \[ 
+  H(y) = G(x) + C
+  .\]
+  Nu indgår ingen afledede og ens $y$ kan isoleres for at finde sine løsninger.
+  \tcblower
+  Vi starter med at kigge på $H(y(x))$. Denne differentieres med hensyn til $x$ vha. kædereglen som
+  \[ 
+  \frac{\mathrm{d}}{\mathrm{d}x} H(y(x)) = \frac{\mathrm{d}}{\mathrm{d}x} H(y) \frac{\mathrm{d}y}{\mathrm{d}x} = h(y) \frac{\mathrm{d}y}{\mathrm{d}x} 
+  .\]
+  Det vil sige for $h(y) \neq 0$:
+  \[ 
+  \frac{\mathrm{d}y}{\mathrm{d}x} = \frac{g(x)}{h(y)} \iff h(y) \frac{\mathrm{d}y}{\mathrm{d}x} = g(x) \iff \frac{\mathrm{d}}{\mathrm{d}x} H(y(x)) = \frac{\mathrm{d}}{\mathrm{d}x} G(x)
+  .\]
+  Ved integration fås
+  \[ 
+  H(y) = G(x) + C
+  .\]
+\end{sæt}
+
+Løsningsformlen for en seperabel differentialligning kan nemt huskes, hvis man ``lader som om'' at $\frac{\mathrm{d}y}{\mathrm{d}x}$ er en brøk som
+\begin{align*}
+\frac{\mathrm{d}y}{\mathrm{d}x} &= \frac{g(x)}{h(y)} \\
+h(y) \, \mathrm{d}y &= g(x) \, \mathrm{d}x  \\
+H(y) &= G(x) + C
+.\end{align*}
+
+\begin{eks} [Eksempel på løsning af seperabel differentialligning]
+  Vi ønsker at løse
+  \[ 
+  \frac{\mathrm{d}y}{\mathrm{d}x} = (y-1)(x+3)
+  .\]
+  \bigbreak
+  Først seperares lignignen som
+  \[ 
+  \frac{1}{y-1} \, \mathrm{d}y = x+3 \, \mathrm{d}x 
+  .\]
+  Dernæst integreres på begge sider som
+  \begin{align*}
+  \int \frac{1}{y-1} \, \mathrm{d}y &= \int  x+3 \, \mathrm{d}x  \\
+  \ln|y-1| &= \frac{1}{2}x^2 + 3x + c \\
+  |y-1| &= Ke^{\frac{1}{2}x^2 + 3x},& &K >0 \\
+  y-1 &= \pm Ke^{\frac{1}{2}x^2 + 3x},& &K > 0 \\
+  y &= \pm Ke^{\frac{1}{2}x^2 + 3x} + 1,& &K>0 \\
+  y &= Ke^{\frac{1}{2}x^2 + 3x } +1,& &K \neq 0
+  .\end{align*}
+  De to nederste udtryk er ækvivalente. Idet vi dividerede med $y-1$, antogedes, at $y \neq 1$ og det skal derfor tjekkes om dette kunne være en løsning. Vi indsætter
+  \[ 
+  0 = 0 \cdot (x+3)
+  .\]
+  Altså går ligningen også op her. Dette svarer til at konstanten $K = 0$. Altså er alle løsninger til differentialligningen
+  \[ 
+  y = Ke^{\frac{1}{2}x^2 + 3x} + 1, \quad K \in \mathbb{R}
+  .\]
+\end{eks}
+
+\begin{eks} [Entydig løsning]
+  Vi ønsker at finde den entydige løsning til
+  \[ 
+  \frac{\mathrm{d}y}{\mathrm{d}x} (y-1)(x+3)
+  \]
+  som opfylder begyndelsesbetingelsen $y(0) = -1$.
+  \bigbreak
+  Vi indsætter i den fuldstændige løsning som
+  \begin{align*}
+  -1 &= K e^{\frac{1}{2} \cdot 0^2 + 3\cdot 0} + 1 \\
+  -1 &= K e^{0} + 1 \\
+  -1 &= K + 1 \\
+  K &= -2
+  .\end{align*}
+  Altså er den entydige løsning der løser begyndelsesværdiproblemet
+  \[ 
+  y = 1 - 2e^{\frac{1}{2}x^2 + 3x}
+  .\]
+\end{eks}
+
+\begin{eks} [Et nyt eksempel]
+  Vi ønsker at finde løsningen til
+  \[ 
+  \frac{\mathrm{d}y}{\mathrm{d}x} = \frac{x^2 + 1}{y}
+  .\]
+  \bigbreak
+  Vi separerer først lignignen, idet vi husker at $y \neq 0$ i den oprindelige ligning
+  \[ 
+  y \, \mathrm{d}y = x^2 + 1 \, \mathrm{d}x 
+  .\]
+  Vi kan dernæst integrere de to funktioner som
+  \[ 
+  \frac{1}{2} y^2 = \frac{1}{3}x^3 + x + c
+  .\]
+  Slutteligt kan $y$ isoleres som
+  \[ 
+    y = \pm \sqrt{\frac{2}{3}x^3 + 2x + k}, \quad k = 2c
+  .\]
+  $y$ måtte ikke være 0 så $\frac{2}{3}x^3 + 2x + k$ må heller ikke være 0 og derfor er løsningen ikke defineret overalt.
+\end{eks}
+
+\begin{eks} [Logistisk ligning]
+  Vi betragter ligningen
+  \[ 
+  \frac{\mathrm{d}y}{\mathrm{d}x} = y(x)(b-ay(x))
+  \]
+  for positive tal $a, b$. Dette kaldes også en logistisk ligning og beskriver bl.a. populationsvækst. 
+  \bigbreak
+  Det viser sig at den ovenstående ligning er separabel som
+  \[ 
+  \int 1 \, \mathrm{d}x + C_1 = \int \frac{1}{y(b-ay)} \, \mathrm{d}y = \frac{1}{b} \int \left(\frac{1}{y} + \frac{a}{b-ay} \right) \, \mathrm{d}y
+  .\]
+  Her sker en partialbrøk-udvikling (ikke pensum) i sidste step. Med substitutionen $u = b-ay > 0$ er
+  \[ 
+  \frac{1}{b} \int \frac{a}{b-ay} \, \mathrm{d}y = \frac{a}{b} \int \frac{1}{u} \cdot \frac{1}{-a} \, \mathrm{d}u = -\frac{1}{b} \ln(u) = -\frac{1}{b}\ln(b-ay)
+  .\]
+  I alt fås ligningen 
+  \[ 
+  x + C_1 = \frac{1}{b} \ln(y) - \frac{1}{b} \ln(b-ay) = \frac{1}{b}\ln \left( \frac{y}{b-ay} \right)
+  .\]
+  Vi kan nu isolere y som
+  \begin{align*}
+    \frac{y}{b-ay} &= e^{bx + bC_1} = C_2 e^{bx} \\
+    y &= bC_2e^{bx} - aC_2e^{bx}y \\
+    \left( 1 + aC_2e^{kx} \right)y &= bC_2 e^{bx} \\
+    y &= \frac{bC_2 e^{bx}}{1 + aC_2 e^{bx}} \\
+    &= \frac{b / a}{1 + A e^{-bx}}, \quad 0 < A = \frac{1}{aC_2}
+  .\end{align*}
+\end{eks}
+
+\subsection{Lineær første ordens differentialligning}
+Vi betragter nu i stedet en generel lineær første ordens differentialligning
+\[ 
+a_1(x)y' + a_0(x)y = b(x)
+\]
+for kontinuerte funktioner $a_1, a_0$ og $b$
+
+\subsubsection{Løsning af særtilfælde}
+For $a_0 = 0$ reduceres det generelle udtryk til
+\[ 
+a_1(x)y' = b(x) \iff y' = \frac{b(x)}{a_1(x)} \iff y(x) = \int \frac{b(x)}{a_1(x)} \, \mathrm{d}x + C
+.\]
+Hvis $a_0 = a_1'$ i stedet fås vha. produktreglen, at
+\[ 
+b(x) = a_1(x)y' + a_1'(x)y = (a_1y)' \iff y(x) = \frac{1}{a_1(x)} \left( \int b(x) \, \mathrm{d}x + C \right)
+.\]
+
+\subsubsection{Generel løsning af første ordens differentialligning}
+Generelt starter løsningen af en første ordens differentialligning med at dividere igennem med $a_1(x)$ så udtrykket står på formen
+\[ 
+y' + P(x)y = Q(x)
+\]
+Hvor $P (x) = \frac{a_0(x)}{a_1(x)}$ og $Q(x) = \frac{b(x)}{a_1(x)}$.
+
+\begin{definition} [Integrationsfaktor]
+  Vi definerer en integrationsfaktor $v(x)$ til
+  \[ 
+  v(x) = e^{\int P(x) \, \mathrm{d}x }
+  .\]
+  \bigbreak
+  Vi kan forsøge at skabe en intuition for dette ved at omskrive således
+  \begin{align*}
+    \ln(v(x)) &= \int P(x) \, \mathrm{d}x \\
+    \int \frac{1}{v} \, \mathrm{d}v &= \int P(x) \, \mathrm{d}x 
+  .\end{align*}
+  Og nu minder udtrykket om noget, der er kendt fra de seperable differentialligninger. Faktisk er $v(x)$ en løsning til $v' = P \cdot v$
+\end{definition}
+
+\begin{sæt} [Generel løsning af første ordens differentialligning]
+  Løsningerne til 
+  \[ 
+  y' + P(x)y = Q(x)
+  \]
+  er
+  \[ 
+  y(x) = \frac{1}{v(x)} \left( \int v(x)Q(x)\, \mathrm{d}x + C \right), \quad C \in \mathbb{R}
+  .\]
+  \tcblower
+  Vi har udtrykket
+  \[ 
+  Q(x) = P(x)y + y'
+  .\]
+  Vi ganger nu igennem med $v(x)$ som
+  \[ 
+  v(x)Q(x) = v(x)\cdot P(x) y + v(x)y' = v'(x)y + v(x)y' = (v(x)y)'
+  .\]
+  Vi kan nu integrere som
+  \[ 
+  \int v(x)Q(x) \, \mathrm{d}x + C_1 = v(x)y
+  .\]
+  Og så kan der divideres over med $v(x)$ som
+  \[ 
+  y = \frac{1}{v(x)} \left( \int v(x)Q(x) \, \mathrm{d}x + C_1 \right), \quad C \in \mathbb{R}
+  .\]
+  Integrationsfaktoren viser sig altså at være en smart måde at indføre kædereglen på.
+\end{sæt}
+
+\begin{eks} [Eksempel på løsning af generel lineær første ordens differentialligning]
+  Vi ønsker at finde løsningen til
+  \[ 
+  y' - 2y = e^{4x}
+  \]
+  som opfylder begyndelsesbetingelsen $y(0) = 1$.
+  \bigbreak
+  Vi starter med at finde den fuldstændige løsning. Vi sætter $P(x) = -2$ og $Q(x) = e^{4x}$. Vi indsætter dette i formlen for integrationsfaktoren som
+  \[ 
+  v(x) = e^{\int -2 \, \mathrm{d}x} = e^{-2x}
+  .\]
+  Dette kan nu indsættes i løsningsformlen som
+  \begin{align*}
+    y &= \frac{1}{v} \left( \int vQ \, \mathrm{d}x + C \right) \\
+    &= e^{2x} \left( \int e^{-2x}e^{4x} \, \mathrm{d}x + C \right) \\
+    &= e^{2x} \left( \int e^{2x} \, \mathrm{d}x + C \right) \\
+    &= e^{2x} \left( \frac{1}{2}e^{2x} + C \right) \\
+    &= \frac{1}{2}e^{4x} + Ce^{2x}
+  .\end{align*}
+  Vi kan nu indsætte begyndelsesbetingelsen som
+  \[ 
+  1 = \frac{1}{2}e^{0} + Ce^{0} = \frac{1}{2} + C \implies C = \frac{1}{2}
+  .\]
+  Altså er den entydige løsning
+  \[ 
+  y = \frac{1}{2} \left( e^{4x} + e^{2x} \right)
+  .\]
+\end{eks}
+
+\begin{eks} [Et mere kompliceret eksempel]
+  Vi ønsker at finde løsningen til 
+  \[ 
+  \frac{1}{x}y' - \frac{2y}{x^2} = x \cos(x), \quad x > 0
+  \]
+  som opfylder begyndelsesbetingelsen $y(\pi) = 1$.
+  \bigbreak
+  Vi indser at vi har den generelle formel med $Q(x) = x^2 \cos(x)$ og $P(x) = \frac{-2}{x}$. Vi starter med at finde integrationsfaktoren som
+  \[ 
+  v(x) = e^{-2 \cdot \int \frac{1}{x} \, \mathrm{d}x } = e^{\ln(x^{-2})} = x^{-2} = \frac{1}{x^2}
+  .\]
+  Vi kan nu indsætte dette i løsningsformlen som
+  \begin{align*}
+    y &= x^2 \left( \int \cos(x) \, \mathrm{d}x + C \right) \\
+    &= x^2 \sin(x) + x^2\cdot C 
+  .\end{align*}
+  Vi kan nu indsætte begyndelsesbetingelsen som
+  \begin{align*}
+    1 &= \pi^2 \sin(\pi) + \pi^2 \cdot C \\
+    C = \frac{1}{\pi^2}
+  .\end{align*}
+  Dermed bliver den entydige løsnign
+  \[ 
+  y = x^2 \sin(x) + \frac{x^2}{\pi^2}
+  .\]
+\end{eks}
+
+\begin{sæt} [Eksistens og entydighed]
+  Lad $P$ og $Q$ være kontinuerte på et åbent interval $I$, samt lad $x_0 \in I$ og $y(0) \in \mathbb{R}$. Så eksisterer en entydig løsning $y$ til
+  \[ 
+  y' + P(x)y = Q(x), \qquad y(x_0) = y_0
+  .\]
+  defineret nær $x_0$.
+
+  Altså eksisterer der kun en løsning der går igennem ``hvert'' punkt
+\end{sæt}

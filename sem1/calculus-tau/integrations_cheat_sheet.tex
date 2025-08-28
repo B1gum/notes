@@ -1,0 +1,45 @@
+\section{Simple integraler og differentialer}
+\begin{table}[ht]
+\begin{tabular}{|c|c|c|}
+\hline
+$f(x)$             & $f'(x)$                              & $F(x)$                                           \\ \hline
+$kx^n$             & $n\cdot k x^{n-1}$                   & $\frac{k}{n+1} x^{n+1} + C$                      \\ \hline
+$ke^{cx}$          & $ck \cdot e^{cx}$                    & $\frac{k}{c} \cdot e^{cx} + C$                   \\ \hline
+$kx \cdot e^{cx}$  & $(ckx + k)e^{cx}$                    & $\frac{k}{c^2} \cdot \left( cx - 1 \right)e^{cx}$ \\ \hline
+$ka^{cx}$          & $ck\cdot \ln(a) \cdot a^{cx}$        & $\frac{ka^{cx}}{c \cdot \ln(a)} + C$             \\ \hline
+$\ln(x)$           & $\frac{1}{x}$                        & $x \cdot (\ln(x) - 1) + C$                       \\ \hline
+$\log_a(x)$        & $\frac{1}{x \ln(a)}$                 & $\frac{x \cdot (\ln(x)-1)}{\ln(a)} + C$          \\ \hline
+$\frac{1}{x}$      & $- \frac{1}{x^2}$                    & $\ln(x) + C$                                     \\ \hline
+$\frac{1}{ax+b}$   & $ - \frac{a}{(ax+b)^2}$              & $\frac{ln(ax + b)}{a} + C$                       \\ \hline
+$A\sin(kx + \phi)$ & $kA \cdot \cos(kx + \phi)$           & $- \frac{A}{k} \cos(kx + \phi) + C$              \\ \hline
+$A\cos(kx+\phi)$   & $-kA \cdot \sin(kx + \phi)$          & $\frac{A}{k} \sin(kx + \phi) + C$                \\ \hline
+$A\tan(kx + \phi)$   & $kA \cdot \left( \tan(kx+\phi)^2 + 1 \right)$               & $\frac{-a}{2k} \left( \ln \left( \frac{1}{\tan(kx + \phi)^2 + 1} \right) \right) + C$ \\ \hline
+$f(x) + g(x)$      & $f'(x) + g'(x)$                      & $F(x) + G(x) + C$                                \\ \hline
+$f(x) \cdot g(x)$  & $f(x)g'(x) + f'(x)g(x)$              & $f(x)G(x) - \int f'(x)G(x) \, \mathrm{d}x + C$   \\ \hline
+$f(g(x))$          & $g'(x) f'(g(x))$                     & Brug substitution                                \\ \hline
+$\frac{f(x)}{g(x)}$  & $\frac{g(x)f'(x) - f(x) g'(x)}{\left(g(x) \right)^2}$       & Brug delvis integration                                                               \\ \hline
+$\frac{f'(x)}{f(x)}$ & $\frac{f''(x)}{f(x)} - \left( \frac{f'(x)}{f(x)} \right)^2$ & $\ln \left| g(x) \right| + C$                                                         \\ \hline
+$\sqrt[b] x^a$     & $\frac{a}{b}\cdot x^{\frac{a}{b}-1}$ & $\frac{x^{a / b + 1}}{a / b + 1}  + C$           \\ \hline
+\end{tabular}
+\end{table}
+
+\section{Komplicerede integraler og differentialer}
+Hvis dit udtryk er på formen
+\[ 
+\int f \left( g(x) \right) \cdot g'(x) \, \mathrm{d}x 
+\]
+Brug da \underline{\hyperref[afs:intsub]{Integration ved Substitution}}. Hvis dit udtryk er på formen
+\[
+  \int f(x) g'(x) \, \mathrm{d}x 
+.\]
+Brug da \underline{\hyperref[afs:delint]{Delvis Integration}}. Hvis dit udtryk er på formen
+\[ 
+\frac{\mathrm{d}}{\mathrm{d}x} f(g(x))
+.\]
+Brug da \underline{\hyperref[afs:aflkæd]{Kædereglen}}.
+
+\subsection{Kædereglen} \label{afs:aflkæd}
+Kædereglen foreskriver at den afledte
+\[ 
+\frac{\mathrm{d}}{\mathrm{d}x} f \left( g(x) \right) = f' \left( g(x) \right) \cdot g'(x)
+\]

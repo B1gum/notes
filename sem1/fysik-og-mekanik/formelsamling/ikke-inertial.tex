@@ -1,0 +1,50 @@
+\section{Mekanik i ikke-inertial systemer}
+
+\subsection{Acceleration uden rotation}
+
+\subsubsection{Inertialkraftens størrelse}
+Inertialkraftens størrelse $F_{\text{inertial}}$ kan findes som
+\[ 
+F_{\text{inertial}} = -m \Vec{A}
+.\]
+Hvor $\Vec{A}$ er accelerationen af det accelererende koordinatsystem og $m$ er massen
+
+
+\subsection{Vinkelhastighedsvektoren}
+
+\subsubsection{Tangentiel hastighed fra radius og vinkelhastighed}
+Givet en stedvektor $\Vec{r}$ og en vinkelhastighedsvektor $\Vec{\omega}$ kan den tangentielle hastighedsvektor $\Vec{v_{\text{tan}}}$ findes som
+\[ 
+\Vec{v_{\text{tan}}} = \Vec{\omega} \times \Vec{r}
+.\]
+
+\subsubsection{Sammenhæng mellem afledede i inertial- og ikke-inertialsystemer}
+Det gælder at
+\[ 
+\left( \frac{\mathrm{d} \Vec{Q}}{\mathrm{d}t}  \right)_{S_0} = \left( \frac{\mathrm{d} \Vec{Q}}{\mathrm{d}t}  \right)_{S} + \Vec{\Omega} \times \Vec{Q}
+.\]
+Hvor $\Vec{Q}$ er en vektor, $\Omega$ er vinkelhastigheden mellem inertialsystemet $S_0$ og ikke-inertialsystemet $S$.
+
+
+\subsection{Newtons 2. lov for et roterende referencesystem}
+Newtons 2. lov for et roterende referencesystem er givet som
+\[ 
+m \ddot{r} = \Vec{F} + \underbrace{2 m \dot{r} \times \Vec{\Omega}}_{\Vec{F}_{\text{cor}}} + \underbrace{m(\Vec{\Omega} \times \Vec{r}) \times \Omega}_{\Vec{F}_{\text{cf}}}
+.\]
+Hvor $m$ er massen, $\Vec{r}$ er stedvektoren, $\ddot{r}$ er den anden tidsafledte af $r$, $\dot{r}$ er den første tidsafledte af $r$, $\Vec{F}$ er summen af alle kræfter i det tilsvarende inertialsystem og $\Vec{\Omega}$ er vinkelhastigheden af det roterende referencesystem.
+
+
+\subsubsection{Korioliskraften}
+Korioliskraften $\Vec{F}_{\text{cor}}$ er givet som
+\[ 
+\Vec{F}_{\text{cor}} = 2m \dot{r} \times \Omega
+.\]
+Hvor $m$ er massen, $\dot{r}$ er den første tidsafledte af stedvektoren $\Vec{r}$ og $\Vec{\Omega}$ er vinkelhastigheden af det roterende koordinatsystem.
+
+
+\subsubsection{Centrifugalkraften}
+Centrifugalkraften $\Vec{F}_{\text{cf}}$ er givet som
+\[ 
+\Vec{F}_{\text{cf}} = m(\Vec{\Omega} \times \Vec{r}) \times \Vec{\Omega}
+.\]
+Hvor $m$ er massen, $\Vec{\Omega}$ er vinkelhastigheden af det roterende koordinatsystem og $\Vec{r}$ er stedvektoren.

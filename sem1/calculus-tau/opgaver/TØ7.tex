@@ -1,0 +1,230 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage{latexsym, amsfonts, amssymb, amsthm, amsmath}
+\usepackage{siunitx}
+\usepackage{graphicx, pgfplots}
+\usepackage{fancyhdr, lastpage}
+
+%loaded last
+\usepackage[hidelinks]{hyperref}
+
+\sisetup{exponent-product = \cdot,
+  output-decimal-marker = {,}}
+
+%Giles Castelles incfig
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+  \def\svgwidth{#1\columnwidth}
+  \import{../figures/}{#2.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{every axis/.append style={
+  axis x line=middle,    % put the x axis in the middle
+  axis y line=middle,    % put the y axis in the middle
+  axis line style={<->,color=black}, % arrows on the axis
+}}
+
+\title{TØ-opgaver uge 7}
+\author{Noah Rahbek Bigum Hansen}
+\date{13. Oktober 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Opg. 10.1.2}
+\textbf{Find the general solution for each differential equation. Verify that each solution satisfies the original differential equation.}
+\[
+\frac{\mathrm{d}y}{\mathrm{d}x} = -4x + 12x^2
+.\]
+\bigbreak
+Differentialligningen separeres så vi får at
+\[
+\, \mathrm{d}y = -4x + 12x^2 \, \mathrm{d}x \implies \int \, \mathrm{d}y = \int -4x + 12x^2 \, \mathrm{d}x
+.\] 
+Altså får vi at
+\[
+y(x) = -2x^2 + 4x^3 + c
+.\]
+Det indses at ovenstående er korrekt ved indsættelse i det oprindelige udtryk og at differentialligningen derfor må være korrekt løst.
+
+\section*{Opg. 10.1.9}
+\textbf{Find the general solution for each differential equation. Verify that each solution satisfies the original differential equation.}
+\[ 
+\frac{\mathrm{d}y}{\mathrm{d}x} = 8x^2y-9xy
+.\]
+\bigbreak
+Først omskrives som
+\[
+\frac{\mathrm{d}y}{\mathrm{d}x} = y\left( 8x^2-9x \right) \implies \int \frac{1}{y} \, \mathrm{d}y = \int 8x^2-9x \, \mathrm{d}x
+.\]
+Dermed får vi at
+\[
+\ln(y) = \frac{8}{3}x^3 - \frac{9}{2}x^2 + c \implies y = ke^{\frac{8}{3}x^3 - \frac{9}{2}x^2}
+.\] 
+
+\section*{Opg. 10.1.21}
+\textbf{Find the particular solution for each initial value problem.}
+\[
+\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{5x^3}{4y}; \qquad y(0) = 2
+.\]
+\bigbreak
+Først separeres differentialligningen så vi får at
+\[
+\int y \, \mathrm{d}y = \int \frac{5}{4}x^3 \, \mathrm{d}x \implies \frac{1}{2}y^2 = \frac{5}{16}x^4 + c
+.\] 
+Og dermed har vi at
+\[
+y^2 = \frac{5}{8}x^4 + 2c
+.\]
+Hvilket giver os at
+\[
+y = \sqrt{\frac{5}{8}x^4+2c} 
+.\] 
+
+
+\section*{Opg. 10.2.3}
+\textbf{Find the general solution for each differential equation.}
+\[
+\frac{\mathrm{d}y}{\mathrm{d}x} + 2xy = 16x
+.\] 
+\bigbreak
+Vi omskriver så vi får at
+\[
+\frac{\mathrm{d}y}{\mathrm{d}x} = -2x(y-8)
+.\] 
+Dermed har vi at
+\[
+\int \frac{1}{y-8} \, \mathrm{d}y = \int -2x \, \mathrm{d}x
+.\]
+Hvilket giver
+\[
+\ln(y-8) = -x^2 + c \implies y-8 = e^{-x^2+c} \implies y = ke^{-x^2}+8
+.\] 
+
+
+
+\section*{Opg. 10.2.6}
+\textbf{Find the general solution for each differential equation.}
+\[
+x \frac{\mathrm{d}y}{\mathrm{d}x} + 2xy - x^2 = 0
+.\] 
+\bigbreak
+Ved at addere med $x^2$ og dividere med $x$ kan omskrives så
+\[
+\frac{\mathrm{d}y}{\mathrm{d}x} + 2y  = x
+.\] 
+Det indses at dette er en 1.-ordens lineær inhomogen differentialligning. Standardløsningen for denne er
+\[
+  y = \frac{1}{v(x)}\left( \int v(x)Q(x) \, \mathrm{d}x + C  \right) 
+,\]
+for
+\begin{gather*}
+  \frac{\mathrm{d}y}{\mathrm{d}x} + P(x)y = Q(x) \\
+v(x) = e^{\int P(x) \, \mathrm{d}x}
+\end{gather*}
+Vi indsætter
+\begin{align*}
+  y &= e^{-\int 2 \, \mathrm{d}x}\left( \int e^{\int 2 \, \mathrm{d}x}x \, \mathrm{d}x + C \right) \\
+  &= e^{-2x}\left( \int e^{2x}x \, \mathrm{d}x + C \right)  \\
+  &= e^{-2x} \left( \frac{1}{2}e^{2x}x - \frac{1}{2} \int e^{2x} \, \mathrm{d}x + C \right)   \\
+  &= e^{-2x}\left( \frac{1}{2}e^{2x}x - \frac{1}{4}e^{2x} + C \right)  \\
+  &= \frac{x}{2} - \frac{1}{4} + e^{-2x}C  \\
+\end{align*}
+
+
+\section*{Opg. 10.2.20}
+\textbf{Solve each differential equation, subject to the given initial conditions.}
+\[
+\frac{\mathrm{d}y}{\mathrm{d}x} + 3x^2y - 2xe^{-x^3} = 0; \qquad y(0) = \num{1000}
+.\]
+\bigbreak
+Der omskrives til standardform
+\[
+\frac{\mathrm{d}y}{\mathrm{d}x} + 3x^2y = 2xe^{-x^3}
+.\] 
+Indsætter i standardløsning
+\begin{align*}
+  y &= e^{-\int 3x^2 \, \mathrm{d}x}\left( \int e^{\int 3x^2 \, \mathrm{d}x} 2xe^{-x^3} \, \mathrm{d}x + C \right)  \\
+  &= e^{-x^3}\left( \int e^{x^3}2xe^{-x^3} + C \right)  \\
+  &= e^{-x^3}\left( \int 2x \, \mathrm{d}x + C \right)  \\
+  &= e^{-x^3}\left( x^2 + C \right)  \\
+.\end{align*}
+Vi indsætter begyndelsesbetingelsen
+\[
+1000 = e^{-0^3}\left( 0^2 + C \right) = 1\left( C \right) = C
+.\] 
+Altså er den partikulære løsning
+\[
+y = e^{-x^3}\left( x^2 + 1000 \right) 
+.\] 
+
+
+\section*{Prøveeksamensopgave 11}
+Find den fuldstændige løsning til differentialligningen
+\[
+\frac{\mathrm{d}y}{\mathrm{d}x} + \frac{y}{x} = x; \qquad x>0
+.\] 
+Det er funktioner på følgende form (hvor $C$ er en konstant)
+\[
+y(x) = \frac{C}{x} + \frac{x^2}{?}
+.\] 
+Dit svar skal være et helt tal mellem $\num{0}$ og $\num{99}$.
+\bigbreak
+Differentialligningen er allerede skrevet på standardform og kan derfor sættes direkte ind i standardløsningen så vi får at
+\begin{align*}
+  y &= e^{- \int \frac{1}{x} \, \mathrm{d}x} \left( \int e ^{\int \frac{1}{x} \, \mathrm{d}x} x \, \mathrm{d}x + C \right)  \\
+  &= \frac{1}{|x|} \left( \int |x| x \, \mathrm{d}x + C \right)  \\
+  &= \frac{1}{x} \left( \int x^2 \, \mathrm{d}x + C \right)  \\
+  &= \frac{1}{x}\left( \frac{1}{3}x^3 + C \right)  \\
+  &= \frac{1}{3}x^2 + \frac{C}{x}\\
+.\end{align*} 
+Altså er svaret \num{3}.
+
+
+
+\section*{Prøveeksamensopgave 12}
+Find den fuldstændige løsning til differentialligningen
+\[
+\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{xy^2}{8}
+.\]
+Det er funktioner på følgende form (hvor $K$ er en konstant):
+ \[
+y(x) = \frac{-?}{K+x^2}
+,\] 
+defineret på et interval så nævneren er forskellig fra nul.
+Dit svar skal være et helt tal mellem $0$ og $99$.
+\bigbreak
+Differentialligningen er seperabel idet følgende omskrivning kan udføres
+\[
+\frac{1}{y^2} \, \mathrm{d}y = \frac{1}{8}x \, \mathrm{d}x
+.\]
+Dermed har vi at
+\[
+\int \frac{1}{y^2} \, \mathrm{d}y = \int \frac{1}{8}x \, \mathrm{d}x \implies - \frac{1}{y} = \frac{1}{16}x^2 + C
+.\] 
+Dermed fås at
+\[
+y = -\frac{16}{x^2+K}
+.\]
+Altså er svaret 16.
+
+
+\end{document}

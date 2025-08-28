@@ -1,0 +1,94 @@
+\section{Potentiel energi og energikonservation}
+
+\begin{table}[ht]
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Givet}                      & \textbf{Ønsker at finde}         & \textbf{Relevante formler} \\ \hline
+Masse, højde                        & Potentiel energi for tyngdekraft & \ref{afs:gravpot}          \\ \hline
+masse, højdeforskel                 & Tyngdekraftens arbejde           & \ref{sec:gravwork}         \\ \hline
+Kinetisk- og potentiel energiforskel &
+  Energikonservation &
+  \begin{tabular}[c]{@{}l@{}}\ref{afs:ekonstyn} – i tyngdefelt\\ \ref{afs:ebevkr} – inkl. eksterne kræfter\\ \ref{afs:ekons} – ændringer lig 0\end{tabular} \\ \hline
+Fjederkonstant, udstrækning         & Potentiel energi i fjeder        & \ref{afs:epotela}          \\ \hline
+Forskel i potentiel energi i fjeder & Arbejdet af en fjeder            & \ref{afs:wela}             \\ \hline
+Potentiel energi &
+  Kraft &
+  \begin{tabular}[c]{@{}l@{}}\ref{sec:potfor1} – 1 dimension\\ \ref{afs:potfor3} – 3 dimensioner\end{tabular} \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Gravitationel potentiel energi (7.1)} \label{afs:gravpot}
+Betragtes en partikel kun udsat for en tyngdekraft kan dens samlede energi findes som
+\[ 
+U_{grav} = mgy
+.\]
+Hvor $m$ er partiklens masse, $g$ er tyngdeaccelerationen og $y$ er den vertikale afstand af partiklen. 
+
+\subsubsection{Tyngdekraftens arbejde} \label{sec:gravwork}
+Givet en partikels masse $m$, tyngdeaccelerationen $g$ starthøjden $y_1$ og sluthøjden $y_2$ kan det samlede arbejde udført af tyngdefeltet findes som
+\[
+  W_{grav} = mgy_1 - mgy_2 = U_{grav,1} - U_{grav,2} = -\Delta U_{grav}
+\]
+
+\subsubsection{Energikonservation i et tyngdefelt} \label{afs:ekonstyn}
+Såfremt kun tyngdekraften yder et arbejde på en partikel er mekanisk energi konserveret, altså
+\[ 
+K_1 + U_{grav,1} = K_2 - U_{grav,2} \implies \frac{1}{2}mv_1^2 + mgy_1 = \frac{1}{2}mv_2^2 + mgy_2
+.\]
+Hvor $m$ er partiklens masse, $v_1$ og $v_2$ er henholdsvis partiklens start- og sluthastighed, $g$ er tyngdeaccelerationen og $y_1$ og $y_2$ er henholdsvis partiklens start- og sluthøjde.
+
+\subsection{Elastisk potentiel energi (7.2)}
+
+\subsubsection{Elastisk potentiel energi} \label{afs:epotela}
+Givet fjederkonstanten $k$ og forskydningen af en fjeder $x$ ($x>0$ for en udstrakt fjeder og $x<0$ for en sammenpresset fjeder) kan den elastiske potentielle energi lagret i fjederen findes som
+\[ 
+U_{el} = \frac{1}{2}kx^2
+.\]
+
+\subsubsection{Arbejdet udført af den elastiske kraft} \label{afs:wela}
+Arbejdet udført af den elastiske kraft er på mange måder parallelt med \ref{sec:gravwork}: \nameref{sec:gravwork} idet arbejdet udført af den elastiske kraft kan findes som
+\[ 
+W_{el} = \frac{1}{2}kx_1^2 - \frac{1}{2}kx_2^2 = U_{el,1} - U_{el,2} = -\Delta U_{el}
+.\]
+Hvor $k$ er fjederkonstanten og $x$ er fjederens forskydning ($x>0$ for en udstrakt fjeder og $x<0$ for en sammenpresset fjeder).
+
+
+\subsubsection{Mekanisk energibevarelse med arbejde fra andre kræfter} \label{afs:ebevkr}
+Mekanisk energibevarelse foreskriver at
+\[ 
+K_1 + U_1 + W_{other} = K_2 + U_2
+.\]
+Hvor $K_1$ og $K_2$ er hhv. start- slut-kinetisk energi, $U_1$ og $U_2$ er start- og slut-potentiel energi og $W_{other}$ er arbejdet udført af alle kræfter der ikke er associeret med den potentielle energi. Altså er arbejdet udført af alle andre kræfter end tyngdekraften og den elastiske kraft lig ændringen i mekanisk energi.
+
+
+\subsection{Konservative og ikke-konservative kræfter (7.3)}
+
+\subsubsection{Konservation af energi} \label{afs:ekons}
+Energikonservationsloven foreskriver at
+\[ 
+\Delta K + \Delta U + \Delta U_{int} = 0
+.\]
+Hvor $\Delta K$ er ændringen i kinetisk energi, $\Delta U$ er ændringen i potentiel energi og $\Delta U_{int}$ er ændringen i indre energi. Det gælder generelt at energi er konserveret for lukkede systemer, hvor der kun virker konservative kræfter. Konservative kræfter (tyngdekraften, fjederkraften, elektromagnetiske kræfter) er alle kræfter der er stiuafhængige. 
+
+
+\subsection{Kraft og potentiel energi (7.4)}
+
+\subsubsection{Kraft fra potentiel energi i en dimension} \label{sec:potfor1}
+Givet en potentiel-energi funktion i en dimension $U(x)$ kan den associerede kraft findes som
+\[ 
+F_x(x) = -\frac{\mathrm{d}U(x)}{\mathrm{d}x} 
+.\]
+Resultatet ovenfor gælder kun for konservative kræfter (tyngde-, fjeder- eller elektromagnetisk-kraft). For eksempelvis fjederkraften ses dog også at resultatet holder idet
+\[ 
+F_x(x) = -\frac{\mathrm{d}}{\mathrm{d}x} \frac{1}{2}kx^2 = -kx
+.\]
+
+\subsubsection{Kraft fra potentiel energi i 3 dimensioner} \label{afs:potfor3}
+Analogt med resultatet fra \ref{sec:potfor1}: \nameref{sec:potfor1} kan det vises at komposanterne for en konservativ kraft ($F_x, F_y$ og $F_z$) kan findes som den negative partielt afledede til det punkt af den associerede potentiel-energi-funktion ($U(x, y, z)$) som
+\[ 
+F_x = -\frac{\partial U}{\partial x}, \qquad F_y = - \frac{\partial U}{\partial y} \qquad F_z = - \frac{\partial U}{\partial z}
+.\]
+Dette kan også skrives som et samlet udtryk for $\Vec{F}$ som
+\[ 
+\Vec{F} = -\left( \frac{\partial U}{\partial x}\hat{\imath} + \frac{\partial U}{\partial y}\hat{\jmath} + \frac{\partial U}{\partial z}\hat{k} \right) = - \Vec{\nabla} U
+.\]

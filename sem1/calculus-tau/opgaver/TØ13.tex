@@ -1,0 +1,355 @@
+\documentclass[12pt]{article}
+\usepackage[danish]{babel}
+\usepackage{amsfonts, amssymb, mathtools, amsthm, amsmath}
+\usepackage{graphicx, pgfplots}
+\usepackage{url}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{sagetex}
+\usepackage{lastpage}
+
+%loaded last
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{siunitx}
+  \sisetup{exponent-product = \cdot,
+    output-decimal-marker = {,}}
+
+%Giles Castelles incfig
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+  \def\svgwidth{#1\columnwidth}
+  \import{../figures/}{#2.pdf_tex}
+}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\thepage}
+\fancyhead[C]{\leftmark}
+
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{every axis/.append style={
+  axis x line=middle,    % put the x axis in the middle
+  axis y line=middle,    % put the y axis in the middle
+  axis line style={<->,color=black}, % arrows on the axis
+}}
+
+\usepackage{thmtools}
+\usepackage{tcolorbox}
+  \tcbuselibrary{skins, breakable}
+  \tcbset{
+    space to upper=1em,
+    space to lower=1em,
+  }
+
+\theoremstyle{definition}
+
+\newtcolorbox[auto counter]{definition}[1][]{%
+  breakable,
+  colframe=ForestGreen,  %frame color
+  colback=ForestGreen!5, %background color
+  colbacktitle=ForestGreen!25, %background color for title
+  coltitle=ForestGreen!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{ForestGreen},  %display left line
+  title=Definition \thetcbcounter: #1,
+}
+
+\newtcolorbox{greenline}{%
+  breakable,
+  colframe=ForestGreen,  %frame color
+  colback=white,          %remove background color
+  left=1em,              %space on left side in box
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{ForestGreen},  %display left line
+}
+
+\newtcolorbox[auto counter, number within=section]{eks}[1][]{%
+  brekable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,            %space on left side in box,
+  enhanced,            %more options
+  frame hidden,        %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Eksempel \thetcbcounter: #1
+}
+
+\newtcolorbox{blueline}{%
+  breakable,
+  colframe=NavyBlue,     %frame color
+  colback=white,         %remove background
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+}
+
+\newtcolorbox{teo}[1][]{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=RawSienna!5, %background color
+  colbacktitle=RawSienna!25,    %background color for title
+  coltitle=RawSienna!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+  title=Teori: #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{sæt}[1][]{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=RawSienna!5, %background color
+  colbacktitle=RawSienna!25,    %background color for title
+  coltitle=RawSienna!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+  title=Sætning \thetcbcounter: #1,
+  before lower={\textbf{Bevis:}\par\vspace{0.5em}},
+  colbacklower=RawSienna!25,
+}
+
+\newtcolorbox{redline}{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=white,       %Remove background color
+  left=1em,            %space on left side in box,
+  enhanced,            %more options
+  frame hidden,        %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+}
+
+\newtcolorbox{for}[1][]{%
+  breakable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Forklaring #1,
+}
+
+\newtcolorbox{bem}{%
+  breakable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Bemærkning:,
+}
+
+\makeatother
+\def\@lecture{}%
+\newcommand{\lecture}[3]{
+  \ifthenelse{\isempty{#3}}{%
+    \def\@lecture{Lecture #1}%
+  }{%
+    \def\@lecture{Lecture #1: #3}%
+  }%
+  \subsection*{\makebox[\textwidth][l]{\@lecture \hfill \normalfont\small\textsf{#2}}}
+}
+
+\makeatletter
+
+\newcommand{\opgave}[1]{%
+ \def\@opgave{#1}%
+ \subsection*{Opgave #1}
+}
+
+\makeatother
+
+%Format lim the same way in intext and in display
+\let\svlim\lim\def\lim{\svlim\limits}
+
+% horizontal rule
+\newcommand\hr{
+\noindent\rule[0.5ex]{\linewidth}{0.5pt}
+}
+
+\title{TØ-opgaver uge 13}
+\author{Noah Rahbek Bigum Hansen}
+\date{25. November 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Prøveeksamensopgave 23}
+Lad $X$ betegne en stokastisk variabel der er Poissonfordelt med parameter $\lambda = 7$. Angiv
+\[ 
+  \mathrm{Var}(4+2X) = k
+.\]
+Hvor $k$ er et helt tal mellem 0 og 99.
+\bigbreak
+Vi kan benytte at $\mathrm{Var}(aX + b) = a^2\mathrm{Var}(X)$ så vi får
+\[ 
+  \mathrm{Var}(4 + 2X) = 4 \mathrm{Var}(X)
+.\]
+For en Poissonfordeling er variansen givet som
+\[ 
+  \mathrm{Var}(X) = \lambda
+.\]
+Vi får dermed
+\[ 
+  \mathrm{Var}(4 + 2X) = 4 \lambda = 4 \cdot 7 = 28
+.\]
+Altså er $k = 28$.
+
+\section*{Opg. A}
+Et olieselskab gennemfører en geologisk undersøgelse, der viser, at olieboringer har 20\% chance for at finde olie.
+
+\subsection*{1.}
+Hvad er sandsynligheden for at selskabet har fundet olie ved præcis 3 af deres 7 boringer?
+\bigbreak
+I dette tilfælde må den stokastiske variabel være bindomialfordelt, da denne angiver antallet af successer ud af $n$ forsøg. Her gælder generelt følgende sandsynlighedsfunktion
+\[ 
+P(X = i) = \binom{n}{i} p^{i}(1-p)^{n-i}
+.\]
+Hvis vi sætter tallene fra opgaven ind fås
+\[ 
+P(X = 3) = \binom{7}{3} (\num{0,2})^{3}(1-\num{0,2})^{7-3} = \num{0,1147}  
+.\]
+
+
+\subsection*{2.}
+Hvor mange boringer skal man i middel foretage for at have fundet olie 3 gange?
+\bigbreak
+Her ønsker vi at finde ud af hvor mange forsøg det tager at få et antal successer. Derfor må den ovenstående stokastiske variabel være negativt binomialfordelt, med sandsynlighedsparameter $p = \num{0,2}$ og antalsparameter $r = 3$. Vi har altså
+\[ 
+  E[X] = \frac{r}{p} = \frac{3}{\num{0,2}} = 15
+.\]
+
+
+\section*{Opg. B}
+Lad $X$ være en Poissonfordelt stokastisk variabel med parameter $\lambda$. Udregn middelværdien af $X(7X-2)$.
+\bigbreak
+Vi ønsker at finde
+\[ 
+  E[X(7X - 2)] = E[7X^2 - 2X] = 7E[X^2] - 2E[X]
+.\]
+2.-momentet kan findes fra formlen for varians som
+\begin{align*}
+  \mathrm{Var}(X) &= E[X^2] - (E[X])^2 \\
+  \implies E[X^2] = \mathrm{Var}(X)+ (E[X])^2
+.\end{align*}
+For en Poisson-fordeling har vi $E[X] = \lambda$ og $\mathrm{Var}(X) = \lambda$. Vi får da
+\[ 
+  E[X^2] = \lambda + \lambda^2
+.\]
+Dette sættes ind i udtrykket fra starten så vi får
+\begin{align*}
+  E[X(7x-2)] &= 7 \left( \lambda + \lambda^2 \right) - 2\lambda \\
+             &= 7\lambda^2 + 5\lambda
+.\end{align*}
+
+
+\section*{Opg. C}
+Lad $X$ være binomialfordelt ($5, \frac{3}{4}$) og $Y$ være binomialfordelt ($7, \frac{1}{2}$). Udregn middelværdien for $X-Y$ og bestem om den er positiv eller negativ.
+\bigbreak
+Idet middelværdien af en sum er lig summen af middelværdierne kan udtrykket fra opgaven skrives som
+\[ 
+  E[X-Y] = E[X] - E[Y]
+.\]
+Vi finder først $E[X]$ som
+\[ 
+  E[X] = np = 5\cdot \frac{3}{4} = \frac{15}{4}
+.\]
+Og dernæst kan vi finde $E[Y]$ som
+\[ 
+  E[Y] = np = 7\cdot \frac{1}{2} = \frac{7}{2}
+.\]
+Vi har da
+\[ 
+  E[X-Y] = \frac{15}{4} - \frac{7}{2} = \frac{1}{4}
+.\]
+Denne er positiv.
+
+
+\section*{Opg. D}
+Lad $X$ være binomialfordelt ($3, \frac{1}{2}$) og sæt $Z = (X - 1)^2$.
+
+\subsection*{1.}
+Udregn sandsynlighedsfunktionen for $Z$.
+
+\subsection*{2.}
+Udregn fordelingsfunktionen for $Z$.
+
+\section*{Opg. 2.1}
+
+\section*{Prøveeksamensopgave 24}
+Lad $X$ være antallet af kast, der kræves for at få krone, når man kaster en fair mønt indtil den viser krone. Find middelværdien af $X$:
+\[ 
+  E[X] = k
+.\]
+Hvor $k$ er et helt tal mellem 0 og 99.
+
+\section*{Opg. G}
+Lad $X$ være en kontinuert stokastisk variabel med tæthedsfunktion $f$ givet ved
+\begin{equation*}
+  f(x) = \left\{
+    \begin{aligned}
+      & a + bx^2 &\qquad &\text{hvis } 0 < x < 1 \\
+      & 0 &\qquad &\text{ellers}
+    \end{aligned}
+  \right.
+\end{equation*}
+hvor $a$ og $b$ er konstanter. Det oplyses at $E[X] = \frac{3}{5}$. Bestem konstanterne $a$ og $b$
+
+
+\section*{Opg. E}
+Lad $X$ betegne en kontinuert stokastisk variabel med tæthedsfunktion
+\begin{equation*}
+  f(x) = \left\{
+    \begin{aligned}
+      & 3x^2 &\qquad &\text{hvis } 0 < x < 1 \\
+      & 0 &\qquad &\text{ellers.}
+    \end{aligned}
+  \right.
+\end{equation*}
+Udregn $E \left[ X^3 \right]$
+
+\section*{Opg. F}
+Lad $X$ betegne en kontinuert stokastisk variabel. Find det til $\alpha$ som minimerer udtrykket
+\[ 
+E \left[ (X - \alpha)^2 \right]
+.\]
+Fortolk på dit resultat.
+
+
+\end{document}

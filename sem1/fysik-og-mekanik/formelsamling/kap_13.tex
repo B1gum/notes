@@ -1,0 +1,115 @@
+\section{Gravitation}
+
+\begin{table}[ht]
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Givet}                   & \textbf{Ønsker at finde}           & \textbf{Relevante formler} \\ \hline
+To masser, afstand               & Tyngdekraft                        & \ref{afs:newtyn}           \\ \hline
+To masser, afstand               & Tyngde                             & \ref{afs:tyngde}           \\ \hline
+Masse af objekt, radius af objekt & Tyngdeacceleration ved overflade & \ref{afs:tynacc} \\ \hline
+To masser, to afstande           & Tyngdekraftens arbejde             & \ref{afs:tynarb}           \\ \hline
+To masser, afstand               & Potentiel energi for tyngdekraften & \ref{afs:tynpot}           \\ \hline
+Masse, kredsløbsradius           & Hastighed af sattelit              & \ref{afs:hassat}           \\ \hline
+Kredsløbsradius, omløbshastighed & Periode for sattelit               & \ref{afs:persat}           \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Newtons tyngdelov (13.1)}
+
+\subsubsection{Newtons tyngdelov}
+Newtons tyngdelov siger at: ``Enhver partikel i universet tiltrækker enhver anden partikel med en kraft, der er direkte proportional med produktet af partikernes masser og omvendt proportional med kvadratet af afstanden mellem dem.''
+
+\subsubsection{Matematisk formulering af Newtons tyngdelov} \label{afs:newtyn}
+Matematisk kan Newtons tyngdelov formuleres som
+\[ 
+F_g = \frac{Gm_1m_2}{r^2}
+.\]
+Hvor $F_g$ er tyngdekraften, $G \approx \qty{6,67408e-11}{N.m^2.kg^{-2}} $ er gravitationskonstanten, $m_1$ og $m_2$ er masserne af de to legemer som påvirker hinanden gravitationelt og $r$ er afstanden mellem de to legemer.
+
+
+\subsection{Tyngde (Eng: \textit{Weight}) (13.2)}
+
+\subsubsection{Tyngden af et objekt ved jordens overflade} \label{afs:tyngde}
+Tyngden $w$ af et objekt ved jordens overflade er lig tyngdekraften fra jorden på objektet. Altså
+\[ 
+w = F_g = \frac{Gm_Em}{R_E^2}
+.\]
+Hvor $m_E$ er jordens masse, $R_E$ er jordens radius og $m$ er massen af objektet, hvis tyngde man ønsker at finde.
+
+
+\subsubsection{Tyngdeaccelerationen} \label{afs:tynacc}
+Tyngdeaccelerationen ved jordens overflade $g$ kan findes som
+\[ 
+g = \frac{Gm_E}{R_E^2}
+.\]
+Hvor $m_E$ er jordens masse og $R_E$ er jordens radius. 
+
+
+\subsection{Potentiel energi i et tyngdefelt (13.3)}
+
+\subsubsection{Tyngdekraftens arbejde} \label{afs:tynarb}
+Tyngdekraftens arbejde $W_{\text{grav}}$ kan findes som
+\[ 
+W_{\text{grav}} = -GMm \int_{r_1}^{r_2} \frac{\mathrm{d}r}{r^2} = \frac{GMm}{r_2} - \frac{GMm}{r_1} 
+.\]
+Hvor $M$ og $m$ er masserne af de to objekter tyngdekraften yder et arbejde på og $r_1$ og $r_2$ er hhv. start- og slutafstanden mellem de to masser.
+
+
+\subsubsection{Potentiel energi i et tyngdefelt} \label{afs:tynpot}
+Den potentielle energi i et tyngdefelt $U$ på et objekt med masse $m$ kan findes som
+\[ 
+U = - \frac{GMm}{r}
+.\]
+Hvor $M$ er massen af objektet som påvirker massen $m$ og $r$ er den indbyrdes afstand mellem massemidtpunktet af massen $M$ og massemidtpunktet af massen $m$.
+
+
+\subsection{Satellitter i cirkulær bevægelse (13.4)}
+
+\subsubsection{Hastigheden af en satellit i et cirkulært kredsløb} \label{afs:hassat}
+For en sattelit i et cirkulært kredsløb om en masse $M$ med en kredsløbsradius på $r$ kan hastigheden af satellitten $v$ findes som
+\[ 
+v = \sqrt{\frac{GM}{r}}
+.\]
+
+\subsubsection{Perioden for en satellit i et cirkulært kredsløb} \label{afs:persat}
+For en sattelit med hastighed $v$ i en cirkulær bane med radius $r$ omkring et legeme med masse $M$ kan perioden $T$ findes som
+\[ 
+T = \frac{2\pi r}{v} = 2\pi r \sqrt{\frac{r}{GM}} = \frac{2\pi r^{\frac{3}{2}}}{\sqrt{GM}}
+.\]
+
+
+\subsection{Keplers love og planeters bevægelse (13.5)}
+
+\subsubsection{Keplers love}
+Keplers love lyder
+\begin{enumerate}
+  \item Alle planeter bevæger sig i elliptiske baner omkring Solen, hvor Solen befinder sig i det ene brændpunkt.
+  \item En linje trukket fra en planet til Solen overstryger lige store arealer på lige lange tidsrum.
+  \item Kvadratet af en planets omløbstid er proportionalt med kuben af dens middelafstand fra Solen.
+\end{enumerate}
+
+
+\subsubsection{Matematisk formulering af Keplers 2. lov}
+Keplers 2. lov kan skrives som
+\[ 
+\frac{\mathrm{d}A}{\mathrm{d}t} = \frac{1}{2}r^2 \frac{\mathrm{d}\theta}{\mathrm{d}t} 
+.\]
+Hvor $r$ er radiussen af planetens bane og $\mathrm{d}\theta$ og $\mathrm{d}A$ er hhv. vinklen der tilbagelægges og arealet der overstryges i det lille tidsinterval $\mathrm{d}t$.
+
+\subsubsection{Matematisk formulering af Keplers 3. lov}
+Keplers 3. lov kan skrives som
+\[ 
+T = \frac{2\pi a^{\frac{3}{2}}}{\sqrt{Gm_s}}
+.\]
+Hvor $T$ er perioden, $a$ er planetens middelafstand fra en sol med massen $m_s$. 
+
+
+
+\subsection{Sorte huller (13.8)}
+
+\subsubsection{Swarzschild-radiussen af et sort hul}
+Radiussen som en masse $M$ maksimalt må have for at opføre sig som et sort hul betegnes massens Schwarz\-schild-radius $R_s$ og kan findes som
+\[ 
+R_s = \frac{2GM}{c^2}
+.\]
+Hvor $c$ er lysets hastighed i et vakuum.

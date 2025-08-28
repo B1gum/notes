@@ -1,0 +1,352 @@
+\lecture{11}{11. November 2024}{Sandsynlighedsregning 1}
+
+\section{Stokastiske variable}
+En stokastisk variabel $X$ angiver værdien af et \textit{stokastisk eksperiment}. Dette kunne eksempelvis være et terningekast. Normalt skrives stokastiske variable med store bogstaver, f.eks. $X$, $Y$ og $Z$.
+
+For at kunne beskæftige os med forskellige typer af stokastiske variable skal vi først igennem lidt basal mængdelære.
+
+\subsection{Tællelige mængder}
+En mængde $A$ kaldes tællelig hvis vi kan skrive $A$ på formen
+\[ 
+  A = {a_n: \, n \in \mathbb{N}}
+\]
+hvor $\mathbb{N} = {1, 2, 3, \ldots}$ angiver de naturlige tal. Altså er alle mængder, hvor vi kan ``tælle'' alle elementerne ved at indicere dem \textit{tællelige}.
+
+Det gælder generelt at alle endelige mængder er tællelige og desuden kan vises at både de naturlige tal $\mathbb{N} = {1, 2, 3, \ldots}$, de relle tal $\mathbb{Z} = {\ldots, -2, -1, 0, 1, 2, \ldots}$ og de rationelle tal $\mathbb{Q} = {\frac{a}{b}: \, a, b \in \mathbb{Z}, b \neq 0}$ samt alle deres delmængder er tællelige.
+
+\textit{Ikke-tællelige mængder} inkluderer ethvert kontinuert interval, f.eks. $(a, b)$ eller $(a, b]$ hvor $a < b$. Altså gælder det også at de irationelle tal er ikke-tællelige og dermed er de relle tal $\mathbb{R}$ og de komplekse tal $\mathbb{C}$ begge ikke-tællelige.
+
+
+\subsection{Diskrete stokastiske variable}
+\begin{definition}
+  En stokastisk variabel der antager værdier i en \textit{tællelig} mængde kaldes \textit{diskret}. Så alle stokastiske variable der antager værdier i endelige mængder, $\mathbb{N}$, $\mathbb{Z}$ eller $\mathbb{Q}$ er diskrete. 
+\end{definition}
+
+For at arbejde med diskrete stokastiske variable skal vi bruge summer og for de kontinuerte stokastiske variable skal vi bruge integraler. Ellers er de to typer af stokastiske variabler analoge.
+
+\subsubsection{Sandsynlighedsfunktionen}
+\begin{sæt}[sandsynlighedsfunktionen]
+  Sandsynlighedsfunktionen (Eng: \textit{Probability mass function} er givet ved
+  \[ 
+  p(x) = P(X = x)
+  .\]
+\end{sæt}
+
+Altså er sandsynligheden $p$ for at hændelsen $x$ sker lig sandsynligheden for at vores stokastiske variabel $X$ er lig vores hændelse $x$. Hvis $X$ er diskret så findes der tal $x_n$ for $n = 1,2,3,\ldots$ så at
+  \[ 
+  p(x_n) \geq 0
+  \]
+og hvor $p(x) = 0$ for alle andre værdier af $x$ ikke inkluderet i $x_n$. 
+
+\begin{sæt}
+    Idet vi ved at sandsynligheden for at vores stokastiske variabel ligger i hele området er 1 må det gælde at
+  \[ 
+  \sum_{n = 1}^{n} p(x_n) = 1
+  .\]
+\end{sæt}
+
+\section{Middelværdi}
+Givet et stokastisk eksperiment ønsker vi ofte at få nogle tal ud som vi kan fortolke. Det hyppigst brugte tal for en stokastisk model er \textit{middelværdien}.
+
+\begin{definition}[Middelværdien]
+  Hvis $X$ er en diskret stokastisk variabel med sandsynlighedfunktion $p$ så er \textit{middelværdien} $E[X]$ givet ved
+  \[ 
+    E[X] = \sum_{n = 1}^{n} x_n p(x_n)
+  .\]
+\end{definition}
+
+Den ovenstående definition af middelværdien antager samme form som et vægtet gennemsnit af alle de værdier som vores stokastiske variabel $X$ kan antage og sandsynligheden $p(x_n)$ for at den stokastiske variabel $X$ antager værdien $x_n$. Dette er en \textit{meget vigtigt} formel.
+
+\subsection{Gennemsnittet}
+Grundet stokastiske eksperimenters grundlæggende og indbyggede tilfældighed kan vi ikke sige hvilken ``værdi'' de giver, men vi kan derimod udregne en \textit{gennemsnitsværdi} for eksperimentet, hvis vi har tilpas mange observationer. Vi kan eksempelvis ikke sige hvilken værdi et terningekast giver, men vi ved at vi i gennemsnit kan forvente at få \num{3,5}. Dette er ligeledes middelværdien idet
+\[ 
+  E[X] = 1 \cdot \frac{1}{6} + 2\cdot \frac{1}{6} + 3 \cdot \frac{1}{6} + 4 \cdot \frac{1}{6} + 5\cdot \frac{1}{6} + 6 \cdot \frac{1}{6} = \num{3,5} 
+.\]
+
+\begin{sæt}[Gennemsnittet konvergerer mod middelværdien]
+  Mere generelt har vi at hvis $G_n = \frac{1}{n}(X_1 + X_2 + \ldots + X_n)$ angiver gennemsnittet af $n$ uafhængige og ens fordelte stokastiske variable, alle fordelt som $X$. Så vil
+  \[ 
+    G_n \to E[X], \quad \text{for} \quad n \to \infty
+  .\]
+\end{sæt}
+
+\subsection{Fysisk fortolkning af middelværdien}
+Givet en vægtløs stang, hvor vægte med massen $p(x_n)$ er placeret i punkterne $x_n$ så er middelværdien lig stangens tyngdepunkt.
+
+\begin{eks}[Beregning af middelværdien]
+  Antag 
+  \[ 
+  P(X = -1) = \num{0,2}, \qquad P(X = 0) = \num{0,5}, \qquad P(X = 1) = \num{0,3} 
+  .\]
+  Find middelværdien.
+  \bigbreak
+  Vi har at $x_1 = -1$, $x_2 = 0$ og $x_3 = 1$. Altså får vi at
+  \[ 
+    E[X] = -1 \cdot \num{0,2} + 0 \cdot 0.5 + 1 \cdot \num{0,3}  = \num{0,1}  
+  .\]
+  Altså er middelværdien \num{0,1}. 
+\end{eks}
+
+
+\section{Middelværdi af en funktion på en stokastisk variabel}
+I mange sammenhænge er man interesseret i at finde middelværdien af en funktion $g$ taget på en stokastisk variabel. Eksempelvis når man skal finde variansen af stokastiske variable skal man benytte $g(X) = x^2$.
+
+\begin{sæt}[Middelværdi af en funktion på en stokastisk variabel]
+  Lad $X$ være en stokastisk variabel med sandsynlighedfunktion $p$ og lad $g$ betegne en funktion. Så har vi at
+  \[ 
+    E[g(X)] = \sum_{n = 1}^{n} g(x_n) p(x_n)
+  .\]
+\end{sæt}
+
+\begin{eks}[Beregning af middelværdien for en funktion på en stokastisk variabel]
+  Vi ønsker at finde $E[x^2]$ for tallene fra sidste eksempel så vi har altså $E[g(X)]$ med $g(X) = x^2$. Altså får vi at
+  \[ 
+    E[x^2] = (-1)^2 \cdot \num{0,2} + 0^2 \cdot \num{0,5} + 1^2 \cdot \num{0,3} = \num{0,5}   
+  .\]
+\end{eks}
+
+Dog skal man, når man bruger ovenstående, være opmærksom på at $E[g(X)] \neq g(E[X])$. Dette ses også idet $E[x^2] = \num{0,5} \neq g(E[x]) = \num{0,1}^2$.
+
+\begin{sæt}[Linearitet af middelværdien og momenter]
+  Hvis $a$ og $b$ er konstanter så gælder at
+  \[ 
+    E[aX + b] = aE[X] + b
+  .\]
+  Hvilket er et meget nyttigt resultat. 
+
+  \vspace{14pt} 
+
+  \textbf{Specialtilfælde:} \hfill \\
+  Hvis $k = 1,2,3, \ldots $ så kaldes $E \left[ X^k \right]$ for \textit{det $k$'te moment af $X$}. Fra det ovenstående gælder der at
+  \[ 
+  E \left[ X^k \right] = \sum_{n = 1}^{n} x_n^k p(x_n)
+  .\]
+\end{sæt}
+
+\section{Varians}
+Mens middelværdien siger noget om hvor stor den stokastiske variabel gennemsnitligt er, siger variansen noget om hvor tæt den stokastiske variabel \textit{typisk} er på sin middelværdi -- Er der stor varians kan ens resultater være sværere at stole på end hvis der er lille varians.
+
+\begin{definition}
+  Lad $X$ være en stokastisk variabel og lad $\mu = E[X]$ betegne middelværdien af $X$. Så er variansen af $X$ givet ved 
+  \[ 
+    \mathrm{Var}(X) = E[(X-\mu)^2]
+  .\]
+  Variansen er altså \textit{middelværdien} af den kvadrerede afstand mellem den stokastiske variabel $X$ og den normale middelværdi $\mu$. Det ovenstående kan også skrives som
+  \[ 
+    \mathrm{Var}(X) = E[X^2] - E[X]^2
+  .\]
+  Alstå er variansen lig 2.-momentet af $X$ minus middelværdien af $X$ i anden potens.
+\end{definition}
+
+\subsection{Fysisk fortolkning af variansen}
+Mens middelværdien tidligere blev beskrevet som \textit{tyngdepunktet} af en stang kan variansen fortolkes som \textit{inertimomentet}, hvilket også kan ses af formlen. 
+
+\begin{eks}[Variansen af et terningekast]
+  Først findes 2.-momentet af den stokastiske variabel som
+  \[ 
+  E \left[ x^2 \right] = \frac{1}{6} \left( 1^2 + 2^2 + 3^2 + 4^2 + 5^2 + 6^2 \right) = \num{15,1666} 
+  .\]
+  Og vi har tidligere fundet middelværdien af et terningekast til $E[X] = \num{3,5}  \implies E[X]^2 = \num{3,5}^2 = \num{12,25}$. Altså er den samlede varians af et terningekast
+  \[ 
+    \mathrm{Var}(X) = \num{15,1666} - \num{12,25}  = \num{2,9166} 
+  .\]
+\end{eks}
+
+Vi har fra definitionen af variansen at
+\[ 
+\mathrm{Var}(X) = E \left[ (X-\mu)^2 \right]
+.\]
+Dette er blot middelværdien af en funktion og det kan derfor skrives som
+\[ 
+  E \left[ (X-\mu)^2 \right] = \sum_{n = 1}^{n} (x_n - \mu)^2 p(x_n)
+.\]
+Og idet $(x_n - \mu)^2 \geq 0$ og $p(x_n) \geq 0$ må det gælde at $\mathrm{Var}(X) \geq 0$. Så vi har altså at
+\[ 
+  0 \leq \mathrm{Var}(X) = E \left[ X^2 \right] - E[X]^2 \implies E[X]^2 \leq E[X^2]
+.\]
+Altså har vi at 2.-momentet af $X$ altid er større end middelværdien af $X$. Faktisk er de to størrelser kun lige store for $X = \mathrm{const.}$ og derfor er der streng ulighed for alle de tilfælde vi ønsker at arbejde med her.
+
+Desuden har vi at
+\[ 
+  \mathrm{Var}(aX + b) = a^2\mathrm{Var}(X)
+.\]
+Dette betyder at multiplikation med konstanter påvirker variansen idet disse konstanter kvadrereres mens addition med konstanter ikke påvirker variansen idet disse konstanter udgår.
+
+\subsection{Standardafvigelsen}
+Standardafvigelsen er en anden vigtig størrelse. Denne er relateret til variansen med
+\[ 
+  \mathrm{SD}(X) = \sqrt{\mathrm{Var}(X)}
+.\]
+Standardafvigelsen tager, så at sige, variansen ``tilbage til de \textit{rigtige} enheder''. 
+
+\section{Bernoulli- og binomialfordelingen}
+\begin{definition}[Bernoullifordelingen] \label{afs:forber}
+  En stokastisk variabel $X$ der kun antager værdierne 0 og 1 siges at være \textit{Bernoullifordelt} med parameter $p$ hvor
+  \[ 
+  p = P(X=1)
+  .\]
+  Her vil vi ofte associere 1 med success og 0 med fiasko så Bernoullifordelinger er ofte brugt i forbindelse med binære stokastiske variable.
+\end{definition}
+
+\subsection{Binomialkoefficienten}
+For $n = 1,2,\ldots $ og $i = 0,1,2,\ldots, n$ er
+\[ 
+  \binom{n}{i} = \frac{n!}{i!(n-1)!}
+.\]
+$\binom{n}{i}$ (\textit{$n$ choose $i$}) angiver antallet af delmængder med $i$ elementer i som kan udtrækkes af en mængde med $n$ elementer.
+
+\begin{definition}[Binomialfordelingen] \label{ads:forbin}
+  Lad $0 \leq p \leq 1$ og $n = 1,2,3,\ldots$. En stokastisk variabel $X$ siges da at være \textit{binomialfordelt} med parametre (n, p) (hvor $p$ kaldes sandsynlighedsparameteren og $n$ kaldes antalsparameteren) hvis $X$ har sandsynlighedsfunktion givet som
+  \[ 
+  p(i) = \binom{n}{i}p^{i}(1-p)^{n-i}, \quad \text{for} i = 0,1,2,\ldots ,n
+  .\]
+  $p$ er sandsynligheden for en success så vi har altså fået $i$ successer $n-i$ fiaskoer og $\binom{n}{i}$ er antallet af permutationer af de $i$ successer. Vi kan i øvrigt bemærke at
+  \[ 
+    \mathrm{Bernoulli}(p) = \mathrm{Binomial}(1,p)
+  .\]
+  Altså er Bernoulli-fordelingen et specialtilfælde af binomialfordelingen.
+\end{definition}
+
+\subsection{Eksperimenter der er binomialfordelte}
+En binomialfordeling kan eksempelvis opstå i det vi betragter et eksperiment med kun to udfald; \textit{success} eller \textit{fiasko}. Vi antager at sandsynligheden for at få success er $p$. Hvis $X$ da angiver antallet af successer der fås ved at udføre eksperimentet $n$ gange så er $X$ binomialfordelt med parametre $(n,p)$. 
+
+\subsection{Middelværdi og varians for binomialfordelingen}
+I det følgende vil vi finde et udtryk for middelværdien og variansen af binomialfordelingen.
+\begin{sæt}[Middelværdi og varians for binomialfordelingen]
+  Lad $X$ være binomialfordelt med parametre $(n,p)$. Så er middelværdien
+  \[
+    E[X] = np
+  \]
+  og variansen er
+  \[ 
+    \mathrm{Var}(X) = np(1-p)
+  .\]
+  \tcblower
+  Lad $k = 1,2,3,\ldots$. Vi ønsker da at finde $E \left[ X^k \right]$. Vi har at
+  \[ 
+    E[g(X)] = \sum_{n = 1}^{n} g(x_n) p(x_n)
+  .\]
+  Sættes $g(x) = X^k$ fås at
+  \[ 
+    E \left[ X^k \right] = \sum_{i = 0}^{n} i^{k} \binom{n}{i}p^i(1-p)^{n-i} = \sum_{i = 1}^{n} i^{k-1} \binom{n}{i}p^{i}(1-p)^{n-i}
+  .\]
+  Vi ønsker at finde et andet udtryk for binomialkoefficienten. Vi har at
+  \[ 
+  i \binom{n}{i} = i\frac{n!}{i!(n-i)!} = n\frac{(n-1)!}{(i-1)!(n-i)!} = n \binom{n-1}{i-1}
+  .\]
+  Vi har derfor at
+  \[ 
+  E \left[ X^k \right] = np \sum_{i = 1}^{n} i^{k-1} \binom{n-1}{i-1}p^{i-1}(1-p)^{n-i}
+  .\]
+  Vi sætter $j = i-1$ og får at
+  \[ 
+    E \left[ X^k \right] = np \sum_{j = 0}^{n-1} (j+1)^{k-1} \binom{n-1}{j}p^j(1-p)^{n-1-j} = npE \left[ (Y+1)^{k-1} \right]
+  .\]
+  Hvor $Y$ er binomialfordelt med parametre $(n-1, p)$. Vi sætter $k = 1$ og får middelværdien som
+  \[ 
+    E[X] = npE \left[ (Y+1)^{0} \right] = np
+  .\]
+  Hvis vi i stedet sætter $k = 2$ fås at
+  \begin{align*}
+    E \left[ X^2 \right] &= npE \left[ (y+1)^1 \right] \\
+    &= npE[Y+1] \\
+    &= np(1+E[Y]) \\
+    &= np(1+(n-1)p) \\
+    &= np + (np)^2 - np^2
+  .\end{align*}
+
+  Vi er nu klar til at finde et udtryk for variansen idet vi har at
+  \[ 
+    \mathrm{Var}(X) = E[X^2] - E[X]^2
+  .\]
+  Sættes resultaterne fra ovenfor ind fås at
+  \begin{align*}
+    \mathrm{Var}(X) &= np + (np)^2 - np^2 - (np)^2 \\
+    &= np(1-p)
+  .\end{align*}
+  Altså er det vist.
+\end{sæt}
+
+\begin{eks}[Kommunikationssystemer]
+  Et kommunikationssystem virker hvis mindst halvdelen af dens komponenter virker. Antag at sandsynligheden for at en komponent virker er $p$. Vi ønsker at svare på hvornår et system med 5 komponenter virker bedre end et system med 3 komponenter.
+  \vspace{14pt}
+  Først betragtes systemet med 5 komponenter. Vi lader $X$ betengne antallet af komponenter der virker for systemet med 5 komponenter. Vi ved da at $X$ er binomialfordelt med antalsparameter 5 og sandsynlighedsparameter $p$. Vi får da at
+  \[ 
+  p(virker) = p(X=3) + p(X=4) + p(X=5)
+  .\]
+  Idet vores stokastiske variabel $X$ antages at være binomialfordelt får vi at
+  \[ 
+  p(virker) = \binom{5}{3}p^3(1-p)^2 + \binom{5}{4}p^{4}(1-p)^{1} + \binom{5}{5}p^{5}(1-p)^{0} = 10p^3 (1-p)^2 + 5p^{4}(1-p) + p^{5}
+  .\]
+  Noget tilsvarende gøres for 3-komponent systemet så
+  \begin{align*}
+    p(virker) &= p(X=2) + p(X=3) \\
+    &= \binom{3}{2}p^2(1-p) + \binom{3}{3}p^3(1-p)^{0} \\
+    &= 3p^2(1-p) + p^3
+  .\end{align*}
+  Vi skal derfor afgøre for hvilke $p$ det gælder at
+  \[ 
+  10p^3(1-p)^2 + 5p^{4}(1-p) + p^{5} > 3p^2(1-p) + p^3
+  .\]
+  Man kan vise at dette gælder for $p > \frac{1}{2}$. Altså er 5-komponent systemet bedre end 3-komponent systemet, hvis sandsynligheden for at et komponent virker er mere end $\frac{1}{2}$.
+\end{eks}
+
+\section{Poissonfordelingen}
+\begin{definition}[Poissonfordelingen] \label{afs:forpoi}
+  Lad $\lambda > 0$. Så siges en stokastisk variabel $X$ at være \textit{poissonfordelt} med parameter $\lambda$ hvis sandsynlighedsfunktionen $p$ er givet ved
+  \[ 
+  p(i) = \frac{e^{-\lambda i}\lambda^{i}}{i!}
+  \]
+  for $i = 0,1,2,\ldots$
+\end{definition}
+
+\subsection{Eksperimenter der er Poissonfordelte}
+Poissonfordelte eksperimenter opstår når vi har et meget stort antal hændelser $n$ der hver har en lille sandsynlighed $p_i$. Vi antager at alle sandsynlighederne er små og hændelserne er ``næsten'' uafhængige. Så er antallat af hændelser der indtræffer approksimativt Poissonfordelt med parameter $\lambda = p_1 + \ldots + p_n$. 
+
+Der gælder i øvrigt at hvis $X$ er binomialfordelt med $(n,p)$, hvor $n$ er stor, $p$ er lille og $np$ er moderat. Så er $X$ approksimativt Poissonfordelt med parameter $\lambda = np$.
+
+Mere præcist har vi at hvis $x_n$ er binomialfordelt med parametre $(n, \frac{\lambda}{n})$, $p_n$ er sandsynlighedsfunktion for $x_n$ og $p$ er sandsynlighedsfunktionen for en Poissonfordeling med parameter $\lambda$ så vil
+\[ 
+p_n(i) \to p(i), \quad \text{for} n \to \infty  
+.\]
+Altså konvergerer sandsynlighedfunktionen for en binomialfordelt stokastisk variabel med sandsynlighedsfunktionen for en Poissonfordeling for $n \to \infty$.
+
+De typiske anvendelser af Poissonfordelingen er altså at finde
+\begin{itemize}
+  \item Trykfejl i en bog.
+  \item Antallet af mennesker i et samfund der bliver over 100 år.
+  \item Antallet af forkerte telefonnumre der ringes til i løbet af en dag.
+  \item Antallet af kunder der besøger et posthus en given dag.
+  \item Antallet af $\alpha$-partikler, der udsendes i en fast periode fra et radioaktivt materiale.
+\end{itemize}
+
+\begin{sæt}[Middelværdien i en Poissonfordeling]
+  Lad $X$ være Poissonfordelt med parameter $\lambda$. Så er middelværdien for $X$
+  \[ 
+    E[X] = \lambda
+  .\]
+  \tcblower
+  Vi benytter formlen for middelværdien idet vi, dog summer til uendeligt denne gang så vi får at
+  \[ 
+    E[X] = \sum_{i = 0}^{\infty} \frac{ie^{-\lambda}\lambda^{i}}{i!} = \lambda \sum_{i = 1}^{\infty} \frac{e^{-\lambda}\lambda^{i-1}}{(i-1)!}
+  .\]
+  Vi sætter $j = i-1$ og får at
+  \[ 
+    E[X] = \lambda \sum_{j = 0}^{\infty} \frac{e^{-\lambda}\lambda^{j}}{j!} = \lambda
+  \]
+  idet sandsynlighedsfunktionen summmer til 1 og derfor udgår. Altså er det vist
+\end{sæt}
+
+\begin{sæt}[Variansen i en Poissonfordeling]
+  Det kan relativt let vises at der for en Poissonfordeling gælder at
+  \[ 
+    \mathrm{Var}(X) = \lambda
+  .\]
+\end{sæt}
+
+Altså gælder for en Poissonfordeling at
+\[ 
+  E[X] = \mathrm{Var}(X) = \lambda
+.\]
+
+For Poissonfordelinger ser vi ofte, at hvis en hændelse sker tilfældigt over tid så vil hændelsen forekomme i ``klumper'' således at en række hændelser sker med relativt kort tidsmellemrum. Dette giver bl.a. anledning ti eksempelvis at overvurdere truslen fra hajangreb i perioder, hvor der kommer mange angreb -- de mange angreb skyldes ikke en øget risiko men er blot et artefakt af Poissonfordelingen.

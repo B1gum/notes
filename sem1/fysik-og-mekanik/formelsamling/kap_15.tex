@@ -1,0 +1,154 @@
+\section{Mekaniske bølger}
+
+\begin{table}[ht]
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Givet} &
+  \textbf{Ønsker at finde} &
+  \textbf{Relevante formler} \\ \hline
+Bølgelænde, frekvens &
+  Bølgehastighed &
+  \ref{afs:bølhas} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Amplitude, vinkelhastighed, position, \\ bølgehastighed, tid\end{tabular} &
+  Bølgefunktion &
+  \ref{afs:bølfun} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Amplitude, position, bølgelængde, tid, \\ periode\end{tabular} &
+  Bølgefunktion &
+  \ref{afs:bølfun2} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Ampltide, bølgetal, position,\\ vinkelfrekvens, tid\end{tabular} &
+  Bølgefunktion &
+  \ref{afs:bølfun3} \\ \hline
+Spænding, masse pr. længde &
+  \begin{tabular}[c]{@{}l@{}}Bølgehastighed af trans-\\ versalbølge på en snor\end{tabular} &
+  \ref{afs:hastra} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Masse pr. længde, spænding, \\ vinkelfrekvens, amplitude\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Gennemsnitseffekten for\\ sinusoidal bølge på snor\end{tabular} &
+  \ref{afs:gnseffbølsno} \\ \hline
+Intensitet og to afstande &
+  Intensitet til anden afstand &
+  \ref{afs:omvkvalov} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Ampltiude af stående bølge, bølgetal,\\ position, vinkelfrekvens, tid\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Bølgefunktion for stående\\ bølge\end{tabular} &
+  \ref{afs:bølfunstå} \\ \hline
+Bølgehastighed, længde på snor &
+  Normalmoder for en snor &
+  \ref{afs:normod} \\ \hline
+Bølgehastighed, snorens længde &
+  Fundamentalfrekvens &
+  \ref{afs:funfrek} \\ \hline
+Spænding, masse pr. længde &
+  Fundamentalfrekvens &
+  \ref{afs:funfrek} \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Periodiske bølger og matematiske beskrivelser heraf (15.2-15.3)}
+
+\subsubsection{Bølgehastighed for periodiske bølger} \label{afs:bølhas}
+Givet en periodisk bølges bølgelængde $\lambda$ og dens frekvens $f$ kan bølgehastigheden $v$ findes som
+\[ 
+v = \lambda f
+.\]
+
+
+\subsubsection{Bølgefunktion for en bølge givet vinkel- og bølgehastighed} \label{afs:bølfun}
+Bølgefunktionen for en sinusoidal bølge i $+x$-retningen er givet ved
+\[ 
+y(x,t) = A \cos \left( \omega \left( \frac{x}{v} - t \right) \right)
+.\]
+Hvor $A$ er amplituden, $\omega$ er vinkelfrekvensen, $x$ er positionen, $v$ er bølgehastigheden og $t$ er tiden.
+
+
+\subsubsection{Bølgefunktion for en bølge givet bølgelængde og periode} \label{afs:bølfun2}
+Bølgefunktionen fra ovenfor kan også skrives som
+\[ 
+y(x,t) = A \cos \left( 2\pi \left( \frac{x}{\lambda} - \frac{t}{T} \right) \right)
+.\]
+Hvor $A$ er amplituden, $x$ er positionen, $\lambda$ er bølgelængden, $t$ er tiden og $T$ er perioden.
+
+
+\subsubsection{Bølgefunktion givet bølgetal og vinkelhastighed} \label{afs:bølfun3}
+Bølgefunktionen fra ovenfor kan også skrives som
+\[ 
+y(x,t) = A \cos (kx - \omega t)
+.\]
+Hvor $A$ er amplituden, $k$ er bølgetallet ($k = \frac{2\pi}{\lambda}$), $x$ er positionen, $\omega$ er vinkelfrekvensen og $t$ er tiden.
+
+
+\subsubsection{Bølgeligningen}
+Bølgeligningen er
+\[ 
+\frac{\partial^2 y(x,t)}{\partial x^2} = \frac{1}{v^2} \frac{\partial^2 y(x,t)}{\partial t^2}
+.\]
+Hvor $\frac{\partial^2 y(x,t)}{\partial x^2}$ er den anden partielt afledede med hensyn til $x$, $v$ er bølgehastigheden of $\frac{\partial^2 y(x,t)}{\partial t^2}$ er den anden partielt afledede med hensyn til $t$.
+
+
+\subsection{Hastigheden af en transversal bølge (15.4)}
+
+\subsubsection{Hastigheden af en transversal bølge på en snor} \label{afs:hastra}
+For en snor med spænding $F$ og masse pr. længde $\mu$ kan bølgehastigheden $v$ findes som
+\[ 
+v = \sqrt{\frac{F}{\mu}}
+.\]
+
+
+\subsubsection{Hastigheden af en mekanisk bølge}
+Hastigheden $v$ af en mekanisk bølge kan findes som
+\[ 
+v = \sqrt{\frac{\text{Størrelsen på den restaurerende kraft der søger mod at bringe systemet til ligevægt}}{\text{Inertien der forsøger at modstå kraften der søger mod at bringe systemet til ligevægt}}}
+.\]
+
+
+\subsection{Energi i en bølge (15.5)}
+
+\subsubsection{Gennemsnitseffekten for en sinusoidal bølge på en snor} \label{afs:gnseffbølsno}
+Gennemsnitseffekten for en sinusoidal bølge på en snor $P_{\text{av}}$ kan findes som
+\[ 
+P_{\text{av}} = \frac{1}{2}\sqrt{\mu F} \omega^2 A^2
+.\]
+Hvor $\mu$ er massen pr. længde, $F$ er spændingen i snoren, $\omega$ er vinkelfrekvensen for bølgen og $A$ er bølgens amplitude.
+
+
+\subsubsection{Den omvendte kvadratlov (Eng: \textit{Inverse square law)}} \label{afs:omvkvalov}
+Den omvendte kvadratlov foreskriver en sammenhæng mellem to intensiteter $I$ og to afstande $r$ som
+\[ 
+\frac{I_1}{I_2} = \frac{r_2^2}{r_1^2}
+.\]
+Denne lov gælder generelt for bølger der breder sig i 3 dimensioner.
+
+
+\subsection{Interferens, grænsebetingelser og superposition (15.6)}
+
+\subsubsection{Superpositionsprincippet}
+Superpositionsprincippet foreskriver at
+\[ 
+y(x,t) = y_1(x,t) + y_2(x,t)
+.\]
+Altså kan summen af to overlappende bølgefunktioner blot adderes for alle punkter for at finde den resulterende kombinerede bølge. 
+
+
+\subsection{Stående bølger på en snor og en snors normalmoder (15.7-15.8)}
+
+\subsubsection{Bølgefunktionen for en stående bølge på en snor} \label{afs:bølfunstå}
+For en stående bølge på en snor med $x=0$-enden fastspændt er bølgefunktionen
+\[ 
+y(x,t) = (A_{\text{SW}} \sin kx) \sin \omega t
+.\]
+Hvor $A_{\text{SW}}$ er amplituden af den stående bølge, $k$ er bølgetallet, $x$ er positionen, $\omega$ er vinkelfrekvensen og $t$ er tiden.
+
+
+
+\subsubsection{En streng fastspændt i begge enders normalmoder} \label{afs:normod}
+Frekvenserne $f_n$ som tilsvarer normalmoderne for en snor kan findes som
+\[ 
+f_n = n \frac{v}{2L}
+.\]
+Hvor $n$ er et heltal, $v$ er bølgehastigheden og $L$ er snorens længde.
+
+
+\subsubsection{Fundamentalfrekvensen for en streng fastspændt i begge ender} \label{afs:funfrek}
+Fundamentalfrekvensen for en streng fastspændt i begge ender $f_1$ er normalmoden der tilsvarer $n=1$. Altså
+\[ 
+f_1 = \frac{v}{2L} = \frac{1}{2L} \sqrt{\frac{F}{\mu}}
+.\]
+Hvor $v$ er bølgehastigheden, $L$ er snorens længde, $F$ er spændingen i snoren og $\mu$ er snorens masse pr. længde.

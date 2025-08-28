@@ -1,0 +1,122 @@
+\section{Impuls, kraftimpuls og kollisioner}
+
+\begin{table}[ht]
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Givet}                        & \textbf{Ønsker at finde}   & \textbf{Relevante formler} \\ \hline
+Masse, hastighed                      & Impuls                     & \ref{afs:imp}              \\ \hline
+Impuls                                & Kraft                      & \ref{afs:new2imp}          \\ \hline
+Kraft, ændring i tid                  & Kraftimpuls                & \ref{afs:krimpimptheo}     \\ \hline
+Ændring i impuls                      & Kraftimpuls                & \ref{afs:krimpimptheo}     \\ \hline
+Række af impulser                     & Totalimpuls                & \ref{afs:totimp}           \\ \hline
+\begin{tabular}[c]{@{}l@{}}Masse og hastighed af to objekter\\  før inelastisk kollision\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Samlet hastighed efter\\  inelastisk kollision\end{tabular} &
+  \ref{afs:ekonsin} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Masse og hastighed af to objekter\\  før elastisk kollision\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Masse og hastighed af de to \\ objekter efter elastisk kollision\end{tabular} &
+  \ref{afs:elakol} \\ \hline
+Masser, afstande                      & Massemidtpunkt             & \ref{sec:cm}               \\ \hline
+Masser, hastigheder                   & Impuls                     & \ref{afs:cmbev}            \\ \hline
+Masse, acceleration af massemidtpunkt & Summen af eksterne kræfter & \ref{afs:new2eks}          \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Impuls og kraftimpuls (8.1)}
+
+\subsubsection{En partikels impuls} \label{afs:imp}
+Givet en partikels masse $m$ og dens hastighedsvektor $\Vec{v}$ kan impulsvektoren $\Vec{p}$ findes som
+\[ 
+\Vec{p} = m \Vec{v}
+.\]
+
+\subsubsection{Newtons 2. lov for impuls} \label{afs:new2imp}
+Det gælder at
+\[ 
+\sum \Vec{F} = \frac{\mathrm{d}\Vec{p}}{\mathrm{d}t} 
+.\]
+Hvor $\Vec{F}$ er kræfterne der virker på partiklen og $\frac{\mathrm{d}\Vec{p}}{\mathrm{d}t}$ er ændringen i impuls over tid.
+
+\subsection{Kraftimpuls-impuls teoeremet} \label{afs:krimpimptheo}
+Betragtes en partikel der kun påvirkes af en \textit{konstant} ekstern kraft $\sum \Vec{F}$ over et tidsinterval $\Delta t = t_2 - t_1$ kan kraftimpultsen $\Vec{\jmath}$ af de eksterne kræfter findes som
+\[ 
+\Vec{\jmath} = \sum \Vec{F} (t_2 - t_1) = \sum \Vec{F} \Delta t
+.\]
+Det ovenstående kan også skrives som
+\[ 
+\Vec{\jmath} = \Vec{p_2} - \Vec{p_1} = \Delta \Vec{p}
+.\]
+Hvor hhv. $\Vec{p_2}$ og $\Vec{p_1}$ er slut- og start-impulsen.
+
+Det ovenstående kan også skrives som
+\[ 
+\Vec{\jmath} = \int_{t_1}^{t_2}  \sum \Vec{F} \, \mathrm{d}t 
+.\]
+
+\subsection{Impulskonservation (8.2)} 
+Generelt gælder, at når summen af eksterne kræfter på et system er 0 så er impuls konserveret.
+
+\subsubsection{Totalimpuls for et system af partikler} \label{afs:totimp}
+Givet impulsen for alle partikler i et lukket system $\Vec{p_A}, \Vec{p_B}\ldots $ kan den samlede impuls i systemet findes som
+\[
+\Vec{P} = \Vec{p}_{\text{A}} + \Vec{p}_{\text{B}} + \ldots = m_A \Vec{v}_{\text{A}} + m_B \Vec{v}_{\text{B}} +\ldots 
+.\]
+
+
+\subsection{Impulskonservation og kollisioner (8.3)}
+Elastiske kollisioner er alle kollisioner, hvor der ikke tabes mekanisk energi (tænk to billiard- eller marmorkugler der kolliderer). Inelastiske kollisioner er alle kollisioner, hvor den mekaniske energi falder (komplet uealstisk vil medføre at de to kolliderende objekter sidder sammen efter kollisionen).
+
+\subsubsection{Impulskoknservation i en komplet inelastisk kollision} \label{afs:ekonsin}
+Eftersom de to objekter sidder sammen efter en inelastisk kollision har vi at
+\[ 
+  \Vec{v}_{\text{A2}} = \Vec{v}_{\text{B2}} = \Vec{v}_{2}
+.\]
+Impulskonservation foreskriver da at
+\[ 
+m_A \Vec{v}_{\text{A1}} + m_B \Vec{v}_{\text{B1}} = (m_A + m_B) \Vec{v}_2
+.\]
+
+\subsubsection{Restitutionskoefficienten}
+For et stød gælder at resitutionskoefficienten $e$ kan findes som
+\[ 
+e = - \frac{v_{2f} - v_{1f}}{v_{2i} - v_{1i}}
+.\]
+Hvor $v_{1i}$ og $v_{1f}$ er hastigheden af objekt 1 hhv. før- og efter kollisionen og $v_{2i}$ og $v_{2f}$ er objekt 2's ditto. For elastiske kollisioner er $e = 1$ og for uelastiske kollisioner er $0< e < 1$, medens $e = 0$ for fuldstædigt uelastiske kollisioner.
+
+
+\subsection{Elastiske kollisioner (8.4)}  \label{afs:elakol}
+For en elastisk kollision i 1 dimension giver konservation af kinetisk energi at
+\[ 
+\frac{1}{2}m_A v_{A1x}^2 + \frac{1}{2}m_B v_{B1x}^2 = \frac{1}{2}m_A v_{A2x}^2 + \frac{1}{2}m_B v_{B2x}^2
+\]
+og konservation af impuls giver at
+\[ 
+m_A v_{A1x} + m_B v_{B1x} = m_A v_{A2x} + m_B v_{B2x}
+.\]
+Dermed kan sluthastighederne $v_{A2x}$ og $v_{B2x}$ findes såfremt initialhastighederne $v_{A1x}$ og $v_{B1x}$ og masserne $m_A$ og $m_B$ er kendt.
+
+
+\subsection{Massemidtpunkt (8.5)}
+
+\subsubsection{Massemidtpunktet for et system af partikler} \label{sec:cm}
+Er masserne $m_1, m_2, m_3, \ldots$ og stedvektorerne $\Vec{r_1}, \Vec{r_2}, \Vec{r_3}, \ldots $ for en række partikler kendt kan deres fælles massemidtpunkt findes som
+\[ 
+\Vec{r}_{\text{cm}} = \frac{m_1 \Vec{r}_1 + m_2 \Vec{r}_2 + m_3 \Vec{r}_3 + \ldots }{m_1 + m_2 + m_3 +\ldots} = \frac{\sum_i m_i \Vec{r}_{i}}{\sum_i m_i}
+.\]
+
+
+\subsubsection{Massemidtpunktets bevægelse} \label{afs:cmbev}
+Udtrykket fra \ref{sec:cm}: \nameref{sec:cm} kan omskrives til
+\[ 
+M \Vec{v}_{\text{cm}} = m_1 \Vec{v}_1 + m_2 \Vec{v}_2 + m_3 \Vec{v}_3 + \ldots = \Vec{P}
+.\]
+Hvor $M$ er den totale masse af alle partiklerne i systemet, $\Vec{v_{cm}}$ er massemidtpunktets hastighedsvektor, $m_1, m_2, m_3,\ldots$ er masserne af de individuelle partikler, $\Vec{v_1}, \Vec{v_2}, \Vec{v_3}, \ldots $ er hastighedsvektorerne til de individuelle partikler og $\Vec{P}$ er systemets totale impuls.
+
+
+\subsubsection{Eksterne kræfter der virker på en samling af partikler eller et objekt} \label{afs:new2eks}
+Det gælder at
+\[ 
+\sum \Vec{F_{\text{ext}}} = M \Vec{a_{\text{cm}}}
+.\]
+Hvor $\sum \Vec{F_{\text{ext}}}$ er summen af de eksterne kræfter, der virker på et objekt eller en gruppe af partikler, $M$ er totalmassen af objektet eller gruppen af partikler og $\Vec{a_{\text{cm}}}$ er accelerationen af objektets eller gruppen af partiklers massemidtpunkt.
+
+Altså har vi at når et objekt eller en gruppe af partikler bliver påvirket af en elelr flere eksterne kræfter bevæger massemidtpunktet sig som om al massen var koncentreret netop i det punkt og blev påvirket af en kraft der svarer til summen af alle de eksterne kræfter der virker på systemet.

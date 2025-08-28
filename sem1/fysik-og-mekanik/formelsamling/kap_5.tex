@@ -1,0 +1,67 @@
+\section{Anvendelse af Newtons love}
+
+\begin{table}[ht]
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Givet}           & \textbf{Ønsker at finde} & \textbf{Relevante formler} \\ \hline
+Masse, acceleration      & Kraft                    & \ref{afs:new2}             \\ \hline
+Normalkraft, friktionskoefficient & Friktionskraft & \begin{tabular}[c]{@{}l@{}}\ref{afs:kinfrik} – Kinetisk Friktion\\ \ref{afs:statfrik} – Statisk Friktion\end{tabular} \\ \hline
+Hastighed, radius        & Centripetalacceleration  & \ref{afs:cp}               \\ \hline
+masse, hastighed, radius & Centripetalkraft         & \ref{afs:cp}               \\ \hline
+\end{tabular}
+\end{table}\subsection{Newtons 1. lov som komposanter på partikler i ligevægt (5.1)}
+Newtons 1. lov foreskriver at for et objekt i ligevægt fås
+\[ 
+\sum \Vec{F} = 0
+.\]
+
+Denne kan deles op i komposanter som
+\[ 
+  \sum F_x = 0, \qquad \sum F_y = 0
+.\]
+På den måde kan problemet i mange tilfælde reduceres til noget mere simpelt, idet man nu blot kan sørge for at der er ligevægt i hver retning enkeltvist. 
+
+
+\subsection{Newtons 2. lov som komposanter på partikler i bevægelse (5.2)} \label{afs:new2}
+Newtons 2. lov foreskriver at der for et objekt gælder at
+\[ 
+\sum \Vec{F} = m \Vec{a}
+.\]
+
+Denne kan deles op i komposanter som
+\[ 
+  \sum F_x = ma_x, \qquad \sum F_y = ma_y
+.\]
+På den måde kan problemet i mange tilfælde reduceres til noget mere simpelt, idet man nu blot kan regne accelerationen eller kræfterne i hver retning enkeltvist. 
+
+
+\subsection{Friktionskrafter (5.3)}
+
+\subsubsection{kinestisk friktionskraft} \label{afs:kinfrik}
+Givet størrelsen på normalkraften $N$ og en kinetisk friktionskoefficient $\mu_k$ kan den kinetiske friktionskraft $f_k$ for et objekt i bevægelse findes som
+\[ 
+f_k = \mu_k N
+.\]
+
+\subsubsection{Statisk friktionskraft} \label{afs:statfrik}
+Givet størrelsen på normalkraften $N$ og en statisk friktionskoefficient $N$ kan den maksimale statiske friktionskraft $(f_s)_{max}$ findes som
+\[ 
+(f_s)_{max} = \mu_s N
+.\]
+
+Størrelsen på den faktiske friktionskraft $f_s$ vil netop modvirke enhver kraftpåvirkning indtil komposanten af kraftpåvirkning der går parallelt med overfladen mellem objektet som kraftpåvirkningen udføres på od underlaget når $(f_s)_{max}$. Altså
+\[ 
+f_s \leq (f_s)_{max} = \mu_s N
+.\]
+Den faktiske statiske friktionskraft $f_s$ kan antage alle værdier mellem 0 og $(f_s)_max$ afhængigt af størrelsen på den kraft som friktionskraften skal modvirke.
+
+
+\subsection{Kræfter i cirkelbevægelse (Eng: \textit{Dynamics of circular motion}) (5.4)} \label{afs:cp}
+Fra \ref{afs:acccp}: \nameref{afs:acccp} har vi at centripetalaccelerationen $a_{cp}$ i jævn cirkelbevægelse er givet som
+\[ 
+a_{cp} = \frac{v^2}{R}
+.\]
+Vha. Newtons 2. lov kan den tilsvarende centripetalkraft $F_{cp}$ i jævn cirkelbevægelse da findes som
+\[ 
+F_{cp} = ma_{cp} = m \frac{v^2}{R}
+.\]

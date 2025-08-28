@@ -1,0 +1,115 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage{latexsym, amsfonts, amssymb, amsthm, amsmath, siunitx, graphicx, pgfplots}
+
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{every axis/.append style={
+		axis x line=middle,    % put the x axis in the middle
+		axis y line=middle,    % put the y axis in the middle
+		axis line style={<->,color=black}, % arrows on the axis
+	}}
+
+\title{Afleveringsopgave uge 5}
+\author{Noah Rahbek Bigum Hansen}
+\date{28. / 9. - 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Opg. 1}
+
+For hvilke reelle tal er den geometriske række $\sum_{n=0}^{\infty} 2^nx^n$ konvergent?
+
+\bigbreak
+
+Først og fremmest indses at rækkens argument kan skrives som:
+  \[
+    \left( 2x \right)^n 
+  .\] 
+
+
+For en geometrisk række,
+  \[
+  \sum_{n=0}^{\infty} a z^n
+  ,\] 
+
+
+har vi, at rækken er konvergent for $|z|<1$. Altså har vi
+   \[
+  2x<1 \implies x < \frac{1}{2}
+  .\] 
+
+Altså har vi at rækken er konvergent for $x<\frac{1}{2}$.
+
+\section*{Opg. 2}
+Brug kvotientkriteriet til at afgøre om rækken $\sum_{n=1}^{\infty} -1^n \frac{(n+2)!n^2}{n!3^{2n}}$ konvergerer eller divergerer.
+\bigbreak
+Kvotientkriteriet siger, at hvis der for leddene $a_n$ gælder
+\[
+\lim_{n \to \infty} |\frac{a_{n+1}}{a_n}| = R
+.\] 
+så har vi at rækken er absolut konvergent for $R<1$, at rækken er divergent for  $R>1$ og slutteligt at hvis $R=1$ så kan ingen konklusion drages. Altså har vi:
+\[
+ \lim_{n \to \infty}  \frac{|(-1)^{n+1} \left( n+3 \right)!\left( n+1 \right)^2 3^{2n}n!|}{|(-1)^n \left( n+1 \right)!(n+2)!3^{2n+2}n^2|} = R
+.\] 
+Først og fremmest indses at $(-1)^n$-leddet udgår idet denne kun kan antage værdierne +1 og -1 og disse er ækvivalente idet den numeriske værdi af udtrykket tages. Altså fås
+\[
+R = \lim_{n \to \infty}  \frac{|\left( n+3 \right)!\left( n+1 \right)^2 3^{2n}n!|}{|\left( n+1 \right)!\left( n+2 \right)!3^{2n+2}n^2|}
+.\]
+Dernæst kan indses at
+\[
+\frac{\left( n+3 \right) !}{\left( n+2 \right) !} = \left( n+3 \right) 
+.\] 
+Og at
+\[
+\frac{3^{2n}}{3^{2n+2}} = \frac{1}{3^2} = \frac{1}{9}
+.\] 
+Indsættes disse to fås:
+\[
+R = \lim_{n \to \infty}  \frac{|\left( n+3 \right)\left( n+1 \right)^2 n!|}{|\left( n+1 \right)! 9 n^2|}
+.\]
+For at fjerne den sidste fakultetsfunktion benyttes det at
+\[
+\frac{n!}{\left( n+1 \right)!} = \frac{1}{n+1}
+.\]
+Dermed har vi:
+\[
+R = \lim_{n \to \infty} \frac{|(n+3)(n+1)^2|}{|\left( n+1 \right) 9n^2|}
+.\] 
+Dernæst kan parenteserne ganges ud:
+\[
+R = \lim_{n \to \infty} \frac{|n^3+5n^2+7n+3|}{|9n^3+9n^2|}
+.\]
+Denne grænseværdi kan nu evalueres. For $n \to \infty$ har vi at $n^3\gg n^2 \gg n$. Altså bliver $n^2$-,  $n$- og konstantleddene ubetydelige for  $n \to \infty$. Dermed har vi
+\[
+R = \frac{n^3}{9n^3} = \frac{1}{9}
+.\] 
+Dette kan også vises matematisk som følgende omskrivning, hvor der divideres med $n^3$
+\[
+  \frac{|n^3+5n^2+7n+3|}{|9n^3+9n^2|} = \frac{|1+\frac{5}{n}+\frac{7}{n^2}+\frac{3}{n^3}|}{|9+\frac{9}{n}|}
+.\] 
+Her bliver det åbenlyst at summen går mod $\frac{1}{9}$ for $n \to \infty$. Idet $\frac{1}{9}<1$ har vi derfor at rækken er absolut konvergent. 
+\end{document}

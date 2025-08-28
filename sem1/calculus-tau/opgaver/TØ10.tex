@@ -1,0 +1,431 @@
+\documentclass[12pt]{article}
+\usepackage[danish]{babel}
+\usepackage{amsfonts, amssymb, mathtools, amsthm, amsmath}
+\usepackage{graphicx, pgfplots}
+\usepackage{url}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{sagetex}
+\usepackage{lastpage}
+
+%loaded last
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{siunitx}
+  \sisetup{exponent-product = \cdot,
+    output-decimal-marker = {,}}
+
+%Giles Castelles incfig
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+  \def\svgwidth{#1\columnwidth}
+  \import{../figures/}{#2.pdf_tex}
+}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\thepage}
+\fancyhead[C]{\leftmark}
+
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{every axis/.append style={
+  axis x line=middle,    % put the x axis in the middle
+  axis y line=middle,    % put the y axis in the middle
+  axis line style={<->,color=black}, % arrows on the axis
+}}
+
+\usepackage{thmtools}
+\usepackage{tcolorbox}
+  \tcbuselibrary{skins, breakable}
+  \tcbset{
+    space to upper=1em,
+    space to lower=1em,
+  }
+
+\theoremstyle{definition}
+
+\newtcolorbox[auto counter]{definition}[1][]{%
+  breakable,
+  colframe=ForestGreen,  %frame color
+  colback=ForestGreen!5, %background color
+  colbacktitle=ForestGreen!25, %background color for title
+  coltitle=ForestGreen!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{ForestGreen},  %display left line
+  title=Definition \thetcbcounter: #1,
+}
+
+\newtcolorbox{greenline}{%
+  breakable,
+  colframe=ForestGreen,  %frame color
+  colback=white,          %remove background color
+  left=1em,              %space on left side in box
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{ForestGreen},  %display left line
+}
+
+\newtcolorbox[auto counter, number within=section]{eks}[1][]{%
+  brekable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,            %space on left side in box,
+  enhanced,            %more options
+  frame hidden,        %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Eksempel \thetcbcounter: #1
+}
+
+\newtcolorbox{blueline}{%
+  breakable,
+  colframe=NavyBlue,     %frame color
+  colback=white,         %remove background
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+}
+
+\newtcolorbox{teo}[1][]{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=RawSienna!5, %background color
+  colbacktitle=RawSienna!25,    %background color for title
+  coltitle=RawSienna!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+  title=Teori: #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{sæt}[1][]{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=RawSienna!5, %background color
+  colbacktitle=RawSienna!25,    %background color for title
+  coltitle=RawSienna!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+  title=Sætning \thetcbcounter: #1,
+  before lower={\textbf{Bevis:}\par\vspace{0.5em}},
+  colbacklower=RawSienna!25,
+}
+
+\newtcolorbox{redline}{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=white,       %Remove background color
+  left=1em,            %space on left side in box,
+  enhanced,            %more options
+  frame hidden,        %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+}
+
+\newtcolorbox{for}[1][]{%
+  breakable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Forklaring #1,
+}
+
+\newtcolorbox{bem}{%
+  breakable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Bemærkning:,
+}
+
+\makeatother
+\def\@lecture{}%
+\newcommand{\lecture}[3]{
+  \ifthenelse{\isempty{#3}}{%
+    \def\@lecture{Lecture #1}%
+  }{%
+    \def\@lecture{Lecture #1: #3}%
+  }%
+  \subsection*{\makebox[\textwidth][l]{\@lecture \hfill \normalfont\small\textsf{#2}}}
+}
+
+\makeatletter
+
+\newcommand{\opgave}[1]{%
+ \def\@opgave{#1}%
+ \subsection*{Opgave #1}
+}
+
+\makeatother
+
+%Format lim the same way in intext and in display
+\let\svlim\lim\def\lim{\svlim\limits}
+
+% horizontal rule
+\newcommand\hr{
+\noindent\rule[0.5ex]{\linewidth}{0.5pt}
+}
+
+\title{TØ-opgaver uge 10}
+\author{Noah Rahbek Bigum Hansen}
+\date{12. November 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Opg. 9.6.1}
+Evaluate the integral
+\[ 
+\int_{0}^{5} \left( x^{4}y + y \right) \, \mathrm{d}x 
+.\]
+\bigbreak
+Vi integrerer som normalt dog med $y$ holdt konstant så
+\begin{align*}
+  \int_{0}^{5} x^{4}y + y \, \mathrm{d}x &= \left[ \frac{1}{5}x^{5}y + yx \right]_0^{5} \\
+  &= 630y
+.\end{align*}
+
+
+\section*{Opg. 9.6.11}
+Evaluate the integral
+\[ 
+\int_{1}^{5} \int_{0}^{3} \left( x^2y + 5y \right) \, \mathrm{d}x \, \mathrm{d}y 
+.\]
+\bigbreak
+Først beregnes det inderste integral så
+\begin{align*}
+  \int_{0}^{3} x^2y + 5y \, \mathrm{d}x &= \left[ \frac{1}{3}x^3y + 5yx \right]_0^{3} \\
+  &= 24y
+.\end{align*}
+Og slutteligt kan det yderste integral beregnes som
+\begin{align*}
+  \int_{1}^{5} 24y \, \mathrm{d}y &= \left[ 12y^2 \right]_{1}^{5} \\
+  &= 12\cdot 5^2 - 12\cdot 1^2 \\
+  &= 12 \cdot (5^2 - 1^2) \\
+  &= 288
+.\end{align*}
+
+
+
+\section*{Prøveeksamensopgave 19}
+Udregn planintegralet
+\[ 
+\int_{0}^{1} \int_{0}^{1} xy \, \mathrm{d}x \, \mathrm{d}y = \frac{1}{k}
+\]
+hvor $k$ er et helt tal mellem 0 og 99.
+\bigbreak
+Først beregnes det inderste integrale som
+\begin{align*}
+  \int_{0}^{1} xy \, \mathrm{d}x &= \left[ \frac{1}{2}x^2y \right]_0^{1} \\
+  &= \frac{1}{2}y
+.\end{align*}
+Og dernæst det yderste integral
+\begin{align*}
+  \int_{0}^{1} \frac{1}{2}y \, \mathrm{d}y &= \left[ \frac{1}{4}y^2 \right]_0^{1} \\
+  &= \frac{1}{4}
+.\end{align*}
+Altså er $k = 4$
+
+
+\section*{Opg. 9.6.33}
+Evaluate the integral
+\[ 
+z = x \sqrt{x^2 + y}; \qquad 0 \leq x \leq 1; \qquad 0 \leq y \leq 1
+.\]
+\bigbreak
+Først opskrives integralet fra opgaven
+\[ 
+\int_{0}^{1} \int_{0}^{1} x \sqrt{x^2 + y} \, \mathrm{d}x \, \mathrm{d}y 
+.\]
+Vi benytter kædereglen og sætter $u = x^2 + y \implies \frac{\mathrm{d}u}{\mathrm{d}x} = 2x \implies \mathrm{d}x = \frac{1}{2x}\, \mathrm{d}u$ 
+Den nye øvre grænse bliver da
+\[ 
+u_{øvre} = 1^2 + y = y+1
+.\]
+Og den nedre bliver
+\[ 
+u_{nedre} = 0^2 + y = y
+.\]
+Så vi får altså at
+\begin{align*}
+  V &= \frac{1}{2} \int_{0}^{1} \int_{y}^{y+1} \sqrt{u} \, \mathrm{d}u \, \mathrm{d}y  \\
+  &= \frac{2}{6} \int_{0}^{1} \left[ u^{\frac{3}{2}} \right]_{y}^{y+1} \\
+  &= \frac{1}{3} \int_{0}^{1} (y+1)^{\frac{3}{2}} - y^{\frac{3}{2}} \, \mathrm{d}y  \\
+  &= \frac{1}{3} \left( \frac{2}{5} \cdot \left[ (1+y)^{\frac{5}{2}} - y^{\frac{5}{2}} \right]_{0}^{1} \right) \\
+  &= \frac{2}{15} \left( 2^{\frac{5}{2}} - 1 - 1^{\frac{5}{2}} \right) \\
+  &= \frac{2}{15}\left( 2^{\frac{5}{2}} - 2 \right)
+.\end{align*}
+
+
+\section*{Opg. 9.6.37}
+Evaluate the integral
+\[ 
+\iint_R xe^{xy} \, \mathrm{d}x \, \mathrm{d}y; \quad 0 \leq x \leq 2; \quad 0 \leq y \leq 1
+.\]
+\bigbreak
+Først opskrives integralet
+\[ 
+\int_{0}^{2} \int_{0}^{1} xe^{xy} \, \mathrm{d}y \, \mathrm{d}x  
+.\]
+Vi starter med at løse det inderste integrale så
+\begin{align*}
+  \int_{0}^{1} xe^{xy} \, \mathrm{d}y &= x \int_{0}^{1} e^{xy} \, \mathrm{d}y  \\
+  &= \int_{0}^{x} e^{u} \, \mathrm{d}u \\
+  &= \left[ e^{u} \right]_{0}^{x} \\
+  &= e^{x} - e^{0}
+.\end{align*}
+Og dermed kan det sidste integrale løses
+\begin{align*}
+  \int_{0}^{2} e^{x} - e^{0} \, \mathrm{d}x &= \left[ e^{x} - x \right]_{0}^{2} \\
+  &= e^2 - 2 - e^{0} \\
+  &=  e^2 - 3
+.\end{align*}
+
+
+\section*{Prøveeksamensopgave 20}
+Udregn planintegralet
+\[ 
+\int_{0}^{1} \int_{y}^{2y} (x+y) \, \mathrm{d}x \, \mathrm{d}y = \frac{5}{k}
+\]
+hvor $k$ er et helt tal mellem 0 og 99.
+\bigbreak
+Først beregnes det inderste integrale som
+\begin{align*}
+  \int_{y}^{2y} x+y \, \mathrm{d}x &= \left[ \frac{1}{2}x^2 + yx \right]_{y}^{2y}  \\
+  &= \frac{1}{2} \left( 4y^2 - y^2 \right) + y \left( 2y - y \right) \, \mathrm{d}y  \\
+  &= \frac{3}{2} y^2 + y^2 \\
+  &= \frac{5}{2}y^2
+.\end{align*}
+Og slutteligt løses det yderste integrale som
+\begin{align*}
+  \int_{0}^{1} \frac{5}{2}y^2 \, \mathrm{d}y &= \left[ \frac{5}{6}y^{3} \right]_0^{1} \\
+  &= \frac{5}{6}\cdot 1^{3} - \frac{5}{6}\cdot 0^{3} \\
+  &= \frac{5}{6}
+.\end{align*}
+Altså er $k = 6$
+
+
+\section*{Opg. 9.6.50}
+Evaluate the integral
+\[ 
+\iint_{R} \frac{1}{x} \, \mathrm{d}y \, \mathrm{d}x; \qquad 1 \leq x \leq 2; \qquad 0 \leq y \leq x-1
+.\]
+\bigbreak
+Planintegralet opstilles som
+\[ 
+\int_{1}^{2} \int_{0}^{x-1} \frac{1}{x} \, \mathrm{d}y \, \mathrm{d}x 
+.\]
+Vi løser først det inderste integrale som
+\begin{align*}
+  \int_{0}^{x-1} \frac{1}{x} \, \mathrm{d}y &= \left[ \frac{y}{x} \right]_0^{x-1} \\
+  &= \frac{x-1}{x} - \frac{0}{x} \\
+  &= 1 - \frac{1}{x}
+.\end{align*}
+Og dermed kan det yderste integrale løses som
+\begin{align*}
+  \int_{1}^{2} 1 - \frac{1}{x} \, \mathrm{d}x &= \left[ x - \ln(x) \right]_1^2  \\
+  &= 2 - \ln(2) - 1 + \ln(1) \\
+  &= 1 - \ln(2)
+.\end{align*}
+
+
+\section*{Opg. 9.6.54}
+Evaluate the integral
+\[ 
+\iint_R x^2y^2 \, \mathrm{d}x \, \mathrm{d}y ; R \text{ bounded by } y = x; y = 2x, x = 1
+.\]
+\bigbreak
+Vi evaluerer ift. $y$ først, da $y$ skal være begrænset af $x$ og $x$ af konstanter. Vi har dermed
+\[ 
+x \leq y \leq 2x
+\]
+og
+\[ 
+0 \leq x \leq 1
+.\]
+Vi kan dermed opskrive planintegralet som
+\[
+  \int_{0}^{1} \int_{x}^{2x} x^2y^2 \, \mathrm{d}y \, \mathrm{d}x
+.\]
+Først løses det inderste integrale som
+\begin{align*}
+  x^2 \int_{x}^{2x} y^2 \, \mathrm{d}y &= x^2 \cdot \frac{1}{3} \cdot \left[ y^3 \right]_{x}^{2x}  \\
+  &=  \frac{1}{3} \cdot x^2 \cdot \left( (2x)^3 - x^3 \right) 
+.\end{align*}
+Og vi kan dermed beregne det inderste integrale som
+\begin{align*}
+  \frac{1}{3} \int_{0}^{1} x^2 \left( 8x^3 - x^3 \right) &= \frac{1}{3} \int_{0}^{1}  x^2 \cdot 7x^3 \\
+  &= \frac{7}{3} \int_{0}^{1} x^{5} \\
+  &= \frac{7}{18} [x^{6}]_0^{1} \\
+  &= \frac{7}{18}
+.\end{align*}
+
+
+\section*{Opg. 9.6.69}
+\textbf{Average revenue.} A company sells two products. The demand functions of the products are given by
+\[ 
+q_1 = 300 - 2p_1 \qquad \text{and} \qquad  q2 = 500 - \num{1,2}p_2
+,\]
+where $q_1$ units of the first product are demanded at price $p_1$ and $q_2$ units of the second product are demanded at price $p_2$. The total revenue will be given by
+\[ 
+R = q_1p_1 + q_2p_2
+.\]
+Find the average revenue if the price $p_1$ varies from $25$ to $50$ and the price $p_2$ vares from $50$ to $75$. (\textit{Hint:} Refer to Exercises 61-64.)
+\bigbreak
+Vi indsætter udtrykkene for $q_1$ og $q_2$ i udtrykket for $R$ så vi får at
+\[ 
+R = (300 - 2p_1)p_1 + (500 - \num{1,2}p_2)p_2 = 300p_1 - 2p_1^2 + 500p_2 - \num{1,2}p_2^2
+.\]
+Og grænserne fra opgaven er $25 \leq p_1 \leq 50$ og $50 \leq p_2 \leq 75$. Gennemsnitsindtjeningen $\overline{r}$ er defineret som den totale indtjening (overfladeintegralet) divideret med integrationsarealet $R$ så vi har at:
+\[ 
+\overline{r} = \frac{1}{(50-25)(75-50)}\int_{25}^{50} \int_{50}^{75} R \, \mathrm{d}p_2 \, \mathrm{d}p_1
+.\]
+Først løses det inderste integrale som
+\begin{align*}
+  \int_{50}^{75} 300p_1 - 2p_1^2 + 500p_2 - \num{1,2}p_2^2 \, \mathrm{d}p_2 &= \left[ 300p_1p_2 - 2p_1^2p_2 + \frac{500}{2}p_2^2 - \num{1,2}\cdot \frac{1}{3} p_2^3 \right]_{50}^{75} \\
+  &= 7500p_1 - 50 p_1^2 + \num{6,625} \cdot 10^5
+.\end{align*}
+Og dermed kan det yderste integrale beregnes som
+\[
+\frac{1}{625} \int_{25}^{50} \left( 7500p_1 - 50 p_1^2 + \num{6,625} \cdot 10^5 \right) \, \mathrm{d}p_1 = \num{34833} 
+.\]
+Altså er gennemsnitsindtjeningen \$\num{34833}.
+
+\end{document}

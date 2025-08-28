@@ -1,0 +1,306 @@
+\lecture{5}{23. September 2024}{Potensrækker og Taylor-approksimation}
+Taylor-approksimationer omhandler i sin grundessens at approksimere andre funktioner. 
+
+\section{Potensrækker og deres konvergens}
+\begin{definition} [Potensrækker]
+  For tal $c_n$ (koefficienterne) og $a_i$ kaldes funktionen
+  \[ 
+  p(x) = \sum_{n = 0}^{\infty} c_n(x-a)^{n} = c_0 + c_1(x-a) + c_2(x-a)^2
+  \]
+  for en \textit{potenstække}. Det ovenstående er en uendelig række og det virker derfor naturligt at rækken er konvergent for nogle situationer og divergent for andre.
+\end{definition}
+
+\begin{sæt} [Konvergensradius]
+  Med afsæt i \autoref{afs:konv} defineres konvergensradiussen for potensrækker. For en potensrække
+  \[ 
+  p(x) = \sum_{n = 0}^{\infty} c_n(x-a)^{n}
+  \]
+  findes et tal $R \geq 0$ kaldet konvergensradius, som opfylder
+  \begin{itemize}
+    \item For $x$ så $|x-a| < R$: $p(x)$ er \textit{absolut konvergent}.
+    \item For $x$ så $|x-a| > R$: $p(x)$ er \textit{divergent}.
+    \item For $x$ så $|x-a| = R$: Ingen konklusion kan drages.
+  \end{itemize}
+  Bemærk i øvrigt, at i de reele tal, svarer $|x-a| < R$ til $x \in (a-R, a+R)$.
+\end{sæt}
+
+\begin{sæt} [Beregning af konvergensradius]
+  Ofte kan konvergensradius bestemmes vha. \textit{kvotientkriteriet} fra forelæsning 4.
+
+  Hvis
+  \[ 
+  R = \lim_{n \to \infty} \left| \frac{c_n}{c_{n+1}} \right|
+  \]
+  eksisterer eller er $\infty$, så er $R$ konvergensradius for $\sum_{n = 0}^{\infty} c_n (x-a)^{n}$.
+\end{sæt}
+
+\begin{eks} [Beregning af konvergensradius]
+  Vi ønsker at bestemme konvergensradiussen for potensrækken
+  \[ 
+  \sum_{n = 0}^{\infty} \frac{n^3}{n!}(x-5)^{n}
+  .\]
+  \bigbreak
+  Vi sætter dette ind i formlen for beregning af konvergensradius som
+  \begin{align*}
+  R &= \lim_{n \to \infty} \left| \frac{\frac{n^3}{n!}}{\frac{(n+1)^3}{(n+1)!}} \right| \\
+  &= \lim_{n \to \infty} \frac{n^3 (n+1)!}{n! \cdot (n+1)^3} \\
+  &= \lim_{n \to \infty} \frac{n^3 n! \cdot (n+1)}{n! \cdot (n+1)^3} \\
+  &= \lim_{n \to \infty} \frac{n^3}{(n+1)^2} \\
+  &= \infty
+  .\end{align*}
+  Altså er potensrækken
+  \[ 
+  \sum_{n = 0}^{\infty} \frac{n^3}{n!}(x-5)^{n}
+  \]
+  Konvergent for alle $x$.
+\end{eks}
+
+\begin{eks} [Et simplere eksempel]
+  Vi ønsker at finde konvergensradiussen for
+  \[ 
+  \sum_{n = 0}^{\infty} \frac{1}{2^{n}} x^{n}
+  .\]
+  \bigbreak
+  Det indses at dette er en konvergensradius med $c_n = \frac{1}{2^{n}}$ og $a = 0$. Vi sætter dette ind i formlen som
+  \begin{align*}
+  R &= \lim_{n \to \infty} \frac{2^{n+1}}{2^{n}} \\
+    &= 2
+  .\end{align*}
+  Altså er potenrækken konvergent for $|x| < 2$.
+\end{eks}
+
+\subsection{Ledvis differentiation og integration (ikke pensum?)}
+Potensrækkerne minder meget om polynomier og det viser sig da også at man kan differentiere og integrere disse ledvist, som
+\begin{align*}
+  \frac{\mathrm{d}}{\mathrm{d}x} (x-a)^{n} &= n(x-a)^{n-1} \\
+  \int (x-a)^{n} &= \frac{1}{n+1} (x-a)^{n+1} + C
+.\end{align*}
+
+\begin{sæt} [Ledvis differentiation og integration af potensrækker]
+  Det gælder at indenfor deres konvergensradius er de vilkårligt ofte differentiable (også kaldet \textit{glatte} funktioner). Vi har at hvis $p(x) = \sum_{n = 0}^{\infty} c_n(x-a)^{n}$ har konvergensradius $R$, så har
+  \[ 
+  p'(x) = \sum_{n = 1}^{\infty} nc_n(x-a)^{n-1}
+  \]
+  og
+  \[ 
+  P(x) = \sum_{n = 0}^{\infty} \frac{c_n}{n+1}(x-a)^{n+1}
+  \]
+  også konvergensradius $R$.
+\end{sæt}
+
+\begin{eks} [Eksempel på brug af ledvis differentiation og integration]
+  Lad $p(x) = \sum_{n = 0}^{\infty} \frac{1}{2^n}x^n$ (konvergensradius $R = 2$). Hvad er $p'(0)$?
+  \bigbreak
+  Vi finder $p'$ med sætningen ovenfor som
+  \[ 
+  p'(x) = \sum_{n = 1}^{\infty} \frac{n}{2^{n}} x^{n-1}
+  .\]
+  Ved indsætning fås
+  \begin{align*}
+    p'(0) &= \sum_{n = 1}^{\infty} \frac{n}{2^{n}} 0^{n-1} = \frac{1}{2} \\
+    &= \frac{1}{2}
+  .\end{align*}
+  \bigbreak
+  Det samme kan gøres med integration. Vi finder altså $P(x)$ som
+  \[ 
+  P(x) = \sum_{n = 0}^{\infty} \frac{1}{2^{n}(n+1)} x^{n+1}
+  .\]
+\end{eks}
+
+\begin{eks} [Eksempel på erstatning af x]
+  Vi har fra tidligere at for $|x|<2$
+  \[ 
+  p(x) = \sum_{n = 0}^{\infty} \left( \frac{x}{2} \right)^{n} = \frac{1}{1 - \frac{x}{2}} = \frac{2}{2-x}
+  .\]
+  Med differentiation og integration fås
+  \begin{align*}
+    \frac{2}{(2-x)^2} &= \sum_{n = 1}^{\infty} \frac{n}{2^n} x^{-1} \\
+    2(\ln(2)-\ln(2-x)) &= \sum_{n = 0}^{\infty} \frac{1}{2^{n}(n+1)}x^{n+1}
+  .\end{align*}
+  For $|x|<2$.
+
+  Vi har nu fundet nye udtryk for summen. Vi kan eksempelvis betragte
+  \[ 
+  \frac{2}{(2-x)^2} = \sum_{n = 1}^{\infty} \frac{n}{2^n}x^{n-1}, \qquad |x| < 2
+  .\]
+  Vi kan nu eksempelvis substituere $x$ for $(x-1)^{4}$ og derved fås rækkefremstillingen for en ny funktion
+  \[ 
+  \frac{2}{(2-(x-1)^{4})^{2}} = \sum_{n = 1}^{\infty} \frac{n}{2^{n}} (x-1)^{4n-4}
+  \]
+  som holder for $|(x-1)^{4}| < 2$, dvs. $|x-1| < 2^{\frac{1}{4}}$
+
+  Vi kan også erstatte $x$ med $\cos(x)$, hvilket giver
+  \[ 
+  \frac{2}{(2-\cos(x))^{2}} = \sum_{n = 1}^{\infty} \frac{n}{2^{n}} \cos(x)^{n-1}
+  \]
+  hvilket holder for $|\cos(x)| < 2$, dvs. for alle $x$. Det kan bemærkes at det ovenstående ikke engang er en potensrække mere.
+\end{eks}
+
+
+\subsection{Taylorpolynomier}
+\begin{definition} [Afledningsnotation]
+  For en funktion $f$, betegner vi den afledede
+  \[ 
+  f^{(0)} = f, \quad f^{(1)} = f', \quad f^{(2)} = f'', \quad f^{(3)} = f''', \quad \ldots
+  \]
+  Generelt betegner $f^{(n)}$ den $n$'te afledede.
+\end{definition}
+
+\begin{definition} [Taylorpolynomier]
+  For en funktion $f$, der er nok gange differentiabel, kaldes
+  \[ 
+  P_N(x) = \sum_{n = 0}^{N} \frac{f^{(n)}(a)}{n!}(x-a)^{n} = f(a) + f'(a)(x-a) + \frac{f''(a)}{2}(x-a)^2 + \ldots + \frac{f^{(N)}(a)}{N!}(x-a)^{N}
+  \]
+  for $N$'te-grads \textit{Taylorpolynomiet} for $f$ med udviklingspunkt $a$.
+\end{definition}
+
+
+\begin{eks} [7.-grads Taylorpolynomium]
+  Vi ønsker at finde et 7.-grads Taylorpolynomium for $f(x) = \sin(x)$ med udviklingspunkt $a = 0$.
+  \bigbreak
+  Vi finder $\sin$s afledede som
+  \begin{align*}
+    f'(x) &= \cos(x) = f^{(5)}(x) \\
+    f''(x) &= -\sin(x) = f^{(6)}(x) \\
+    f^{(3)}(x) &= -\cos(x) = f^{(7)}(x) \\
+    f^{(4)}(x) &= \sin(x)
+  .\end{align*}
+  Det er i det ovenstående smart at udviklingspunktet $a = 0$, da vi kender funktionsværdien for alle de afledede i dette punkt. Vi får altså
+  \begin{align*}
+    f(0) &= f^{(4)}(0) = 0 \\
+    f'(0) &= f^{(5)}(0) = 1 \\
+    f''(0) &= f^{(6)}(0) = 0 \\
+    f^{(3)}(0) &= f^{(7)}(0) = -1
+  .\end{align*}
+  Vi kan dermed opskrive Taylorpolynomiet som
+  \begin{align*}
+    P_7(x) &= \frac{0}{0!}x^{0} + \frac{1}{1!}x^{1} + \frac{0}{2!}x^2 - \frac{1}{3!}x^3 + \frac{0}{4!}x^{4} + \frac{1}{5!}x^{5} + \frac{0}{6!}x^{6} - \frac{1}{7!} x^{7} \\
+  &= x - \frac{1}{6}x^3 + \frac{1}{120}x^5 - \frac{1}{5040}x^{7}
+  .\end{align*}
+  Af ovenstående Taylor-polynomier kan også ses at det er korrekt, at $\sin(x) \approx x$ for små $x$.
+\end{eks}
+
+
+\begin{sæt} [Taylors sætning]
+  Hvis $f$ har $N + 1$ afledede på åben interval $I$, som indeholder punktet $a$, så gælder for alle $x \in I$:
+  \[ 
+  f(x) = \sum_{n = 0}^{N} \frac{f^{(n)}(a)}{n!}(x-a)^{n} + R_N(x)
+  ,\]
+  hvor restleddet, $R_N$, er lig
+  \[ 
+  R_N(x) = \frac{f^{N+1}(c_x)}{(N+1)!}(x-a)^{N+1}
+  ,\]
+  for et ukendt tal $c_x$ mellem $x$ og $a$.
+\end{sæt}
+
+\begin{eks} [Restleddet fra 7.-grads Taylorpolynomiet]
+  For $f(x) = \sin(x)$ og $a = 0$ har vi
+  \[ 
+  |R_N(x)| \leq \frac{|x|^{N+1}}{(N+1)}!
+  \]
+  da alle afledede af $\sin(x)$ opfylder $\left|f^{(N+1)}(x)\right| \leq 1$. For $N = 7$ in intervallet $(-\frac{\pi}{2}, \frac{\pi}{2}):$
+  \[ 
+  |R_7(x)| \leq \frac{\left( \frac{\pi}{2} \right)^{8}}{8!} \approx 0,0009 
+  .\]
+\end{eks}
+
+
+\subsection{Taylorrækker}
+Hvis $N \to \infty$ i Taylorpolynomiet for $f$ med udviklingspunktet $a$, fås en uendelig række, kaldet en Taylorrække:
+\[ 
+p(x) = \sum_{n = 0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^{n}
+.\]
+\textit{Bemærk:} En Taylorrække er en potenstrække med koefficienterne
+\[ 
+c_n = \frac{f^{(n)}(a)}{n!}
+.\]
+Dette betyder at begreber som \textit{konvergensradius, ledvis differentiation og ledvis integration} også holder for Taylorrækker.
+
+Taylorrækken $p$ bliver uendeligt præcis og lig med funktionen $f$, $f(x) = p(x)$, netop for de $x$, hvor
+\[ 
+\lim_{N \to \infty } R_N(x) = 0
+.\]
+
+
+\begin{eks} [Et simpelt eksempel]
+  Vi ønsker at bestemme en Taylorrække for $f(x) = e^{x}$ med udviklingspunkt $a = 0$.
+  \bigbreak
+  Først bemærkes at alle
+  \[ 
+  f^{(n)}(x) = e^{x}
+  .\]
+  Vi kan nu indsætte dette i formlen
+  \[ 
+  p(x) = \sum_{n = 0}^{\infty} \frac{e(0)}{n!} x^{n} = \sum_{n = 0}^{\infty} \frac{x^{n}}{n!}
+  .\]
+\end{eks}
+
+
+\begin{eks} [Et mere kompliceret eksempel]
+  Vi ønsker at bestemme Taylorrækken for $f(x) = x^{-3}$ med udviklingspunkt $a = 2$.
+  \bigbreak
+  Vi finder den afledede
+  \[ 
+  f'(x) = -3x^{-4}
+  .\]
+  Og den næste
+  \[ 
+  f''(x) = 3\cdot 4x^{-5}
+  .\]
+  Og den næste
+  \[ 
+  f''(x) = -3\cdot 4\cdot 5x^{-6}
+  .\]
+  Vi kan nu begynde at fornemme et system. Et generelt udtryk for dette er
+  \[ 
+  f^{(n)}(x) = (-1)^{n} \left( \frac{(n+2)!}{2} \right) x^{-(n+3)} = \frac{(-1)^{n}(n+2)!}{2x^{n+3}} 
+  .\]
+  Idet vi husker at udviklingspunktet er $a = 2$ kan det ovenstående indsættes i formlen som
+  \[ 
+    p(x) = \sum_{n = 0}^{\infty} \frac{f^{(n)}(2)}{2!}(x-2)^{n} = \sum_{n = 0}^{\infty} \frac{(-1)^{n}(n+2)!}{2^{n+4}n!}(x-2)^{n}
+  .\]
+\end{eks}
+
+\subsubsection{Et par brugbare Taylorrækker}
+For $\sin(x), \cos(x), e^{x}$ gælder for alle $x$ (restleddet går mod 0 for alle $x$ og højresiderne har konvergensradius på $\infty$):
+\begin{align*}
+  \sin(x) &= \frac{x}{1!} - \frac{x^3}{3!} + \frac{x^{5}}{5!} - \ldots = \sum_{n = 0}^{\infty} \frac{(-1)^{n}}{(2n+1)!}x^{2n+1} \\
+  \cos(x) &= 1 - \frac{x^2}{2!} + \frac{x^{4}}{4!} - \ldots = \sum_{n = 0}^{\infty} \frac{(-1)^{n}}{(2n)!}x^{2n} \\
+  e^{x} &= 1 + \frac{x}{1} + \frac{x^2}{2!} + \ldots = \sum_{n = 0}^{\infty} \frac{x^{n}}{n!}
+.\end{align*}
+
+Det ovenstående er også årsagen til at den komplekse eksponentialfunktion er defineret som den er. Erstattes $x$ i $e^{x}$ med et komplekst tal $z = i\theta$:
+\begin{align*}
+  e^{i\theta} &= \sum_{n = 0}^{\infty} \frac{(i\theta)^{n}}{n!} = \sum_{n = 0}^{\infty} \frac{(i\theta)^{2n}}{(2n)!} + \sum_{n = 0}^{\infty} \frac{(i\theta)^{2n+1}}{(2n+1)!} \\
+      &= \sum_{n = 0}^{\infty} \frac{(-1)^{n}}{(2n)!}\theta^{2n} + i \sum_{n = 0}^{\infty} \frac{(-1)^{n}}{(2n+i)!} \theta^{2n+1} \\
+      &= \cos(\theta) + i \sin(\theta)
+.\end{align*}
+
+
+\subsection{Entydighed}
+
+\begin{sæt} [Entydighed af potensrækker]
+  Hvis to potensrækker (og dermed også Taylorrækker), med samme udviklingspunkt, er ens, 
+  \[ 
+  \sum_{n = 0}^{\infty} c_n(x-a)^{n} = \sum_{n = 0}^{\infty} d_n (x-a)^{n}
+  \]
+  på et ikke-tomt åbent interval $I$, så er deres koefficienter ens
+  \[ 
+  c_n = d_n
+  \]
+  for alle $n$. 
+\end{sæt}
+
+\begin{eks} [Taylorrække besemt ved entydighed]
+  Vi ønsker at bestemme Taylorrækken for $f(x) = (x^2 + 1)\cos(x^3)$ med udviklingspunkt $a = 0$.
+  \bigbreak
+  Det ovenstående ville være besværligt lige ud af bogen, idet de afledede er svære at finde. Vi kender dog allerede en Taylorrække for cosinus. Vi kan derfor indsætte Taylorrækken for cosinus som
+  \[ 
+    f(x) = (x^2 + 1) \cdot \sum_{n = 0}^{\infty} \frac{(-1)^{n}}{(2n)!} \left( x^3 \right)^{2n}
+  .\]
+  Det ovenstående kan simplificeres til
+  \[ 
+    f(x) = \sum_{n = 0}^{\infty} \frac{(-1)^{n}}{(2n)!} x^{6n + 2} + \sum_{n = 0}^{\infty} \frac{(-1)^{n}}{(2n)!} x^{6n}
+  .\]
+  Idet der er entydighed må det fundne udtryk for $f(x)$ være lig taylorrækken for $f(x)$. 
+\end{eks}

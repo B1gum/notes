@@ -1,0 +1,449 @@
+\lecture{7}{7. oktober 2024}{Anden ordens lineære differentialligninger}
+\begin{definition}[Anden ordens lineær differentialligning]
+  En anden ordens lineær differentialligning er defineret ved differentialoperatoren $L(x)$ givet ved
+  \begin{equation}
+    L(y)=P(x)y''+Q(x)y' + R(x)y  
+  \end{equation}
+  Idet at den er lineær ligger desuden at for tal $C_1$ og $C_2$ og funktioner $y_1$ og $y_2$ gælder at
+  \begin{equation*}
+    L(C_1y_1+C_2y_2) = C_1L(y_1) + C_2L(y_1)
+  \end{equation*}
+\end{definition}
+Vi kommer i dette kursus til at arbejde med ligninger på formene
+\begin{itemize}
+  \item $P(x)y'' + Q(x)y' + R(x)y = 0 \hfill (\textbf{homogen})$ \\
+    Altså $L(x)=0$
+  \item $P(x)y'' + Q(x)y' + R(x)y = G(x)  \hfill (\textbf{inhomogen})$\\
+    Altså L(x)=G(x)
+\end{itemize}
+
+\section{Homogene differentialligninger}
+\begin{sæt}[Superpositionsprincippet]
+  Hvis $y_1$ og $y_2$ er løsninger til den homogene differentialligning
+  \begin{equation*}
+    P(x)y'' + Q(x)y' + R(x)y = 0,
+  \end{equation*}
+  Så er $C_1y_1+C_2y_2$ også en løsning for vilkårlige $C_1$ og $C_2$.
+  \tcblower
+  Såfremt ovenstående gælder har vi at $L(y_1)=0$ og $L(y_2)=0$. Nulreglen må derfor betyde at vi ligeledes har at
+  \begin{equation*}
+    L(C_1y_1+C_2y_2) = C_1L(y_1) + C_2L(y_2) = 0
+  \end{equation*}
+\end{sæt}
+
+\subsection{Homogene differentialligninger med konstante koefficienter}
+Det simpleste tilfælde af en homogen differentialligning er tilfældet, hvor koefficienterne er konstante
+\begin{equation}
+  ay'' + by' + cy = 0,
+\end{equation}
+for reele konstanter $a$, $b$ og $c$ med $a \neq 0$. Vi gætter på at denne kan løses med $f(x) = e^{rx}$. Ved indsættelse får vi at
+\[
+  a(r^2e^{rx})+b(re^{rx})+ce^{rx} = (ar^2 + br + c)e^{rx}  
+.\]
+Bemærk at $e^{rx} \neq 0$. Derfor må dette være en løsning hvis $r$ løser den karakteristiske ligning
+\[
+  \left( ar^2 +br+c \right) = 0
+.\]
+
+\newpage
+\subsection{Karakteristisk ligning}
+Vi husker at
+\[
+  ar^2 +br+c = 0
+\]
+kan løses med
+\[
+r = \frac{-b \pm \sqrt{D} }{2a} 
+\]
+med diskriminant $D = b^2 - 4ac$.
+
+\subsection{Fuldstændig løsning af homogen anden ordens differentialligning}
+\begin{sæt}[Fuldstændig løsning af homogen anden ordens differentialligning]
+Den fuldstændige løsning til $P(x)y'' + Q(x)y' + R(x)y = 0$ er
+\begin{itemize}
+  \item \textbf{For} $\mathbf{D>0}$: \\
+    Den karakteristiske ligning har løsningerne $r_1 = \frac{-b+\sqrt{D} }{2a}$ og $r_2 = \frac{-b-\sqrt{D} }{2a}$. Altså er den fuldstændige løsning
+    \begin{equation}
+      y(x) = C_1e^{r_1x} + C_2e^{r_2x}.
+    \end{equation}
+  \item \textbf{For} $\mathbf{D=0}$:
+    Den karakteristiske ligning har løsningen $r_1 = \frac{-b}{2a}$. Den fuldstændige løsning bliver da
+  \begin{equation}
+     y(x) = C_1e^{rx} + C_2xe^{rx}
+  \end{equation}
+\item \textbf{For} $\mathbf{D<0}$:
+    Den karakteristiske ligning har løsningerne $r = \alpha \pm \beta i$ med $\alpha = -\frac{b}{2a}$ og $\beta = \frac{\sqrt{|D|}}{2a}$. Derfor bliver den fuldstændige løsning her
+    \begin{equation}
+      y(x) = C_1e^{\alpha x}\cos \left( \beta x \right) + C_2e^{\alpha x} \sin \left( \beta x \right) 
+    \end{equation}
+\end{itemize}
+\tcblower
+  Løsningen for $D>0$ følger af superpositionsprincippet \\
+  \hr
+  For $D=0$ har vi at
+  \begin{align*}
+    f(x) &= xe^{rx} \\
+    f'(x) &= \left( xe^{rx} \right)' = e^{rx} + rxe^{rx}   \\
+    f''(x) &= (e^{rx} +rxe^{rx})' = re^{rx} + re^{rx} + r^{2}xe^{rx} = \left( r^2x+2r \right)e^{rx}      \\
+  \end{align*}
+  Altså bliver vores differentialligning
+  \[
+  a\left( \left( r^2x+2r \right)e^{rx} \right) + b\left( \left( rx+1 \right) e^{rx}  \right) + c\left( xe^{rx}  \right)
+  .\]
+  Der omskrives
+  \[
+  \left(2ar+b x\left( ar^2 + br + c \right)\right)e^{rx} 
+  .\]
+  Vi har at $ar^2 +br+ c = 0$ idet at det er et krav fra den karakteristiske ligning. Altså har vi
+  \[
+  e^{rx}\left( 2ar + b \right) 
+  .\]
+  Vi har at $r = -\frac{b}{2a}$. Altså får vi
+  \begin{align*}
+  e^{rx} \left( 2a\cdot -\frac{b}{2a}+b \right) = e^{rx}\cdot 0 = 0  
+  \end{align*}
+  Altså gælder løsningsformlen. \\
+  \hr
+  Beviset for $D<0$ følger beviset for $D=0$
+\end{sæt}
+
+\begin{eks}[Simpelt eksempel]
+  Vi har at
+  \[
+  y''-y'-2y=0
+  .\]
+  Vi opskriver den karakteristiske ligning hvor vi egentligt blot erstatter vores afledede af $y$ med potenser af $r$
+  \[
+  r^2 -r-2=0
+  .\]
+  Vi finder diskriminanten som
+  \[
+  D = 1+(-4)\cdot (-2) = 9
+  .\]
+  Vi har dermed de to reele løsninger
+  \[
+  r_1 = \frac{1+\sqrt{9}}{2} = 2 \qquad \text{og} \qquad r_2 = \frac{1-\sqrt{9} }{2} = -1
+  .\]
+  Vores fuldstændige løsning er derfor
+  \[
+  y(x) = C_1e^{2x} + C_2e^{-x} 
+  ,\]
+  for vilkårlige konstanter $C_1$ og $C_2$.
+\end{eks}
+\begin{eks}[Med begyndelsesbetingelser]
+  Vi har her samme ligning som ovenfor
+  \[
+  y''-y'-2y = 0
+  ,\]
+  som dog denne gang har begyndelsesbetingelserne $y(0)=0$ og $y'(0)=3$.
+  Vi har samme fuldstændige løsning som ovenfor
+  \[
+  y(x) = C_1e^{2x} + C_2e^{-x}  
+  .\]
+  Denne differentierer vi med det samme, da den ene betingelse afhænger af $y'$ og denne derfor er nødt til at være kendt
+  \[
+  y'(x) = 2C_1e^{2x} - C_2e^{-x} 
+  .\]
+  Ved at indsætte betingelserne fås at
+  \begin{align*}
+    y\left( 0 \right) &= 0 \\
+    C_1e^{0} + C_2e^{0} &= 0 \\
+    C_1 + C_2 &= 0
+  \end{align*}
+  Og
+  \begin{align*}
+    y'\left( 0 \right) &= 3 \\
+    2C_1e^{0} -C_2e^{0} &= 3 \\ 
+    2C_1 - C_2 = 3
+  \end{align*}
+  Disse lægges sammen så vi får
+  \begin{align*}
+  2C_1 - C_2 + C_1 + C_2 &= 3 \\
+  3C_1 &= 3 \\
+  C_1 &= 1
+  \end{align*}
+  Og dermed har vi at
+  \begin{align*}
+  1 + C_2 &= 0 \\
+  C_2 &= -1
+  \end{align*}
+  Dermed er løsningen der opfylder både differentialligningen og betingelserne
+  \[
+  y(x) = e^{2x} -e^{-x} 
+  .\]
+\end{eks}
+\begin{eks}[Et sværere eksempel]
+  Vi ønsker at løse
+  \[
+  y''+2y'+3y = 0
+  .\]
+  Med begyndelsesbetingelser $y\left( 0 \right) =1$ og $y'(0)=0$.
+  Dermed er vi i tilfældet hvor diskriminanten er negativ.
+  Vi opskriver den karakteristiske ligning
+  \[
+  r^2 + 2r + 3 = 0
+  .\]
+  Dermed har vi at
+  \[
+  D = 2^2 - 4\cdot 1\cdot 3 = -8 \implies \sqrt{D} = \pm \sqrt{8}i
+  .\]
+  Altså har vi at
+  \[
+  r = \frac{-2 \pm \sqrt{8}i}{2} = -1 \pm \sqrt{2}i \implies \alpha = -1 \and \beta =\sqrt{2}  
+  .\]
+  Den fuldstændige løsning bliver da
+  \[
+  y(x) = C_1e^{-x} \cos \left( \sqrt{2}x \right) + C_2e^{-x} \sin \left( \sqrt{2x} \right) 
+  .\]
+  Denne differentieres
+  \begin{align*}
+    y'(x) =& \\
+          &-C_1e^{-x} \cos \left( \sqrt{2} x \right) - \sqrt{2}C_1e^{-x}  \sin \left( \sqrt{2} x \right) \\
+          &- C_2e^{-x} \sin \left( \sqrt{2} x \right)  \sqrt{2}C_2e^{-x} \cos \left( \sqrt{2} x \right)  
+  \end{align*}
+  Vi indsætter begyndelsesbetingelser
+  \[
+    y\left( 0 \right) = 1
+  .\]
+  Hvilket giver at
+  \begin{align*}
+    y(0) &= 1 \\
+    &= C_1e^{0} \cos \left( 0 \right) + C_2e^{0} \sin \left( 0 \right)  \\
+    &\implies C_1 = 1
+  \end{align*}
+  Og den anden begyndelsesbetingelse
+  \begin{align*}
+    y'(0) &= 0 \\
+    &\implies - C_1e^{0} \cos \left( \sqrt{2} \cdot 0 \right) - \sqrt{2} C_1e^{0} \sin \left( \sqrt{2} \cdot 0 \right) \\
+    &-C_2e^{0} \sin \left( \sqrt{2} \cdot 0 \right) - \sqrt{2} C_2e^{0} \cos \left( \sqrt{2} \cdot 0 \right) = 1 \\
+    &= -C_1 + \sqrt{2}C_2 \\
+    &= -1 + \sqrt{2}C_2 \\
+    &\implies C_2 = \frac{1}{\sqrt{2} } 
+  \end{align*}
+  Altså bliver den endelige løsning
+  \[
+  y(x) = e^{-x} \cos \left( \sqrt{2} x \right) + \frac{1}{\sqrt{2}}e^{-x} \sin \left( \sqrt{2}x \right) 
+  .\]
+\end{eks}
+
+\subsection{Harmonisk oscillator}
+\begin{eks}[Pendul]
+  Vi ønsker at beskrive et penduls bevægelse. Det viser sig at et penduls bevægelse kan beskrives med
+  \begin{align*}
+    \theta''(t) &= -\frac{g}{L}\sin \left( \theta(t) \right) \\
+    \theta(0) &= \theta_0 \\
+    \theta'(0) &= 0
+  \end{align*}
+  Bemærk, at dette \textit{ikke} er en lineær differentialligning, men hvis vi antager at vinklen $\theta$ er lille har vi at
+  \[
+  \sin \left( \theta \right) \approx \theta 
+  .\]
+  Dermed har vi at
+  \[
+  \theta''(t) = -\frac{g}{L}\theta(t)
+  ,\]
+  hvilket \textit{er}  en lineær differentialligning. Den karakteristiske ligning opskrives
+  \[
+  r^2 = -\frac{g}{L} \implies r = \sqrt{\frac{g}{L}}i
+  .\]
+  Den fuldstændige løsning bliver da
+  \[
+  \theta(t) = C_1 \cos \left( \sqrt{\frac{g}{L}} t \right) + C_2 \sin \left( \sqrt{\frac{g}{L}}t  \right)  
+  .\]
+  For at indsætte begyndelsesbetingelserne findes den afledede som
+  \[
+  \theta'(t) = -\sqrt{\frac{g}{L}}C_1 \sin \left( \sqrt{\frac{g}{L}}t \right) + \sqrt{\frac{g}{L}} \cos \left( \sqrt{\frac{g}{L}} t \right) 
+  .\]
+  Vi har derfor at
+  \begin{align*}
+    \theta (0) &= \theta_0 & \theta'(0) &= 0 \\
+    \implies \theta_0 &= C_1 \cos \left( 0 \right) + C_2 \sin \left( 0 \right) & \implies 0 &= \sqrt{\frac{g}{L}}\cdot C_2 \\
+    C_1 &= \theta_0 & C_2 &= 0\\ 
+  \end{align*}
+  Altså er den partikulære løsning
+  \[
+  \theta (t) = \theta_0 \cos \left( \sqrt{\frac{g}{L}}t \right) 
+  .\]
+\end{eks}
+
+\section{Inhomogene differentialligninger}
+Det viser sig at det at løse den inhomogene anden ordens differentialligning
+\[
+P(x)y'' + Q(x)y' + R(x)y = G(x), \qquad y(x_0) = a, \qquad y'(x_0)=b  
+,\]
+svarer til at
+\begin{enumerate}
+  \item Finde den fuldstændige løsning til
+    \[
+    y_{hom} = C_1y_1 + C_2y_2
+    \]
+    for den tilsvarende homogene differentialligning ($G(x) = 0$).
+  \item Finde en partikulær løsning $y_p$ til den inhomogene differentialligning
+  \item Den fuldstændige løsning til den inhomogene differentialligning er da
+    \[
+    y = y_p + y_{hom}  = y_p + C_1y_1 + C_2y_2
+    .\]
+  \item evt. bestemme $C_1$ og $C_2$ vha. givne begyndelsesbetingelser.
+\end{enumerate}
+\begin{sæt}
+  Det er nok kun at bestemme én partikulær løsning til en inhomogen differentialligning for at kunne finde alle løsninger.
+  \tcblower
+  Hvis $f_1$ og $f_2$ er løsninger til en inhomogen differentialligning
+  \[
+  P(x)y'' + Q(x)y' + R(x)y = G(x)
+  .\]
+  Så er differensen $f_1-f_2$ den homogene ligning
+  \[
+  L(f_1-f_2) = L(f_1) - L(f_2) = G(x) - G(x) = 0
+  .\]
+  Dvs. at forskelle mellem løsninger til den inhomogene differentialligning findes fra den fuldstændige løsning til den \textit{homogene} differentialligning.
+\end{sæt}
+
+\subsection{Konstante koefficienter}
+Vi betragter tilfældet med konstante koefficienter
+\[
+ay'' + by' + cy = G(x)
+.\]
+Dernæst introduceres begrebet \emph{ubestemte koefficienters metode} som svarer til at `gætte' på løsninger der minder om $G$u.
+
+\begin{eks}
+  Vi betragter differentiallignignen
+  \[
+  y''-y'-2y = 2 \cos \left( x \right) 
+  .\]
+  Vi gætter på løsninger af formen
+  \begin{align*}
+    y_p(x) &= A \cos \left( x \right) + B \sin \left( x \right) \\
+    y_p'(x) &= -A \sin \left( x \right) + B \cos \left( x \right)  \\
+    y_p''(x) &= -A \cos \left( x \right) - B \sin \left( x \right)  \\
+  \end{align*}
+  Dette indsættes i venstresiden for at se om gættet var korrekt
+  \begin{align*}
+  &-A \cos \left( x \right) - B \sin \left( x \right) + A \sin \left( x \right) - B \cos \left( x \right) - 2\left( A \cos \left( x \right) + B \sin \left( x \right)  \right) \\
+  &= (-3A-B)\cos \left( x \right) + (A - 3B)\sin \left( x \right)  \\
+  \end{align*}
+  Vi sætter dette lig $2 \cos \left( x \right) $
+  \[
+  2 \cos \left( x \right) = (-3A - B) \cos \left( x \right) + (A - 3B) \sin \left( x \right)
+  .\]
+  Altså har vi de to ligninger med to ubekendte
+  \begin{align*}
+    -3A-B &= 2 \\
+    A-3b &= 0
+  \end{align*}
+  Vi forlænger den sidste med 3 og lægger den til den første så vi får at
+  \begin{align*}
+    -10B =& 2 \\
+    B =& -\frac{1}{5} \\
+    \implies& A - \frac{3}{5} = 0 \\
+    A =& \frac{3}{5} \\
+  \end{align*}
+  Altså kan vi finde konstanter $A$ og $B$ således at løsningen går op. Vi har altså
+  \[
+  y_p = -\frac{3}{5}\cos \left( x \right) - \frac{1}{5}\sin \left( x \right) 
+  .\]
+  Altså bliver den fuldstændige løsning
+  \[
+  y(x) = y_p + y_{hom} = -\frac{3}{5}\cos \left( x \right) - \frac{1}{5}\sin \left( x \right) + C_1y_1 + C_2y_2 
+  ,\]
+  og den homogene løsning er fundet i \textbf{\hyperlink{eks:1.1}{eksempel 1.1}} som
+  \[
+  C_1e^{2x} + C_2e^{-x} 
+  .\]
+  Altså bliver den fuldstændige homogene løsning
+  \[
+  y(x) = -\frac{3}{5}\cos \left( x \right) - \frac{1}{5}\sin \left( x \right) + C_1e^{2x} + C_2e^{-x} 
+  .\]
+\end{eks}
+
+\subsection{Eksempler på succesfulde gæt til partikulær løsning}
+Der findes en række `gæt' som er kendt rigtige. 
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{\begin{tabular}[c]{@{}l@{}}Hvis $g$ indeholder\\  led af formen\end{tabular}} & \textbf{Og hvis}                                                                                                            & \textbf{\begin{tabular}[c]{@{}l@{}}Så inkluder dette i gættet på $y_p$\\ (forskellige konstanter på hvert led)\end{tabular}} \\ \hline
+$e^{kx}$                                                                              & \begin{tabular}[c]{@{}l@{}}$k$ ikke er rod i KL\\ $k$ er rod i KL og $D>0$\\ $k$ er rod i KL og $D=0$\end{tabular}          & \begin{tabular}[c]{@{}l@{}}$Ae^{kx}$\\ $Axe^{kx}$\\ $Ax^2e^{kx}$\end{tabular}                                                \\ \hline
+$\sin(kx), \cos(kx)$                                                                  & \begin{tabular}[c]{@{}l@{}}$ki$ \textit{ikke} er rod i KL\\ $ki$ er rod i KL\end{tabular}                                   & \begin{tabular}[c]{@{}l@{}}$A\cos(kx) + B\sin(kx)$\\ $Ax\cos(kx) + Bx\sin(kx)$\end{tabular}                                  \\ \hline
+$d_2x^2+d_1x+d_0$                                                                     & \begin{tabular}[c]{@{}l@{}}$0$ \textit{ikke} er rod i KL\\ $0$ er rod i KL og $D>0$\\ $0$ er rod i KL og $D=0$\end{tabular} & \begin{tabular}[c]{@{}l@{}}$Ax^2+Bx+C$\\ $Ax^3+Bx^2+Cx$\\ $Ax^4+Bx^3+Cx^2$\end{tabular}                                      \\ \hline
+\end{tabular}
+\caption{Løsningsgæt for inhomogene differentiallignigner}
+\label{table:1}
+\end{table}
+
+\begin{eks}[Løsning af inhomogen anden ordens differentialligning]
+  Vi vil forsøge at løse differentialligningen
+  \[
+  y'' -4y = e^{2x} + x^2, \qquad y(0) = 2, \qquad y'(0) = 5
+  .\]
+  Den karakteristiske ligning for den homogene differentialligning opskrives som
+  \[
+  r^2 - 4 = 0 \implies r^2 = 4 \implies r = \pm 2
+  .\]
+  Den homogene løsning er altså
+  \[
+  y_{hom}(x) = C_1e^{2x} + C_2e^{-2x} 
+  .\]
+  Dernæst findes den partikulære løsning ved at kigge i \textbf{\autoref{table:1}} hvor det ses at løsningsgættet skal indeholde noget på formen $Axe^{kx}$. I vores tilfælde er $k=2$. Derudover skal gættet indeholde noget på formen $Ax^2+Bx+C$ altså bliver vores gæt
+  \[
+  y_p = Axe^{2x} + Bx^2 + Cx + D 
+  .\]
+  Dette differentieres
+  \[
+  y_p' = Ae^{2x} + 2Axe^{2x} + 2Bx + C
+  .\]
+  Og igen
+  \[
+  y_p'' = 2Ae^{2x} + 2Ae^{2x} + 4Axe^{2x} + 2B  = 4A\left( 1+x \right)e^{2x} + 2B 
+  .\]
+  Det tjekkes om gættet er korrekt ved at indsætte det i differentialligningen
+  \begin{align*}
+  &4A(1+x)e^{2x} + 2B - 4\left( Axe^{2x} + Bx^2 + Cx + D \right) \\
+  =& 4Ae^{2x} - 4Bx^2 - 4Cx + 2B - 4D \\
+  \end{align*}
+  Dette skal give
+  \[
+  e^{2x} + x^2 + 0x + 0
+  .\]
+  Altså har vi at
+  \begin{align*}
+  4A &= 1 & &\implies & A &= \frac{1}{4}\\
+  -4B &= 1 & &\implies & B &= -\frac{1}{4}\\
+  -4C &= 0 & &\implies & C&=0 \\
+  2B + -4D &= 0 & &\implies & D &= \frac{B}{2} = -\frac{1}{8} \\
+  \end{align*}
+  Altså får vi at vores partikulære løsning bliver
+  \[
+  y_p = \frac{1}{4}xe^{2x} - \frac{1}{4}x^2 - \frac{1}{8} 
+  .\]
+  Den fuldstændige løsning er derfor
+  \[
+  y(x) = \frac{1}{4}xe^{2x} - \frac{1}{4}x^2 - \frac{1}{8} + C_1e^{2x} + C_2e^{-2x}  
+  .\]
+  For at kunne indsætte begyndelsesbetingelser differentieres udtrykket så
+  \[
+    y'(x) = \frac{1}{4}e^{2x} + \frac{1}{2}xe^{2x} - \frac{1}{2}x + 2C_1e^{2x} -2C_2e^{-2x}
+  .\]
+  Dernæst kan begyndelsesbetingelserne indsættes
+  \begin{align*}
+    y(0) &= 2 \\
+    \implies 2 &= -\frac{1}{8} + C_1 + C_2 \\
+    \implies 2 + \frac{1}{8} &= C_1 + C_2
+  \end{align*}
+  og
+  \begin{align*}
+  y'(0) &= 5 \\
+  \implies 5 &= \frac{1}{4} + 2C_1 - 2C_2   \\
+  \implies 5 - \frac{1}{4} &= 2C_1 - 2C_2
+  \end{align*}
+  Vi ganger den første ligning med 2 og lægger den til den nederste
+  \begin{align*}
+  9 &= 4C_1 \\
+  \implies C_1 &= \frac{9}{4} \\
+  \implies C_2 &= 2 + \frac{1}{8} - \frac{9}{4} = - \frac{1}{8} 
+  \end{align*}
+  Den partikulære løsning til vores inhomogene differentialligning bliver derfor
+  \[
+  y(x) = \frac{1}{4}xe^{2x} - \frac{1}{4}x^2 - \frac{1}{8} + \frac{9}{4}e^{2x} - \frac{1}{8}e^{-2x} 
+  .\]
+\end{eks}

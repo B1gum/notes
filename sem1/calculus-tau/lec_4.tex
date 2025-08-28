@@ -1,0 +1,336 @@
+\lecture{4}{16. September 2024}{Talfølger og uendelige rækker}
+
+\section{Talfølger}
+En talfølge er typisk defineret enten
+\begin{itemize}
+  \item ved en lukket formel
+  \item eller induktivt
+\end{itemize}
+
+\begin{eks} [Eksempel på induktivt defineret talfølge]
+  Givet en initialværdi $a_1 = A$ og et induktionstrin
+  \[ 
+  a_{n+1} = \frac{1}{2}\left( a_n + \frac{A}{a_n+1} \right)
+  \]
+  er en induktivt defineret talfølge givet. Det viser sig faktisk at den ovenstående talfølge netop bliver $\sqrt{A}$ for $n \to \infty$.
+\end{eks}
+
+\subsection{Fibonaccis talfølge}
+Et andet berømt eksempel på en induktivt defineret talfølge er Fibonaccis talfølge der er givet ved initialværdierne $a_0 = 0, a_1 = 1$ og induktionstrinnet
+\[ 
+a_n = a_{n-1} + a_{n-2}
+.\]
+Det viser sig at Fibonaccis talfølge faktisk kan skrives på en lukket form som
+\[ 
+a_n = \frac{1}{\sqrt{5}} \left( \left( \frac{1 + \sqrt{5}}{2} \right)^{n} - \left( \frac{1 - \sqrt{5}}{2} \right)^{n} \right)
+.\]
+Her kan det bemærkes at $\frac{1 + \sqrt{5}}{2}$ er det gyldne snit.
+
+\section{Konvergens/divergens af talfølger} \label{afs:konv}
+\begin{definition} [Konvergens af talfølger]
+  En talfølge ${a_n}_{n = 1}^{\infty} = a_1, a_2, a_3,\ldots$ kaldes \textit{konvergent} med \textit{grænseværdi} $a$, skrevet
+  \[ 
+  a_n \to a \quad \text{for} \quad n\to \infty \qquad \text{eller} \qquad \lim_{n \to \infty } a_n = a
+  ,\]
+  hvis vi for enhver tolerance $\epsilon > 0$ kan gå langt nok ud i talfølgen (fra og med et indeks $N$) så
+  \[ 
+  n \geq N \implies |a_n - a| < \epsilon
+  .\]
+  Hvis $n \geq N$ ikke medfører $|a_n - a| <\epsilon$ så kaldes talfølgen ${a_n}_{n = 1}^{\infty}$ i stedet divergent og tilskrives ikke en grænseværdi.
+\end{definition}
+
+\begin{eks} [Konvergens af den harmoniske talfølge]
+  Vi ønsker at finde ud af om $\frac{1}{n}$ er konvergent mod 0. \bigbreak
+  Vi benytter definitionen fra ovenfor som
+  \[ 
+  |a_n - 0| = \frac{1}{n}
+  \]
+  så for en tolerance $\epsilon > 0$ gælder
+  \[ 
+  \frac{1}{n} = |a_n - 0| \leq \epsilon \iff n \geq \frac{1}{\epsilon}
+  .\]
+  Dermed er det vist, at fra og med et indeks $N \geq \frac{1}{\epsilon}$, så er $a_n$ indenfor en tolerance $\epsilon$ fra 0.
+\end{eks}
+
+\begin{eks} [Divergens af simpel alternerende talfølger]
+  Vi betragter nu talfølgen givet ved $a_n = (-1)^{n}$
+  \[ 
+    {a_n}_{n = 1}^{\infty} = -1, 1, -1, 1, \ldots 
+  .\]
+  Det indses hurtigt at rækken er divergent, da vi aldrig kan vælge en værdi for grænseværdien $a$ således at en tolerance $0 < \epsilon < 2$ er opfyldt.
+\end{eks}
+
+
+
+\section{Regneregler for grænseværdier}
+\begin{sæt} [Regneregler for grænseværdier]
+  Lad $\lim_{n \to \infty} a_n = a$ og $\lim_{n \to \infty} b_n = b$, så gælder
+  \begin{align*}
+  &\lim_{n \to \infty} (a_n + b_n) = a+b \\
+  &\lim_{n \to \infty} a_{n} b_{n} = ab \\
+  &\lim_{n \to \infty} \frac{a_n}{b_n} = \frac{a}{b} \text{ hvis } b \neq 0 \\
+  &\lim_{n \to \infty} f(a_{n}) = f(a) \text{ hvis $f$ er kontinuert i punktet $a$}
+  .\end{align*}
+\end{sæt}
+
+\begin{eks} [Eksempel på brug af regnereglerne]
+  Givet 
+  \[ 
+  a_n = \frac{17n^{4} + 3n^2 - 5 \cos \left( \frac{1}{n} \right)}{-5n^{4} - 3n^3 e^{\sin \left( \frac{2}{n} \right)}}
+  \]
+  ønsker vi at bestemme om ${a_n}_{n = 1}^{\infty}$ er konvergent og i så fald hvad dens grænseværdi er.
+  \bigbreak
+  Vi starter med at forkorte hele udtrykket med $n^{4}$ så vi får
+  \[ 
+  a_n = \frac{17 + \frac{3}{n^2} - \frac{5}{n^{4}} \cos \left( \frac{1}{n} \right)}{-5 - \frac{3}{n} e^{\sin \left( \frac{2}{n} \right)}}
+  .\]
+  Vi kan nu finde grænseværdien for hvert led som
+  \begin{align*}
+    \lim_{n \to \infty} \frac{3}{n^2} &= 0 \\
+    \lim_{n \to \infty} \frac{5}{n^{4}} &= 0 \\
+    \lim_{n \to \infty} \cos \left( \frac{1}{n} \right) &= \cos(0) = 1 \\
+    \lim_{n \to \infty} \frac{3}{n} &= 0 \\
+    \lim_{n \to \infty} e^{\sin \left( \frac{2}{n} \right)} &= e^{\sin 0} = 1
+  .\end{align*}
+  Alt dette kan sættes tilbage ind i udtrykket så vi får
+  \[ 
+  \lim_{n \to \infty} a_n = - \frac{17 + 0 + 0 \cdot 1}{5 - 0 \cdot 1} = -\frac{17}{5}
+  .\]
+  Altså er talfølgen konvegent med grænseværdi $a = .\frac{17}{5}$
+\end{eks}
+
+\begin{definition} [Begrænset talfølge]
+  ${a_n}_{n = 1}^{\infty}$ kaldes \textit{begrænset} hvis der findes et tal $M \geq 0$ så $|a_n| \leq M$ for alle $n$.
+\end{definition}
+
+\begin{sæt}
+  Hvis ${a_n}_{n = 1}^{\infty}$ er begrænset og $\lim_{n \to \infty} b_n = 0 $ så gælder
+  \[ 
+  \lim_{n \to \infty} a_nb_n = 0 \text{ da } |a_nb_n| \leq M|b_n| \to 0 \text{ for } n \to \infty
+  .\]
+  Eksempelvis er
+  \[ 
+  \lim_{n \to \infty} \frac{1}{n} \cos n^3 = 0
+  \]
+  da $|\cos n^3| \leq 1$.
+\end{sæt}
+
+\begin{definition} [Monotone talfølger]
+  ${a_n}_{n = 1}^{\infty}$ kaldes \textit{voksende} hvis
+  \[ 
+  a_n \leq a_{n+1} \text{ for alle } n
+  .\]
+  ${a_n}_{n = 1}^{\infty}$ kaldes \textit{aftagende} hvis
+  \[ 
+  a_n \geq a_{n+1} \text{ for alle } n
+  .\]
+  Enhver \textit{voksende} eller \textit{aftagende} talfølge kaldes også en \textit{monoton} talfølge
+\end{definition}
+
+\begin{sæt}
+  For en monoton talfølge gælder
+  \[ 
+  \text{konvergent} \iff \textit{begrænset}
+  .\]
+\end{sæt}
+
+\section{Uendelige rækker}
+En uendelig række er summen af alle elementerne i en talfølge
+\[ 
+\sum_{n = 0}^{\infty} a_n
+.\]
+
+\begin{definition} [Den k'te afsnitssum]
+  Den $k$'te afsnitssum $S_k$ er givet som
+  \[ 
+  S_k = \sum_{n = 0}^{k} a_n = a_0 + a_1 + a_2 + \ldots a_{k-1} + a_k
+  .\]
+  Afsnitssummerne danner en talfølge
+  \[ 
+  S_0 = a_0, S_1 = a_{0}+a_1, S_2 = a_0 + a_1 + a_2, \ldots 
+  .\]
+\end{definition}
+
+\subsection{Konvergens og divergens af uendelige rækker}
+\begin{sæt} [Konvergens af uendelige rækker]
+  Hvis talfølgen af afsnitssummer ${S_k}_{k = 1}^{\infty}$ er konvergent med $\lim_{k \to \infty} S_k = S$, så siger vi, at den uendelige række $\sum_{n = 0}^{\infty} a_n $ er konvergent med sum
+  \[ 
+  \sum_{n = 0}^{\infty} a_n = S
+  .\]
+  Hvis ${S_k}_{k = 1}^{\infty}$ derimod er divergent siges summen $\sum_{n = 0}^{\infty} a_n$ er divergent.
+\end{sæt}
+
+\begin{sæt} [n'te-ledstesten for divergens]
+  Hvis talfølgen ${a_n}_{n = 0}^{\infty}$ er divergent eller $\lim_{n \to \infty} a_n \neq 0$ så er den uendelige række $\sum_{n = 0}^{\infty} a_n$ divergent. Hvis $\lim_{n \to \infty} a_n = 0$ kan vi derimod ingen konklusion drage.
+\end{sæt}
+Vha. n'te-ledstesten ovenfor kan det hurtigt indses at følgende rækker er divergente
+\begin{align*}
+  &\sum_{n = 0}^{\infty} n,& &\sum_{n = 0}^{\infty} (-1)^{n},& &\sum_{n = 0}^{\infty} z^{n}, |z| \geq 1
+.\end{align*}
+
+\begin{definition} [Geometrisk række] \label{afs:georæk}
+  Lad $a,z \in \mathbb{C}$, så kaldes
+  \[ 
+  \sum_{n = 0}^{\infty} a z^{n} 
+  \]
+  for en \textit{geometrisk række}.
+\end{definition}
+
+\begin{sæt} [Summen af en geometrisk række]
+  Rækken er konvergent, hvis og kun hvis, $|z| < 1$ eller hvis $a = 0$. Summen af den geometriske række er da
+  \[ 
+  \sum_{n = 0}^{\infty} a z^{n} = \frac{a}{1-z}
+  .\]
+  \tcblower
+  Vi starter med at omskrive summen til
+  \[ 
+  \sum_{n = 0}^{\infty} a z^{n}= a \sum_{n = 0}^{\infty} z^{n}
+  .\]
+  Vi kan nu finde et eksplicit udtryk for afsnitssummerne
+  \[
+    S_k = 1 + z + z^2 + \ldots + z^{k}
+  .\]
+  Hvis vi nu ganger summen med $z$ får vi
+  \[ 
+  zS_k = z + z^2 + \ldots + z^{k+1}
+  .\]
+  Vi kan nu trække disse to afsnitssummer fra hinanden som
+  \[
+    S_k - zS_k = (1-z)S_k = 1 - z^{k+1} \implies S_k = \frac{1 - z^{k+1}}{1-z}
+  .\]
+  For $|z| < 1$ har vi $\lim_{k \to \infty} z^{k+1} = 0$ og dermed bliver summen fra starten af beviset
+  \[ 
+  a \sum_{n = 0}^{\infty} z^{n} = a \cdot \frac{1}{1-z} = \frac{a}{1-z}
+  .\]
+  Q.E.D.
+\end{sæt}
+
+\begin{eks} [Løsning af Zenos løbebane-paradoks]
+  Zenos løbebane-paradoks kan skrives som
+  \[ 
+  \sum_{n = 1}^{\infty} \frac{1}{2^{n}} = \sum_{n = 1}^{\infty} \left( \frac{1}{2} \right)^{n}
+  .\]
+  Dette minder om en geometrisk række, men den har startværdi $n = 1$ hvor en geometrisk række har startværdi $n = 0$. Vi kan ændre indekseringen som
+  \[ 
+  \sum_{n = 1}^{\infty} \frac{1}{2^{n}} = \sum_{n = 0}^{\infty} \left( \frac{1}{2} \right)^{n+1} = \sum_{n =0}^{\infty} \frac{1}{2} \left( \frac{1}{2} \right)^{n}
+  .\]
+  Vi har nu en geometrisk række med $z =\frac{1}{2}$ og $a = \frac{1}{2}$ og kan derfor bruge løsningsformlen så
+  \[ 
+  \sum_{n = 1}^{\infty} \frac{1}{2^{n}} = \sum_{n = 0}^{\infty} \frac{1}{2} \left( \frac{1}{2} \right)^{n} = \frac{\frac{1}{2}}{1 - \frac{1}{2}} = 1
+  .\]
+  Altså kan hele løbebanens strækning tilbagelægges og der er derfor ikke et egentligt \textit{paradoks}.
+\end{eks}
+
+\begin{sæt}
+  Man kan bevise at rækken
+  \[ 
+  \sum_{n = 1}^{\infty} \frac{1}{n^{p}}
+  \]
+  Er \textit{konvergent} for $p >1$ og \textit{divergent} for $p \leq 1$.
+\end{sæt}
+
+\begin{eks} [Den harmoniske række] \label{afs:harræk}
+  Den harmoniske række
+  \[ 
+  \sum_{n = 1}^{\infty} \frac{1}{n}
+  \]
+  er lige netop divergent idet det kan skrives som
+  \[ 
+  \sum_{n =1}^{\infty} \frac{1}{n^{p}}
+  \]
+  med $p = 1$. Summen divergerer dog ekstremt langsomt. De første 1 million led summerer til lidt over 14, men summen er altså stadig divergent.
+\end{eks}
+
+\begin{eks} [Basel-problemet] \label{afs:baspro}
+  Rækken
+  \[ 
+  \sum_{n = 1}^{\infty} \frac{1}{n^2}
+  \]
+  er derimod konvergent idet det kan skrives på formen
+    \[ 
+  \sum_{n =1}^{\infty} \frac{1}{n^{p}}
+  \]
+  med $p = 2$. Faktisk summerer summen til $\frac{\pi^2}{6}$.
+\end{eks}
+
+\begin{sæt} [Sammenligningskriteriet]
+  Lad $0 \leq a_n \leq b_n$ for alle $n$, så gælder
+  \begin{itemize}
+    \item Hvis $\sum_{n = 0}^{\infty} b_n$ er konvergent, så er $\sum_{n = 0}^{\infty} a_n$ også konvergent
+    \item Hvis $\sum_{n = 0}^{\infty} a_n$ er divergent, så er $\sum_{n = 0}^{\infty} b_n$ også divergent
+  \end{itemize}
+  Sammenligningskriteriet bliver stærkere des flere rækker man kender.
+\end{sæt}
+
+\begin{eks} [Eksempel på brug af sammenligningskriteriet]
+  Hvis vi har summen
+  \[ 
+  \sum_{n = 1}^{\infty} \left( \frac{1}{n} + \frac{5}{n^{4}} \right)
+  \]
+  så kan det hurtigt indses at denne er divergent, da leddene i summen altid er større end leddene i den harmoniske række som er divergent.
+
+  Hvis vi derimod har summen
+  \[ 
+  \sum_{n = 1}^{\infty} \frac{1}{n^2 + 2n - 1}
+  \]
+  kan det hurtigt indses at denne er konvergens, idet leddene altid er mindre end leddene fra summen i Basel-problemet som er konvergent.
+\end{eks}
+
+\begin{definition} [Absolut konvergens]
+  Rækken $\sum_{n = 0}^{\infty} a_n$ kaldes \textit{absolut konvergent} hvis $\sum_{n = 0}^{\infty} |a_n|$ er konvergent.
+\end{definition}
+
+\begin{sæt} [Sammenhæng mellem konvergens og absolut konvergens]
+  Hvis en sum er absolut konvergent så vil den altid også være konvergent.
+\end{sæt}
+
+\begin{eks}
+  Hvis man ønsker at bestemme om summen
+  \[ 
+  \sum_{n = 1}^{\infty} \left| \frac{\cos n^3}{n^2} \right|
+  .\]
+  Kan man vha. sammenligningskriteriet indse at denne er absolut konvergent og derfor også konvergent da
+  \[ 
+  \left| \frac{\cos n^3}{n^2} \right| \leq \frac{1}{n^2}
+  .\]
+\end{eks}
+Bemærk dog at en \textit{konvergent} række ikke nødvendigvis behøver at være absolut konvergent da summen
+\[ 
+\sum_{n = 1}^{\infty} \frac{(-1)^{n}}{n} = -\ln 2
+\]
+er konvergent men ikke absolut konvergent. 
+
+\begin{sæt} [Kvotientkriteriet]
+  Hvis der for leddene $a_n$ gælder:
+  \[ 
+  \lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right| = R
+  \]
+  Så har vi
+  \begin{itemize}
+    \item $R < 1$: Rækken $\sum_{n = 0}^{\infty} a_n$ er konvergent
+    \item $R> 1$: Rækken $\sum_{n = 0}^{\infty} a_n$ er divergent
+    \item $R = 1$: Ingen konklusion kan drages
+  \end{itemize}
+\end{sæt}
+
+\begin{eks} [Brug af kvotientkriteriet]
+  Vi ønsker at bestemme om rækken
+  \[ 
+  \sum_{n = 0}^{\infty} \frac{5^{n}}{n!}
+  \]
+  er konvergent.
+  \bigbreak
+  Fra kvotientkriteriet har vi
+  \[ 
+  \left| \frac{a_{n+1}}{a_n} \right| = \frac{ \frac{5^{n+1}}{(n+1)!}}{\frac{5^{n}}{n!}}
+  .\]
+  Det ovenstående kan omskrives til
+  \[ 
+  \frac{n! 5^{n+1}}{(n+1)! 5^{n}} = \frac{5}{n+1}
+  .\]
+  Vi finder grænseværdien for $n \to \infty$ som
+  \[ 
+  \lim_{n \to \infty} \frac{5}{n+1} = 0
+  .\]
+  Dvs. $R = 0$ så rækken er konvergent pr. kvotientkriteriet.
+\end{eks}

@@ -1,0 +1,526 @@
+\documentclass[12pt]{article}
+\usepackage[danish]{babel}
+\usepackage{amsfonts, amssymb, mathtools, amsthm, amsmath}
+\usepackage{graphicx, pgfplots}
+\usepackage{url}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{sagetex}
+
+%loaded last
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{siunitx}
+  \sisetup{exponent-product = \cdot,
+    output-decimal-marker = {,}}
+
+%Giles Castelles incfig
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+  \def\svgwidth{#1\columnwidth}
+  \import{../figures/}{#2.pdf_tex}
+}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\thepage}
+\fancyhead[C]{\leftmark}
+
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{every axis/.append style={
+  axis x line=middle,    % put the x axis in the middle
+  axis y line=middle,    % put the y axis in the middle
+  axis line style={<->,color=black}, % arrows on the axis
+}}
+
+\usepackage{thmtools}
+\usepackage{tcolorbox}
+  \tcbuselibrary{skins, breakable}
+  \tcbset{
+    space to upper=1em,
+    space to lower=1em,
+  }
+
+\theoremstyle{definition}
+
+\newtcolorbox[auto counter]{definition}[1][]{%
+  breakable,
+  colframe=ForestGreen,  %frame color
+  colback=ForestGreen!5, %background color
+  colbacktitle=ForestGreen!25, %background color for title
+  coltitle=ForestGreen!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{ForestGreen},  %display left line
+  title=Definition \thetcbcounter: #1,
+}
+
+\newtcolorbox{greenline}{%
+  breakable,
+  colframe=ForestGreen,  %frame color
+  colback=white,          %remove background color
+  left=1em,              %space on left side in box
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{ForestGreen},  %display left line
+}
+
+\newtcolorbox[auto counter, number within=section]{eks}[1][]{%
+  brekable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,            %space on left side in box,
+  enhanced,            %more options
+  frame hidden,        %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Eksempel \thetcbcounter: #1
+}
+
+\newtcolorbox{blueline}{%
+  breakable,
+  colframe=NavyBlue,     %frame color
+  colback=white,         %remove background
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+}
+
+\newtcolorbox{teo}[1][]{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=RawSienna!5, %background color
+  colbacktitle=RawSienna!25,    %background color for title
+  coltitle=RawSienna!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+  title=Teori: #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{sæt}[1][]{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=RawSienna!5, %background color
+  colbacktitle=RawSienna!25,    %background color for title
+  coltitle=RawSienna!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+  title=Sætning \thetcbcounter: #1,
+  before lower={\textbf{Bevis:}\par\vspace{0.5em}},
+  colbacklower=RawSienna!25,
+}
+
+\newtcolorbox{redline}{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=white,       %Remove background color
+  left=1em,            %space on left side in box,
+  enhanced,            %more options
+  frame hidden,        %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+}
+
+\newtcolorbox{for}[1][]{%
+  breakable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Forklaring #1,
+}
+
+\newtcolorbox{bem}{%
+  breakable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Bemærkning:,
+}
+
+\makeatother
+\def\@lecture{}%
+\newcommand{\lecture}[3]{
+  \ifthenelse{\isempty{#3}}{%
+    \def\@lecture{Lecture #1}%
+  }{%
+    \def\@lecture{Lecture #1: #3}%
+  }%
+  \subsection*{\makebox[\textwidth][l]{\@lecture \hfill \normalfont\small\textsf{#2}}}
+}
+
+\makeatletter
+
+\newcommand{\opgave}[1]{%
+ \def\@opgave{#1}%
+ \subsection*{Opgave #1}
+}
+
+\makeatother
+
+%Format lim the same way in intext and in display
+\let\svlim\lim\def\lim{\svlim\limits}
+
+% horizontal rule
+\newcommand\hr{
+\noindent\rule[0.5ex]{\linewidth}{0.5pt}
+}
+
+\title{TØ-opgaver uge 8}
+\author{Noah Rahbek Bigum Hansen}
+\date{29. Oktober 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Opg. 1}
+Find den fuldstændige løsning til den homogene differentialligning
+\[
+  y'' + 6y' + 5y = 0
+.\]
+\bigbreak
+Først opskrives den karakteristiske ligning for differentialligningen som så
+\[
+r^2 + 6r + 5 = 0 \implies D = 6^2 - 4\cdot 1\cdot 5 = 16
+.\]
+Da diskriminanten er over 0 må løsningen være på formen
+\[
+y(x) = C_1e^{r_1x} + C_2e^{r_2x} 
+.\]
+De to rødder til den karakteristiske ligning
+\[
+r = \frac{-6 \pm 4}{2} = -3 \pm 2 
+.\]
+Altså er den fuldstændige løsning til den homogene differentialligning
+\[
+y(x) = C_1e^{-5x} + C_2e^{-x}  
+.\]
+
+\section*{Opg. 2}
+Find løsningen til den homogene differentialligning
+\[
+y'' + 6y' + 5y = 0
+\]
+der opfylder begyndelsesbetingelserne $y(0) = 0$ og $y'(0) = 3$.
+\bigbreak
+Vi har den fuldstændige løsning fra før
+\[
+y(x) = C_1e^{-5x} + C_2e^{-x} 
+.\]
+Denne differentieres
+\[
+y'(x) = -5C_1e^{-5x} - C_2e^{-x} 
+.\]
+Vi har dermed
+\begin{align}
+y(0) &= 0 \\
+C_1e^{0} + C_2e^{0} &= 0 \\
+C_1 + C_2 &= 0 \label{eq:3}
+\end{align}
+Og
+\begin{align}
+y'(0) &= 3 \\
+-5C_1e^{0} - C_2e^{0} &= 3 \\
+-5C_1 - C_2 &= 3 \\
+C_2 &= - 3 - 5C_1 \label{eq:6} 
+\end{align}
+Ved at indsætte \textbf{\autoref{eq:6}} i \textbf{\autoref{eq:3}} fås
+\begin{align*}
+C_1 - 3 - 5C_1 &= 0 \\
+4C_1 &= -3 \\
+C_1 &= -\frac{3}{4} \implies C_2 = \frac{3}{4}
+\end{align*}
+Dermed er den partikulære løsning
+\[
+y(x) = -\frac{3}{4}e^{-5x} + \frac{3}{4}e^{-x} 
+.\]
+
+\section*{Opg. 3}
+Find løsningerne til den homogene differentialligning
+\[
+y'' + 16y = 0
+\]
+der opfylder begyndelsesbetingelserne $y(0) = 2$ og $y'(0)=-2$ 
+\bigbreak
+Først opskrives den karakteristiske ligning som
+\[
+r^2 + 16 = 0 \implies r^2 = - 15 \implies r = \pm 4i 
+.\]
+Eftersom diskriminanten er negativ må det gælde at følgende løsning er den fuldstændige løsning
+\begin{align*}
+  y(x) &= e^{0x}\left( C_1 \cos \left( 4x \right) + C_2 \sin \left( 4x \right)   \right)  \\
+  &= C_1 \cos \left( 4x \right) + C_2 \sin \left( 4x \right)
+\end{align*}
+Vi differentierer denne
+\[
+y'(x) = -4C_1 \sin \left( 4x \right) + 4C_2 \cos \left( 4x \right) 
+.\]
+Og indsætter begyndelsesbetingelserne
+\begin{align*}
+  2 &= C_1 \cos \left( 0 \right) + C_2 \sin \left( 0 \right)  \\
+  C_1 &= 2
+\end{align*}
+Og
+\begin{align*}
+  -2 &= -2\cdot4 \sin \left( 0 \right) + C_2\cdot 4 \cos \left( 0 \right)  \\
+  &= 4C_2 \\
+  C_2 &= -\frac{2}{4} = -\frac{1}{2}
+\end{align*}
+Altså bliver den partikulære løsning
+\[
+y(x) = 2 \cos \left( 4x \right) - \frac{1}{2}\sin \left( 4x \right)  
+.\]
+
+\section*{Opg. 4}
+Find fuldstændig løsning til den inhomogene differentialligning
+\[
+7y'' - y' - 2y = 20 \cos \left( x \right) 
+.\]
+\bigbreak
+For at finde løsningen til den inhomogene differentialligning løses først den tilsvarende homogene differentialligning så vi starter med at opskrive den karakteristiske ligning
+\[
+7r^2 - r - 2 = 0
+.\]
+Diskriminanten findes
+\[
+D = 1 - 4\cdot 7\cdot (-2) = 57
+.\]
+Altså har vi en positiv diskriminant og derfor må løsningen være på formen
+\[
+y(x) = C_1e^{r_1x} + C_2e^{r_2x} 
+.\]
+Vi finder den karakteristiske lignings rødder
+\[
+r = \frac{1 \pm \sqrt{57}}{14} 
+.\]
+Altså har vi
+\[
+y(x) = C_1 e^{ \frac{1+\sqrt{57}}{14}x} + C_2 e^{ \frac{1-\sqrt{57}}{14}x}  
+.\]
+Vi benytter \textit{ubestemte koefficienters metode} så dermed har vi at vores 'gæt' på en partikulær løsning skal være på formen
+\begin{align*}
+  y_p &= A \cos \left( x \right) + B \sin \left( x \right) \\
+  y_p' &= -A \sin \left( x \right) + B \cos \left( x \right)  \\
+  y_p'' &= -A \cos \left( x \right) - B \sin \left( x \right)   \\
+\end{align*}
+Vi indsætter dette i vores differentialligning
+\begin{align*}
+  20 \cos \left( x \right) &= 7\left( -A \cos \left( x \right) - B \sin \left( x \right)  \right)  - \left( -A \sin \left( x \right) + B \cos \left( x \right)  \right) - 2\left( A \cos \left( x \right) + B \sin \left( x \right)  \right) \\
+  &= -7A \cos \left( x \right) - 7B \sin \left( x \right) + A \sin \left( x \right) - B \cos \left( x \right) - 2A \cos \left( x \right) - 2B \sin \left( x \right) \\
+  &=  -9A \cos \left( x \right) - 9B \sin \left( x \right) + A \sin \left( x \right) - B \cos \left( x \right) \\
+  &= \cos \left( x \right)\left( -9A - B \right) + \sin \left( x \right) \left( -9B + A \right) 
+\end{align*}
+Vi har dermed to ligninger med to ubekendte som løses ved
+\begin{align*}
+  0 &= -9B + A & \qquad 20 &= -9A - B \\
+  A &= 9B & \qquad 20 &= -81B - B  \\
+  A &= 9\cdot \left( -\frac{10}{41} \right) &\qquad 20 &= -82B \\
+  A &= -\frac{90}{41} &\qquad B &= -\frac{20}{82} = -\frac{10}{41} \\
+\end{align*}
+Altså har vi at løsningen til differentialligningen er
+\begin{align*}
+  y(x) &= y_{hom} + y_p \\
+  &= C_1e^{ \frac{1+\sqrt{57} }{14} } + C_2e^{ \frac{1-\sqrt{57} }{14} } - \frac{90}{41}\cos \left( x \right) - \frac{10}{41}\sin \left( x \right) 
+\end{align*}
+
+
+\section*{Opg. 5}
+Find fuldstændig løsning til den inhomogene differentialligning
+\[
+y'' - y = e^x + x^2
+.\]
+\bigbreak
+Den karakteristiske ligning opskrives for den tilsvarende homogene differentialligning
+\[
+r^2-1 = 0 \implies r = \pm 1 
+.\]
+Den komplementære løsning er altså
+\[
+y_c(x) = C_1e^{x} + C_2e^{-x}
+.\]
+Vi benytter \textit{ubestemte koefficienters metode} og gætter på en løsning på formen
+\begin{align*}
+y_p &= Axe^{x} + Bx^2 + Cx + D  \\
+y_p' &= Axe^{x} + Ae^{x} + 2Bx + C  \\
+y_p'' &= Axe^{x} + 2Ae^{x} + 2B
+\end{align*}
+Vi indsætter dette i differentialligningen
+\begin{align*}
+e^x + x^2 &= Axe^{x} + 2Ae^{x} + 2B - Axe^{x} - Bx^2 - Cx - D \\
+&= 2Ae^{x} + 2B - Bx^2 - Cx - D
+\end{align*}
+Vi løser for de ubekendte
+\begin{align*}
+  1 &= 2A & &\iff & A &= \frac{1}{2} \\
+  1 &= -B & &\iff & B &= -1 \\
+  0 &= C & &\iff & C &= 0 \\
+  0 = 2B &- D = -2 - D & &\iff & D &= -2 \\
+\end{align*}
+Altså bliver den løsningen
+\[
+y(x) = C_1e^{x} + C_2e^{-x} + \frac{1}{2}xe^{x} - x^2 + 2
+.\]
+
+
+\section*{Opg. 6}
+Find løsningen til den inhomogene differentialligning
+\[
+y'' + y = e^{2x} 
+\]
+der opfylder begyndelsesbetingelserne $y(0) = 0$ og $y'(0) = \frac{2}{5}$
+\bigbreak
+Vi løser den karakteristiske ligning
+\[
+r^2 + 1 = 0 \implies r = \pm i
+.\]
+Dette giver den komplementære løsning
+\[
+y_c(x) = C_1 \cos \left( x \right) + C_2 \sin \left( x \right) 
+.\]
+Vha. \textit{ubestemte koefficienters metode} gætter vi på at den partikulære løsning er på formen 
+\begin{align*}
+  y_p &= Ae^{2x} \\
+  y_p' &= 2Ae^{2x}  \\
+  y_p'' &= 4Ae^{2x}  \\
+\end{align*}
+Vi indsætter dette i differentialligningen
+\begin{align*}
+  e^{2x} &= 4Ae^{2x} + Ae^{2x}  \\
+  \implies A &= \frac{1}{5} \\
+\end{align*}
+Den generelle løsning er altså
+\[
+y(x) = C_1 \cos \left( x \right) + C_2 \sin \left( x \right) + \frac{1}{5}e^{2x} 
+.\]
+Denne differentieres til
+\[
+y'(x) = -C_1 \sin \left( x \right) + C_2 \cos \left( x \right) + \frac{2}{5}e^{2x} 
+.\]
+Vi indsætter begyndelsesbetingelserne
+\begin{align*}
+  0 &= C_1 + \frac{1}{5} & &\implies & C_1 &= -\frac{1}{5} \\
+  \frac{2}{5} &= C_2 + \frac{2}{5} & &\implies & C_2 &= 0
+\end{align*}
+Altså er løsningen
+\[
+y(x) = -\frac{1}{5}\cos \left( x \right) + \frac{1}{5}e^{2x} 
+.\]
+
+
+\section*{Prøveeksamensspørgsmål 13}
+Bestem løsning til følgende homogene differentialligning med begyndelsesbetingelser
+\[
+2y'' + 2y' + y = 0, \qquad y(0) = 4, \qquad y'(0) = 2
+.\]
+For et tal $a$ er løsningen:
+\[
+y(x) = 4e^{-\frac{1}{2}x} \left( a \cdot \sin \left( \frac{x}{a} \right) + \cos \left( \frac{x}{a} \right)  \right) 
+.\]
+Svaret er et helt tal mellem \num{0} og \num{99}.
+\bigbreak
+Den karakteristiske ligning opskrives
+\[
+2r^2 + 2r + 1 = 0
+.\]
+Løsningerne findes
+\[
+r = \frac{-2 \pm \sqrt{2^2 - 4\cdot 2\cdot 1}}{2\cdot 2} = \frac{-2 \pm 2i}{4} = -\frac{1}{2}\pm \frac{1}{2}i  
+.\]
+Altså bliver løsningen
+\[
+y(x) = C_1e^{-\frac{1}{2}x} \cos \left( \frac{1}{2}x \right) + C_2e^{-\frac{1}{2}x} \sin \left( -\frac{1}{2}x \right) 
+.\]
+Altså må $a$ være $2$.
+
+\section*{Prøveeksamensspørgsmål 14}
+Bestem løsning til følgende inhomogene differentialligning med begyndelsesbetingelser
+\[
+y'' - 2y' + y = e^{x}, \qquad y(0) = 1, \qquad y'(0) = 2
+.\]
+Løsningen er
+\[
+y(x) = \left( \frac{1}{2}x^2 + Px + 1 \right)e^x
+.\]
+For et helt tal $0<P<99$
+\bigbreak
+Den karakteristiske ligning opskrives
+\[
+r^2 - 2r + 1 = 0
+.\]
+Dennes løsninger findes
+\[
+r = \frac{2 \pm \sqrt{4-4\cdot1 \cdot 1} }{2} = 1 
+.\]
+Altså er den fuldstændige løsning
+\[
+y(x) = C_1xe^{x} + C_2e^{x} 
+.\]
+Vores løsningsgæt er
+\begin{align*}
+  y_p &= Ax^2e^{x}  \\
+  y_p' &= Axe^{x} + Ax^2e^{x} \\
+  y_p'' &= 2Ax^2e^{x} + 2Ae^{x} + Ax^2e^{x} + 2Axe^{x} = 4Axe^{x} + 2Ae^{x} + Ax^2e^{x}
+\end{align*}
+Dette indsættes i differentialligningen
+\begin{align*}
+  e^{x} &= 4Axe^{x} + 2Ae^{x} + Ax^2e^{x} - 4Axe^{x} - 2Ax^2e^{x} + Ax^2e^{x} \\
+  &= 2Ax^2 e^{x}  \\
+  \implies A &= \frac{1}{2} 
+\end{align*}
+Dette indsættes og vi får at
+\[
+y(x) = \left( C_1x + C_2 + \frac{1}{2}x^2 \right)e^{x} 
+.\]
+Altså har vi
+\[
+y'(x) = \left( C_1x + C_2 + \frac{1}{2}x^2 \right) e^{x} + \left( C_1 + x \right)e^{x}
+.\]
+Vi indsætter begyndelsesbetingelserne
+\begin{align*}
+1 &= C_2  \\
+2 &= 1+C_1 \implies C_1 = 1
+\end{align*}
+Altså er vores partikulære løsning
+\[
+y(x) = \left( 1 + x + \frac{1}{2}x^2 \right)e^x
+.\]
+Svaret må altså være $P=1$
+
+
+\end{document}

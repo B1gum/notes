@@ -1,0 +1,463 @@
+\documentclass[12pt]{article}
+\usepackage[danish]{babel}
+\usepackage{amsfonts, amssymb, mathtools, amsthm, amsmath}
+\usepackage{graphicx, pgfplots}
+\usepackage{url}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{sagetex}
+\usepackage{lastpage}
+
+%loaded last
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{siunitx}
+  \sisetup{exponent-product = \cdot,
+    output-decimal-marker = {,}}
+
+%Giles Castelles incfig
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+  \def\svgwidth{#1\columnwidth}
+  \import{../figures/}{#2.pdf_tex}
+}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\thepage}
+\fancyhead[C]{\leftmark}
+
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{every axis/.append style={
+  axis x line=middle,    % put the x axis in the middle
+  axis y line=middle,    % put the y axis in the middle
+  axis line style={<->,color=black}, % arrows on the axis
+}}
+
+\usepackage{thmtools}
+\usepackage{tcolorbox}
+  \tcbuselibrary{skins, breakable}
+  \tcbset{
+    space to upper=1em,
+    space to lower=1em,
+  }
+
+\theoremstyle{definition}
+
+\newtcolorbox[auto counter]{definition}[1][]{%
+  breakable,
+  colframe=ForestGreen,  %frame color
+  colback=ForestGreen!5, %background color
+  colbacktitle=ForestGreen!25, %background color for title
+  coltitle=ForestGreen!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{ForestGreen},  %display left line
+  title=Definition \thetcbcounter: #1,
+}
+
+\newtcolorbox{greenline}{%
+  breakable,
+  colframe=ForestGreen,  %frame color
+  colback=white,          %remove background color
+  left=1em,              %space on left side in box
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{ForestGreen},  %display left line
+}
+
+\newtcolorbox[auto counter, number within=section]{eks}[1][]{%
+  brekable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,            %space on left side in box,
+  enhanced,            %more options
+  frame hidden,        %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Eksempel \thetcbcounter: #1
+}
+
+\newtcolorbox{blueline}{%
+  breakable,
+  colframe=NavyBlue,     %frame color
+  colback=white,         %remove background
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+}
+
+\newtcolorbox{teo}[1][]{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=RawSienna!5, %background color
+  colbacktitle=RawSienna!25,    %background color for title
+  coltitle=RawSienna!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+  title=Teori: #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{sæt}[1][]{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=RawSienna!5, %background color
+  colbacktitle=RawSienna!25,    %background color for title
+  coltitle=RawSienna!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+  title=Sætning \thetcbcounter: #1,
+  before lower={\textbf{Bevis:}\par\vspace{0.5em}},
+  colbacklower=RawSienna!25,
+}
+
+\newtcolorbox{redline}{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=white,       %Remove background color
+  left=1em,            %space on left side in box,
+  enhanced,            %more options
+  frame hidden,        %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+}
+
+\newtcolorbox{for}[1][]{%
+  breakable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Forklaring #1,
+}
+
+\newtcolorbox{bem}{%
+  breakable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Bemærkning:,
+}
+
+\makeatother
+\def\@lecture{}%
+\newcommand{\lecture}[3]{
+  \ifthenelse{\isempty{#3}}{%
+    \def\@lecture{Lecture #1}%
+  }{%
+    \def\@lecture{Lecture #1: #3}%
+  }%
+  \subsection*{\makebox[\textwidth][l]{\@lecture \hfill \normalfont\small\textsf{#2}}}
+}
+
+\makeatletter
+
+\newcommand{\opgave}[1]{%
+ \def\@opgave{#1}%
+ \subsection*{Opgave #1}
+}
+
+\makeatother
+
+%Format lim the same way in intext and in display
+\let\svlim\lim\def\lim{\svlim\limits}
+
+% horizontal rule
+\newcommand\hr{
+\noindent\rule[0.5ex]{\linewidth}{0.5pt}
+}
+
+\title{Opgaver til forelæsning uge 19}
+\author{Noah Rahbek Bigum Hansen}
+\date{19. -- 20. November 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Opg. 13.9}
+A particle of mass $3m$ is located \qty{1,00}{m} from a particle of mass $m$.
+
+\subsection*{(a)}
+Where should you put a third mass $M$ so that the net gravitational force on $M$ due to the two masses is exactly zero?
+\bigbreak
+\begin{figure}[ht]
+  \centering
+  \incfig[0.8]{F19_13_9}
+  \caption{Fritlegemediagram for de tre masser}
+  \label{fig:F19_13_9}
+\end{figure}
+
+For at der er statik må det gælde at $\sum F_{xM} = 0$. Vi har desuden Newtons tyngdelov der siger at
+\[ 
+F_g = \frac{GMm}{r^2}
+.\]
+Altså kan vi opstille følgende lighed
+\[ 
+F_{\ell} + F_r = 0
+.\]
+Vi får altså
+\begin{align*}
+  \frac{GM3m}{x^2} &= \frac{GMm}{(l-x)^2}  \\
+  x^2 &= 3(\ell-x)^2  \\
+  &= 3x^2 + 3\ell^2 - 6\ell x  \\
+  0 &= 2x^2 + 3\ell^2 - 6\ell x  \\
+  &= x^2 - 3\ell x + \frac{3}{2}\ell^2  \\
+  x &= \frac{3\ell \pm \sqrt{9\ell^2 - 6 \ell^2}}{2} \\
+  \frac{x}{\ell} &= \frac{3 \pm \sqrt{3}}{2}
+.\end{align*}
+For $\ell = \qty{1,00}{m}$ får vi $x = \num{1,5} \pm \frac{\sqrt{3}}{2}$. For at $x < \ell$ kan vi forkaste løsningen hvor $\pm = +$ og får dermed $x = \num{1,5} - \frac{\sqrt{3}}{2}$.
+
+\subsection*{(b)}
+Is the equilibrium of $M$ at this point stable or unstable 
+
+\subsubsection*{(i)}
+for points along the line connecting $m$ and $3m$, and
+\bigbreak
+Vi har generelt fra perturbationsteori, at en ligevægt er stabil, hvis $\frac{\mathrm{d}^2U}{\mathrm{d}x^2} > 0$ eftersom enhver lille forskydning af massen $\mathrm{d}x$ i dette tilfælde medfører en restaurerende kraft og vice versa. 
+Vi regner den potentielle gravitationelle energi som
+\[ 
+U(x) = - \frac{GMm}{x} - \frac{3GMm}{1-x}
+.\]
+Og vi differentierer to gange for at få
+\[ 
+\frac{\mathrm{d}^2U}{\mathrm{d}x^2} = - \frac{2GMm}{x^3} - \frac{6GMm}{(1-x)^3}
+.\]
+Hvis vi sætter en positiv værdi ind på x's plads bliver nævnerne hhv.
+\begin{align*}
+  n_1 \left(\num{1,5} - \frac{\sqrt{3}}{2} \right) &= \left( \num{1,5} - \frac{\sqrt{3}}{2} \right) \\
+  n_2 \left( \num{1,5} - \frac{\sqrt{3}}{2} \right) &= \left( 1 - \num{1,5} + \frac{\sqrt{3}}{2} \right)
+.\end{align*}
+Begge disse er positive og fortegnet for $\frac{\mathrm{d}^2U}{\mathrm{d}x^2}$ bliver derfor negativt og derfor er situationen ustabil.
+
+
+\subsubsection*{(ii)}
+for points along the line passing through $M$ and perpendicular to the line connecting $m$ and $3m$?
+\bigbreak
+I dette tilfælde vil $M$ bevæge sig væk fra den rette linje mellem $3m$ og $m$ og derfor vil gravitationskraften fra disse to virke restaurerende og derfor er denne situation mere stabil end før, omend situationen ikke er stabil som så, idet situationen bliver ustabil så snart $M$ kommer ned til linjen mellem $3m$ og $m$.
+
+\section*{Opg. 13.27}
+Two satellites are in circular orbits around a planet that has radius \qty{9,00e6}{m}. One satellite has mass \qty{68,0}{kg}, orbital radius \qty{7,00e7}{m}, and orbital speed \qty{4800}{m/s}. The second satellite has mass \qty{84,0}{kg} and orbital radius \qty{3,00e7}{m}. What is the orbital speed of this second satellite?
+\bigbreak
+Vi har oplyst følgende
+\begin{align*}
+  m_1 &= \qty{68,0}{kg},  &\quad v_1 &= \qty{4800}{\frac{m}{s}}, &\quad r_1 &= \qty{7,00e7}{m},  \\
+  m_2 &= \qty{84,0}{kg}, &\quad r_2 &= \qty{3,00e7}{m}, &\quad v_2 &= ??
+.\end{align*}
+Vi har den velkendte formel for hastigheden af et objekt i en jævn cirkelbevægelse om et massivt objekt som
+\[ 
+v^2 = \frac{Gm_p}{r}
+.\]
+Vi har dermed at
+\[ 
+  v_1^2 r_1 = Gm_p = \mathrm{const.} = v_2^2 r_2
+.\]
+Altså fås at
+\begin{align*}
+  v_2 = \qty{4800}{\frac{m}{s}} \sqrt{\frac{\qty{7,00e7}{m}}{\qty{3,00e7}{m}}} = \qty{7332}{\frac{m}{s}} 
+.\end{align*}
+
+
+\section*{Opg. 13.47}
+An experiment is performed in deep space with two uniform spheres, one with mass \qty{50,0}{kg} and the other with mass \qty{100,0}{kg}. They have equal radii, $r = \qty{0,20}{m}$. The spheres are released from rest with their centers \qty{40,0}{m} apart. They accelerate toward each other because of their mutual gravitational attraction. You can ignore all gravitational forces other than that between the two spheres.
+
+\subsection*{(a)}
+Explain why linear momentum is conserved.
+\bigbreak
+Eftersom ingen udefrakommende kræfter virker på de to kugler udgør de et lukket system og derfor er deres lineære impuls konserveret. 
+
+\subsection*{(b)}
+When their centers are \qty{20,0}{m} apart, find
+
+\begin{figure}[ht]
+  \centering
+  \incfig[0.8]{F19_13_47}
+  \caption{Fritlegemediagram for de to kugler i initialpositionen.}
+  \label{fig:F19_13_47}
+\end{figure}
+
+\subsubsection*{(i)}
+the speed of each sphere and
+\bigbreak
+Energi er konserveret i lukkede systemer og derfor må det gælde at
+\[ 
+  U_0 - U_1 = + K
+.\]
+Hvor $K$ er den totale kinetiske energi. Den potentielle energi i et tyngdefelt er generelt givet som
+\[ 
+  U_g = - \frac{GMm}{r}
+.\]
+Vi har derfor følgende udtryk
+\[ 
+  - \frac{GMm}{r_0} + \frac{GMm}{r_f} = \frac{1}{2}m_1 v_1^2 + \frac{1}{2} m_2 v_2^2
+.\]
+Vi har desuden fra konservation af impuls at
+\[ 
+m_1v_1 = m_2v_2 \implies v_2 = \frac{m_1}{m_2}v_1 = \frac{1}{2}v_1
+.\]
+Altså er hastigheden $v_2$ halvt så stor som hastigheden $v_1$. Vi har dermed
+\begin{align*}
+  \frac{GMm}{r_f} - \frac{GMm}{r_0} &= \frac{1}{2}m_1 v_1^2 + \frac{1}{2} m_2 (\num{0,5} \cdot  v_1)^2 \\
+  \frac{G \cdot \qty{50,0}{kg} \cdot \qty{100}{kg} }{\qty{20,0}{m}} - \frac{G \cdot \qty{50,0}{kg} \cdot \qty{100}{kg} }{\qty{40,0}{m}} &= \frac{1}{2} \cdot \qty{50,0}{kg} \cdot v_1^2 + \frac{1}{2} \cdot \qty{100,0}{kg} \cdot \num{0,25} v_1^2 \\
+  \qty{8,343e-9}{J} &= \qty{37,5}{kg} v_1^2 \\  
+  v_1 &= \sqrt{\frac{\qty{8,3429e-9}{J}}{\qty{37,5}{kg}}} \\ 
+  v_1 &= \qty{1,492e-5}{\frac{m}{s}} \\
+  \implies v_2 &= \frac{1}{2} \cdot \qty{1,492e-5}{\frac{m}{s}} = \qty{7,458e-6}{\frac{m}{s}} 
+.\end{align*}
+Altså er de to hastigheder fundet til den angivne seperation.
+
+
+\subsubsection*{(ii)}
+the magnitude of the relative velocity with which one sphere is approaching the other.
+\bigbreak
+Deres relative indbyrdes hastighed er
+\[ 
+|v_1| + |v_2| = 3 v_2 = \qty{2,24e-5}{\frac{m}{s}} 
+.\]
+
+
+\subsection*{(c)}
+How far from the initial position of the center of the \qty{50,0}{kg}  sphere do the surfaces of the two spheres collide?
+\bigbreak
+Konservation af momentum giver at
+\begin{align*}
+  m_1 v_1 + m_2v_2 &= 0 \\
+  \implies m_1 x_1 + m_2 x_2 &= 0 \\
+  \implies m_1 x_1 &= m_2 x_2
+.\end{align*}
+Vi har desuden, at
+\[ 
+x_1 + x_2 = \qty{40}{m} \implies x_2 = \qty{40}{m} - x_1
+.\]
+Vi har altså, at
+\[ 
+\frac{m_1}{m_2} x_1 = \frac{1}{2}x_1 = \qty{40}{m} - x_1
+.\]
+Og vi kan slutteligt løse for $x_1$ som
+\begin{align*}
+  \frac{1}{2}x_1 &= \qty{40}{m} - x_1 \\
+  \frac{3}{2} x_1 &= \qty{40}{m} \\
+  x_1 &= \frac{2}{3} \qty{40}{m} \approx \qty{26,67}{m} 
+.\end{align*}
+
+
+\section*{Opg. 13.61}
+\textbf{Falling hammer.} A hammer with mass $m$ is dropped from rest from a height $h$ above the earth’s surface. This height is not necessarily small compared with the radius $R_E$ of the earth. Ignoring air resistance, derive an expression for the speed $v$ of the hammer when it reaches the earth’s surface. Your expression should involve $h$, $R_E$, and $m_E$ (the earth’s mass).
+\bigbreak
+Den potentielle energi til en given højde, $h$ er givet som
+\[ 
+U = -\frac{GMm}{r}
+.\]
+Idet energi er konserveret har vi at
+\[ 
+U_0 + k_0 = U_1 + k_1
+.\]
+Dette kan omskrives til
+\begin{align*}
+  - \frac{Gmm_E}{R_E} + \frac{1}{2} m v^2 &= -\frac{Gmm_E}{R_E + h} + 0 \\
+  \frac{1}{2}mv^2 &= \frac{Gmm_E}{R_E} - \frac{Gmm_E}{R_E + h} \\
+       &= \frac{Gmm_E}{R_E} \left( 1 - \frac{R_E}{R_E + h} \right)  \\
+       &= \frac{Gmm_E}{R_E} \left( \frac{h}{R_E + h} \right)  \\
+       &= \frac{Gmm_eh}{R_E(R_E + h)}  \\
+    v^2 &= \frac{2Gm_eh}{R_E(R_E + h)} \\
+    v  &=  \sqrt{\frac{2Gm_eh}{R_E(R_E + h)}}
+.\end{align*}
+
+
+\section*{Opg. 13.63}
+\textbf{Binary Star-Equal Masses}. Two identical stars with mass $M$ orbit around their center of mass. Each orbit is circular and has radius $R$, so that the two stars are always on opposite sides of the circle.
+
+\subsection*{(a)}
+Find the gravitational force of one star on the other.
+\bigbreak
+Newtons gravitationslov lyder generelt
+\[ 
+F_g = \frac{GMm}{r^2}
+.\]
+Sættes symboler fra opgaven ind her fås
+\[ 
+F_g = \frac{GM^2}{4R^2}
+.\]
+
+
+\subsection*{(b)}
+Find the orbital speed of each star and the period of the orbit.
+\bigbreak
+Fra Newtons 2. lov ($\sum \Vec{F} = m \Vec{a}$) har vi at
+\begin{align*}
+  \frac{Mv^2}{R} &= \frac{GM^2}{4R^2} \\
+  v &= \sqrt{\frac{GM}{4R}}
+.\end{align*}
+
+Og idet $T = \frac{2\pi r}{v}$ må perioden blive
+\[ 
+  T = \frac{2\pi R}{v} = 2\pi R \sqrt{\frac{4R}{GM}} = 4\pi \sqrt{\frac{R^3}{GM}}
+.\]
+
+
+\subsection*{(c)}
+How much energy would be required to separate the two stars to infinity?
+\bigbreak
+Vi opskriver udtrykket for energikonservation, idet vi sætter energien i sluttilstanden til 0 og tilføjer et udført arbejde, $W_{appl}$, på initialsiden som
+\begin{align*}
+  K_1 + U_1 + W_{appl} &= 0 \\
+  W_{appl} &= -(K_1 + U_1) \\
+  &= - \left( 2 \left( \frac{1}{2}Mv^2 \right) - \frac{GM^2}{2R} \right) \\
+  &= \frac{GM^2}{2R} - Mv^2 \\
+  &= \frac{GM^2}{2R} - M \frac{GM}{4R} \\
+  &= \frac{GM^2}{4R}
+.\end{align*}
+
+
+
+\section*{Opg. 13.65}
+Comets travel around the sun in elliptical orbits with large eccentricities. If a comet has speed \qty{2,0e4}{m/s} when at a distance of \qty{2,5e11}{m} from the center of the sun, what is its speed when at a distance of \qty{5,0e10}{m}?
+\bigbreak
+Fra energikonservation har vi at
+\begin{align*}
+  U_0 + k_0 &= U_1 + k_1 \\
+  - \frac{GMm}{r_1} + \frac{1}{2}m v_1^2 &= - \frac{GMm}{r_2} + \frac{1}{2} m v_2^2 \\
+  \frac{1}{2}v_2^2 &= \frac{1}{2} v_1^2 + GM \left( \frac{1}{r_2} - \frac{1}{r_1} \right) \\
+  v_2 &= \sqrt{v_1^2 + 2 GM \left( \frac{1}{r_2} - \frac{1}{r_1} \right)}
+.\end{align*}
+Sættes kendte størrelser ind fås at
+\[ 
+v_2 = \sqrt{\left( \qty{2,0e4}{\frac{m}{s}} \right)^2 + 2G \cdot \qty{1,99e30}{kg} \left( \frac{1}{\qty{5,0e10}{m}} - \frac{1}{\qty{2,5e11}{m}} \right) } = \qty{68190}{\frac{m}{s}} 
+.\]
+
+\end{document}

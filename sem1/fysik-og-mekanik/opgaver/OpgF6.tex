@@ -1,0 +1,247 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage[output-decimal-marker={,}]{siunitx}
+\usepackage{latexsym, amsfonts, amssymb, amsthm, amsmath, graphicx, pgfplots}
+
+
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{every axis/.append style={
+		axis x line=middle,    % put the x axis in the middle
+		axis y line=middle,    % put the y axis in the middle
+		axis line style={<->,color=black}, % arrows on the axis
+	}}
+
+\title{Opgaver til forelæsning 6}
+\author{Noah Rahbek Bigum Hansen}
+\date{19. september 2024 - 3. oktober 2024}
+
+\begin{document}
+
+\section*{3.25}
+	The earth has a radius of 6380 km and turns around once on its axis in 24 h.
+	
+	\subsection*{(a)}
+		What is the radial acceleration of an object at the earth’s equator? Give your answer in \si{m/s^2} and as a fraction of $g$. 
+
+		\bigbreak
+
+Størrelsen på accelerationen i jævn cirkelbevægelse er givet ved:
+
+\begin{gather*}
+	a_{rad} = \frac{v^2}{R}
+\end{gather*}
+
+Hvor  $v$ er hastigheden og  $R$ er radiussen den cirkulære bane. Hastighed er givet ved $\frac{s}{t}$. Strækningen som et objekt ved jordens tilbagelægger over \qty{24}{hr} er jordens omkreds gived:
+
+\begin{gather*}
+	O = 2\pi R = 2\pi \cdot \qty{6380}{km} = \qty{40086,77}{km}
+\end{gather*}
+
+Denne strækning tilbagelægges over 24 timer og altså har vi en hastighed på
+
+\begin{gather*}
+	v_{jord} = \frac{40086,77 km}{24 hr} = \qty{463,967}{m/s}
+\end{gather*}
+
+Denne hastighed kan nu indsættes i formlen for $a_{rad}$ :
+
+\begin{gather*}
+	a_{rad} = \frac{v^2}{R} = \frac{(463,967 \frac{m}{s})^2}{6380 km} = \qty{0,0337}{m/s^2} = 3,37 \cdot 10^{-2} g
+\end{gather*}
+Altså har den radiale acceleration som et objekt på ækvator oplever en størrelse på lidt over $ 3,37\% $ af $g$.  
+
+
+	\subsection*{(b)}
+	If $a_{rad}$ at the equator is greater than $g$, objects will fly off the earth’s surface and into space. (We’ll see the reason for this in Chapter 5.) What would the period of the earth’s rotation have to be for this to occur?
+
+\bigbreak
+Formlen for $a_{rad}$ opskrives symbolsk:
+\[
+	a_{rad} = \frac{v^2}{R} = \frac{\frac{O^2}{t^2}}{R}
+.\] 
+Perioden kan nu isoleres:
+\[
+a_{rad}\cdot R = \frac{O^2}{t^2} \implies t = \sqrt{\frac{O^2}{a_{rad}\cdot R}} 
+.\] 
+Dernæst sættes $a_{rad} = g$ og altså fås:
+\[
+t = \sqrt{\frac{40068.77 km ^2}{g\cdot 6380 km}} = \qty{1,41}{hr}
+.\] 
+Altså ville et menneske på ækvator flyve af jorden såfremt jorden fik en periode for omdrejning om sin egen akse på \qty{1,41}{hr}.
+
+
+\section*{3.34}
+	The radius of the earth's orbit around the sun (Assumed to be circular) is $1.50 \times 10^8 \si{ km}$, and the earth travels around this orbit in 365 days.
+
+	\subsection*{(a)}
+	What is the magnitude of the orbital velocity of the earth, in \si{m/s}
+	\bigbreak
+	Først laves en hurtig overslagsberegning:
+	\begin{gather*}
+		\mathcal{O}(T) = 10^4 \,days = 10^4 \,days \cdot 10^1 \,\frac{hr}{day} =  10^5 \,hr \cdot 10^2 \,\frac{min}{hr} \\
+		= 10^7 \,min \cdot 10^2 \,\frac{s}{min} = 10^9 \,s 
+	\end{gather*}	
+	\[
+		\mathcal{O}(O) = \mathcal{O}(r) \cdot 10 = 10^9 \,km = 10^9 \,km \cdot 10^3 \,\frac{m}{km} = 10^{12} \,m
+	\] 
+	Og altså:
+	\[
+		\mathcal{O}(v) = \frac{10^{12} m}{10^9 s} = 10^3 \frac{m}{s}
+	\]
+	Det reele resultat kan på google findes til at være $\mathcal{O}(v) = 10^5 \frac{m}{s}$ og altså var vi et stykke derfra med det hurtige overslag.
+
+	\subsection*{(b)}
+	What is the magnitude of the radial acceleration of the earth toward the sun in \si{m/s^2}i?
+	\bigbreak
+	Den radielle acceleration er givet ved:
+	\[
+	a_{rad}=\frac{v^2}{R}
+	.\] 
+	Størrelsesordenen af hastigheden er ovenfor fundet til $\mathcal{O}(v) = 10^5 \frac{m}{s}$ og størrelsesordenen af radiussen i m er $\mathcal{O}(R) = 10^{11} m$. Altså har vi:
+	\[
+		\mathcal{O}(a_{rad}) = \frac{(10^5 \frac{m}{s})^2}{10^{11} m} = 10^{-1} \frac{m}{s^2}
+	.\] 
+	Den reele størrelsesorden er dog $10^2 \frac{m}{s^2}$ hvorfor vi var er godt stykke fra.
+
+	\subsection*{(c)}
+	Repeat pats (a) and (b) for the motion of the planet Mercury (orbit radius $ = 5.79 \times 10^7 \si{ km}$,
+	orbital period $= \qty{88}{days}$)
+	\bigbreak
+	\textit{Vi starter med (a)}:
+	Først laves en hurtig overslagsberegning:
+	\begin{gather*}
+		\mathcal{O}(T) = 10^2 \,days = 10^2 \,days \cdot 10^1 \,\frac{hr}{day} =  10^3 \,hr \cdot 10^2 \,\frac{min}{hr} \\
+		= 10^5 \,min \cdot 10^2 \,\frac{s}{min} = 10^7 \,s 
+	\end{gather*}	
+	\[
+		\mathcal{O}(O) = \mathcal{O}(r) \cdot 10 = 10^9 \,km = 10^9 \,km \cdot 10^3 \,\frac{m}{km} = 10^{12} \,m
+	\] 
+	Og altså:
+	\[
+		\mathcal{O}(v) = \frac{10^{12} m}{10^7 s} = 10^5 \frac{m}{s}
+	\]
+	Det reelle resultat kan på google findes til at være $\mathcal{O}(v) = 10^5 \frac{m}{s}$ og altså ramte vi fint med vores bud.
+
+	\bigreak
+
+	\textit{Dernæst ordnes (b)}:
+	\[
+		\mathcal{O}(a_{rad}) = \frac{(10^5 \frac{m}{s})^2}{10^{11} m} = 10^{-1} \frac{m}{s^2}
+	.\] 
+
+	
+
+\section*{3.72}
+	When a train's velocity is \qty{12.0}{m/s} eastward, raindrops that are falling vertically with respect to the earth make traces that are inclined \ang{30.0} to the vertical on the windows of the train.
+
+	\subsection*{(a)}
+	What is the horizontal component of a drop's velocity with respect to the earth? With respect to the train?
+	\bigbreak
+	\textit{NB: Opgaven forstås som tog der kører mod højre, regnen falder lodret mod jorden overalt og selvsamme regn rammer af og til togets sider hvorved en vinkel på \ang{30.0} kan måles mellem regndroppen og lod:}
+	\bigbreak
+	Pr. måden som opgaven forstås på beskrevet ovenfor har regndråbernes hastighed en vandret komponent på 0 ift. jorden. Ift. toget må den vandrette komponent derfor være \qty{12,0}{m/s}. 
+
+	\subsection*{(b)}
+	What is the magnitude of the velocity of the raindrop with respect to the earth? With respect to the train?
+	For at finde størrelsen på hastighedsvektorens lodrette komponent idet hastighedsvektorens vandrette komponent er kendt benyttes:
+	\[
+		|\Vec{v_{jord}}| = \tan \theta \cdot \Vec{v_x} = \tan \ang{30} \cdot 12,0 \frac{m}{s} = 6,928 \frac{m}{s}
+	.\]
+	Og for at finde størrelsen på hastighedsvektoren benyttes:
+	\[
+		|\Vec{v_{tog}}| = \frac{v_x}{\sin \theta} = \frac{12,0 \frac{m}{s}}{\sin \ang{30}} = 24 \frac{m}{s}
+	.\]
+
+\section*{3.73}
+	In a World Cup soccer match, Juan is running due north toward the goal with a speed of \qty{8.00}{m/s} relative to the ground. A teammate passes the ball to him. The ball has a speed of \qty{12.0}{m/s} and is moving in a direction \ang{37.0} east of north, relative to the ground. What are the magnitude and direction of the ball's velocity relative to Juan?
+	\bigbreak
+	Situationen indtegnes i et koordinatsystem. Heri sættes juans hastighed til $\begin{pmatrix} 0 \\ 8 \end{pmatrix}$. Hastighedsvektoren for bolden beregnes:
+	\[
+		x_{bold} = \begin{pmatrix} 12 \frac{m}{s} \cdot \cos\left( \ang{53} \right)  \\ 0 \end{pmatrix} = \begin{pmatrix} 7,22 \frac{m}{s} \\ 0 \end{pmatrix}  
+	.\] 
+	Og
+	\[ 
+		y_{bold} = \begin{pmatrix} 0 \\ 12 \frac{m}{s} \cdot \sin\left( \ang{53} \right)  \\ 0 \end{pmatrix} = \begin{pmatrix} 0 \\ 9,58 \frac{m}{s} \end{pmatrix}  
+	.\]
+
+
+\section*{3.79}
+	A projectile thrown from a point $p$ moves in such a way that its distance from $p$ is always increasing. Find the maximum angle above the horizontal with which the projectile could have been thrown. Ignore air resistance.
+\bigbreak
+Afstanden til projektilet i x-retningen fås som
+\[
+D_x = v_0 \cdot t \cdot \cos\left( \theta \right)
+\] 
+og tilsvarende kan afstanden til projektilet i y-retningen findes som
+\[
+D_y = v_0 \cdot t \cdot \sin\left( \theta \right) 
+.\] 
+Den samlede afstand til punktet kan da findes vha. Pythagoras:
+\[
+D^2 = D_x^2 + D_y^2
+.\] 
+Hvis $D^2$ er aftagende for en given værdi af $t$ må det også betyde at $D$ er aftagende for samme værdi af $t$. Altså ønskes at finde den største vinkel, $\theta$, for hvilken $D^2$ aldrig er aftagende. Dermed har vi
+\[
+\frac{\mathrm{d}D^2}{\mathrm{d}t} = 0 \, \forall \, t
+.\] 
+Den kvadrerede afstand i $x$- og $y$-retningen er givet ved hhv.
+\begin{gather*}
+  D_x^2 =  v_0^2\cdot t^2 \cdot \cos\left( \theta \right)^2 \\
+  D_y^2 =  v_0^2\cdot t^2\cdot \sin\left( \theta \right) ^2 + \frac{1}{4}g^2t^4 - v_0 \cdot  \sin\left( \theta \right) \cdot g\cdot t^3
+.\end{gather*}
+Altså har vi
+\[
+D^2 = v_0^2\cdot t^2 + \frac{1}{4}g^2t^4 - v_0 \cdot  \sin\left( \theta \right) \cdot g\cdot t^3
+.\] 
+Denne differentieres ift. tid
+\[
+\frac{\mathrm{d}D^2}{\mathrm{d}t} = 2v_0^2\cdot t + g^2t^3 - 3v_0 \cdot \sin\left( \theta \right) \cdot g \cdot t^2
+.\]
+For at finde vinklen hvor kriteriet netop opretholdes sættes $\frac{\mathrm{d}D^2}{\mathrm{d}t} = 0$. Altså fås
+\[
+ 2v_0^2\cdot t + g^2t^3 - 3v_0 \cdot \sin\left( \theta \right) \cdot g \cdot t^2 = 0 \implies g^2t^2 - 3v_0 \cdot \sin\left( \theta)\right) t + 2v_0^2
+.\]
+Nu har vi en andengradsligning. Denne har netop 1 løsning når, $d = 0$, hvor $d$ er andengradsligningens diskriminant. Af andengradsligningen kan diskriminanten aflæses som
+ \[
+d = \left( 3v_0\cdot \sin\left( \theta \right) \cdot g \right)^2 - 8g^2v_0^2 = 0 \implies 9v_0^2\cdot \sin^2\left( \theta \right) \cdot g^2= 8g^2v_0^2 
+.\] 
+Dette kan nu simplificeres til
+\[
+\sin^2(\theta) = \frac{8}{9} \implies \theta = \arcsin\left( \sqrt{\frac{8}{9}}  \right) = \ang{70,5} 
+.\]
+
+
+\section*{3.80}
+	Two students are canoeing on a river. While heading upstream, they accidentally drop an empty bottle overboard. They then continue paddling for 60 minutes, reaching a point 2.0 km farther upstream. At this point they realize that the bottle is missing and, driven by ecological awareness, they turn around and head downstream. They catch up with and retrieve the bottle (which has been moving along with the current) 5.0 km downstream from the turnaround point.	 
+
+\subsection*{(a)}
+Assuming a constant paddling effort throughout, how fast is the river flowing? 
+
+\subsection*{(b)}
+What would the canoe speed in a still lake be for the same paddling effort?
+	
+ 
+
+\end{document}

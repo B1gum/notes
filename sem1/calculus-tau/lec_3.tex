@@ -1,0 +1,279 @@
+\lecture{3}{9. November 2024}{Komplekse tal}
+
+\section{Kort gennemgang af trionometri}
+For vektorer i planen gælder, at
+\[ 
+u\cdot v = |u||v|\cos\theta
+\]
+hvor $\theta$ er vinklen mellem de to vektorer og $\cdot$ angiver det indre produkt, også kendt som prikproduktet.
+
+\textit{Note:} Der er ingen lyd på optagelsen herfra og de næste 40 minutter frem så de næste par noter er taget alene på baggrund af en meget lille video, derfor tages der forbehold for fejl i det følgende, omend dette heller ikke er den vigtigste del af forelæsningen.
+
+\subsection{Additionsformlen for cosinus}
+Givet en vinkel $\theta = \alpha + \beta$ kan $\cos\theta$ findes vha. en additionsformel såfremt $\cos\alpha$ og $\cos\beta$ er kendt. Vi kan opskrive prikproduktet som
+\begin{align*}
+\cos (\beta - \alpha) &= \Vec{u}\cdot \Vec{v} \\
+&= \begin{pmatrix}
+  \cos \beta \\
+  \sin \beta
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+  \cos\alpha \\
+  \cos\beta
+\end{pmatrix} \\
+&= \cos\alpha \cos\beta + \sin\alpha \sin\beta
+.\end{align*}
+Vi har altså nu vist at
+\[ 
+  \cos(\beta-\alpha) = \cos\alpha \cos\beta + \sin\alpha \sin\beta \implies \cos(\alpha + \beta) = \cos{(-\alpha)}\cos\beta + \sin{(-\alpha)}\sin\beta
+.\]
+Idet $\cos\alpha = \cos(-\alpha)$ og $\sin(-\alpha) = -\sin\alpha$ kan det ovenstående omskrives til
+\[ 
+\cos(\alpha + \beta) = \cos\alpha \cos\beta - \sin\alpha \sin\beta
+.\]
+
+\subsection{Additionsformlen for sinus}
+Idet $\cos$ og $\sin$ blot er faseforskydninger af hinanden må følgende udtryk for $\sin(\alpha + \beta)$ gælde
+\[ 
+\sin(\alpha + \beta) = -\cos(\alpha + \beta + \frac{\pi}{2})
+.\]
+Vi kan da benytte additionsformlen for $\cos$ på det ovenstående som
+\[ 
+\sin(\alpha + \beta) = -\left( \cos\alpha \cos(\beta + \frac{\pi}{2}) \right) - \sin\alpha \sin(\beta + \frac{\pi}{2})
+.\]
+Vi har at $\cos(\beta + \frac{\pi}{2}) = -\sin\beta$ og $\sin(\beta + \frac{\pi}{2}) = \cos\beta$ derfor kan det ovenstående omskrives til
+\[ 
+\sin(\alpha + \beta) = \cos\alpha \sin\beta + \sin\alpha \cos\beta
+.\]
+
+\section{Introduktion til komplekse tal}
+\begin{definition} [Den imaginære enhed]
+  Den imaginære enhed $i$ opfylder
+  \[ 
+  i^2 = -1
+  .\]
+\end{definition}
+
+\begin{definition} [Komplekse tal]
+  Et komplekst tal $z \in \mathbb{C}$ er givet ved
+  \[ 
+  z = a + ib
+  \]
+  hvor $a \in \mathbb{R}$ og $b \in \mathbb{R}$. Det ovenstående kaldes også \textit{standardformen} for et komplekst tal.
+\end{definition}
+
+\begin{definition} [Realdelen og imaginærdelen af et komplekst tal]
+  Realdelen af det komplekse tal $z = a + ib$ $\Re(z)$ er givet som
+  \[ 
+    \Re( z ) = a
+  .\]
+  Tilsvarende er imaginærdelen af $z$ $\Im(z)$ givet ved
+  \[ 
+    \Im( z ) = b
+  .\]
+\end{definition}
+
+\subsection{Regneregler for komplekse tal}
+Lad $z_1 = a_1 + ib_1$ og $z_2 = a_2 + ib_2$ da gælder følgende relationer
+\begin{align*}
+  z_1 + z_2 &= a_1 + a_2 + i(b_1 + b_2) \\
+  z_1z_2 &= (a_1 + ib_1)(a_2 + ib_2) = a_1a_2 - b_1b_2 + i(a_1b_2 + a_2b_1)
+.\end{align*}
+
+\begin{eks} [Multiplikation af to komplekse tal]
+  Vi ønsker at løse
+  \[ 
+    (3+2i)(4-2i)
+  .\]
+  Vi ganger parenteserne ud og får
+  \begin{align*}
+    (3+2i)(4-2i) &= 3\cdot 4 + 2i(-2i) + 3(-2i) + 2i \cdot 4 \\
+    &= 12 + (-4)i^2 + -6i + 8i\\
+    &= 16 + 2i
+  .\end{align*}
+\end{eks}
+
+\subsection{Det komplekse talplan}
+Det komplekse talplan er et $(\Re, \Im)$-plan således at den traditionelle $x$-akse angiver realdelen af det komplekse tal og den traditionelle $y$-akse angiver imaginærdelen af det komplekse tal. Ethvert komplekst tal vil da kunne angives som et punkt på dette plan, mens ethvert reelt tal vil kunne findes langs $\Re$-aksen (``$x$''-aksen).
+
+\begin{definition} [Absolut værdi]
+  Den absolutte værdi $|z|$ af et komplekst tal $z = a + ib$ er givet som
+  \[ 
+  |z| = \sqrt{a^2 + b^2}
+  .\]
+  Dette tilsvarer afstanden fra det komplekse tal til origo i det komplekse talplan.
+\end{definition}
+
+\begin{definition} [Kompleks konjugering]
+  Den komplekse konjugering $\overline{z}$ af det komplekse tal $z = a + ib$ er
+  \[ 
+  \overline{z} = a -ib
+  .\]
+  Altså er den komplekse konjugering et fortegnsskifte på imaginærdelen $\Im(z)$.
+\end{definition}
+
+Desuden gælder det at for to komplekse tal $z_1$ og $z_2$ er $|z_1 + z_2|$ afstanden mellem $z_1$ og $z_2$ i det komplekse talplan.
+
+\begin{eks} [Afstande i det komplekse talplan]
+  Vi ønsker at bestemme hvilke af de komplekse tal
+  \begin{align*}
+  z_1 &= 4 + 2i \\
+  z_2 &= 3-3i \\
+  z_3 &= -1
+  \end{align*}
+  der ligger tættest på hinanden i det komplekse talplan.
+  \bigbreak
+  Først findes afstandende mellem alle tre tal i det komplekse talplan som
+  \begin{align*}
+    |z_1 - z_2| &= |4-3 + 2i + 3i| = |1 - 5i| = \sqrt{26} \\
+    |z_1 - z_3| &= |4 + 1 + 2i| = |5 + 2i| = \sqrt{29} \\
+    |z_2 - z_3| &= |3 + 1 - 3i| = |4 - 3i| = \sqrt{25} = 5
+  .\end{align*}
+  Altså er de to tal der ligger tættest på hinanden i det komplekse talplan ud af de givne tal $z_2$ og $z_3$
+\end{eks}
+
+\subsection{Division med komplekse tal}
+En vigtig udregning er at
+\[ 
+z \overline{z} = (a+ib)(a-ib) = a^2 + b^2 = |z|^2
+.\]
+Altså giver produktet af et komplekst tal og dens konjugerede et reelt tal. Dette er et yderst vigtigt resultat. Hvis der divideres med $|z|^2$ på begge sider får vi nemlig at
+\[ 
+z \frac{\overline{z}}{|z|^2} = 1 \implies \frac{1}{z} = \frac{\overline{z}}{|z|^2}
+.\]
+Altså har vi fundet $z$'s multiplikative inverse til $\frac{\overline{z}}{|z|^2}$. Dette gør det da muligt at dividere da
+\[ 
+\frac{z_1}{z_2} = z_1 \frac{1}{z_2} = z_1 \frac{\overline{z_2}}{|z_2|^2}
+.\]
+
+\subsection{Samling af nyttige regneregler for komplekse tal}
+Vi har generelt følgende regneregler for komplekse tal ($z_1 = a_1 + ib_1, z_2 = a_2 ib_2$)
+\begin{align*}
+  z_1 + z_2 &= a_1 + a_2 + i(b_1 + b_2) \\
+  z_1 - z_2 &= a_1 - a_2 + i(b_1 - b_2) \\
+  z_1z_2 &=  a_1a_2 - b_1b_2 + i(a_1b_2 + a_2b_1) \\
+  \frac{z_1}{z_2} &= \frac{z_1 \overline{z_2}}{|z_2|^2} \\
+  |\overline{z}| &= |z| \\
+  |z_1z_2| &= |z_1||z_2| \\
+  \left| \frac{z_1}{z_2} \right| &= \frac{|z_1|}{|z_2|} \\
+  \overline{z_1z_2} &= \overline{z_1} \overline{z_2} \\
+  \overline{\left( \frac{z_1}{z_2} \right)} &= \frac{\overline{z_1}}{\overline{z_2}}
+.\end{align*}
+
+\begin{eks} [Eksempel på division]
+  Vi ønsker at finde
+  \[ 
+  \frac{1 +2i}{2-3i}
+  .\]
+  \bigbreak
+  Vi får vha. regnereglen at
+  \begin{align*}
+    \frac{1+2i}{2-3i} &= \frac{(1+2i)(2+3i)}{|2+3i|^2} \\
+    &= \frac{2 - 6 + 3i + 4i}{4^2 + 3^2} \\
+    &= \frac{-4}{13} \frac{7}{13}i
+  .\end{align*}
+\end{eks}
+
+\begin{eks} [Eksempel på brug af flere regneregler med division]
+  Vi ønsker at finde
+  \[ 
+  \left| \frac{4i \overline{(3+4i)}}{(1+2i)(1-i)} \right|
+  .\]
+  Vi benytter regnereglerne som
+  \begin{align*}
+  \left| \frac{4i \overline{(3+4i)}}{(1+2i)(1-i)} \right| &= \frac{|4i| |3+4i|}{|1+2i||1-i|} \\
+  &= \frac{4 \sqrt{25}}{\sqrt{5}\sqrt{2}} \\
+  &= \frac{20}{\sqrt{10}} \\
+  &= 2 \sqrt{10}
+  .\end{align*}
+\end{eks}
+
+\section{Polær form af komplekse tal}
+For et komplekst tal $z$ i det komplekse talplan kan et linjestykke fra origo til det komplekse tal tegnes. Vinklen $\theta$ mellem dette linjestykke og $\Re$-aksen betegnes et \textit{argument} af $x$. Vi kan opskrive følgende udtryk for $z$ som
+\[ 
+\begin{pmatrix}
+  a \\
+  b
+\end{pmatrix}
+=
+\begin{pmatrix}
+  |z| \cos\theta \\
+  |z| \sin\theta
+\end{pmatrix}
+=
+|z|(\cos\theta + i \sin\theta)
+.\]
+
+\begin{definition} [Den komplekse eksponentialfunktion]
+  Den komplekse eksponentialfunktion $e^{i\theta}$ er defineret som
+  \[ 
+  e^{i\theta} = \cos\theta + i \sin\theta
+  .\]
+  Altså kan et komplekst tal $z$ skrives på polær form som
+  \[ 
+  z = |z|e^{i \theta}
+  .\]
+\end{definition}
+
+\subsection{Multiplikation på polær form}
+For $z_1 = r_1 e^{i\theta_1}$ og $z_2 = r_2 e^{i\theta_2}$ gælder:
+\begin{align*}
+  z_1z_2 &= r_1r_2(\cos\theta_1 + i \sin\theta_1)(\cos\theta_2 + i \sin\theta_2) \\
+  &= r_1r_2 \left( \left( \cos\theta_1 \cos\theta_2 - \sin\theta_1 \sin\theta_2 \right) + i \left( \cos\theta_1 \sin\theta_2 + \sin\theta_1 \cos\theta_2 \right) \right) \\
+  &= r_1r_2 \left( \cos(\theta_1 + \theta_2) + i \sin(\theta_1 + \theta_2)\right) \\
+  &= r_1r_2 e^{i(\theta_1 + \theta_2)}
+.\end{align*}
+Bemærk at ovenstående medfører at
+\[ 
+z^{n} = r^{n}e^{i n\theta}
+.\]
+
+\begin{eks} [Omregning fra standard til polær form]
+  Vi ønsker at skrive $z = -2 + 2i$ på polær form.
+  \bigbreak
+  Først indses at absolutværdien af $z$ er
+  \[ 
+  |z| = \sqrt{2^2 + 2^2} = \sqrt{8}
+  .\]
+  Det indses at vinklen $\theta$ er i 2. kvadrant og derfor må $\theta$ være lig $\frac{\pi}{2}$ plus lidt mere. Herfra kan vi benytte trigonometri således at vi får en retvinklet trekant med kateter med længde 2 og hypotenuse med længde $\sqrt{8}$. For at finde vinklen kan trigonometri benyttes som
+  \[ 
+    \cos^{-1} \left(\frac{2}{\sqrt{2}} \right) = \cos^{-1} \left( \frac{\sqrt{2}}{2} \right) = \frac{\pi}{4}
+  .\]
+  Altså er den samlede vinkel $\theta$
+  \[ 
+  \theta = \frac{\pi}{2} + \frac{\pi}{4} = \frac{3\pi}{4}
+  .\]
+\end{eks}
+
+\subsection{Kvadratrødder af komplekst tal}
+Givet et komplekst tal $d = re^{i\theta}$ er dets kvadratødder
+\[ 
+  \pm \sqrt{d} = \pm \sqrt{r}e^{i \frac{\theta}{2}}
+.\]
+Bemærk, at ethvert komplekst tal ha præcis to kvadradtrødder.
+
+\subsection{Andengradsligning}
+For $a, b, c \in \mathbb{C}$ og med $a \neq 0$ er en general andengradsligning
+\[ 
+a z^2 + bz + c = 0
+\]
+er kvadratroden af diskriminanten $D$ givet ved
+\[ 
+\pm \sqrt{D} = 2a z + b
+.\]
+Og andengradsligningens generelle løsning er 
+\[ 
+z = \frac{-b \pm \sqrt{D}}{2a}
+.\]
+
+Vi har følgende fremgangsmåde for at løse en andengradsligning $a z^2 + bz + c = 0$:
+\begin{enumerate}
+  \item Udregn diskriminanten $D = b^2 - 4ac$
+  \item Bestem polær form $D = re^{i\theta}$
+  \item Bestem kvadratrødderne $\pm \sqrt{D} = \pm \sqrt{r}e^{i \frac{\theta}{2}}$
+  \item Indsæt i formlen for løsning af andengradsligning:
+\end{enumerate}
+    \[ 
+    z = \frac{-b \pm\sqrt{D}}{2a}
+    .\]

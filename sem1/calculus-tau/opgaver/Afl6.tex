@@ -1,0 +1,57 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage{latexsym, amsfonts, amssymb, amsthm, amsmath, siunitx, graphicx, pgfplots}
+
+\sisetup{exponent-product = \cdot, output-product = \cdot}
+
+%Giles Castelles incfig
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+  \def\svgwidth{#1\columnwidth}
+  \import{./figures/}{#2.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{every axis/.append style={
+  axis x line=middle,    % put the x axis in the middle
+  axis y line=middle,    % put the y axis in the middle
+  axis line style={<->,color=black}, % arrows on the axis
+}}
+
+\title{Afleveringsopgave uge 6}
+\author{Noah Rahbek Bigum Hansen}
+\date{5. Oktober 2024}
+
+\begin{document}
+
+\maketitle
+
+Bestem Taylorrækken for $f(x)=x^4e^{x^2}$ med udviklingspunkt $a=0$.
+\bigbreak
+Det vides at Taylorrækken for $e^x$ med udviklingspunkt i $a=0$ er 
+\[
+P_n(x) = \sum_{n=0}^{\infty} \frac{x^n}{n!}
+.\] 
+Dette kan nu indsættes i udtrykket for $f(x)$. Således fås at
+\[
+f(x) = x^4\cdot \sum_{n=0}^{\infty} \frac{(x^n)^2}{n!} = \sum_{n=0}^{\infty} \frac{x^{2n}\cdot x^4}{n!} = \sum_{n=0}^{\infty} \frac{x^{2n+4}}{n!}
+.\] 
+Således er Taylorrækken fundet ved entydighed.
+
+\end{document}

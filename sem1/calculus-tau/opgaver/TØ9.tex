@@ -1,0 +1,441 @@
+\documentclass[12pt]{article}
+\usepackage[danish]{babel}
+\usepackage{amsfonts, amssymb, mathtools, amsthm, amsmath}
+\usepackage{graphicx, pgfplots}
+\usepackage{url}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{sagetex}
+
+%loaded last
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{siunitx}
+  \sisetup{exponent-product = \cdot,
+    output-decimal-marker = {,}}
+
+%Giles Castelles incfig
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+  \def\svgwidth{#1\columnwidth}
+  \import{../figures/}{#2.pdf_tex}
+}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\thepage}
+\fancyhead[C]{\leftmark}
+
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{every axis/.append style={
+  axis x line=middle,    % put the x axis in the middle
+  axis y line=middle,    % put the y axis in the middle
+  axis line style={<->,color=black}, % arrows on the axis
+}}
+
+\usepackage{thmtools}
+\usepackage{tcolorbox}
+  \tcbuselibrary{skins, breakable}
+  \tcbset{
+    space to upper=1em,
+    space to lower=1em,
+  }
+
+\theoremstyle{definition}
+
+\newtcolorbox[auto counter]{definition}[1][]{%
+  breakable,
+  colframe=ForestGreen,  %frame color
+  colback=ForestGreen!5, %background color
+  colbacktitle=ForestGreen!25, %background color for title
+  coltitle=ForestGreen!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{ForestGreen},  %display left line
+  title=Definition \thetcbcounter: #1,
+}
+
+\newtcolorbox{greenline}{%
+  breakable,
+  colframe=ForestGreen,  %frame color
+  colback=white,          %remove background color
+  left=1em,              %space on left side in box
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{ForestGreen},  %display left line
+}
+
+\newtcolorbox[auto counter, number within=section]{eks}[1][]{%
+  brekable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,            %space on left side in box,
+  enhanced,            %more options
+  frame hidden,        %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Eksempel \thetcbcounter: #1
+}
+
+\newtcolorbox{blueline}{%
+  breakable,
+  colframe=NavyBlue,     %frame color
+  colback=white,         %remove background
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+}
+
+\newtcolorbox{teo}[1][]{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=RawSienna!5, %background color
+  colbacktitle=RawSienna!25,    %background color for title
+  coltitle=RawSienna!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+  title=Teori: #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{sæt}[1][]{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=RawSienna!5, %background color
+  colbacktitle=RawSienna!25,    %background color for title
+  coltitle=RawSienna!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+  title=Sætning \thetcbcounter: #1,
+  before lower={\textbf{Bevis:}\par\vspace{0.5em}},
+  colbacklower=RawSienna!25,
+}
+
+\newtcolorbox{redline}{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=white,       %Remove background color
+  left=1em,            %space on left side in box,
+  enhanced,            %more options
+  frame hidden,        %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+}
+
+\newtcolorbox{for}[1][]{%
+  breakable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Forklaring #1,
+}
+
+\newtcolorbox{bem}{%
+  breakable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Bemærkning:,
+}
+
+\makeatother
+\def\@lecture{}%
+\newcommand{\lecture}[3]{
+  \ifthenelse{\isempty{#3}}{%
+    \def\@lecture{Lecture #1}%
+  }{%
+    \def\@lecture{Lecture #1: #3}%
+  }%
+  \subsection*{\makebox[\textwidth][l]{\@lecture \hfill \normalfont\small\textsf{#2}}}
+}
+
+\makeatletter
+
+\newcommand{\opgave}[1]{%
+ \def\@opgave{#1}%
+ \subsection*{Opgave #1}
+}
+
+\makeatother
+
+%Format lim the same way in intext and in display
+\let\svlim\lim\def\lim{\svlim\limits}
+
+% horizontal rule
+\newcommand\hr{
+\noindent\rule[0.5ex]{\linewidth}{0.5pt}
+}
+
+\title{TØ-opgaver til uge 9}
+\author{Noah Rahbek Bigum Hansen}
+\date{4. November 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Opg. 9.2.23}
+Find all second-order partial derivatives for the following.
+\[ 
+R(x,y) = 4x^5 - 8x^4y^8 + 6x^5y^6
+.\]
+\bigbreak
+For at finde de 2. ordens afledede må vi først finde de to 1. ordens afledede som
+\begin{align*}
+  R_x &= 20x^{4} - 32x^{3}y^{8} + 30x^{4}y^{6} \\
+  R_y &= -64x^{4}y^{7} + 36x^{5}y^{5}
+\end{align*}
+Dermed har vi at
+\begin{align*}
+  R_{x x} &= 80x^{3} - 96x^2y^{8} + 120x^3y^{6} \\
+  R_{yy} &= -448 x^{4}y^{6} + 180 x^{5}y^{4} \\
+  R_{xy} = R_{yx} &= -256x^{3}y^{7} + 180x^{4}y^{5} 
+\end{align*}
+
+
+
+\section*{Prøveeksamensopgave 15}
+Betragt funktionen
+\[ 
+f(x,y) = 6y^3-8x^2y + 16x^2 + 35
+.\]
+Beregn
+\[ 
+\frac{\partial^2 f}{\partial x \partial y} = - kx
+.\]
+Hvor $k$ er et helt tal mellem $0$ og $99$.
+\bigbreak
+Vi har at
+\begin{align*}
+  \frac{\partial f}{\partial x} &= -16xy + 32x \\
+  \frac{\partial^2 f}{\partial x \partial y} &= -16x
+\end{align*}
+Altså er $k = 16$
+
+\section*{Opg. 9.2.63}
+The reaction to $x$ units of a drug $t$ hours after it was administered is given by
+\[ 
+R(x,t) = x^2(a-x) t^2e^{-t}
+,\]
+for $0 \leq x \leq a$ (where $a$ is a constant). Find the following.
+\bigbreak
+Først udvider vi parentesen så vi får at
+\[ 
+R(x, t) = x^2at^2e^{-t}-x^3t^2e^{-t}
+.\]
+
+
+\subsection*{(a)}
+\[ 
+\frac{\partial R}{\partial x}
+.\]
+\bigbreak
+Vi får at
+\[ 
+\frac{\partial R}{\partial x} = 2xat^2e^{-t}-3x^2t^2e^{-t} = x(2a-3x)t^2e^{-t}
+.\]
+
+
+\subsection*{(b)}
+\[ 
+\frac{\partial R}{\partial t}
+.\]
+\bigbreak
+Vi får at
+\[ 
+\frac{\partial R}{\partial t} = x^2(a-x)(2te^{-t}-t^2e^{-t})
+.\]
+
+
+\subsection*{(c)}
+\[ 
+\frac{\partial^2 R}{\partial^2 x}
+.\]
+\bigbreak
+Vi får at
+\[ 
+\frac{\partial^2 R}{\partial^2 x} = 2at^2e^{-t} - 6xt^2e^{-t}
+.\]
+
+
+\subsection*{(d)}
+\[ 
+\frac{\partial^2 R}{\partial x \partial t}
+.\]
+\bigbreak
+Vi får at
+\[ 
+\frac{\partial^2 R}{\partial x \partial t} = x(2a-3x)(2t-t^2)e^{-t}
+.\]
+
+\section*{Opg. 9.2.69}
+The gravitational attraction $F$ on a body a distance $r$ from the center of the Earth, where $r$ is greater than the radius of Earth, is a function of its mass $m$ and the distance $r$ as follows:
+\[ 
+F = \frac{mgR^2}{r^2}
+,\]
+where $R$ is the radius of Earth and $g$ is the force of gravity.
+
+\subsection*{(a)}
+Find and interpret $F_m$ and $F_r$.
+\bigbreak
+\[ 
+F_m = \frac{\partial F}{\partial m} = \frac{gR^2}{r^2}
+.\]
+Dette fortolkes som, at hvis afstanden, $r$, holdes konstant så vil kraften stige med ovenstående konstant.
+
+\[ 
+F_r = \frac{\partial F}{\partial r} = -\frac{2mgR^2}{r^3}
+.\]
+Hvis afstanden $r$ øges, men massen $m$ holdes konstant så vil kraften falde
+
+
+\subsection*{(b)}
+Show that $F_m>0$ and $F_r<0$. Why is this reasonable?
+\bigbreak
+Fordi vi ved at kraften stiger ved øget masse og falder ved øget afstand.
+
+\section*{Opg. 9.3.2}
+Find all points where the functions have any relative extrema. Identify any saddle points.
+\[ 
+f(x,y) = 3xy + 6y-5x
+.\]
+\bigbreak
+Først findes $f_x$ og $f_y$ som
+\begin{align*}
+  f_x &= 3y - 5 \\
+  f_y &= 3x + 6 
+\end{align*}
+Altså har vi et kritisk punkt for
+\begin{align*}
+  0 &= 3y - 5  & 0 &= 3x + 6\\
+  y &= \frac{5}{3} & x &= -2\\
+\end{align*}
+Altså er vores eneste kritiske punkt $(-2, \frac{5}{3})$. Vi tjekker om dette er et saddelpunkt ved at finde diskriminanten $D = f_{x x}f_{yy} - f_{xy}^2$. Altså findes de dobbeltafledede
+\begin{align*}
+  f_{x x} &= 0 \\
+  f_{yy} &= 0 \\
+  f_{xy} &= 3 \\
+  D &= -3^2 = -9 < 0
+.\end{align*}
+Altså er der ingen minima eller maksima men dog et saddelpunkt i $(-2, \frac{5}{3})$.
+
+\section*{Prøveeksamensopgave 16}
+Betragt funktionen
+\[ 
+f(x,y) = 5x^2 + 10y^2 - 5xy -9x
+.\]
+Det oplyses at $f$ har et globalt minimum i $(x_0, y_0)$. Bestem $y_0$ når
+\[ 
+y_0 = \frac{9}{k}
+.\]
+Hvor $k$ er et helt tal mellem $0$ og $99$.
+\bigbreak
+Først finder vi $f_x$ og $f_y$ som
+\begin{align*}
+  f_x &= 10x - 5y - 9 \\
+  f_y &= 20y - 5x
+\end{align*}
+Altså har vi minimum i
+\begin{align*}
+  0 &= 10x - 5y -9 & 0 &= 20y - 5x \\
+  x &= \frac{1}{2}y + \frac{9}{10} & 0 &= 20y - \frac{5}{2}y - \frac{9}{2} = \frac{35}{2}y -  \frac{9}{2} \\
+\end{align*}
+\[ 
+y = \frac{9}{35}
+.\]
+Altså er $k = 35$.
+
+\section*{Opg. 9.3.31}
+Consider the function $f(x,y) = x^2(y+1)^2 + k(x+1)^2y^2$.
+
+\subsection*{(a)}
+For what values of $k$ is the point $(x,y) = (0,0)$ a critical point?
+\bigbreak
+Vi finder først $f_x$ og $f_y$ som
+\[ 
+f_x = 2x(y+1)^2 + 2k(x+1)y^2
+\]
+og
+\[ 
+f_y = 2x^2(y+1) + 2k(x+1)^2y
+.\]
+Et kritisk punkt er hvor $f_x = 0$ og $f_y = 0$. Altså sættes punktet ind og ser for hvilke $k$-værdier det går op. Altså har vi at
+\begin{align*}
+  0 &= 2\cdot0(0+1)^2 + 2k(0+1)0^2 \\
+  0 &= 2\cdot0^2(0+1) + 2k(0+1)^2\cdot0
+\end{align*}
+Det gælder altså for alle værdier af $k$.
+
+
+\subsection*{(b)}
+For what values of $k$ is the point $(x,y) = (0,0)$ a relative minimum of the function?
+\textit{Hint: Betragt $k=0$ som et specialtilfælde.}
+\bigbreak
+Punktet er et minimum hvis $D > 0$ og $f_{x x} > 0$. Vi er derfor nødsaget til at finde de dobbeltafledede som
+\begin{align*}
+  f_{x x} &= 2(y+1)^2+2ky^2 \\
+  f_{yy} &= 2x^2 + 2k(x+1)^2 \\
+  f_{xy} &= 4x(y+1) + 4k(x+1)y
+\end{align*}
+Altså har vi at
+\begin{align*}
+  f_{x x}(0,0) &= 2(0+1)^2 + 2k0^2 = 2 \\
+  f_{yy}(0,0) &= 2\cdot 0^2 + 2k(0+1)^2 = 2k \\
+  f_{xy}(0,0= &= 4\cdot0(0+1) + 4k(0+1)\cdot0
+\end{align*}
+Vi har dermed at
+\[ 
+4k > 0 \implies k > 0
+.\]
+Altså er det et globalt minimum for alle $k>0$. For $k=0$ er testen inkonklusiv. Derfor er vi nødsaget til selv at indsætte punktet. Derfor får vi at
+\begin{align*}
+  f(x,y) &= x^2(y+1)^2 \\
+  f(0,0) &= 0
+,\end{align*}
+$x^2(y+1)^2 > 0$ for alle $(x,y)$. Derfor er den også et globalt minimum for $k = 0$. Altså er løsningsmængden $k \geq 0$
+
+
+\section*{Opg. 9.3.36}
+\textbf{Cost.} The total cost (in dollars) to produce $x$ units of electrical tape and $y$ units of packing tape is given by
+\[ 
+C(x,y) = 2x^2 + 2y^2 -3xy + 4x -94 y + 4200
+.\]
+Find the number of units of each kind of tape that should be produced so that the total cost is a minimum. Find the minimum total cost.
+
+
+\end{document}

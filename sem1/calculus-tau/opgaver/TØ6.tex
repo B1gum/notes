@@ -1,0 +1,221 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage{latexsym, amsfonts, amssymb, amsthm, amsmath, siunitx, graphicx, pgfplots}
+
+\sisetup{exponent-product = \cdot, output-product = \cdot}
+
+%Giles Castelles incfig
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{
+  \def\svgwidth{#1\columnwidth}
+  \import{./figures/}{#2.pdf.tex}}
+
+\pdfsuppresswarningpagegroup=1
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{every axis/.append style={
+  axis x line=middle,    % put the x axis in the middle
+  axis y line=middle,    % put the y axis in the middle
+  axis line style={<->,color=black}, % arrows on the axis
+}}
+
+\title{TØ-opgaver uge 6}
+\author{Noah Rahbek Bigum Hansen}
+\date{5. Oktober 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Opg. 1}
+Bestem konvergensradius for potensrækken $\sum_{n=0}^{\infty} \frac{nx^n}{n+2}$.
+\bigbreak
+Det vides at konvergensradiussen kan findes med kvotientkriteriet
+\[
+R = \lim_{n \to \infty}  \left| \frac{c_n}{c_{n+1}} \right| 
+.\] 
+Skrives udtrykket fra opgave på formen
+\[
+\sum_{n=0}^{\infty} \frac{n}{n+2} x^n
+.\]
+Bliver det tydeligt at $c_n = \frac{n}{n+2}$. Altså har vi at
+\[
+R = \lim_{n \to \infty} \frac{n(n+3)}{(n+2)(n+1)} = \lim_{n \to \infty} \frac{n^2+3n}{n^2+3n+2} = 1 
+.\]
+
+\section*{Opg. 2}
+Bestem konvergensradius for potensrækken $\sum_{n=0}^{\infty} \frac{n(x+3)^n}{5}$ 
+\bigbreak
+Først omskrives rækken så vi får at
+\[
+\sum_{n=0}^{\infty} \frac{n}{5} (x+3)^n
+.\] 
+
+Derfor har vi at
+\[
+R = \lim_{n \to \infty} \left| \frac{n\cdot 5^{n+1}}{5^n \cdot (n+1)} \right| = \lim_{n \to \infty} \frac{5n}{n+1} = 5 
+.\] 
+
+
+\section*{Opg. 3}
+Bestem 0., 1., 2. og 3.-grads Taylorpolynomier for $f(x)=\ln(x)$ med udviklingspunkt $a = 1$.
+\bigbreak
+Taylorpolynomier dannes ud fra Taylorserien
+\[
+f(x) = \sum_{k=0}^{\infty} \frac{f^{(k)}(a)}{k!}(x-a)^k
+.\]
+Af udtrykket for en Taylorserie ses at vi skal have fundet de første tre afledede af funktionen $f(x) = \ln x$. Altså differentierer vi funktionen $f$ tre gange.
+\begin{align*}
+  f^{(1)}(x) &= \frac{1}{x} \\
+  f^{(2)}(x) &= -\frac{1}{x^2} \\
+  f^{(3)}(x) &= \frac{2}{x^3} \\
+.\end{align*}
+Disse evalueres dernæst alle ved udviklingspunktet $a=1$
+ \begin{align*}
+f^{(1)}(1) &= \frac{1}{1} = 1 \\ 
+f^{(2)}(1) &= -\frac{1}{1^2} = -1 \\
+f^{(3)}(1) &= \frac{2}{1^3} = 2 \\
+ .\end{align*}
+Dernæst kan Taylorpolynomierne opskrives.
+\begin{align*}
+  P_0(x) &= \frac{\ln(1)}{0!}(x-1)^0 = \ln(1) = 0 \\
+  P_1(x) &= P_0(x) + \frac{1}{1!}(x-1)^1 = x-1 \\
+  P_2(x) &= P_1(x) - \frac{1}{2!}(x-1)^2 = (x-1) - \frac{1}{2}(x-1)^2 \\
+  P_3(x) &= P_2(x) + \frac{2}{3!}(x-1)^3 = (x-1) - \frac{1}{2}(x-1)^2 + \frac{1}{3}(x-1)^3 \\
+.\end{align*}
+
+
+\section*{Opg. 4}
+Bestem 0., 1., 2. og 3.-grads Taylorpolynomier for $f(x) = \sqrt{x}$ med udviklingspunkt $a=4$.
+\bigbreak
+Med samme fremgangsmåde som ovenfor starter vi med at differentiere funktionen $f$ tre gange. Altså har vi at
+\begin{align*}
+  f^{(1)}(x) &= \frac{1}{2\sqrt{x}} \\
+  f^{(2)}(x) &= -\frac{1}{4}x^{-\frac{3}{2}} \\
+  f^{(3)}(x) &= \frac{3}{8}x^{-\frac{5}{2}} \\
+.\end{align*}
+Disse evalueres i udviklingspunktet $a=4$
+ \begin{align*}
+  f^{(1)}(4) &= \frac{1}{2\sqrt{4}} = \frac{1}{4} \\
+f^{(2)}(4) &= -\frac{1}{4\cdot 4\cdot  \sqrt{4}} = -\frac{1}{32} \\
+f^{3}(4) &= \frac{3}{8\cdot 4^2\cdot \sqrt{4}} = \frac{3}{256} \\
+.\end{align*}
+Slutteligt kan taylorpolynomierne opskrives
+\begin{align*}
+  P_0(x) &= \frac{\sqrt{4}}{0!}(x-4)^0 = 2 \\
+  P_1(x) &= P_0 + \frac{1}{4\cdot 1!} (x-4)^1 = 2 + \frac{1}{4}(x-4)\\
+  P_2(x) &= P_1 - \frac{1}{32\cdot 2!}(x-4)^2 = 2 + \frac{1}{4}(x-4) - \frac{1}{64}(x-4)^2 \\
+  P_3(x) &= P_2 + \frac{3}{256\cdot 3!}(x-4)^3 = 2+\frac{1}{2}(x_4) - \frac{1}{64}(x-4)^2 +\frac{1}{512}(x-4)^3 \\
+.\end{align*}
+
+
+\section*{Opg. 5}
+Bestem Taylorrækken for $\cosh(x) = \frac{e^x-e^{-x}}{2}$ med udviklingspunkt $a=0$. \emph{Hint:} kan viden om Taylorrækken for $e^x$ med fordel anvendes her? 
+\bigbreak
+Først findes Taylorrækken for $e^x$, hvorefter de andre nemt kan findes. Bemærk at der for $e^x$ gælder at
+ \[
+f(x) = e^x = f^{n}(x)
+.\]
+Og dermed at
+\[
+f^{n}(0) = e^0 = 1
+.\] 
+Altså har vi at
+\[
+e^x = \sum_{k=0}^{\infty} \frac{1}{k!}(x-a)^k = \sum_{k=0}^{\infty} \frac{x^k}{k!}
+.\] 
+Dermed kan $e^{-x}$ hurtigt findes
+\[
+e^{-x} = \sum_{k=0}^{\infty} \frac{(-x)^k}{k!} 
+.\]
+Altså har vi at taylorrækken for $e^x+e^{-x}$ er
+\[
+e^x+e^{-x} = \sum_{k=0}^{\infty} \frac{x^k}{k!} + \sum_{k=0}^{\infty} \frac{(-x)^k}{k!} = \sum_{k=0}^{\infty} \frac{x^k+(-x)^k}{k!} = \sum_{k=0}^{\infty} \frac{x^k+(-1)^k(x^k)}{k!} = \sum_{k=0}^{\infty} \frac{x^k \left( 1 + (-1)^k \right) }{k!}
+.\] 
+For ulige $k$ bliver  $\left( 1+(-1)^k \right) = 0$ og for lige $k$ bliver  $\left( 1+(-1)^k \right) = 2$.
+Altså har vi at
+\[
+  e^x + e^{-x} = \sum_{k=0}^{\infty} \frac{2x^{2k}}{(2k)!}
+.\] 
+Vi multiplicerer slutteligt med $\frac{1}{2}$ for at få det rigtige svar.
+\[
+\cosh(x) = \frac{e^x+e^{-x}}{2} = \frac{1}{2} \sum_{k=0}^{\infty} \frac{2x^{2k}}{(2k)!} =  \sum_{k=0}^{\infty} \frac{x^{2k}}{(2k)!}
+.\] 
+
+
+\section*{Opg. 6}
+Bestem Taylorrækken for $f(x)=\frac{1}{x^2}$ med udviklingspunkt $a=1$.
+\bigbreak
+Generelt er en Taylorrække defineret som
+\[
+  \sum_{k = 0}^{\infty} \frac{f^{(k)}(a)}{k!} (x-a)^k 
+.\] 
+Vi differentierer funktionen et par gange og leder efter et mønster
+\begin{align*}
+f^{(0)} &= \frac{1}{x^2} \\
+f^{(1)} &= -\frac{2}{x^3} \\
+f^{(2)} &= \frac{3\cdot 2}{x^4} \\
+f^{(3)} &= -\frac{4\cdot 3\cdot 2}{x^5} \\
+.\end{align*} 
+Her kan indses at der er et mønster givet ved
+\[
+  f^{(n)} = (-1)^{n} \frac{(n+1)!}{x^{n+2}}
+.\] 
+Dermed kan et generelt udtryk for Taylorrækken med et vilkårligt udviklingspunkt, $a$, opskrives som
+ \[
+\frac{1}{x^2} = \sum_{k = 0}^{\infty} \frac{(-1)^k \frac{(k+1)!}{a^{k+2}}}{k!} (x-a)^k = \sum_{k = 0}^{\infty} (-1)^k \frac{k+1}{a^{k+2}} (x-a)^k
+.\] 
+Her kan udviklingspunktet $a$ nu indsættes
+ \[
+\sum_{k = 0}^{\infty} (-1)^k \frac{k+1}{1^{k+2}} (x-1)^k = (-1)^k(k+1)(x-1)^k
+.\] 
+
+\section*{Prøveeksamensopgave 9}
+For potensrækken
+\[
+p(x) = \sum_{n=0}^{\infty} \frac{n^2}{5^{n+1}}(x-6)^n
+.\] 
+Bestem dens konvergensradius $R$.
+\bigbreak
+Her benyttes kvotientreglen som så
+\[
+R = \lim_{n \to \infty} \left| \frac{n^2\cdot 5^{n+2}}{5^{n+1}(n+1)^2} \right| = \lim_{n \to \infty}  \left| \frac{5n^2}{(n+1)^2} \right| = 5 
+.\] 
+
+\section*{Prøveeksamensopgave 10}
+For funktionen
+\[
+f(x) = e^{2x}
+.\] 
+bestem andengrads Taylorpolynomiet for $f$ med udviklingspunkt $a= 1$.
+\bigbreak
+Først differentieres funktionen 2 gange.
+\begin{align*}
+  f^{(1)}(x) &= 2e^{2x} \\
+  f^{(2)} (x) &= 4e^{2x} \\
+.\end{align*} 
+Dernæst kan disse to evalueres for $x=1$, hvilket giver at 
+\begin{align*}
+  f^{(1)}(x) &= 2e^2 \\
+  f^{(2)}(x) &= 4e^4 \\
+.\end{align*}
+Altså må 2.-ordens Taylorpolynomiet for $e^{2x}$ med udviklingspunkt $a=1$ være
+\[
+P_2(x) = e^2 + 2e^2(x-1) + 2e^2(x-1)^2
+.\] 
+
+\end{document}

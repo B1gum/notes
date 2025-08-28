@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+
+\usepackage[danish]{babel}
+\usepackage{latexsym, amsfonts, amssymb, amsthm, amsmath}
+\usepackage{siunitx}
+\usepackage{graphicx, pgfplots}
+\usepackage{luacas}
+
+%loaded last
+\usepackage[hidelinks]{hyperref}
+
+\sisetup{exponent-product = \cdot,
+  output-decimal-marker = {,}}
+
+%Giles Castelles incfig
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+  \def\svgwidth{#1\columnwidth}
+  \import{../figures/}{#2.pdf_tex}
+}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{every axis/.append style={
+  axis x line=middle,    % put the x axis in the middle
+  axis y line=middle,    % put the y axis in the middle
+  axis line style={<->,color=black}, % arrows on the axis
+}}
+
+\title{Regnedok}
+\author{Noah Rahbek Bigum Hansen}
+\date{Efteråret 2024}
+
+\begin{document}
+
+\maketitle
+
+\begin{CAS}
+q = 8^(1/2)
+p = q:evaluate()
+\end{CAS}
+
+
+\[
+  \print{q} = \print{p}
+\]
+\end{document}

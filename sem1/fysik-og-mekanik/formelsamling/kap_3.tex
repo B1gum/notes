@@ -1,0 +1,133 @@
+\section{Bevægelse i to eller tre dimensioner}
+
+\begin{table}[ht]
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Givet}                      & \textbf{Ønsker at finde} & \textbf{Relevante formler} \\ \hline
+Strækning og tid & Hastighed    & \begin{tabular}[c]{@{}l@{}}\ref{afs:gnshasvec} – Gennemsnitlig hastighed\\ \ref{afs:inshasvec} – Øjeblikshastighed\end{tabular}       \\ \hline
+Hastighed og tid & Acceleration & \begin{tabular}[c]{@{}l@{}}\ref{afs:gnsacc} – Gennemsnitlig acceleration\\ \ref{afs:insacc} – Øjebliksacceleration\end{tabular}       \\ \hline
+Hastighed                           & Hastighedskomposanter    & \ref{afs:haskom}           \\ \hline
+Hastighedskomposanter               & Hastighed                & \ref{afs:komhas}           \\ \hline
+Hastighed, tid   & acceleration & \begin{tabular}[c]{@{}l@{}}\ref{afs:gnsaccvec} – Gennemsnitlig acceleration\\ \ref{afs:insaccvec} – Øjebliksacceleration\end{tabular} \\ \hline
+Acceleration                        & Accelerationskomposanter & \ref{afs:acckom}           \\ \hline
+Accelerationskomposanter            & Acceleration             & \ref{afs:komacc}           \\ \hline
+Kastevinkel, starthastighed, tid    & Kasteafstand             & \ref{afs:kasafs}           \\ \hline
+Starthastighed, kastevinkel, tid    & Kastehøjde               & \ref{afs:kashøj}           \\ \hline
+Starthastighed, kastevinkel         & Horisontal hastighed     & \ref{afs:kashhas}          \\ \hline
+Starthastighed, kastevinkel, tid    & Vertikal hastighed       & \ref{afs:kasvhas}          \\ \hline
+Hastighed, radius                   & Centripetalacceleration  & \ref{afs:acccp}            \\ \hline
+Hastighed ift. to referencesystemer & Relativ hastighed        & \ref{afs:hastrans}         \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Hastighedsvektorer (3.1)}
+
+\subsubsection{Gennemsnitshastigshedsvektor (Eng: \textit{Average velocity vector})} \label{afs:gnshasvec}
+På samme måde som i \textbf{\ref{afs:gnshas}: \nameref{afs:gnshas}} kan vi finde gennemsnitshastighedsvektoren $\Vec{v_{av}}$ som kvotienten mellem ændringen i positionsvektoren $\Delta \Vec{r}$ og ændringen i tid $\Delta t$. Altså
+\[ 
+\Vec{v}_{\text{av}} = \frac{\Delta \Vec{r}}{\Delta t} = \frac{\Vec{r_2} - \Vec{r_1}}{t_2 - t_1}
+.\]
+
+
+\subsubsection{Øjeblikshastighedsvektor (Eng: \textit{instantaneous velocity vector})} \label{afs:inshasvec}
+På samme måde som i \ref{afs:inshas}: \nameref{afs:inshas} kan vi finde øjeblikshastighedsvektoren $\Vec{v}$ som kvotienten mellem ændringen i positionsvektoren $\Delta \Vec{r}$ og ændringen i tid $\Delta t$ når $\Delta t \to 0$. Altså
+\[ 
+\Vec{v} = \lim_{\Delta t \to 0} \frac{\Delta \Vec{r}}{\Delta t} = \frac{\mathrm{d}\Vec{r}}{\mathrm{d}t}
+.\]
+
+\subsubsection{Hastighedskomposanter} \label{afs:haskom}
+Hastigheden i en given retning er blot ændringen i position i denne retning over tid. Altså
+\[ 
+  v_x = \frac{\mathrm{d}x}{\mathrm{d}t}, v_y = \frac{\mathrm{d}y}{\mathrm{d}t}, v_z = \frac{\mathrm{d}z}{\mathrm{d}t}
+.\]
+
+\subsubsection{Størrelsen af hastighedsvektoren fra komposanter} \label{afs:komhas}
+Givet størrelen på komposanterne,($v_x, v_y, v_z)$ til hastighedsvektoren $\Vec{v}$ kan størrelsen af hastighedsvektoren $\left| \Vec{v} \right|$ findes med Pythagoras som
+\[
+\left| \Vec{v} \right| = \sqrt{v_x^2 + v_y^2 + v_z^2}
+.\]
+
+
+
+\subsection{Accelerationsvektorer (3.2)}
+\subsubsection{Gennemsnitsaccelerationsvektor (Eng: \textit{Average acceleration vector})} \label{afs:gnsaccvec}
+På samme måde som i \textbf{\ref{afs:gnsacc}: \nameref{afs:gnsacc}} kan vi finde gennemsnitsaccelerationsvektoren $\Vec{a_{av}}$ som kvotienten mellem ændringen i hastighedsvektoren $\Delta \Vec{v}$ og ændringen i tid $\Delta t$. Altså
+\[ 
+  \Vec{a}_{\text{av}} = \frac{\Delta \Vec{v}}{\Delta t} = \frac{\Vec{v_2} - \Vec{v_1}}{t_2 - t_1}
+.\]
+
+
+\subsubsection{Øjebliksaccelerationssvektor (Eng: \textit{instantaneous acceleration vector})} \label{afs:insaccvec}
+På samme måde som i \ref{afs:insacc}: \nameref{afs:insacc} kan vi finde øjebliksaccelerationsvektoren $\Vec{a}$ som kvotienten mellem ændringen i hastighedsvektoren $\Delta \Vec{v}$ og ændringen i tid $\Delta t$ når $\Delta t \to 0$. Altså
+\[ 
+  \Vec{a} = \lim_{\Delta t \to 0} \frac{\Delta \Vec{v}}{\Delta t} = \frac{\mathrm{d}\Vec{v}}{\mathrm{d}t}
+.\]
+
+\subsubsection{Accelerationskomposanter} \label{afs:acckom}
+Accelerationen i en given retning er blot ændringen i position i denne retning over tid. Altså
+\[ 
+    a_x = \frac{\mathrm{d}v_x}{\mathrm{d}t}, a_y = \frac{\mathrm{d}v_y}{\mathrm{d}t}, a_z = \frac{\mathrm{d}v_z}{\mathrm{d}t}
+  .\]
+
+\subsubsection{Størrelsen af accelerationsvektoren fra komposanter} \label{afs:komacc}
+Givet størrelen på komposanterne,($a_x, a_y, a_z)$ til accelerationsvektoren $\Vec{a}$ kan størrelsen af accelerationsvektoren $\left| \Vec{a} \right|$ findes med Pythagoras som
+\[ 
+  \left| \Vec{a} \right| = \sqrt{a_x^2 + a_y^2 + a_z^2}
+.\]
+
+
+\subsection{Det skrå kast (Eng: \textit{Projectile motion}) (3.3)}
+
+\subsubsection{Afstand ved skråt kast} \label{afs:kasafs}
+Givet en initialhastighed $v_0$, en kastevinkel $\alpha_0$ og en tid $t$ kan den tilbagelagte horisontale afstand for et skråt kast findes som
+\[ 
+  x = (v_0 \cos \alpha_0)t
+.\]
+
+
+\subsubsection{Højde ved skråt kast} \label{afs:kashøj}
+Givet en initialhastighed $v_0$, en kastevinkel $\alpha_0$ kan højden $y$ til tiden $t$ findes som
+\[ 
+y = (v_0 \sin \alpha_0)t - \frac{1}{2}gt^2
+.\]
+
+
+\subsubsection{Horisontal hastighed ved skråt kast} \label{afs:kashhas}
+Givet en initalhastighed $v_0$ og en kastevinkel $\alpha_0$ kan hastigheden i $x$-retningen $v_x$ findes som
+\[ 
+v_x = v_0 \cos \alpha_0
+.\]
+
+
+\subsubsection{Vertikal hastighed ved skråt kast} \label{afs:kasvhas}
+Givet en initialhastighed $v_0$ og en kastevinkel $\alpha_0$ kan den vertikale hastighed $v_y$ til tiden $t$ findes som
+\[ 
+v_y = v_0 \sin \alpha_0 - gt
+.\]
+
+\subsection{Bevægelse i en cirkel (3.4)}
+
+\subsubsection{Acceleration for uniform cirkulær bevægelse – (Centripetalacceleration)} \label{afs:acccp}
+Idet et objekt i cirkulær bevægelse er nødt til konstant at ændre sin bevægelsesretning for at følge cirkelbevægelsen rundt. Dette betyder at objektet er nødt til at have en acceleration selvom størrelsen på dens hastighed ikke ændrer sig. Denne acceleration kaldes \textit{centripetalaccelerationen} $a_{rad}$ og kan findes ud fra en given hastighed $v$ og radiussen af cirkelbevægelsen $R$ som
+\[ 
+a_{rad} = \frac{v^2}{R}
+.\]
+
+Idet hastigheden kan findes ud fra radiussen $R$ og perioden $T$ som
+\[ 
+v = \frac{2\pi R}{T}
+\]
+kan centripetalaccelerationen findes som
+\[ 
+a_{rad} = \frac{4\pi^2R}{T^2}
+.\]
+
+\subsection{Relativ hastighed (3.5)}
+
+\subsubsection{Den gallilæiske hastighedstransformation (Eng: \textit{The Galilean velocity transformation})} \label{afs:hastrans}
+
+Givet et objekt $P$'s hastighed, i forhold til et referencesystem $B$, $\Vec{v}_{P / B}$ og referencesystem $B$'s hastighedm i forhold til et andet referencesystem $A$, $\Vec{v}_{B / A}$ kan objektet $P$'s hastighed i forhold til $A$ findes som
+\[ 
+\Vec{v}_{P / A} = \Vec{v}_{P / B} + \Vec{v}_{B / A}
+.\]
+

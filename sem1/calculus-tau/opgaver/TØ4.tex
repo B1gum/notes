@@ -1,0 +1,177 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage{latexsym, amsfonts, amssymb, amsthm, amsmath, siunitx, graphicx, pgfplots}
+
+\pdfsuppresswarningpagegroup=1
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{every axis/.append style={
+  axis x line=middle,    % put the x axis in the middle
+  axis y line=middle,    % put the y axis in the middle
+  axis line style={<->,color=black}, % arrows on the axis
+}}
+
+\title{TØ-opgaver uge 4}
+\author{Noah Rahbek Bigum Hansen}
+\date{25. september 2024}
+
+\begin{document}
+  \section*{Opg. 4.1}
+    Brug formlerne i (4.2) til at simplificere udregningen for at finde tallet:
+    \[
+    \left| \frac{\left( 1-i \right) \left( \overline{2+2i} \right)}{3i(4-2i)} \right|
+    .\] 
+    \bigbreak
+    For to komplekse tal, $z_1$, og  $z_2$ har vi:
+    \[
+    |\frac{z_1}{z_2}| = \frac{|z_1|}{|z_2|}
+    .\] 
+    Og
+    \[
+    |z_1z_2| = |z_1| |z_2|
+    .\] 
+    Altså:
+    \[
+    \left| \frac{\left( 1-i \right) \left( \overline{2+2i} \right)}{3i(4-2i)} \right| = \frac{|1-i| |\overline{2+2i}|}{|3i| |4-2i|}
+    .\] 
+    Og der gælder at:
+    \[
+    |\overline{z_1}| = |z_1|
+    .\] 
+    Altså:
+    \[
+    \frac{|1-i| |2-2i|}{|3i| |4-2i|}
+    .\]
+    Normerne kan dernæst findes vha. Pythagoras:
+    \[
+      \frac{\sqrt{1^2 + 1^2}\cdot \sqrt{2^2+2^2} }{\sqrt{6^2+12^2}} = \frac{\sqrt{2}\cdot \sqrt{8}}{\sqrt{180}} = \frac{2 \sqrt{45}}{45} = \frac{2 \sqrt{5} }{15}
+    .\]
+
+  \section*{Opg. 4.6}
+  For $a > 0$ hvad er løsningerne til $z^2=-a$. Det vil sige, hvad er kvadratrødderne for et negativt tal?
+  \bigbreak
+  For:
+  \[
+  z^n = a
+  .\] 
+  Er løsningerne givet ved:
+  \[
+  z_0e^{\frac{2\pi m}{n}i}
+  .\]
+  For $m = 0,1,\ldots,n-1$. Hvor $z_0 = r^{\frac{1}{n}}e^{i \frac{\theta}{n}}$
+  Altså er løsningerne:
+  \begin{gather*}
+    -z_0e^{0i} \qquad \text{og} \qquad -z_0e^{\pi i}
+  \end{gather*}
+
+  \section*{Opg. 4.9}
+  Gør rede for at $e^{ix}e^{-ix}=1$ for $x \in \mathbb{R}$. Hvad er den polære form for $z^{-1} = \frac{1}{z}$, hvis $z$ har polær form:
+   \[
+  z = re^{i \theta}
+  .\]
+  \bigbreak
+  For $e^{ix}e^{-ix}$ har vi:
+  \[
+  e^{ix}e^{-ix} = \frac{e^{ix}}{e^{-ix}} = 1
+  .\] 
+  Altså er det vist. Dermed har vi også:
+  \begin{align*}
+    z^{-1}z^{1} = 1 \implies z^{-1} = \frac{1}{z} 
+  .\end{align*}
+  Altså har vi:
+  \[
+  z^{-1} = \frac{1}{re^{i\theta}} 
+  .\] 
+  For den komplekst konjugerede spejles der omkring 1.-aksen og derfor må det gælde at den polære form for $z$ og for $\overline{z}$ kun adskiller sig ift. fortegnet til argumentet (som givetvis skal være modsat for $z$ som for $\overline{z}$.
+
+  \section*{Opg. 4.12}
+  Løs andengradsligningen:
+  \[
+  z^2 - \left( 3+2i \right)z + \left( 1+3i \right) = 0  
+  .\] 
+  \bigbreak
+  Først regnes diskriminanten:
+  \[
+  D = b^2-4ac = \left( 3+2i \right)^2 - 4\left( 1 + 3i \right)  = \left( 5 + 12i \right) - \left( 4 + 12i \right) = 1
+  .\]
+  Altså har vi:
+  \[
+  \frac{\left( 3+2i \right) \pm \sqrt{1^2}}{2} = 1,5 \pm 0,5 - i 
+  .\]
+
+  \section*{Opg. 4.18}
+  Find begge komplekse løsninger til ligningen:
+  \[
+  2z^2+4z+8=0
+  .\] 
+  og bestem absolut værdi og argument (i radianer) for begge tal.
+  \bigbreak
+  Først findes diskriminanten, $D$:
+  \[
+  D = b^2-4ac \implies D = 4^2-4\cdot 2\cdot 8 = -48
+  .\]
+  Dernæst huskes:
+  \[
+  \frac{-b \pm \sqrt{D}}{2a}
+  .\] 
+  Altså har vi:
+  \[
+  \frac{-4 \pm \sqrt{48}i}{2 \cdot 2} = -1 \pm \sqrt{3}i
+  .\] 
+  
+  \section*{Prøveeksamens spg. 5}
+  Skriv følgende brøk på standard form:
+  \[
+  \frac{8-6i}{1+i}
+  .\]
+  \bigbreak
+  For at dividere to komplekse tal bruges at:
+  \[
+  \frac{z_1}{z_2} = \frac{z_1\overline{z_2}}{|z_2|^2}
+  .\] 
+  Altså:
+  \begin{align*}
+  &= \frac{\left( 8-6i \right)\cdot \left( 1-i \right)}{|1+i|^2} \\
+  &= \frac{2-14i}{2} = 1-7i
+  \end{align*}
+  
+
+
+  \section*{Prøveeksmanes spg. 6}
+  Ligningen:
+  \[
+  z^2-4z+20=0
+  .\] 
+  Har to løsninger $z_1$ og  $z_2$. Hvad er produktet af deres imaginærdele?
+  \bigbreak
+  Først findes diskriminanten til andengradsligningen:
+  \[
+  D = b^2 - 4ac \implies D = -64
+  .\] 
+  Altså har vi:
+  \[
+  \frac{-b \pm \sqrt{D}}{2a} \implies \frac{4 \pm 8i}{2} = 2 \pm 4i
+  .\]
+  Altså er imaginærdelene:
+  \begin{align*}
+    \Im_1 &= -4i \\
+    \Im_2 &= 4i
+  \end{align*}
+  Og produktet af imaginærdelene bliver da:
+  \[
+  \Im_1\cdot \Im_2 = -4i\cdot 4i = 16
+  .\] 
+  
+    
+
+ \end{document}

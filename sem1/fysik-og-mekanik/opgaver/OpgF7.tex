@@ -1,0 +1,249 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage[output-decimal-marker={,}]{siunitx}
+\usepackage{latexsym, amsfonts, amssymb, amsthm, amsmath, graphicx, pgfplots}
+
+\sisetup{exponent-product = \cdot}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{every axis/.append style={
+  axis x line=middle,    % put the x axis in the middle
+  axis y line=middle,    % put the y axis in the middle
+  axis line style={<->,color=black}, % arrows on the axis
+}}
+
+\title{Opgaver til forelæsning 7}
+\author{Noah Rahbek Bigum Hansen}
+\date{3. oktober 2024}
+
+\begin{document}
+\section*{Opg. 4.7}
+A \qty{68,5}{kg} skater moving initially at \qty{2,40}{m/s} on rough horizontal ice comes to rest uniformly in \qty{3,52}{s} due to friction from the ice.What force does friction exert on the skater?
+\bigbreak
+Det antages at skøjteløberen decelerer med konstant acceleration, hvilket ikke er usandsynligt idet friktion ikke afhænger af hastighed ($ \, \forall \, v>0$). Altså har vi at den gennemsnitlige acceleration for skøjteløberen er
+\[
+  a = \frac{v}{t} = \frac{\qty{2,40}{\frac{m}{s}}}{\qty{3,52}{s}} = \qty{0,6818}{\frac{m}{s^2}}
+.\] 
+Fra Newtons 2. lov har vi at
+\[
+  F = ma \implies F = \qty{68,5}{kg}\cdot \qty{0,6818}{\frac{m}{s^2}} = \qty{46,7}{n}
+.\] 
+
+\section*{Opg. 4.8}
+You walk into an elevator, step onto a scale, and push the “up” button. You recall that your normal weight is \qty{625}{N}. Draw a free-body diagram.
+
+\subsection*{(a)}
+When the elevator has an upward acceleration of magnitude \qty{2,50}{m/s^2}, what does the scale read?
+\bigbreak
+Først omregnes den målte vægt fra sidste opgave til en masse vha. Newtons 2.
+\[
+  m = \frac{F}{a} = \frac{\qty{625}{N}}{9,81 \frac{m}{s^2}} = \qty{63,71}{kg}
+.\] 
+En vægt måler normalkraft og ikke den egentligt vægt. Det må desuden gælde at den samlede acceleration tilsvarer summen af tyngdeaccelerationen og elevatorens acceleration
+\[
+a = g + \qty{2,50}{\frac{m}{s^2}} = \qty{12,31}{\frac{m}{s^2}}
+.\] 
+Derfor må den nye oplevede kraft være
+\[
+F = ma \implies F = \qty{63,71}{kg}\cdot \qty{12,31}{\frac{m}{s^2}} = \qty{784}{N}
+.\] 
+Den viste vægt er derfor:
+\[
+m_{v} = \frac{\qty{784}{N}}{g} = \qty{79,9}{kg}
+.\] 
+
+\subsection*{(b)}
+If you hold a \qty{3,85}{kg} package by a light vertical string, what will be the tension in this string when the elevator accelerates as in part \textbf{(a)}?
+\bigbreak
+Samme formel som ovenfor benyttes dog med en ny masse
+\[
+F = \qty{3,85}{kg}\cdot \qty{12,31}{\frac{m}{s^2}} = \qty{47,4}{N}
+.\] 
+
+\section*{Opg. 4.10}
+A dockworker applies a constant horizontal force of \qty{80,0}{N} to a block of ice on a smooth horizontal floor. The frictional force is negligible. The block starts from rest and moves \qty{11,0}{m} in \qty{5,00}{s}.
+
+
+\subsection*{(a)}
+What is the mass of the block of ice?
+\bigbreak
+Det antages at blokken accelerer med konstant acceleration. Altså kan formlen for strækning ved konstant acceleration benyttes
+\[
+s = \frac{1}{2}at^2 \implies a = \frac{2s}{t^2} = \frac{2\cdot \qty{11,0}{m}}{(\qty{5,00}{s})^2} = \qty{0,88}{\frac{m}{s^2}}
+.\] 
+Dernæst benyttes Newtons 2. lov
+\[
+m = \frac{F}{a} = \frac{\qty{80,0}{N}}{\qty{0,88}{\frac{m}{s^2}}} = \qty{90,9}{kg}
+.\] 
+
+\subsection*{(b)}
+If the worker stops pushing at the end of \qty{5,00}{s}, how far does the block move in the next \qty{5,00}{s}?
+\bigbreak
+Den konstante acceleration på \qty{0,88}{m/s^2} vil efter 5 sekunder resultere i en hastighed på
+\[
+v = a\cdot t = \qty{0,88}{\frac{m}{s^2}}\cdot \qty{5}{s} = \qty{4,40}{\frac{m}{s}}
+.\] 
+Uden friktion til hastigheden ikke ændre sig over de næste 5 sekunder og derfor vil hastigheden forblive konstant dermed bliver den samlede tilbagelagte strækning i perioden
+\[
+s_{5-10} = vt \implies s_{5-10} = \qty{4,40}{\frac{m}{s}}\cdot \qty{5,00}{s} = \qty{22,2}{m}
+.\] 
+
+\section*{Opg. 4.16}
+An astronaut’s pack weighs \qty{17,5}{N} when she is on the earth but only \qty{3,24}{N} when she is at the surface of a moon.
+
+
+\subsection*{(a)}
+What is the acceleration due to gravity on this moon?
+\bigbreak
+Idet tyngdekraften er lineært afhængig af tyngdeaccelerationen må det gælde at
+\[
+\frac{g_{\mathrm{moon}}}{g_{\mathrm{moon} }} = \frac{m_{\mathrm{jord} }}{m_{\mathrm{moon}}} \implies g_{\mathrm{moon}} = \frac{m_{\mathrm{moon}}\cdot g_{\mathrm{jord}}}{m_{\mathrm{jord}}} \implies g_{\mathrm{moon}} = \frac{\qty{3,24}{N}\cdot \qty{9,81}{\frac{m}{s^2}}}{\qty{17,5}{N}} = \qty{1,82}{\frac{m}{s^2}}
+.\] 
+
+
+\subsection*{(b)}
+What is the mass of the pack on this moon?
+\bigbreak
+Massen afhænger ikke af tyngdeaccelerationen men vha. Newtons 2. lov og tyngdeaccelerationen på jorden kan ``packens'' masse findes som
+\[
+m_{\mathrm{pack}} = \frac{\qty{17,5}{N}}{\qty{1,82}{\frac{m}{s^2}}} = \qty{9,62}{kg}
+.\] 
+Dette er ``packens'' masse både på månen og på jorden og alle andre steder den kunne finde på at opholde sig. 
+
+
+\section*{Opg. 4.23}
+Boxes $A$ and $B$ are in contact on a horizontal, frictionless surface. Box $A$ has mass \qty{20,0}{kg} and box $B$ has mass \qty{5,0}{kg}. A horizontal force of \qty{250}{N} is exerted on box $A$. What is the magnitude of the force that box $A$ exerts on box $B$?
+\bigbreak
+Først findes accelerationen som boksene kommer til at få. Dette gøres vha. Newtons 2. idet den samlede masse er givet ved $m = m_a + m_b$
+\[
+  a = \frac{F}{m_a + m_b} \implies a = \frac{\qty{250}{N}}{\qty{20,0}{kg} + \qty{5,00}{kg}} = \qty{10}{\frac{m}{s^2}}
+.\] 
+Dette må være den acceleration som begge kasser oplever. Denne acceleration kan dernæst omregnes til en kraft
+\[
+  F = m_b a \implies F = \qty{5,00}{kg} \cdot \qty{10}{\frac{m}{s^2}} = \qty{50,0}{N}
+.\] 
+
+
+
+\section*{Opg. 4.27}
+Crates $A$ and $B$ sit at rest side by side on a frictionless horizontal surface. They have masses $m_A$ and $m_B$, respectively. When a horizontal force $ \Vec{F}$ is applied to crate $A$, the two crates move off to the right.
+
+
+\subsection*{(a)}
+Draw clearly labeled free-body diagrams for crate $A$ and for crate $B$. Indicate which pairs of forces, if any, are third-law action–reaction pairs.
+
+
+\subsection*{(b)}
+If the magnitude of $ \Vec{F}$ is less than the total weight of the two crates, will it cause the crates to move? Explain.
+\bigbreak
+De to kasser vil bevæge sig for enhver horisontal kraft, hvor $|F| > 0$, dette skyldes at der ikke er nogen friktion
+
+
+\section*{Opg. 4.36}
+An advertisement claims that a particular automobile can ``stop on a dime.'' What net force would be necessary to stop a \qty{850}{kg} automobile traveling initially at \qty{45}{km/h} in a distance equal to the diameter of a dime, \qty{1,8}{cm}?
+\bigbreak
+Idet vi antager at bilen bremser med konstant acceleration kan denne konstante acceleration findes som
+\[
+a = \frac{v_1^2-v_0^2}{2\left( x_1 - x_0 \right)}
+,\] 
+hvor subskriptet 0 angiver en starttilstand og subskriptet 1 angiver en sluttilstand. Altså har vi
+\[
+a = \frac{0-(\qty{45}{\frac{km}{h}})^2}{2\left( \qty{1,8}{cm}-0 \right) } = \frac{-(\qty{45}{\frac{km}{h}})^2}{\qty{3,6}{cm}} = \qty{-4340}{\frac{m}{s^2}}
+.\] 
+Denne acceleration kan dernæst omregnes til en tilsvarende kraft vha. Newtons 2. lov
+\[
+F = ma \implies F = \qty{850}{kg}\cdot \qty{-4340}{\frac{m}{s^2}} = \qty{-3,689e6}{N}
+.\] 
+
+\section*{Opg. 4.37}
+Two crates, one with mass \qty{4,00}{kg} and the other with mass \qty{6,00}{\kg}, sit on the frictionless surface of a frozen pond, connected by a light rope. A woman wearing golf shoes (for traction) pulls horizontally on the \qty{6,00}{\kg} crate with a force $F$ that gives the crate an acceleration of \qty{2,50}{m/s^2}.
+
+
+\subsection*{(a)}
+What is the acceleration of the \qty{4,00}{kg} crate?
+\bigbreak
+Idet begge kasser er forbundet med en snor må de begge accelerere med samme hastighed og derfor må den lille kasses acceleration ligeledes være \qty{2,50}{m/s^2}
+
+\subsection*{(b)}
+Draw a free-body diagram for the \qty{4,00}{kg} crate. Use that diagram and Newton’s second law to find the tension $T$ in the rope that connects the two crates.
+\bigbreak
+Spændingen i rebet må tilsvare den kraft som kassen på \qty{4,00}{kg} hiver i rebet med. Altså har vi
+\[
+F = m_b a = \qty{4,00}{kg}\cdot \qty{2,50}{\frac{m}{s^2}} = \qty{10,0}{N}
+.\] 
+
+\subsection*{(c)}
+Draw a free-body diagram for the \qty{6,00}{kg} crate. What is the direction of the net force on the \qty{6,00}{kg} crate? Which is larger in magnitude, $T$ or $F$?
+\bigbreak
+Den samlede kraft som kassen på \qty{6,00}{kg} oplever må svare til differensen mellem den kraft som damen hiver i kassen med og snorkraften som kassen på \qty{4,00}{kg} hiver med. Altså må den samlede kraft oplevet af kassen være $F_{res} = F-T$. Altså har vi at
+\[
+F-T = m_a a \implies F = T+m_a a \implies F = \qty{10,0}{N} + \qty{6,00}{kg}\cdot \qty{2,50}{\frac{m}{s^2}} = \qty{25}{N}
+.\] 
+Altså er kraften F størst, dvs. den resulterende krafts retning er i retningen fra kassen mod damen.
+
+
+\subsection*{(d)}
+Use part (c) and Newton’s second law to calculate the magnitude of $F$.
+\bigbreak
+Løst ovenfor
+
+\section*{Opg. 4.38}
+Two blocks connected by a light horizontal rope sit at rest on a horizontal, frictionless surface. Block $A$ has mass \qty{15,0}{kg}, and
+block $B$ has mass $m$. A constant horizontal force $F =$ \qty{60,0}{N} is applied to block $A$. In the first \qty{5,00}{s} after the force is applied, block $A$ moves \qty{18,0}{m} to the right.
+
+\subsection*{(a)}
+While the blocks are moving, what is the tension $T$ in the rope that connects the two blocks?
+\bigbreak
+Idet den tilførte kraft er konstant må kassernes acceleration ligeledes være konstant. Altså benyttes formlen for strækning ved konstant acceleration
+\[
+s = \frac{1}{2}at^2 \implies a = \frac{2s}{t^2} \implies a = \frac{2\cdot \qty{18,0}{m}}{\left( \qty{5,00}{s} \right)^2} = \qty{1,44}{\frac{m}{s^2}}
+.\] 
+Dermed er kassernes acceleration beregnet. Som vist i opgaven ovenfor kan spændingen i snoren findes som
+\[
+T = F-ma \implies T = \qty{60,0}{N} - \qty{15,0}{kg} \cdot \qty{1,44}{\frac{m}{s^2}} = \qty{38,4}{N}
+.\] 
+
+\subsection*{(b)}
+What is the mass of block $B$?
+\bigbreak
+Massen af den lille blok kan nu beregnes idet vi kender spændingen i rebet (bemærk at fremgangsmåden her er den samme som i opgave 4.37 dog omvendt)
+\[
+T = m_a a \implies m_a = \frac{T}{a} \implies m_a = \frac{\qty{38,4}{N}}{\qty{1,44}{\frac{m}{s^2}}} = \qty{26,7}{kg} 
+.\] 
+  
+
+\section*{Opg. 4.45}
+Boxes $A$ and $B$ are connected to each end of a light vertical rope. A constant upward force $F =$  \qty{80,0}{N} is applied to box $A$. Starting from rest, box $B$ descends \qty{12,0}{m} in \qty{4,00}{s}. The tension in the rope connecting the two boxes is \qty{36,0}{N}. What are the masses of:
+
+
+\subsection*{(a)}
+Box $A$?
+\bigbreak
+Først regnes accelerationen af de to kasser med samme formel som opg. 4.37
+\[
+  a = \frac{2s}{t^2} \implies a = \frac{2\cdot \qty{12,0}{m}}{(\qty{4,00}{s})^2} = \qty{1,50}{\frac{m}{s^2}}
+.\] 
+Den samlede kraft på boks A må være givet ved $F-T-m_Ag$. Altså har vi at
+ \[
+   F-T-m_ag = -m_a a \implies m_a = \frac{F-T}{g-a} \implies m_a = \frac{\qty{80,0}{N}-\qty{36,0}{N}}{\qty{9,81}{\frac{m}{s^2}}-\qty{1,50}{\frac{m}{s^2}}} = \qty{5,30}{kg}
+.\] 
+
+ \subsection*{(b)}
+Box $B$?
+\bigbreak
+Samme formel som ovenfor kan benyttes her. Altså har vi at
+\[
+T - m_b g = m_b a \implies m_b = \frac{T}{g-a} \implies m_b = \frac{\qty{36,0}{N}}{\qty{9,81}{\frac{m}{s^2}}-\qty{1,50}{\frac{m}{s^2}}} = \qty{4,34}{kg}
+.\] 
+
+\end{document}

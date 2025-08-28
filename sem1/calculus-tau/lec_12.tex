@@ -1,0 +1,277 @@
+\lecture{12}{18. November 2024}{Sandsynlighedsregning 2}
+
+\section{Andre diskrete fordelinger}
+Vi har fra sidst de to fordelinger
+\begin{itemize}
+  \item \textbf{Binomialfordelignen}: Hvor mange ud af $n$ eksperimenter er successer givet et eksperiment der kun kan være success eller fiasko
+  \item \textbf{Poissonfordelingen}: Hvis du har et fast tidsinterval, hvor mange hændelser indtræffer så indenfor dette interval
+\end{itemize}
+I dag vil vi bl.a. kigge på ventetidsfordelinger.
+
+\subsection{Den geometriske fordeling} \label{afs:forgeo}
+Den geometriske fordeling har sandsynlighedsparameter $0 < p < 1$ og sandsynlighedsfunktion givet ved
+\[ 
+P(n) = p(1-p)^{n-1}, \qquad n = 1, 2, 3, \ldots 
+.\]
+Funktionen ovenfor kan ses som sandsynligheden for først at få $n-1$ fiaskoer og dernæst $1$ enkelt success. Altså er der også her tale om et binært eksperiment. Den geometriske fordeling siger altså noget om hvor længe man skal vente på en success; hvad er sandsynligheden for at få $n-1$ fiaskoer efterfulgt af success?
+
+\begin{sæt}[middelværdi og varians for geometriske fordelinger]
+  Middelværdien for en geometrisk fordeling kan nemt ses til at være
+  \[ 
+    E[X] = \frac{1}{p}
+  .\]
+  Og variansen er givet ved
+  \[ 
+    \mathrm{Var}(X) = \frac{1-p}{p^2}
+  .\]
+  \tcblower
+  Vi har generelt en middelværdi givet ved
+  \[ 
+    E[X] = \sum_{n = 1}^{\infty} n p(n)
+  .\]
+  Og vi får dermed
+  \begin{align*}
+    E[X] &= \sum_{n = 1}^{\infty} n p(1-p)^{n-1} \\ 
+    &= \sum_{n = 1}^{\infty} (n-1) p(1-p)^{n-1} + \sum_{n = 1}^{\infty}  p(1-p)^{n-1}  \\
+  .\end{align*}
+  For $n = 1$ bliver det første led 0 og vi kan derfor starte summen fra 2 i stedet
+  \begin{align*}
+    E[X] &= \sum_{n = 2}^{\infty} (n-1) p(1-p)^{n-1} + \sum_{n = 1}^{\infty} p(1-p)^{n-1} \\
+    &= \sum_{j = 1}^{\infty} j p(1-p)^{j} + \sum_{n = 1}^{\infty} p(1-p)^{n-1} \\
+    &= (1-p) \sum_{j = 1}^{\infty} j p(1-p)^{j} + \sum_{n = 1}^{\infty} p(1-p)^{n-1}
+  .\end{align*}
+  Vi genkender først summen $\sum_{j = 1}^{\infty} j p(1-p)^{j}$ som middelværdien
+  \begin{align*}
+    \sum_{j = 1}^{\infty} jp(1-p)^{j} &= E[X] \\
+  .\end{align*}
+  Summen $\sum_{n = 1}^{\infty} n p (1-p)^{n-1} = 1$, da vi summer sandsynlighedsfunktionen for en geometrisk fordeling over alle udfaldene og sandsynlighdeden for hele udfaldsrummet er 1 for enhver fordeling. Vi har dermed
+  \begin{align*}
+    (1-p) E[x] + 1 & = E[X] (1- (1-p) = 1 \\
+                   &= pE[X] = 1 \\
+                   &= E[X] = \frac{1}{p}
+  .\end{align*}
+  Altså er middelværdien for en geometrisk fordeling
+  \[ 
+    E[X] = \frac{1}{p}
+  .\]
+  \vspace{12pt}
+  Noget tilsvarende kan gøres for at vise at variansen er givet som
+  \[ 
+    \mathrm{Var}(X) = \frac{1-p}{p^2}
+  .\]
+\end{sæt}
+
+For at vise hvordan man regner med geometriske fordelinger vil et kort eksempel i det følgende præsenteres.
+
+\begin{eks}[Træk af kugler]
+  En krukke indeholder $N$ hvide kugler og $M$ sorte kugler. Kuglerne trækkes tilfældigt, én ad gangen, indtil en sort kugle er trukket. Kuglerne lægges tilbage i krukken efter hvert træk. Vi ønsker da at finde sandsynligheden for at netop $n$ hvide kugler trækkes før vi får en sort. Idet der er tilbagelægning er eksperimentet binært og vi kan derfor regne på det med den geometriske fordeling. Hvis vi sætter $X$ til at være antallet af hvide kugler, der trækkes, før vi får en sort så ved vi at $X$ er geometrisk fordelt med parameter $p = \frac{M}{N + M}$. Vi ønsker at finde sandsynligheden for $P(X = n)$. Idet $X$ er geometrisk fordelt har vi derfor at
+  \[ 
+  P(X = n) = p(1-p)^{n-1}
+  .\]
+  Hvis vi indsætter $p$ fås
+  \begin{align*}
+    P(X = n) &= \frac{M}{N + M}\cdot \left( 1 - \frac{M}{N+M} \right)^{n-1} \\
+    &= \frac{M}{N + M}\cdot \left( \frac{N}{N + M} \right)^{n-1} \\
+    &= \frac{MN^{n-1}}{(N + M)^n} \\
+  .\end{align*}
+  \vspace{12pt}
+  Hvis vi i stedet ønsker at finde ud af hvor mange hvide kugler vi får i middel før vi får en sort sættes blot $p = \frac{M}{N + M}$ ind i formlen for middelværdi som
+  \[ 
+    E[X] = \frac{N + M}{M}
+  .\]
+\end{eks}
+
+\subsection{Den negative binomialfordeling} \label{afs:fornegbin}
+Den negative binomialfordeling er beskrevet med en sandsynlighedsparameter, $p$ og antalsparameter, $r$, $(p,r)$. Sandsynlighedsfunktionen er givet som
+\[ 
+  P(X) = \binom{r-1}{n-1} p^{r}(1-p)^{n-r}, \qquad n = r, r+1, \ldots 
+.\]
+Denne kan fortolkes som antallet af forsøg indtil $r$ successer for et binært eksperiment. Dette kunne f.eks. være, hvis man ønsker at beregne chancen for at få $r$ plat'ter, hvis man kaster en mønt, $n$ gange. Den geometriske fordeling er altså et specialtilfælde af den negative binomialfordeling, hvor $r = 1$, hvilket også kan ses af sandsynlighedsfunktionen. Det er vigtigt at være opmærksom på at binomialfordelingen og den negative binomialfordeling er forskellige fordelinger med meget forskellige fortolkninger og brugstilfælde. 
+
+\begin{sæt}[Middelværdi og varians for den negative binomialfordeling]
+  Middelværdien for den negative binomialfordeling er givet som
+  \[ 
+    E[X] = \frac{r}{p}
+  .\]
+  Og variansen er givet ved
+  \[ 
+    \mathrm{Var}(X) = r\cdot \frac{1-p}{p^2}
+  .\]
+  Disse er altså begge lig resultaterne for den geometriske fordeling skaleret med faktoren, $r$, hvilket også givet fin logisk mening idet den geometriske fordeling angiver antallet af forsøg for 1 success og den negative binomialfordeling angiver antallet af forsøg for $r$ successer.
+\end{sæt}
+
+\section{Middelværdi for summer af stokastiske variable}
+Det bør bemærkes at alt i dette afsnit både gælder diskrete og kontinuerte stokastiske variable medmindre andet er anført (kontinuerte stokastiske variable er beskrevet længere nede). Den helt centrale regel for middelværdien af summer for stokastiske variable er, at middelværdien af en sum er lig summen af middelværdierne, altså
+\begin{equation} \label{eq:1}
+    E[\sum_{i = 1}^{n} X_i] = \sum_{i = 1}^{n} E[X_i] 
+\end{equation}
+
+Dette vil i det følgende blive illustreret med et eksempel
+\begin{eks}
+  Betragt følgende stokastiske variable
+  \begin{itemize}
+    \item X er binomialfordelt ($5,\frac{1}{3}$)
+    \item Y er Poissonfordelt ($7$)
+    \item Z er geometrisk fordelt ($\frac{1}{5}$)
+  \end{itemize}
+  Vi ønsker da at beregne
+  \[ 
+    E[6X + 4Y + 7Z + 2]
+  .\]
+  Vha. \textbf{\autoref{eq:1}} og almindelige regneregler for middelværdier kan vi omskrive ovenstående til
+  \[ 
+    E[6X + 4Y + 7Z + 2] = 6\cdot E[X] + 4\cdot E[Y] + 7\cdot E[Z] + 2
+  .\]
+  Dermed bliver problemet noget nemmere at løse. Vi betragter først $E[X]$ som
+  \[ 
+    E[X] = 5\cdot \frac{1}{3} = \frac{5}{3}
+  .\]
+  Dernæst betragtes $E[Y]$ som
+  \[ 
+    E[Y] = 7
+  .\]
+  Og slutteligt $E[Z]$ som
+  \[ 
+    E[Z] = \frac{1}{\frac{1}{5}} = 5
+  .\]
+  Vi har dermed at
+  \[ 
+    E[6X + 4Y + 7Z + 2] = 6 \cdot \frac{5}{3} + 4\cdot 7 + 7 \cdot 5 + 2 = 75
+  .\]
+\end{eks}
+
+\section{Egenskaber ved fordelingsfunktionen (Eng: \textit{Cumulative Distribution Function}}
+Det bør, som for sidste afsnit, bemærkes at alt der bliver præsenteret i dette afsnit både gælder for diskrete og kontinuerte variable.
+\begin{sæt}[Fordelingsfunktionen for en stokastisk variabel]
+  Fordelingsfunktioneb, $F$, for den stokastiske variabel, $X$, er givet som
+  \[ 
+  F(X) = P(X \leq x), \qquad x \in \mathbb{R}
+  .\]
+  Fordelingsfunktionen beskriver \textit{entydigt} alle fordelinger -- dvs. både kontinuerte og diskrete stokastiske variable. Dette står i modsætning til sandsynlighedsfunktionen som kun kan bruges for diskrete stokastiske variable.
+
+  Disse fordelingsfunktioner er rigtigt smarte, for ikke nok med at vi kan regne sandsynligheden for at den stokastiske variabel er under en bestemt værdi kan vi også regne sandsynligheden for at den stokastiske variabel er i et interval idet dette blot er differensen mellem fordelingsfunktionen til to forskellige værdier af $x$.
+\end{sæt}
+
+\section{Kontinuerte stokastiske variable}
+For at kunne arbejde med kontinuerte stokastiske variable er vi nødsaget til at definere, hvad forskellen på en sådan og en diskret stokastisk variabel er. Vi arbejder med følgende definitioner
+\begin{definition}[Diskrete stokastiske variable]
+  En stokastisk variabel, der antager værdier i en \textit{tællelig} mængde kaldes \textit{diskret}.
+\end{definition}
+
+\begin{definition}[Kontinuerte stokastiske variable]
+  En stokastisk variabel, $X$, kaldes \textit{kontinuert}, hvis der findes en positiv funktion $f$ så at for alle $A \subseteq \mathbb{R}$ vi har
+  \[ 
+  P(X \in A) = \int_A f(x) \, \mathrm{d}x
+  .\]
+  Altså, er den stokastiske variabel kontinuert, hvis man kan udregne sandsynligheden for at den stokastiske variabel $X$ ligger i en mængde $A$ ved at integrere over $A$ for alle $A \subseteq \mathbb{R}$. Funktionen $f$ for hvilken ovenstående gælder for en given stokastisk variabel kaldes tæthedsfunktionen for selvsamme stokastiske variabel.
+\end{definition}
+
+Der er desuden næsten 1:1 korrespondance mellem sandsynlighedsfunktionen for diskrete stokastiske variable og tæthedsfunktionen for kontinuerte stokastiske variable og de kan i langt de fleste tilfælde tænkes som tilsvarende koncepter, men for forskellige slags stokastiske variable.
+
+\begin{sæt}[Punktsandsynligheder for kontunierte stokastiske variable]
+  Hvis $X$ er en kontinuert stokastisk variabel så er
+  \[ 
+  P(X = x) = 0, \qquad \text{for alle } x
+  .\]
+  Dette følger fra
+  \[ 
+  P(X = x) = P(X \in \{ x \} ) = \int_{x}^{x} f(s) \, \mathrm{d}s = 0
+  .\]
+  Da $\sum_{n = 1}^{\infty} p(x_n) = 1$ for diskrete stokastiske variable kan en stokastisk variabel ikke både være kontinuert og diskret -- de to slags stokastiske variable siges at være disjunkte.
+\end{sæt}
+
+Det uegentlige integrale af tæthedsfunktionen (dvs. fra $-\infty$ til $\infty$) er
+\[ 
+  \int_{-\infty}^{\infty} f(x) \, \mathrm{d}x = 1
+,\]
+da
+\[ 
+  P(X \in \mathbb{R}) = 1
+.\]
+
+\begin{eks}[Ventetiden indtil en computer går i stykker]
+  Lad $X$ betegne ventetiden indtil en computer går i stykker. Antag at $X$ er kontinuert med tæthedsfunktionen
+  \[ 
+  f(x) = \frac{1}{100}e^{-\frac{x}{100}}, \qquad 0 \leq x \text{ og } f(x) = 0 \text{ for } x<0
+  .\]
+  Vi ønsker da at finde sandsynligheden for at der går mellem 50 og 150 tidsenheder før computeren går i stykker. Vi ønsker altså at finde $P(50 \leq X \leq 150)$. Vi integrerer altså tæthedsfunktionen over intervallet
+  \begin{align*}
+    P(50 \leq X \leq 150) &= \int_{50}^{150} \frac{1}{100} e^{-\frac{x}{100}} \, \mathrm{d}x \\
+    &= \left[ -e^{-\frac{x}{100}} \right]_{50}^{150} \\
+    &= -e^{-\frac{3}{2}} + e^{-\frac{1}{2}} \\
+    &= \num{0,38} 
+.\end{align*}
+\end{eks}
+
+\subsection{Middelværdi og varians for kontinuerte stokastiske variable}
+Hvor vi i ``den diskrete verden'' arbejdede meget med summer arbejder vi i ``den kontinuerte verden'' med integraler. For de diskrete variable er middelværdien \textit{summen af de værdier} den stokastiske variabel kan antage vægtet med \textit{sandsynlighedsfunktionen} medens den for de kontinuerte variable er \textit{integralet over de værdier} den stokastiske variabel kan antage vægtet med \textit{tæthesfunktionen}.
+
+\begin{sæt}[Middelværdien for en kontinuert stokastisk variabel]
+  Middelværdien for en kontinuert stokastisk variabel $X$ er givet ved
+  \[ 
+    E[X] = \int_{-\infty}^{\infty} xf(x) \, \mathrm{d}x 
+  .\]
+\end{sæt}
+
+Vi ønsker at bruge dette i praksis og tager derfor et hurtigt eksempel
+
+\begin{eks}[Middelværdien for en kontinuert stokastisk variabel]
+  Lad $X$ have tæthedsfunktion
+  \[ 
+    f(x) = 2x, \text{ for } 0\leq x\leq 1 \text{ og } f(x) = 0 \text{ ellers}
+  .\]
+  Vi ønsker da at finde middelværdien af $X$. Af tæthedsfunktionen ses at $X$ kun antager værdier mellem 0 og 1. Hvis vi bruger formlen for middelværdien fra før får vi at
+  \begin{align*}
+    E[X] &= \int_{-\infty}^{\infty} xf(x) \, \mathrm{d}x  \\
+    &= \int_{0}^{1} x(2x) \, \mathrm{d}x  \\
+    &= 2 \int_{0}^{1} x^2 \, \mathrm{d}x  \\
+    &= 2 \cdot \left[ \frac{x^3}{3} \right]_0^{1} \\
+    &= \frac{2}{3}
+  .\end{align*}
+\end{eks}
+
+\subsection{Middelværdi for funktioner taget på kontinuerte stokastiske variable}
+
+\begin{sæt}
+  Ønsker man at finde middelværdien for en funktion taget på en kontinuert stokastisk variabel $E[g(x)]$ skal man i stedet for at integrere $x$ op mod sin tæthedsfunktion integrere $g$ op mod sin tæthedsfunktion som
+  \[ 
+    E[g(x)] = \int g(x) f(x) \, \mathrm{d}x  
+  .\]
+\end{sæt}
+
+Det bør desuden bemærkes at der også for kontinuerte stokastiske variable gælder relationen
+\[ 
+  E[aX + b] = aE[X] + b
+.\]
+
+\subsection{Variansen for kontinuerte stokastiske variable}
+
+\begin{definition}[Variansen af en kontinuert stokastisk variabel]
+  Variansen for en kontinuert stokastisk variabel er givet som
+  \[ 
+    \mathrm{Var}(X) = E \left[ (X - \mu)^2 \right], \qquad \mu = E[X]
+  .\]
+  Dette kan omskrives til
+  \[ 
+    \mathrm{Var}(X) = E \left[ X^2 \right] - (E[X])^2
+  .\]
+  Hvilket er den velkendte formel for variansen som er tilsvarende den for diskrete stokastiske variable.
+\end{definition}
+
+\begin{eks}[Variansen af en kontinuert stokastisk variabel]
+  Lad $X$ have tæthedsfunktionen
+  \[ 
+  f(x) = 2x, \qquad \text{for } 0 < x < 1 \text{ og } f(x) = 0 \text{ ellers}
+  .\]
+  Vi ønsker da at finde variansen af $X$. Vi har tidligere fundet middelværdien for tæthedsfunktionen givet ovenfor. Vi mangler derfor blot at finde 2.-momentet. Vi sætter $g(x) = x^2$ og har derfor $E[g(x)]$ som løses som
+  \begin{align*}
+    E \left[ X^2 \right] &= \int_{0}^{1} x^2 \cdot 2x \, \mathrm{d}x  \\
+    &= 2 \int_{0}^{1} x^3 \, \mathrm{d}x \\ 
+    &= 2 \left[ \frac{1}{4}x^{4} \right]_0^{1} \\
+    &= \frac{1}{2}
+  .\end{align*}
+  Vi kan dermed finde variansen som
+  \[ 
+    \mathrm{Var}(X) = E \left[ X^2 \right] - (E[X])^2 = \frac{1}{2} - \left( \frac{2}{3} \right)^2 = \frac{1}{18}
+  .\]
+\end{eks}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="99.604mm" height="109.11mm" version="1.1" viewBox="0 0 99.604 109.11" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(-23.891 -146.59)">
+  <text x="48.318619" y="223.38477" fill="#000000" font-size="3.175px" stroke="#000000" stroke-width=".3" xml:space="preserve"><tspan x="48.318619" y="223.38477" stroke-width=".3"/></text>
+  <text x="10.27668" y="229.88574" fill="#000000" font-size="3.175px" stroke-width=".1" xml:space="preserve"><tspan x="10.27668" y="229.88574" fill="#000000"/></text>
+  <g fill="none">
+   <g stroke="#000">
+    <g>
+     <rect x="70.805" y="146.84" width="6.1046" height="108.33" stroke-width=".5"/>
+     <circle cx="27.305" cy="178.7" r="3.2888" stroke-width=".25"/>
+     <path d="m27.305 178.76h22.096" stroke-width=".080226"/>
+    </g>
+    <path d="m49.401 178.87h21.154" stroke-dasharray="0.377559, 0.377559" stroke-width=".37756"/>
+    <g>
+     <path d="m49.34 178.68-4.3914-4.3914" stroke-width=".1"/>
+     <path d="m44.949 183.14 4.3914-4.3914" stroke-width=".1"/>
+     <path transform="scale(-1)" d="m-59.889-255.7a14.632 14.632 0 0 1-9.5637 13.726 14.632 14.632 0 0 1-16.189-4.2175" stroke-width=".5"/>
+     <path d="m85.641 246.19-0.89369-4.4871" stroke-width=".5"/>
+     <path d="m81.382 246.68c4.4871-0.89369 4.4871-0.89369 4.4871-0.89369" stroke-width=".5"/>
+     <g stroke-width=".3">
+      <path d="m79.135 178.98 7.2509-0.15"/>
+      <path d="m79.344 254.91 7.2509-0.15"/>
+      <path d="m79.135 146.98 7.2509-0.15"/>
+      <path d="m82.76 146.91v31.996"/>
+      <path d="m82.91 178.9v76.106"/>
+     </g>
+    </g>
+   </g>
+   <g font-size="3.175px" stroke="#000000" stroke-width=".3">
+    <text x="34.784153" y="171.64787" xml:space="preserve"><tspan x="34.784153" y="171.64787" stroke-width=".3">$\Vec{v_f}$</tspan></text>
+    <text x="84.412033" y="157.46356" xml:space="preserve"><tspan x="84.412033" y="157.46356" stroke-width=".3">$\qty{25,0}{cm]$</tspan></text>
+    <text x="87.367348" y="231.51146" xml:space="preserve"><tspan x="87.367348" y="231.51146" stroke-width=".3">$r = \qty{50,0}{cm]$</tspan></text>
+   </g>
+  </g>
+ </g>
+</svg>
