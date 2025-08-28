@@ -1,0 +1,267 @@
+\section*{Lecture 11}
+
+\subsection*{1.} Solve the IVP
+\[ 
+y''(x) + 5y'(x) + 6y(x) = 2e^{-x}, y(0) = 1, y'(0) = 0
+.\]
+\bigbreak
+By comparing the given equation to the standard form for a nonhomogeneous linear second order ODE
+\[ 
+y''(x) + p(x)y'(x) + q(x) y(x) = r(x) 
+\]
+we see that $p(x) = 5$, $q(x) = 6$, and $r(x) = 2e^{-x}$. The corresponding homogeneous ODE is
+\[ 
+y_h''(x) + 5y_h'(x) + 6y_h(x) = 0
+.\]
+This has the characteristic equation:
+\[ 
+\lambda^2 + 5\lambda + 6 = 0
+.\]
+We have $a^2 - 4b = 5^2 - 4 \cdot 6 = 1 > 0$. This means we are in case I and the roots are:
+\begin{align*}
+  \lambda &= \frac{-5 \pm \sqrt{1}}{2} \\
+  \lambda_1 &= \frac{-5 + 1}{2} = -2 \\
+  \lambda_2 &= \frac{-5 - 1}{2} = -3
+.\end{align*}
+We therefore have the general solution to the nonhoogeneous ODE:
+\[ 
+y(x) = c_1 e^{-2x} + c_2 e^{-3x}
+.\]
+As our $r(x) = 2e^{-x}$ we must choose a function $y_r$ of the form $y_r(x) = C e^{-x}$. This has the derivatives:
+\begin{align*}
+  y_r'(x) &= -C e^{-x} \\
+  y_r''(x) &= C e^{-x}
+.\end{align*}
+We can now insert this into the nonhomogeneous ODE as:
+\begin{align*}
+  y_r''(x) + 5y_r'(x) + 6y_r(x) &= 2e^{-x} \\
+  \implies C e^{-x} - 5 C e^{-x} + 6 C e^{-x} &= 2e^{-x} \\
+  \implies 2C = 2 \implies C &= 1 \\
+  \implies y_r(x) &= e^{-x}
+.\end{align*}
+The general solution of the nonhomogeneous ODE is therefore:
+\[ 
+y(x) = y_h(x) + y_r (x) = c_1 e^{-2x} + c_2 e^{-3x} + e^{-x}
+.\]
+This has the derivative
+\[
+  y'(x) = -2 c_1 e^{-2x} - 3 c_2 e^{-3x} - e^{-x}
+.\]
+The initial values can now be implemented as
+\begin{align*}
+  y(0) &= 1 \\
+  c_1 + c_2 + 1 &= 1 \\
+  c_1 + c_2 &= 0 \\
+  y'(0) &= 0 \\
+  -2c_1 - 3c_2 - 1 &= 0 \\
+  -2c_1 - 3c_2 &= 1 \\
+  c_2 &= -1 \\
+  c_1 &= 1
+.\end{align*}
+And the particular solution is therefore:
+\[ 
+y(x) = e^{-2x} - e^{-3x} + e^{-x}
+.\]
+
+
+
+\subsection*{2.} Solve the ODE
+\[ 
+y''(x) + 5y'(x) + 6y(x) = 2e^{-2x}
+.\]
+\bigbreak
+We compare the given ODE to the standard form for a nonhomogeneous linear second order ODE:
+\[ 
+y''(x) + p(x) y'(x) + q(x) y(x) = r(x)
+.\]
+We can observe that $p(x) = 5$ and $q(x) = 6$ meaning we have constant coefficients. Also $r(x) = 2e^{-2x}$. The corresponding homogeneous ODE is:
+\[ 
+y_h''(x) + 5y_h'(x) + 6y_h(x) = 0
+\]
+which is the same homogeneous ODE as in Exercise 1. This means the solution of this is the same as in Exercise 1 as well. We get:
+\[ 
+y_h(x) = c_1 e^{-2x} + c_2 e^{-3x}
+.\]
+As $r(x) = 2e^{-2x}$ we must choose a function $y_r$ of the form $y_r(x) = C e^{-2x}$. This term is however part of $y_h$ and if $y_h$ and $y_r$ share a term we must use the modification rule. As $\lambda_1 \neq \lambda_2$ we can simply multiply the previous $y_r$ candidate with $x$ as:
+\[ 
+y_r(x) = C x e^{-2x}
+.\]
+This has the derivatives:
+\begin{align*}
+  y_r'(x) &= C e^{-2x} - 2C x e^{-2x} \\
+  y_r''(x) &= 4C x e^{-2x} - 4 C e^{-2x}
+.\end{align*}
+We can now insert this into the original nonhomoegeneous ODE as:
+\begin{align*}
+  y_r''(x) + 5 y_r'(x) + 6 y(x) &= 2e^{-2x} \\
+  \left( 4 C x e^{-2x} - 4 C e^{-2x} \right) + 5 \left( C e^{-2x} - 2 C x e^{-2x} \right) + 6 \left( C x e^{-2x} \right) &= 2e^{-2x} \\
+  4 C x e^{-2x} - 10 C x e^{-2x} + 6 C x e^{-2x} + 5 C e^{-2x} - 4 C e^{-2x} &= 2e^{-2x} \\
+  C e^{-2x} &= 2 e^{-2x} \\
+  C &= 2
+.\end{align*}
+Therefore our $y_r$ solution is:
+\[ 
+y_r(x) = 2 x e^{-2x}
+.\]
+This gives the general solution for the ODE as
+\[ 
+y(x) = y_h(x) + y_r(x) = c_1 e^{-2x} + c_2 e^{-3x} + 2 x e^{-2x}
+.\]
+
+\subsection*{3.} Solve the ODE
+\[ 
+y''(x) + 5y'(x) + 6y(x) = x + \cos x
+.\]
+\bigbreak
+Here, once again, the homogeneous ODE is equal to that from Exercise 1 and 2. This means we have
+\[ 
+y_h(x) = c_1 e^{-2x} + c_2 e^{-3x}
+.\]
+As $r(x) = x + \cos x$. This means (using the sum rule) that we should choose a function $y_r$ of the form $y_r(x) = K_1 x + K_0 + K \cos x + M \sin x$. This has the derivatives:
+\begin{align*}
+  y_r'(x) &= K_1 - K \sin x + M \cos x \\
+  y_r''(x) &= - K \cos x - M \sin x
+.\end{align*}
+We now insert this into the nonhomogeneous ODE as:
+\begin{align*}
+  y_r''(x) + 5y_r'(x) + 6y(x) &= x + \cos x \\
+  - K \cos x - M \sin x + 5 \left( K_1 - K \sin x + M \cos x \right) + 6 \left( K_1 x + K_0 + K \cos x + M \sin x \right) &= x + \cos x \\
+  - K \cos x - M \sin x + 5K_1 - 5K \sin x + 5M \cos x + 6K_1 x + 6 K_0 + 6K \cos x + 6 M \sin x &= x \cos x \\
+  (5K + 5M)\cos x + (5M - 5K)\sin x + 6 K_1 x + 6 K_0 + 5 K_1 &= x \cos x
+.\end{align*}
+By comparing alike terms on both sides of the equations we get the following equations
+\begin{align*}
+  5 K + 5 M &= 1 \\
+  5 M - 5 K &= 0 \\
+  6 K_1 &= 1 \\
+  6 K_0 + 5 K_1 &= 0
+.\end{align*}
+By adding 1 to 2 we get
+\begin{align*}
+  10 M &= 1 \\
+  M &= \frac{1}{10}
+.\end{align*}
+Inserting this into 1 gives $K = \frac{1}{10}$. From 3 we can quickly see that $K_1 = \frac{1}{6}$ and inserting this into 4 gives
+\begin{align*}
+  6 K_0 + \frac{5}{6} &= 0 \\
+  K_0 &= -\frac{5}{36}
+.\end{align*}
+Inserting this into $y_r$ gives:
+\[
+  y_r(x) = \frac{1}{6} x - \frac{5}{36} + \frac{1}{10} \sin x + \frac{1}{10} \cos x
+.\]
+This gives the general solution:
+\[ 
+y(x) = y_h(x) + y_r(x) = c_1 e^{-2x} + c_2 e^{-3x} + \frac{1}{6}x - \frac{5}{36} + \frac{1}{10} \sin x + \frac{1}{10} \cos x
+.\]
+
+
+
+\subsection*{4.} Consider the general solution of the undamped forced oscillation for $\omega_0 \neq \omega$
+\[ 
+y(t) = c_1 \cos(\omega_0 t) + c_2 \sin (\omega_0 t) + \frac{F_0}{m (\omega_0^2 - \omega^2)} \cos (\omega t)
+.\]
+
+\paragraph{a)} For which values of the initial elongation $y(0) = K_0$ and the initial velocity $y'(0) = K_1$ does $\cos(\omega_0 t)$ not contribute to the general solution? 
+\bigbreak
+We want to express the coefficients $c_1$ and $c_2$ in terms of $K_0$ and $K_1$. We therefore first find the derivative of the solution:
+\[ 
+y'(t) = - c_1 \omega_0 \sin (\omega_0 t) + c_2 \omega_0 \cos (\omega_0 t) - \omega \frac{F_0}{m \left( \omega_0^2 - \omega^2 \right)} \sin (\omega t)
+.\]
+We can now implement the conditions $y(0) = K_0$ and $y'(0) = K_1$ as
+\begin{align*}
+  y(0) &= K_0 \\
+  c_1 + \frac{F_0}{m \left( \omega_0^2 - \omega^2 \right)} &= K_0 \\
+  \implies c_1 &= K_0 - \frac{F_0}{m \left( \omega_0^2 - \omega^2 \right)} \\
+  y'(0) &= K_1 \\
+  c_2 \omega_0 &= K_1 \\
+  \implies c_2 &= \frac{K_1}{\omega_0}
+.\end{align*}
+The term $\cos (\omega_0 t)$ does not contribute if $c_1 = 0$. This means:
+\[
+  K_0 = \frac{F_0}{m \left( \omega_0^2 - \omega^2 \right)}
+.\]
+Therefore the general solution is
+\begin{align*}
+  y(x) &= \frac{K_1}{\omega_0} \sin(\omega_0 t) + \frac{F_0}{m \left( \omega_0^2 + \omega^2 \right)} \cos(\omega t) \\
+  &= \frac{K_1}{\omega_0} \sin(\omega_0 t) + K_0 \cos(\omega t)
+.\end{align*}
+
+
+\paragraph{b)} For which values of the initial elongation $y(0) = K_0$ and the initial velocity $y'(0) = K_1$ does $\sin(\omega_0 t)$ not contribute to the general solution? 
+\bigbreak
+$\sin (\omega_0 t)$ does not contribute for $c_2 = 0$. Therefore we get
+\begin{align*}
+  \frac{K_1}{\omega_0} &= c_2 \\
+  \frac{K_1}{\omega_0} &= 0 \\
+  K_1 &= 0
+.\end{align*}
+We have previously found $c_1 = K_0 - \frac{F_0}{m \left( \omega_0^2 - \omega^2 \right)}$ and therefore the general solution becomes
+\[ 
+y(t) = \left( K_0 - \frac{F_0}{m \left( \omega_0^2 - \omega^2 \right)} \right) \cos (\omega_0 t) + \frac{F_0}{m \frac{lr}{\omega_0^2 - \omega^2}} \cos (\omega t)
+.\]
+
+\paragraph{c)} For which values of the initial elongation $y(0) = K_0$ and the initial velocity $y'(0) = K_1$ does $\cos (\omega_0 t)$ and $\sin (\omega_0 t)$ not contribute to the general solution?
+\bigbreak
+For neither of $\cos(\omega_0 t)$ or $\sin(\omega_0 t)$ to contribute we must have $c_1 = 0$ and $c_2 = 0$. This has in the two above exercises been shown to occur when:
+\[ 
+K_0 = \frac{F_0}{m \left( \omega_0^2 - \omega^2 \right)}
+\]
+and
+\[ 
+K_1 = 0
+.\]
+This gives the solution
+\[ 
+y(x) = \frac{F_0}{m \left( \omega_0^2 - \omega^2 \right)} \cos(\omega t) = K_0 \cos(\omega t)
+.\]
+
+
+\paragraph{d)} How does the general solution look like in these cases, expressing $c_1$ and $c_2$ in terms of $K_0$ and $K_1$?
+\bigbreak
+This has been done for either exercise above.
+
+
+\subsection*{5.} Consider the general solution of the undamped forced oscillation for $\omega_0 = \omega$
+\[ 
+y(t) = c_1 \cos(\omega_0 t) + c_2 \sin \left( \omega_0 t \right) + \frac{F_0}{2m\omega_0}t \sin \left( \omega_0 t \right)
+.\]
+
+\paragraph{a)} For which values of the initial elongation $y(0) = K_0$ and the initial velocity $y'(0) = K_1$ does $\cos(\omega_0 t)$ not contribute to the general solution? 
+\bigbreak
+We will follow the same procedure as above with first expressing the coefficients $c_1$ and $c_2$ in terms of $K_0$ and $K_1$. We therefore start by finding the derivative of the solution as
+\[ 
+y'(t) = - c_1 \omega_0 \sin(\omega_0 t) + c_2 \omega_0 \cos(\omega_0 t) + \frac{F_0}{2m \omega_0} \sin(\omega_0 t) + \frac{F_0}{2m \omega_0} t \omega_0 \cos(\omega_0 t)
+.\]
+We can now implement the conditions as
+\begin{align*}
+  y(0) &= K_0 \\
+  c_1 &= K_0 \\
+  y'(0) &= K_1 \\
+  c_2 \omega_0 &= K_1 \\
+  c_2 &= \frac{K_1}{\omega_0}
+.\end{align*}
+$\cos(\omega_0 t)$ does not contribute for $c_1 = 0 \implies K_0 = 0$. This gives the general solution
+\[ 
+y(x) = \frac{K_1}{\omega_0} \sin (\omega_0 t) + \frac{F_0}{2m \omega_0} t \sin(\omega_0 t)
+.\]
+
+
+\paragraph{b)} For which values of the initial elongation $y(0) = K_0$ and the initial velocity $y'(0) = K_1$ does $\sin(\omega_0 t)$ not contribute to the general solution? 
+\bigbreak
+$\sin(\omega_0 t)$ does not contribute for $c_2 = 0 \implies K_1 = 0$. This gives the general solution
+\[ 
+y(t) = K_0 \cos (\omega_0 t) + \frac{F_0}{2 m \omega_0} t \sin (\omega_0 t)
+.\]
+
+\paragraph{c)} For which values of the initial elongation $y(0) = K_0$ and the initial velocity $y'(0) = K_1$ does $\cos (\omega_0 t)$ and $\sin (\omega_0 t)$ not contribute to the general solution?
+\bigbreak
+Neither of $\cos(\omega_0 t)$ or $\sin(\omega_0 t)$ does not contribute for $c_1 = c_2 = 0 \implies K_0 = 0, K_1 = 0$. This corresponds to the general solution
+\[ 
+y(t) = \frac{F_0}{2 m \omega_0} t \sin (\omega_0 t)
+.\]
+
+
+\paragraph{d)} How does the general solution look like in these cases, expressing $c_1$ and $c_2$ in terms of $K_0$ and $K_1$?
+\bigbreak
+This has been done for each exercise above.

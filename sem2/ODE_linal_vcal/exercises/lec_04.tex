@@ -1,0 +1,485 @@
+\section*{Lecture 4}
+
+\subsection*{1.}
+Consider the system of equations
+\begin{align*}
+  x_2 + x_3 &= 2 \\
+  2x_1 &= 1 \\
+  2x_1 + x_2 + x_3 &= 3
+.\end{align*}
+
+\paragraph{a)} Solve the corresponding homogeneous system of equations.
+\bigbreak
+The corresponding homogeneous system of equations is
+\begin{align*}
+  x_{h2} + x_{h3} &= 0 \\
+  2x_{h1} &= 0 \\
+  2x_{h1} + x_{h2} + x_{h3} &= 0
+.\end{align*}
+This gives the augmented matrix
+\[ 
+\left( \begin{array}{ccc|c}
+0 & 1 & 1 & 0\\
+2 & 0 & 0 & 0\\
+2 & 1 & 1 & 0\\
+\end{array} \right)
+.\]
+We can now subtract (2) and (1) from (3) to get
+\[ 
+\left( \begin{array}{ccc|c}
+0 & 1 & 1 & 0\\
+2 & 0 & 0 & 0\\
+0 & 0 & 0 & 0\\
+\end{array} \right)
+.\]
+We can now exchange (1) and (2) to get
+\[ 
+\left( \begin{array}{ccc|c}
+2 & 0 & 0 & 0\\
+0 & 1 & 1 & 0\\
+0 & 0 & 0 & 0\\
+\end{array} \right)
+.\]
+This corresponds to the system of equations
+\begin{align*}
+  2x_{h1} &= 0 \\
+  x_{h2} + x_{h3} &= 0
+.\end{align*} 
+The first equation implies that $x_{h1} = 0$ and from the second equation it becomes clear that an arbitrary constant $x_{h2} = c_2$ can be chosen which implies $x_{h3} = -c_2$. The solution is therefore
+\[ 
+\Vec{x}_h = \begin{pmatrix}
+x_{h1}\\
+x_{h2}\\
+x_{h3}\\
+\end{pmatrix} = \begin{pmatrix}
+0\\
+c_2\\
+-c_2\\
+\end{pmatrix} = c_2 \begin{pmatrix}
+0\\
+1\\
+-1\\
+\end{pmatrix}
+.\]
+
+
+\paragraph{b)} Find the general solution of the nonhomogeneous system of equations.
+\bigbreak
+We must first find one solution to the nonhomogeneous system of equations. We have the system
+\begin{align*}
+  x_{02} + x_{03} &= 2 \\
+  2x_{01} &= 1 \\
+  2x_{01} + x_{02} + x_{03} &= 3
+.\end{align*}
+We have the augmented matrix
+\[ 
+\left( \begin{array}{ccc|c}
+0 & 1 & 1 & 2\\
+2 & 0 & 0 & 1\\
+2 & 0 & 0 & 3\\
+\end{array} \right)
+.\]
+By subtracting (1) and (2) from (3) and switching around (1) and (2) we get
+\[ 
+\left( \begin{array}{ccc|c}
+2 & 0 & 0 & 1\\
+0 & 1 & 1 & 2\\
+0 & 0 & 0 & 0\\
+\end{array} \right)
+.\]
+This corresponds to the system of equations
+\begin{align*}
+  2x_{01} &= 1 \\
+  x_{02} + x_{03} &= 2
+.\end{align*}
+From the first equation it is apparent that $x_{01} = \frac{1}{2}$ and in the second equation we can choose $x_{02} = 1 \implies x_{03} = 1$. We therefore have the solution
+\[ 
+\Vec{x}_0 = \begin{pmatrix}
+x_{01}\\
+x_{02}\\
+x_{03}\\
+\end{pmatrix} = \begin{pmatrix}
+\frac{1}{2}\\
+1\\
+1\\
+\end{pmatrix}
+.\]
+Therefore the general solution is
+\[ 
+\Vec{x} = \begin{pmatrix}
+1 / 2\\
+1\\
+1\\
+\end{pmatrix} + c_2 \begin{pmatrix}
+0\\
+1\\
+-1\\
+\end{pmatrix}
+.\]
+
+
+
+\subsection*{2.}
+Consider the system of equations
+\begin{align*}
+  x_1 + x_2 + 2x_3 &= 1 \\
+  2x_1 + 2x_2 &= 4\\
+  x_1 + x_3 &= 2
+.\end{align*}
+
+\paragraph{a)} Solve the corresponding homogeneous system of equations.
+\bigbreak
+The corresponding homogeneous system of equations is
+\begin{align*}
+  x_1 + x_2 + 2x_3 &= 0 \\
+  2x_1 + 2x_2 &= 0 \\
+  x_1 + x_3 &= 0
+.\end{align*}
+The augmented matrix is
+\[ 
+\left( \begin{array}{ccc|c}
+1 & 1 & 2 & 0\\
+2 & 2 & 0 & 0\\
+1 & 0 & 1 & 0\\
+\end{array} \right)
+.\]
+We start by subtracting $2(1)$ from (2) to get
+\[ 
+\left( \begin{array}{ccc|c}
+1 & 1 & 2 & 0\\
+0 & 0 & -4 & 0\\
+1 & 0 & 1 & 0\\
+\end{array} \right)
+.\]
+We now subtract (1) from (3)
+\[ 
+\left( \begin{array}{ccc|c}
+1 & 1 & 2 & 0\\
+0 & 0 & -4 & 0\\
+0 & -1 & -1 & 0\\
+\end{array} \right)
+.\]
+We now exchange (2) and (3)
+\[ 
+\left( \begin{array}{ccc|c}
+1 & 1 & 2 & 0\\
+0 & -1 & -1 & 0\\
+0 & 0 & -4 & 0\\
+\end{array} \right)
+.\]
+The equivalent system of equations is
+\begin{align*}
+  x_{h1} + x_{h2} + 2x_{h3} &= 0 \\
+  -x_{h2} - x_{h3} &= 0 \\
+  -4x_{h3} &= 0
+.\end{align*}
+The third equation gives $x_{h3} = 0$, by inserting this into the second we get $x_{h2} = 0$ and by inserting these into the first we get $x_{h1} = 0$. This gives the solution
+\[ 
+\Vec{x}_h = \begin{pmatrix}
+x_{h1}\\
+x_{h2}\\
+x_{h3}\\
+\end{pmatrix} = \begin{pmatrix}
+0\\
+0\\
+0\\
+\end{pmatrix}
+.\]
+
+
+
+\paragraph{b)} Find the general solution of the nonhomogeneous system of equations.
+\bigbreak
+The nonhomogeneous system is
+\begin{align*}
+  x_{01} + x_{02} + 2x_{03} &= 1 \\
+  2x_{01} + 2x_{02} &= 4 \\
+  x_{01} + x_{03} &= 2
+.\end{align*}
+This gives the augmented matrix
+\[ 
+\left( \begin{array}{ccc|c}
+1 & 1 & 2 & 1\\
+2 & 2 & 0 & 4\\
+1 & 0 & 1 & 2\\
+\end{array} \right)
+.\]
+We subtract 2(1) from (2) to get
+\[ 
+\left( \begin{array}{ccc|c}
+1 & 1 & 2 & 1\\
+0 & 0 & -4 & 2\\
+1 & 0 & 1 & 2\\
+\end{array} \right)
+.\]
+We subtract (1) from (3) to get
+\[ 
+\left( \begin{array}{ccc|c}
+1 & 1 & 2 & 1\\
+0 & 0 & -4 & 2\\
+0 & -1 & -1 & 1\\
+\end{array} \right)
+.\]
+We exchange (2) and (3) to get
+\[ 
+\left( \begin{array}{ccc|c}
+1 & 1 & 2 & 1\\
+0 & -1 & -1 & 1\\
+0 & 0 & -4 & 2\\
+\end{array} \right)
+.\]
+This gives the equivalent system of equations
+\begin{align*}
+  x_{01} + x_{02} + 2x_{03} &= 1 \\
+  -x_{02} - x_{03} &= 1 \\
+  -4x_{03} &= 2
+.\end{align*}
+From the third equation we get $x_{03} = -\frac{1}{2}$, by inserting this into the second equation we get $x_{02} = -\frac{1}{2}$ and inserting these into the first equation we get $x_{01} = \frac{5}{2}$. This gives the single solution to the system of equations
+\[ 
+\Vec{x}_0 = \begin{pmatrix}
+x_{01}\\
+x_{02}\\
+x_{03}\\
+\end{pmatrix} = \begin{pmatrix}
+5 / 2\\
+-1 / 2\\
+-1 / 2\\
+\end{pmatrix}
+.\]
+Which gives the general solution
+\[ 
+\Vec{x}_0 = \begin{pmatrix}
+5 / 2\\
+-1 / 2\\
+-1 / 2\\
+\end{pmatrix} + \begin{pmatrix}
+0\\
+0\\
+0\\
+\end{pmatrix} = \begin{pmatrix}
+5 / 2\\
+- 1 / 2\\
+- 1 / 2\\
+\end{pmatrix}
+.\]
+
+
+
+\subsection*{3.}
+Consider the system of equations
+\[ 
+A \Vec{x} = \Vec{b}, \quad A = \begin{pmatrix}
+1 & 1 & 1 & 1\\
+1 & 1 & 2 & 1\\
+1 & 2 & 1 & 1\\
+\end{pmatrix}, \quad \Vec{b} = \begin{pmatrix}
+0\\
+1\\
+0\\
+\end{pmatrix}
+.\]
+
+\paragraph{a)} Solve the corresponding homogeneous system of equations.
+\bigbreak
+The homogeneous system is $A \Vec{x}_h = 0$. This has the augmented matrix
+\[ 
+\left( \begin{array}{cccc|c}
+1 & 1 & 1 & 1 & 0\\
+1 & 1 & 2 & 1 & 0\\
+1 & 2 & 1 & 1 & 0\\
+\end{array} \right)
+.\]
+We subtract (1) from (2) and (3) to get
+\[ 
+\left( \begin{array}{cccc|c}
+1 & 1 & 1 & 1 & 0\\
+0 & 0 & 1 & 0 & 0\\
+0 & 1 & 0 & 0 & 0\\
+\end{array} \right)
+.\]
+We can now exchange (2) and (3) to get
+\[ 
+\left( \begin{array}{cccc|c}
+1 & 1 & 1 & 1 & 0\\
+0 & 1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0 & 0\\
+\end{array} \right)
+.\]
+This corresponds to the system of equations
+\begin{align*}
+  x_{h1} + x_{h2} + x_{h3} + x_{h4} &= 0 \\
+  x_{h2} &= 0 \\
+  x_{h3} &= 0
+.\end{align*}
+We quickly observe that $x_{h2} = x_{h3} = 0$. By substituting this into the first equation we're left with
+\[ 
+  x_{h1} + x_{h4} = 0
+.\]
+If we choose an arbitrary value for $x_{h1} = c_1$ we get $x_{h4} = -c_1$. All in all this gives the solution
+\[ 
+\Vec{x}_h = \begin{pmatrix}
+c_1\\
+0\\
+0\\
+-c_1\\
+\end{pmatrix} = c_1 \begin{pmatrix}
+1\\
+0\\
+0\\
+-1\\
+\end{pmatrix}
+.\]
+
+
+
+\paragraph{b)} Find the general solution of the nonhomogeneous system of equations.
+\bigbreak
+We must first find one solution to the system of equations
+\begin{align*}
+  x_{01} + x_{02} + x_{03} + x_{04} &= 0 \\
+  x_{01} + x_{02} + 2x_{03} + x_{04} &= 1 \\
+  x_{01} + 2x_{02} + x_{03} + x_{04} &= 0
+.\end{align*}
+This corresponds to the augmented matrix
+\[ 
+\left( \begin{array}{cccc|c}
+1 & 1 & 1 & 1 & 0\\
+1 & 1 & 2 & 1 & 1\\
+1 & 2 & 1 & 1 & 0\\
+\end{array} \right)
+.\]
+We subtract (1) from (2) and (3) to get
+\[ 
+\left( \begin{array}{cccc|c}
+1 & 1 & 1 & 1 & 0\\
+0 & 0 & 1 & 0 & 1\\
+0 & 1 & 0 & 0 & 0\\
+\end{array} \right)
+.\]
+If we exchange (2) and (3) we get
+\[ 
+\left( \begin{array}{cccc|c}
+1 & 1 & 1 & 1 & 0\\
+0 & 1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0 & 1\\
+\end{array} \right)
+.\]
+This gives the equivalent system of equations
+\begin{align*}
+  x_{01} + x_{02} + x_{03} + x_{04} &= 0 \\
+  x_{02} &= 0 \\
+  x_{03} &= 1
+.\end{align*}
+If we insert the bottom two equations into the first we get
+\[ 
+x_{01} + 0 + 1 + x_{04} = 0
+.\]
+If we choose $x_{01} = -1$ we get $x_{04} = 0$. This gives the single solution of
+\[ 
+\Vec{x}_0 = \begin{pmatrix}
+x_{01}\\
+x_{02}\\
+x_{03}\\
+x_{04}\\
+\end{pmatrix} = \begin{pmatrix}
+-1\\
+0\\
+1\\
+0\\
+\end{pmatrix}
+.\]
+The general solution is therefore
+\[ 
+\Vec{x} = \begin{pmatrix}
+-1\\
+0\\
+1\\
+0\\
+\end{pmatrix} + c_1 \begin{pmatrix}
+1\\
+0\\
+0\\
+-1\\
+\end{pmatrix}
+.\]
+
+
+\subsection*{4.}
+Consider the system of equations
+\[ 
+A \Vec{x} = \Vec{b}, \quad A = \begin{pmatrix}
+1 & 1 & 1 & 1\\
+1 & 1 & 1 & 2\\
+1 & 1 & 1 & 2\\
+\end{pmatrix}, \quad \Vec{b} = \begin{pmatrix}
+0\\
+1\\
+0\\
+\end{pmatrix}
+.\]
+
+\paragraph{a)} Solve the corresponding homogeneous system of equations.
+\bigbreak
+We will first solve the homogeneous system of equations corresponding to $A \Vec{x}_h = \Vec{0}$. This gives the augmented matrix
+\[ 
+\left( \begin{array}{cccc|c}
+1 & 1 & 1 & 1 & 0\\
+1 & 1 & 1 & 2 & 0\\
+1 & 1 & 1 & 2 & 0\\
+\end{array} \right)
+.\]
+We can now subtract (2) from (3) to get
+\[ 
+\left( \begin{array}{cccc|c}
+1 & 1 & 1 & 1 & 0\\
+1 & 1 & 1 & 2 & 0\\
+0 & 0 & 0 & 0 & 0\\
+\end{array} \right)
+.\]
+Now we can subtract (1) from (2) to get
+\[ 
+\left( \begin{array}{cccc|c}
+1 & 1 & 1 & 1 & 0\\
+0 & 0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0 & 0\\
+\end{array} \right)
+.\]
+This corresponds to the system of equations
+\begin{align*}
+  x_{h1} + x_{h2} + x_{h3} + x_{h4} &= 0 \\
+  x_{h4} &= 0
+.\end{align*}
+By inserting the second equation into the first we get
+\[ 
+x_{h1} + x_{h2} + x_{h3} = 0
+.\]
+By choosing $x_{h2} = c_2$ and $x_{h3} = c_3$ we get $x_{h1} = -c_2 - c_3$. This gives the solution
+\[ 
+\Vec{x}_h = \begin{pmatrix}
+x_{h1}\\
+x_{h2}\\
+x_{h3}\\
+x_{h4}\\
+\end{pmatrix} = \begin{pmatrix}
+-c_2 - c_3\\
+c_2\\
+c_3\\
+0\\
+\end{pmatrix} = c_2 \begin{pmatrix}
+-1\\
+1\\
+0\\
+0\\
+\end{pmatrix} + c_3 \begin{pmatrix}
+-1\\
+0\\
+1\\
+0\\
+\end{pmatrix}
+.\]
+
+
+
+\paragraph{b)} Find the general solution of the nonhomogeneous system of equations.
+\bigbreak
+To find the general solution we must first find one solution. The last two equations, however, contradict each other and thus no general solution can be found.

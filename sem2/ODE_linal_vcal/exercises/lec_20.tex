@@ -1,0 +1,178 @@
+\section*{Lecture 20}
+
+\subsection*{1.} Solve the IVP
+\[ 
+y''(t) + y'(t) = e^{t}, y(1) = y'(1) = 0
+\]
+using the Laplace transform.
+\bigbreak
+To bring the initial conditions to $t = 0$ we must shift coordinates by introducing the variable:
+\[ 
+  \tilde{t} = t-1
+.\]
+And defining the new function:
+\[ 
+  \tilde{y}\left( \tilde{t} \right) = y(\tilde{t} + 1)
+.\]
+Our differential equation hence becomes:
+\[ 
+  \tilde{y}''\left( \tilde{t} \right) + \tilde{y}'\left( \tilde{t} \right) = e^{\tilde{t} + 1}
+\]
+and our initial conditions are:
+\[ 
+  \tilde{y}(0) = y(1) = 0, \qquad \tilde{y}'(0) = y'(1) = 0
+.\]
+We define the Laplace transformation and the nonhomogeneous term as $Y(s) = \mathcal{L}\left( \tilde{y}(\tilde{t}) \right) $ and $R(s) = \mathcal{L}\left( \tilde{r}(\tilde{t}) \right) $ respectively. We can now apply the Laplace transformation to both sides to get:
+\begin{align*}
+  \mathcal{L}\left( \tilde{y}''(\tilde{t}) \right) + \mathcal{L}\left( \tilde{y}'(\tilde{t}) \right) &= e\mathcal{L}\left(\cdot e^{\tilde{t}} \right) \\
+  s^2 Y(s) - s\tilde{y}(0) - \tilde{y}'(0) + sY(s) - \tilde{y}(0) &= \frac{e}{s-1} \\
+  \left( s^2+s \right) Y(s) &= \frac{e}{s-1} \\
+  Y(s) &= \frac{e}{\left( s^2 + s \right) \left( s-1 \right) } \\
+  Y(s) &= \frac{e}{s \left( s + 1 \right) \left( s-1 \right) }
+.\end{align*}
+Now we must find the transfer function. This is defined as:
+\[ 
+Q(s) = \frac{Y(s)}{R(s)} = \frac{e}{s \left( s+1 \right) \left( s-1 \right) } \cdot \frac{s-1}{e} = \frac{1}{s \left( s+1 \right) } = \frac{1}{s} - \frac{1}{s + 1}
+.\]
+Now we can find the inverse Laplace transform of the transfer function as:
+\[ 
+  \mathcal{L} \left( Q(s) \right) = q(t) = \mathcal{L}\left( \frac{1}{s} \right) - \mathcal{L}\left( \frac{1}{s+1} \right) = 1 - e^{-t}
+.\]
+As the ODE is nonhomogeneous its solution is found by calculating the convolution of $q$ with $r$ as:
+\[ 
+  \tilde{y}\left( \tilde{t} \right) = \int_{0}^{\tilde{t}} q \left( \tilde{t} - \tau \right) r (\tau) \, \mathrm{d}\tau
+.\]
+Here $r(\tau) = e^{\tau + 1} = e\cdot e^{\tau}$ and $q \left( \tilde{t} - \tau \right) = 1 - e^{- \left( \tilde{t} - \tau \right)}$. Therefore we get:
+\begin{align*}
+  \tilde{y} \left( \tilde{t} \right) &= \int_{0}^{\tilde{t}} \left( 1 - e^{- \left( \tilde{t} - \tau \right) } \right) e^{\tau + 1} \, \mathrm{d}\tau \\
+  &= \left[ e^{\tau + 1} \right]_{\tau = 0}^{\tau = \tilde{t}} - e^{-\tilde{t} + 1} \int_{0}^{\tilde{t}} e^{2\tau} \, \mathrm{d}\tau  \\
+  &= e^{\tilde{t} + 1} - e - e^{-\tilde{t} +1} \left[ \frac{1}{2} e^{2\tau} \right]_{\tau = 0}^{\tau = \tilde{t}} \\
+  &= e^{\tilde{t} + 1} - e - e^{- \tilde{t} + 1} \left( \frac{1}{2} e^{2\tau} - \frac{1}{2} \right)  \\
+  &= \frac{1}{2} e^{\tilde{t} + 1} - e - \frac{1}{2}e^{-\tilde{t} +1}
+.\end{align*}
+Therefore the solution $y(t)$ to the original equation is:
+\[ 
+y(t) = \frac{1}{2}e^{t} - e - \frac{1}{2} e^{-t + 2}
+.\]
+
+
+\subsection*{2.} Consider the function
+\[ 
+f(t) = \begin{cases}
+t, & 0 \leq t \leq 1\\
+e^{t-1}, & 1 \leq t <2 \\
+-1, & 2 \leq t
+.\end{cases}
+.\]
+Express $f(t)$ in terms of unit step functions and calculate its Laplace transform.
+\bigbreak
+We can rewrite as:
+\[ 
+f(t) = t \left( u(t) - u(t-1) \right) + e^{t-1} \left( u(t-1) - u(t-2) \right) - u(t-2)
+.\]
+Now we apply the Laplace transform to get:
+\begin{align*}
+  \mathcal{L}\left( f(t) \right) &= \mathcal{L}\left( tu(t) \right) - \mathcal{L}\left( tu(t-1) \right) + \mathcal{L}\left( e^{t-1}u(t-1) \right) - \mathcal{L}\left( e^{t-1}u(t-2) \right) - \mathcal{L}\left( u(t-2) \right)  \\
+  &= \mathcal{L}(t) + \mathcal{L}\left( (t-1)u(t-1) \right) - \mathcal{L}\left( u(t-1) \right) + e^{-s} \mathcal{L}\left( e^{t} \right) - e \mathcal{L}\left( e^{t-2}u(t-2) \right) - \frac{e^{-2s}}{s} \\
+  &= \frac{1}{s^2} - e^{-s}\mathcal{L}\left( t \right) - \frac{e^{-s}}{s} + \frac{e^{-s}}{s-1} - e \frac{e^{-2s}}{s-1} - \frac{e^{-2s}}{s} \\
+  &= \frac{1}{s^2} - \frac{e^{-s}}{s^2} - \frac{e^{-s}}{s} + \frac{e^{-s}}{s-1} - \frac{e^{1-2s}}{s-1} - \frac{e^{-2s}}{s}
+.\end{align*}
+
+
+
+\subsection*{3.} Solve the IVP
+\[ 
+y''(t) + y(t) = r(t), \qquad y(0) = y'(0) = 1, \qquad r(t) = t+1
+\]
+using the Laplace transform.
+\bigbreak
+The transfer function is defined as:
+\[ 
+Q(s) = \frac{Y(s)}{R(s)} = \frac{\mathcal{L}\left( y(t) \right) }{\mathcal{L}\left( r(t) \right) }
+.\]
+Under initial conditions we get:
+\[ 
+Q(s) = \frac{\mathcal{L}\left( y''(t) \right) + \mathcal{L}\left( y(t) \right) }{\mathcal{L}\left( r(t) \right) }
+.\]
+This gives
+\begin{align*}
+  \mathcal{L}\left( y''(t) \right) + \mathcal{L}\left( y(t) \right) &= \mathcal{L}\left( r(t) \right) \\
+  s^2 Y(s) + Y(s) &= R(s) \\
+  \left( s^2 + 1 \right)Y(s) &= R(s) \\
+  Q(s) = \frac{Y(s)}{R(s)} &= \frac{1}{s^2 + 1}
+.\end{align*}
+The inverse Laplace transform of this is $\mathcal{L}^{-1}\left( Q(s) \right) = \sin t$. Now the solution can be found as:
+\begin{align*}
+  y(t) &= \underbrace{\int_{0}^{t} q(t-\tau) r(\tau) \, \mathrm{d}\tau}_{\text{Convolution with input } r(t)} + \underbrace{\mathcal{L}^{-1}\left( \left( s+1 \right) Q(s) \right) }_{\text{Correction for nonzero init. condition}} \\
+       &= \int_{0}^{t} q(t-\tau) r(\tau) \, \mathrm{d}\tau + \mathcal{L}^{-1}\left( \frac{s+1}{s^2 + 1} \right) \\
+       &= \int_{0}^{t} q(t-\tau) r(\tau) \, \mathrm{d}\tau + \mathcal{L}^{-1}\left( \frac{s}{s^2+1} \right) + \mathcal{L}^{-1}\left( \frac{1}{s^2+1} \right)  \\
+       &= \int_{0}^{t} q(t-\tau) r (t) \, \mathrm{d}\tau + \cos t + \sin t
+.\end{align*}
+We must now only calculate the convolution integral:
+\[ 
+I(t) = \int_{0}^{t} \sin \left( t - \tau \right) \left( \tau + 1 \right) \, \mathrm{d}\tau
+.\]
+We do this by integration by parts as:
+\begin{align*}
+  \int_{0}^{t} \sin \left( t - \tau \right) \left( \tau + 1 \right) \, \mathrm{d}\tau &= \left[ \cos \left( t - \tau \right) \tau \right]_{\tau = 0}^{\tau = t} - \int_{0}^{t} \cos \left( t - \tau \right) \, \mathrm{d}\tau + \left[ \cos \left( t - \tau \right)  \right]_{\tau = 0}^{\tau = t} \\
+  &= t - \sin t  + 1 - \cos t
+.\end{align*}
+Now we can combine this with the previously found correction term to get:
+\[ 
+y(t) = t - \sin t + 1 - \cos t + \cos t + \sin t = t + 1
+.\]
+
+
+\subsection*{4.} Solve the IVP
+\[ 
+y''(t) + 2y(t) = r(t), \qquad y(0) = 1, \qquad y'(0) = 0, \qquad r(t) = \delta(t-2)
+\]
+using the Laplace transform.
+\bigbreak
+We first apply the Laplace transform to both sides to get:
+\[ 
+s^2 Y(s) -s + 2Y(s) = e^{-2s}
+.\]
+We can solve for $Y(s)$ as:
+\begin{align*}
+  s^2Y(s) + 2Y(s) &= e^{-2s}+s \\
+  Y(s) \left( s^2 + 2 \right) &= e^{-2s}+s \\
+  Y(s) &= \frac{s}{s^2+2} + e^{-2s} \frac{1}{s^2+2}
+.\end{align*}
+We  now use the fact that $\mathcal{L}^{-1}\left( e^{-as}F(s) \right) = f(t-a)u(t-a)$ and take the inverse Laplace transform to get:
+\begin{align*}
+  y(t) &= \mathcal{L}^{-1}\left( \frac{s}{s^2+2} \right) + \mathcal{L}^{-1}\left( e^{-2s} \frac{1}{s^2+2} \right)  \\
+  &= \cos \left( \sqrt{2}t \right) + \frac{1}{\sqrt{2}}\sin \left( \sqrt{2}\left( t-2 \right)  \right) u(t-2)
+.\end{align*}
+
+
+\subsection*{5.} Solve the IVP
+\[ 
+y''(t) + 2y(t) = r(t), \qquad y(0) = 1, \qquad y'(0) = 0, \qquad r(t) = u(t-2)
+\]
+using the Laplace transform.
+\bigbreak
+Here we once again have the transfer function:
+\[ 
+Q(s) = \frac{1}{s^2 + 2}
+.\]
+The inverse Laplace transform of this is:
+\[ 
+q(s) = \mathcal{L}^{-1}\left( Q(s) \right) = \mathcal{L}^{-1}\left( \frac{1}{s^2+2} \right) = \frac{1}{\sqrt{2}}\sin \left( \sqrt{2}t \right) 
+.\]
+Here we can once again find the solution in two parts. First for $t \leq 2$:
+\begin{align*}
+  y(t) &= \underbrace{\int_{0}^{t} q \left( t-\tau \right) r(\tau) \, \mathrm{d}\tau}_{\text{Convolution with input } r(t)} + \underbrace{\mathcal{L}^{-1}\left( sQ(s) \right) }_{\text{Correction term}} \\
+  &= \int_{0}^{2} \frac{1}{\sqrt{2}} \sin \left( \sqrt{2}\left( t-\tau \right) \right) u \left( \tau - 2 \right) \, \mathrm{d}\tau + \cos \left( \sqrt{2}t \right) \\
+  &= 0 + \cos(\sqrt{2}t)\\
+  &= \cos (\sqrt{2}t)
+.\end{align*}
+
+And now with a convolution in the same way for $t > 2$ as:
+\begin{align*}
+  y(t) &= \underbrace{\int_{0}^{t} q \left( t-\tau \right) r(\tau) \, \mathrm{d}\tau}_{\text{Convolution with input } r(t)} + \underbrace{\mathcal{L}^{-1}\left( sQ(s) \right) }_{\text{Correction term}} \\
+  &= \int_{0}^{t} \frac{1}{\sqrt{2}} \sin \left( \sqrt{2}\left( t-\tau \right) \right) u \left( \tau - 2 \right) \, \mathrm{d}\tau + \cos \left( \sqrt{2}t \right) \\
+  &= \int_{2}^{t} \frac{1}{\sqrt{2}} \sin \left( \sqrt{2} \left( t - \tau \right)  \right) \, \mathrm{d}\tau + \cos \left( \sqrt{2}t \right)  \\
+  &= \frac{1}{\sqrt{2}}\left[ \frac{\cos \left( \sqrt{2}\left( t-\tau \right)  \right) }{\sqrt{2}} \right]_{\tau = 2}^{\tau = t} + \cos \left( \sqrt{2}t \right)  \\
+  &= \frac{1}{2} \left( 1 - \cos \left( \sqrt{2} \left( t-2 \right)  \right)  \right) + \cos \left( \sqrt{2}t \right)
+.\end{align*}

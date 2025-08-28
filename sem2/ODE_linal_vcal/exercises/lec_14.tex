@@ -1,0 +1,456 @@
+\section*{Lecture 14}
+
+\subsection*{1.} Consider the elastic beam with constant load $f(x) = f_0$ as discussed in the example in Section 3.4. Use the method of undetermined coefficients to find a nonhomogeneous solution $y_r(x)$.
+\bigbreak
+We have the ODE:
+\[ 
+y^{(4)} (x) = k = \frac{f_0}{EI}
+.\]
+And the corresponding homogeneous ODE is
+\[ 
+y_h^{(4)}(x) = 0
+.\]
+This can be rewritten as an Euler-Cauchy equation of order 4 as:
+\[ 
+x^{4} y_h^{(4)} (x) = 0
+.\]
+As we are working with an Euler-Cauchy equation we try a solution of the form:
+\[ 
+y_h(x) = x^{m}
+.\]
+Therefore we should expect a characteristic equation of the form
+\[ 
+m(m-1)(m-2)(m-3) = 0
+.\]
+Which has the roots:
+\[ 
+m_1 = 0, m_2 = 1, m_3 = 2, m_4 = 3
+.\]
+Which gives the basis
+\[ 
+y_1(x) = 1, y_2(x) = x, y_3(x) = x^2, y_4(x) = x^3
+.\]
+We thus have the general solution of
+\[ 
+y_h(x) = c_1 + c_2 x + c_3 x^2 + c_4 x^3
+.\]
+The basic rule from the method of undetermined coefficients tells us that we should look for a solution of the form
+\[ 
+y_r(x) = K_0
+.\]
+However as $y_r(x)$ solves the equation we must invoke the modification rule as
+\[ 
+y_r(x) = x^{4} K_0
+.\]
+This has the derivatives
+\begin{align*}
+  y_r'(x) &= 4x^3 K_0 \\
+  y_r''(x) &= 12 x^2 K_0 \\
+  y_r'''(x) &= 24 x K_0 \\
+  y_r^{(4)}(x) &= 24 K_0
+.\end{align*}
+We can insert this into the nonhomogeneous ODE as:
+\[ 
+y_r^{(4)}(x) = k \implies 24 K_0 = k \implies K_0 = \frac{k}{24}
+.\]
+This gives the nonhomogeneous solution:
+\[ 
+y_r(x) = \frac{k}{24} x^{4}
+.\]
+
+\subsection*{2.} Consider the elastic beam with constant load $f(x) = f_0$ as discussed in the example in Section 3.4. Use the method of variation of parameters to find a nonhomogeneous solution $y_r(x)$.
+\bigbreak
+We have the same ODE:
+\[ 
+y^{(4)}(x) = k
+.\]
+The same basis:
+\[ 
+y_1(x) = 1, y_2(x) = x, y_3(x) = x^2, y_4(x) = x^3
+.\]
+We can calculate the Wronskian of this as:
+\[ 
+W(x) = \left| \begin{array}{cccc}
+1 & x & x^2 & x^3\\
+0 & 1 & 2x & 3x^2\\
+0 & 0 & 2 & 6x\\
+0 & 0 & 0 & 6\\
+\end{array} \right|
+.\]
+As this is a triangular matrix its determinant is just the product along the diagonal. That is:
+\[ 
+W(x) = 1\cdot 1\cdot 2\cdot 6 = 12
+.\]
+We now calculate the 4 needed determinants as
+\begin{align*}
+  W_1(x) &= \left| \begin{array}{cccc}
+  0 & x & x^2 & x^3\\
+  0 & 1 & 2x & 3x^2\\
+  0 & 0 & 2 & 6x\\
+  1 & 0 & 0 & 6\\
+  \end{array} \right| =  (-1)^{4+1} \left| \begin{array}{ccc}
+  x & x^2 & x^3\\
+  1 & 2x & 3x^2\\
+  0 & 2 & 6x\\
+  \end{array} \right| \\
+         &= -\left( x (-1)^{1+1} \left| \begin{array}{cc}
+  2x & 3x^2\\
+  2 & 6x\\
+  \end{array} \right| + 1 (-1)^{2+1} \left| \begin{array}{cc}
+  x^2 & x^3\\
+  2 & 6x\\
+  \end{array} \right| \right) = -x 6x^3 + 4x^3 = -2x^3 \\
+  W_2(x) &= \left| \begin{array}{cccc}
+  1 & 0 & x^2 & x^3\\
+  0 & 0 & 2x & 3x^2\\
+  0 & 0 & 2 & 6x\\
+  0 & 1 & 0 & 6\\
+  \end{array} \right| = \left| \begin{array}{ccc}
+  0 & 2x & 3x^2\\
+  0 & 2 & 6x\\
+  1 & 0 & 6\\
+  \end{array} \right| = \left| \begin{array}{cc}
+  2x & 3x^2\\
+  2 & 6x\\
+  \end{array} \right| = 12x^2 - 6x^2 = 6x^2 \\
+  W_3(x) &= \left| \begin{array}{cccc}
+  1 & x & 0 & x^3\\
+  0 & 1 & 0 & 3x^2\\
+  0 & 0 & 0 & 6x\\
+  0 & 0 & 1 & 6\\
+  \end{array} \right| = \left| \begin{array}{ccc}
+  1 & 0 & 3x^2\\
+  0 & 0 & 6x\\
+  0 & 1 & 6\\
+  \end{array} \right| = \left| \begin{array}{cc}
+  0 & 6x\\
+  1 & 6\\
+  \end{array} \right| = -6x \\
+    W_4(x) &= \left| \begin{array}{cccc}
+    1 & x & x^2 & 0\\
+    0 & 1 & 2x & 0\\
+    0 & 0 & 2 & 0\\
+    0 & 0 & 0 & 1\\
+    \end{array} \right| = 1 \cdot 1\cdot 2\cdot 1 = 2
+.\end{align*}
+The nonhomogeneous solution is therefore:
+\begin{align*}
+  y_r(x) &= \sum_{k = 1}^{4} y_k(x) \int \frac{W_k (x)}{W(x)}r(x) \, \mathrm{d}x \\
+         &= 1 \cdot \int - \frac{2x^3}{12} k \, \mathrm{d}x + x \int \frac{6x^2}{12} k \, \mathrm{d}x + x^2 \int -\frac{6x}{12} k \, \mathrm{d}x + x^3 \int \frac{2}{12} k \, \mathrm{d}x  \\
+  &= - \frac{x^{4}}{24}k + \frac{x^3}{6} k - x^2 \frac{x^2}{4}k + x^3 \frac{x}{6}k = \frac{x^{4}}{24}k
+.\end{align*}
+
+
+\subsection*{3.} Consider the elastic beam as discussed in Section 3.4. Assume the load is of the form
+\[ 
+f(x) = x (L-x)
+.\]
+Find a nonhomogeneous solution $y_r(x)$.
+\bigbreak
+This time we have the ODE
+\[ 
+y^{(4)}(x) = \frac{x (L-x)}{EI}
+.\]
+The corresponding homogeneous equation is the same as above and therefore we have the same homogeneous solution:
+\[ 
+y_h(x) = 1 + x + x^2 + x^3
+.\]
+We guess a solution of the form
+\[ 
+y_r(x) = K_2 x^2 + K_1 x + K_0
+.\]
+This is however a solution to the homogeneous ODE and we therefore invoke the modification rule
+\[ 
+y_r(x) = x^{4} \left( K_2 x^2 + K_1 x + K_0 \right) = K_2 x^{6} + K_1 x^{5} + K_0 x^{4}
+.\]
+This has the derivatives
+\begin{align*}
+  y_r'(x) &= 6 K_2 x^{5} + 5 K_1 x^{4} + 4 K_0 x^{3} \\
+  y_r''(x) &= 30 K_2 x^{4} + 20 K_1 x^{3} + 12 K_0 x^2 \\
+  y_r^{(3)}(x) &= 120 K_2 x^3 + 60 K_1 x^2 + 24 K_0 x \\
+  y_r^{(4)}(x) &= 360 K_2 x^2 + 120 K_1 x + 24 K_0
+.\end{align*}
+This can be inserted into the nonhomogeneous ODE as:
+\[ 
+360 K_2 x^2 + 120 K_1 x + 24 K_0 = \frac{L}{EI}x - \frac{1}{EI}x^2
+.\]
+By comparing terms of same order we get
+\begin{align*}
+  24K_0 &= 0 \\
+  K_0 &= 0 \\
+  120 K_1 &= \frac{L}{EI} \\
+  K_1 &= \frac{L}{120 EI} \\
+  360 K_2 &= \frac{1}{EI} \\
+  K_2 &= \frac{1}{360 EI}
+.\end{align*}
+This gives the nonhomogeneous solution of
+\[ 
+y_r(x) = \frac{1}{360 EI} x^{6} + \frac{1}{120 EI} x^{5}
+.\]
+(And the general solution is:)
+\[ 
+y(x) = 1 + x + x^2 + x^3 + \frac{1}{360EI} x^{6} + \frac{1}{120EI} x^{5}
+.\]
+
+
+\subsection*{4.} Show that
+\[ 
+\Vec{y}^{(1)}(t) = \begin{pmatrix}
+ e^{t} \\
+ e^{t}\\
+ e^{t}\\
+\end{pmatrix}, \Vec{y}^{(2)}(t) = \begin{pmatrix}
+ e^{t} \\
+ e^{t} \\
+0\\
+\end{pmatrix}, \Vec{y}^{(3)}(t) = \begin{pmatrix}
+ e^{t}\\
+0\\
+0\\
+\end{pmatrix}
+\]
+are linearly independent on $]-\infty,\infty[$.
+\bigbreak
+We form the combined matrix as
+\[ 
+Y(t) = \begin{pmatrix}
+ e^{t} & e^{t} & e^{t}\\
+ e^{t} & e^{t} & 0\\
+ e^{t} & 0 & 0\\
+\end{pmatrix}
+.\]
+We find the determinant by expanding along the third column (or third row as these are equivalent) as:
+\[ 
+\mathrm{det}(Y(t)) = \left| \begin{array}{ccc}
+ e^{t} & e^{t} & e^{t}\\
+ e^{t} & e^{t} & 0\\
+ e^{t} & 0 & 0\\
+\end{array} \right| = e^{t} \left| \begin{array}{cc}
+ e^{t} & e^{t}\\
+ e^{t} & 0\\
+\end{array} \right| = - e^{3t}
+.\]
+As $-e^{3t} \neq 0$ for e.g. $t = 1$ we must have linear independence.
+
+
+\subsection*{5.} Show that
+\[ 
+\Vec{y}^{(1)}(t) = \begin{pmatrix}
+t\\
+t\\
+t\\
+\end{pmatrix}, \Vec{y}^{(2)}(t) = \begin{pmatrix}
+t^2\\
+t^2\\
+t^2\\
+\end{pmatrix}, \Vec{y}^{(3)}(t) = \begin{pmatrix}
+1\\
+1\\
+1\\
+\end{pmatrix}
+\]
+are linearly independent on $]-\infty,\infty[$.
+\bigbreak
+We form the combined matrix as
+\[ 
+Y(t) = \begin{pmatrix}
+t & t^2 & 1\\
+t & t^2 & 1\\
+t & t^2 & 1\\
+\end{pmatrix}
+.\]
+The determinant of this can (by expansion along the third column) be calculated as
+\[ 
+\mathrm{det}(Y(t)) = \left| \begin{array}{cc}
+t & t^2\\
+t & t^2\\
+\end{array} \right| - \left| \begin{array}{cc}
+t & t^2\\
+t & t^2\\
+\end{array} \right| + \left| \begin{array}{cc}
+t & t^2\\
+t & t^2\\
+\end{array} \right| = t^3 - t^3 = 0
+.\]
+This equals 0 for all $t$ and therefore we cannot conclude anything about linear independence based on this. Instead we invoke the definition of linear independence as:
+\begin{align*}
+  c_1 \Vec{y}^{(1)} + c_2 \Vec{y}^{(2)} + c_3 \Vec{y}^{(3)} &= 0 \\
+  c_1 t + c_2 t^2 + c_3 &= 0
+.\end{align*}
+Here we get:
+\begin{align*}
+  t &= 0 \implies c_3 = 0 \\
+  t &= 1 \implies c_1 + c_2 = 0 \\
+  t &= -1 \implies c_2 - c_1 = 0
+.\end{align*}
+For all these equations to hold we must have $c_1 = c_2 = c_3 = 0$ and therefore we have linear independence.
+
+
+\subsection*{6.} Solve the initial value problem
+\[ 
+\Vec{y}'(t) = A \Vec{y}(t), A = \begin{pmatrix}
+1 & 1 & 2\\
+0 & 2 & 2\\
+0 & 0 & 3\\
+\end{pmatrix}, \Vec{y}(0) = \begin{pmatrix}
+6\\
+5\\
+2\\
+\end{pmatrix}
+.\]
+\bigbreak
+We start by calculating the eigenvalues as:
+\[ 
+\mathrm{det}(A - \lambda I) = \left| \begin{array}{ccc}
+1 - \lambda & 1 & 2\\
+0 & 2 - \lambda & 2\\
+0 & 0 & 3 - \lambda\\
+\end{array} \right| = (1 - \lambda)(2-\lambda)(3-\lambda) = 0 \implies \lambda_1 = 1, \lambda_2 = 2, \lambda_3 = 3
+.\]
+To calculate the eigenvector for $\lambda_1 = 1$ we follow the normal procedure of:
+\[ 
+A \Vec{x}^{(1)} = \Vec{x}^{(1)} \implies (A - I) \Vec{x}^{(1)} = \Vec{0}
+.\]
+By insertion we get
+\[ 
+\begin{pmatrix}
+0 & 1 & 2\\
+0 & 1 & 2\\
+0 & 0 & 2\\
+\end{pmatrix} \begin{pmatrix}
+x_1^{(1)}\\
+x_2^{(2)}\\
+x_3^{(3)}\\
+\end{pmatrix} = \begin{pmatrix}
+0\\
+0\\
+0\\
+\end{pmatrix}
+.\]
+Here we choose $\Vec{x}^{(1)} = \begin{pmatrix}
+1\\
+0\\
+0\\
+\end{pmatrix}$. The eigenvector for $\lambda_2 = 2$ can be found in the same way as
+\[ 
+A \Vec{x}^{(2)} = 2 \Vec{x}^{(2)} \implies (A - 2I) \Vec{x}^{(2)} = \Vec{0}
+.\]
+By insertion we get
+\[ 
+\begin{pmatrix}
+-1 & 1 & 2\\
+0 & 0 & 2\\
+0 & 0 & 1\\
+\end{pmatrix} \begin{pmatrix}
+x_1^{(1)}\\
+x_2^{(2)}\\
+x_3^{(3)}\\
+\end{pmatrix} = \begin{pmatrix}
+0\\
+0\\
+0\\
+\end{pmatrix}
+.\]
+Here we choose $\Vec{x}^{(2)} = \begin{pmatrix}
+1\\
+1\\
+0\\
+\end{pmatrix}$. The eigenvector for $\lambda_3 = 3$ can be found in the same fashion as:
+\[ 
+A \Vec{x}^{(3)} = 3 \Vec{x}^{(3)} \implies (A - 3I) \Vec{x}^{(3)} = \Vec{0}
+.\]
+By insertion we get
+\[ 
+\begin{pmatrix}
+-2 & 1 & 2\\
+0 & -1 & 2\\
+0 & 0 & 0\\
+\end{pmatrix} \begin{pmatrix}
+x_1^{(1)}\\
+x_2^{(2)}\\
+x_3^{(3)}\\
+\end{pmatrix} = \begin{pmatrix}
+0\\
+0\\
+0\\
+\end{pmatrix}
+.\]
+Here we choose $\Vec{x}^{(3)} = \begin{pmatrix}
+2\\
+2\\
+1\\
+\end{pmatrix}$. This gives the basis:
+\begin{align*}
+  \Vec{y}^{(1)}(t) &= \Vec{x}^{(1)} e^{\lambda_1 t} = \begin{pmatrix}
+  1\\
+  0\\
+  0\\
+  \end{pmatrix} e^{t} \\
+  \Vec{y}^{(2)}(t) &= \Vec{x}^{(2)} e^{\lambda_2 t} = \begin{pmatrix}
+  1\\
+  1\\
+  0\\
+  \end{pmatrix} e^{2t} \\
+    \Vec{y}^{(3)}(t) &= \Vec{x}^{(3)} e^{\lambda_3 t} = \begin{pmatrix}
+    2\\
+    2\\
+    1\\
+    \end{pmatrix} e^{3t}
+.\end{align*}
+The general solution is therefore:
+\[ 
+y(x) = \Vec{y}^{(1)}(t) + \Vec{y}^{(2)}(t) + \Vec{y}^{(3)}(t) = c_1\begin{pmatrix}
+1\\
+0\\
+0\\
+\end{pmatrix} e^{t} + c_2\begin{pmatrix}
+1\\
+1\\
+0\\
+\end{pmatrix} e^{2t} + c_3\begin{pmatrix}
+2\\
+2\\
+1\\
+\end{pmatrix} e^{3t}
+.\]
+We can now implement the initial value as:
+\[ 
+\Vec{y}(0) = \begin{pmatrix}
+6\\
+5\\
+2\\
+\end{pmatrix} \implies c_1 \begin{pmatrix}
+1\\
+0\\
+0\\
+\end{pmatrix} + c_2 \begin{pmatrix}
+1\\
+1\\
+0\\
+\end{pmatrix} + c_3 \begin{pmatrix}
+2\\
+2\\
+1\\
+\end{pmatrix} = \begin{pmatrix}
+6\\
+5\\
+2\\
+\end{pmatrix}
+.\]
+We can easily see that $c_3 = 2$, which means $c_2 = 1$ must be true which means $c_1 = 1$ also must be true. Therefore the particular solution is:
+\[ 
+\Vec{y}_p(x) = \begin{pmatrix}
+1\\
+0\\
+0\\
+\end{pmatrix} e^{t} + \begin{pmatrix}
+1\\
+1\\
+0\\
+\end{pmatrix} e^{2t} + 2 \begin{pmatrix}
+2\\
+2\\
+1\\
+\end{pmatrix} e^{3t}
+.\]
+

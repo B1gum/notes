@@ -1,0 +1,319 @@
+\documentclass[a4paper]{article}
+\input{../preamble.tex}
+\title{Ordinary Differential Equations, Linear Algebra and Vector Calculus – Exam}
+\begin{document}
+
+\maketitle
+
+\exercise{1}
+Let $a$ be a real number and
+\[ 
+A = \begin{pmatrix}
+1 & a\\
+1 & 1\\
+\end{pmatrix}
+.\]
+Calculate all values of $a$ such that the inverse $A^{-1}$ doesn't exist. 
+\bigbreak
+For the inverse to exist, we must have $\mathrm{det}(A) \neq 0$. The determinant of $A$ can simply be found as:
+\[ 
+\mathrm{det}(A) = \left| \begin{array}{cc}
+1 & a\\
+1 & 1\\
+\end{array} \right| = 1 - a \neq 0
+.\]
+This equality does not hold for $a = 1$, hence no inverse $A^{-1}$ exists for $a = 1$. For $a \neq 1$ we have $\mathrm{det}(A)\neq 0$ and therefore an inverse exists.
+
+
+\exercise{2}
+Let $a$ be a real number and
+\[ 
+A = \begin{pmatrix}
+1 & a\\
+1 & 1\\
+\end{pmatrix}
+.\]
+Calculate all values of $a$ such that $A$ has the eigenvalue $\lambda = 1$.
+\bigbreak
+We know that $\lambda$ is an eigenvalue to a matrix, if and only if:
+\[ 
+\mathrm{det}(A - \lambda I) = 0
+.\]
+Here we are looking for solutions with $\lambda = 1$ and therefore we get:
+\[ 
+\mathrm{det}(A - I) = \left| \begin{array}{cc}
+0 & a\\
+1 & 0\\
+\end{array} \right| = 0 \implies 0 - a = 0 \implies a = 0
+.\]
+Therefore $a = 0$ is the solution we are looking for. 
+
+
+\exercise{3}
+Consider the linear system of $m$ equations with $n$ unknowns
+\[ 
+A \Vec{x} = \Vec{0}
+.\]
+Suppose all solutions $\Vec{x}$ are of the form
+\[ 
+\Vec{x} = c_1 \begin{pmatrix}
+1\\
+1\\
+1\\
+0\\
+\end{pmatrix} + c_2 \begin{pmatrix}
+0\\
+1\\
+1\\
+1\\
+\end{pmatrix}
+.\]
+Find $n$ and $\mathrm{rank}(A)$.
+\bigbreak
+As our solution is a linear combination of two vectors with length 4 we have exactly 4 unknowns as well. We can write our solution as
+\[ 
+\Vec{x} = \begin{pmatrix}
+c_1 \\
+c_1 + c_2 \\
+c_1 + c_2\\
+c_2 \\
+\end{pmatrix}
+.\]
+And here we can quickly see that $\mathrm{rank}(\Vec{x}) = 2$ as we have two linearly independent vectors (entry 1 and entry 4) and the rest (entry 2 and 3) are simply the sum of these.
+
+
+\exercise{4}
+Consider the nonlinear system of first order ODEs
+\begin{align*}
+  y_1'(t) &= e^{y_1(t)} + y_2(t) \\
+  y_2'(t) &= e^{y_1(t)} -2
+.\end{align*}
+Calculate the location of all critical points.
+\bigbreak
+We define the system as
+\begin{align*}
+  y_1'(t) &= e^{y_1(t)} + y_2(t) = f_1(y_1(t), y_2(t)) \\
+  y_2'(t) &= e^{y_1(t)} - 2 = f_2(y_1(t), y_2(t))
+.\end{align*}
+For a critical point we have that:
+\[ 
+\frac{\mathrm{d}y_2}{\mathrm{d}y_1} = \frac{y_2'(t) \, \mathrm{d}t}{y_1'(t) \, \mathrm{d}t } = \frac{y_2'(t)}{y_1'(t)} = \frac{f_2(y_1(t), y_2(t))}{f_1(y_1(t), y_2(t))} = \frac{0}{0}
+.\]
+For $f_2 = 0$ we have:
+\begin{align*}
+  e^{y_1(t)} - 2 &= 0 \\
+  e^{y_1(t)} &= 2 \\
+  y_1(t) &= \ln 2
+.\end{align*}
+And for $f_1 = 0$ we have:
+\begin{align*}
+  e^{\ln 2} + y_2(t) &= 0 \\
+  2 + y_2(t) &= 0 \\
+  y_2(t) &= -2
+.\end{align*}
+Therefore for the condition
+\[ 
+\frac{\mathrm{d}y_2}{\mathrm{d}y_1} = \frac{0}{0}
+\]
+to hold we must have $y_1(t) = \ln 2$ and $y_2(t) = -2$.
+
+\exercise{5}
+Calculate the general solution of
+\[ 
+y''(x) - 4y(x) = x + e^{x}
+.\]
+\bigbreak
+We compare this to the standard form for a nonhomogeneous second order linear ODE:
+\[ 
+y''(x) + p(x) y'(x) + q(x) y(x) = r(x)
+.\]
+Here we see that $p(x) = 0$, $q(x) = -4$ and $r(x) = x + e^{x}$. To find the solution of this we start by finding the solution to the corresponding homogeneous ODE:
+\[ 
+y_h''(x) - 4y_h(x) = 0
+.\]
+This is a homogeneous linear second order ODE with constant coefficients. The characteristic equation is:
+\[ 
+  \lambda^2 - 4 = 0 \implies \lambda = \{-2, 2\}
+.\]
+As these are both real and different we have the two solutions:
+\[ 
+y_{h_1}(x) = c_1 e^{2x} \quad \text{and} \quad y_{h_2} = c_2 e^{-2x}
+.\]
+These are linearly independent and constitute a basis. The general solution to the homogeneous ODE is therefore:
+\[ 
+y_h(x) = c_1 e^{2x} + c_2 e^{-2x}
+.\]
+To find a general solution for the nonhomogeneous ODE we employ the method of undetermined coefficients. Using the basic and sum rules we get a solution of the form:
+\[ 
+y_r(x) = C e^{x} + K_1 x + K_0
+.\]
+This has the derivatives:
+\begin{align*}
+  y_r'(x) &= C e^x + K_1 \\
+  y_r''(x) &= C e^{x}
+.\end{align*}
+We can now insert this into the nonhomogeneous ODE as:
+\begin{align*}
+  y_r''(x) - 4y_r(x) &= x + e^{x} \\
+  C e^{x} - 4C e^{x} - 4K_1 x + 4K_0 &= x + e^{x} \\
+  -3 C e^{x}  - 4K_1 x + 4K_0 &= x + e^{x}
+.\end{align*}
+\begin{align*}
+  -3 C e^{x} &= e^{x} & -4 K_1 x &= x \\
+  -3 C &= 1 & -4K_1 &= 1 \\
+  C &= - \frac{1}{3} & K_1 &= -\frac{1}{4}
+.\end{align*}
+Therefore
+\[ 
+y_r(x) = -\frac{1}{3} e^{x} - \frac{1}{4}x
+.\]
+And the general solution therefore is:
+\[ 
+y(x) = y_h(x) + y_r(x) = c_1 e^{2x} + c_2 e^{-2x} - \frac{1}{3} e^{x} - \frac{1}{4} x = c_1 e^{2x} + c_2 e^{-2x} - \frac{4e^{x} + 3x}{12}
+.\]
+
+\exercise{6}
+Solve the initial value problem for $x > 0$
+\[ 
+2xy(x)^2 + 2x^2y(x)y'(x) = 0, y(1) = 1
+.\]
+using the theory of exact ODEs.
+\bigbreak
+We start by comparing the given ODE to the standard form for an exact ODE:
+\[ 
+M(x,y) + N(x,y)y' = 0
+.\]
+Here we see that:
+\[ 
+M(x,y) = 2xy^2 \quad \text{and} \quad N(x,y) = 2x^2 y
+.\]
+We can check if it actually is exact as:
+\[ 
+\frac{\partial M}{\partial y} = 4xy = \frac{\partial N}{\partial x}
+.\]
+As this holds the ODE is exact. We then get:
+\[ 
+u(x,y) = \int M(x,y) \, \mathrm{d}x + k(y) = \int 2 \cdot x \cdot y^2 \, \mathrm{d}x + k(y) = x^2 y^2 + k(y)
+.\]
+We also have that:
+\[ 
+N(x,y) = \frac{\partial u(x,y)}{\partial y} \implies 2x^2 y(x) = 2x^2 y + k(y) \implies k(y) = 0
+.\]
+Our function $u(x,y)$ is therefore:
+\[ 
+u(x,y) = x^2 y^2
+.\]
+We now choose a constant $c$
+\begin{align*}
+  u(x,y) &= c \\
+  x^2 y^2 &= c \\
+  y^2 &= \frac{c}{x^2} \\
+  y &= \sqrt{\frac{c}{x}} \\
+  y &= \frac{k}{x}, k = \sqrt{c}
+.\end{align*}
+And therefore our general solution  is:
+\[ 
+y(x) = \frac{k}{x}
+.\]
+We can now insert our initial value as:
+\[ 
+1 = \frac{k}{1} \implies k = 1
+.\]
+And the particular solution is therefore:
+\[ 
+y(x) = \frac{1}{x}
+.\]
+
+
+\exercise{7}
+Solve the initial value problem for $x > 0$
+\[ 
+xy'(x) + y(x) = 0, y(1) = 1
+.\]
+Using the theory of separable ODEs.
+\bigbreak
+We start by rewriting the ODE as:
+\[ 
+y'(x) =  \frac{y(x)}{x}
+.\]
+This can be compared to the standard form for a separable ODE:
+\[ 
+y'(x) = \frac{h(x)}{g(y(x))}
+.\]
+We see that $h(x) = \frac{1}{x}$ and $g(y(x)) = - \frac{1}{y(x)}$. We can now integrate as:
+\begin{align*}
+  \int_{y(x_0)}^{y(x)} g(y) \, \mathrm{d}y &= \int_{x_0}^{x} h(\hat{x}) \, \mathrm{d}\hat{x} \\
+  \left[ -\ln (y) \right]_{y(x_0)}^{y(x)} &= \left[ \ln x \right]_{x_0}^{x} \\
+  - \ln y(x) + \ln 1 &= \ln x - \ln 1 \\
+  \ln y(x) &= - \ln x - \ln 2 \\
+  y(x) &= e^{-\frac{x}{2}}
+.\end{align*}
+It seems like something has gone wrong here as this does not fulfill our initial condition ($y(1) = \frac{1}{\sqrt{e}} \neq 1$). The actual solution to the ODE is expected to have the form:
+\[ 
+y(x) = \frac{c_1}{x}
+  .\]
+In which case the initial condition gives the solution:
+\[ 
+y(x) = \frac{1}{x}
+.\]
+
+
+\exercise{8}
+Consider the curve $C$ given by all points $P(x,y,z)$ such that
+\[ 
+x - y^2 = 0, z = x, 0 \leq x \leq 1, y \leq 0
+.\]
+Find a parametric representation.
+\bigbreak
+We start by rewriting the surface as:
+\[ 
+y^2 = x, z = x, 0 \leq x \leq 1, y \leq 0
+.\]
+We can now quickly see that we can parameterize it as: $(t, \pm \sqrt{t}, t)$. As we are only looking for the solutions with $y \leq 0$ we can reduce it to $(t, - \sqrt{t}, t)$.
+And finally we can add the boundaries for $x$:
+\[ 
+\Vec{r}(t) (t , - \sqrt{t}, t), 0 \leq t \leq 1
+.\]
+
+
+
+\exercise{9}
+Consider the surface $S$ given by all points $P(x,y,z)$ such that
+\[ 
+x - y^2 = 0, z \leq x, 0 \leq x \leq 1, y \geq 0
+.\]
+Find a parametric representation.
+\bigbreak
+This case has a lot of similarities with the above. However, this time the $z$-value is free (as we are working with a surface and not a curve anymore). We therefore get this again:
+\[ 
+\Vec{r}(u, v) = (u , \pm \sqrt{u} , v)
+.\]
+This time we are only looking for the positive values of $y$, hence:
+\[ 
+\Vec{r}(u,v) = (u, \sqrt{u}, v)
+.\]
+And now the boundaries can be added as:
+\[ 
+\Vec{r}(u,v) = ( u, \sqrt{u}, v),  0 \leq u \leq 1, v \leq u
+.\]
+
+
+\exercise{10}
+Consider the vector field $\Vec{F} \left( \Vec{r} \right) = \left( ye^{xy}+ ze^{x}, x e^{xy} + 1, e^{x} \right)$. Calculate a scalar field $f \left( \Vec{r} \right)$ such that $\nabla f \left( \Vec{r} \right) = \Vec{F} \left( \Vec{r} \right)$
+\bigbreak
+For the condition to hold, we have that:
+\begin{align*}
+  F_1(\Vec{r}) &= \frac{\partial f (\Vec{r})}{\partial x} \\
+  \implies y e^{xy} + z e^{x} &= \frac{\partial f (\Vec{r})}{\partial x} \\
+  \implies f \left( \Vec{r} \right) &= e^{x y}+e^x z + g(y,z)\\
+  F_2 \left( \Vec{r} \right) &= \frac{\partial f (\Vec{r})}{\partial y} \\
+  \implies x e^{xy} + 1 &= x e^{x y} + g(z)\\
+  \implies g(z) = 1
+.\end{align*}
+Therefore the surface becomes:
+\[ 
+f (\Vec{r}) = e^{xy} + e^{x}z + 1
+.\]
+
+
+\end{document}

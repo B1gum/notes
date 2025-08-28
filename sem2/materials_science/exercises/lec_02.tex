@@ -1,0 +1,49 @@
+\lecture{2}{29. Januar 2025}{Atomic structure}
+
+\exercise{2.13.1}
+Cite the difference between \textit{atomic mass} and \textit{atomic weight}.
+\bigbreak
+Atomic mass is a notion mainly used when talking about \unit{AMU}. Atomic mass is an actual \textit{mass}-measure concerning the actual \textit{mass} of something. On the other hand atomic weight is the weight of an amount of substance equal to \qty{1}{mol}. Therefore atomic weight is in some sense a specific version of the atomic mass.
+
+\exercise{2.13.9}
+Give the electron configurations for the following ions: $\mathrm{Fe}^{2+},\mathrm{Al}^{3+}, \mathrm{Cu}^{+}, \mathrm{Ba}^{2+}, \mathrm{Br}^{-},$ and $\mathrm{O}^{2-}$.
+\begin{align*}
+    \left[ \mathrm{Fe}^{2+} \right] &= [\mathrm{Ar}] \, 3d^{4} 4s^2 \\
+    \left[ \mathrm{Al}^{3+} \right] &= 1s^2 2s^2 2p^{6} \\
+    \left[ \mathrm{Cu}^{+} \right] &= [\mathrm{Ar}] 3d^{8} 4s^2 \\
+    \left[ \mathrm{Ba}^{2+} \right] &= [\mathrm{Kr}] 4d^{10} 5s^2 5p^{6} \\
+    \left[ \mathrm{Br}^{-} \right] &= [\mathrm{Ar}] 3d^{10} 4s^2 4p^{6} \\
+    \left[ \mathrm{O}^{2-} \right] &= [\mathrm{He}] 2s^2 2p^{6}
+.\end{align*}
+
+
+\exercise{2.13.8}
+The net potential energy between two adjacent ions $E_N$ may be represented by the sum of Equations 2.6a and 2.6c, that is,
+\[ 
+E_N = - \frac{A}{r} + \frac{B}{r^{n}}
+.\]
+Calculate the bonding energy $E_0$ in terms of the parameters $A$, $B$, and $n$ using the following procedure:
+\begin{enumerate}
+  \item Differentiate $E_N$ with respect to $r$, and then set the resulting expression equal to zero, because of the curve of $E_N$ versus $r$ is a minimum at $E_0$.
+  \item Solve for $r$ in terms of $A$, $B$, and $n$, which yields $r_0$, the equilibrium interionic spacing.
+  \item Determine the expression for $E_0$ by substituting $r_0$ into the equation above.
+\end{enumerate}
+\bigbreak
+First of all we will find $E_N(r)'$ by differentiation
+\begin{align*}
+  E_N (r) &= -A r^{-1} + B r^{-n} \\
+  E_N(r)' &= A r^{-2} + -nB r^{-n-1}
+.\end{align*}
+We will now find the minimum of this by setting it equal to zero to find the equilibrium interionic spacing ($r_0$).
+\begin{align*}
+  0 &= \frac{A}{r^2} - \frac{nB}{r^{n+1}} \\
+  \frac{A}{r^2} &= \frac{nB}{r^{n+1}} \\
+  Ar^{n-1} &= nB \\
+  r^{n-1} &= \frac{nB}{A} \\
+  r_0 &= \left( \frac{nB}{A} \right)^{\frac{1}{n-1}}
+.\end{align*}
+Lastly this can be substituted back into the expression for the potential energy like this
+\begin{align*}
+  E_0 &= -A \left( \frac{A}{nB} \right)^{\frac{1}{n-1}} + B \left( \frac{A}{nB} \right)^{\frac{n}{n-1}}
+.\end{align*}
+

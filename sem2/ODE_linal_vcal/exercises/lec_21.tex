@@ -1,0 +1,129 @@
+\section*{Lecture 21}
+
+\subsection*{1} Calculate the Laplace transform of
+\[ 
+f(t) = t \left( e^{t}-1 \right) 
+.\]
+\bigbreak
+Here we use differentiation of Laplace transforms to get:
+\begin{align*}
+  F(s) &= \mathcal{L}\left( f(t) \right)  \\
+  &= - \left( \mathcal{L}\left( e^{t}-1 \right)  \right)'  \\
+  &= - \left( \frac{1}{s-1} - \frac{1}{s} \right)' \\
+  &= - \left( - \frac{1}{\left( s-1 \right)^2} + \frac{1}{s^2} \right) \\
+  &= \frac{1}{\left( s-1 \right)^2} - \frac{1}{s^2}
+.\end{align*}
+
+
+\subsection*{2.} Solve the IVP
+\[ 
+\Vec{y}'(t) = A \Vec{y}(t), \qquad A = \begin{pmatrix}
+1 & -1\\
+0 & 1\\
+\end{pmatrix}, \qquad \Vec{y}(0) = \begin{pmatrix}
+1\\
+1\\
+\end{pmatrix}
+\]
+using the Laplace transform.
+\bigbreak
+We start by writing the system as:
+\begin{align*}
+  y_1' &= y_{1}(t) - y_2(t) \\
+  y_2' &= y_2(t)
+.\end{align*}
+This gives the system of subsidiaries:
+\begin{align*}
+  sY_1(s) - 1 &= Y_1(s) - Y_2(s) \\
+  s Y_{2}(s) - 1 &= Y_2(s) \\
+  \implies Y_1(s) &= \frac{1}{s-1} - \left( \frac{1}{s-1} \right)^2 \\
+  Y_2(s) &= \frac{1}{s-1}
+.\end{align*}
+This gives the solutions:
+\begin{align*}
+  y_1(t) &= \mathcal{L}^{-1} \left( \frac{1}{s-1} \right) - \mathcal{L}^{-1} \left( \frac{1}{s-1} \frac{1}{s-1} \right)  \\
+  &= e^{t} - \int_{0}^{t} e^{t - \tau} e^{t} \, \mathrm{d}\tau \\
+  &= e^{t} - t e^{t}
+.\end{align*}
+And
+\begin{align*}
+  y_2(t) &= \mathcal{L}^{-1} \left( \frac{1}{s-1} \right) \\
+         &= e^{t}
+.\end{align*}
+
+
+
+\subsection*{3.} Solve the IVP
+\[ 
+\Vec{y}''(t) = A \Vec{y}(t), \qquad A = \begin{pmatrix}
+0 & 1\\
+1 &0\\
+\end{pmatrix}, \qquad \Vec{y}(0) = \begin{pmatrix}
+-1\\
+-1\\
+\end{pmatrix}, \qquad \Vec{y}'(0) = \begin{pmatrix}
+0\\
+0\\
+\end{pmatrix}
+\]
+using the Laplace transform.
+\bigbreak
+We write the system as:
+\begin{align*}
+  y_1''(t) &= y_2(t) \\
+  y_2''(t) &= y_1(t)
+.\end{align*}
+Which gives the subsidiaries:
+\begin{align*}
+  s^2 Y_1(s) + s &= Y_2(s) \\
+  s^2 Y_2(s) + s &= Y_1(s) \\
+  \implies Y_1(s) &= - \frac{s}{s^2 - 1} \\
+  Y_2(s) &= - \frac{s}{s^2 - 1}
+.\end{align*}
+Therefore the solutions are:
+\begin{align*}
+  y_1(t) &= \mathcal{L}^{-1} \left( - \frac{s}{s^2 - 1} \right) = - \cosh t \\
+  y_2 (t) &= \mathcal{L}^{-1} \left( - \frac{s}{s^2 - 1} \right) = - \cosh t
+.\end{align*}
+
+
+
+
+\subsection*{4.} Solve the IVP
+\[ 
+\Vec{y}'(t) = A \Vec{y}(t) + \Vec{g}(t), \qquad A = \begin{pmatrix}
+0 & 1\\
+1 & 0\\
+\end{pmatrix}, \qquad \Vec{y}(0) = \begin{pmatrix}
+0\\
+0\\
+\end{pmatrix}, \qquad \Vec{g}(t) = \begin{pmatrix}
+e^{t}\\
+e^{t}\\
+\end{pmatrix}
+\]
+using the Laplace transform.
+\bigbreak
+We start by writing the system as:
+\begin{align*}
+  y_1'(t) &= y_2(t) + e^{t} \\
+  y_2'(t) &= y_1(t) + e^{t}
+.\end{align*}
+Which gives the subsidiaries:
+\begin{align*}
+  s Y_1(s) &= Y_2(s) + \frac{1}{s-1} \\
+  s Y_2(s) &= Y_1(s) + \frac{1}{s-1}
+.\end{align*}
+Which has the solutions:
+\begin{align*}
+  Y_1(s) &= \frac{1}{\left( s-1 \right)^2} \\
+  Y_2(s) &= \frac{1}{\left( s-1 \right)^2}
+.\end{align*}
+Which gives the solutions:
+\begin{align*}
+  y_1(t) &= \mathcal{L}^{-1} \left( \frac{1}{\left( s-1 \right)^2} \right)  \\
+  &= \int_{0}^{t} e^{t - \tau} e^{\tau} \, \mathrm{d}\tau \\
+  &= te^{t} \\
+  y_2(t) &= \mathcal{L}^{-1}\left( \frac{1}{\left( s-1 \right)^2} \right) \\
+         &= te^{t}
+.\end{align*}

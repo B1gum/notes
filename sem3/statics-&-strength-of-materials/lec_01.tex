@@ -1,0 +1,88 @@
+\lecture{1}{25. August 2025}{Intro + Force \% position vectors}
+
+\section{Introduction}
+This is my personal notes for the Statics and strength of materials course taught at Aarhus University by Tito Andriollo and Souhayl Sadik. 
+
+\subsection{Terminology}
+Some basic terminology must be defined before we can start.
+
+\begin{definition}[Particle]
+  A particle is a body whose geometry can be neglected in the problem at hand.
+\end{definition}
+
+\begin{definition}[Rigid body]
+  A rigid body is a combination of a large number of particles with a fixed distance from each other. I.e. immovable atoms.
+\end{definition}
+
+\begin{definition}[Deformable body]
+  A deformable body is a combination of a large number of particles, but where the distance between the particle can vary subject to forces.
+\end{definition}
+
+\section{Force vectors}
+
+\subsection{Scalars and vectors}
+Oftentimes in engineering mechanics one utilizes scalars or vectors to measure physical quantities.
+
+\begin{definition}[Scalar]
+  A \textit{scalar} is any positive or negative numerical quantity -- i.e. any physical quantity that is expressable solely by its \textit{magnitude}. Scalar quantities include length, mass, time, etc.
+\end{definition}
+
+\begin{definition}[Vector]
+  A \textit{vector} is any physical quantity that requires both a \textit{magnitude} and a \textit{direction} to be fully described. Vector quantities include force, moment, velocity, etc. In this collection of notes vector quantities will be represented by boldface notation such as $\textbf{A}$.
+\end{definition}
+
+\subsection{Vector operations}
+\subsubsection{Multiplication and division of a vector by a scalar}
+When one multiplies or divides a vector quantity by a scalar its magnitude is simply changed by that amount. The direction will remain the same.
+
+\subsubsection{Vector addition and subtraction} \label{sec:vecadd}
+When adding two vector quantities one must both account for the magnitudes and the directions of the vector quantities. To do this graphically one places the tail end one of one of the vectors at the head end of the other – the endpoint is their sum. Algebraically this corresponds to adding the component vectors pairwise. 
+
+For subtraction one can once again use the algebraic method of the pairwise components or graphically one can place the tail ends of the vectors at the same point and find the `difference vector' that combines their heads.
+
+
+\subsection{Addition of a system of coplanar forces}
+When a force is resolved into components along the $x$ and $y$ axes, the components are called \textit{rectangular components}. We can represent these either by \textit{scalar notation} or \textit{Cartesian notation}. Only cartesian notation will be covered in these notes. 
+
+\subsubsection{Cartesian notation}
+One can represent a force $\textbf{F}$ as a sum of the magnitudes of the force $F_x$ and $F_y$ and the cartesian unit vectors $\textbf{i}$ and $\textbf{j}$. That is:
+\[ 
+\textbf{F} = F_x \textbf{i} + F_y \textbf{j}
+.\]
+
+
+\subsubsection{Coplanar force resultants}
+Given three forces:
+\begin{align*}
+  \textbf{F}_1 &= F_{1x} \textbf{i} + F_{1y} \textbf{j} \\
+  \textbf{F}_2 &= - F_{2x} \textbf{i} + F_{2y} \textbf{j} \\
+  \textbf{F}_3 &= F_{3x} \textbf{i} - F_{3y} \textbf{j}
+.\end{align*}
+One can compute the vector resultant as described in \autoref{sec:vecadd} as:
+\begin{align*}
+  \textbf{F}_R &= \textbf{F}_1 + \textbf{F}_2 + \textbf{F}_3 \\
+  &= \left( F_{1x} - F_{2x} + F_{3x} \right) \textbf{i} + \left( F_{1y} + F_{2y} - F_{3y} \right) \textbf{j} \\
+  &= \left( F_r \right)_x \textbf{i} + \left( F_{r} \right)_y \textbf{j}
+.\end{align*}
+
+The magnitude of the resultant force can be found from the magnitudes of the resultant component vectors and the Pythagorean theorem as:
+\[ 
+F_r = \sqrt{\left( F_r \right)^2_{x} + \left( F_{r} \right)^2_y}
+.\]
+The angle which specifies the direction of the resultant force can be determined using trigonometry as:
+\[ 
+\theta = \tan^{-1} \left| \frac{\left( F_R \right)_y}{\left( F_R \right)_x} \right|
+.\]
+The same principle applies in three dimensions.
+
+
+\subsection{Position vectors}
+A position vector $\textbf{r}$ is defines as a fixed vector which locates a specific point in space relative to another specific point in space. A position vector between two forces with the same tail end point will correspond do the subtracyion of the vectors. 
+
+
+\subsubsection{Force vector directed along a line}
+Oftentimes in three-dimensional statics problems, the direction of a force $\textbf{F}$ is specified by two points through which its line of action passes. If we call these two points $A$ and $B$ we can formulate $\textbf{F}$ by realizing that it has the same direction as the position vector $\textbf{r}$ from point $A$ to point $B$. The common direction is specified by the unit vector $\textbf{u} = \textbf{r} / r$. We get:
+\[ 
+\textbf{F} = F \textbf{u} = F \left( \frac{\textbf{r}}{r} \right) = F \left( \frac{\left( x_{B} - x_A \right) \textbf{i} + \left( y_B - y_A \right) \textbf{j} + \left( z_{B} - z_A \right) \textbf{k}}{\sqrt{\left( x_B -x_A \right)^2 + \left( y_B - y_A \right)^2 + \left( z_B - z_A \right)^2}} \right)
+.\]
+

@@ -1,0 +1,50 @@
+\documentclass[a4paper]{article}
+
+\input{./preamble.tex}
+
+\title{Afleveringsopgave 8 – Termodynamik}
+\date{1. Maj 2025}
+
+\begin{document}
+
+\maketitle
+
+\opgave{8.1}
+Et kraftværk leverer \qty{60}{MW} til kølevandet på basis af en optaget effekt i kedelanlægget på \qty{100}{MW}. Bestem den termiske virkningsgrad i $[\%]$ for kraftværket (svar: 40\%).
+\begin{figure}[ht]
+    \centering
+    \incfig{a8f1}
+    \caption{Systemskitse og kontrolflade}
+    \label{fig:a8f1}
+\end{figure}
+Den termiske virknignsgrad for en Rankine-lignende process som i kraftværket defineres som:
+\[ 
+\eta_{\mathrm{th}} = \frac{\text{Ønsket output}}{\text{Nødvendigt input}}
+.\]
+I dette tilfælde må det ønskede output være eleffekt og idet det antages at der i øvrigt ikke er nogle tab i processen må det gælde at den resterende energi er gået hertil. Altså får vi:
+\[ 
+\eta_{\mathrm{th}} = \frac{\qty{40}{MW} }{\qty{100}{MW} } = 40\%
+.\]
+Altså er kraftværkets termiske virkningsgrad 40\%.
+
+
+\opgave{8.3}
+Kedelanlægget på et kraftvarmeværk optager en effekt på \qty{80}{MW} of forbrænder \qty{21,8}{t/h} halm med en nedre brændværdi på \qty{14}{MJ/kg}. Kraftvarmeværket leverer netto \qty{30}{MW} til elnettet of afgiver \qty{46,5}{MW} i kondenseren til fjernvarmenettet. Bestem total virkningsgrad for kraftvarmeværket.
+\begin{figure}[ht]
+    \centering
+    \incfig{a8f2}
+    \caption{Systemskitse med kontrolflade}
+    \label{fig:a8f2}
+\end{figure}
+Fra halmens nedre brændværdi kan den tilførte effekt beregnes som:
+\[ 
+P_{\text{tilført}} = \qty{21,8}{\frac{t}{h}} \cdot \qty{14}{\frac{MW}{kg}} = \qty{84,778}{MW} 
+.\]
+I dette tilfælde regnes  der på et kraftvarmeværk. Her er det ønskede output summen af den genererede eleffekt og den genererede fjernvarmeeffekt. Altså fås:
+\[ 
+\eta_{KVV} = \frac{\qty{30}{MW} + \qty{46,5}{MW} }{\qty{84,778}{MW} } = \num{90,2}\%
+.\]
+Altså fås en virkningsgrad på \num{90,2}\% for kraftvarmeværket.
+
+\end{document}
+

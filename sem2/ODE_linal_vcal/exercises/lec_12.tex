@@ -1,0 +1,277 @@
+\section*{Lecture 12}
+
+\subsection*{1.} Consider the overdamped forced oscillation with an external force of the type
+\[ 
+F_0 \sin(\omega t)
+.\]
+Find the general solution.
+\bigbreak
+The case described above is described by the ODE
+\[ 
+y''(t) + \frac{c}{m}y'(t) + \frac{k}{m}y(t) = \frac{F_0}{m} \sin (\omega t)
+.\]
+The term $\frac{k}{m} y(t)$ can be simplified as
+\[ 
+y''(t) + \frac{c}{m}y'(t) + \omega^2_0 y(t) = \frac{F_0}{m} \sin(\omega t)
+.\]
+As the oscillation is overdamped the general homogeneous solution is
+\[ 
+y_h(t) = c_1 e^{- \left( \alpha - \beta \right)t} + c_2 e^{- \left( \alpha + \beta \right)t}
+.\]
+Where $\alpha = \frac{c}{2m}$ and $\beta = \frac{1}{2m} \sqrt{c^2 - 4mk}$. We now just need to find $y_r$. By the basic rule of the method of undetermined coefficients we choose a solution $y_r$ of the form
+\[ 
+y_r (t) = K \cos (\omega t) + M \sin \left( \omega t \right)
+.\]
+We have
+\begin{align*}
+  y_r'(t) &= - K \omega \sin (\omega t) + M \omega \cos (\omega t) \\
+  y_r''(t) &= - K \omega^2 \cos(\omega t) - M \omega^2 \sin(\omega t)
+.\end{align*}
+We can now insert this into our nonhomogeneous ODE as
+\begin{align*}
+  y_r''(t) + \frac{c}{m}y_r'(t) + \omega_0^2 y_r(t) &= \frac{F_0}{m} \sin (\omega t) \\
+  - K \omega^2 \cos(\omega t) - M \omega^2 \sin(\omega t) + \frac{c}{m} \left( M \omega \cos(\omega t) - K \omega \sin(\omega t) \right) + \omega_0^2 \left( K \cos(\omega t) + M \sin(\omega t) \right) &= \frac{F_0}{m} \sin(\omega t) \\
+  \left( \frac{cM\omega}{m} + K\omega_0^2 - K \omega^2 \right) \cos(\omega t) + \left( -\frac{cK\omega}{m} + M \omega_0^2 - M\omega^2 \right) \sin(\omega t) &= \frac{F_0}{m} \sin(\omega t)
+.\end{align*}
+To balance the equation we must have the same amount of sines and cosines on either side of the equation. This gives us
+\begin{align*}
+  K \left( \omega_0^2 - \omega^2 \right) + \frac{c\omega}{m}M &= 0 \\
+  M \left( \omega_0^2 - \omega^2 \right) - \frac{c\omega}{m} K &= \frac{F_0}{m}
+.\end{align*}
+Solving the above two equations yield
+\begin{align*}
+  M &= F_0 \frac{m \left( \omega_0^2 - \omega^2 \right)}{m^2 \left( \omega_0^2 - \omega^2 \right)^2 + \omega^2 c^2} \\
+  K &= - F_0 \frac{\omega c}{m^2 \left( \omega_0^2 - \omega^2 \right)^2 + \omega^2 c^2}
+.\end{align*}
+This gives the general solution
+\[ 
+y(t) = c_1 e^{- \left( \alpha - \beta \right)t} + c_2e^{- \left( \alpha + \beta \right)t} - F_0 \frac{\omega c}{m^2 \left( \omega_0^2 - \omega^2 \right)^2 + \omega^2 c^2} \cos(\omega t) + F_0 \frac{m \left( \omega_0^2 - \omega^2 \right)}{m^2 \left( \omega_0^2 - \omega^2 \right)^2 + \omega^2 c^2} \sin(\omega t)
+.\]
+Which can be rewritten, if so desired, as
+\[ 
+y(t) = c_1 e^{- \left( \alpha - \beta \right)t} + c_2 e^{- \left( \alpha + \beta \right)t} + \frac{F_0}{m^2 \left( \omega_0^2 - \omega^2 \right)^2 + \omega^2 c^2} \left( m \left( \omega_0^2 - \omega^2 \right) \sin(\omega t) - \omega c \cos(\omega t) \right)
+.\]
+
+
+
+\subsection*{2.} Consider the functions
+\[ 
+y_1(x) = e^{x}, y_(x) = e^{2x}, y_3(x) = e^{3x}
+\]
+for $-\infty < x < \infty$. Calculate the Wronskian. Are they linearly independent or not?
+\bigbreak
+We can write up the wronskian as
+\[ 
+W(y_1(x), y_2(x), y_3(x)) = \left| \begin{array}{ccc}
+y_1(x) & y_2(x) & y_3(x)\\
+y_1'(x) & y_2'(x) & y_3'(x)\\
+y_1''(x) & y_2''(x) & y_3''(x)\\
+\end{array} \right| = \left| \begin{array}{ccc}
+e^{x} & e^{2x} & e^{3x}\\
+e^{x} & 2e^{2x} & 3e^{3x}\\
+e^{x} & 4e^{2x} & 9e^{3x}\\
+\end{array} \right|
+.\]
+We start by factoring out $e^{x}$ (remember that if you multiply a column with a scalar $k$ that corresponds to multiplying the determinant with the same amount $k$). This means we can write
+\[ 
+\left| \begin{array}{ccc}
+e^{x} & e^{2x} & e^{3x}\\
+e^{x} & 2e^{2x} & 3e^{3x}\\
+e^{x} & 4e^{2x} & 9e^{3x}\\
+\end{array} \right| = e^{x} \left| \begin{array}{ccc}
+1 & e^{2x} & e^{3x}\\
+1 & 2e^{2x} & 3e^{3x}\\
+1 & 4e^{2x} & 9e^{3x}\\
+\end{array} \right|
+.\]
+We can now do the same for the second column as
+\[ 
+e^{x} \left| \begin{array}{ccc}
+1 & e^{2x} & e^{3x}\\
+1 & 2e^{2x} & 3e^{3x}\\
+1 & 4e^{2x} & 9e^{3x}\\
+\end{array} \right| = e^{x} \cdot e^{2x} \left| \begin{array}{ccc}
+1 & 1 & e^{3x}\\
+1 & 2 & 3e^{3x}\\
+1 & 4 & 9e^{3x}\\
+\end{array} \right| = e^{3x} \left| \begin{array}{ccc}
+1 & 1 & e^{3x}\\
+1 & 2 & 3e^{3x}\\
+1 & 4 & 9e^{3x}\\
+\end{array} \right|
+.\]
+And doing the same to the last column gives
+\[ 
+ e^{3x} \left| \begin{array}{ccc}
+ 1 & 1 & e^{3x}\\
+ 1 & 2 & 3e^{3x}\\
+ 1 & 4 & 9e^{3x}\\
+ \end{array} \right| = e^{6x} \left| \begin{array}{ccc}
+ 1 & 1 & 1\\
+ 1 & 2 & 3\\
+ 1 & 4 & 9\\
+ \end{array} \right|
+.\]
+To calculate the determinant of this we start by doing some row-operations. We subtract (1) from (2) and (1) from (3)
+\[ 
+ e^{6x}\left| \begin{array}{ccc}
+ 1 & 1 & 1\\
+ 0 & 1 & 2\\
+ 0 & 3 & 8\\
+ \end{array} \right|
+.\]
+We can now subtract $3\cdot (2)$ from (3) to get
+\[ 
+  e^{6x} \left| \begin{array}{ccc}
+  1 & 1 & 1\\
+  0 & 1 & 2\\
+  0 & 0 & 2\\
+  \end{array} \right|
+.\]
+We are now left with a triangular matrix meaning the determinant can be calculated as the product of the diagonal entries. This gives us 
+\[ 
+ e^{6x} \left| \begin{array}{ccc}
+ 1 & 1 & 1\\
+ 0 & 1 & 2\\
+ 0 & 0 & 2\\
+ \end{array} \right| = e^{6x} \cdot 1 \cdot 1 \cdot 2 = 2e^{6x}
+.\]
+This ($2e^{6x}$) never equals zero (and therefore it is easy to choose a value of $x$ for which $2e^{6x} = 0$ does not hold) therefore the three functions are linearly independent. 
+
+
+
+\subsection*{3.} Consider the functions
+\[ 
+y_1 (x) = \cos x, y_2 (x) = \sin x, y_3(x) = \cos (2x)
+\]
+for $-\infty < x <\infty $. Calculate the Wronskian. Are they linearly independent or not?
+\bigbreak
+We once again start by writing up the wronskian as
+\[ 
+W(y_1(x), y_2(x), y_3(x)) = \left| \begin{array}{ccc}
+\cos x & \sin x & \cos(2x) \\
+-\sin x & \cos x & -2 \sin(2x)\\
+- \cos x & -\sin x & -4 \cos(2x)\\
+\end{array} \right|
+.\]
+Before calculating the determinant of this directly we will simplify the matrix a bit by adding (1) to (3) to get
+\[ 
+\left| \begin{array}{ccc}
+\cos x & \sin x & \cos(2x)\\
+- \sin x & \cos x & -2 \sin(2x)\\
+0 & 0 & -3 \cos(2x)\\
+\end{array} \right|
+.\]
+We now have two zero-entries in the third row meaning that it is easy to expand along. We therefore choose to expand along the third row to get
+\[ 
+  (-1)^{3+3} \cdot (-3 \cos(2x)) \cdot \left| \begin{array}{cc}
+  \cos x & \sin x\\
+  - \sin x &  \cos x\\
+  \end{array} \right| = -3 \cos(2x) \left| \begin{array}{cc}
+  \cos x & \sin x\\
+  - \sin x & \cos x\\
+  \end{array} \right|
+.\]
+We can now compute the determinant of the 2x2 matrix as
+\[ 
+\left| \begin{array}{cc}
+\cos x & \sin x\\
+- \sin x & \cos x\\
+\end{array} \right| = \cos x \cdot \cos x - (\sin x \cdot (- \sin x)) = \cos^2 x + \sin^2 x = 1
+.\]
+Therefore the Wronskian is
+\[ 
+W(y_1(x), y_2(x), y_3(x)) = -3 \cos(2x)
+.\]
+As $-3 \cos(2x) \neq 0$ for all $x$ the three functions are linearly independent.
+
+
+
+\subsection*{4.} Consider the functions
+\[ 
+y_1 (x) = x, y_2(x) = x + \cos x, y_3(x) = \cos x
+\]
+for $-\infty < x < \infty $. Calculate the Wronskian. Are they linearly independent or not?
+\bigbreak
+We start by writing up the Wronskian as
+\[ 
+W(y_1(x), y_2(x), y_3(x)) = \left| \begin{array}{ccc}
+x & x + \cos x &  \cos x\\
+1 & 1 - \sin x & - \sin x\\
+0 & - \cos x & - \cos x\\
+\end{array} \right|
+.\]
+As the last row has a zero-entry we choose to expand along this. This gives us
+\[ 
+W = (-1)^{3+2} (- \cos x) M_{3,2} + (-1)^{3+3} \left( - \cos x \right) M_{3,3} = \cos x M_{3,2} - \cos x M_{3,3}
+.\]
+We therefore need to calculate the two minors $M_{3,2}$ and $M_{3,3}$ as
+\begin{align*}
+  M_{3,2} &= \left| \begin{array}{cc}
+  x & \cos x\\
+  1 & - \sin x\\
+  \end{array} \right| = -x\sin x - \cos x \\
+    M_{3,3} &= \left| \begin{array}{cc}
+    x & x + \cos x\\
+    1  & 1 - \sin x\\
+    \end{array} \right| = x - x \sin x - x - \cos x = - x \sin x - \cos x
+.\end{align*}
+\textit{Note:} The two minors are the same and a smart student might already now see that $W = 0$ but to show this we can insert these two minors into the expression for the Wronskian as
+\[ 
+W = \cos x (- x \sin x - \cos x) - \cos x (- x \sin x - \cos x) = 0
+.\]
+Since the wronskian is 0 for all $x$ we cannot conclude anything about the linear independence of the functions from this. Instead we will invoke the definition of linear independence as
+\[ 
+k_1 y_1(x) + k_2 y_2(x) + k_3 y_3(x) = 0
+.\]
+Which gives
+\[ 
+k_1 x + k_2 (x + \cos x) + k_3 \cos x = 0
+.\]
+This can be simplified to
+\[ 
+  (k_1 + k_2)x + (k_2 + k_3) \cos x = 0
+.\]
+Now, if we can choose any $k_1, k_2, k_3$ not equal to zero and the result holds we must have linear dependence. One could set $k_1 = k_3 = 1$ and $k_2 = -1$ and the above equation thus holds for all $x$. This means the functions are linearly dependent. This can also be quickly realized by observing that the second function $y_2$ is a linear combination of the other two functions $y_2 = y_1 + y_3 = x + \cos x$.
+
+
+
+
+\subsection*{5.} Consider differentiable functions $y_1(x), y_2(x), -\infty < x <\infty $, such that
+\[ 
+y_2 (x) = \begin{cases}
+y_1 (x), & \text{for } x \geq 0 \\
+-y_1(x), & \text{for } x < 0
+.\end{cases}
+\]
+Show that the Wronskian is zero for all $-\infty < x < \infty $. Assume there is a $x_0 > 0$ for which $y_1(x_0) \neq 0$ and a $x_1 < 0$ for which $y_{1}(x_1) \neq 0$. Show that $y_1, y_2$ are linearly independent on the interval $-\infty < x < \infty $.
+\bigbreak
+We start by calculating the Wronskian for $x \geq 0$ as
+\[ 
+W(y_1(x), y_2(x)) = \left| \begin{array}{cc}
+y_1(x) & y_2(x)\\
+y_1'(x) & y_2'(x)\\
+\end{array} \right| = \left| \begin{array}{cc}
+y_1(x) & y_1(x)\\
+y_1'(x) & y_1'(x)\\
+\end{array} \right| = y_1(x) \cdot y_1'(x) - y_1(x) \cdot y_1'(x) = 0
+.\]
+For $x < 0$ we get
+\[ 
+W(y_1 (x), y_2(x)) = \left| \begin{array}{cc}
+y_1(x) & y_2(x)\\
+y_1'(x) & y_2'(x)\\
+\end{array} \right| = \left| \begin{array}{cc}
+y_1(x) & -y_1(x)\\
+y_1'(x) & -y_1'(x)\\
+\end{array} \right| = -y_1'(x)\cdot y_1(x) + y_1(x) \cdot y_1'(x) = 0
+.\]
+To show linear independence we will instead invoke the definition of linear independence. We start with the case where $x \geq 0$
+\[ 
+k_1 y_1(x_0) + k_2 y_2(x_0) = 0 \implies (k_1 + k_2)y_1(x_0) = 0 \implies k_1 = -k_2
+.\]
+For the case where $x < 0$ we get
+\[ 
+k_1 y_1(x_1) + k_2 y_2(x_1) = 0 \implies (k_1 - k_2)y_2(x_1) = 0 \implies k_1 = k_2
+.\]
+For both $k_1 = k_2$ and $k_1 = -k_2$ to be true we must have $k_1 = k_2 = 0$ and therefore the functions are linearly independent.

@@ -1,0 +1,174 @@
+\section*{Lecture 19}
+
+\subsection*{1.} Calculate the Laplace transform of the sine hyperbolic
+\[ 
+\sinh(at) = \frac{1}{2}\left( e^{at}- e^{-at} \right) 
+.\]
+Here, $a > 0$ is a constant.
+\bigbreak
+From the lecture we know that:
+\[ 
+\mathcal{L}\left( e^{at} \right) = \frac{1}{s-a}
+.\]
+From linearity of the Laplace transform we have that:
+\[ 
+\mathcal{L}\left( \sinh \left( at \right)  \right) = \mathcal{L}\left( \frac{1}{2}\left( e^{at} - e^{-at} \right)  \right) = \frac{1}{2} \mathcal{L} \left( e^{at} \right) - \frac{1}{2}\mathcal{L} \left( e^{-at} \right) = \frac{1}{2} \left( \frac{1}{s-a} - \frac{1}{s+a} \right) = \frac{1}{2} \cdot \frac{2a}{s^2 - a^2} = \frac{a}{s^2 - a^2}
+.\]
+Which holds for $\mathrm{Re}(s) > a$.
+
+
+\subsection*{2.} Calculate the Laplace transform of $f(t)$ and $f'(t)$, where
+\[ 
+f(t) = e^{-t}t
+.\]
+\bigbreak
+For $f(t)$ we start by splitting the expression into separate functions as $g(t) = t$ and $f(t) = e^{-t}$. From the lecture we have that:
+\[ 
+G(s) = \mathcal{L}(g(t)) = \frac{1}{s^2}
+.\]
+We also know that:
+\[ 
+\mathrm{If } \mathcal{L}\left( g(t) \right) = G(s), \mathrm{ then } \mathcal{L}\left( e^{at} g(t) \right) = G (s-a)
+.\]
+This is called s-shifting and in our case $a = -1$. Therefore we get:
+\[ 
+\mathcal{L}\left( f(t)g(t) \right) = G(s+1) = \frac{1}{\left( s+1 \right)^2}
+.\]
+
+
+\subsection*{3.} Calculate the Laplace transform of
+\[ 
+g(t) = \int_{0}^{t} \tau e^{-\tau} \, \mathrm{d}\tau
+.\]
+\bigbreak
+The Laplace transform of integrals gives us:
+\[ 
+\mathcal{L}(g(t)) = \frac{1}{s} \mathcal{L}\left( te^{-t} \right) 
+.\]
+In the last exercise it was shown that
+\[ 
+\mathcal{L}\left( te^{-t} \right) = \frac{1}{\left( s+1 \right)^2}
+.\]
+Therefore we have that:
+\[ 
+\mathcal{L}\left( g(t) \right) = \frac{1}{s} \mathcal{L}\left( te^{-t} \right) = \frac{1}{s} \cdot \frac{1}{\left( s+1 \right)^2} = \frac{1}{s \left( s+1 \right)^2}
+.\]
+
+
+\subsection*{4.} Find a formula for the Laplace transform of $f'''(t)$ in terms of the Laplace transform of $f(t)$, assuming the Laplace transform exist whenever necessary.
+\bigbreak
+The Laplace transform of a derivative is:
+\[ 
+\mathcal{L}\left( f'(t) \right) = s \mathcal{L}\left( f(t) \right) - f_0
+.\]
+Therefore we can start by examining $f'''(t)$ as:
+\begin{align*}
+  \mathcal{L}\left( f'''(t) \right) &= s \mathcal{L}\left( f''(t) \right) - f''(0) \\
+  &= s^2 \mathcal{L}\left( f'(t) \right) - sf'(0)- f''(0) \\
+  &= s^3 \mathcal{L}(f(t)) - s^2 f(0) - s f'(0) - f''(0)
+.\end{align*}
+
+
+
+\subsection*{5.} Calculate the inverse Laplace transform of
+\[ 
+F(s) = \frac{s^2 + 2s + 1}{s \left( s^2 + 1 \right) }
+.\]
+\bigbreak
+We start by splitting the fraction up into terms as:
+\[ 
+  F(s) = \frac{s^2}{s \left( s^2 + 1 \right) } + \frac{2s}{s \left( s^2 + 1 \right) } + \frac{1}{s \left( s^2 + 1 \right) } = \frac{s}{s^2 + 1} + \frac{2}{s^2 + 1} + \frac{1}{s\left( s^2 + 1 \right) }
+.\]
+We know that:
+\begin{align*}
+  \mathcal{L}^{-1}\left( \frac{1}{s^2 + 1} \right) &= \sin t \\
+  \mathcal{L}^{-1}\left( \frac{s}{s^2 + 1} \right) &= \cos t
+.\end{align*}
+For the last term we will utilize partial fraction decomposition. We have that:
+\[ 
+\frac{1}{s \left( s^2 + 1 \right) } = \frac{A}{s} + \frac{B s  + C}{s^2 + 1}
+.\]
+We multiply both sides by the common denominator to get:
+\[ 
+1 = A \left( s^2 + 1 \right) + s \left( Bs + C \right) = As^2 + A + Bs^2 + Cs = \left( A+B \right) s^2 + Cs + A
+.\]
+For the coefficients to match we have:
+\begin{align*}
+  A + B &= 0 \\
+  C &= 0 \\
+  A &= 1 \\
+  \implies B &= -1
+.\end{align*}
+Therefore the decomposed fraction becomes:
+\[ 
+\frac{1}{s \left( s^2 + 1 \right) } = \frac{1}{s} - \frac{s}{s^2 + 1}
+.\]
+We have that:
+\begin{align*}
+  \mathcal{L}^{-1} \left( \frac{1}{s} \right) &= 1 \\
+  \mathcal{L}^{-1} \left( \frac{s}{s^2 + 1} \right) &= \cos t
+.\end{align*}
+From the linearity of Laplace transforms we have that:
+\[ 
+\mathcal{L}^{-1} \left( \frac{1}{s \left( s^2 + 1 \right) } \right) = \mathcal{L}^{-1} \left( \frac{1}{s} \right) - \mathcal{L}^{-1} \left( \frac{s}{s^2 + 1} \right) = 1 - \cos t
+.\]
+The total inverse Laplace transform therefore is:
+\[ 
+\mathcal{L}^{-1}\left( F(s) \right) = \mathcal{L}^{-1}\left( \frac{s}{s^2 + 1} \right) + 2\mathcal{L}^{-1} \left( \frac{1}{s^2 + 1} \right) + \mathcal{L}^{-1}\left( \frac{1}{s \left( s^2 + 1 \right) } \right) = \cos t + 2 \sin t + 1 - \cos t = 2 \sin t + 1
+.\]
+
+
+\subsection*{6.} Solve the initial value problem
+\[ 
+y'(t) = 2y(t), y(0) = 1
+\]
+using the theory of Laplace transform.
+\bigbreak
+We start by applying the Laplace transformation to both sides to get:
+\begin{align*}
+  \mathcal{L}\left( y'(t) \right) &= \mathcal{L}\left( 2y(t) \right)  \\
+  s Y(s) - y(0) &= 2Y(s) \\
+  s Y(s) - 1 &= 2Y(s) \\
+  \left( s-2 \right) Y(s) &= 1 \\
+  Y(s) &= \frac{1}{s - 2} \\
+  &=  e^{2t}
+.\end{align*}
+
+
+
+\subsection*{7.} Solve the initial value problem
+\[ 
+y''(t) - y'(t) = t, y(0) = 1, y'(0) = 0
+\]
+using the theory of Laplace transform.
+
+\textit{Hint}:
+\[ 
+\mathcal{L}^{-1} \left( \frac{1}{s^3 \left( s-1 \right) } \right) = e^{t} - \frac{1}{2}t^2 - t - 1
+.\]
+\bigbreak
+We apply the Laplace transform to both sides to get:
+\begin{align*}
+  \mathcal{L}\left( y''(t) \right) - \mathcal{L}\left( y'(t) \right) &= \mathcal{L}\left( t \right)  \\
+  s^2 Y(s) - sy(0) - y'(0) - s Y(s) - y(0) &= \frac{1}{s^2} \\
+  \left( s^2 - s \right) Y(s) - s + 1 &= \frac{1}{s^2} \\
+  \left( s^2 - s \right) Y(s) &= \frac{1}{s^2} + s - 1 \\
+  Y(s) &= \frac{s^3 - s^2 + 1}{s^2} \cdot \frac{1}{s \left( s - 1 \right) } \\
+  Y(s) &= \frac{s^3 - s^2 + 1}{s^3 \left( s-1 \right) }  \\
+  Y(s) &= \frac{1}{s^3 \left( s-1 \right) } + \frac{s^3 - s^2}{s^3 \left( s-1 \right) } \\
+  Y(s) &= \frac{1}{s^3 \left( s-1 \right) } + \frac{s^2 \left( s-1 \right) }{s^3 \left( s-1 \right) } \\
+  Y(s) &= \frac{1}{s^3 \left( s-1 \right) } + \frac{1}{s}
+.\end{align*}
+We have been told that:
+\[ 
+\mathcal{L}^{-1} \left( \frac{1}{s^3 \left( s-1 \right) } \right) = e^{t} - \frac{1}{2}t^2 - t - 1
+.\]
+And we also know that
+\[ 
+\mathcal{L}^{-1} \left( \frac{1}{s} \right) =  1
+.\]
+By the linearity of inverse Laplace transforms we get:
+\[ 
+\mathcal{L}^{-1}\left( \frac{1}{s^3 \left( s-1 \right) } \right) + \mathcal{L}^{-1} \left( \frac{1}{s} \right) = e^{t} - \frac{1}{2}t^2 - t - 1 + 1 = e^{t} - \frac{1}{2}t^2 - t
+.\]
+

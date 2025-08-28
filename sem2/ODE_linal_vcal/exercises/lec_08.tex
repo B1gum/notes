@@ -1,0 +1,293 @@
+\section*{Lecture 8}
+
+\subsection*{1.} Solve the ODE
+\[ 
+x^3 + y(x)^3y'(x) = 0
+\]
+using the theory of exact ODEs. Check your result by inserting your solution into the ODE.
+\bigbreak
+By comparing the given ODE
+\[ 
+x^3 + y(x)^3 y'(x) = 0
+.\]
+With the standard form for an exact ODE
+\[ 
+M(x, y(x)) + N(x, y(x))y'(x) = 0
+.\]
+We quickly see that
+\[ 
+M(x, y(x)) = x^3, \qquad N(x, y(x)) = y^3
+.\]
+The condition for exactness is fulfilled as
+\[ 
+\frac{\partial x^3}{\partial y} = 0 = \frac{\partial y^3}{\partial x}
+.\]
+We can integrate $M(x, y(x))$ as
+\[ 
+u(x,y) = \int M(x, y(x)) \, \mathrm{d}x + k(y) = \int x^3 \, \mathrm{d}x + ky = \frac{x^{4}}{4} + k(y)
+.\]
+We now get
+\[ 
+\frac{\partial u(x,y)}{\partial y} = k'(y) = N(x,y) = y^3 \implies k(y) = \frac{y^{4}}{4}
+.\]
+Therefore we have that
+\[ 
+u(x,y) = \frac{x^{4}}{4} + \frac{y^{4}}{4}
+.\]
+Now, to get the solution $y(x)$ we have to solve $u(x,y) = c = \mathrm{constant}$. We choose $c$ as our constant and get
+\[ 
+u(x,y) = c = \frac{x^{4}}{4} + \frac{y^{4}}{4}
+.\]
+And now we can solve for $y$ as
+\begin{align*}
+  c &= \frac{x^{4}}{4} + \frac{y^{4}}{4} \\
+  y^{4} &= 4c - x^{4} \\
+  y(x) &= \pm \sqrt[4]{4c - x^{4}}
+.\end{align*}
+We can now check if we have found the right solution by reinserting the found results into the original ODE. We start with the positive case where we have
+\begin{align*}
+  y(x) &= \sqrt[4]{4c - x^{4}} \\
+  y'(x) &= \frac{1}{4} \left( 4c - x^{4} \right)^{-\frac{3}{4}} (-4)x^3 = -x^3 \left( 4c - x^{4} \right)^{-\frac{3}{4}}
+.\end{align*}
+We can now perform the actual check as
+\begin{align*}
+  x^3 + \left( 4c - x^{4} \right)^{\frac{3}{4}} \left( -x^3 \right) \left( 4c - x^{4} \right)^{-\frac{3}{4}} &= 0 \\
+  x^3 - x^3 &= 0
+.\end{align*}
+Therefore the first solution is correct. We also perform the check for the other negative solution as
+\begin{align*}
+  y(x) &= -\sqrt[4]{4c - x^{4}} \\
+  y'(x) &= x^3 \left( 4c - x^{4} \right)^{-\frac{3}{4}}
+.\end{align*}
+We can also insert these two as
+\begin{align*}
+  x^3 + \left( 4c - x^{4} \right)^{\frac{3}{4}} \left( -x^3 \right) \left( 4c - x^{4} \right)^{-\frac{3}{4}} &= 0 \\
+  x^3 - x^3 &= 0
+.\end{align*}
+Therefore both solutions are correct. Our solutions are therefore
+\[ 
+  y(x) = \pm \sqrt[4]{4c - x^{4}}
+.\]
+
+
+\subsection*{2.} Consider the free all of a melting snowball described by the ODE
+\[ 
+\left( m_0 - kt \right) v'(t) - kv(t) = \left( m_0 - kt \right)g
+\]
+use the theory of exact ODEs to find the solution $v(t)$ corresponding to the initial value $v(0) = 0$. Check your result by inserting your solution into the ODE.
+\bigbreak
+We start by rewriting the ODE as
+\[ 
+\left( kt-m_0 \right)g - kv(t) + \left( m_0 - kt \right)v'(t) = 0
+.\]
+By comparing this with
+\[ 
+M(x, y(x)) + N(x, y(x))y'(x) = 0
+.\]
+We quickly see that
+\[ 
+M(t, v) = (kt-m_0)g - kv, \quad N(t, v) = m_0 - kt
+.\]
+The condition for exactness is fulfilled as
+\[ 
+\frac{\partial (kt - m_0)g - kv}{\partial v} = -k = \frac{\partial m_0 - kt}{\partial t} 
+.\]
+We can now integrate $N(t, v)$ as
+\[ 
+u(t, v)  =\int N(t,v) \, \mathrm{d}v + l(t) = \int m_0 - kt \, \mathrm{d}v + l(t) = \left( m_0 - kt \right)v + l(t)
+.\]
+We now get
+\begin{align*}
+  M(t,v) &= \frac{\partial u(t,v)}{\partial t} \\
+  (kt - m_0) g - kv &= -kv + l'(t) \\
+  l'(t) &= \left( kt - m_0 \right)g \\
+  l(t) &= \left( \frac{t^2}{2} k - m_0 t \right)g \\
+  l(t) &= gt \left( \frac{t}{2}k - m_0 \right)
+.\end{align*}
+We therefore have $u(t,v)$ as
+\[ 
+u(t,v) = \left( m_0 - kt \right)v + gt \left( \frac{t}{2}k - m_0 \right)
+.\]
+We can now solve for $v(t)$ as
+\begin{align*}
+  y(t,v) &= c \\
+  \left( m_0 - kt \right)v + gt \left( \frac{t}{2}k - m_0 \right) &= c \\
+  \left( m_0 - kt \right)v &= c + gt \left( m_0 - \frac{t}{2}k \right) \\
+  v &= \frac{c + gt \left( m_0 - \frac{t}{2}k \right)}{m_0 - kt}
+.\end{align*}
+To align with the initial value we set $v(0) = 0$ as
+\[ 
+0 = \frac{c}{m_0} \implies c = 0 \implies v(t) = \frac{gt \left( m_0 - \frac{t}{2}k \right)}{m_0 - kt}
+.\]
+Now we just need to check if the two equations
+\begin{align*}
+  v(t) &= \frac{gt \left( m_0 - \frac{t}{2}k \right)}{m_0 - kt} \\
+  v'(t) &= \frac{\left( m_0 - kt \right)^2g + gkt \left( m_0 - \frac{t}{2}k \right)}{\left( m_0 - kt \right)^2}
+.\end{align*}
+fulfill the original ODE as
+\begin{align*}
+  \left( kt - m_0 \right)g - \frac{kgt \left( m_0 - \frac{t}{2}k \right)}{m_0 - kt} + \left( m_0 - kt \right) \frac{\left( m_0 - kt \right)^2g + gkt \left( m_0 - \frac{t}{2}k \right)}{\left( m_0 - kt \right)^2} &= 0 \\
+  \left( kt - m_0 \right)g - \frac{kgt \left( m_0 - \frac{t}{2}k \right)}{m_0 - kt} + \frac{\left( m_0 - kt \right)^2g + gkt \left( m_0 - \frac{t}{2}k \right)}{m_0 - kt} &= 0 \\
+  \frac{\left( kt - m_0 \right)^2g}{m_0 - kt} + \frac{\left( m_0 - kt \right)^2g}{m_0 - kt} &= 0 \\
+.\end{align*}
+Therefore the solution is confirmed to be correct.
+
+
+\subsection*{3.} Solve the IVP for $x \geq 0$
+\[ 
+y(x) + \left( 2x+1 \right)y'(x) = 0, \quad y(0) = 1
+\]
+using the theory of exact ODEs. Check your result by inserting your solution into the ODE.
+\bigbreak
+We compare the given ODE with the standard form for an exact ODE
+\[ 
+M(x, y) + N(x,y)y' = 0
+.\]
+We quickly see that $M = y$ and $N = 2x + 1$. We check for exactness as
+\[ 
+\frac{\partial M}{\partial y} = 1, \neq  \frac{\partial N}{\partial x} = 2
+.\]
+We therefore do not have an exact ODE, instead we must find an integrating factor that makes the ODE exact. If we drop the $M$ and $N$ notion and instead write the ODE as
+\[ 
+P(x,y) + Q(x,y) y' = 0
+.\]
+We start by calculating
+\[ 
+R(x,y) = \frac{1}{Q(x,y)} \left( \frac{\partial P(x,y)}{\partial y} - \frac{\partial Q(x,y)}{\partial x} \right)
+.\]
+We get
+\[ 
+R(x,y) = \frac{1}{2x+1} \left( 1 - 2 \right) = - \frac{1}{2x+1}
+.\]
+As this is independent of $y$ we can find the integrating factor as
+\[ 
+F(x,y) = F(x) = e^{\int R(x) \, \mathrm{d}x}
+.\]
+To find the integrating factor we need to find the integral of $R$, which we will do as
+\[ 
+\int R(x,y) = \int - \frac{1}{2x+1} = -\frac{1}{2} \ln (2x+1)
+.\]
+Now we have the integration factor
+\[ 
+F(x) = e^{-\frac{1}{2} \ln(2x+1)} = e^{\ln(2x+1)^{-\frac{1}{2}}} = (2x+1)^{-\frac{1}{2}}
+.\]
+We can scale our ODE by this integrating factor to (hopefully) make our ODE exact. We get
+\begin{align*}
+  F(x) P(x,y) + F(x)Q(x,y)y' &= 0 \\
+  (2x+1)^{-\frac{1}{2}} y + (2x+1)^{-\frac{1}{2}} (2x+1) y' &= 0 \\
+  (2x+1)^{-\frac{1}{2}}y + (2x+1)^{\frac{1}{2}}y' &= 0
+.\end{align*} 
+By setting $M = \left( 2x+1 \right)^{-\frac{1}{2}}y$ and $N = \left( 2x+1 \right)^{\frac{1}{2}}$
+We can check for exactness again as
+\[ 
+\frac{\partial (2x+1)^{-\frac{1}{2}}y}{\partial y} = (2x+1)^{-\frac{1}{2}} = \frac{\partial \left( 2x+1 \right)^{\frac{1}{2}}}{\partial x}
+.\]
+We start by integrating $N$ to get
+\begin{align*}
+  u(x,y) &= \int N(x,y) \, \mathrm{d}y + l(x) \\
+  &= \int \left( 2x+1 \right)^{\frac{1}{2}} \, \mathrm{d}y + l(x) \\
+  &= \left( 2x+1 \right)^{\frac{1}{2}}y + l(x)
+.\end{align*}
+We can insert this into
+\begin{align*}
+  M(x,y) &= \frac{\partial u(x,y)}{\partial x} \\
+  \implies \left( 2x+1 \right)^{-\frac{1}{2}}y &= \frac{1}{2} \left( 2x+1 \right)^{-\frac{1}{2}}2y + l'(x) \\
+  \implies l'(x) &= 0 \\
+  \implies l(x) &= \mathrm{constant}
+.\end{align*}
+We choose $l(x) = 0$ and get
+\[ 
+u(x,y) = (2x+1)^{\frac{1}{2}}y
+.\]
+Now we need to solve $u(x,y) = c$ for y to get our solution
+\begin{align*}
+  u(x,y) &= c \\
+  (2x+1)^{\frac{1}{2}}y  &= c \\
+  y &= (2x+1)^{-\frac{1}{2}}c
+.\end{align*}
+Now we need to find the value of $c$ corresponding to our initial value
+\[ 
+y(0) = 1 \implies (2\cdot 0 + 1)^{-\frac{1}{2}}c = 1 \implies c = 1
+.\]
+Therefore the solution to the ODE is
+\[ 
+y(x) = (2x+1)^{-\frac{1}{2}}
+.\]
+The derivative of this is
+\[ 
+y'(x) = -(2x+1)^{-\frac{3}{2}}
+.\]
+We can now insert this into the original ODE to check our result as
+\begin{align*}
+  (2x+1)^{-\frac{1}{2}} + (2x+1) \cdot \left( -\left( 2x+1 \right)^{-\frac{3}{2}} \right) &= 0 \\
+  (2x+1)^{-\frac{1}{2}} - \left( 2x+1 \right)^{-\frac{1}{2}} &= 0
+.\end{align*}
+Therefore our solution is correct.
+
+
+\subsection*{4.} Solve the IVP for $x \geq 0$
+\[ 
+y(x) + \left( 2x+1 \right)y'(x) = 0, \quad y(0) = 1
+\]
+using the theory of linear ODEs.
+\bigbreak
+We rewrite the ODE as
+\[ 
+y'(x) + \frac{y(x)}{2x+1} = 0
+.\]
+We compare this to the standard form for a linear ODE
+\[ 
+  y'(x) + p(x) y(x) = r(x)
+.\]
+We quickly realize that $p(x) = \frac{1}{2x+1}$ and $r(x) = 0$. These have the general solution
+\[ 
+y(x) = e^{-h(x)} \left( \int e^{h(x)}r(x) \, \mathrm{d}x + c \right)
+\]
+where $c$ is a constant and $h(x) = \int p(x) \, \mathrm{d}x$. We first calculate $h$ as
+\[ 
+h(x) = \int p(x) \, \mathrm{d}x = \int \frac{1}{2x+1} \, \mathrm{d}x = \ln \left( \left( 2x+1 \right)^{\frac{1}{2}} \right)
+.\]
+We therefore get
+\[ 
+e^{h(x)} = e^{\ln \left( \left( 2x+1 \right)^{\frac{1}{2}} \right)} = \left( 2x+1 \right)^{\frac{1}{2}}, \quad e^{-h(x)} = e^{-\ln \left( \left( 2x+1 \right)^{\frac{1}{2}} \right)} = \left( 2x+1 \right)^{-\frac{1}{2}}
+.\]
+As $r = 0$ the solution becomes
+\[
+  y(x) = e^{-h(x)}c = c \left( 2x+1 \right)^{-\frac{1}{2}}
+.\]
+The initial value condition can now be applied as
+\[ 
+y(0) = 1 \implies c \left( 1 \right)^{-\frac{1}{2}} = 1 \implies c = 1 \implies y(x) = \left( 2x+1 \right)^{-\frac{1}{2}}
+.\]
+
+
+\subsection*{5.} Solve the Bernoulli equation
+\[ 
+y'(x) + \frac{1}{x} y(x) = y(x)^3, \quad x > 0
+.\]
+\bigbreak
+To solve the Bernoulli equation we will first reduce it to a linear ODE. We compare the ODE given in the exercise with the general form for a Bernoulli equation
+\[ 
+y'(x) + q(x) y(x) = g(x) y(x)^{a}
+.\]
+We see that $q(x) = \frac{1}{x}$, $g(x) = 1$ and $a = 3$. We now define a function $u$ such that
+\[ 
+u(x) = y(x)^{1-a} = y(x)^{-2}
+.\]
+The linear ODE for $u$ becomes
+\[ 
+u'(x) + p(x) u(x) = r(x)
+\]
+with $p(x) = (1-a)q(x) = -\frac{2}{x}$, $r(x) = (1-a)g(x) = -2$. We calculate $h(x)$ as
+\[ 
+h(x) = \int p(x) \, \mathrm{d}x = \int -\frac{2}{x} \, \mathrm{d}x = -2 \ln x = \ln (x^{-2})
+.\]
+The solution for $u(x)$ thus is
+\[ 
+u(x) = e^{-h(x)} \left( \int e^{h(x)} r(x) \, \mathrm{d}x + c \right) = x^2 \left( \int - \frac{2}{x^2} \, \mathrm{d}x + c \right) = x^2 \left( \frac{2}{x} + c \right) = 2x + cx^2
+.\]
+The solution $y(x)$ can be found as
+\[ 
+y(x) = \pm \sqrt{\frac{1}{u(x)}} = \pm \sqrt{\frac{1}{2x + cx^2}}
+.\]
+

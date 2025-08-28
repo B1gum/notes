@@ -1,0 +1,246 @@
+\section*{Lecture 3}
+
+\subsection*{1.}
+Consider
+\begin{align*}
+  x_1 + x_2 + 2x_3 &= 1 \\
+  2x_1 + 2x_2 &= 4 \\
+  x_1 + x_3 &= 2
+.\end{align*}
+Transform the corresponding augmented matrix to row echelon form and decide whether there is one, no, or infinitely many solutions. Find the rank of the corresponding coefficient matrix and of the corresponding augmented matrix.
+\[ 
+\tilde{A} = \left( \begin{array}{ccc|c}
+1 & 1 & 2 & 1\\
+2 & 2 & 0 & 4\\
+1 & 0 & 1 & 2\\
+\end{array} \right)
+.\]
+We can now subtract $2(1)$ from $(2)$
+\[ 
+\left( \begin{array}{ccc|c}
+1 & 1 & 2 & 1\\
+0 & 0 & -4 & 2\\
+1 & 0 & 1 & 2\\
+\end{array} \right)
+.\]
+We can now switch (2) and (3)
+\[ 
+\left( \begin{array}{ccc|c}
+1 & 1 & 2 & 1\\
+1 & 0 & 1 & 2\\
+0 & 0 & -4 & 2\\
+\end{array} \right)
+.\]
+We can now subtract (1) from (2)
+\[ 
+\left( \begin{array}{ccc|c}
+1 & 1 & 2 & 1\\
+0 & -1 & -1 & 1\\
+0 & 0 & -4 & 2\\
+\end{array} \right)
+.\]
+We see that $r = n = m = 3$ which means we have exactly one solution.
+
+We can now examine $A$ to find its rank. We have
+\[ 
+A = \begin{pmatrix}
+1 & 1 & 2\\
+0 & -1 & -1\\
+0 & 0 & -4\\
+\end{pmatrix}
+.\]
+We get the linear combination
+\[ 
+  (1,1,2)c_1 + (0,-1,-1)c_2 + (0,0,-4)c_3 = 0 \implies c_1 = c_2 = c_3 = 0
+.\]
+Therefore $\mathrm{rank}(A) = 3$
+
+For the augmented matrix $\tilde{A}$ we get
+\[ 
+\tilde{A} = \left( \begin{array}{ccc|c}
+1 & 1 & 2 & 1\\
+0 & -1 & -1 & 1\\
+0 & 0 & -4 & 2\\
+\end{array} \right)
+.\]
+This gives us the linear combination
+\[ 
+  (1,1,2,1)c_1 + (0,-1,-1,1)c_2 + (0,0,-4,2)c_3 = 0 \implies c_1 = c_2 = c_3 = 0 \implies \mathrm{rank}(\tilde{A}) = 3
+.\]
+
+
+
+\subsection*{2.}
+Consider
+\begin{align*}
+  x_2 + x_3 &= 2 \\
+  2x_1 &= 1 \\
+  2x_1 + x_2 + x_3 &= 3
+.\end{align*}
+Transform the corresponding augmented matrix to row echelon form and decide whether there is one, no, or infinitely many solutions. Find the rank of the corresponding coefficient matrix and of the corresponding augmented matrix.
+\bigbreak
+The corresponding augmented matrix is
+\[ 
+\tilde{A} = \left( \begin{array}{ccc|c}
+0 & 1 & 1 & 2\\
+2 & 0 & 0 & 1\\
+2 & 1 & 1 & 3\\
+\end{array} \right)
+.\]
+We switch (1) and (3)
+\[ 
+\tilde{A} = \left( \begin{array}{ccc|c}
+2 & 1 & 1 & 3\\
+2 & 0 & 0 & 1\\
+0 & 1 & 1 & 2\\
+\end{array} \right)
+.\]
+We switch (2) and (3)
+\[ 
+\tilde{A} = \left( \begin{array}{ccc|c}
+2 & 1 & 1 & 3\\
+0 & 1 & 1 & 2\\
+2 & 0 & 0 & 1\\
+\end{array} \right)
+.\]
+We subtract (1) from (3)
+\[ 
+\tilde{A} = \left( \begin{array}{ccc|c}
+2 & 1 & 1 & 3\\
+0 & 1 & 1 & 2\\
+0 & -1 & -1 & -2\\
+\end{array} \right)
+.\]
+We add (2) to (3)
+\[ 
+  \tilde{A} = \left( \begin{array}{ccc|c}
+2 & 1 & 1 & 3\\
+0 & 1 & 1 & 2\\
+0 & 0 & 0 & 0\\
+\end{array} \right)
+.\]
+Thus we have $m = n = 3$ and $r = 2$. $\tilde{b_3} = 0$ which means there is infinitely many solutions.
+
+To determine the rank of $A$ we start by writing it up as
+\[ 
+A = \begin{pmatrix}
+2 & 1 & 1\\
+0 & 1 & 1\\
+0 & 0 & 0\\
+\end{pmatrix}
+.\]
+This gives the linear combination $(2,1,1)c_1 + (0,1,1)c_2 + (0,0,0)c_3 = 0$. As $c_3$ can be arbitrary we know that $\mathrm{rank}(A) < 3$. We can now try $(2,1,1)c_1 + (0,1,1)c_2 = 0$ which implies that $\mathrm{rank}(A) = 2$.
+
+The same procedure can be followed for $\mathrm{rank}(\tilde{A})$
+\[ 
+\tilde{A} = \left( \begin{array}{ccc|c}
+2 & 1 & 1 & 3\\
+0 & 1 & 1 & 2\\
+0 & 0 & 0 & 0\\
+\end{array} \right)
+.\]
+In this case we one again quickly can realize that $\mathrm{rank}(\tilde{A}) = 2$
+
+
+\subsection*{3.}
+Consider
+\begin{align*}
+  3x_1 + 2x_2 + 2x_3 &= 3 \\
+  2x_1 &= 1 \\
+  x_1 + 2x_2 + 2x_3 &= 1
+.\end{align*}
+Transform the corresponding augmented matrix to row echelon form and decide whether there is one, no, or infinitely many solutions. Find the rank of the corresponding coefficient matrix and of the corresponding augmented matrix.
+\bigbreak
+We can write up the augmented matrix as
+\[ 
+\tilde{A} = \left( \begin{array}{ccc|c}
+3 & 2 & 2 & 3\\
+2 & 0 & 0 & 1\\
+1 & 2 & 2 & 1\\
+\end{array} \right)
+.\]
+We can subtract $\frac{2}{3}(1)$ from $(2)$ to get
+\[ 
+\left( \begin{array}{ccc|c}
+3 & 2 & 2 & 3\\
+0 & -\frac{4}{3} & -\frac{4}{3} & -1\\
+1 & 2 & 2 & 1\\
+\end{array} \right)
+.\]
+We can now subtract $\frac{1}{3}(1)$ from $(3)$ to get
+\[ 
+\left( \begin{array}{ccc|c}
+3 & 2 & 2 & 3\\
+0 & -\frac{4}{3} & -\frac{4}{3} & -1\\
+0 & \frac{4}{3} & \frac{4}{3} & 0\\
+\end{array} \right)
+.\]
+We can now add $(2)$ to $(3)$ to get
+\[ 
+\left( \begin{array}{ccc|c}
+3 & 2 & 2 & 3\\
+0 & -\frac{4}{3} & -\frac{4}{3} & -1\\
+0 & 0 & 0 & -1\\
+\end{array} \right)
+.\]
+We can now observe that $m = n = 3$, but $r = 2$ and $\tilde{b_3} \neq 0$ which means there are no solutions.
+
+To determine $\mathrm{rank}(A)$ we start out by writing out $A$ as
+\[ 
+  \begin{pmatrix}
+  3 & 2 & 2\\
+  0 & -\frac{4}{3} & -\frac{4}{3}\\
+  0 & 0 & 0\\
+  \end{pmatrix}
+.\]
+We can quickly observe that $c_3$ is arbitrary but the other two rows are linearly independent and therefore $\mathrm{rank}(A) = 2$.
+
+For $\mathrm{rank}(\tilde{A})$ we follow the same procedure
+\[ 
+\left( \begin{array}{ccc|c}
+3 & 2 & 2 & 3\\
+0 & -\frac{4}{3} & -\frac{4}{3} & -1\\
+0 & 0 & 0 & -1\\
+\end{array} \right)
+.\]
+In this case all the rows are linearly independent and therefore $\mathrm{rank}(\tilde{A}) = 3$
+
+
+
+
+\subsection*{4.}
+Reflect on the result you obtained in Exercises 1, 2, 3. What relation do you expect between the system of equations $A \Vec{x} = \Vec{b}$ being consistent and the rank of $A$ and $\tilde{A}$? What relation do you expect between the number of steps of the row echelon form of a matrix and its rank?
+\bigbreak
+Based on the above calculations one can conjecture that for $A \Vec{x} = \Vec{b}$ to be consistent $\mathrm{rank}(A) = \mathrm{rank}(\tilde{A})$.
+
+\subsection*{5.}
+Calculate the rank of
+\[ 
+A = \begin{pmatrix}
+1 & 1 & 1 & 1\\
+2 & 2 & 2 & 2\\
+-1 & -1 & -1 & -1\\
+\end{pmatrix}
+.\]
+\bigbreak
+We start by getting the above to row echelon form by adding (1) to (3) and subtracting 2(1) from (2) to get
+\[ 
+A = \begin{pmatrix}
+1 & 1 & 1 & 1\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0\\
+\end{pmatrix}
+.\]
+This obviously has a rank of $\mathrm{rank}(A) = 1$.
+
+\subsection*{6.}
+Calculate the rank of
+\[ 
+A = \begin{pmatrix}
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0\\
+\end{pmatrix}
+.\]
+\bigbreak
+It can quickly be seen that $\mathrm{rank}(A) = 0$.

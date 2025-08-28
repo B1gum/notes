@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="78.963181mm"
+   height="74.844948mm"
+   viewBox="0 0 78.963181 74.844948"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1"
+     transform="translate(-28.627616,-67.592419)">
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.4;stroke-miterlimit:35.2;stroke-dasharray:none"
+       id="rect3"
+       width="78.563179"
+       height="74.444946"
+       x="28.827616"
+       y="67.792419" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.413592;stroke-miterlimit:35.2;stroke-dasharray:0.413592, 1.24078;stroke-dashoffset:0"
+       id="rect4"
+       width="73.767998"
+       height="69.679543"
+       x="31.225206"
+       y="70.175125" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.4;stroke-miterlimit:35.2;stroke-dasharray:none;stroke-dashoffset:0"
+       x="62.976959"
+       y="104.77783"
+       id="text4"><tspan
+         id="tspan4"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.4;stroke-dasharray:none"
+         x="62.976959"
+         y="104.77783">$$V$$</tspan></text>
+  </g>
+</svg>

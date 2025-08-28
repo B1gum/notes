@@ -1,0 +1,312 @@
+\section*{Lecture 13}
+
+\subsection*{1.} Solve the IVP
+\[ 
+y'''(x) - y''(x) + y'(x) - y(x) = 0, \quad y(0) = 1, \quad y'(0) = 0, \quad y''(0) = 1
+.\]
+\textit{Hint:} The roots of the characteristic equation are
+\[ 
+\lambda_1 = 1, \quad \lambda_2 = i, \quad \lambda_3 = -i
+.\]
+\bigbreak
+For the three roots we have the following basis
+\begin{align*}
+  y_1(x) &= e^{x} \\
+  y_2(x) &= \cos x \\
+  y_3(x) &= \sin x
+.\end{align*}
+This gives the general solution
+\[ 
+y(x) = c_1e^{x} + c_2 \cos x + c_3 \sin x
+.\]
+The derivatives of this are
+\begin{align*}
+  y'(x) &= c_1 e^{x} - c_2 \sin x + c_3 \cos x \\
+  y''(x) &= c_1 e^{x} - c_2 \cos x - c_3 \sin x
+.\end{align*}
+The initial values now gives
+\begin{align*}
+  y(0) &= 1 \\
+  c_1 + c_2 &= 1 \\
+  y'(0) &= 0 \\
+  c_1 + c_3 &= 0 \\
+  y''(0) &= 1 \\
+  c_1 - c_2 &= 1
+.\end{align*}
+By adding (1) to (3) we get
+\[ 
+2c_1 = 2 \implies c_1 = 1
+.\]
+From this we can quickly see that $c_2 = 0$ and $c_3 = -1$. This gives the particular solution of
+\[ 
+y_p(x) = e^{x} - \sin x
+.\]
+
+
+\subsection*{2.} Solve the IVP
+\[ 
+y'''(x) - 3y''(x) + 3y'(x) - y(x) = 0, \quad y(0) = 0, \quad y'(0) = 1, \quad y''(0) = 4
+.\]
+\textit{Hint:} The roots of the characteristic equation are
+\[ 
+\lambda_1 = 1, \quad \lambda_2 = 1, \quad \lambda_3 = 1
+.\]
+\bigbreak
+In this case all the roots are alike and therefore we must remember to multiply by $x$ for each progressing solution as
+\begin{align*}
+  y_1(x) &= e^{x} \\
+  y_2 (x) &= x e^{x} \\
+  y_3(x) &= x^2 e^{x}
+.\end{align*}
+This gives the general solution of
+\[ 
+y(x) = c_1 e^{x} + c_2 x e^{x} + c_3 x^2 e^{x}
+.\]
+Which has the derivatives
+\begin{align*}
+  y'(x) &= (c_1 + c_2) e^{x} + (c_2 + 2c_3) xe^{x} + c_3 x^2 e^{x} \\
+  y''(x) &= (c_1 + 2c_2 + 2c_3) e^{x} + (c_2 + 4c_3) xe^{x} + c_3 x^2 e^{x}
+.\end{align*}
+The initial values give
+\begin{align*}
+  y(0) &= 0 \\
+  c_1 &= 0 \\
+  y'(0) &= 1 \\
+  c_1 + c_2 &= 1 \\
+  c_2 &= 1 \\
+  y''(0) &= 4 \\
+  c_1 + 2c_2 + 2c_3 &= 4 \\
+  2c_3 &= 2 \\
+  c_3 &= 1
+.\end{align*}
+Therefore the particular solution is
+\[ 
+y_p(x) = x e^{x} + x^2 e^{x}
+.\]
+
+
+\subsection*{3.} Suppose that the roots of the characteristic equation of a 6th order linear and homogeneous ODE with constant coefficients for the unknown function $y(x)$ are
+\[ 
+\lambda_1 = 1, \lambda_2 = 1+i, \lambda_3 = 1, \lambda_4 = 1 + i, \lambda_5 = 1-i, \lambda_6 = 1-i
+.\]
+Find the general solution.
+\bigbreak
+In this case we have $\lambda_1 = \lambda_3 = 1$, $\lambda_2 = \lambda_4 = 1 + i$ and $\lambda_5 = \lambda_6 = 1-i$. Therefore we get the basis solutions of
+\begin{align*}
+  y_1(x) &= e^{x} \\
+  y_2(x) &= e^{x} \cos x \\
+  y_3(x) &= xe^{x} \\
+  y_4(x) &= x e^{x} \cos x \\
+  y_5(x) &= e^{x} \sin x \\
+  y_6(x) &= x e^{x} \sin x
+.\end{align*}
+This gives the general solution of
+\[ 
+y(x) = c_1 e^{x} + c_2 e^{x} \cos x + c_3 xe^{x} + c_4 xe^{x}\cos x + c_5 e^{x} \sin x + c_6 x e^{x} \sin x
+.\]
+
+
+
+\subsection*{4.} Find a 3rd order linear and homogeneous ODE with constant coefficients such that
+\[ 
+y(x) = c_1 e^{x} + c_2 e^{x} \cos x + c_3 e^{x} \sin x
+\]
+is the general solution.
+\bigbreak
+Based on the given general solution we can quickly see that the roots of the characteristic equation are $\lambda_1 = 1, \lambda_2 = 1 + i, \lambda_3 = 1-i$. The characteristic equation can therefore be constructed as
+\begin{align*}
+  (\lambda - \lambda_1)(\lambda - \lambda_2)(\lambda - \lambda_3) &= 0 \\
+  (\lambda-1)(\lambda - (1 + i))(\lambda - (1 - i)) &= 0 \\
+  \lambda^3 - 3\lambda^2 + 4\lambda - 2 &= 0
+.\end{align*}
+This corresponds to the following 3rd order linear and homogeneous ODE:
+\[ 
+y'''(x) - 3y''(x) + 4y'(x) - 2y(x) = 0
+.\]
+
+\subsection*{5.} Solve the ODE
+\[ 
+y^{(3)}(x) + y''(x) - y'(x) - y(x) = e^{-x}
+\]
+using the method of undetermined coefficients.
+
+\textit{Hint:} The roots of the characteristic equation of the corresponding homogeneous ODE are $\lambda_1 = \lambda_2 = -1, \lambda_3 = 1$.
+\bigbreak
+Based on the roots of the characteristic equation, the three bases of the equation is
+\[ 
+y_1(x) = e^{-x}, y_2(x) = x e^{-x}, y_3(x) = e^{x}
+.\]
+Which means the general solution of the ODE is
+\[ 
+y_h(x) =c_1 e^{-x} + c_2 x e^{-x} + c_3 e^{x}
+.\]
+As $r(x) = e^{-x}$ we should look for a nonhomogeneous solution of the form:
+\[ 
+y_r(x) = C e^{-x}
+.\]
+However as $e^{-x}$ corresponds to a double root of the original ODE so we should (based on the modification rule) modify it as
+\[ 
+y_r(x) = C x^2 e^{-x}
+.\]
+The derivatives of this are
+\begin{align*}
+  y_r'(x) &= - C x^2 e^{-x} + 2 Cx e^{-x} \\
+  y_r''(x) &= C x^2 e^{-x} - 4 C x e^{-x} + 2C e^{-x} \\
+  y_r'''(x) &= - C x^2 e^{-x} + 6 C x e^{-x} - 6 C e^{-x}
+.\end{align*}
+We can insert this into the nonhomogeneous ODE as:
+\begin{align*}
+  y_r'''(x) + y''(x) - y'(x) - y(x) &= e^{-x} \\
+  - C x^2 e^{-x} + 6 Cx e^{-x} - 6 C e^{-x} + C x^2 e^{-x} - 4 C x e^{-x} + 2 C e^{-x} + Cx^2 e^{-x} - 2Cx e^{-x} - C x^2 e^{-x} &= e^{-x} \\
+  - 4 C e^{-x} &= e^{-x}\\
+  C &= - \frac{1}{4} \\
+.\end{align*}
+Which means the nonhomogeneous solution is
+\[ 
+y_r(x) = - \frac{1}{4} x^2 e^{-x}
+.\]
+And the general solution is therefore
+\[ 
+y(x) = y_h(x) + y_r(x) = c_1 e^{-x} + c_2 x e^{-x} + c_3 e^{x} - \frac{1}{4} x^2 e^{-x}
+.\]
+
+
+\subsection*{6.} Solve the ODE
+\[ 
+y^{(3)}(x) - y''(x) + y'(x) - y(x) = e^{-x}
+\]
+using the method of undetermined coefficients.
+
+\textit{Hint:} The roots of the characteristic equation of the corresponding homogeneous ODE are $\lambda_1 = 1, \lambda_2 = i, \lambda_3 = -i$.
+\bigbreak
+Based on the roots of the characteristic equation we can find the basises of the ODE as
+\[ 
+y_1 (x) = e^{x}, y_2(x) = \cos x, y_3(x) = \sin x
+.\]
+Which means the general solution of the ODE is
+\[ 
+y_h(x) = c_1 e^{x} + c_2 \cos x + c_3 \sin x
+.\]
+The basic rules of the method of undetermined coefficients tell us that the solution $y_r$ should be of the form
+\[ 
+y_r(x) = C e^{-x}
+.\]
+This has the derivatives
+\begin{align*}
+  y_r'(x) &= - C e^{-x} \\
+  y_r''(x) &= C e^{-x} \\
+  y_r'''(x) &= - C e^{-x}
+.\end{align*}
+Which can be inserted into the nonhomogeneous ODE as
+\begin{align*}
+  y^{(3)}(x) - y''(x) + y'(x) - y(x) &= e^{-x} \\
+  - C e^{-x} - C e^{-x} - C e^{-x} - C e^{-x} &= e^{-x} \\
+  - 4 C e^{-x} &= e^{-x} \\
+  C &= -\frac{1}{4} \\
+.\end{align*}
+Which means the nonhomogeneous solution is
+\[ 
+y_r(x) = - \frac{1}{4} e^{-x}
+.\]
+And the solution is therefore
+\[ 
+y(x) = c_1 e^{x} + c_2 \cos x + c_3 \sin x - \frac{1}{4} e^{-x}
+.\]
+
+
+
+
+\subsection*{7.} Solve the ODE
+\[ 
+y''(x) - y(x) = e^{x}
+\]
+Using the method of variation of parameters.
+\bigbreak
+The corresponding homogeneous ODE is
+\[ 
+y''(x) - y(x) = 0
+.\]
+This has the characteristic equation:
+\[ 
+\lambda^2 - 1 = 0
+.\]
+Which has the roots:
+\[ 
+\lambda_1 = 1, \lambda_2 = -1
+.\]
+This gives the basis:
+\[ 
+y_1(x) = e^{x}, y_2(x) = e^{-x}
+.\]
+Therefore the general solution to the homogeneous ODE is
+\[ 
+y_h(x) = c_1 e^{x} + c_2 e^{-x}
+.\]
+To use the method of variation of parameters we must calculate the Wronskian of this basis, $W(y_1(x), y_2(x))$. Therefore we have
+\[ 
+W(y_1(x), y_2(x)) = \left| \begin{array}{cc}
+y_1(x) & y_2(x)\\
+y_1'(x) & y_2'(x)\\
+\end{array} \right| = \left| \begin{array}{cc}
+ e^{x} & e^{-x}\\
+ e^{x} & -e^{-x}\\
+\end{array} \right| = e^{x} \cdot (-e^{-x}) - e^{x} e^{-x} = -e^{0} - e^{0} = -1 - 1 = -2
+.\]
+The determinant $W_1$ can be calculated as
+\[ 
+W_1(x) = \left| \begin{array}{cc}
+0 & y_2(x) \\
+1 & y_2'(x) \\
+\end{array} \right| = \left| \begin{array}{cc}
+0 & e^{-x}\\
+1 & - e^{-x}\\
+\end{array} \right| = 0 - e^{-x} = - e^{-x}
+.\]
+And the determinant $W_2$ can be calculated as
+\[ 
+W_2(x) = \left| \begin{array}{cc}
+y_1(x) & 0\\
+y_1'(x) & 1\\
+\end{array} \right| = \left| \begin{array}{cc}
+e^{x} & 0\\
+e^{x} & 1\\
+\end{array} \right| = e^{x}
+.\]
+The nonhomogeneous solution can then be found as
+\begin{align*}
+  y_r(x) &= \sum_{k = 1}^{2} y_k(x) \int \frac{W_k(x)}{W(x)} r(x) \, \mathrm{d}x  \\
+  y_r(x) &= e^{x} \int \frac{e^{-x}}{2} e^{x} \, \mathrm{d}x  + e^{-x} \int - \frac{e^{x}}{2} e^{x} \, \mathrm{d}x  \\
+  y_r(x) &= \frac{e^{x} x}{2} - \frac{e^{x}}{4}
+.\end{align*}
+This means the particular solution is
+\[ 
+y(x) = y_h(x) + y_r(x) = c_1 e^{x} + c_2 e^{-x} + \frac{e^{x} x}{2} - \frac{e^{x}}{4}
+.\]
+
+
+\subsection*{8.} Find one solution of
+\[ 
+y^{(3)}(x) - y'(x) = e^{x}
+.\]
+\textit{Hint:} Use exercise 7.
+\bigbreak
+We have the ODE from before:
+\[ 
+y''(x) - y(x) = e^{x}
+.\]
+We can differentiate this on both sides (without changing the solutions) as:
+\[ 
+y^{(3)}(x) - y'(x) = e^{x}
+.\]
+This is exactly the ODE from Exercise 8 and therfore the same $y_r$ solution that was found in Exercise 7 is also a solution to this. Therefore a solution to the ODE is:
+\[ 
+y_r(x) = \frac{e^{x} x}{2} - \frac{e^{x}}{4}
+.\]
+We can verify this as:
+\begin{align*}
+  y^{(3)}(x) - y'(x) &= e^{x}\\
+  \frac{e^{x} (2x + 5)}{4} - \frac{e^{x} (2x + 1)}{4} &= e^{x} \\
+  2x + 5 - ( 2x + 1) &= 4 \\
+  4 &= 4
+.\end{align*}
+As this holds the solution is correct.

@@ -1,0 +1,234 @@
+\section*{Lecture 2}
+
+\subsection*{1)}
+Consider the system of equations
+\begin{align*}
+  x_1 + 2x_2 + x_5 &= 0 \\
+  x_2 + x_3 + x_4 &= 1 \\
+  x_1 + x_4 + x_5 &= 2 \\
+  x_2 + 3x_4 + x_5 &= 1 \\
+  x_5 &= 1
+.\end{align*}
+Find the corresponding coefficient matrix $A$ and the corresponding augmented matrix $\tilde{A}$.
+\bigbreak
+We get the coefficient matrix $A$ as
+\[ 
+A = \begin{pmatrix}
+1 & 2 & 0 & 0 & 1\\
+0 & 1 & 1 & 1 & 0\\
+1 & 0 & 0 & 1 & 1\\
+0 & 1 & 0 & 3 & 1\\
+0 & 0 & 0 & 0 & 1\\
+\end{pmatrix}
+.\]
+And the augmented matrix $\tilde{A}$ as
+\[ 
+  \tilde{A} = \left( \begin{array}{ccccc|c}
+  1 & 2 & 0 & 0 & 1 & 0\\
+  0 & 1 & 1 & 1 & 0 & 1\\
+  1 & 0 & 0 & 1 & 1 & 2\\
+  0 & 1 & 0 & 3 & 1 & 1\\
+  0 & 0 & 0 & 0 & 1 & 1\\
+  \end{array} \right)
+.\]
+
+
+
+\subsection*{2)}
+Consider the system of equations
+\begin{align*}
+  x_1 + x_2 + x_3 + 2x_5 &= 2 \\
+  x_1 + 2x_2 + x_4 &= 1 \\
+  2x_1 + x_4 + x_5 &= 2 \\
+  x_2 + x_4 + x_5 &= 2
+.\end{align*}
+Find the corresponding coefficient matrix $A$ and the corresponding augmented matrix $\tilde{A}$.
+\bigbreak
+Once again $A$ is found as
+\[ 
+A = \begin{pmatrix}
+1 & 1 & 1 & 0 & 2\\
+1 & 2 & 0 & 1 & 0\\
+2 & 0 & 0 & 1 & 1\\
+0 & 1 & 0 & 1 & 1\\
+\end{pmatrix}
+.\]
+And the augmented matrix is found as
+\[ 
+  \tilde{A} = \left( \begin{array}{ccccc|c}
+  1 & 1 & 1 & 0 & 2 & 2\\
+  1 & 2 & 0 & 1 & 0 & 1\\
+  2 & 0 & 0 & 1 & 1 & 2\\
+  0 & 1 & 0 & 1 & 1 & 2\\
+  \end{array} \right)
+.\]
+
+
+\subsection*{3)}
+Consider the system of equations
+\begin{align*}
+  x_1 + x_2 + 2x_3 &= 2 \\
+  2x_1 + x_2 + x_3 &= 1 \\
+  x_1 + x_4 + x_5 &= 2 \\
+  x_1 + 2x_2 + x_3 &= 4 \\
+  x_1 + x_2 &= 3 \\
+  x_2 + x_4 &= 1
+.\end{align*}
+Find the corresponding coefficient matrix $A$ and the corresponding augmented matrix $\tilde{A}$.
+\bigbreak
+We have
+\[ 
+A = \begin{pmatrix}
+1 & 1 & 2 & 0 & 0\\
+2 & 1 & 1 & 0 & 0\\
+1 & 0 & 0 & 1 & 1\\
+1 & 2 & 1 & 0 & 0\\
+1 & 1 & 0 & 0 & 0\\
+0 & 1 & 0 & 1 & 0\\
+\end{pmatrix}
+.\]
+And
+\[ 
+  \tilde{A} = \left( \begin{array}{ccccc|c}
+  1 & 1 & 2 & 0 & 0 & 2\\
+  2 & 1 & 1 & 0 & 0 & 1\\
+  1 & 0 & 0 & 1 & 1 & 2\\
+  1 & 2 & 1 & 0 & 0 & 4\\
+  1 & 1 & 0 & 0 & 0 & 3\\
+  0 & 1 & 0 & 1 & 0 & 1\\
+  \end{array} \right)
+.\]
+
+
+
+\subsection*{4)}
+Consider the augmented matrix
+\[ 
+  \tilde{A} =
+\left( \begin{array}{cccc|c}
+1 & 1 & 2 & 0 & 0\\
+0 & 2 & 1 & 1 & 1\\
+1 & 0 & 1 & 1 & 0\\
+\end{array} \right)
+.\]
+Find the corresponding system of equations.
+\bigbreak
+We can apply the above method in reverse and get
+\begin{align*}
+x_1 + x_2 + 2x_3 &= 0 \\
+2x_2 + x_3 + x_4 &= 1 \\
+x_1 + x_3 + x_4 &= 0
+.\end{align*}
+
+
+\subsection*{5)}
+Solve the system of equations
+\begin{align*}
+  x_1 + x_2 + x_3 &= 1\\
+  x_1 + x_3 &= 1 \\
+  x_2 + x_3 &= 1
+.\end{align*}
+\bigbreak
+We can subtract (2) from (1) to get
+\[ 
+x_2 = 0
+.\]
+And we can quickly see that $x_2 = 0 \implies x_3 = 1, x_1 = 0$
+
+
+
+\subsection*{6)}
+Consider the matrix
+\[ 
+A = \begin{pmatrix}
+1 & 1 & 1\\
+2 & 1 & 2\\
+0 & 1 & 1\\
+\end{pmatrix}
+.\]
+Apply elementary row operations to transform it into the row equivalent matrix
+\[ 
+B = \begin{pmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1\\
+\end{pmatrix}
+.\]
+\bigbreak
+We start by subtracting (3) from (1) to get
+\[ 
+\begin{pmatrix}
+1 & 0 & 0\\
+2 & 1 & 2\\
+0 & 1 & 1\\
+\end{pmatrix}
+.\]
+We can now subtract $2(3)$ from (2) to get
+\[ 
+\begin{pmatrix}
+1 & 0 & 0\\
+2 & -1 & 0\\
+0 & 1 & 1\\
+\end{pmatrix}
+.\]
+Now $2(1)$ can be subtracted from (2)
+\[ 
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & -1 & 0\\
+0 & 1 & 1 \\
+\end{pmatrix}
+.\]
+(2) can be added to (3)
+\[ 
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & -1 & 0\\
+0 & 0 & 1\\
+\end{pmatrix}
+.\]
+And (2) can be multiplied by $-1$
+\[ 
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1\\
+\end{pmatrix}
+.\]
+
+
+
+\subsection*{7)}
+Consider the matrix
+\[ 
+A = \begin{pmatrix}
+1 & 1 & 1\\
+2 & 1 & 2\\
+0 & 1 & 1\\
+\end{pmatrix}
+.\]
+Apply elementary row operations to transform it to the row equivalent matrix
+\[ 
+B = \begin{pmatrix}
+0 & 0 & 1\\
+0 & 1 & 0\\
+1 & 0 & 0\\
+\end{pmatrix}
+.\]
+\bigbreak
+Here we can start by applying all the same elementary row operations as before to get
+\[ 
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1\\
+\end{pmatrix}
+.\]
+And now we can apply the elementary row operation of switching equation between (1) and (3) to get
+\[ 
+\begin{pmatrix}
+0 & 0 & 1\\
+0 & 1 & 0\\
+1 & 0 & 0\\
+\end{pmatrix}
+.\]

@@ -1,0 +1,479 @@
+\section*{Lecture 5}
+
+\subsection*{1.}
+Calculate the determinant of
+\[ 
+\begin{pmatrix}
+1 & 2 & 1 & 1\\
+0 & 2 & 2 & 0\\
+1 & 2 & 2 & 2\\
+0 & 2 & 1 & 3\\
+\end{pmatrix}
+.\]
+\bigbreak
+We start by choosing the column $k = 1$ as the column about which to apply Cramer's rule. We get
+\[ 
+D = \mathrm{det}(A) = \sum_{j = 1}^{4} (-1)^{j+1} a_{j1} M_{j1} = (-1)^{2} a_{11} M_{11} + (-1)^{4} a_{31}M_{31} = M_{11} + M_{31}  
+.\]
+We thus need to find the minors $M_{11}$ and $M_{31}$. These are
+\begin{align*}
+  M_{11} &= \begin{pmatrix}
+2 & 2 & 0\\
+2 & 2 & 2\\
+2 & 1 & 3\\
+\end{pmatrix} &&\text{and} & M_{31} &= \begin{pmatrix}
+2 & 1 & 1\\
+2 & 2 & 0\\
+2 & 1 & 3\\
+\end{pmatrix}
+.\end{align*}
+For $M_{11}$ we will use the first row $j = 1$ to get
+\[ 
+M_{11} = \left| \begin{array}{ccc}
+2 & 2 & 0\\
+2 & 2 & 2\\
+2 & 1 & 3\\
+\end{array} \right| = 2 \left| \begin{array} {cc}
+2 & 2\\
+1 & 3\\
+\end{array} \right| - 2 \left| \begin{array} {cc}
+2 & 2\\
+2 & 3\\
+\end{array} \right| = 2 \cdot 4 - 2 \cdot 2 = 4
+.\]
+For $M_{31}$ we will use the second row $j = 2$ to get
+\[ 
+M_{31} = \left| \begin{array}{ccc}
+2 & 1 & 1\\
+2 & 2 & 0\\
+2 & 1 & 3\\
+\end{array} \right| = - 2 \left| \begin{array}{cc}
+1 & 1\\
+1 & 3\\
+\end{array} \right| + 2 \left| \begin{array}{cc}
+2 & 1\\
+2 & 3\\
+\end{array} \right| = -2 \cdot 2 + 2 \cdot 4 = 4
+.\]
+We therefore get
+\[ 
+D = M_{11} + M_{31} = 4 + 4 = 8
+.\]
+
+
+
+\subsection*{2.}
+Solve
+\[ 
+A \Vec{x} = \Vec{b}, A = \begin{pmatrix}
+1 & 1 & 1\\
+0 & 1 & 1\\
+0 & 0 & 1\\
+\end{pmatrix}, \Vec{b} = \begin{pmatrix}
+0\\
+1\\
+0\\
+\end{pmatrix}
+.\]
+Using Cramer's rule.
+\bigbreak
+To use Cramer's rule we must first find $D = \mathrm{det}(A)$. As $A$ is a triangular matrix this is just the product of the diagonal so we get
+\[ 
+D = \mathrm{det}(A) = 1\cdot 1\cdot 1 = 1
+.\]
+Now we must find the determinant
+\[ 
+D_1 = \left| \begin{array}{ccc}
+0 & 1 & 1\\
+1 & 1 & 1\\
+0 & 0 & 1\\
+\end{array} \right|
+.\]
+Here we will use the first column to get
+\[ 
+  D_1 = - 1 \left| \begin{array}{cc}
+  1 & 1\\
+  0 & 1\\
+  \end{array} \right| = -1 \cdot 1 = -1
+.\]
+Now for the determinant
+\[ 
+D_2 = \left| \begin{array}{ccc}
+1 & 0 & 1\\
+0 & 1 & 1\\
+0 & 0 & 1\\
+\end{array} \right|
+.\]
+Here we will use the first column to get
+\[ 
+D_2 = 1 \cdot \left| \begin{array}{cc}
+1 & 1\\
+0 & 1\\
+\end{array} \right| = 1
+.\]
+Now for the determinant
+\[ 
+D_3 = \left| \begin{array}{ccc}
+1 & 1 & 0\\
+0 & 1 & 1\\
+0 & 0 & 0\\
+\end{array} \right|
+.\]
+Here we will use the first column to get
+\[ 
+D_3 = 1 \cdot \left| \begin{array}{cc}
+1 & 1\\
+0 & 0\\
+\end{array} \right| = 0
+.\]
+Therefore the solution is
+\[ 
+\Vec{x} = \begin{pmatrix}
+D_1 / D\\
+D_2 / D\\
+D_3 / D\\
+\end{pmatrix} = \begin{pmatrix}
+-1\\
+1\\
+0\\
+\end{pmatrix}
+.\]
+
+
+
+
+\subsection*{3.}
+Solve
+\[ 
+A \Vec{x} = \Vec{b}, A = \begin{pmatrix}
+1 & 1 & 1\\
+1 & 1 & 2\\
+1 & 2 & 1\\
+\end{pmatrix}, \Vec{b} = \begin{pmatrix}
+0\\
+1\\
+0\\
+\end{pmatrix}
+.\]
+\bigbreak
+We will solve the exercise using Cramer's rule. First we must find $D = \mathrm{det}(A)$. To do this we will use the first row to get
+\[ 
+D = \left| \begin{array}{ccc}
+1 & 1 & 1\\
+1 & 1 & 2\\
+1 & 2 & 1\\
+\end{array} \right| = 1 \left| \begin{array}{cc}
+1 & 2\\
+2 & 1\\
+\end{array} \right| - 1 \left| \begin{array}{cc}
+1 & 2\\
+1 & 1\\
+\end{array} \right| + 1 \left| \begin{array}{cc}
+1 & 1\\
+1 & 2\\
+\end{array} \right| = 1 \cdot -3 - 1 \cdot -1 + 1 \cdot 1 = -1
+.\]
+Now we will find the determinant $D_1$ as
+\[ 
+D_1 = \left| \begin{array}{ccc}
+0 & 1 & 1\\
+1 & 1 & 2\\
+0 & 2 & 1\\
+\end{array} \right| = -1 \cdot \left| \begin{array}{cc}
+1 & 1\\
+2 & 1\\
+\end{array} \right| = -1 \cdot -1 = 1
+.\]
+Then we will find $D_2$ as
+\[ 
+D_2 = \left| \begin{array}{ccc}
+1 & 0 & 1\\
+1 & 1 & 2\\
+1 & 0 & 1\\
+\end{array} \right| = 1 \left| \begin{array}{cc}
+1 & 1\\
+1 & 1\\
+\end{array} \right| = 1 \cdot 0 = 0
+.\]
+Lastly we will find $D_3$ as
+\[ 
+D_3 = \left| \begin{array}{ccc}
+1 & 1 & 0\\
+1 & 1 & 1\\
+1 & 2 & 0\\
+\end{array} \right| = -1 \left| \begin{array}{cc}
+1 & 1\\
+1 & 2\\
+\end{array} \right| = -1 \cdot 1 = -1
+.\]
+This gives the solution
+\[ 
+\Vec{x} = \begin{pmatrix}
+D_1 / D\\
+D_2 / D\\
+D_3 / D\\
+\end{pmatrix} = \begin{pmatrix}
+-1\\
+0\\
+1\\
+\end{pmatrix}
+.\]
+
+
+
+\subsection*{4.}
+Calculate the inverse of
+\[ 
+A = \begin{pmatrix}
+1 & 1 & 2\\
+1 & 2 & 1\\
+1 & 1 & 1\\
+\end{pmatrix}
+\]
+using Gauss-Jordan elimination. Check your result using $A^{-1} A = I$. Use the inverse to find the folution of $A \Vec{x} = \Vec{b}$ for
+\[ 
+\Vec{b} = \begin{pmatrix}
+1\\
+1\\
+1\\
+\end{pmatrix}
+.\]
+\bigbreak
+We will first verify that the inverse $A^{-1}$ exists by showing $\mathrm{det}(A) \neq 0$
+\[ 
+D = \mathrm{det}(A) = 1 \left| \begin{array}{cc}
+2 & 1\\
+1 & 1\\
+\end{array} \right| + 1 \cdot (-1) \left| \begin{array}{cc}
+1 & 1\\
+1 & 1\\
+\end{array} \right| + 12\left| \begin{array}{cc}
+1 & 2\\
+1 & 1\\
+\end{array} \right| = 1 \cdot 1 - 1 \cdot 0 + 1 \cdot -2 = -1
+.\]
+As $D = -1 \neq 0$ an inverse of $A$ $A^{-1}$ exists. We get the combined matrix
+\[ 
+  (AI) = \begin{pmatrix}
+  1 & 1 & 2 & 1 & 0 & 0\\
+  1 & 2 & 1 & 0 & 1 & 0\\
+  1 & 1 & 1 & 0 & 0 & 1\\
+  \end{pmatrix}
+.\]
+$(2) - (1)$ gives
+\[ 
+\begin{pmatrix}
+1 & 1 & 2 & 1 & 0 & 0\\
+0 & 1 & -1 & -1 & 1 & 0\\
+1 & 1 & 1 & 0 & 0 & 1\\
+\end{pmatrix}
+.\]
+$(3) - (1)$ gives
+\[ 
+\begin{pmatrix}
+1 & 1 & 2 & 1 & 0 & 0\\
+0 & 1 & -1 & -1 & 1 & 0\\
+0 & 0 & -1 & -1 & 0 & 1\\
+\end{pmatrix}
+.\]
+$(2) - (3)$ gives
+\[ 
+  \begin{pmatrix}
+  1 & 1 & 2 & 1 & 0 & 0\\
+  0 & 1 & 0 & 0 & 1 & -1\\
+  0 & 0 & -1 & -1 & 0 & 1\\
+  \end{pmatrix}
+.\]
+$(1) - (2)$ gives
+\[ 
+\begin{pmatrix}
+1 & 0 & 2 & 1 & -1 & 1\\
+0 & 1 & 0 & 0 & 1 & -1\\
+0 & 0 & -1 & -1 & 0 & 1\\
+\end{pmatrix}
+.\]
+$(1) + 2(3)$ gives
+\[ 
+\begin{pmatrix}
+1 & 0 & 0 & -1 & -1 & 3\\
+0 & 1 & 0 & 0 & 1 & -1\\
+0 & 0 & -1 & -1 & 0 & 1\\
+\end{pmatrix}
+.\]
+$(-1)(3)$ gives
+\[ 
+\begin{pmatrix}
+1 & 0 & 0 & -1 & -1 & 3\\
+0 & 1 & 0 & 0 & 1 & -1\\
+0 & 0 & 1 & 1 & 0 & -1\\
+\end{pmatrix}
+.\]
+Therefore the inverse is
+\[ 
+A^{-1} = \begin{pmatrix}
+-1 & -1 & 3\\
+0 & 1 & -1\\
+1 & 0 & -1\\
+\end{pmatrix}
+.\]
+We can check this as
+\[ 
+\begin{pmatrix}1 & 1 & 2\\1 & 2 & 1\\1 & 1 & 1\\\end{pmatrix} \cdot \begin{pmatrix}-1 & -1 & 3\\0 & 1 & -1\\1 & 0 & -1\\\end{pmatrix} = \left(\begin{array}{ccc} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \\\end{array}\right)
+.\]
+Which means the inverse has been correctly calculated. We can solve for $\Vec{x}$ as
+\[ 
+\Vec{x} = A^{-1} \Vec{b} = \begin{pmatrix}-1 & -1 & 3\\0 & 1 & -1\\1 & 0 & -1\\\end{pmatrix} \cdot \begin{pmatrix}1\\1\\1\\\end{pmatrix} = \left(\begin{array}{c} 1 \\ 0 \\ 0 \\\end{array}\right)
+.\]
+
+
+
+
+\subsection*{5.}
+Calculate the inverse of
+\[ 
+A = \begin{pmatrix}
+1 & 1 & 1\\
+0 & 1 & 1\\
+0 & 0 & 1\\
+\end{pmatrix}
+\]
+using Gauss-Jordan elimination. Check your result using $A^{-1} A = I$. Use the inverse to find the solution of $A \Vec{x} = \Vec{b}$ for
+\[ 
+\Vec{b} = \begin{pmatrix}
+1\\
+1\\
+1\\
+\end{pmatrix}
+.\]
+\bigbreak
+We can quickly see that the determinant $D = \mathrm{det}(A) = 1 \neq 0$ as $A$ is a triangular matrix. Therefore an inverse exists. We get the combined matrix
+\[ 
+  (AI) = \begin{pmatrix}
+    1 & 1 & 1 & 1 & 0 & 0\\
+    0 & 1 & 1 & 0 & 1 & 0\\
+    0 & 0 & 1 & 0 & 0 & 1\\
+  \end{pmatrix}
+.\]
+$(1) - (2)$ gives
+\[ 
+\begin{pmatrix}
+1 & 0 & 0 & 1 & -1 & 0\\
+0 & 1 & 1 & 0 & 1 & 0\\
+0 & 0 & 1 & 0 & 0 & 1\\
+\end{pmatrix}
+.\]
+$(2) - (3)$ gives
+\[ 
+\begin{pmatrix}
+1 & 0 & 0 & 1 & -1 & 0\\
+0 & 1 & 0 & 0 & 1 & -1\\
+0 & 0 & 1 & 0 & 0 & 1\\
+\end{pmatrix}
+.\]
+Therefore the inverse $A^{-1}$ of $A$ is
+\[ 
+A^{-1} = \begin{pmatrix}
+1 & -1 & 0\\
+0 & 1 & -1\\
+0 & 0 & 1\\
+\end{pmatrix}
+.\]
+We can check this as
+\[ 
+ \begin{pmatrix}1 & 1 & 1\\0 & 1 & 1\\0 & 0 & 1\\\end{pmatrix} \cdot \begin{pmatrix}1 & -1 & 0\\0 & 1 & -1\\0 & 0 & 1\\\end{pmatrix} = \left(\begin{array}{ccc} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \\\end{array}\right)
+.\]
+Which confirms our result. We can now solve for $\Vec{x}$ as
+\[ 
+\Vec{x} = A^{-1} \Vec{b} = \begin{pmatrix}1 & -1 & 0\\0 & 1 & -1\\0 & 0 & 1\\\end{pmatrix} \cdot \begin{pmatrix}1\\1\\1\\\end{pmatrix} = \left(\begin{array}{c} 0 \\ 0 \\ 1 \\\end{array}\right)
+.\]
+
+
+\subsection*{6.}
+Calculate the inverse of
+\[ 
+A = \begin{pmatrix}
+1 & 1 & 2\\
+1 & 2 & 1\\
+1 & 1 & 1\\
+\end{pmatrix}
+\]
+using the method in Section 6.2. Check your result using $A^{-1} A = I$.
+\bigbreak
+Firstly we determine the determinant using the first row
+\[ 
+D = \mathrm{det}(A) = \left| \begin{array}{ccc}
+1 & 1 & 2\\
+1 & 2 & 1\\
+1 & 1 & 1\\
+\end{array} \right| = 1 \cdot \left| \begin{array}{cc}
+2 & 1\\
+1 & 1\\
+\end{array} \right| + 1\cdot (-1) \cdot \left| \begin{array}{cc}
+1 & 1\\
+1 & 1\\
+\end{array} \right| + 2 \cdot \left| \begin{array}{cc}
+1 & 2\\
+1 & 1\\
+\end{array} \right| = 1 \cdot 1 -1 \cdot 0 + 2 \cdot -1 = -1
+.\]
+All the minors are
+\begin{align*}
+  M_{11} &= \left| \begin{array}{cc}
+  2 & 1\\
+  1 & 1\\
+  \end{array} \right| = 1, & M_{12} &= \left| \begin{array}{cc}
+  1 & 1\\
+  1 & 1\\
+\end{array} \right| = 0, & M_{13} &= \left| \begin{array}{cc}
+1 & 2\\
+1 & 1\\
+\end{array} \right| = -1, \\
+  M_{21} &= \left| \begin{array}{cc}
+  1 & 2\\
+  1 & 1\\
+\end{array} \right| = -1, & M_{22} &= \left| \begin{array}{cc}
+1 & 2\\
+1 & 1\\
+\end{array} \right| = -1, & M_{23} &= \left| \begin{array}{cc}
+1 & 1\\
+1 & 1\\
+\end{array} \right| = 0, \\
+    M_{31} &= \left| \begin{array}{cc}
+    1 & 2\\
+    2 & 1\\
+    \end{array} \right| = -3, & M_{32} &= \left| \begin{array}{cc}
+  1 & 2\\
+  1 & 1\\
+  \end{array} \right| = -1, & M_{33} &= \left| \begin{array}{cc}
+1 & 1\\
+1 & 2\\
+\end{array} \right| = 1
+.\end{align*}
+The matrix $C = \left| c_{jk} \right| = (-1)^{j+k}M_{jk}$ is thus
+\[ 
+C = \begin{pmatrix}
+1 & 0 & -1\\
+1 & -1 & 0\\
+-3 & 1 & 1\\
+\end{pmatrix}
+.\]
+And therefore $C^{T}$ is
+\[ 
+C^{T} = \begin{pmatrix}
+1 & 1 & -3\\
+0 & -1 & 1\\
+-1 & 0 & 1\\
+\end{pmatrix}
+.\]
+We then have
+\[ 
+A^{-1} = \frac{C^{T}}{D} = \begin{pmatrix}
+-1 & -1 & 3\\
+0 & 1 & -1\\
+1 & 0 & -1\\
+\end{pmatrix}
+.\]
+We can check this as
+\[ 
+A A^{-1} = \begin{pmatrix}1 & 1 & 2\\1 & 2 & 1\\1 & 1 & 1\\\end{pmatrix} \cdot \begin{pmatrix}-1 & -1 & 3\\0 & 1 & -1\\1 & 0 & -1\\\end{pmatrix} = \left(\begin{array}{ccc} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \\\end{array}\right)
+\]

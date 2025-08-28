@@ -1,0 +1,74 @@
+\lecture{5}{10. Februar 2025}{Diffusion in solids}
+
+\exercise{5.1}
+Briefly explain the difference between self-diffusion and interdiffusion.
+\bigbreak
+Self-diffusion is the process of a material ``diffusing'' into itself. It can be thought of as molecules moving around in the crystal lattice in the sense that if you label a series of atoms sequentially in a lattice then after some time the sequential ordering will have broken down simply because the atom you labelled 1 or 2 will not be in the position corresponding to 1 or 2 and so on.
+
+Interdiffusion is the process of a material diffusing into another. In the case of solids it could for example be interstituent diffusion of carbon into iron which can be used to make steel.
+
+All in all the main difference between the 2 is that self-diffusion is diffusion of a solid into itself and interdiffusion is between solids/materials.
+
+\exercise{5.3}
+Carbon diffuses in iron via an interstitial mechanism -- for BCC iron from one tetrahedral site to an adjacent one. In Section 4.3 (Figure 4.3b) we note that a general set of point coordinates for this site are $1 \frac{1}{2} \frac{1}{4}$. Specify the family of crystallographic directions in which this diffusion of carbon in BCC iron takes place.
+\bigbreak
+Another tetrahedral site in the BCC lattice is at lattice position $1 \frac{1}{4} \frac{1}{2}$. To find the crystallographic direction between these two points we first find the difference in all three directions between the points as
+\begin{align*}
+\Delta x &= 0 \\
+\Delta y &= - \frac{1}{2} \\
+\Delta z &= \frac{1}{2}
+.\end{align*}
+We can reduce this to integer values to get $[0 \overline{1} 1]$. Another example would be $[0 1 \overline{1}]$ and so on.
+
+\exercise{5.D2}
+The wear resistance of a steel shaft is to be improved by hardening its surface by increasing the nitrogen content within an outer surface layer as a result of nitrogen diffusion into the steel; the nitrogen is to be supplied from an external nitrogen-rich gas at an elevated and constant temperature. The initial nitrogen content of the steel is \num{0,0025} wt\%, whereas the surface concentration is to be maintained at \num{0,45} wt\%. For this treatment to be effective, a nitrogen content of \num{0,12} wt\% must be established at a position \qty{0,45}{mm} below the surface. Specify an appropriate heat treatment in terms of temperature and time for a temperature between \qty{475}{\celsius} and \qty{625}{\celsius}. The preexponential and activation energy for the diffusion of nitrogen in iron are \qty{5e-7}{m^2 / s} and \qty{77000}{J/mol} respectively, over this temperature range.
+\bigbreak
+We start off with the solution to Fick's 2nd law
+\[ 
+\frac{C(x,t) - C_0}{C_s - C_0} = 1 - \mathrm{erf} \left( \frac{x}{2 \sqrt{Dt}} \right)
+.\]
+We have that
+\begin{align*}
+  C_0 &= \num{0,0025} \%  \\
+  C_s &= \num{0,45} \% \\
+  C(x,t) &= \num{0,12} \% \\
+  x &= \qty{0,45}{mm}  
+.\end{align*}
+Thus we have that
+\[ 
+\frac{\num{0,12} - \num{0,0025}}{\num{0,45} - \num{0,0025}} = 1 - \mathrm{erf}(z)
+\]
+with $z = \frac{x}{2 \sqrt{Dt}}$. We get that
+\[ 
+\mathrm{erf}(z) = \num{0,737} \implies z = \num{0,791} 
+.\]
+Therefore we get
+\[ 
+\num{0,791} = \frac{x}{2 \sqrt{Dt}}
+.\]
+We can solve for $Dt$ as
+\begin{align*}
+  \num{0,791}  &= \frac{x}{2 \sqrt{Dt}} \\
+  \frac{1}{\sqrt{Dt}} &= \frac{2 \cdot \num{0,791}}{x} \\
+  Dt &= \left( \frac{\qty{0,45}{mm}}{2 \cdot \num{0,791}} \right)^2 \\
+  Dt &= \qty{0,081}{mm^2} 
+.\end{align*}
+We also know that $D$ can be expressed as
+\[ 
+D = D_0 e^{- \frac{Q_d}{RT}}
+.\]
+We know the values of $D_0 = \qty{5e-7}{\frac{m^2}{s}}$ and $Q_d = \qty{77000}{\frac{J}{mol}}$. The entire expression becomes
+\[ 
+t \cdot D_0 e^{- \frac{Q_d}{RT}} = \qty{0,081}{mm^2} 
+.\]
+By choosing $T = \qty{600}{\celsius} = \qty{873}{K}$ we can calculate the exponential
+\[ 
+  e^{- \frac{\qty{77000}{\frac{J}{mol}}}{R \cdot \qty{873}{K}}} = \num{2,47e-5} 
+.\]
+Therefore we have
+\begin{align*}
+  t &= \frac{\qty{0,081}{mm^2}}{\num{2,47e-5} \cdot D_0} \\
+  &= \frac{\qty{0,081}{mm^2}}{\num{2,47e-5} \cdot \qty{5e-7}{\frac{m^2}{s}}} \\
+  &= \qty{6559}{s} = \qty{109}{min} = \qty{1,82}{h}
+.\end{align*}
+Therefore it should be appropriate to lat the heat treatment run for about \qty{109}{min} at \qty{600}{\celsius}. 

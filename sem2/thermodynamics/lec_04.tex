@@ -1,0 +1,104 @@
+\lecture{4}{18. Februar 2025}{Energianalyse af lukkede systemer}
+
+\section{Energianalyse af lukkede systemer}
+De følgende betragtninger vil alle relatere sig til lukkede systemer. Desuden betragtes kun reversible (og dermed ideelle) processer. 
+
+\subsection{Volumenændringsarbejdet}
+\textit{Volumenændringsarbejdet} for et lukket system defineres som det arbejde, som et system udveksler med dets omgivelser, når systemets volumen ændrer sig under et procesforløb. Heri ligger også at volumenændringsarbejdet kan være både positivt og negativt. Eksempelvis vil man, hvis man varmer på en ballon, få gassen i ballonen til at udvide sig. Man har på den måde tilført en arbejdsmængde til omgivelserne som, set fra systemet, vil være negativt da det er afgivet fra systemet. Man kan vha. mekanikken vise at voluenændringsarbejdet må tilsvare arealet under en proces på et $p$-$V$ diagram. Dermed har vi altså at volumenændringsarbejdet $W_v$ kan findes som
+\[ 
+W_v = - \int_{1}^{2} p \, \mathrm{d}V
+.\]
+Hvor $1$ og $2$ angiver hhv. starten og slutningen af processen. I nogle sammenhænge kan det være en fordel i stedet at finde det specifikke arbejde $w_v$ istedet for det absolutte arbejde $W_v$. Dette findes som
+\[ 
+w_v = \frac{W_v}{m} = - \int_{1}^{2} p \, \mathrm{d}v
+.\]
+Systemet må dog også tilføres et volumenfortrængningsarbejde idet der under processen flyttes et volumen på $V_1 - V_2$ fra tilstand 1 til tilstand 2 ved et (teoretisk) konstant omgivelsestryk $p_o$. Dette volumenfortrængningsarbejde $W_0$ kan bestemmes som
+\[ 
+  W_o = - p_o \cdot \left( V_2 - V_1 \right)
+.\]
+For at finde nettoarbejdet $W_n$ udført på gassen må det ovenstående volumenfortrængningsarbejde $W_o$ fratrækkes volumenændringsarbejdet $W_v$ som
+\[ 
+W_n = W_v - W_o = - \int_{1}^{2} p \cdot \, \mathrm{d}V + p_o \cdot \left( V_2 - V_1 \right) = - \int_{1}^{2} p \cdot \, \mathrm{d}V + \int_{1}^{2} p_o \cdot \, \mathrm{d}V = - \int_{1}^{2} (p - p_o) \cdot \, \mathrm{d}V
+.\]
+Her er det værd at bemærke at $\mathrm{d}V$ er negativt, hvorfor nyttearbejdet $W_n$ er positivt for kompressionsprocesser. Det bør også bemærkes, at det ovenstående kun er gældende for ideelle processer. I virkeligheden vil friktion og andre forhold tilføre et arbejde til systemet kaldet \textit{dissipationsarbejde} $W_{\text{diss}}$. Dissipationsarbejdet bliver typisk tilført som varme til systemet. Det samlede arbejde $W_g$ består af summen af volumenændringsarbejdet $W_v$ og dissipationarbejdet $W_{\text{diss}}$ som
+\[ 
+W_g = W_v + W_{\text{diss}} = - \int_{1}^{2} p \cdot \, \mathrm{d}V + W_{\text{diss}}
+.\]
+
+\subsection{Forskellige procesforløb for lukkede systemer}
+Det følgende vil udelukkende omhandle reversible og dermed ideelle processer uden dissipationarbejde, desuden anses alle gasser for ideale. For lukkede system gælder energibevarelse og vi har derfor generelt at
+\begin{equation} \label{eq:energiligning}
+  W_{\text{net}} = \left[ U_2 - U_1 \right] - Q_{\text{net}}
+\end{equation}
+Dette udtrykker, at udvekslet arbejde med omgivelserne må, hvis det ikke udveksles som varme med omgivelserne, resultere i en ændring i den indre energi for systemet.
+
+\subsubsection{Isokorisk tilstandsændring}
+Et lukket system, hvor procesforløbet er isokorisk (konstant volumen) bliver afbildet som en lodret streg på et $p$-$V$ diagram. Fra idealgasligningen kan vises at der for isokoriske processer gælder at
+\[ 
+\frac{p_1}{T_1} = \frac{p_2}{T_2} = \mathrm{konstant}
+.\]
+Idet der ikke sker en volumenændring under en isokor process gælder at arbejdet er 0 som
+\[ 
+W_{v, \text{isok}} = - \int_{1}^{2} p \cdot \, \mathrm{d}V = 0
+.\]
+Fra \textbf{\autoref{eq:energiligning}} og eftersom der ikke udveksles arbejde med omgivelserne, kan den udvekslede energimængde under procesforløbet $Q_{\text{isok}}$ bestemmes som
+\[ 
+  Q_{\text{isok}} = \int \, \mathrm{d}U = \int m \cdot \, \mathrm{d}u = m \cdot \int c_v \cdot \, \mathrm{d}T = m \cdot \frac{\left( c_v(T_2) + c_v(T_1) \right)}{2} \cdot (T_2 - T_1) \approx m \cdot c_v \cdot (T_2 - T_1)
+.\]
+
+\subsubsection{Isobarisk tilstandsændring}
+Et lukket system, hvor procesforløbet er isobarisk (konstant tryk) bliver afbildet som en vandret streg på et $p$-$V$ diagram. Fra idealgasligningen kan vises at der for isobariske processer gælder at
+\[ 
+  \frac{V_1}{T_1} = \frac{V_2}{T_2} = \mathrm{konstant}
+.\]
+Idet der ikke sker en trykændring under en isobarisk process gælder at volumenfortrængningsarbejdet kan bestemmes som
+\[ 
+W_{v, \text{isob}} = - \int_{1}^{2} p \cdot \, \mathrm{d}V = - p \cdot \int_{1}^{2} \, \mathrm{d}V = p \cdot \left( V_1 - V_2 \right) = m \cdot R_i \cdot \left( T_1 - T_2 \right)
+.\]
+Til bestemmelse af ændring af den indre energi for gassen kan \textbf{\autoref{eq:energiligning}} for et lukket system for et isobarisk procesforløb omskrives til
+\[ 
+\Delta U = Q_{\text{isob}} + W_{v, \text{isob}}
+.\]
+Den udvekslede energimængde kan bestemmes som
+\[ 
+Q_{\text{isob}} = \int m \cdot \, \mathrm{d}h = m \cdot c_{p,m} \cdot \int \, \mathrm{d}T = m \cdot \frac{c_p(T_2) + c_p(T_1)}{2} \cdot \left( T_2 - T_1 \right) \approx m \cdot c_p \cdot \left( T_2 - T_1 \right)
+.\]
+
+\subsubsection{Isotermisk tilstandsændring}
+Et lukket system, hvor procesforløbet er isotermisk (konstant temperatur) bliver afbildet som en hyperbel på et $p$-$V$ diagram. Fra idealgasligningen kan vises at der for isotermiske processer gælder at
+\[ 
+p_1 \cdot V_1 = p_2 \cdot V_2 = \mathrm{konstant}
+.\]
+Idet der ikke sker en temperaturændring under en isotermisk process gælder at volumenfortrængningsarbejdet kan bestemmes som
+\[ 
+W_{v, \text{isot}} = m \cdot R_i \cdot T \cdot \ln \left( \frac{V_1}{V_2} \right) = p_1 \cdot V_1 \cdot \ln \left( \frac{p_2}{p_1} \right)
+.\]
+Ved et isotermisk procesforløb må den indre energi i systemet $\Delta U$ være uforandret, og energiligningen fra \textbf{\autoref{eq:energiligning}} kan for et lukket system for et isotermisk procesforløb omskrives til
+\[ 
+Q_{\text{isot}} = - W_{v, \text{isot}}
+.\]
+
+\subsubsection{Polytropisk tilstandsændring}
+En polytropisk tilstandsændring for et lukket system er kendetegnet ved følgende formel, hvor $n$ benævnes \textit{polytropeksponenten}
+\[ 
+p \cdot V^{n} = \mathrm{konstant}
+.\]
+Den isokoriske, isobariske og isotermiske tilstandsændring for et lukket system er alle specialtilfælde af en polytropisk tilstandsændring. Polytropeksponenten er hhv. 0 for den isobariske process, 1 for den isotermiske og $\infty $ for den isokoriske. Ofte er den polytropiske tilstandsændring den mest ``korrekte'' for virkelige systemer. 
+
+Idet $p_1 \cdot V_1^{n} = p_2 \cdot V_2^{n}$ kan volumenændringsarbejdet bestemmes som
+\[ 
+W_{v, \text{pol}} = - \int_{1}^{2} p \cdot \, \mathrm{d}V = -\int_{1}^{2} C \cdot V^{-n} \cdot \, \mathrm{d}V = - C \cdot \frac{V_2^{-n+1} - V_1^{-n+1}}{-n+1} = \frac{p_2 \cdot V_2 - p_1 \cdot V_1}{n-1}
+.\]
+Denne kan vha. idealgasligningen omskrives til
+\[ 
+W_{v, \text{pol}} = \frac{m \cdot R_i \cdot \left( T_2 - T_1 \right)}{n-1}
+.\]
+Vi kan for en polytropisk process omskrive \textbf{\autoref{eq:energiligning}} til
+\[ 
+Q_{\text{pol}} = \Delta U - W_{v, \text{pol}}
+.\]
+Dette kan også skrives som
+\[ 
+Q_{\text{pol}} = \frac{m \cdot c_v \cdot (n-\kappa) \cdot (T_2 - T_1)}{n-1}
+.\]
+Idet vi husker at $\kappa = \frac{c_p}{c_v} = 1 + \frac{R_i}{c_v}$.

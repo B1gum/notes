@@ -1,0 +1,126 @@
+\documentclass[a4paper]{article}
+
+\input{./preamble.tex}
+
+\title{Afleveringsopgave 2 – Termodynamik}
+\date{14. Februar 2025}
+
+\begin{document}
+
+\maketitle
+
+\opgave{1.4}
+En lukket beholder på \qty{2}{m^3} indeholder \qty{0,03}{kmol} tør atmosfærisk luft. Bestem densiteten for luften.
+
+\begin{figure}[ht]
+  \centering
+  \incfig[0.25]{A1_1}
+  \caption{Systemskitse for den lukkede beholder med luft}
+  \label{fig:A1_1}
+\end{figure}
+
+På \autoref{fig:A1_1} er tegnet en systemskitse for den lukkede beholder på med et volumen på $V = \qty{2}{m^3}$ som indeholder en stofmængde på $N = \qty{0,03}{kmol}$ tør atmosfærisk luft. Densiteten af luften kan findes som
+\[ 
+\rho = \frac{m}{V}
+.\]
+Og massen $m$ er blot produktet af molarmassen af tør atmosfærisk luft $M = \qty{28,96}{\frac{kg}{kmol}}$ og stofmængden $N$. Vi får altså
+\[ 
+\rho = \frac{NM}{V} = \frac{\qty{0,03}{kmol} \cdot \qty{28,96}{\frac{kg}{kmol}}}{\qty{2}{m^3}} = \qty{0,4344}{\frac{kg}{m^3}} 
+.\]
+Altså er densiteten af luften i beholderen \underline{\underline{\qty{0,43}{kg / m^3}}}.
+
+
+\clearpage
+
+\opgave{1.6}
+Bestem trykket i $[\unit{MPa}]$ på gulvoverfladen forårsaget af en dame på \qty{60}{kg}, som står tilbagelænet og alene hviler på sine stilethæle med hver et areal på \qty{1}{cm^2}. Bestem herefter trykket i $[\unit{MPa}]$ på jorden for en elefant på \qty{5}{ton}, som står på bagbenene med hver et areal på \qty{400}{cm^2} for at få nogle saftige blade på et højt træ.
+
+\begin{figure}[ht]
+    \centering
+    \incfig[0.6]{a1_2}
+    \caption{Systemskitse for hhv. damen og elefanten}
+    \label{fig:a1_2}
+\end{figure}
+
+På \autoref{fig:a1_2} er forsøgt tegnet en systemskitse for damen og elefanten på underlaget, omend det nok nærmere er et fritlegemediagram end en egentlig systemskitse. Idet damen står tilbagelænet er det rimeligt at arbejde med antagelsen at al hendes masse fordeles ned gennem stiletternes hæle. Altså fordeles hele hendes masse på $m = \qty{60}{kg}$ ned i to arealer, hver på $A_{\text{hæl}} = \qty{1}{cm^2}$. Trykket som dermed skabes på jorden kan dermed findes vha. formlen for tryk
+\[ 
+p = \frac{F}{A}
+.\]
+Vi har fra Newtons 2. lov at $F = ma$, hvor $a$ er accelerationen (i dette tilfælde er $a = g$, hvor $g = \qty{9,82}{\meter\per\square\second}$ er tyngdeaccelerationen, da damen alene accelereres af et tyngdefelt. Idet vi husker at det samlede areal som kraften fordeles over er $A_{\mathrm{dame}} = 2A_{\text{hæl}} = \qty{2}{cm^2}$ kan trykket som damen udøver på jorden findes som
+\[ 
+  p_{dame} = \frac{m_{\mathrm{dame}} \cdot g}{A_{\mathrm{dame}}} = \frac{\qty{60}{kg} \cdot \qty{9,82}{\frac{m}{s^2}}}{\qty{2}{cm^2}} = \qty{2,946}{MPa}
+.\]
+Altså udøver damen et tryk på \underline{\underline{\qty{2,95}{MPa}}} under de givne omstændigheder.
+
+Elefantens bagben har et areal på $A_{\mathrm{ben}} = \qty{400}{cm^2}$ hver. Idet elefanten i situationen kun står på bagbenene fordeles trykket over et areal på $A_{\mathrm{elefant}} = 2 \cdot A_{\mathrm{ben}} = \qty{800}{cm^2}$. Elefantens masse på $m_{\mathrm{elefant}} = \qty{5}{ton}$ kan omregnes til en tilsvarende gravitational kraft på samme måde som var tilfældet for damen. Vi får altså
+\[ 
+p_{\mathrm{elefant}} = \frac{m_{\mathrm{elefant}} \cdot g}{A_{\mathrm{elefant}}} = \frac{\qty{5}{ton} \cdot \qty{9.82}{\meter\per\square\second}}{\qty{800}{cm^2}} = \qty{0,613}{MPa}
+.\]
+Dermed udøver elefanten et tryk på \underline{\underline{\qty{0,61}{MPa}}} under de givne omstændigheder. Det betyder også at en relativt let dame med tynde stiletter udøver et tryk på jorden der er mere end 4 gange større end det tryk som en elefant udøver på jorden.
+
+\clearpage
+
+\opgave{1.9}
+Hvad er absoluttrykket i $[\unit{bara}]$ på bunden af Marianergraven, som er \qty{10911}{m} dyb, når densiteten af saltvandet antages til \qty{1025}{\kilogram\per\cubic\meter} i gennemsnit og barometertrykket kan aflæses til \qty{1013,25}{hPa}?
+
+\begin{figure}[ht]
+    \centering
+    \incfig[0.5]{a1_3}
+    \caption{Systemskitse for havet omkring Marianergraven}
+    \label{fig:a1_3}
+\end{figure}
+På \autoref{fig:a1_3} er Marianergraven indtegnet med det afgrænsede system på bunden af graven. Vi ved at trykket i en væskesøjle generelt er givet ved (formel 1.4.3.4 i bogen)
+\[ 
+p = p_0 + \rho g \Delta z
+\]
+hvor $p_0 = \qty{1013,25}{hPa}$ er atmosfæretrykket, $\rho = \qty{1025}{\kilogram\per\cubic\meter}$ er densiteten af væsken (i dette tilfælde gennemsnitsdensiteten af havvandet), $g = \qty{9,82}{\meter\per\square\second}$ er den lokale tyngdeacceleration og $\Delta z = \qty{10911}{m}$ er dybden, hvortil trykket $p$ ønskes bestemt. Vi kan altså blot indsætte de kendte størrelser fra opgaven som
+\[ 
+p = \qty{1013,25}{hPa} + \qty{1025}{\frac{kg}{m^3}} \cdot \qty{9,82}{\frac{m}{s^2}} \cdot \qty{10911}{m} = \qty{109,93}{MPa} = \qty{1099,3}{bara} 
+.\]
+Dermed er absoluttrykket på bunden af Marianergraven \qty{1099,3}{bara}.
+
+\clearpage
+
+\opgave{2.2}
+En el-radiator kan benyttes til opvarmning af en bolig. Idet det antages, at der ikke er varmetab fra boligen, hvor stor en energimængde i $[\unit{MJ}]$ er brugt til opvarmning af boligen, når radiatoren har afgivet \qty{1,2}{kW} i \qty{8}{timer}.
+
+\begin{figure}[ht]
+    \centering
+    \incfig[0.25]{a1_4}
+    \caption{Systemskitse for radiatoren i det isolerede hus}
+    \label{fig:a1_4}
+\end{figure}
+
+Idet det antages at der ikke er et varmetab fra boligen må systemet indeni boligen (se afgrænsning på \autoref{fig:a1_4}) være et isoleret system. Idet vi også antager at radiatoren har en perfekt nyttevirkning (hvilket nok ikke er særligt langt fra sandheden for en elradiator) vil al den tilførte effekt på $P = \qty{1,2}{kW}$ over tiden på $t = \qty{8}{timer}$ altså gå til at varme rummet op. Vi ved at energi er produktet af effekt og tid, som
+\[ 
+Q_{\text{tilført}} = P \cdot t
+.\]
+Ved at indsætte kendte størrelser fås
+\[ 
+Q_{\text{tilført}} = \qty{1,2}{kW} \cdot \qty{8}{timer} = \qty{34,56}{MJ} 
+.\]
+Altså bliver der i løbet af de \qty{8}{timer} tilført rummet en varmeenergi på \underline{\underline{\qty{34,56}{MJ}}}.
+
+\clearpage
+
+\opgave{2.6}
+En pumpe skal tilføres en akseleffekt på \qty{103}{kW} for at kunne udføre sin pumpefunktion ved \qty{3000}{rpm}. Pumpen kraftforsynes med en 4-polet elmotor, som kører \qty{1460}{rpm} og har en virkningsgrad på 96\%. Mellem elmotor og pumpe forefindes et gear som har en virkningsgrad på 97\%. Hvilken eleffekt skal tilføres elmotoren på tilgangsklemmerne? 
+
+\begin{figure}[ht]
+    \centering
+    \incfig[0.8]{a1_5}
+    \caption{Systemskitse for pumpen og motoren}
+    \label{fig:a1_5}
+\end{figure}
+
+Idet pumpen skal tilføres en akseleffekt på \qty{103}{kW} og der sker et energitab to steder undervejs fra motoren til pumpen, hhv. i elmotoren, som har en virkningsgrad på $\eta_{\mathrm{motor}} = 96\%$ og i gearet mellem motoren og pumpen som har en virkningsgrad på $\eta_{\mathrm{gear}} = 97\%$. Vi ved at generelt gælder følgende sammenhæng for virkningsgraden
+\[ 
+\eta = \frac{\text{Ønsket output}}{\text{Nødvendigt input}} \implies \text{Nødvendigt input} = \frac{\text{Ønsket output}}{\eta}
+.\]
+Vi får altså
+\[ 
+  P_{\text{tilført}} = \frac{\frac{P_{\mathrm{aksel}}}{\eta_{\mathrm{motor}}}}{\eta_{\mathrm{gear}}} = \frac{P_{\mathrm{aksel}}}{\eta_{\mathrm{motor}} \cdot \eta_{\mathrm{gear}}} = \frac{\qty{103}{kW}}{\num{0,96} \cdot \num{0,97}} = \qty{110,6}{kW} 
+.\]
+Altså skal motoren tilføres \underline{\underline{\qty{110,6}{kW}}} for at kunne drive pumpen.
+
+\end{document}

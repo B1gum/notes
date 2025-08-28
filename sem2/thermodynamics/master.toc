@@ -1,0 +1,132 @@
+\babel@toc {danish}{}\relax 
+\contentsline {section}{\numberline {1}Forord}{6}{section.1}%
+\contentsline {section}{\numberline {2}Introduction to thermodynamics}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}General heat engines}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}The laws of thermodynamics}{8}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Types of thermodynamical systems}{8}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Termodynamiske processer}{10}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Idealgasligningen}{10}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Energi}{11}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Mikroskopiske energier for et stof}{11}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Makroskopiske energier}{11}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Energiudveksling for et system}{12}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Entalpi}{12}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Arbejde}{12}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Virkningsgrad}{13}{subsection.4.1}%
+\contentsline {section}{\numberline {5}Fasesr for kemisk homogene stoffer}{13}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Faseskifte}{14}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Tilstandsdiagrammer}{14}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Specifik varmekapacitet og energiberegninger}{15}{section.6}%
+\contentsline {section}{\numberline {7}Energianalyse af lukkede systemer}{16}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Volumenændringsarbejdet}{16}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Forskellige procesforløb for lukkede systemer}{16}{subsection.7.2}%
+\contentsline {subsubsection}{\numberline {7.2.1}Isokorisk tilstandsændring}{17}{subsubsection.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.2}Isobarisk tilstandsændring}{17}{subsubsection.7.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.3}Isotermisk tilstandsændring}{17}{subsubsection.7.2.3}%
+\contentsline {subsubsection}{\numberline {7.2.4}Polytropisk tilstandsændring}{18}{subsubsection.7.2.4}%
+\contentsline {section}{\numberline {8}Masse- og energianalyse af åbne systemer}{18}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Teknisk arbejde}{18}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Forskellige procesforløb for åbne systemer}{19}{subsection.8.2}%
+\contentsline {subsubsection}{\numberline {8.2.1}Isokorisk tilstandsændring}{19}{subsubsection.8.2.1}%
+\contentsline {subsubsection}{\numberline {8.2.2}Isobarisk tilstandsændring}{20}{subsubsection.8.2.2}%
+\contentsline {subsubsection}{\numberline {8.2.3}Isotermisk tilstandsændring}{20}{subsubsection.8.2.3}%
+\contentsline {subsubsection}{\numberline {8.2.4}Polytropisk tilstandsændring}{20}{subsubsection.8.2.4}%
+\contentsline {subsection}{\numberline {8.3}Masse- og energibalance for et knudepunkt}{21}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Åbne komponenter og maskiner}{21}{subsection.8.4}%
+\contentsline {subsubsection}{\numberline {8.4.1}Dyser og diffusere}{22}{subsubsection.8.4.1}%
+\contentsline {subsubsection}{\numberline {8.4.2}Pumper}{22}{subsubsection.8.4.2}%
+\contentsline {subsubsection}{\numberline {8.4.3}Turbiner og kompressorer}{22}{subsubsection.8.4.3}%
+\contentsline {subsubsection}{\numberline {8.4.4}Varmevekslere}{23}{subsubsection.8.4.4}%
+\contentsline {subsubsection}{\numberline {8.4.5}Drøvleorganer}{24}{subsubsection.8.4.5}%
+\contentsline {section}{\numberline {9}Ideelle og ikke-ideelle processer}{24}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Introduktion til entropi}{25}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Isentropiske processer}{26}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Entropiændring for processer}{27}{subsection.9.3}%
+\contentsline {subsubsection}{\numberline {9.3.1}Entropiændring for en isobar process}{27}{subsubsection.9.3.1}%
+\contentsline {subsubsection}{\numberline {9.3.2}Entropiændring for en isotermisk proces}{27}{subsubsection.9.3.2}%
+\contentsline {subsubsection}{\numberline {9.3.3}Entropiændring for en isokorisk proces}{28}{subsubsection.9.3.3}%
+\contentsline {subsubsection}{\numberline {9.3.4}Entropiændring for en polytropisk proces}{28}{subsubsection.9.3.4}%
+\contentsline {subsection}{\numberline {9.4}Entropiændring for kredsprocesser}{29}{subsection.9.4}%
+\contentsline {subsubsection}{\numberline {9.4.1}Carnot kredsproces}{29}{subsubsection.9.4.1}%
+\contentsline {subsubsection}{\numberline {9.4.2}Carnots arbejdsproducerende maskine}{30}{subsubsection.9.4.2}%
+\contentsline {subsubsection}{\numberline {9.4.3}Carnots arbejdskonsumerende maskine}{30}{subsubsection.9.4.3}%
+\contentsline {subsection}{\numberline {9.5}Isentropisk virkningsgrad}{31}{subsection.9.5}%
+\contentsline {subsubsection}{\numberline {9.5.1}Turbine}{31}{subsubsection.9.5.1}%
+\contentsline {subsubsection}{\numberline {9.5.2}Kompressor}{31}{subsubsection.9.5.2}%
+\contentsline {subsubsection}{\numberline {9.5.3}Pumpe}{32}{subsubsection.9.5.3}%
+\contentsline {subsubsection}{\numberline {9.5.4}Dyse}{32}{subsubsection.9.5.4}%
+\contentsline {subsection}{\numberline {9.6}Entropi balance}{33}{subsection.9.6}%
+\contentsline {section}{\numberline {10}Kraftværker}{34}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Rankine kredsprocessen}{34}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Kraftværket}{37}{subsection.10.2}%
+\contentsline {subsubsection}{\numberline {10.2.1}Kraftværkets basiskredsproces}{37}{subsubsection.10.2.1}%
+\contentsline {subsubsection}{\numberline {10.2.2}Fødevandsforvarming}{38}{subsubsection.10.2.2}%
+\contentsline {subsubsection}{\numberline {10.2.3}Turbinekondenser}{39}{subsubsection.10.2.3}%
+\contentsline {subsection}{\numberline {10.3}Kraftvarmeværket}{40}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}Optimering af Rankine kredsprocessen}{41}{subsection.10.4}%
+\contentsline {subsection}{\numberline {10.5}Organic Rankine Cycle (ORC)}{41}{subsection.10.5}%
+\contentsline {subsection}{\numberline {10.6}Samlet Brayton og Rankine kredsprocess -- Kombineret proces}{42}{subsection.10.6}%
+\contentsline {section}{\numberline {11}Motorer og gasturbiner}{44}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Beregningsforudsætninger}{45}{subsection.11.1}%
+\contentsline {subsubsection}{\numberline {11.1.1}Arbejdsmediet i anlægget}{45}{subsubsection.11.1.1}%
+\contentsline {subsubsection}{\numberline {11.1.2}Stempelmaskiner}{45}{subsubsection.11.1.2}%
+\contentsline {subsection}{\numberline {11.2}Otto-motoren}{47}{subsection.11.2}%
+\contentsline {subsubsection}{\numberline {11.2.1}Otto-motorens virkemåde}{47}{subsubsection.11.2.1}%
+\contentsline {subsubsection}{\numberline {11.2.2}Idealiseret beregningsprocedure -- volumenændringsarbejdet, akselarbejde}{49}{subsubsection.11.2.2}%
+\contentsline {subsubsection}{\numberline {11.2.3}Idealiseret beregningsprocedure, virkningsgrad}{49}{subsubsection.11.2.3}%
+\contentsline {subsection}{\numberline {11.3}Diesel motoren}{49}{subsection.11.3}%
+\contentsline {subsubsection}{\numberline {11.3.1}Dieselmotorens virkemåde}{49}{subsubsection.11.3.1}%
+\contentsline {subsubsection}{\numberline {11.3.2}Idealiseret beregningsprocedure -- varmebalancemetoden, akselarbejde}{50}{subsubsection.11.3.2}%
+\contentsline {subsubsection}{\numberline {11.3.3}Idealiseret beregningsprocedure -- volumenændringsarbejdsmetoden, akselarbejde}{50}{subsubsection.11.3.3}%
+\contentsline {subsubsection}{\numberline {11.3.4}Idealiseret beregningsprocedure, virkningsgrad}{51}{subsubsection.11.3.4}%
+\contentsline {subsection}{\numberline {11.4}Gasturbinen}{51}{subsection.11.4}%
+\contentsline {subsubsection}{\numberline {11.4.1}Gasturbinens opbygning og virkemåde}{51}{subsubsection.11.4.1}%
+\contentsline {subsubsection}{\numberline {11.4.2}Idealiseret beregningsprocedure ‐ varmebalancemetoden, akselarbejde}{52}{subsubsection.11.4.2}%
+\contentsline {subsubsection}{\numberline {11.4.3}Idealiseret beregningsprocedure ‐ volumenændringsarbejdsmetoden, akselarbejde}{52}{subsubsection.11.4.3}%
+\contentsline {subsubsection}{\numberline {11.4.4}Idealiseret beregningsprocedure, virkningsgrad}{53}{subsubsection.11.4.4}%
+\contentsline {section}{\numberline {12}Kølemaskiner og varmepumper}{53}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Kølekredsprocessen}{53}{subsection.12.1}%
+\contentsline {paragraph}{Indre systemgrænse}{55}{section*.13}%
+\contentsline {paragraph}{Ydre systemgrænse}{55}{section*.14}%
+\contentsline {subsection}{\numberline {12.2}Kølemidler}{55}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Optimering af kredsprocessen}{56}{subsection.12.3}%
+\contentsline {subsubsection}{\numberline {12.3.1}Ét-trins anlæg}{56}{subsubsection.12.3.1}%
+\contentsline {subsubsection}{\numberline {12.3.2}To-trins anlæg med mellemkøling}{57}{subsubsection.12.3.2}%
+\contentsline {section}{\numberline {13}Gasblandinger}{57}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Formler for angivelse af sammensætning af en gasblanding}{58}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Daltons lov og partialtryk}{59}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}Tilstandsstørrelser og stofværdier for gasblandinger}{59}{subsection.13.3}%
+\contentsline {subsubsection}{\numberline {13.3.1}Gaskonstant}{59}{subsubsection.13.3.1}%
+\contentsline {subsubsection}{\numberline {13.3.2}Specifikt volumen}{59}{subsubsection.13.3.2}%
+\contentsline {subsubsection}{\numberline {13.3.3}Densitet}{60}{subsubsection.13.3.3}%
+\contentsline {subsubsection}{\numberline {13.3.4}Molmasse}{60}{subsubsection.13.3.4}%
+\contentsline {subsubsection}{\numberline {13.3.5}Specifik varmekapacitet}{60}{subsubsection.13.3.5}%
+\contentsline {subsubsection}{\numberline {13.3.6}Viskositet og varmeledningsevne}{61}{subsubsection.13.3.6}%
+\contentsline {subsection}{\numberline {13.4}Gasblandinger angivet på tør og våd basis}{61}{subsection.13.4}%
+\contentsline {section}{\numberline {14}Fugtig luft}{61}{section.14}%
+\contentsline {subsection}{\numberline {14.1}Tørt og fugtigt flow af luft}{61}{subsection.14.1}%
+\contentsline {subsection}{\numberline {14.2}Relativ og absolut fugtighed}{62}{subsection.14.2}%
+\contentsline {subsection}{\numberline {14.3}Energiindhold i fugtig luft og densitet}{62}{subsection.14.3}%
+\contentsline {subsubsection}{\numberline {14.3.1}Entalpi baseret på vægt af den fugtige luft}{62}{subsubsection.14.3.1}%
+\contentsline {subsubsection}{\numberline {14.3.2}Entalpi baseret på vægt af den tørre luft andel af den fugtige luft}{62}{subsubsection.14.3.2}%
+\contentsline {subsubsection}{\numberline {14.3.3}Densitet for fugtig luft som funktion af den absolutte fugtighed}{62}{subsubsection.14.3.3}%
+\contentsline {subsection}{\numberline {14.4}Masse- og energibevarelse i knudepunkter}{63}{subsection.14.4}%
+\contentsline {subsection}{\numberline {14.5}Molliere diagram}{63}{subsection.14.5}%
+\contentsline {subsection}{\numberline {14.6}Opvarmning og afkøling af fugtig luft – sensibel energiændring alene}{63}{subsection.14.6}%
+\contentsline {subsection}{\numberline {14.7}Beffugtning og affugtning af fugtig luft}{64}{subsection.14.7}%
+\contentsline {subsubsection}{\numberline {14.7.1}Affugtning af fugtig luft}{64}{subsubsection.14.7.1}%
+\contentsline {subsubsection}{\numberline {14.7.2}Beffugtning af fugtig luft}{65}{subsubsection.14.7.2}%
+\contentsline {subsection}{\numberline {14.8}Tørt og vådt termometer}{66}{subsection.14.8}%
+\contentsline {section}{\numberline {15}Mekanismer for varmetransmission}{66}{section.15}%
+\contentsline {subsection}{\numberline {15.1}Definition af varmetransmission}{66}{subsection.15.1}%
+\contentsline {subsection}{\numberline {15.2}Sammensat varmeoverføring}{66}{subsection.15.2}%
+\contentsline {subsubsection}{\numberline {15.2.1}Isolans}{67}{subsubsection.15.2.1}%
+\contentsline {subsubsection}{\numberline {15.2.2}Overgangsisolanser}{67}{subsubsection.15.2.2}%
+\contentsline {subsubsection}{\numberline {15.2.3}Varmeoverføringskoefficient}{68}{subsubsection.15.2.3}%
+\contentsline {subsubsection}{\numberline {15.2.4}Varmetransmissionskoefficient}{69}{subsubsection.15.2.4}%
+\contentsline {section}{\numberline {16}Endimensional varmeledning gennem homogene lag}{69}{section.16}%
+\contentsline {section}{\numberline {17}Endimensional varmeledning gennem inhomogene lag}{71}{section.17}%
+\contentsline {section}{\numberline {18}Konvektion}{71}{section.18}%
+\contentsline {subsection}{\numberline {18.1}Laminar strømning}{72}{subsection.18.1}%
+\contentsline {subsection}{\numberline {18.2}Turbulent strømning}{72}{subsection.18.2}%
+\contentsline {subsection}{\numberline {18.3}Beregningsmetode}{72}{subsection.18.3}%

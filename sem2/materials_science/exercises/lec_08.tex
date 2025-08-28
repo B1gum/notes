@@ -1,0 +1,44 @@
+\lecture{8}{19. Februar 2025}{Dislocations and Strengthening Mechanisms}
+
+\exercise{7.5} Equations 7.1a and 7.1b, expressions for Burgers vectors for FCC and BCC crystal structure, are of the form
+\[ 
+\Vec{b} = \frac{a}{2} \left\langle uvw \right\rangle
+\]
+where $a$ is the unit cell edge length. The magnitude of these Burgers vectors may be determined from the following equation:
+\[ 
+\left| \Vec{b} \right| = \frac{a}{2} \left( u^2 + v^2 + w^2 \right)^{\frac{1}{2}}
+\]
+determine the values of $\left| \Vec{b} \right|$ for copper and iron. You may want to consult Table 3.1.
+\bigbreak
+Equations 7.1a and 7.1b are, respectively
+\begin{align*}
+  \Vec{b}(FCC) &= \frac{a}{2} \left\langle 110 \right\rangle \\
+  \Vec{b}(BCC) &= \frac{a}{2} \left\langle 111 \right\rangle
+.\end{align*}
+
+For copper we are able to see it has a FCC structure with an atomic radius of $R = \qty{0,1278}{nm}$. This gives an edge length of $a = 2R \sqrt{2} = 2\cdot \qty{0,01278}{nm}\cdot \sqrt{2} = \qty{0,3615}{nm}$. Therefore, for copper, we get
+\[ 
+\left| \Vec{b} \right| = \frac{\qty{0,3615}{nm}}{2} \left( 1^2 + 1^2 \right)^{\frac{1}{2}} = \qty{0,2556}{nm} 
+.\]
+For iron ($\alpha$) with a BCC structure and an atomic radius of $R = \qty{0,1241}{nm}$ we get an edge length of $a = \frac{4R}{\sqrt{3}} = \qty{0,2866}{nm}$. Therefore we get
+\[ 
+\left| \Vec{b} \right| = \frac{\qty{0,2866}{nm}}{2} \left( 1^2 + 1^2 + 1^2 \right)^{\frac{1}{2}} = \qty{0,2482}{nm} 
+.\]
+
+
+\exercise{7.D3} A cylindrical rod of 1040 steel originally \qty{11,4}{mm} in diameter is to be cold worked by drawing: the circular cross section will be maintained during deformation. A cold-worked tensile strength in excess of \qty{825}{MPa} and a ductility of at least $12 \% \mathrm{EL}$ are desired. Furthermore, the final diameter must be \qty{8,9}{mm}. Explain how this may be accomplished. 
+\bigbreak
+To bring the metal down to size one could strain harden it. To find the \% $\mathrm{CW}$ we use the formula
+\[ 
+\% \mathrm{CW} = \frac{A_0 - A_d}{A_0}
+.\]
+By substituting in the known values we get
+\[ 
+  \% \mathrm{CW} = \frac{\pi \left( \left( \frac{\qty{11,4}{mm} }{2} \right)^2 - \left( \frac{\qty{8,9}{mm} }{2} \right)^2 \right) }{\pi \left( \frac{\qty{11,4}{mm} }{2} \right)^2} = 40 \% \mathrm{CW}  
+.\]
+With a \% $\mathrm{CW} = \num{40} \%$ we can find the corresponding tensile strength and ductility by looking in Figure 7.19 (Callister \& Rethwish). These values are
+\begin{align*}
+  \sigma_{\mathrm{TS}} &\approx \qty{900}{MPa}  \\
+  \% \mathrm{EL} &\approx 9 \% 
+.\end{align*}
+Therefore it is not sufficient just to cold work the metal. Instead we must first cold work it a bit. Then anneal it and then cold work it again. Based on the diagrams we should aim for a $\% \mathrm{CW}$ between $17\%$ and $24\%$.

@@ -1,0 +1,173 @@
+\documentclass[a4paper]{article}
+
+\input{./preamble.tex}
+
+\title{Afleveringsopgave 3 – Termodynamik}
+\date{21. Februar 2025}
+
+\begin{document}
+
+\maketitle
+
+\opgave{4.2}
+
+\paragraph{a.} Et lodret-orienteret cylinder-stempelsystem med bevægeligt stempel indeholder \qty{11}{liter} argon (Ar) ved et tryk på \qty{1,013}{bara} og \qty{20}{\celsius}. Gassen kan betragtes som en idealgas. Stemplet er i hvile. Cylinder-stempel\-system og indhold opvarmes til \qty{100}{\celsius}. Hvad stiger volumenet i cylinderen i $[\unit{liter}]$ til?
+\bigbreak
+\begin{figure}[ht]
+    \centering
+    \incfig[0.25]{a2_1}
+    \caption{Systemskitse af heliummet i cylinder-stempelsystemet, bemærk at systemgrænsen ikke er fast, idet stemplet kan flytte sig}
+    \label{fig:a2_1}
+\end{figure}
+Idet vi antager at stemplet kan rykkes uden modstand er trykket i cylinder-stempelsystemet konstant før og efter opvarmning (stemplet vil rykke sig således at trykket inden i cylinderen netop tilsvarer trykket udenfor cylinderen hvilket antages at være atmosfærisk tryk ($\approx\qty{1,013}{bara}$)). En version af idealgasligningen lyder
+\begin{equation} \label{eq:ideal}
+ pV = m R_i T
+\end{equation}
+I \autoref{eq:ideal} kan konstante størrelser (individuelle gaskonstant, masse og tryk) samles på højresiden, mens variable størrelser (volumen og temperatur) samles på venstresiden, som
+\[ 
+   \frac{T}{V} = \frac{p}{R_i \cdot m} \implies \frac{T}{V} = \mathrm{const}
+.\]
+Eftersom $\frac{T}{V}$ er konstant har vi at
+\[ 
+\frac{T_1}{V_1} = \frac{T_2}{V_2}
+.\]
+Hvor subskriptet 1 angiver begyndelsestilstanden og subskriptet 2 angiver sluttilstanden. Heri kan volumenet efter opvarmningen $V_2$ isoleres som
+\[ 
+V_2 = \frac{V_1}{T_1} \cdot T_2
+.\]
+Hvis vi sætter kendte størrelser (starttemperatur $T_1 = \qty{20}{\celsius} \approx \qty{293}{K}$, startvolumen $V_1 = \qty{11}{L}$ og sluttemperatur $T_2 = \qty{100}{\celsius} \approx \qty{373}{K}$) ind fås
+\[ 
+V_2 = \frac{\qty{11}{L}}{\qty{293}{K}} \cdot \qty{373}{K} = \qty{14}{L}
+.\]
+Altså bliver volumenet i cylinderen efter opvarmning \underline{\underline{$V_2 = \qty{14}{L}$}}.
+
+
+\paragraph{b.} Hvor stor en varmemængde i $[\unit{kJ}]$ skal der alene til at opvarme cylinderens indhold?
+\begin{figure}[ht]
+  \centering
+  \incfig[0.4]{a2_1_2}
+  \caption{Systemskitse for cylinder-stempelsystemet efter stemplet har flyttet sig og med tilført varmemængde}
+  \label{fig:a2-1-2}
+\end{figure}
+\bigbreak
+Idet vi holder fast i antagelsen fra delopgave a. om et modstandsfrit stempel er trykket konstant. Derfor må processen være isobarisk. For at finde varmeenergien $Q$ til en opvarmning kan vi benytte formlen
+\begin{equation} \label{eq:varmekap}
+  Q = m \cdot c_p \cdot \Delta T
+\end{equation}
+Hvor $m$ er massen, $c_p$ er varmekapaciteten ved konstant tryk (da processen er isobarisk) og $\Delta T$ er temperaturændringen. Idet den specifikke varmekapacitet ved konstant tryk for argon i bogen er anført til $c_{p_{Ar}} = \qty{520,3}{\frac{J}{kgK}}$ mangler vi blot at bestemme massen $m$ af argonen i cylinderen. Til dette kan vi benytte idealgasligningen fra \autoref{eq:ideal}, hvori massen kan isoleres som
+\[ 
+m = \frac{pV}{R_i T}
+.\]
+Idet den individuelle gaskonstant for argon i bogen er anført til $R_{i_{Ar}} = \qty{208,1}{\frac{J}{kgK}}$ kan massen findes ved blot at benytte begyndelsesværdierne for de andre størrelser. Vi får altså
+\[ 
+m = \frac{\qty{1,013}{bara} \cdot \qty{11}{L}}{\qty{208,1}{\frac{J}{kgK}} \cdot \qty{293}{K}} = \qty{0,018275}{kg}
+.\]
+Vi kan nu indsætte den fundne masse $m$ af argonet i \autoref{eq:varmekap} sammen med de andre kendte størrelser for at få
+\[ 
+Q = \qty{0,018275}{kg} \cdot \qty{520,3}{\frac{J}{kg K} \cdot (\qty{100}{\celsius} - \qty{20}{\celsius})} = \qty{0,762}{kJ}
+.\]
+Altså skal der tilføres en varmemængde på \underline{\underline{$Q = \qty{0,762}{kJ}$}} for at opvarme cylinderens indhold.
+
+
+\paragraph{c.} Hvad er volumenændringsarbejdet i $[\unit{kJ}]$? 
+\bigbreak
+\begin{figure}[ht]
+  \centering
+  \incfig[0.25]{a2_1_1}
+  \caption{Systemskitse for cylinder-stempelsystemet efter stemplet har flyttet sig}
+  \label{fig:a2-1-1}
+\end{figure}
+Volumenændringsarbejdet for en isobar process (hvilket det antages at processen er jf. delopgave a.) kan findes som
+\[ 
+W_{v_{\text{isob}}} = p \left( V_1 - V_2 \right)
+.\]
+Alle størrelser er kendte og vi kan derfor blot indsætte værdierne som
+\[ 
+W_{v_{\text{isob}}} = \qty{1,013}{bara} \cdot \left( \qty{11}{L} - \qty{14}{L}  \right) = - \qty{0,304}{kJ} 
+.\]
+Altså er volumenændringsarbejdet \underline{\underline{$W_{v_{\text{isob}}} = -\qty{0,304}{kJ}$}}.
+
+
+
+
+\opgave{4.6}
+I forbindelse med meteorologiske målinger opsendes en vejrballon med måleudstyr. Vejrballonen består af et elastisk materiale, som kan give sig uden at der opstår spændinger i materialet. Vejrballonen indeholder helium (He) og har ved jordoverfladen et volumen på \qty{1}{m^3}, og meteorologiske data ved opsendelsesstedet er \qty{1,013}{bara} og \qty{15}{\celsius}. I forbindelse med opgavens løsning skal der ses bort fra vejrballonens masse og varmeindhold.
+
+\paragraph{a.} Idet løfteevnen af gassen i vejrballonen bestemmes efter følgende formel:
+\[ 
+F_{\text{løft}} = V_{\text{ballon}} \cdot g \cdot \left( \rho_{\text{omgivelser}} - \rho_{\text{gas i ballon}} \right)
+\]
+bestem den masse af udstyr i $[\unit{kg}]$, som vejrballonen kan løfte, når den slippes ved jordoverfladen.
+\bigbreak
+\begin{figure}[ht]
+    \centering
+    \incfig{a2_2_1}
+    \caption{Systemskitse for vejrballonen}
+    \label{fig:a2_2_1}
+\end{figure}
+For at finde massen af udstyr som vejrballonen kan løfte ved jordoverfladen skal først findes den løftekraft som ballonen kan udøve ved jordoverfladen. Først skal vi derfor finde de informationer der er nødvendige for at kunne benytte formlen for løftekraften af ballonen. Vi husker at idealgasligningen kan skrives som
+\begin{equation} \label{eq:ideal2}
+  p v = R_i \cdot T
+\end{equation}
+Heri kan det specifikke volumen $v$ omskrives til en densitet idet $v = \frac{1}{\rho}$ og vi kan derfor skrive idealgasligningen fra \autoref{eq:ideal2} som
+\[ 
+  p \cdot \frac{1}{\rho} = R_i \cdot T
+.\]
+Heri kan densiteten $\rho$ isoleres som
+\begin{equation} \label{eq:densitet}
+  \rho = \frac{p}{R_i \cdot T}
+\end{equation}
+Vi kan dermed bestemme densiteten af luften idet vi har oplyst trykket $p = \qty{1,013}{bara}$ og temperaturen $T = \qty{15}{\celsius} = \qty{288}{K}$ og vi kan finde den individuelle gaskonstant for tør ludt i bogen. Denne er $R_{i_{\text{Tør luft}}} = \qty{287,2}{\frac{J}{kgK}}$. Indsættes dette i formlen fås
+\[ 
+\rho_{\text{omgivelser}} = \frac{\qty{1,013}{bara}}{\qty{287,2}{\frac{J}{kgK}} \cdot \qty{288}{K}} = \qty{1,2247}{\frac{kg}{m^3}} 
+.\]
+Det samme kan gøres for heliummet i ballonen idet dennes individuelle gaskonstant i bogen kan findes til $R_{i_{\text{He}}} = \qty{2076,9}{\frac{J}{kgK}}$. Ved at indsætte dette i \autoref{eq:densitet} fås
+\[ 
+\rho_{\text{gas i ballon}} = \frac{\qty{1,013}{bara}}{\qty{2076,9}{\frac{J}{kgK}} \cdot \qty{288}{K} } = \qty{0,16936}{\frac{kg}{m^3}} 
+.\]
+Vi kender nu værdien af alle størrelserne i formlen for løftekraften fra opgaven og kan derfor finde ballonens løftekraft som
+\[ 
+F_{\text{løft}} = \qty{1}{m^3} \cdot \qty{9,82}{\frac{m}{s^2}} \cdot \left( \qty{1,2247}{\frac{kg}{m^3}} - \qty{0,16936}{\frac{kg}{m^3}} \right) = \qty{10,36}{N}
+.\]
+Idet ballonens løftekraft modarbejdes af tyngdekraften skal denne kraft accelerere massen med en acceleration der er mindst ligeså stor som tyngdeaccelerationen. Den masse $m_{\text{udstyr}}$ som kraften $F_{\text{løft}}$ kan løfte med tyngdeaccelerationen kan findes vha. Newtons 2. lov som
+\[ 
+F_{\text{løft}} = m_{\text{udstyr}} \cdot g \implies m_{\text{udstyr}} = \frac{F_{\text{løft}}}{g}
+.\]
+Heri kan kendte størrelser indsættes som
+\[ 
+m_{\text{udstyr}} = \frac{\qty{10,36}{N}}{\qty{9,82}{\frac{m}{s^2}}} = \qty{1,06}{kg} 
+.\]
+Altså kan ballonen maksimalt løfte en masse af udstyr på \underline{\underline{$m_{\text{udstyr}} = \qty{1,06}{kg}$}}.
+
+
+\paragraph{b.} Idet atmosfæretrykket som funktion af højden over havoverfladen (H) i $[\unit{km}]$ bestemmes efter følgende formel:
+\[ 
+p_{\text{atm}} = p_{H = 0} \cdot \left( 1 - \num{6,5} \cdot \frac{H}{288} \right)^{\num{4,255}}
+\]
+bestem volumenet af vejrballonen i $[\unit{m^3}]$ i \qty{1}{km}'s højde, hvor temperaturen er faldet til \qty{10}{\celsius}. (Både helium og atmosfærisk luft kan antages at være en idealgas). Bonusinformation: Som en tommelfingerregel falder trykket i atmosfæren til det halve for hver \qty{5500}{m} man stiger op.
+\bigbreak
+\begin{figure}[ht]
+  \centering
+  \incfig[1]{a2_2_2}
+  \caption{Systemskitse for luftballonen i højden $H = \qty{1}{km}$}
+  \label{fig:a2-2-2}
+\end{figure}
+Vi starter med at benytte formlen fra opgaven til at finde atmosfæretrykket i højden $H = \qty{1}{km}$ ved at indsætte kendte størrelser
+\[ 
+p_{H = 1} = \qty{1,013}{bara} \cdot \left( 1 - \num{6,5} \cdot \frac{1}{288} \right)^{\num{4,255}} = \qty{0,9192}{bara}  
+.\]
+Dette stemmer umiddelbart fint overens med tommelfingerreglen om at trykket halveres ved $H = \qty{5,5}{km}$. Vi har tidligere bestemt densiteten af heliummet indeni ballonen til $\rho_{\text{gas i ballon}} = \qty{0,16936}{\frac{kg}{m^3}}$ ved opsendelsen. På dette tidspunkt havde ballonen et volumen på $V = \qty{1}{m^3}$ og derfor er massen af helium i ballonen, $m_{\text{gas i ballon}}$
+\[ 
+m_{\text{gas i ballon}} = \rho_{\text{gas i ballon}} \cdot V = \qty{0,16936}{\frac{kg}{m^3}} \cdot \qty{1}{m^3} = \qty{0,16936}{kg} 
+.\]
+Nu kan vi benytte idealgasligningen på formen fra \autoref{eq:ideal} idet vi kender alle indgående størrelser, undtagen volumenet. Heri isoleres volumenet, så
+\[ 
+V = \frac{m_{\text{gas i ballon}} R_i T}{p_{H = 1}}
+.\]
+Hvis vi indsætter kendte størrelser fås
+\[ 
+V = \frac{\qty{0,16936}{kg} \cdot \qty{2076,9}{\frac{J}{kg K}} \cdot \qty{283}{K}}{\qty{0,9192}{bara}} = \qty{1,08}{m^3} 
+.\]
+Altså har ballonen et volumen på \underline{\underline{$V = \qty{1,08}{m^3} $}} i en højde på $H = \qty{1}{km}$.
+
+\end{document}

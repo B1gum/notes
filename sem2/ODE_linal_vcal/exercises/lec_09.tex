@@ -1,0 +1,177 @@
+\section*{Lecture 9}
+
+\subsection*{1.} Solve the IVP
+\[ 
+y''(x) - \frac{1}{x} y'(x) + \frac{1}{x^2}y(x) = 0, \quad x > 0, \quad y(1) = 0, \quad y'(1) = 1
+.\]
+\textit{Hint:} One basis solution is $y(x) = x$.
+\bigbreak
+We compare the given ODE to the standard form for a homogeneous linear second order ODE
+\[ 
+y''(x) + p(x) y'(x) + q(x)y(x) = 0
+.\]
+We can quickly identify $p(x) = -\frac{1}{x}$ and $q(x) = \frac{1}{x^2}$. We also know that one basis solution is $y_1(x) = x$. To find a second basis solution we must first calculate
+\[ 
+\int p(x) \, \mathrm{d}x = \int -\frac{1}{x}\, \mathrm{d}x  = - \ln(x)
+.\]
+We can now find $U$ as
+\[ 
+U = \frac{1}{y_1^2(x)} e^{- \int p(x) \, \mathrm{d}x } = \frac{1}{x^2} \cdot x = \frac{1}{x}
+.\]
+The second basis solution can thus be found as
+\[ 
+y_2(x) = y_1(x) \int U(x) \, \mathrm{d}x = x \int \frac{1}{x} \, \mathrm{d}x = x \ln x
+.\]
+This corresponds to the general solution
+\[ 
+y(x) = c_1 y_1(x) + c_2 y_2(x) = c_1 x + c_2 x \ln x
+.\]
+To fit the initial values we must first find the first derivative of $y$ as
+\begin{align*}
+  y(x) &= c_1 x + c_2 x \ln x \\
+  y'(x) &= c_1 + c_2 \ln x + c_2
+.\end{align*}
+We can now see that
+\[ 
+y(1) = c_1 + c_2 \cdot 0 = 0 \implies c_1 = 0
+.\]
+And
+\[ 
+y'(1) = 0 + c_2 \cdot 0 + c_2 \implies c_2 = 1
+.\]
+The particular solution is therefore
+\[ 
+y(x) = x \ln x
+.\]
+
+
+\subsection*{2.} Solve the IVP
+\[ 
+y''(x) + \frac{1}{x}y'(x) - \frac{4}{x^2}y(x) = 0, \quad x > 0, \quad y(1) = 0, \quad y'(1) = 1
+.\]
+\textit{Hint:} One baseis solution is $y(x) = x^2$.
+\bigbreak
+We quickly identify $p(x) = \frac{1}{x}$ and $q(x) = - \frac{4}{x^2}$. To find a second basis solution we calculate
+\[ 
+\int p(x) \, \mathrm{d}x = \int \frac{1}{x} \, \mathrm{d}x = \ln x
+.\]
+We can now find $U$ as
+\[ 
+U(x) = \frac{1}{y_1^2(x)} e^{- \int p(x) \, \mathrm{d}x} = \frac{1}{x^{4}} x^{-1} = \frac{1}{x^{5}}
+.\]
+The second basis solution can thus be found as
+\[ 
+y_2(x) = y_1(x) \int U(x) \, \mathrm{d}x = x^2 \int \frac{1}{x} = x^2 \frac{-x^{-4}}{4} = - \frac{1}{4x^2}
+.\]
+The general solution is
+\[ 
+y(x) = c_1 y_1(x) + c_2 y_2(x) = c_1 x^2 - c_2 \frac{1}{4x^2}
+.\]
+The derivative of this is
+\[ 
+y'(x) = 2c_1 x + c_2 \frac{1}{2x^3}
+.\]
+We can now introduce the initial value condition
+\begin{align*}
+  y(1) &= c_1 - \frac{1}{4}c_2 = 0 \\
+  y'(1) &= 2c_1 + \frac{c_2}{2} = 1 \\
+  \frac{1}{2} c_2 + \frac{1}{2} c_2 &= 1 \implies c_2 = 1 \\
+  c_1 - \frac{1}{4} &= 0 \implies c_1 = \frac{1}{4}
+.\end{align*}
+Therefore the particular solution is
+\[ 
+y(x) = \frac{1}{4}x^2 - \frac{1}{4x^2}
+.\]
+
+
+\subsection*{3.} Find a second order, linear and homogeneous ODE with constant coefficients such that
+\[ 
+y(x) = c_1e^{x} + c_2 e^{2x}
+\]
+is the general solution. Here, $c_1$ and $c_2$ are arbitrary constants.
+\bigbreak
+For the general solution to be equal to the given the roots of the characteristic equation must be
+\[ 
+\lambda_1 = 1, \quad \lambda_2 = 2
+.\]
+Using the zero-product property we can construct a characteristic equation equal to
+\[ 
+  (\lambda - 1) (\lambda - 2) = 0 \implies \lambda^2 - 3 \lambda + 2 = 0
+.\]
+Therefore an ODE with the given solution is
+\[ 
+y''(x) - 3y'(x) + 2y(x) = 0
+.\]
+
+
+\subsection*{4.} Solve the IVP
+\[ 
+y''(x) + 9y'(x) = 0, \quad y(0) = 0, \quad y'(0) = 9
+.\]
+\bigbreak
+The characteristic equation is
+\[ 
+\lambda^2 + 9 \lambda = 0 \implies \lambda_1 = 0, \quad \lambda_2 = -9
+.\]
+We therefore get the two different solutions
+\[ 
+y_1(x) = e^{0x} = 1, \quad y_2(x) = e^{-9x}
+.\]
+The general solution is therefore
+\[ 
+y(x) = c_1 y_1(x) + c_2 y_2 (x) = c_1 + c_2e^{-9x}
+.\]
+The derivative of this is
+\[ 
+y'(x) = -9c_2 e^{-9x}
+.\]
+For $y'(0) = 9$ to hold we must have
+\[ 
+9 = -9 c_2 \implies c_2 = -1
+.\]
+For $y(0) = 0$ to hold we must have
+\[ 
+0 = c_1 -1 \implies c_1 = 1
+.\]
+Therefore the particular solution is 
+\[ 
+y_p(x) = 1 - e^{-9x}
+.\]
+
+
+
+\subsection*{5.} Solve the IVP
+\[ 
+y''(x) - 6y'(x) + 9y(x) = 0, \quad y(1) = 0, \quad y'(1) = 1
+.\]
+\bigbreak
+The characteristic equation is
+\[ 
+\lambda^2 - 6\lambda + 9 = 0 \implies \lambda_1 = 3, \lambda_2 = 3
+.\]
+This gives the basis solutions
+\[ 
+y_1(x) = e^{\lambda_1 x} = e^{3x}, \quad y_2(x) = x e^{\lambda_2 x} = x e^{3x}
+.\]
+The general solution is therefore
+\[ 
+y(x) = c_1 e^{3x} + c_2 x e^{3x}
+.\]
+The derivative of this is
+\[ 
+y'(x) = 3c_1 e^{3x} + 3c_2 x e^{3x} + c_2 e^{3x} = \left( 3c_1 + 3c_2x + c_2 \right)e^{3x}
+.\]
+We can now introduce the initial value conditions as
+\begin{align*}
+  y(1) &= c_1 e^{3} + c_2 e^{3} = 0 \\
+  y'(1) &= \left( 3c_1 + 4c_2 \right) e^{3} = 1 \\
+.\end{align*}
+This gives
+\[ 
+c_1 + c_2 = 0, \quad 3c_1 + 4c_2 = e^{-3} \implies c_2 = e^{-3}, \, c_1 = -e^{-3}
+.\]
+The particular solution therefore becomes
+\[ 
+  y(x) = - e^{-3} e^{3x} + e^{-3} x e^{3x}
+.\]
+

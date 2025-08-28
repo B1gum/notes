@@ -1,0 +1,125 @@
+\lecture{12}{5. Marts 2025}{Composites, Pt. 1: Materials and general rules}
+
+Consider a composite of carbon fibers ($\sigma_{f}^{*} = \qty{3,5}{GPa}$ and $d = \qty{0,005}{mm}$) in an epoxy matrix ($\tau_c = \qty{100}{MPa}$). 
+
+\paragraph{1)} A fiber length of \qty{0,05}{mm} is \_\_\_\_\_\_ the critical fiber length.
+\begin{itemize}
+  \item Greater than
+  \item Equal to
+  \item Less than
+\end{itemize}
+\bigbreak
+We can calculate the critical fiber length as
+\[ 
+l_c = \frac{\sigma_f d}{2 \cdot \tau_c} = \frac{\qty{3,5}{GPa} \cdot \qty{0,005}{mm}}{2 \cdot \qty{100}{MPa} } = \qty{0,088}{mm} 
+.\]
+So the answer is ``c) less than''.
+
+
+\paragraph{2)} The fiber length must be greater than \_\_\_\_\_\_ to be considered continuous.
+\begin{itemize}
+  \item \num{0,0875} 
+  \item \num{1,0} 
+  \item \num{1,3125}
+\end{itemize}
+\bigbreak
+As shown above the critical fiber length is $l_c = \qty{0,088}{mm}$ meaning the correct answer is ``a) \num{0,0875}''.
+
+
+\paragraph{3)} To make the critical fiber length equal to \qty{0,05}{mm}, the diameter should be \_\_\_\_\_\_.
+\begin{itemize}
+  \item left unchanged
+  \item decreased
+  \item increased
+\end{itemize}
+\bigbreak
+We reuse the formula
+\[ 
+l_c = \frac{\sigma_f d}{2 \tau_c} \implies d = \frac{2 l_c \tau_c}{\sigma_f}
+.\]
+Therefore we get
+\[ 
+d = \frac{2 \cdot \qty{0,05}{mm} \cdot \qty{100}{MPa}}{\qty{3,5}{GPa}} = \qty{0,00286}{mm}
+.\]
+
+
+
+\exercise{16.7} In an aligned and continuous carbon fiber-reinforced nylon \num{6,6} composite, the fibers are to carry 97\% of a load applied in the longtitudal direction.
+\begin{table}[ht]
+\centering
+\caption{}
+\begin{tabular}{c|c|c}
+ & \textbf{Modulus of Elasticity} [\unit{GPa}] & \textbf{Tensile strength [\unit{MPa}]} \\ \hline
+  Carbon fiber & 260 & 4000 \\
+  Nylon \num{6,6} & \num{2,8} & \num{76} 
+\end{tabular}
+\end{table}
+
+\paragraph{a.} Using the data provided, determine the volume fraction of fibers required.
+\bigbreak
+In an aligned continuous fiber reinforced composite the matrix and the fibers are under isostrain. We therefore have the conditions
+\begin{align*}
+  \sigma_c &= \sigma_m V_m + \sigma_f V_f \\
+  \epsilon_c &= \epsilon_m = \epsilon_f
+.\end{align*}
+These two conditions can with the use of Hookes law be rewritten as
+\begin{align*}
+  \sigma_m &= E_m \epsilon_c \\
+  \sigma_f &= E_f \epsilon_c
+.\end{align*}
+Thus
+\[ 
+\sigma_c = \epsilon_c \left( E_m V_m + E_f V_f \right)
+.\]
+The fraction of the total load $F_c$ carried by the fibers is
+\[ 
+\frac{F_f}{F_c} = \frac{\sigma_f V_f}{\sigma_c} = \frac{E_f \epsilon_c V_f}{\epsilon_c \left( E_m V_m + E_f V_f \right)} = \frac{E_f V_f}{E_m \left( 1- V_f \right) + E_f V_f}
+.\]
+We want this to be equal to 97\%, so
+\[ 
+\num{0,97} = \frac{E_f V_f}{E_m \left( 1- V_f \right) + E_f V_f}
+.\]
+We can now solve for $V_f$ as:
+\begin{align*}
+  E_f V_f &= \num{0,97} E_m \left( 1 - V_f \right) + \num{0,97} E_f V_f \\
+  \num{0,03}  E_f V_f &= \num{0,97} E_m - \num{0,97} E_m V_f \\
+  \num{0,03} E_f V_f + \num{0,97} E_m V_f &= \num{0,97} E_m \\
+  V_f \left( \num{0,03} E_f + \num{0,97} E_m \right) &= \num{0,97} E_m \\
+  V_f &= \frac{\num{0,97} E_m}{\num{0,03} E_f + \num{0,97} E_m} \\
+  &= \frac{\num{0,97} \cdot \qty{2,8}{GPa}}{\num{0,03} \cdot \qty{260}{GPa} + \num{0,97} \cdot \qty{2,8}{GPa} } \\
+  &= \num{0,2583} = \num{25,83} \% 
+.\end{align*}
+
+
+\paragraph{b.} What is the tensile strength of this composite? Assume that the matrix stress at fiber failure is \qty{50}{MPa}.
+\bigbreak
+The tensile strength of the composite is (as previously mentioned) given by
+\[ 
+\sigma_c = \sigma_m V_m + \sigma_f V_f = \qty{76}{MPa} \cdot \num{0,7417} + \qty{4000}{MPa} \cdot \num{0,2583} = \qty{1089,57}{MPa} 
+.\]
+
+
+\exercise{16.9} Compute the longtitudinal strength of an aligned carbon fiber-epoxy matrix copmosite having a \num{0,20} volume fraction of fibers, assuming the following:
+\begin{itemize}
+  \item An average fiber diameter of \qty{6e-3}{mm}
+  \item An average fiber length of \qty{8,0}{mm}
+  \item A fiber fracture strength of \qty{4,5}{GPa} 
+  \item A fiber-matrix bond strength of \qty{75}{MPa}
+  \item A matrix stress at composite failure of \qty{6,0}{MPa}
+  \item A matrix tensile strength of \qty{60}{MPa} 
+\end{itemize}
+\bigbreak
+We will first check if the fiber length exceeds the critical fiber length as
+\[ 
+l_c = \frac{\sigma_f^{*} d}{2 \tau_c} = \frac{\qty{4500}{MPa} \cdot \qty{6e-3}{mm}}{2 \cdot \qty{75}{MPa}} = \qty{0,18}{mm} 
+.\]
+Sinde $l = \qty{8,0}{mm} \gg l_c = \qty{0,18}{mm}$ the fibers are easily continuous. We can now use the strength formula for long fibers given by
+\[ 
+\sigma_{cd}^{*} = \sigma_f^{*}V_f \left( 1 - \frac{l_c}{2l} \right) + \sigma_m' \left( 1 - V_f \right)
+.\]
+
+We can substitute in the given values (we remember that $\sigma_m'$ is the matrix stress at the moment the composite fails which is often lower than the matrix’s standalone tensile strength) as
+\[ 
+\sigma_{cd}^{*} = \num{0,20} \cdot \qty{4500}{MPa} \cdot \left( 1 - \frac{\qty{0,18}{mm}}{2 \cdot \qty{8,0}{mm}} \right) + \num{0,80} \cdot  \qty{6,0}{Mpa} = \qty{894,7}{MPa} 
+.\]
+

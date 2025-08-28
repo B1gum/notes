@@ -1,0 +1,203 @@
+\documentclass[a4paper]{article}
+
+\input{./preamble.tex}
+
+\title{Afleveringsopgave 5 – Termodynamik}
+\date{6. Marts 2025}
+
+\begin{document}
+
+\maketitle
+
+\opgave{6.3}
+Et trykluftsanlæg med en stempelkompresser komprimerer \qty{0,1}{kg/s} tør atmosfærisk luft fra \qty{20}{\celsius} ved atmosfæretrykket (\qty{1,013}{bar(a)}) til arbejdsluft ved \qty{10}{bar(o)}. Gassen kan betragtes som en idealgas. Følgende data er givet:
+\begin{itemize}
+  \item Kompressor, $\eta_s = \num{0,70}$
+  \item Kompressor, $\eta_{\mathrm{mek}} = \num{0,98}$
+  \item Motor, $\eta_m = \num{0,95}$
+  \item Netspænding, $\qty{400}{V}$
+  \item $\cos\phi = \num{0,95}$
+\end{itemize}
+
+\paragraph{1.} Bestem temperaturen i $[\unit{\celsius}]$ for kompressionen, hvis denne foregår isentropisk.
+\begin{figure}[ht]
+    \centering
+    \incfig{a5_1}
+    \caption{Systemskitse af kompressoren}
+    \label{fig:a5_1}
+\end{figure}
+\bigbreak
+I EES er indskrevet de relevante størrelser (trykket før- og efter kompressionen samt temperaturen før). Derudover er entropien til både start- og sluttilstanden fundet inden betingelsen om at disse er ens er skrevet ind. Dette er gjort som:
+\begin{verbatim}
+  P[1]=1,013 [bar]
+  T[1]=20 [C]
+  P[2]=10 [bar] + 1,013  [bar] 
+  
+  s[1] = entropy(Air_ha; T=T[1]; P=P[1])
+  s[2] = entropy(Air_ha; T=T[2]; P=P[2])
+ 
+  s[2] = s[1]
+\end{verbatim}
+På baggrund af det ovenstående har EES bestemt $T_2 = \qty{301,8}{\celsius}$.
+
+\paragraph{2.} Bestem det tekniske arbejde i $[\unit{kW}]$ for kompressoren.
+\begin{figure}[ht]
+    \centering
+    \incfig{a5_1}
+    \caption{Systemskitse af kompressoren}
+\end{figure}
+\bigbreak
+Idet processen er isentropisk må det ligeledes gælde at den er adiabatisk. Idet vi også ser bort fra kinetisk og potentiel energi i luften reduceres formlen for det tekniske arbejde til (Formel 5.1.12 i bogen)
+\[ 
+w_{t, \mathrm{isen}} = h_2 - h_1
+.\]
+Dette er gjort i EES som:
+\begin{verbatim}
+  P[1]=1,013 [bar]
+  T[1]=20 [C]
+  P[2]=10 [bar] + 1,013  [bar] 
+  
+  s[1] = entropy(Air_ha; T=T[1]; P=P[1])
+  s[2] = entropy(Air_ha; T=T[2]; P=P[2])
+ 
+  s[2] = s[1]
+
+  h[1] = enthalpy(Air_ha;T=T[1];P=P[1])
+  h[2] = enthalpy(Air_ha;T=T[2];P=P[2])
+ 
+  w_tisen = h[2] - h[1]
+\end{verbatim}
+Her giver EES et specifikt indre arbejde (som er lig det tekniske arbejde, da processen er adiabatisk) på $w_{t,\mathrm{isen}} = \qty{287,5}{\frac{kJ}{kg}}$. For at omregne fra et specifikt arbejde til en effekt multipliceres dette blot med massestrømmen som
+\[ 
+  \dot{W}_{t, isen} = w_{t, isen} \cdot \dot{m} = \qty{287,5}{\frac{kJ}{kg}} \cdot \qty{0,1}{\frac{kg}{s}} = \qty{28,75}{kW}
+.\]
+altså er det tekniske arbejde for kompressoren $\dot{W}_{t, isen} = \qty{28,75}{kW}$.
+
+
+\paragraph{3.} Bestem akseleffekten i $[\unit{kW}]$.
+\begin{figure}[ht]
+    \centering
+    \incfig[0.75]{a5_2}
+    \caption{Systemskitse af kompressoren og motoren}
+\end{figure}
+\bigbreak
+Der gælder, at den isentropiske virkningsgrad $\eta_{is}$ er forholdet mellem det isentropiske (dvs. reversible og adiabatiske) arbejde $\dot{W_{t, isen}}$ og det egentlige arbejde for maskinen $\dot{W_i}$. I vores tilfælde er den reversible og adiabatiske del af arbejdet fundet som det tekniske arbejde ovenfor og det egentlige arbejde $\dot{W}_i$ er akseleffekten vi ønsker at finde i denne delopgave. Vi har
+\[ 
+\eta_{is} = \frac{\dot{W}_{t, isen}}{\dot{W}_i} \implies \dot{W}_i = \frac{\dot{W}_{t,isen}}{\eta_{is}}
+.\]
+I opgaven får vi oplyst at $\eta_{is}= \num{0,7}$ for kompressoren. Derfor får vi
+\[ 
+\dot{W}_i = \frac{\qty{28,75}{kW}}{\num{0,7}} = \qty{41,0}{kW} 
+.\]
+Altså er akseleffekten for kompressoren $\dot{W}_i = \qty{41,0}{kW}$.
+
+\newpage
+\paragraph{4.} Bestem eleffekt i $[\unit{kW}]$ til drivmotoren samt strømstyrken i $[\unit{A}]$ i hver leder til motoren.
+\begin{figure}[ht]
+    \centering
+    \incfig[0.75]{a5_3}
+    \caption{Systemskitse af kompressoren og elmotoren}
+\end{figure}
+\bigbreak
+Fra bogen har vi formlen
+\[ 
+  P_{el} = \frac{\dot{W}_i}{\eta_{mek} \eta_m}
+.\]
+Indsættes kendte størrelser kan el-effekten findes som
+\[ 
+P_{el} = \frac{\qty{41,0}{kW}}{\num{0,98} \cdot \num{0,95}} = \qty{44}{kW} 
+.\]
+Fra bogen ved vi også, at effekten $P_{el}$ kan kan findes som
+\[ 
+P_{el} = \sqrt{3}\cdot  I\cdot V\cdot \cos\phi
+.\]
+Heri kan strømstyrken isoleres som
+\[ 
+I = \frac{P_{el}}{\sqrt{3}\cdot V\cdot \cos\phi} = \frac{\qty{44}{kW}}{\sqrt{3}\cdot \qty{400}{V} \cdot \num{0,95}} = \qty{66,85}{A}
+.\]
+
+
+\paragraph{5.} Bestem den reelle temperatur i $[\unit{\celsius}]$ efter kompressoren.
+\begin{figure}[ht]
+    \centering
+    \incfig{a5_4}
+    \caption{Systemskitse af kompressoren}
+\end{figure}
+\bigbreak
+Den isentropiske virkningsgrad kan defineres som
+\[ 
+\eta_{is} = \frac{h_{2, isen} - h_1}{h_{2, reel} - h_1} \implies h_{2, reel} = h_1 + \frac{h_{2, isen} - h_1}{\eta_{is}}
+.\]
+Efter at den reelle entalpi til sluttilstanden er fundet kan den reelle temperatur til sluttilstanden findes i EES vha. et stofdatakald. Dette er gjort som:
+\begin{verbatim}
+  P[1]=1,013 [bar]
+  T[1]=20 [C]
+  P[2]=10 [bar] + 1,013  [bar] 
+ 
+  s[1] = entropy(Air_ha; T=T[1]; P=P[1])
+
+  s[2] = entropy(Air_ha; T=T[2]; P=P[2])
+
+  s[2] = s[1]
+
+  h[1] = enthalpy(Air_ha;T=T[1];P=P[1])
+  h[2] = enthalpy(Air_ha;T=T[2];P=P[2])
+
+  eta_s = 0,7
+
+  h_real[2] = h[1] + (h[2] - h[1])/eta_s
+
+  T_reel[2]=temperature(Air_ha;P=P[2];h=h_real[2])
+\end{verbatim}
+Til dette giver EES $T_{reel,2} = \qty{417,8}{\celsius}$. 
+
+\paragraph{6.} Hvor stor slagvolumen har stempelkompressoren, hvis den kører med \qty{3000}{omdrejninger/minut}. (Stofværdier $(C_p, \kappa)$ skal antages ikke konstante dvs. afhængige af temperatur of tryk -- brug entalpier eller middelværdier for $C_p, \kappa$)
+\begin{figure}[ht]
+    \centering
+    \incfig[0.7]{a5_5}
+    \caption{Systemskitse af kompressoren}
+\end{figure}
+\bigbreak
+For at finde slagvolumenet af stempelkompressoren vil vi først bestemme volumenstrømmen der flyder ind i kompressoren. Her gælder generelt formlen:
+\[ 
+\dot{V} = \frac{\dot{m}}{\rho}
+.\]
+Idet det antages at kompressoren kun har et stempel må det gælde at denne volumenstrøm skal deles ud på alle kompressorens omdrejninger. Vi har altså
+\[ 
+V_{slag} = \frac{\dot{V}}{\mathrm{RPM}}
+.\]
+Dette er regnet i EES vha. følgende kode:
+\begin{verbatim}
+  P[1]=1,013 [bar]
+  T[1]=20 [C]
+  m_dot[1] = 0,1 [kg/s]
+   
+  rho[1] = density(Air_ha;T=T[1];P=P[1])
+  V_dot[1] = m_dot[1]/rho[1]
+   
+  RPM[1] = 3000 [RPM]
+  RPS[1] = 50 [RPS]
+   
+  V_slag[1] = V_dot[1]/RPS[1]
+\end{verbatim}
+Her giver EES outputtet $V_{slag, 1} = \qty{0,00166}{m^3} = \qty{1,66}{L}$.
+
+\opgave{6.7}
+Definér og bestem den højest opnåelige termiske virkningsgrad for et kraftværk som har en damptemperatur på \qty{550}{\celsius}. Kondenseringsvarmen køles med udeluft. Vejrudsigten siger blæst og dagtemperatur på \qty{10}{\celsius}.
+\begin{figure}[ht]
+    \centering
+    \incfig[0.6]{a5_6}
+    \caption{Systemskitse for kraftværket}
+    \label{fig:a5_6}
+\end{figure}
+\bigbreak
+Den højest opnåelige termiske virkningsgrad for et kraftværk kan findes vha. formlen for den termiske virkningsgrad for en Carnot-arbejdsproducerende maskine der virker i samme temperaturinterval. Denne er generelt givet som
+\[ 
+\eta_{th,C} = 1 - \frac{T_L}{T_H}
+.\]
+Hvis vi sætter kendte størrelser ind fås
+\[ 
+\eta_{th, C} = 1 - \frac{\qty{283}{K}}{\qty{823}{K}} = \num{0,656} 
+.\]
+Altså er den højest opnåelige termiske virkningsgrad for et kraftværk, der arbejdet i det nævnte temperaturinterval $\eta_{th,C} = \num{0,656} = 65,6\%$.
+\end{document}

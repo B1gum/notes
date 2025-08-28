@@ -1,0 +1,62 @@
+\lecture{4}{5. Februar 2025}{Imperfections in solids}
+
+\exercise{4.1}
+For some hypothetical metal, the equilibrium number of vacancies at \qty{900}{\celsius} if \qty{2,3e25}{m^{-3}}. If the density and atomic weight of this metal are \qty{7,40}{g/cm^3} and \qty{85,5}{g/mol}, respectively, calculate the fraction of vacancies for this metal at \qty{900}{\celsius}.
+\bigbreak
+We can use the formula for the amount of lattice positions as
+  \[ 
+  N = \frac{N_A \rho}{A} = \frac{\qty{6,022e23}{mol^{-1}} \cdot \qty{7,40}{\frac{g}{cm^3}}}{\qty{85,5}{\frac{g}{mol}}} = \qty{5,21e28}{m^{-3}}
+  .\]
+  Now we can find the fraction as
+  \[ 
+    \frac{N_v}{N} = \frac{\qty{2,3e25}{m^{-3}}}{\qty{5,21e28}{m^{-3}}} = \num{4,41e-4}
+  .\]
+
+\exercise{4.6}
+\paragraph{(a)} Compute the radius $r$ of an impurity atom that will just fit into an FCC octahedral site in terms of the atomic radius $R$ of the host atom (without introducing lattice strains).
+\bigbreak
+The octahedral interstitial site in FCC is located right at the center of the UC, with coordinates $\left( \frac{1}{2}, \frac{1}{2}, \frac{1}{2} \right)$. The distance from this to any of the neighboring atoms is $\frac{a}{2}$, where $a$ is the lattice constant. For an FCC lattice the lattice constant can be found in terms of $R$ as
+\[ 
+a = 2 \sqrt{2}R
+.\]
+Thus we get the distance from the octahedral site to a neighboring atom to be
+\[ 
+R + r = \frac{a}{2} = \frac{2 \sqrt{2}R}{2} = \sqrt{2}R
+.\]
+We can now solve for $r$ as
+\begin{align*}
+  R + r &= \sqrt{2}R \\
+  r &= \sqrt{2}R - R \\
+  r &= \left( \sqrt{2} - 1 \right)R
+.\end{align*}
+
+\paragraph{(b)} Repeat part(a) for the FCC tetrahedral site.
+\bigbreak
+The tetrahedral sites in FCC are located at positions like $\left( \frac{1}{4}, \frac{1}{4}, \frac{1}{4} \right) a$. In this calculation we will focus on the tetrahedral site at $\left( \frac{a}{4}, \frac{a}{4}, \frac{a}{4} \right)$. One of the neighboring host atoms from this coordinate is placed at $(0, 0, 0)$. The distance between these two is
+\[ 
+d = \sqrt{3\left( \frac{a}{4} \right)^2} = \frac{a \sqrt{3}}{4} = \frac{\sqrt{6}R}{2}
+.\]
+This distance $d = R + r$. Thus we get
+\begin{align*}
+  R + r &= \frac{\sqrt{6}R}{2} \\
+  r &= \frac{\sqrt{6} R}{2} - R \\
+  r &= R \left( \frac{\sqrt{6}}{2} - 1 \right)
+.\end{align*}
+
+
+
+\exercise{4.25}
+For a single crystal of some hypothetical metal that has the simple cubic crystal structure, would you expect the surface energy for a (100) plane to be greater, equal to, or less than a (110) plane. Why?
+\bigbreak
+In a simple cubic crystal, the surface energy is largely determined by how many atomic bonds are broken per unit area when a surface is created. The more densely packed the surface (i.e. the higher the number of atoms per unit area), the fewer bonds are broken per area and thus the lower the surface energy.
+
+For the (100) plane 4 quarter atoms are on the plane. The (100) plane has an area of $a^2$. This gives a density of atoms
+\[ 
+  \rho_{(100)} = \frac{4 \cdot \qty{0,25}{atoms}}{a^2} = \frac{\qty{1}{atom}}{a^2} 
+.\]
+
+For the (110) plane a total of 4 quarter atoms and 2 half atoms are on the plane. The area for a (110) plane in FCC is $\sqrt{2}a^2$. This gives a density of atoms
+\[ 
+  \rho_{(110)} = \frac{4 \cdot \qty{0,25}{atoms} + 2 \cdot \qty{0,50}{atoms}}{\sqrt{2}a^2} = \frac{\qty{2}{atoms}}{\sqrt{2}a^2} = \frac{\sqrt{2} \unit{atoms}}{a^2}
+.\]
+We can now quickly observe that the atomic density for the (110) plane is greater than for the (100) plane and thus the (100) plane is expected to have a higher energy than the (110) plane.

@@ -1,0 +1,348 @@
+\lecture{6}{4. Marts 2025}{Ideelle og ikke-ideelle processer}
+
+\section{Ideelle og ikke-ideelle processer}
+For både lukkede og åbne systemer er tidligere introduceret et dissipationsarbejde $W_{\mathrm{diss}}$, dette dissipationsarbejde betyder at virkelige termodynamiske processer ikke er helt reversible.
+
+For \textit{lukkede} systemer er det tidligere forklaret, at det samlede arbejde $W_g$ består af summen af volumenændringsarbejdet $W_v$ og dissipationsarbejdet $W_{\mathrm{diss}}$ som
+\[ 
+W_g = W_v + W_{\mathrm{diss}} = - \int_{1}^{2} p \cdot \, \mathrm{d}V + W_{\mathrm{diss}}
+.\]
+For \textit{åbne} systemer gælder noget tilsvarende. Her er det indre arbejde $W_i$ sammensat af det tekniske arbejde $W_t$ og dissipationsarbejdet $W_{\mathrm{diss}}$ som
+\[ 
+W_i = W_t + W_{\mathrm{diss}} = \int_{1}^{2} V \cdot \, \mathrm{d}p + W_{\mathrm{diss}}
+.\]
+Volumenændringsarbejdet $W_v$ og det tekniske arbejde $W_t$ ovenfor beskriver den ideelle og reversible del af procession. Dissipationsarbejdet (som kommer af friktion o.lign.) kan være 0 (for en ideel process) eller positiv (for en reel process) -- den kan aldrig være negativ, da dette ville medføre at friktion tilfører energi til systemet og ikke omvendt.
+
+Dissipative effekter kan opdeles i
+\begin{itemize}
+  \item \textbf{Dissipationsprocesser} som f.eks. friktionsbehæftede strømninger, plastisk deformering af materialer og forbrændingsprocesser. Eksempelvis er varme afgivet fra en elradiator (en elektrisk modstand) ren dissipativt.
+  \item \textbf{Udligningsprocesser} som eksempelvis tryk-, temperatur- eller koncentrationsudligning. F.eks. sker der en trykudligning, når et medie under tryk ledes til en ekspansionsbeholder med lavere tryk.
+\end{itemize}
+
+Kendetegn for den dissipative del af en irreversibel arbejdsproces er:
+\begin{itemize}
+  \item Processen forløber kun af sig selv i den ene retning
+  \item Der sker henfald af højværdige energiformer til en lav-værdig energiform (varme)
+  \item Processen lader sig kun reversere, hvis der sker indgreb fra omgivelserne.
+\end{itemize}
+
+
+\subsection{Introduktion til entropi}
+Vi ved at vi kan skrive den tilførte varmeenergi til et system som
+\[ 
+  Q_{\mathrm{net}} = [H_2 - H_1] - W_{\mathrm{net}}
+.\]
+Dette kan (se evt. bogens side 115) omskrives til
+\[ 
+\mathrm{d}Q_{\mathrm{net}} + \mathrm{d}W_{\mathrm{diss}} = \mathrm{d}U + p \cdot \, \mathrm{d}V
+.\]
+Her er venstresiden summen af den med omgivelserne udvekslede varme og varme opstået som følge af dissipative effekter i systemet. Hvis venstresiden divideres med temperatur opstår en parameter, som viser sig at være en ny uafhængig termodynamisk parameter kaldet \textit{entropi}.
+
+\begin{definition}[Entropi]
+  Entropien $S$ for et system er defineret som
+  \[ 
+  S = \int_{0}^{T} \frac{\mathrm{d}Q_{\mathrm{net} + \mathrm{d}W_{\mathrm{diss}}}}{T} + \mathrm{konstant}
+  .\]
+\end{definition}
+Her er det vigtigt at benytte den absolute temperaturskala (Kelvin). Det kan være bøvlet at bestemme den absolute entropi for et system, da integrationskonstanten skal vælges således, at nulpunktet for entropiskalaen er ved \qty{0}{K}. Dog kan integrationskonstanten elimineres, såfremt man blot er interesseret i en entropidifferens som
+\[ 
+S_2 - S_1 = \int_{1}^{2} \frac{\mathrm{d}Q_{\mathrm{net}} + \mathrm{d}W_{\mathrm{diss}}}{T}
+.\]
+Hvis temperaturen er konstant simplificeres det ovenstående til
+\begin{equation} \label{eq:entændt}
+    S_2 - S_1 = \frac{Q_{\mathrm{net}} + W_{\mathrm{diss}}}{T} \quad (\text{konstant } T)
+\end{equation}
+Hvis processen ligeledes er reversibel ($\mathrm{d}W_{\mathrm{diss}} = 0$) bliver det ovenstående blot
+\[ 
+ S_2 - S_1 = \frac{Q_{\mathrm{net}}}{T} \quad (\text{konstant } T \text{ og reversibel process } \mathrm{d}W_{\mathrm{diss}} = 0)
+.\]
+Entropien henføres til massen i systemet og kan derfor udtrykkes som en specifik størrelse $s$ med enheden $[\unit{\J.\per\kg.\K}]$. På samme måde kan man regne den anden vej fra en specifik entropi $s$ til en generel entropi $S$ som
+\[ 
+S = m\cdot s
+.\]
+Vha. entropi som en uafhængig termodynamisk parameter opnås mulighed for at udvide antallet af tilstandsdiagrammer og et $T$-$s$ eller et $h$-s diagram har vist sig at være hænsigtsmæssige i mange tekniske anvendelser.
+
+\subsection{Isentropiske processer}
+En isentropisk proces er en proces, hvor der ikke sker nogen ændring i entropien dvs. $\mathrm{d}S = 0$. En isentropisk process er altid både reversibel og adiabatisk. For både lukkede og åbne systemer indeholdende en idealgas er det tidligere forklaret at såvel isokoriske, isobariske og isotermiske tilstandsændringer er specialtilfælde af en polytropisk tilstandsændring. Hvis en isobar, isokorisk eller polytropisk proces er irreversibel men stadig adiabatisk, så vil varmeudvekslingen $Q$ være lig disspoípationsarbejdet Altså
+\[ 
+W_i = W_{t, \mathrm{pol}} + W_{\mathrm{diss}} = W_{t, \mathrm{pol}} + Q_{\mathrm{pol}}
+.\]
+For en polytropisk tilstandsændring gælder generelt
+\[ 
+p \cdot V^{n} = \mathrm{konstant} = C
+.\]
+En isentropisk tilstandsændring er ligeledes et specialtilfælde af en polytropisk tilstandsændring, hvor polytropeksponenten $n$ er lig isentropeksponenten $\kappa$ som tidligere er defineret som
+\[ 
+\kappa = \frac{c_p}{c_v} = 1 + \frac{R_i}{c_v}
+.\]
+Isentropiske tilstandsændringer har altid en varmeduveksling $Q_{\mathrm{isen}} = 0$. Det indre arbejde for en isentropisk process i et \textit{lukket} system kan findes som
+\begin{align*}
+  W_{v, \mathrm{isen}} &= \frac{p_2 \cdot V_2 - p_1 \cdot V_1}{\kappa-1} \\
+  W_{v, \mathrm{isen}} &= \frac{m \cdot R_i \cdot \left( T_2 - T-1 \right)}{\kappa-1} \\
+  W_{v, \mathrm{isen}} &= m \cdot c_v \cdot \left( T_2 - T_1 \right)
+.\end{align*}
+For en isentropisk process i et åbent system kan det tekniske arbejde findes som
+\begin{align*}
+  W_{t, \mathrm{isen}} &= \kappa \frac{p_2 \cdot V_2 - p_1 \cdot V_1}{\kappa-1} \\
+  W_{t, \mathrm{isen}} &= \kappa \frac{m \cdot R_i \cdot \left( T_2 - T_1 \right)}{\kappa-1} \\
+  W_{t, \mathrm{isen}} &= m \cdot c_p \cdot \left( T_2 - T_1 \right)
+.\end{align*}
+For isentropiske processer gælder i øvrigt følgende tre sammenhænge (som også gælder for polytrope, dog med $n$ istedet for $\kappa$)
+\begin{align*}
+  \frac{T_2}{T_1} &= \left( \frac{p_2}{p_1} \right)^{\frac{\kappa - 1}{\kappa}} \\
+  \frac{p_2}{p_1} &= \left( \frac{V_1}{V_2} \right)^{\kappa} \\
+  \frac{T_1}{T_2} &= \left( \frac{V_2}{V_1} \right)^{\kappa-1}
+.\end{align*}
+Det ovenstående gælder kun for idealgasser (og isentropiske processer men det giver vidst sig selv).
+
+\subsection{Entropiændring for processer}
+I det følgende vil entropiændringsformler for hhv. isobariske, isotermiske, isokoriske og polytropiske tilstandsændringer udledes. Hertil benyttes følgende formel for entropiændringen i et simpelt og reversibelt system
+\begin{equation}\label{eq:entænd}
+  \mathrm{d}S = \frac{\mathrm{d}H - V \cdot \mathrm{d}p}{T}
+\end{equation}
+
+\subsubsection{Entropiændring for en isobar process}
+Ved en isobar proces sker ingen ændring af trykket ($\mathrm{d}p = 0$), hvorfor \textbf{\autoref{eq:entænd}} kan reduceres til
+\[ 
+\mathrm{d}S = \frac{\mathrm{d}H - V \cdot \mathrm{d}p}{T} = \frac{\mathrm{d}H}{T}
+.\]
+Dette kan vha. definitionen af entalpi omskrives til
+\[ 
+\mathrm{d}S = \frac{\mathrm{d}H}{T} = \frac{m \cdot c_{p,m}\cdot \mathrm{d}T}{T}
+.\]
+Ved integration bliver dette til
+\[ 
+S_2 - S_1 = \int_{1}^{2} \, \mathrm{d}S = \int_{1}^{2} \frac{m \cdot c_{p,m}}{T} \, \mathrm{d}T = m \cdot c_{p,m} \cdot \ln \left( \frac{T_2}{T_1} \right)
+.\]
+Denne kan også skrives ved specifikke størrelser som
+\[ 
+s_2 - s_1 = c_{p,m}\cdot \ln \left( \frac{T_2}{T_1} \right)
+.\]
+
+\subsubsection{Entropiændring for en isotermisk proces}
+Ved en isotermisk process sker ingen ændring i temperaturen ($\mathrm{d}T = 0 \implies \mathrm{d}H = 0$) dermed reduceres \textbf{\autoref{eq:entænd}} til
+\[ 
+\mathrm{d}S = \frac{\mathrm{d}H - V \cdot \mathrm{d}p}{T} = - \frac{V \cdot \mathrm{d}p}{T}
+.\]
+Hvis vi antager at stoffet er en idealgas kan vi vha. idealgasligningen omskrive det ovenstående til
+\[ 
+\mathrm{d}S = \frac{V\cdot \mathrm{d}p}{T} = - m \cdot R_i \cdot \frac{\mathrm{d}p}{p}
+.\]
+Ved integration fås følgende
+\[ 
+S_2 - S_1 = \int_{1}^{2} \, \mathrm{d}S = \int_{1}^{2} - m \cdot R_i \cdot \frac{\mathrm{d}p}{p} = m \cdot R_i \cdot \ln \left( \frac{p_1}{p_2} \right)
+.\]
+På specifik form bliver denne
+\[ 
+s_2 - s_1 = R_i \cdot \ln \left( \frac{p_1}{p_2} \right)
+.\]
+
+\subsubsection{Entropiændring for en isokorisk proces}
+Ved en isokor proces sker ingen ændring af volumenet ($\mathrm{d}V = 0$) og dermed reduceres \textbf{\autoref{eq:entænd}} til
+\[ 
+\mathrm{d}S = \frac{\mathrm{d}U + p \cdot \mathrm{d}V}{T} = \frac{\mathrm{d}U}{T}
+.\]
+Vha. idealgasloven kan dette omskrives til
+\[ 
+\mathrm{d}S = \frac{\mathrm{d}U}{T} = \frac{m \cdot c_{v,m}}{T} \mathrm{d}T
+.\]
+Ved integration fås følgende
+\[ 
+S_2 - S_1 = \int_{1}^{2} \, \mathrm{d}S = \int_{1}^{2} \frac{m \cdot c_{v,m}}{T} \, \mathrm{d}T = m \cdot c_{v,m} \cdot \ln \left( \frac{T_2}{T_1} \right)
+.\]
+På specifik form bliver denne
+\[ 
+s_2 - s_1 = c_{v,m} \cdot \ln \left( \frac{T_2}{T_1} \right)
+.\]
+
+\subsubsection{Entropiændring for en polytropisk proces}
+Ved en polytropisk proces er ingen tilstandsparameter konstant hvorfor vi blot har \textbf{\autoref{eq:entænd}} og en lignende tilsvarende formel (udledt i bogen)
+\begin{align*}
+  \mathrm{d}S &= \frac{\mathrm{d}H - V \cdot \mathrm{d}p}{T} \\
+  \mathrm{d}S &= \frac{\mathrm{d}U + p \cdot \mathrm{d}V}{T}
+.\end{align*}
+Disse kan disse omskrives til
+\begin{align*}
+  \mathrm{d}S &= \frac{\mathrm{d}H - V\cdot \mathrm{d}p}{T} = \frac{\mathrm{d}H}{T} - \frac{V \cdot \mathrm{d}p}{T} = \frac{m \cdot c_{p,m}\cdot \mathrm{d}T}{T} - \frac{V\cdot \mathrm{d}p}{T} \\
+  \mathrm{d}S &= \frac{\mathrm{d}U + p \cdot \mathrm{d}V}{T} = \frac{\mathrm{d}U}{T} + \frac{p \cdot \mathrm{d}V}{T} = \frac{m \cdot c_{v,m}\cdot \mathrm{d}T}{T} + \frac{p \cdot \mathrm{d}V}{T}
+.\end{align*}
+Vha. idealgasligningen kan de to omskrives til
+\begin{align*}
+  \mathrm{d}S &= \frac{m \cdot c_{p,m} \cdot \mathrm{d}T}{T} - \frac{V \cdot \mathrm{d}p}{T} = \frac{m \cdot c_{p,m} \cdot \mathrm{d}T}{T} - \frac{m \cdot R_i \cdot \mathrm{d}p}{p} = m \cdot c_{p,m} \cdot \frac{\mathrm{d}T}{T} - m \cdot R_i \cdot \frac{\mathrm{d}p}{p} \\
+  \mathrm{d}S &= \frac{m \cdot c_{v,m} \cdot \mathrm{d}T}{T} + \frac{p \cdot \mathrm{d}V}{T} = \frac{m \cdot c_{v,m} \cdot \mathrm{d}T}{T} + \frac{m \cdot R_i \cdot \mathrm{d}V}{V} = m \cdot c_{v.m} \cdot \frac{\mathrm{d}T}{T} + m \cdot R_i \cdot \frac{\mathrm{d}V}{V}
+.\end{align*}
+Ved integration fås følgende to ligninger
+\begin{align*}
+  S_2 - S_1 &= \int_{1}^{2} \, \mathrm{d}S = \int_{1}^{2} m \cdot c_{p,m} \cdot \frac{\mathrm{d}T}{T} - \int_{1}^{2} m \cdot R_i \cdot \frac{\mathrm{d}p}{p} = m \cdot  \left( c_{p,m} \cdot \ln \left( \frac{T_2}{T_1} \right) + R_i \cdot \ln \left( \frac{p_1}{p_2} \right) \right)\\
+  S_2 - S_1 &= \int_{1}^{2} \, \mathrm{d}S = \int_{1}^{2} m \cdot c_{v,m} \cdot \frac{\mathrm{d}T}{T} + \int_{1}^{2} m \cdot R_i \cdot \frac{\mathrm{d}V}{V} = m \cdot \left( c_{v,m} \cdot \ln \left( \frac{T_2}{T_1} \right) + R_i \cdot \ln \left( \frac{V_2}{V_1} \right) \right)
+.\end{align*}
+Eller på specifik form (for idealgasser) som
+\begin{align*}
+  s_2 - s_1 &= c_{p,m} \cdot \ln \left( \frac{T_2}{T_1} \right) + R_i \cdot \ln \left( \frac{p_1}{p_2} \right) \\
+  s_2 - s_1 &= c_{v,m} \cdot \ln \left( \frac{T_2}{T_1} \right) + R_i \cdot \ln \left( \frac{V_2}{V_1} \right)
+.\end{align*}
+
+\subsection{Entropiændring for kredsprocesser}
+En kredsproces er kendetegnet ved, at sluttilstanden er lig starttilstanden, hvilket muliggør en kontinuert virkende maskine. Vi kan omskrive \textbf{\autoref{eq:entændt}} til
+\[ 
+T \cdot \mathrm{d}S = \mathrm{d}Q_{\mathrm{net}} + \mathrm{d}W_{\mathrm{diss}}
+.\]
+Eller integreret op som
+\[ 
+\int_{1}^{2} T \cdot \mathrm{d}S = Q_{\mathrm{net}} + W_{\mathrm{diss}}
+.\]
+Ledet på venstresiden kan hurtigt ses at være arealet under procesvejen i et $T$-$s$ diagram. Dette areal er således summen af den udvekslede varmemængde og dissipationsarbejdet. For en kredsproces gælder, at der ikke sker en ændring af den indre energi og derfor må størrelsen af den med omgivelserne udvekslede varmemængde for systemet. Altså er nettoarealet for en kredsproces i et $T$-$s$ diagram lig med det for kredsprocessen udvekslede arbejde. 
+
+\subsubsection{Carnot kredsproces} \label{afs:Carnot}
+En formulering af termodynamikkens 2. lov (Kelvin-Plancks version) lyder: ``\textit{Det er ikke muligt for et anlæg, som udfører en kredsproces, at modtage varme fra et enkelt reservoir og producere en tilsvarende mængde arbejde}''. Denne lov fortæller hvad man ikke kan, men hvad hvis man i stedet ønsker at finde ud af hvad man kan?
+
+Carnot påpegede at man i stedet kan opnå en vis mængde arbejde $W$ ud fra en mængde varme $Q$ fra et højtemperaturreservoir. Resten af energien $Q-W$ må afgives til et andet reservoir ved en lavere temperatur.
+
+En anden formulering af termodynamikkens 2. lov (Clausius version) lyder: ``\textit{Det er ikke muligt at konstruere et anlæg, som udfører en kredsproces og udfører ingen anden opgave end at overføre varme fra et lavtemperatur reservoir til et højtemperatur reservoir}''. Igen fortæller loven hvad man ikke kan og ikke hvad man rent faktisk kan.
+
+Carnot påpegede her, at der skal tilføres en vis mængde arbejde $W$ hvis man skal flytte en varmemængde $Q$ fra et lavtemperatur reservoir til et højtemperaturreservoir. Herved får højtemperaturreservoiret tilført en energimængde på $Q + W$. 
+
+På baggrund af dette forslog Carnot to kredsprocesser. Disse er
+\begin{itemize}
+\item En \textbf{arbejdsproducerende maskine} som bruger varme $Q_{\mathrm{ind}}$ fra et højtemperaturreservoir og leverer restvarme $Q_{\mathrm{ud}}$ til et lavtemperaurreservoir. Her har vi
+  \begin{itemize}
+  \item \textit{Tilstand} 1-2: Isentropisk kompression
+  \item \textit{Tilstand} 2-3: Isotermisk varmetilførsel
+  \item \textit{Tilstand} 3-4: Isentropisk ekspansion
+  \item \textit{Tilstand} 4-1: Isotermisk varmeafgivelse
+  \end{itemize}
+\item En \textbf{arbejdskonsumerende maskine} som optager varme $Q_{\mathrm{ind}}$ fra et lavtemperaturreservoir og afgiver varme $Q_{\mathrm{ud}}$ til et højtemperaturreservoir. Her har vi
+  \begin{itemize}
+    \item \textit{Tilstand} 1-2: Isotermisk varmetilførsel
+    \item \textit{Tilstand} 2-3: Isentropisk kompression
+    \item \textit{Tilstand} 3-4: Isotermisk varmeafgivelse
+    \item \textit{Tilstand} 4-1: Isentropisk ekspansion
+  \end{itemize}
+\end{itemize}
+Dette svarer i begge tilfælde til en rektangulær kredsproces i et $T$-$s$ diagram, idet alle processer er enten horisontale eller vertikale da alle processer enten er isotermiske eller isentropiske.
+
+\subsubsection{Carnots arbejdsproducerende maskine}
+Den termiske virkningsgrad $\eta_{th,C} = \frac{\left| \text{Ønsket output} \right|}{\left| \text{Nødvendigt input} \right|}$ for Carnots arbejdsproducerende maskine kan vises at være givet ved
+\[ 
+\eta_{th,C} = 1 - \frac{T_L}{T_H}
+.\]
+Hvor $T_L$ er temperaturen af lavtemperaturreservoiret og $T_H$ er temperaturen af højtemperaturreservoiret. 
+
+\subsubsection{Carnots arbejdskonsumerende maskine}
+Carnots arbejdskonsumerende maskine kan benyttes til to formål
+\begin{enumerate}
+  \item Som \textbf{kølemaskine} (indeks $\mathrm{R}$), hvor formålet er at aftage energi fra lavtemperaturreservoiret.
+  \item Som \textbf{varmepumpe} (indeks $\mathrm{HP}$), hvor formålet er at levere varme til højteperaturreservoiret.
+\end{enumerate}
+Hertil er virkningsgraden ikke hensigtsmæssig at benytte. I stedet defineres en ``Coefficient Of Performance'' (COP, i daglig tale COP-faktoren) som for en kølemaskine og en varmepumpe hhv. defineres som
+\begin{align*}
+  \mathrm{COP}_{\mathrm{R},C} &= \frac{\left| \text{Ønsket energimængde} \right|}{\left| \text{Nødvendigt input} \right|} = \frac{\left| Q_{\mathrm{ind}} \right|}{\left| W_{\mathrm{net}} \right|} \\
+  \mathrm{COP}_{\mathrm{HP}, C} &= \frac{\left| \text{Ønsket energimængde} \right|}{\left| \text{Nøvendigt input} \right|} = \frac{\left| Q_{\mathrm{ud}} \right|}{W_{\mathrm{net}}}
+.\end{align*}
+Det kan vises at disse kan findes som
+\begin{align*}
+  \mathrm{COP}_{\mathrm{R}, C} &= \frac{1}{\frac{T_H}{T_L} - 1} = \frac{T_L}{T_H - T_L} \\
+  \mathrm{COP}_{\mathrm{HP}, C} &= \frac{1}{1 - \frac{T_L}{T_H}} = \frac{T_H}{T_H - T_L}
+.\end{align*}
+Disse er forbundet matematisk som
+\[ 
+\mathrm{COP}_{\mathrm{HP}, C} = \mathrm{COP}_{\mathrm{R}, C} + 1
+.\]
+
+\subsection{Isentropisk virkningsgrad}
+Den isentropiske virkningsgrad $\eta_{is}$ er defineret som forholdet mellem det isentropiske (dvs. reversible og adiabatiske) arbejde $\dot{W}_{t, isen}$ og det virkelige arbejde $\dot{W}_{i}$ for en maskine:
+\[ 
+\eta_{is} = \frac{\dot{W}_{t, isen}}{\dot{W}_{i}}
+.\]
+Denne ligger altid i intervallet $0 \leq \eta_{is} \leq 1$.
+
+Formlen for at regne den isentropiske virkningsgrad afhænger af maskingtypen og derfor er de mest anvendte maskintyper gennemgået nedenfor. Teoretisk beregning af den isentropiske virkningsgrad er ofte svært og derfor findes den ofte empirisk og ved målinger i stedet. 
+
+\subsubsection{Turbine}
+En turbine er en maskine, som gennemstrømmes af et ekspanderende medie, hvorved der produceres en akseleffekt. Her omdannes trykket fra det ekspanderende gennemstrømmende medie til en kinetisk energi i turbinens aksel. For en turbine gælder følgende sammenhæng mellem akseleffekten i dampturbinen $\dot{W}_i$ og effekt $\dot{P}_{el}$ til elnettet:
+\[ 
+\dot{P}_{el} = \left| \dot{W}_i \right| \cdot \eta_{mek} \cdot \eta_{gear} \cdot \eta_{gen} = \sqrt{3} \cdot I \cdot V \cdot \cos\phi
+.\]
+Hvor $\eta_{mek}$ er den mekaniske virkningsgrad for turbinen (typisk \num{0,97} --\num{0,99}), $\eta_{gear}$ er virkningsgraden for gearet (typisk \num{0,96}--\num{0,98}), $\eta_{gen}$ er virkningsgraden for generatoren (typisk mellem \num{0,98}--\num{0,99}), $\sqrt{3}$ er en korrektionsfaktor for 3-faset vekselstrøm, $I$ er strømstyrken i hver fase, $V$ er spændingen og $\phi$ er faseforskydning mellem strøm og spænding.
+
+Generelt antager man at mekaniske tab i turbinen såsom lejetab, tab i gearet og tab i generatoren ikke tilflyder dampstrømmen men overføres direkte til omgivelserne. Den isentropiske virkningsgrad for en turbine defineres som forholdet mellem den producerede akseleffekt $\dot{W}_i$ og akseleffekten, hvis turbinen havde været isentropisk $\dot{W}_{t, isen}$. Den isentropiske virkningsgrad for turbiner (set over hele ekspansionsforløbet) afhænger af mange ting men ligger typisk i området omkring \num{0,80}--\num{0,90}.
+\[ 
+\eta_{is} = \frac{\dot{W}_i}{\dot{W}_{t,isen}} = \frac{\dot{m} \cdot (h_2 - h_1)}{\dot{m} \cdot (h_{2,s} - h_1)} = \frac{h_2 - h_1}{h_{2,s} - h_1} = \frac{\Delta h}{\Delta h_{is}}
+.\]
+Denne formel giver en mulighed for at bestemme $h_2$ dvs. den reelle tilstand efter turbinen, hvis man kender den isentropiske virkningsgrad for den valgte turbine. Dog kræver dette at man kender dampens tilgangsdata (f.eks. ved at kende $p_1$ og $T_1$) samt én tilstandsparameter for dampens afgang (typisk trykket $p_2$ som bestemmes af den efterfølgende kondenser). Bemærk i øvrigt, at \underline{alle} interne dissipative effekter i turbinen vil indgå i forskellen mellem $\dot{W}_i$ og $\dot{W}_{t,isen}$.
+
+\subsubsection{Kompressor}
+Vi betragter her en kompressor der gennemstrømmes af en reel gas og lader
+\[ 
+\eta_{is} = \frac{\dot{W}_{t, isen}}{\dot{W}_i}
+.\]
+En kompressor fungerer grundlæggende ved at en gas ved et givet tryk ledes til en kompressor som komprimerer denne gas til et højere tryk. Kompressoren optager akseleffekt $\dot{W}_i$ for at udføre denne funktion. Den isenstropiske virkningsgrad for en kompressor er typisk i størrelsesordenen \num{0,40}--\num{0,75} og kan findes som
+\[ 
+\eta_{is} = \frac{\dot{W}_{t,isen}}{\dot{W}_i} = \frac{\dot{m} \cdot \left( h_{2,s} - h_1 \right)}{\dot{m} \cdot (h_{2} - h_1)} = \frac{h_{2,s} - h_1}{h_2 - h_1} = \frac{\Delta h_{is}}{\Delta h}
+.\]
+Hvis man antager at $c_p$ ikke er en funktion af temperaturen dvs. er konstant kan formlen ovenfor forenkles til
+\[ 
+\eta_{is} \approx \frac{T_{2,s} - T_1}{T_2 - T_1}
+.\]
+Specielt ved store temperaturforskelle giver dette dog anledning til unøjagtighed. Sammenhængen mellem akseleffekten til kompressoren $\dot{W}_i$ og effekt $\dot{P}_{el}$ til elnettet kan formuleres som
+\[ 
+\dot{P}_{el} = \frac{\dot{W}_i}{\eta_{mek}\cdot \eta_{gear} \cdot \eta_{m}} = \sqrt{3} \cdot I \cdot V \cdot \cos\phi
+.\]
+Hvor $\eta_{mek}$ er virkningsgraden for kompressoren (typisk \num{0,90}--\num{0,95}), $\eta_{gear}$ er virkningsgraden for gearet (typisk \num{0,96}--\num{0,98}) og $\eta_m$ er virkningsgraden for elmotoren (typisk \num{0,90}--\num{0,96}).
+
+\subsubsection{Pumpe}
+Teorien for en pumpe og en kompressor minder meget om hinanden, men beregningerne for en pumpe er simplere da denne antages at gennemstrømmes af en inkompressibel væske. Den isentropiske virkningsgrad for pumper ligger typisk i området \num{0,50}--\num{0,85} og kan findes som
+\[ 
+\eta_{is} = \frac{\dot{W}_{t,isen}}{\dot{W}_i} = \frac{\dot{m} \cdot (h_{2,s} - h_1)}{\dot{m} \cdot (h_2 - h_1)} = \frac{h_{2,s} - h_1}{h_2 - h_1} = \frac{\Delta h_{is}}{\Delta h}
+.\]
+Denne kan omskrives for at finde den reelle akseleffekt $\dot{W}_i$ som
+\[ 
+\dot{W}_i = \frac{\dot{W}_{t,isen}}{\eta_{is}} = \frac{\dot{m}\cdot v_1 \cdot (p_2 - p_1)}{\eta_{is}}
+.\]
+Den reelt optagne akseleffekt $\dot{W}_i$ kan også vises at være lig
+\[ 
+\dot{W}_i = \dot{m} (h_2 - h_1)
+.\]
+Dvs. med kendskab til den isentropiske virkningsgrad $\eta_{is}$ for pumpen er der mulighed for at bestemme $h_2$ og sammenholdt med kendskab til $p_2$ er den reelle tilstand efter pumpen således kendt.
+
+Sammenhængen mellem akseleffekt til pumpen $\dot{W}_i$ og effekt $\dot{P}_{el}$ fra elnettet kan formuleres som
+\[ 
+\dot{P}_{el} = \frac{\dot{W}_i}{\eta_{mek} \cdot \eta_{gear}\cdot \eta_{m}}
+.\]
+
+\subsubsection{Dyse}
+For en dyse kan ligeledes opstilles en formel for den isentropiske virkningsgrad som i praksis typisk er i området \num{0,85}--\num{0,99}. Denne formel er
+\[ 
+\eta_{is} = \frac{h_1 - h_2}{h_1 - h_{2,s}} = \frac{\Delta h}{\Delta h_{is}}
+.\]
+Hvis der ses bort fra potentielle energibidrag i den strømmende fluid, varmetab fra overfladen og antager at alle interne dissipative effekter i dysen reducerer udløbshastigheden kan det ovenstående omskrives til
+\[ 
+\eta_{is} = \frac{h_1 - h_2}{h_1 - h_{2,s}} = \frac{\frac{1}{2} \cdot c_2^2 - \frac{1}{2} c_1^2}{\frac{1}{2} c_{2,s}^2 - \frac{1}{2}c_1^2} = \frac{c_2^2 - c_1^2}{c_{2,s}^2 - c_1^2}
+.\]
+Hvor $c_1$ og $c_2$ er de specifikke hastigheder af fluiden hhv. ved indgangen og ved udgangen af dysen. 
+
+
+\subsection{Entropi balance}
+For ethvert system kan opstilles en balance for entropien. Dette ser typisk ud som
+\begin{equation} \label{eq:entbal}
+  \Delta S_{sys} = S_2 - S_1 = \sum \frac{Q}{T} + \sum m_{\mathrm{ind}} \cdot s_{\mathrm{ind}} - \sum m_{\mathrm{ud}} \cdot s_{\mathrm{ud}} + S_{\mathrm{gen}}
+\end{equation}
+Eller differentieret med tiden som
+\[ 
+\frac{\mathrm{d}S_{\mathrm{sys}}}{\mathrm{d}t} = \dot{S}_2 - \dot{S}_1 = \sum \frac{\dot{Q}}{T} + \sum \dot{m}_{\mathrm{ind}} \cdot s_{\mathrm{ind}} - \sum \dot{m}_{\mathrm{ud}} \cdot s_{\mathrm{us}} + \dot{S}_{\mathrm{gen}}
+.\]
+I \textbf{\autoref{eq:entbal}} har de enkelte led følgende karakteristika:
+\begin{itemize}
+  \item $\Delta S_{\mathrm{sys}}$: Beskriver entropiændringen for systemet, som både kan være positiv og negativ
+  \item $\sum \frac{Q}{T}$: Beskriver summen af alle varmemængder udvekslet med omgivelserne divideret med den (konstante) temperatur hvorved varmen er udvekslet. Idet $Q$ kan være positiv og negativ men $T$ kun kan være positiv kan det enkelte led i summationen være både positivt og negativt
+  \item $\sum m_{\mathrm{ind}} \cdot s_{\mathrm{ind}}$: Beskriver summen af entropigevinsterne fra alle masser i systemet. Hvert led i denne summation er positivt
+  \item $\sum m_{\mathrm{ud}} \cdot s_{\mathrm{ud}}$: Beskriver summen af entropitabene fra alle masser ud af systemet. Hvert led i summationen er negativt
+  \item $S_{\mathrm{gen}}$: Beskriver den i systemet genererede eller opståede entropi, som er en følge af dissipationsarbejde hidrørende fra varme udviklet som følge af friktion, kemiske reaktioner mv. samt varme udviklet som følge af arbejde tilført fra omgivelserne og el overført fra omgivelserne. Denne er altid positiv
+\end{itemize}
+Arbejde tilført over systemgrænsen bidrager således ikke direkte i entropibalancen, men skaber større uorden i systemet og bidrager til den genererede entropi i systemet. Arbejde udtaget fra et system indgår ikke i entropibalancen, da betingelsen om at $S_{\mathrm{gen}}$ skal være positiv da ikke vil kunne opretholdes i alle tilfælde. 
+
+I øvrigt bør bemærkes at den generelle formel fra ovenfor altid gælder. For lukkede systemer udgår leddene der omhandler entropi og massetransport (de to summer med $m_{\mathrm{ind}}$ og $m_{\mathrm{ud}}$). For reversible systemer er $S_{gen} = 0$ og udgår derfor. For adiabatiske systemer er $\sum \frac{Q}{T} = 0$ og dette led udgår derfor. For isentropiske systemer er $\sum \frac{Q}{T} = S_{\mathrm{gen}} = 0$ og disse led udgår derfor. Specielt for kontinuert (steady) flow gælder
+\[ 
+\dot{S}_2 - \dot{S}_1 = \sum \frac{\dot{Q}}{T} + \sum \dot{m}_{\mathrm{ind}} \cdot s_{\mathrm{ind}} - \sum \dot{m}_{\mathrm{ud}} \cdot s_{\mathrm{ud}} + \dot{S}_{\mathrm{gen}} = 0
+.\]
+

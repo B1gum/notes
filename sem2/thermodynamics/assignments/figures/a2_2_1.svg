@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="240mm"
+   height="120mm"
+   viewBox="0 0 240 120"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   sodipodi:docname="a2_2_1.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.302478"
+     inkscape:cx="474.86405"
+     inkscape:cy="179.27366"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     showborder="true"
+     width="200mm"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1440"
+     inkscape:window-height="900"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid815"
+       units="mm"
+       spacingx="10"
+       spacingy="10"
+       empspacing="4"
+       dotted="false"
+       originx="0"
+       originy="0"
+       visible="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-177)">
+    <ellipse
+       style="fill:#99d6e6;fill-opacity:0.535262;stroke:none;stroke-width:0.499999;stroke-miterlimit:35.2"
+       id="path1"
+       cx="126.37458"
+       cy="208.21056"
+       rx="23.905958"
+       ry="31.210554" />
+    <ellipse
+       style="fill:none;fill-opacity:0.535262;stroke:#000000;stroke-width:0.5;stroke-miterlimit:35.2;stroke-dasharray:0.5, 0.5;stroke-dashoffset:0;stroke-opacity:1"
+       id="path1-5"
+       cx="126.49413"
+       cy="208.21056"
+       rx="23.124578"
+       ry="30.586344" />
+    <path
+       style="fill:none;fill-opacity:0.535262;stroke:#000000;stroke-width:0.499999;stroke-miterlimit:35.2;stroke-opacity:1"
+       d="m 127.18364,239.30423 c -6.33202,0.35009 -8.37509,8.78859 -4.76832,13.24337 3.65677,3.16425 10.17434,4.64173 9.6146,10.84945 0.89792,6.05679 -6.01558,7.35351 -7.82307,11.95602 -1.53933,4.88402 0.39607,5.88514 0.48104,10.75516"
+       id="path2"
+       sodipodi:nodetypes="ccccc" />
+    <rect
+       style="fill:none;fill-opacity:0.535262;stroke:#000000;stroke-width:0.499999;stroke-miterlimit:35.2;stroke-opacity:1"
+       id="rect2"
+       width="13.417882"
+       height="10.891769"
+       x="118.6914"
+       y="285.8334" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-miterlimit:35.2;stroke-opacity:1"
+       x="123.52311"
+       y="292.75027"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="123.52311"
+         y="292.75027">$m$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-miterlimit:35.2;stroke-opacity:1"
+       x="123.52311"
+       y="207.52483"
+       id="text2-6"><tspan
+         sodipodi:role="line"
+         id="tspan2-8"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="123.52311"
+         y="207.52483">$\mathrm{He}$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-miterlimit:35.2;stroke-dasharray:0.499999, 0.499999;stroke-dashoffset:0;stroke-opacity:1"
+       x="83.641953"
+       y="243.38249"
+       id="text3"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="83.641953"
+         y="243.38249">$p_{\text{atm}}$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-miterlimit:35.2;stroke-dasharray:0.499999, 0.499999;stroke-dashoffset:0;stroke-opacity:1"
+       x="118.59443"
+       y="226.00252"
+       id="text3-2"><tspan
+         sodipodi:role="line"
+         id="tspan3-3"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="118.59443"
+         y="226.00252">$p = p_{\text{atm}}$</tspan></text>
+  </g>
+</svg>

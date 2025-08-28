@@ -1,0 +1,211 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Foreword}{9}{section.1}%
+\contentsline {section}{\numberline {2}Introduction to Materials Science}{9}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Historical perspective}{9}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Materials Science and engineering}{9}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Classification and properties of materials}{9}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Materials selection and Ashby diagrams}{10}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Ashby Diagrams}{10}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Materials selection}{11}{subsubsection.2.4.2}%
+\contentsline {section}{\numberline {3}Introduction to atomic structure}{11}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Electron structure}{11}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Trends in the periodic table}{13}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Bonding}{14}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Ionic bonding}{14}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Covalent bonding}{14}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Metallic bonding}{14}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Secondary bonding}{15}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}The relationship between bonding type, melting temperature and thermal expansion}{15}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Crystalline solids}{15}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Atomic arrangements and packing}{15}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Unit cell}{16}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Crystal structures for metals}{16}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Atomic packing factor}{17}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Theoretical density of a material}{18}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Crystal systems}{18}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}Point coordinates}{18}{subsection.5.7}%
+\contentsline {subsection}{\numberline {5.8}Crystallographic direcions}{18}{subsection.5.8}%
+\contentsline {subsection}{\numberline {5.9}Crystallographic planes}{20}{subsection.5.9}%
+\contentsline {section}{\numberline {6}Solidification}{20}{section.6}%
+\contentsline {section}{\numberline {7}Imperfections}{23}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Types of imperfections}{23}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Point defects}{23}{subsection.7.2}%
+\contentsline {subsubsection}{\numberline {7.2.1}Vacancies}{23}{subsubsection.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.2}Interstitials}{24}{subsubsection.7.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.3}Substitutional Impurity Atoms}{24}{subsubsection.7.2.3}%
+\contentsline {subsubsection}{\numberline {7.2.4}Impurities in metals}{26}{subsubsection.7.2.4}%
+\contentsline {paragraph}{Hume-Rothery Rules for Substitutional Solid Solutions}{26}{section*.6}%
+\contentsline {paragraph}{Hume-Rothery Rules for Interstitial Solid Solutions}{26}{section*.7}%
+\contentsline {subsection}{\numberline {7.3}Linear defects}{27}{subsection.7.3}%
+\contentsline {subsubsection}{\numberline {7.3.1}Burger's vector}{27}{subsubsection.7.3.1}%
+\contentsline {subsubsection}{\numberline {7.3.2}Edge Dislocations}{27}{subsubsection.7.3.2}%
+\contentsline {subsubsection}{\numberline {7.3.3}Screw Dislocations}{28}{subsubsection.7.3.3}%
+\contentsline {subsubsection}{\numberline {7.3.4}Mixed Dislocations}{29}{subsubsection.7.3.4}%
+\contentsline {subsubsection}{\numberline {7.3.5}Plastic deformation and dislocations}{30}{subsubsection.7.3.5}%
+\contentsline {subsection}{\numberline {7.4}Planar defects}{30}{subsection.7.4}%
+\contentsline {subsubsection}{\numberline {7.4.1}Twin Boundaries}{30}{subsubsection.7.4.1}%
+\contentsline {subsubsection}{\numberline {7.4.2}Grain Boundaries}{31}{subsubsection.7.4.2}%
+\contentsline {subsubsection}{\numberline {7.4.3}Stacking Faults}{32}{subsubsection.7.4.3}%
+\contentsline {section}{\numberline {8}Diffusion}{33}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Mechanisms of diffusion}{34}{subsection.8.1}%
+\contentsline {subsubsection}{\numberline {8.1.1}Vacancy diffusion}{34}{subsubsection.8.1.1}%
+\contentsline {subsubsection}{\numberline {8.1.2}Interstitial diffusion}{34}{subsubsection.8.1.2}%
+\contentsline {subsection}{\numberline {8.2}Diffusion rate}{35}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Steady-state diffusion and Fick's 1st law}{35}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Effect of temperature}{36}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Non-steady-state diffusion and Fick's 2nd law}{38}{subsection.8.5}%
+\contentsline {section}{\numberline {9}Elasticity}{40}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Force-displacement relation}{40}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Strain}{40}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Stress}{40}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Stress-strain relations}{41}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}Elatic deformation}{41}{subsection.9.5}%
+\contentsline {subsubsection}{\numberline {9.5.1}Elastic modulus and interatomic bonding forces}{41}{subsubsection.9.5.1}%
+\contentsline {subsection}{\numberline {9.6}Shear stress}{41}{subsection.9.6}%
+\contentsline {subsubsection}{\numberline {9.6.1}Stresses on different planes}{42}{subsubsection.9.6.1}%
+\contentsline {subsection}{\numberline {9.7}Bulk modulus}{43}{subsection.9.7}%
+\contentsline {subsection}{\numberline {9.8}Poisson's ratio}{43}{subsection.9.8}%
+\contentsline {subsubsection}{\numberline {9.8.1}The relationship between Poisson's ratio and moduli}{44}{subsubsection.9.8.1}%
+\contentsline {section}{\numberline {10}Plasticity}{44}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Stress-strain curves}{44}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Elastic strain recovery and ductility}{45}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Resilience}{46}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}Toughness}{46}{subsection.10.4}%
+\contentsline {subsection}{\numberline {10.5}Hardness}{47}{subsection.10.5}%
+\contentsline {subsubsection}{\numberline {10.5.1}Hardness measurements}{47}{subsubsection.10.5.1}%
+\contentsline {subsection}{\numberline {10.6}Variability in materials properties}{47}{subsection.10.6}%
+\contentsline {subsubsection}{\numberline {10.6.1}Safety factor}{48}{subsubsection.10.6.1}%
+\contentsline {section}{\numberline {11}Slipping}{48}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Slip systems}{48}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Slipping in single crystals}{49}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Slipping in polycrystalline materials}{49}{subsection.11.3}%
+\contentsline {section}{\numberline {12}Strengthening mechanisms in metals}{50}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Grain size reduction}{50}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Solid-solution strengthening}{51}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Strain hardening (Cold working)}{52}{subsection.12.3}%
+\contentsline {section}{\numberline {13}Fundamentals of Fracture}{53}{section.13}%
+\contentsline {section}{\numberline {14}Failure Mechanics}{55}{section.14}%
+\contentsline {subsection}{\numberline {14.1}Stress concentration}{55}{subsection.14.1}%
+\contentsline {subsection}{\numberline {14.2}Crack propagation}{56}{subsection.14.2}%
+\contentsline {section}{\numberline {15}Fracture Toughness}{56}{section.15}%
+\contentsline {subsection}{\numberline {15.1}Fracture modes}{57}{subsection.15.1}%
+\contentsline {section}{\numberline {16}Design Implications}{57}{section.16}%
+\contentsline {section}{\numberline {17}Fatigue}{58}{section.17}%
+\contentsline {subsection}{\numberline {17.1}Rotating bending test}{58}{subsection.17.1}%
+\contentsline {subsection}{\numberline {17.2}S-N Curves}{59}{subsection.17.2}%
+\contentsline {subsection}{\numberline {17.3}Improving fatigue life}{60}{subsection.17.3}%
+\contentsline {section}{\numberline {18}Creep}{60}{section.18}%
+\contentsline {subsection}{\numberline {18.1}Steady-state creep}{61}{subsection.18.1}%
+\contentsline {subsection}{\numberline {18.2}Creep life time}{61}{subsection.18.2}%
+\contentsline {section}{\numberline {19}Polymer Chemistry}{62}{section.19}%
+\contentsline {subsection}{\numberline {19.1}Polymerisation}{62}{subsection.19.1}%
+\contentsline {subsubsection}{\numberline {19.1.1}Addition polymerisation}{62}{subsubsection.19.1.1}%
+\contentsline {subsubsection}{\numberline {19.1.2}Condensation polymerisation}{63}{subsubsection.19.1.2}%
+\contentsline {subsection}{\numberline {19.2}Polymer lengths and length distribution}{63}{subsection.19.2}%
+\contentsline {subsubsection}{\numberline {19.2.1}Molecular weight and reaction speed}{64}{subsubsection.19.2.1}%
+\contentsline {subsubsection}{\numberline {19.2.2}Molecular weight distribution}{64}{subsubsection.19.2.2}%
+\contentsline {subsubsection}{\numberline {19.2.3}Degree of polymerisation}{65}{subsubsection.19.2.3}%
+\contentsline {subsubsection}{\numberline {19.2.4}Material properties and molecular weight}{65}{subsubsection.19.2.4}%
+\contentsline {subsection}{\numberline {19.3}Mixing polymers}{66}{subsection.19.3}%
+\contentsline {section}{\numberline {20}Polymer Processing and Conversion}{66}{section.20}%
+\contentsline {section}{\numberline {21}Composites}{67}{section.21}%
+\contentsline {subsection}{\numberline {21.1}The architecture of composites}{68}{subsection.21.1}%
+\contentsline {subsection}{\numberline {21.2}Particle-reinforced composites}{69}{subsection.21.2}%
+\contentsline {subsubsection}{\numberline {21.2.1}Elastic modulus of Particle-Reinforced Composites}{70}{subsubsection.21.2.1}%
+\contentsline {paragraph}{Voigt Model (Upper Bound)}{70}{section*.16}%
+\contentsline {paragraph}{Reuss Model (Lower Bound)}{70}{section*.17}%
+\contentsline {subsection}{\numberline {21.3}Fiber-reinforced composites}{70}{subsection.21.3}%
+\contentsline {subsubsection}{\numberline {21.3.1}Fiber alignment}{71}{subsubsection.21.3.1}%
+\contentsline {subsubsection}{\numberline {21.3.2}Critical fiber length}{71}{subsubsection.21.3.2}%
+\contentsline {subsubsection}{\numberline {21.3.3}Estimating the elastic modulus and strength for fiber reinforced composites}{72}{subsubsection.21.3.3}%
+\contentsline {subsection}{\numberline {21.4}Structural composites}{73}{subsection.21.4}%
+\contentsline {subsubsection}{\numberline {21.4.1}Laminates}{73}{subsubsection.21.4.1}%
+\contentsline {subsubsection}{\numberline {21.4.2}Sandwich Panels}{73}{subsubsection.21.4.2}%
+\contentsline {section}{\numberline {22}Phase diagrams}{75}{section.22}%
+\contentsline {subsection}{\numberline {22.1}Solubility limit}{75}{subsection.22.1}%
+\contentsline {subsection}{\numberline {22.2}Phases}{76}{subsection.22.2}%
+\contentsline {subsection}{\numberline {22.3}Microstructure}{76}{subsection.22.3}%
+\contentsline {subsection}{\numberline {22.4}Phase equilibria}{77}{subsection.22.4}%
+\contentsline {subsection}{\numberline {22.5}One-component (unary) phase diagrams}{77}{subsection.22.5}%
+\contentsline {subsection}{\numberline {22.6}Binary phase diagrams}{77}{subsection.22.6}%
+\contentsline {subsection}{\numberline {22.7}Binary isomorphous systems}{78}{subsection.22.7}%
+\contentsline {subsection}{\numberline {22.8}Interpretation of phase diagrams}{79}{subsection.22.8}%
+\contentsline {subsubsection}{\numberline {22.8.1}Phases present}{79}{subsubsection.22.8.1}%
+\contentsline {subsubsection}{\numberline {22.8.2}Determination of phase compositions}{79}{subsubsection.22.8.2}%
+\contentsline {subsubsection}{\numberline {22.8.3}Determination of phase amounts}{80}{subsubsection.22.8.3}%
+\contentsline {subsection}{\numberline {22.9}Development of microstructure in isomophous alloys}{81}{subsection.22.9}%
+\contentsline {subsubsection}{\numberline {22.9.1}Equilibrium Cooling}{81}{subsubsection.22.9.1}%
+\contentsline {subsubsection}{\numberline {22.9.2}Nonequilibrium cooling}{81}{subsubsection.22.9.2}%
+\contentsline {subsection}{\numberline {22.10}Mechanical properties of isomorphous alloys}{81}{subsection.22.10}%
+\contentsline {subsection}{\numberline {22.11}Binary eutectuc systems}{82}{subsection.22.11}%
+\contentsline {subsection}{\numberline {22.12}Development of microstructure in eutectic alloys}{83}{subsection.22.12}%
+\contentsline {subsection}{\numberline {22.13}Equilibrium diagrams having intermediate phases or compounds}{87}{subsection.22.13}%
+\contentsline {subsection}{\numberline {22.14}Eutectoid and peritectic reactions}{89}{subsection.22.14}%
+\contentsline {subsection}{\numberline {22.15}Congruent phase transformations}{89}{subsection.22.15}%
+\contentsline {subsection}{\numberline {22.16}The Gibbs phase rule}{90}{subsection.22.16}%
+\contentsline {subsection}{\numberline {22.17}The iron-iron carbide phase diagram}{91}{subsection.22.17}%
+\contentsline {subsection}{\numberline {22.18}Development of microstructure in iron-carbon alloys}{92}{subsection.22.18}%
+\contentsline {paragraph}{Hypo- and hypereutectoid alloys}{92}{section*.21}%
+\contentsline {subsection}{\numberline {22.19}The kinetics of phase transformations}{93}{subsection.22.19}%
+\contentsline {subsubsection}{\numberline {22.19.1}Nucleation}{93}{subsubsection.22.19.1}%
+\contentsline {paragraph}{Homogeneous nucleation}{94}{section*.23}%
+\contentsline {paragraph}{Heterogeneous nucleation}{95}{section*.24}%
+\contentsline {subsubsection}{\numberline {22.19.2}Growth}{95}{subsubsection.22.19.2}%
+\contentsline {subsubsection}{\numberline {22.19.3}Kinetic considerations of Solid-State Transformations}{96}{subsubsection.22.19.3}%
+\contentsline {subsection}{\numberline {22.20}Isothermal transformation diagrams}{96}{subsection.22.20}%
+\contentsline {paragraph}{Pearlite}{96}{section*.25}%
+\contentsline {section}{\numberline {23}Thermal processing of metals}{97}{section.23}%
+\contentsline {subsection}{\numberline {23.1}Annealing processes}{97}{subsection.23.1}%
+\contentsline {subsubsection}{\numberline {23.1.1}Process annealing}{98}{subsubsection.23.1.1}%
+\contentsline {subsubsection}{\numberline {23.1.2}Stress relief}{98}{subsubsection.23.1.2}%
+\contentsline {subsubsection}{\numberline {23.1.3}Annealing of ferrous alloys}{98}{subsubsection.23.1.3}%
+\contentsline {paragraph}{Normalizing}{98}{section*.27}%
+\contentsline {paragraph}{Full anneal}{98}{section*.28}%
+\contentsline {paragraph}{Spheroidizing}{98}{section*.29}%
+\contentsline {subsection}{\numberline {23.2}Heat treatment of steels}{99}{subsection.23.2}%
+\contentsline {subsubsection}{\numberline {23.2.1}Hardenability}{99}{subsubsection.23.2.1}%
+\contentsline {paragraph}{Jominy end-quench test}{99}{section*.30}%
+\contentsline {subsection}{\numberline {23.3}Precipitation hardening}{99}{subsection.23.3}%
+\contentsline {paragraph}{Heat treatments}{99}{section*.31}%
+\contentsline {paragraph}{Solution heat treating}{99}{section*.32}%
+\contentsline {paragraph}{Precipitation heat treating}{100}{section*.33}%
+\contentsline {subsection}{\numberline {23.4}Mechanism of hardening}{100}{subsection.23.4}%
+\contentsline {section}{\numberline {24}Corrosion and Degradation of Materials}{101}{section.24}%
+\contentsline {subsection}{\numberline {24.1}Introduction}{101}{subsection.24.1}%
+\contentsline {subsection}{\numberline {24.2}Electrochemical considerations}{101}{subsection.24.2}%
+\contentsline {subsubsection}{\numberline {24.2.1}Electrode potentials}{102}{subsubsection.24.2.1}%
+\contentsline {subsubsection}{\numberline {24.2.2}The standard EMF series}{103}{subsubsection.24.2.2}%
+\contentsline {subsubsection}{\numberline {24.2.3}Influence of concentration and temperature on cell potential}{103}{subsubsection.24.2.3}%
+\contentsline {subsubsection}{\numberline {24.2.4}The Galvanic series}{104}{subsubsection.24.2.4}%
+\contentsline {subsection}{\numberline {24.3}Corrosion Rates}{104}{subsection.24.3}%
+\contentsline {subsection}{\numberline {24.4}Prediction of Corrosion Rates}{105}{subsection.24.4}%
+\contentsline {subsubsection}{\numberline {24.4.1}Polarization}{105}{subsubsection.24.4.1}%
+\contentsline {paragraph}{Activation Polarization}{105}{section*.35}%
+\contentsline {paragraph}{Concentration Polarization}{106}{section*.36}%
+\contentsline {subsection}{\numberline {24.5}Passivity}{106}{subsection.24.5}%
+\contentsline {subsection}{\numberline {24.6}Environmental Effects}{106}{subsection.24.6}%
+\contentsline {subsection}{\numberline {24.7}Forms of Corrosion}{107}{subsection.24.7}%
+\contentsline {subsubsection}{\numberline {24.7.1}Uniform attack}{107}{subsubsection.24.7.1}%
+\contentsline {subsubsection}{\numberline {24.7.2}Galvanic corrosion}{107}{subsubsection.24.7.2}%
+\contentsline {subsubsection}{\numberline {24.7.3}Crevice corrosion}{107}{subsubsection.24.7.3}%
+\contentsline {subsubsection}{\numberline {24.7.4}Pitting}{108}{subsubsection.24.7.4}%
+\contentsline {subsubsection}{\numberline {24.7.5}Intergranular corrosion}{108}{subsubsection.24.7.5}%
+\contentsline {subsubsection}{\numberline {24.7.6}Selective leaching}{109}{subsubsection.24.7.6}%
+\contentsline {subsubsection}{\numberline {24.7.7}Erosion-corrosion}{109}{subsubsection.24.7.7}%
+\contentsline {subsubsection}{\numberline {24.7.8}Stress corrosion}{109}{subsubsection.24.7.8}%
+\contentsline {subsubsection}{\numberline {24.7.9}Hydrogen emrittlement}{109}{subsubsection.24.7.9}%
+\contentsline {subsection}{\numberline {24.8}Corrosion Environments}{109}{subsection.24.8}%
+\contentsline {subsection}{\numberline {24.9}Corrosion prevention}{110}{subsection.24.9}%
+\contentsline {subsubsection}{\numberline {24.9.1}Cathodic protection}{110}{subsubsection.24.9.1}%
+\contentsline {subsection}{\numberline {24.10}Oxidation}{110}{subsection.24.10}%
+\contentsline {subsubsection}{\numberline {24.10.1}Mechanisms}{110}{subsubsection.24.10.1}%
+\contentsline {subsubsection}{\numberline {24.10.2}Scale types}{111}{subsubsection.24.10.2}%
+\contentsline {subsubsection}{\numberline {24.10.3}Kinetics}{111}{subsubsection.24.10.3}%
+\contentsline {subsubsection}{\numberline {24.10.4}Corrosion of ceramic materials}{111}{subsubsection.24.10.4}%
+\contentsline {subsubsection}{\numberline {24.10.5}Degradation of polymers}{112}{subsubsection.24.10.5}%
+\contentsline {subsection}{\numberline {24.11}Swelling and Dissolution}{112}{subsection.24.11}%
+\contentsline {subsection}{\numberline {24.12}Bond Rupture}{112}{subsection.24.12}%
+\contentsline {subsubsection}{\numberline {24.12.1}Radiation effects}{112}{subsubsection.24.12.1}%
+\contentsline {subsubsection}{\numberline {24.12.2}Chemical reaction effects}{112}{subsubsection.24.12.2}%
+\contentsline {subsubsection}{\numberline {24.12.3}Thermal effects}{113}{subsubsection.24.12.3}%
+\contentsline {subsection}{\numberline {24.13}Weathering}{113}{subsection.24.13}%
