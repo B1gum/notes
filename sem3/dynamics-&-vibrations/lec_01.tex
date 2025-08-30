@@ -1,0 +1,271 @@
+\lecture{1}{26. August 2025}{Course Introduction}
+
+\section{Introduction}
+
+\subsection{Elements of the Vibration Models}
+Vibrations are the result of the combined effects of \textit{inertia} and \textit{elastic forces}. The inertia of moving parts is expressible in terms of the masses, moments of inertia, and time derivatives of the displacements. Elastic restoring forces, can be expressed in terms of the displacement and stiffness of the elastic members.
+
+\subsubsection{Inertia}
+Inertia is the property of an object to resist any effort to change its motion. For a particle, this is defined as the product of the mass of the particle and its acceleration:
+\[ 
+  \textbf{F}_i = m \ddot{r}
+.\]
+
+Rigid bodies have both inertia forces and moments and for the planar motion of a rigid body, the inertia forces and moments are given by:
+\begin{align*}
+  \textbf{F}_i &= m \ddot{r} \\
+  M_i &= I \ddot{\theta}
+.\end{align*}
+where $M_i$ is the inertia moment, $I$ is the mass moment of inertia and $\ddot{\theta}$ is the angular acceleration. 
+
+\subsubsection{Elastic forces}
+Consider a spring connecting two masses. Let the displacement of the first mass be $x_1$ and the displacement of the second be $x_2$ chosen such that $x_1 > x_2$. The total deflection in the spring is given by:
+\[ 
+\Delta x = x_1 - x_2
+\]
+where $\Delta x$ is the total deflection of the spring due to the displacement of the masses. Using Taylor's series, the spring force after displacement $\Delta x$ can be written as:
+\[ 
+F_s \left( x_0 + \Delta x \right) = F_s (x_0) + \frac{\partial F_s}{\partial x} \bigg|_{x= x_0}\Delta x + \frac{1}{2!} \frac{\partial^2 F_s}{\partial x^2} \bigg|_{x = x_0} \left( \Delta x \right)^2 + \ldots 
+.\]
+where $F_s$ is the spring force and $x_0$ is the pretension of the spring before the displacement. As a result of the displacement $\Delta x$ the spring force $F_s (x_0 + \Delta x)$ may be written as:
+\[ 
+F_s \left( x_0 + \Delta x \right) = F_s \left( x_0 \right) + \Delta F_s
+.\]
+where $\Delta F_s$ is the change in the spring force as a result of the displacement $\Delta x$. By using the equation from the Taylor series we can rewrite the above as:
+\[ 
+\Delta F_s = \frac{\partial F_s}{\partial x} \bigg|_{x = x_0} \Delta x + \frac{1}{2} \frac{\partial^2 F_s}{\partial x^2} \bigg|_{x = x_{0}} \left( \Delta x \right)^2 + \ldots
+.\]
+If the displacement $\Delta x$ is assumed small, higher order terms can be neglected and the spring force can be linearized as:
+\[ 
+\Delta F_s = \frac{\partial F_s}{\partial x} \bigg|_{x = x_0} \Delta x = k \Delta x = k \left( x_1 - x_2 \right)
+.\]
+Where $k$ is the \textit{spring constant} defined as:
+\[ 
+k \equiv \frac{\partial F_s}{\partial x} \bigg|_{x = x_{0} }
+.\]
+
+Helical springs which is probably the most common type have a stiffness coefficient that depends on the diameter of the coil $D$, the diameter of the wire $d$, the number of coils $n$ and shear modulus of rigidity $G$. This is given by:
+\[ 
+k = \frac{G d^{4}}{8n D^3}
+.\]
+
+Continuous elastic elements such as rods, beams, and shafts produce restoring elastic forves. If the mass of the rod is negligible compared to the mass $m$, one can write, from strength of materials, the following relationship:
+\[ 
+F = \frac{EA}{l}u
+.\]
+Where $F$ is the force acting at the end of the rod, $u$ is the displacement of the end point, and $l$, $A$, and $E$ are, respectively the length, cross-sectional area, and modulus of elasticity of the rod. This can be written as $F  = k u$, where the stiffness coefficient $k$ of the rod is defined as:
+\[ 
+k = \frac{EA}{l}
+.\]
+
+For the bending of a cantilever beam one can show that:
+\[ 
+F = \frac{3 EI}{l^3} v
+.\]
+where $F$ is the applied force, $v$ is the transverse deflection of the end point, and $l$, $I$, and $E$ are, respectively, the length, second moment of area, and modulus of elasticity of the beam. In Here we may define the beam stiffness as:
+\[ 
+k = \frac{3 EI}{l^3}
+.\]
+
+From strength of materials, the relationship between torque $T$ and angular torsional displacement $\theta$ of the shaft is:
+\[ 
+T = \frac{GJ}{l} \theta
+.\]
+Here $T$ is the torque, $\theta$ is the angular displacement of the shaft, and $l$, $J$, and $G$ are, respectively, the length, polar moment of inertia, and modulus of rigidity. In this case, the torsional stiffness of the shaft is defined as:
+\[ 
+k = \frac{GJ}{l}
+.\]
+
+\subsubsection{Damping}
+While the effect of the inertia and elastic forces tends to maintain the oscillatory motion, the transient effect dies out because of energy dissipations. This process is generally referred to as \textit{damping}. As damping works to reduce the amplitude of vibration it is often desirable to have some amount of damping to achieve stability. Solid materials are not perfectly elastic, and they do exhibit damping, due to internal friction between internal planes of the material. This is known as \textit{structural} or \textit{hysteretic damping}. Another type of damping, which commonly occurs as the result of the sliding contact betweem two surfaces is the \textit{Coulomb} or \textit{dry-friction damping}.
+
+One of the most common types of damping is called \textit{viscous damping}, in which the damping force is proportional to the velocity. An example of this is automobile suspensions or aircraft landing gears. These normally consist of a piston and a cylinder filled with viscous fluid. The fluid flows through holes in the piston which provides the resistance to its motion. 
+
+\subsubsection{Particle Dynamics}
+Newton's second law, also called the \textit{law of motion}, states that the resultant force acting on a particle is equal to the rime rate of change of momentum of said particle. The particle momentum is a vector quantity defined as $\textbf{p} = m \textbf{v}$, where $\textbf{p}$ is the momentum of the particle, $m$ is the mass, and $\textbf{v}$ is the velocity vector. Newton's second law can then be written as $\textbf{F} = \ddot{\textbf{p}}$. Using these momentum equations and assuming the mass of the particle is constant, one obtains:
+\[ 
+\textbf{F} = \frac{\mathrm{d}}{\mathrm{d}t} \left( m \textbf{v} \right) = m \frac{\mathrm{d} \textbf{v}}{\mathrm{d}t} = m \textbf{a}
+.\]
+
+Let $\ddot{x}$, $\ddot{y}$, and $\ddot{z}$ be the components of the acceleration of the particle and $F_x$, $F_y$, and $F_z$ be the components of the resultant force. The above vector equation can then be written as three scalar equations as:
+\begin{align*}
+  m \ddot{x} &= F_x \\
+  m \ddot{y} &= F_y \\
+  m \ddot{z} &= F_z
+.\end{align*}
+For a system in two dimensions the $z$ coordinate would be omitted. It can be shown that the number of independent differential equations is equal to the number of degrees of freedom of the particle.
+
+\subsubsection{Linear and Angular Momenta}
+Integrating the equation of motion $\textbf{F}(t) = \dot{\textbf{p}}$ with respect to time yields the impulse of the force $\textbf{F}$ as:
+\[ 
+\int_{0}^{t} \textbf{F}(t) \, \mathrm{d}t = \textbf{p}(t) - \textbf{p}_0
+\]
+where $\textbf{p}_0$ is a constant. This implies that the change in linear momentum of the particle is equal to the impulse of the force acting on this particle -- if the force is equal to zero, the linear momentum is conserved since in this case:
+\[ 
+\textbf{p}(t) = \textbf{p}_0
+\]
+which indicates that the momentum and velocity of the particle remain constant in this special case.
+
+If follows also from $\textbf{F}(t) = \dot{\textbf{p}}$ that:
+\[ 
+\textbf{r} \times \textbf{F} = \textbf{r} \times \frac{\mathrm{d}\textbf{p}}{\mathrm{d}t} 
+\]
+where $\textbf{r}$ is the position vector of the particle with respect to the origin of the coordinate system. $\textbf{r} \times \textbf{F}$ is recognized as the moment of the force. The right hand side can be simplified using the identity:
+\[ 
+\frac{\mathrm{d}}{\mathrm{d}t} \left( \textbf{r} \times \textbf{p} \right) = \textbf{v} \times \textbf{p} + \textbf{r} \times \frac{\mathrm{d}\textbf{p}}{\mathrm{d}t} 
+.\]
+The first term here is zero since:
+\[ 
+\textbf{v} \times \textbf{p} = \textbf{v} \times m \textbf{v} = 0
+\]
+and therefore:
+\[ 
+\textbf{r} \times \textbf{F} = \frac{\mathrm{d}}{\mathrm{d}t} \left( \textbf{r} \times \textbf{p} \right)
+.\]
+The vector $\textbf{r} \times \textbf{p}$ is called the \textit{angular momentum} of the particle. Thus, the preceding equation states that the time rate of the angular momentum of a particle is equal to the moment of the force acting on this particle.
+
+\subsubsection{Work and Energy}
+Taking the dot product of both sides of the equation of motion $\textbf{F} = \dot{\textbf{p}}$ with the velocity vector $\textbf{v}$ yields:
+\[ 
+\textbf{F} \cdot \textbf{v} = \frac{\mathrm{d}\textbf{p}}{\mathrm{d}t} \cdot \textbf{v} = \frac{\mathrm{d} m \textbf{v}}{\mathrm{d}t} \cdot \textbf{v}
+.\]
+By using the identity:
+\[ 
+\frac{\mathrm{d} \textbf{v}\cdot \textbf{v}}{\mathrm{d}t} = \frac{\mathrm{d}\textbf{v}}{\mathrm{d}t} \cdot \left( 2 \textbf{v} \right)
+\]
+and assuming the mass $m$ is constant, we get:
+\[ 
+\textbf{F} \cdot \textbf{v} = \frac{\mathrm{d}}{\mathrm{d}t} \left( \frac{1}{2} m \textbf{v} \cdot \textbf{v} \right) = \frac{\mathrm{d}T}{\mathrm{d}t} 
+\]
+where $T$ is the kinetic energy of the particle defined as:
+\[ 
+T = \frac{1}{2} m \textbf{v} \cdot \textbf{v} = \frac{1}{2} mv^2
+.\]
+It follows that:
+\[ 
+\int \textbf{F} \cdot \, \mathrm{d}\textbf{r} = \int \, \mathrm{d}T
+.\]
+The left hand side of this equation is the work done by $\textbf{F}$ on the particle, while the right hand side is the change in kinetic energy of the particle. 
+
+\subsubsection{Systems of Particles}
+We consider a system of $n$ particles. The mass of particle $i$ is denoted $m_i$ and its position vector is denoted $\textbf{r}_i$. The linear momentum of the system of particles is defined as:
+\[ 
+\textbf{p} = \sum_{i = 1}^{n} \textbf{p}_i = \sum_{i = 1}^{n} m_i \textbf{v}_i
+.\]
+Let $\textbf{F}_i$ be the resultant vector force acting on the particle $i$. In addition to this external force, we assume that the particle is subjected to internal forces as a result with interactions with other particles in the system. Let $\textbf{F}_{ij}$ be the internal force acting on particle $i$ as a result of interaction with particle $j$. The equation of motion of the particle $i$ is:
+\[ 
+  m_i \textbf{a}_i = \dot{\textbf{p}}_i = \textbf{F}_i + \sum_{j = 1}^{n} \textbf{F}_{ij}
+.\]
+It follows that:
+\[ 
+  \sum_{i = 1}^{n} m_i \textbf{a}_i = \sum_{i = i}^{n} \dot{\textbf{p}}_i = \sum_{i = 1}^{n} \textbf{F}_i + \sum_{i = 1}^{n} \sum_{j = 1}^{n} \textbf{F}_{ij}
+.\]
+From Newton's third law the forces acting on particles $i$ and $j$ are equal in magnitude and opposite in direction and consequently,
+\[ 
+\sum_{i = 1}^{n} \sum_{j = 1}^{n} \textbf{F}_{ij} = \textbf{0}
+.\]
+It thus follows that:
+\[ 
+  \sum_{i = 1}^{n} m_i \textbf{a}_i = \sum_{i = 1}^{n} \dot{\textbf{p}}_i = \sum_{i = 1}^{n} \textbf{F}_i
+.\]
+Since the position vector of the center of mass of the system of particles $\textbf{r}_c$ must satisfy
+\[ 
+\sum_{i = 1}^{n} m_i \textbf{r}_i = m \textbf{r}_c
+,\]
+where $m$ is the total mass of the system of particles, one has
+\[ 
+\sum_{i = 1}^{n} m_i \textbf{a}_i = m \textbf{a}_c
+.\]
+It follows that
+\[ 
+  m \textbf{a}_c = \dot{\textbf{p}} = \sum_{i = 1}^{n} \textbf{F}_i
+\]
+which implies that the product of the total mass of the system of particles and the absolute acceleration of the center of mass of this system is equal to all the external forces acting on the system of particles. If no external forces act on the system we have $\dot{\textbf{p}} = \textbf{0}$, which is the principle of conservation of momentum. 
+
+
+\subsubsection{Angular Momentum}
+The angular momentum $\textbf{L}$ of a system of particles is defined as the sum of the angular momenta of the individual particles, namely,
+\[ 
+\textbf{L} = \sum_{i = 1}^{n} \left( \textbf{r}_i \times m_i \textbf{v}_i \right)
+.\]
+Taking the time derivative of this gives
+\[ 
+\frac{\mathrm{d}\textbf{L}}{\mathrm{d}t} = \sum_{i = 1}^{n} \left( \textbf{v}_i \times m_i \textbf{v}_i \right) + \sum_{i = 1}^{n} \left( \textbf{r}_i \times m_i \textbf{a}_i \right)
+.\]
+Since $\textbf{v}_i \times m_i \textbf{v}_i = \textbf{0}$ this reduces to:
+\[ 
+  \frac{\mathrm{d}\textbf{L}}{\mathrm{d}t} = \sum_{i = 1}^{n} \left( \textbf{r}_i \times m_i \textbf{a}_i \right)
+.\]
+The inertia force $m_i \textbf{a}_i$ of the particle $i$ is equal to the resultant of all applied forces acting on this particle. Therefore we get:
+\begin{align*}
+  \frac{\mathrm{d}\textbf{L}}{\mathrm{d}t} &= \sum_{i = 1}^{n} \left[ \textbf{r}_i \times \left( \textbf{F}_i + \sum_{j = 1}^{n} \textbf{F}_{ij} \right) \right] \\
+  &= \sum_{i = 1}^{n} \textbf{r}_i \times \textbf{F}_i + \sum_{i = 1}^{n} \sum_{j = 1}^{n} \textbf{r}_i \times \textbf{F}_{ij}
+.\end{align*}
+Since the internal forces of interaction acting on two particles are equal in magnitude, opposite in direction and act along the same line, one has
+\[ 
+\textbf{r}_i \times \textbf{F}_{ij} + \textbf{r}_j \times \textbf{F}_{ji} = \left( \textbf{r}_i - \textbf{r}_j \right) \times \textbf{F}_{ij} = \textbf{0}
+\]
+and consequently
+\[ 
+\sum_{i = 1}^{n} \sum_{j = 1}^{n} \textbf{r}_i \times \textbf{F}_{ij} = \textbf{0}
+.\]
+Therefore the rate of change of angular momentum can be written as
+\[ 
+\frac{\mathrm{d}\textbf{L}}{\mathrm{d}t} = \sum_{i = 1}^{n} \textbf{r}_i \times \textbf{F}_i
+.\]
+I.e. the rate of change of the angular momentum of a system of particles is equal to the moment of all the external forces acting on the system.
+
+The angular momentum of the system of particles can be expressed in terms of the velocity of the center of mass $\textbf{v}_c$. It can be shown that
+\[ 
+\textbf{L} = \textbf{r}_c \times m \textbf{v}_c + \sum_{i = 1}^{n} \textbf{r}_{ic} \times m_i \textbf{v}_{ic}
+\]
+where $\textbf{r}_{ic}$ and $\textbf{v}_{ic}$ are, respectively, the relative position and velocity vectors of the particle $i$ with respect to the center of mass of the system of particles, and $m$ is the total mass of the system of particles. It can also be shown that the kinetic energy of the system of particles can be written as
+\begin{align*}
+  T &= \frac{1}{2} \sum_{i = 1}^{n} m_i \left( \textbf{v}_i \cdot \textbf{v}_i \right) = \frac{1}{2} \sum_{i = 1}^{n} m_i v_i^2 \\
+    &= \frac{1}{2} m v_c^2 + \sum_{i = 1}^{n} \frac{1}{2} m_i v_{ic}^2
+.\end{align*}
+
+
+\subsubsection{Dynamics of Rigid Bodies}
+In particle dynamics objects are assumed to be so small that the position of any particle is identifiable by a single point. For the configuration of a rigid body in space, one must however use more than the three space coordinates from particle dynamics -- on top of these we introduce three coordinates that define the orientation of the body in the coordinate system. The unconstrained planar motion of a rigid body can be described by three coordinates -- two that define the translation of the center of mass and one $\theta$ that defines the orientation of the body in the $xy$-plane. Therefore, there are three differential equations that govern the unconstrained planar motion of a rigid body:
+\begin{equation} \label{eq:eqmotrig2d}
+  \begin{split}
+    m \ddot{x}_{c} &= F_x, \\
+    m \ddot{y}_c &= F_y, \\
+    I_c \ddot{\theta} &= M.
+  \end{split}
+\end{equation}
+The left-hand sides of the first two equations above are called the \textit{inertia forces} and the left-hand side of the third equation is known as the \textit{inertia moment}. If the body undergoes purely translation, only the first two equations are required. If the rigid body undergoes pure rotation, the third equation is sufficient. I.e. the number of independent differential equations corresponds to the number of degrees of freedom.
+
+
+\subsubsection{Principle of Work and Energy}
+In order to derive the principle of work and energy for rigid bodies, we note that by using the relation $\mathrm{d}x = \dot{x} \, \mathrm{d}t $, the acceleration of the center of mass of the rigid body can be stated as:
+\begin{align*}
+  \ddot{x}_c &= \dot{x}_c \frac{\mathrm{d} \dot{x}_c}{\mathrm{d}x_c}  \\
+  \ddot{y}_c &= \dot{y}_c \frac{\mathrm{d} \dot{y}_c}{\mathrm{d}y_c}  \\
+  \ddot{\theta} &= \dot{\theta} \frac{\mathrm{d}\dot{\theta}}{\mathrm{d}\theta} 
+.\end{align*}
+Substituting these into \autoref{eq:eqmotrig2d} one obtains
+\begin{align*}
+  \int m \dot{x}_c \, \mathrm{d}\dot{x}_c &= \int F_x \, \mathrm{d}x_c \\
+  \int m \dot{y}_c \, \mathrm{d}\dot{y}_c &= \int F_y \, \mathrm{d}y_c \\
+  \int I_c \dot{\theta} \, \mathrm{d}\dot{\theta} = \int M \, \mathrm{d}\theta
+\end{align*}
+which yield
+\begin{align*}
+  \frac{1}{2} m \dot{x}_c^2 - c_x &= \int F_x \, \mathrm{d}x_c \\
+  \frac{1}{2} m \dot{y}_c^2 - c_y &= \int F_y \, \mathrm{d}y_c \\
+  \frac{1}{2} I_c \dot{\theta}^2 - c_{\theta} &= \int M \, \mathrm{d}\theta
+.\end{align*}
+Here $c_x$, $c_y$ and $c_{\theta}$ are the constants of integration which define the kinetic energy of the rigid body at the initial configuration as $T_0 = c_x + c_y + c_{\theta}$. Adding the preceding equations, one obtains
+\[ 
+  \frac{1}{2} m \left( \dot{x}_c^2 + \dot{y}_c^2 \right) + \frac{1}{2} I_{c} \dot{\theta}^2 - T_0 = \int F_x \, \mathrm{d}x_c + \int F_y \, \mathrm{d}y_c + \int M \, \mathrm{d}\theta
+\]
+which can be written as
+\[ 
+T = W
+.\]
+According to this the change in kinetic energy of a rigid body is equal to the work of the applied forces and moments. 
+
+\subsubsection{Linearization of the Differential Equations}
+In many cases, the dynamics of physical systems is governed by nonlinear differential equations. It is difficult, however, to obtain closed-form solutions to many of the resulting non-linear differential equations. If one assumes small oscillations, linear second-order ordinary differential equations can be obtained, after which a closed-form solution can be found.
