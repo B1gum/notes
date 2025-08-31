@@ -14,3 +14,9 @@
 \contentsline {subsubsection}{\numberline {1.10.2}Laminar and Turbulent flows}{10}{subsubsection.1.10.2}%
 \contentsline {subsubsection}{\numberline {1.10.3}Compressible and Incompressible Flows}{11}{subsubsection.1.10.3}%
 \contentsline {subsubsection}{\numberline {1.10.4}Internal and External Flows}{11}{subsubsection.1.10.4}%
+\contentsline {section}{\numberline {2}Fluid Statics}{11}{section.2}%
+\contentsline {subsection}{\numberline {2.1}The basic equations of fluid statics}{11}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Pressure variation in a static fluid}{14}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Incompressible fluids}{14}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Gases}{14}{subsubsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.3}Buoyancy}{15}{subsection.2.3}%

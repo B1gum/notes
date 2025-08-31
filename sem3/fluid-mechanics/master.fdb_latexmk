@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1756396137.7028 "master.tex" "master.pdf" "master" 1756396140.04372 0
+["pdflatex"] 1756590814.99834 "master.tex" "master.pdf" "master" 1756590817.38583 0
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -268,11 +268,14 @@
   "figures/f2_6.png" 1756389230.51653 54895 9c6c3e954bca094861b6d6359f4b2683 ""
   "figures/f2_7.png" 1756389230.51671 39898 567052ec0d0c24161aeea305963bbada ""
   "figures/f2_9.png" 1756391790.40798 38739 dbd56ccd3441aa76284361438ce3ebda ""
+  "figures/f3_1.png" 1756564596.24698 62044 093331799e9331a3b5aa626eaafefaf8 ""
+  "figures/f3_9.png" 1756590407.70263 34049 259f25ced189219f8a3be3c05b9f5080 ""
   "lec_01.tex" 1756396132.83528 27681 a17a7fd3f6114d59523850c5f4bc979a ""
-  "master.aux" 1756396139.88952 5357 fca0e3d1c5e0da522f3963571c5751c9 "pdflatex"
-  "master.out" 1756396139.89796 2888 c796a8c0be9ca7c0790d4334f85d4d6c "pdflatex"
-  "master.tex" 1756389230.5185 211 1cccf1f461aa5953dee92e0ad306c3ae ""
-  "master.toc" 1756396139.89855 1441 dca287614706a3aded91e59e295b13d3 "pdflatex"
+  "lec_02.tex" 1756590811.83661 9628 98fdc2489f28a780d0bfdde4a0d73517 ""
+  "master.aux" 1756590817.22767 6761 04ae57d517a918d49dacf7bcbca124dc "pdflatex"
+  "master.out" 1756590817.23167 3873 9ced3c3512ed8c8680d72ea7716818e2 "pdflatex"
+  "master.tex" 1756564355.9371 234 6162ec6ddb9107c60f7131be2b38c76b ""
+  "master.toc" 1756590817.23232 1972 fbf939119990417f158eaf49d8609712 "pdflatex"
   "preamble.tex" 1756389230.51884 5555 c880afac3cc1c332a8b555231353ef77 ""
   (generated)
   "master.aux"

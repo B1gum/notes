@@ -426,6 +426,7 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT /usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 OUTPUT master.toc
 INPUT ./lec_01.tex
 INPUT ./lec_01.tex
@@ -433,7 +434,6 @@ INPUT lec_01.tex
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmss9.tfm
-INPUT /usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm
@@ -470,6 +470,19 @@ INPUT ./figures/f2_14.png
 INPUT ./figures/f2_14.png
 INPUT ./figures/f2_14.png
 INPUT ./figures/f2_14.png
+INPUT ./lec_02.tex
+INPUT ./lec_02.tex
+INPUT lec_02.tex
+INPUT ./figures/f3_1.png
+INPUT ./figures/f3_1.png
+INPUT ./figures/f3_1.png
+INPUT ./figures/f3_1.png
+INPUT ./figures/f3_1.png
+INPUT ./figures/f3_9.png
+INPUT ./figures/f3_9.png
+INPUT ./figures/f3_9.png
+INPUT ./figures/f3_9.png
+INPUT ./figures/f3_9.png
 INPUT master.aux
 INPUT ./master.out
 INPUT ./master.out
