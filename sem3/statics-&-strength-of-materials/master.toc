@@ -1,13 +1,22 @@
 \babel@toc {english}{}\relax 
-\contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Terminology}{2}{subsection.1.1}%
 \contentsline {section}{\numberline {2}Force vectors}{2}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Scalars and vectors}{2}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Vector operations}{2}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Multiplication and division of a vector by a scalar}{2}{subsubsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2}Vector operations}{3}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Multiplication and division of a vector by a scalar}{3}{subsubsection.2.2.1}%
 \contentsline {subsubsection}{\numberline {2.2.2}Vector addition and subtraction}{3}{subsubsection.2.2.2}%
 \contentsline {subsection}{\numberline {2.3}Addition of a system of coplanar forces}{3}{subsection.2.3}%
 \contentsline {subsubsection}{\numberline {2.3.1}Cartesian notation}{3}{subsubsection.2.3.1}%
 \contentsline {subsubsection}{\numberline {2.3.2}Coplanar force resultants}{3}{subsubsection.2.3.2}%
 \contentsline {subsection}{\numberline {2.4}Position vectors}{4}{subsection.2.4}%
 \contentsline {subsubsection}{\numberline {2.4.1}Force vector directed along a line}{4}{subsubsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.5}Dot product}{4}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Force system resultants}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Moment of a force – Scalar formulation}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Principle of moments}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Cross product}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Moment of a force -- Vector formulation}{7}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Moment of a couple}{7}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Simplification of a force and couple system}{7}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Reduction of a simple distributed loading}{8}{subsection.3.7}%
