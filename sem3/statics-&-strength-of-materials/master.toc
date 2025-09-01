@@ -18,5 +18,5 @@
 \contentsline {subsection}{\numberline {3.3}Cross product}{6}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Moment of a force -- Vector formulation}{7}{subsection.3.4}%
 \contentsline {subsection}{\numberline {3.5}Moment of a couple}{7}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Simplification of a force and couple system}{7}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.6}Simplification of a force and couple system}{8}{subsection.3.6}%
 \contentsline {subsection}{\numberline {3.7}Reduction of a simple distributed loading}{8}{subsection.3.7}%
