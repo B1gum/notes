@@ -211,11 +211,7 @@ And thus the resultant moment is:
 \[ 
 M_O = \overline{x} F_R = \frac{(\pi - 2 ) L}{\pi} \cdot \frac{2 L w_0}{\pi} = \frac{2 \left( \pi - 2 \right)L^2 w_0}{\pi^2}
 .\]
-The equivalent resultant force and couple moment is therefore (following the standard conventions of $y$ being upwards and positive moment is counterclockwise):
-\begin{align*}
-  F_R &= -\frac{2L w_0}{\pi} \\
-  M_O &= -\frac{2 \left( \pi - 2 \right) L^2 w_0}{\pi^2}
-.\end{align*}
+
 
 
 
