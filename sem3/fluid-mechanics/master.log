@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.16)  3 SEP 2025 22:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.16)  4 SEP 2025 18:20
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -414,14 +414,23 @@ Package pgfplots: loading complementary utilities for your pgf version...
 File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
 File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/bm.sty
+))) (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup6
+) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
+File: tikzlibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
+File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\arrowsize=\dimen283
+)) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/bm.sty
 Package: bm 2023/07/08 v1.2f Bold Symbol Support (DPC/FMi)
-\symboldoperators=\mathgroup6
-\symboldletters=\mathgroup7
-\symboldsymbols=\mathgroup8
+\symboldoperators=\mathgroup7
+\symboldletters=\mathgroup8
+\symboldsymbols=\mathgroup9
 Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
 Package bm Info: No bold for \U/msa/m/n, using \pmb.
 Package bm Info: No bold for \U/msb/m/n, using \pmb.
+Package bm Info: No bold for \U/rsfs/m/n, using \pmb.
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
@@ -432,7 +441,8 @@ File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 Package: lastpage 2023/10/14 v2.0e lastpage: 2.09 or 2e? (HMM)
  (/usr/local/texlive/2024/texmf-dist/tex/latex/lastpage/lastpage2e.sty
 Package: lastpage2e 2023/10/14 v2.0e Decide which 2e lastpage version to use (HMM)
- (/usr/local/texlive/2024/texmf-dist/tex/latex/lastpage/lastpagemodern.sty
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lastpage/lastpagemodern.sty
 Package: lastpagemodern 2023-10-14 v2.0e Refers to last page's name (HMM; JPG)
 \c@lastpagecount=\count308
 ) 
@@ -478,7 +488,7 @@ Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count310
 )
-\@linkdim=\dimen283
+\@linkdim=\dimen284
 \Hy@linkcounter=\count311
 \Hy@pagecounter=\count312
  (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def
@@ -503,15 +513,15 @@ Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4446.
 \c@Hy@tempcnt=\count314
 LaTeX Info: Redefining \url on input line 4784.
-\XeTeXLinkMargin=\dimen284
+\XeTeXLinkMargin=\dimen285
  (/usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (/usr/local/texlive/2024/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
 \Fld@menulength=\count315
-\Field@Width=\dimen285
-\Fld@charsize=\dimen286
+\Field@Width=\dimen286
+\Fld@charsize=\dimen287
 Package hyperref Info: Hyper figures OFF on input line 6063.
 Package hyperref Info: Link nesting OFF on input line 6068.
 Package hyperref Info: Hyper index ON on input line 6071.
@@ -572,7 +582,7 @@ Package: siunitx 2024-02-15 v3.3.12 A comprehensive (SI) units package
 \l__siunitx_number_group_first_int=\count328
 \l__siunitx_number_group_size_int=\count329
 \l__siunitx_number_group_minimum_int=\count330
-\l__siunitx_angle_tmp_dim=\dimen287
+\l__siunitx_angle_tmp_dim=\dimen288
 \l__siunitx_angle_marker_box=\box66
 \l__siunitx_angle_unit_box=\box67
 \l__siunitx_compound_count_int=\count331
@@ -581,23 +591,23 @@ Package: siunitx 2024-02-15 v3.3.12 A comprehensive (SI) units package
 Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages (CN)
 )
 \l__siunitx_table_tmp_box=\box68
-\l__siunitx_table_tmp_dim=\dimen288
-\l__siunitx_table_column_width_dim=\dimen289
+\l__siunitx_table_tmp_dim=\dimen289
+\l__siunitx_table_column_width_dim=\dimen290
 \l__siunitx_table_integer_box=\box69
 \l__siunitx_table_decimal_box=\box70
 \l__siunitx_table_uncert_box=\box71
 \l__siunitx_table_before_box=\box72
 \l__siunitx_table_after_box=\box73
-\l__siunitx_table_before_dim=\dimen290
-\l__siunitx_table_carry_dim=\dimen291
+\l__siunitx_table_before_dim=\dimen291
+\l__siunitx_table_carry_dim=\dimen292
 \l__siunitx_unit_tmp_int=\count332
 \l__siunitx_unit_position_int=\count333
 \l__siunitx_unit_total_int=\count334
  (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty
 Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
-\col@sep=\dimen292
+\col@sep=\dimen293
 \ar@mcellbox=\box74
-\extrarowheight=\dimen293
+\extrarowheight=\dimen294
 \NC@list=\toks49
 \extratabsurround=\skip61
 \backup@length=\skip62
@@ -614,12 +624,12 @@ Package: ifmtarg 2018/04/16 v1.2b check for an empty argument
 Package: pdfpages 2024/01/21 v0.5y Insert pages of external PDF documents (AM)
  (/usr/local/texlive/2024/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
-\ESO@tempdima=\dimen294
-\ESO@tempdimb=\dimen295
+\ESO@tempdima=\dimen295
+\ESO@tempdimb=\dimen296
 )
-\AM@pagewidth=\dimen296
-\AM@pageheight=\dimen297
-\AM@fboxrule=\dimen298
+\AM@pagewidth=\dimen297
+\AM@pageheight=\dimen298
+\AM@fboxrule=\dimen299
  (/usr/local/texlive/2024/texmf-dist/tex/latex/pdfpages/pppdftex.def
 File: pppdftex.def 2024/01/21 v0.5y Pdfpages driver for pdfTeX (AM)
 )
@@ -690,7 +700,7 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \c@tcblayer=\count340
 \c@tcolorbox@number=\count341
 \l__tcobox_tmpa_box=\box82
-\l__tcobox_tmpa_dim=\dimen299
+\l__tcobox_tmpa_dim=\dimen300
 \tcb@temp=\box83
 \tcb@temp=\box84
 \tcb@temp=\box85
@@ -747,13 +757,13 @@ LaTeX Font Info:    ... okay on input line 4.
  (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count346
-\scratchdimen=\dimen300
+\scratchdimen=\dimen301
 \scratchbox=\box92
 \nofMPsegments=\count347
 \nofMParguments=\count348
 \everyMPshowfont=\toks58
 \MPscratchCnt=\count349
-\MPscratchDim=\dimen301
+\MPscratchDim=\dimen302
 \MPnumerator=\count350
 \makeMPintoPDFobject=\count351
 \everyMPtoPDFconversion=\toks59
@@ -790,6 +800,10 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 6.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 6.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) (./master.toc [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
@@ -908,15 +922,15 @@ Package rerunfilecheck Info: File `master.out' has not changed.
 (rerunfilecheck)             Checksum: 970759EF440B11213BAE96D13AA143C9;8425.
  ) 
 Here is how much of TeX's memory you used:
- 42904 strings out of 474116
- 1037403 string characters out of 5743682
+ 43453 strings out of 474116
+ 1052537 string characters out of 5743682
  1946187 words of memory out of 5000000
- 64485 multiletter control sequences out of 15000+600000
- 572423 words of font info for 88 fonts, out of 8000000 for 9000
+ 65018 multiletter control sequences out of 15000+600000
+ 573412 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  104i,13n,110p,1048b,1311s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on master.pdf (29 pages, 693219 bytes).
+Output written on master.pdf (29 pages, 693189 bytes).
 PDF statistics:
  565 PDF objects out of 1000 (max. 8388607)
  467 compressed objects within 5 object streams
