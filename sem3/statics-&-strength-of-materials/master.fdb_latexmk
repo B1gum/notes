@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1756749114.53468 "master.tex" "master.pdf" "master" 1756749116.94708 0
+["pdflatex"] 1757093787.38586 "master.tex" "master.pdf" "master" 1757093789.28372 0
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -260,13 +260,16 @@
   "figures/f3_2.png" 1756719798.11755 108795 b8880a61f151a50e293c50fdef0e3b79 ""
   "figures/f3_25.png" 1756739849.66159 7992 d353b40bee1ef915f4f4e7cc8f26a32c ""
   "figures/f3_4.png" 1756720360.53065 33010 f3562c883d194708880dc996307ec466 ""
+  "figures/f6_1.png" 1757092967.3505 18649 d4b0a9bc92b73a34f9e3b28bf2d71753 ""
+  "figures/f6_2.png" 1757093323.94587 46280 63e1171a30803e488b2bfc56f22d8b52 ""
   "lec_01.tex" 1756389230.52104 5171 d52104c43867fb2f64a1e71cc6aea91d ""
-  "lec_02.tex" 1756749077.786 5197 afab01f5efd06490290e961779705d2f ""
-  "lec_03.tex" 1756749099.66128 2674 465f7bfbcb7ac4dad75cd37bd0030214 ""
-  "master.aux" 1756749116.79772 4025 bb376625acf0303101633158a7cbac57 "pdflatex"
-  "master.out" 1756749116.80266 4064 8aae730a9eda39491c6bc4d4f8208849 "pdflatex"
-  "master.tex" 1756749109.49748 275 8d0d5e36b1514b4e71ae3b1e61e18bc8 ""
-  "master.toc" 1756749116.80337 1970 ee5e11216875a63c9ae4a2eec04ce70a "pdflatex"
+  "lec_02.tex" 1756849874.01392 5197 afab01f5efd06490290e961779705d2f ""
+  "lec_03.tex" 1757092675.19285 2709 e071d4ba59af7256a52885d7e466685f ""
+  "lec_04.tex" 1757093784.00032 3200 6485030c2e26e318c0044312f0b953ca ""
+  "master.aux" 1757093789.1554 5234 ad04ba3de86840cc6ed9ef958137c6cf "pdflatex"
+  "master.out" 1757093789.15857 5227 ad247792e8bd61206cc163b280d94f1d "pdflatex"
+  "master.tex" 1757092537.13343 298 57f3d6d6b534da709a3f38d60e0c3442 ""
+  "master.toc" 1757093789.15903 2521 bb4a979da2cd6d08adcc3e00f97562d3 "pdflatex"
   "preamble.tex" 1756389230.52251 5555 c880afac3cc1c332a8b555231353ef77 ""
   (generated)
   "master.aux"
