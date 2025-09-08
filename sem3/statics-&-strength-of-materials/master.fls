@@ -472,6 +472,9 @@ INPUT ./figures/f6_2.png
 INPUT ./figures/f6_2.png
 INPUT ./figures/f6_2.png
 INPUT ./figures/f6_2.png
+INPUT ./lec_05.tex
+INPUT ./lec_05.tex
+INPUT lec_05.tex
 INPUT master.aux
 INPUT ./master.out
 INPUT ./master.out

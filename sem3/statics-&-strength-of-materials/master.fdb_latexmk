@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1757093787.38586 "master.tex" "master.pdf" "master" 1757093789.28372 0
+["pdflatex"] 1757340096.51871 "master.tex" "master.pdf" "master" 1757340098.77082 0
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -266,10 +266,11 @@
   "lec_02.tex" 1756849874.01392 5197 afab01f5efd06490290e961779705d2f ""
   "lec_03.tex" 1757092675.19285 2709 e071d4ba59af7256a52885d7e466685f ""
   "lec_04.tex" 1757093784.00032 3200 6485030c2e26e318c0044312f0b953ca ""
-  "master.aux" 1757093789.1554 5234 ad04ba3de86840cc6ed9ef958137c6cf "pdflatex"
-  "master.out" 1757093789.15857 5227 ad247792e8bd61206cc163b280d94f1d "pdflatex"
-  "master.tex" 1757092537.13343 298 57f3d6d6b534da709a3f38d60e0c3442 ""
-  "master.toc" 1757093789.15903 2521 bb4a979da2cd6d08adcc3e00f97562d3 "pdflatex"
+  "lec_05.tex" 1757340086.0586 1626 2f4dd06153954050eaa865c9db9937b9 ""
+  "master.aux" 1757340098.64196 5661 cd5dca7d90b338f24dfcfe5ae7aa1fdc "pdflatex"
+  "master.out" 1757340098.64596 5892 00c5f6f9ea6f1e5a4ce03336274b6794 "pdflatex"
+  "master.tex" 1757339694.97792 321 7996e7eadca315c395734fea3ba8a20d ""
+  "master.toc" 1757340098.64658 2807 14ec2e9ec73015440b3b8a7d50af02de "pdflatex"
   "preamble.tex" 1756389230.52251 5555 c880afac3cc1c332a8b555231353ef77 ""
   (generated)
   "master.aux"

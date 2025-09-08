@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.16)  5 SEP 2025 19:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.16)  8 SEP 2025 16:01
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -787,20 +787,20 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write5
 \openout5 = `master.toc'.
 
- (./lec_01.tex [2] [3]) (./lec_02.tex [4]
-<./figures/f3_2.png, id=183, 184.69pt x 379.4175pt>
+ (./lec_01.tex [2] [3] [4]) (./lec_02.tex
+<./figures/f3_2.png, id=198, 184.69pt x 379.4175pt>
 File: ./figures/f3_2.png Graphic file (type png)
 <use ./figures/f3_2.png>
 Package pdftex.def Info: ./figures/f3_2.png  used on input line 30.
 (pdftex.def)             Requested size: 117.43874pt x 241.25743pt.
  [5]
-<./figures/f3_4.png, id=192, 207.77625pt x 249.93375pt>
+<./figures/f3_4.png, id=206, 207.77625pt x 249.93375pt>
 File: ./figures/f3_4.png Graphic file (type png)
 <use ./figures/f3_4.png>
 Package pdftex.def Info: ./figures/f3_4.png  used on input line 57.
 (pdftex.def)             Requested size: 164.4171pt x 197.78491pt.
- [6 <./figures/f3_2.png>]) (./lec_03.tex [7 <./figures/f3_4.png>]
-<./figures/f3_25.png, id=208, 124.465pt x 121.45375pt>
+ [6 <./figures/f3_2.png>] [7 <./figures/f3_4.png>]) (./lec_03.tex
+<./figures/f3_25.png, id=223, 124.465pt x 121.45375pt>
 File: ./figures/f3_25.png Graphic file (type png)
 <use ./figures/f3_25.png>
 Package pdftex.def Info: ./figures/f3_25.png  used on input line 10.
@@ -811,7 +811,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has
                    \relax 
 l.11   \caption{}
                   [8 <./figures/f3_25.png>]) (./lec_04.tex
-<./figures/f6_1.png, id=215, 208.78pt x 147.55125pt>
+<./figures/f6_1.png, id=230, 208.78pt x 147.55125pt>
 File: ./figures/f6_1.png Graphic file (type png)
 <use ./figures/f6_1.png>
 Package pdftex.def Info: ./figures/f6_1.png  used on input line 10.
@@ -821,8 +821,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has
 <to be read again> 
                    \relax 
 l.11   \caption{}
-                  [9 <./figures/f6_1.png>]
-<./figures/f6_2.png, id=224, 219.82124pt x 193.72375pt>
+                  [9]
+<./figures/f6_2.png, id=238, 219.82124pt x 193.72375pt>
 File: ./figures/f6_2.png Graphic file (type png)
 <use ./figures/f6_2.png>
 Package pdftex.def Info: ./figures/f6_2.png  used on input line 39.
@@ -832,7 +832,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has
 <to be read again> 
                    \relax 
 l.40   \caption{}
-                  [10 <./figures/f6_2.png>]) [11] 
+                  [10 <./figures/f6_1.png>]) (./lec_05.tex [11 <./figures/f6_2.png>]) [12] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (./master.aux)
  ***********
@@ -840,21 +840,21 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `master.out' has not changed.
-(rerunfilecheck)             Checksum: AD247792E8BD61206CC163B280D94F1D;5227.
+(rerunfilecheck)             Checksum: 00C5F6F9EA6F1E5A4CE03336274B6794;5892.
  ) 
 Here is how much of TeX's memory you used:
- 42617 strings out of 474116
- 1032936 string characters out of 5743682
- 1942187 words of memory out of 5000000
- 64271 multiletter control sequences out of 15000+600000
+ 42631 strings out of 474116
+ 1033116 string characters out of 5743682
+ 1940187 words of memory out of 5000000
+ 64277 multiletter control sequences out of 15000+600000
  567796 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 104i,12n,110p,741b,1179s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 104i,12n,110p,741b,1146s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on master.pdf (11 pages, 336903 bytes).
+Output written on master.pdf (12 pages, 343599 bytes).
 PDF statistics:
- 312 PDF objects out of 1000 (max. 8388607)
- 256 compressed objects within 3 object streams
- 52 named destinations out of 1000 (max. 500000)
- 254 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 333 PDF objects out of 1000 (max. 8388607)
+ 276 compressed objects within 3 object streams
+ 57 named destinations out of 1000 (max. 500000)
+ 278 words of extra memory for PDF output out of 10000 (max. 10000000)
 
