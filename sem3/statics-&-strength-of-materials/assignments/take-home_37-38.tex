@@ -18,21 +18,38 @@ The pipe is hoisted using the tongs. If the coefficient of static friction at $A
 \bigbreak
 \begin{figure}[ht]
   \centering
-  \incfig[0.5]{P5_1}
-  \caption{Free-body diagram of the right tong part}
+  \incfig[0.3]{P5_1}
+  \caption{Free-body diagram of the right tong half}
   \label{fig:P5-1}
 \end{figure}
-The normal conditions for equilibrium states:
+We consider one half of the tong, in this case the right half as shown on \autoref{fig:P5-1}. For static equilibrium to occur we have the necessary and sufficient conditions:
 \begin{align*}
-  F_{R_x} &= 0 \\
-  F_{R_y} &= 0 \\
-  M_{R_C} &= 0
+  F_{R_x} &= \sum F_x = 0 \\
+  F_{R_y} &= \sum F_y = 0 \\
+  M_{R_C} &= \sum M_C = 0
 .\end{align*}
-We take the right tong member as a separate (rigid) body as shown on \autoref{fig:P5-1}. It is acted on be three forces:
-\begin{enumerate}
-  \item A chain force $T$ at the upper eye, which acts vertically at $x = b$
-  \item A reaction force $R_B$ from the pipe at $B$. As the inner wall of $B$ is vertical the reaction normal force will act horizontally to the left. As the tongs move upwards the friction force on this will point vertically downwards
-\end{enumerate}
+For a couple moment not to arise, the lines of actions of all the forces must intersect at some common point, $P$. 
+
+At point $B$, right at the verge of slippage, the line of action of the resultant force at $B$ makes the friction angle, $\phi = \tan^{-1} \mu_s$ below the horizontal. Using the equation of a line we get:
+\[ 
+y + h= \mu_s (x - \frac{d}{2}) \implies y = \mu _s \left( x - \frac{d}{2} \right) - h
+.\]
+The line of action at point $B$ will lie along this line.
+
+At the top the tong is attached to a vertical chain, such that the force that is transmittet to the tong at the top is vertical, with a line of action of $x = b$. 
+
+As mentioned above, all the lines of actions of the forces must intersect at a common point $P$. This means that the two lines defined above must intersect at this point $P$. This intersection will be:
+\[ 
+P = \left( b, \mu_s \left( b - \frac{d}{2} \right) - h \right)
+.\]
+The pin force at $C$ will thus act along the line $CP$. If this point $P$ is below point $C$ a counter clockwise torque is induced and thus the jaws of the tong will tend to open up. Therefore, for the jaws to wedge and hold, the concurrency point $P$ must be at or above $C$ as:
+\begin{align*}
+  y_p &\geq 0 \\
+  \mu_s \left( b - \frac{d}{2} \right) - h &\geq 0 \\
+  \implies \mu_s \left( b_{\mathrm{min}} - \frac{d}{2} \right) - h &= 0 \\
+  b_{\mathrm{min}} &= \frac{h}{\mu_s} + \frac{d}{2}
+.\end{align*}
+Therefore the smallest dimension of $b$ such that the pipe can be lifted is $b_{\mathrm{min}} = \frac{h}{\mu_s} + \frac{d}{2}$.
 
 
 \end{document}
