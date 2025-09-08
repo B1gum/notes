@@ -1,0 +1,151 @@
+\lecture{5}{8. September 2025}{Differential Analysis I: Mass conservation}
+
+\section{Introduction to Differential Analysis of Fluid Motion}
+In the previous \autoref{sec:intconvol} the basic equations in integral form for a control volume were introduced. These are useful when we are interested in the overall behaviour of a fluid field and its effects on its surroundings. To determine what happens at each point of the flow field we must ude the differential forms of the equations of motion.
+
+\subsection{Conservation of Mass}
+
+\subsubsection{Rectangular Coordinate System}
+To find the differential equation for conservation of mass in a rectangular coordinate system we choose a control volume that is an infinitesimal cube with sides of length $\mathrm{d}x, \mathrm{d}y, \mathrm{d}z$ as shown on \autoref{fig:f5_1}. The density at the center, $O$, of the control volume is assumed to be $\rho$ and the velocity there is assumed to be $\textbf{V} = \hat{i} u + \hat{j} v + \hat{k} w$.
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.5\linewidth]{./figures/f5_1.png}
+  \caption{Differential control volume in rectangular coordinates.}
+  \label{fig:f5_1}
+\end{figure}
+
+Now, to evaluate the properties at each of the six faces of the control series we will use a Taylor series expansion about point $O$. E.g. for the right face:
+\[ 
+\rho)_{x + \frac{\mathrm{d}x}{2}} = \rho + \left( \frac{\partial \rho}{\partial x} \right) \frac{\mathrm{d}x}{2} + \left( \frac{\partial^2 \rho}{\partial x^2} \right) \frac{1}{2!} \left( \frac{\mathrm{d}x}{2} \right)^2 + \ldots
+.\]
+By neglecting higher-order terms, we can write:
+\[ 
+\rho)_{x + \frac{\mathrm{d}x}{2}} = \rho + \left( \frac{\partial \rho}{\partial x} \right) \frac{\mathrm{d}x}{2}
+.\]
+Likewise for the velocity we can write:
+\[ 
+u )_{x + \frac{\mathrm{d}x}{2}} = u + \left( \frac{\partial u}{\partial x} \right) \frac{\mathrm{d}x}{2}
+\]
+where $\rho$, $u$, $\frac{\partial p}{\partial x}$, and $\frac{\partial u}{\partial x}$ are all evaluated at point $O$. Following the same procedure for the left hand side we get:
+\begin{align*}
+  \rho)_{x - \frac{\mathrm{d}x}{2}} &= \rho - \left( \frac{\partial p}{\partial x} \right) \frac{\mathrm{d}x}{2} \\
+  u)_{x - \frac{\mathrm{d}x}{2}} &= u - \left( \frac{\partial u}{\partial x} \right) \frac{\mathrm{d}x}{2}
+.\end{align*}
+Similar expressions for $\rho$ and $v$ for the front and back faces and $\rho$ and $w$ for the top and bottom faces of the infinitesimal control volume can be made. These can then be used to evaluate the surface integral in \autoref{eq:convolconmas} (i.e. we can find the net flux of mass out of the control volume). \autoref{eq:convolconmas} states
+\[ 
+\frac{\partial }{\partial t} \int_{\mathrm{CV}} \rho \, \mathrm{d}V + \int_{\mathrm{CS}} \rho \textbf{V} \cdot \mathrm{d}\textbf{A} = 0
+.\]
+If we assume that the velocity components $u$, $v$, and $w$ are positive in the $x$, $y$, and $z$ directions, respectively, that the area normal is positive out of the cube and that higher order terms can be neglected as we find the limit of $\mathrm{d}x$, $\mathrm{d}y$, and $\mathrm{d}z$ as they go to zero, then we can solve the surface integral to be:
+\[ 
+\int_{\mathrm{CS}} \rho \textbf{V} \cdot \mathrm{d}\textbf{A} = \left( \frac{\partial \rho u}{\partial x} + \frac{\partial \rho v}{\partial y} + \frac{\partial \rho w}{\partial z} \right) \, \mathrm{d}x \, \mathrm{d}y \, \mathrm{d}z
+.\]
+To complete \autoref{eq:convolconmas} we need to evaluate the volume integral:
+\[ 
+\frac{\partial }{\partial t} \int_{\mathrm{CV}} \rho \, \mathrm{d}V = \frac{\partial }{\partial t} \left( \rho \, \mathrm{d}x \, \mathrm{d}y \, \mathrm{d}z \right) = \frac{\partial \rho}{\partial t} \, \mathrm{d}x \, \mathrm{d}y \, \mathrm{d}z
+.\]
+Hence we obtain the differential form of the mass conservation law:
+\begin{equation}\label{eq:coneq}
+  \frac{\partial \rho u}{\partial x} + \frac{\partial \rho v}{\partial y} + \frac{\partial \rho w}{\partial z} + \frac{\partial \rho}{\partial t} = 0
+\end{equation}
+\autoref{eq:coneq} is often called the \textit{continuity equation}.
+
+Since $\nabla $ is given by:
+\[ 
+\nabla = \hat{i} \frac{\partial }{\partial x} + \hat{j} \frac{\partial }{\partial y} + \hat{k} \frac{\partial }{\partial z}
+\]
+then
+\[ 
+\frac{\partial \rho u}{\partial x} + \frac{\partial \rho u}{\partial y} + \frac{\partial \rho w}{\partial z} = \nabla \cdot \rho \textbf{V}
+.\]
+Therefore the conservation of mass from \autoref{eq:coneq} can also be written as:
+\begin{equation}\label{eq:coneqvec}
+  \nabla \cdot \rho \textbf{V} + \frac{\partial \rho}{\partial t} = 0
+\end{equation}
+When \autoref{eq:coneq} is written on vector form as in \autoref{eq:coneqvec} it may be applied in any coordinate system -- even a cylindrical or polar one.
+
+Two special cases of the continuity equation are worth a mention.
+
+\subsubsection{Incompressible Fluid}
+For an incompressible fluid $\rho = \mathrm{constant}$ and is therefore neither a function of space coordinate nor time. Therefore the continuity equation for an incompressible fluid simplifies to:
+\[ 
+  \nabla \textbf{V} = 0
+.\]
+Thus the velocity field, $\textbf{V}(x,y,z,t)$ must satisfy $\nabla \cdot \textbf{V}$ for an incompressible fluid.
+
+
+\subsubsection{Steady Flow}
+For steady flow, all fluid properties, are, by definition, independent of time. This for steady flow the continuity equation simplifies to:
+\[ 
+\nabla \cdot \rho \textbf{V} = 0
+.\]
+
+
+\subsection{Stream Function for Two-Dimensional Incompressible Flow}
+Streamlines have previously been defined as being lines tangent to the velocity vectors in a flow at an instant:
+\[ 
+\frac{\mathrm{d}y}{\mathrm{d}x} \bigg|_{\mathrm{streamline}} = \frac{v}{u}
+.\]
+
+We will now seek to develop a more formal definition of stream lines by introducing the \textit{stream function} $\psi$. This function allows us to represent two entities -- the velocity components $u(x,y,t)$ and $v(x,y,t)$ of a two-dimensional incompressible flow -- with a single function $\psi(x,y,t)$.
+
+We start with a two-dimensional version of the continuity equation for incompressible flow:
+\begin{equation}\label{eq:twodimconinc}
+  \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = 0
+\end{equation}
+We now define the stream function by:
+\[ 
+u \equiv \frac{\partial \psi}{\partial y} \qquad \mathrm{and} \qquad v \equiv - \frac{\partial \psi}{\partial x}
+.\]
+By doing this \autoref{eq:twodimconinc} is automatically satisfied for any $\psi(x,y,t)$. Using the ``naive'' definition of streamlines introduced at the beginning of this section we can obtain an equation that is only valid along a streamline:
+\[ 
+ u \, \mathrm{d}y  - v \, \mathrm{d}x  = 0
+\]
+or using the stream function
+\begin{equation}\label{eq:strfunconeq2}
+  \frac{\partial \psi}{\partial x} \, \mathrm{d}x + \frac{\partial \psi}{\partial y} \, \mathrm{d}y  = 0
+\end{equation}
+
+From a strictly mathematical point of view, at any instant in time $t$ the variation in a function $\psi(x,y,t)$ in space $(x,y)$ is given by;
+\begin{equation}\label{eq:strfunmat}
+  \mathrm{d}\psi = \frac{\partial \psi}{\partial x} \, \mathrm{d}x + \frac{\partial \psi}{\partial y} \, \mathrm{d}y 
+\end{equation} 
+Comparing \autoref{eq:strfunconeq2} and \autoref{eq:strfunmat} we see that along an instantaneous streamline $\mathrm{d}\psi = 0$, i.e. $\psi$ is constant along a streamline. Therefore we can specify individual streamlines by their stream function values $\psi = 0, 1, 2,\ldots $. Furthermore, these $\psi$ values can be used to obtain the volume flow rate between any two streamlines. Consider the streamlines shown on \autoref{fig:f5_3}. We can compute the volume flow rate between $\psi_1$ and $\psi_2$ by using line $AB$, $BC$, $DE$, or $EF$ (remember there is no flow across a streamline). 
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.5\linewidth]{./figures/f5_3.png}
+  \caption{Instantaneous streamlines in a two-dimensional flow}
+  \label{fig:f5_3}
+\end{figure}
+
+Now let us compare the volume flow rate found using line $AB$ and line $BC$ -- these should be the same. 
+
+For a unit depth, the flow rate across $AB$ is
+\[ 
+Q = \int_{y_1}^{y_2} u \, \mathrm{d}y = \int_{y_1}^{y_2} \frac{\partial \psi}{\partial y} \, \mathrm{d}y 
+.\]
+Along $AB$, $x = \mathrm{constant}$, thus
+\[ 
+\mathrm{d}\psi = \frac{\partial \psi}{\partial y} \, \mathrm{d}y 
+\]
+therefore:
+\[ 
+  Q = \int_{y_1}^{y_2} \frac{\partial \psi}{\partial y} \, \mathrm{d}y = \int_{\psi_1}^{\psi_2} \, \mathrm{d}\psi = \psi_2 - \psi_1
+.\]
+
+The same procedure is followed for $BC$, however here $y = \mathrm{constant}$, thus:
+\begin{align*}
+  Q &= \int_{x_1}^{x_2} v \, \mathrm{d}x  \\
+  &= - \int_{x_1}^{x_2} \frac{\partial \psi}{\partial x} \, \mathrm{d}x  \\
+  &= - \int_{\psi_2}^{\psi_1} \, \mathrm{d}\psi = \psi_2 - \psi_1
+.\end{align*}
+Hence the volume flow rate per unit depth between two streamlines is given by the difference between the stream function values.
+
+For two-dimensional steady compressible flow in the $xy$ plane, the stream function $\psi$ can be defined such that:
+\[ 
+\rho u \equiv \frac{\partial \psi}{\partial y} \qquad \mathrm{and} \qquad \rho v \equiv - \frac{\partial \psi}{\partial x}
+.\]
+Then the difference between the constant values of $\psi$ defining two streamlines is the mass flow rate per unit depth between the two streamlines. 
+
+If $\psi = 0$ is used to designate the streamline through the origin, the all other $\psi$ values for all other streamlines represents the flow between the origin and that streamline.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.16)  4 SEP 2025 18:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.16)  8 SEP 2025 22:38
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -806,47 +806,47 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 6.
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) (./master.toc [1
 
-{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2])
 \tf@toc=\write5
 \openout5 = `master.toc'.
 
- (./lec_01.tex [2] [3]
-<./figures/f2_3.png, id=242, 179.67125pt x 83.31125pt>
+ (./lec_01.tex [3] [4]
+<./figures/f2_3.png, id=317, 179.67125pt x 83.31125pt>
 File: ./figures/f2_3.png Graphic file (type png)
 <use ./figures/f2_3.png>
 Package pdftex.def Info: ./figures/f2_3.png  used on input line 73.
 (pdftex.def)             Requested size: 234.87749pt x 108.91733pt.
- [4] [5 <./figures/f2_3.png>] [6{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-<./figures/f2_6.png, id=277, 373.395pt x 167.62625pt>
+ [5 <./figures/f2_3.png>] [6]
+<./figures/f2_6.png, id=346, 373.395pt x 167.62625pt>
 File: ./figures/f2_6.png Graphic file (type png)
 <use ./figures/f2_6.png>
 Package pdftex.def Info: ./figures/f2_6.png  used on input line 149.
 (pdftex.def)             Requested size: 234.87749pt x 105.44138pt.
-<./figures/f2_7.png, id=279, 430.60875pt x 190.7125pt>
+<./figures/f2_7.png, id=348, 430.60875pt x 190.7125pt>
 File: ./figures/f2_7.png Graphic file (type png)
 <use ./figures/f2_7.png>
 Package pdftex.def Info: ./figures/f2_7.png  used on input line 164.
 (pdftex.def)             Requested size: 234.87749pt x 104.02791pt.
- [7 <./figures/f2_6.png> <./figures/f2_7.png>]
-<./figures/f2_9.png, id=290, 489.83pt x 139.52126pt>
+ [7{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./figures/f2_6.png>]
+<./figures/f2_9.png, id=359, 489.83pt x 139.52126pt>
 File: ./figures/f2_9.png Graphic file (type png)
 <use ./figures/f2_9.png>
 Package pdftex.def Info: ./figures/f2_9.png  used on input line 192.
 (pdftex.def)             Requested size: 234.87749pt x 66.9013pt.
- [8 <./figures/f2_9.png>] [9]
-<./figures/f2_11.png, id=310, 347.2975pt x 106.3975pt>
+ [8 <./figures/f2_7.png>] [9 <./figures/f2_9.png>]
+<./figures/f2_11.png, id=380, 347.2975pt x 106.3975pt>
 File: ./figures/f2_11.png Graphic file (type png)
 <use ./figures/f2_11.png>
 Package pdftex.def Info: ./figures/f2_11.png  used on input line 260.
 (pdftex.def)             Requested size: 234.87749pt x 71.95969pt.
  [10 <./figures/f2_11.png>]
-<./figures/f2_14.png, id=319, 419.5675pt x 148.555pt>
+<./figures/f2_14.png, id=389, 419.5675pt x 148.555pt>
 File: ./figures/f2_14.png Graphic file (type png)
 <use ./figures/f2_14.png>
 Package pdftex.def Info: ./figures/f2_14.png  used on input line 282.
 (pdftex.def)             Requested size: 234.87749pt x 83.16302pt.
- [11 <./figures/f2_14.png>]) (./lec_02.tex
-<./figures/f3_1.png, id=329, 607.26875pt x 289.08pt>
+ [11 <./figures/f2_14.png>]) (./lec_02.tex [12]
+<./figures/f3_1.png, id=403, 607.26875pt x 289.08pt>
 File: ./figures/f3_1.png Graphic file (type png)
 <use ./figures/f3_1.png>
 Package pdftex.def Info: ./figures/f3_1.png  used on input line 10.
@@ -856,8 +856,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has
 <to be read again> 
                    \relax 
 l.11 ...ressure forces shown in the $y$-direction}
-                                                   [12] [13 <./figures/f3_1.png>] [14]
-<./figures/f3_9.png, id=347, 403.5075pt x 169.63374pt>
+                                                   [13 <./figures/f3_1.png>] [14] [15]
+<./figures/f3_9.png, id=421, 403.5075pt x 169.63374pt>
 File: ./figures/f3_9.png Graphic file (type png)
 <use ./figures/f3_9.png>
 Package pdftex.def Info: ./figures/f3_9.png  used on input line 143.
@@ -867,8 +867,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has
 <to be read again> 
                    \relax 
 l.144 ...aption{Immersed body in a static liquid.}
-                                                   [15]) (./lec_03.tex [16 <./figures/f3_9.png>] [17]
-<./figures/f4_1.png, id=362, 391.4625pt x 189.70876pt>
+                                                  ) (./lec_03.tex [16 <./figures/f3_9.png>] [17]
+<./figures/f4_1.png, id=432, 391.4625pt x 189.70876pt>
 File: ./figures/f4_1.png Graphic file (type png)
 <use ./figures/f4_1.png>
 Package pdftex.def Info: ./figures/f4_1.png  used on input line 96.
@@ -879,7 +879,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has
                    \relax 
 l.97 ...uration of the system and control volume.}
                                                    [18]
-<./figures/f4_2.png, id=369, 354.32375pt x 150.5625pt>
+<./figures/f4_2.png, id=439, 354.32375pt x 150.5625pt>
 File: ./figures/f4_2.png Graphic file (type png)
 <use ./figures/f4_2.png>
 Package pdftex.def Info: ./figures/f4_2.png  used on input line 131.
@@ -889,8 +889,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has
 <to be read again> 
                    \relax 
 l.132 ...egion 3 from \textbf{\autoref{fig:f4_1}}}
-                                                   [19 <./figures/f4_1.png> <./figures/f4_2.png>] [20]) (./lec_04.tex [21] [22]
-<./figures/f4_4.png, id=408, 442.65375pt x 224.84pt>
+                                                   [19 <./figures/f4_1.png>] [20 <./figures/f4_2.png>]) (./lec_04.tex [21] [22]
+<./figures/f4_4.png, id=479, 442.65375pt x 224.84pt>
 File: ./figures/f4_4.png Graphic file (type png)
 <use ./figures/f4_4.png>
 Package pdftex.def Info: ./figures/f4_4.png  used on input line 72.
@@ -900,8 +900,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has
 <to be read again> 
                    \relax 
 l.73 ...ial control volume through a stream tube.}
-                                                   [23 <./figures/f4_4.png>] [24] [25] [26]
-<./figures/f4_6.png, id=437, 278.03876pt x 94.3525pt>
+                                                   [23 <./figures/f4_4.png>] [24] [25] [26] [27]
+<./figures/f4_6.png, id=513, 278.03876pt x 94.3525pt>
 File: ./figures/f4_6.png Graphic file (type png)
 <use ./figures/f4_6.png>
 Package pdftex.def Info: ./figures/f4_6.png  used on input line 279.
@@ -911,7 +911,79 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has
 <to be read again> 
                    \relax 
 l.280   \caption{Normal and shear stress forces.}
-                                                  [27] [28 <./figures/f4_6.png>]) [29] 
+                                                  [28 <./figures/f4_6.png>]) (./lec_05.tex [29]
+<./figures/f5_1.png, id=532, 335.2525pt x 221.82875pt>
+File: ./figures/f5_1.png Graphic file (type png)
+<use ./figures/f5_1.png>
+Package pdftex.def Info: ./figures/f5_1.png  used on input line 13.
+(pdftex.def)             Requested size: 234.87749pt x 155.41106pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.14 ...ontrol volume in rectangular coordinates.}
+                                                   [30 <./figures/f5_1.png>] [31]
+<./figures/f5_3.png, id=557, 377.41pt x 275.0275pt>
+File: ./figures/f5_3.png Graphic file (type png)
+<use ./figures/f5_3.png>
+Package pdftex.def Info: ./figures/f5_3.png  used on input line 117.
+(pdftex.def)             Requested size: 234.87749pt x 171.16156pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.118 ...us streamlines in a two-dimensional flow}
+                                                   [32]) (./lec_06.tex [33 <./figures/f5_3.png>]
+<./figures/f5_4.png, id=572, 518.93875pt x 223.83624pt>
+File: ./figures/f5_4.png Graphic file (type png)
+<use ./figures/f5_4.png>
+Package pdftex.def Info: ./figures/f5_4.png  used on input line 14.
+(pdftex.def)             Requested size: 234.87749pt x 101.31284pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.15 ...rticle at times $t$ and $t + \mathrm{d}t$}
+                                                  
+<./figures/f5_5.png, id=573, 529.98pt x 305.14pt>
+File: ./figures/f5_5.png Graphic file (type png)
+<use ./figures/f5_5.png>
+Package pdftex.def Info: ./figures/f5_5.png  used on input line 21.
+(pdftex.def)             Requested size: 234.87749pt x 135.23045pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.22 ...tation of the components of fluid motion.}
+                                                   [34 <./figures/f5_4.png> <./figures/f5_5.png>] [35]
+<./figures/f5_7.png, id=587, 606.265pt x 165.61874pt>
+File: ./figures/f5_7.png Graphic file (type png)
+<use ./figures/f5_7.png>
+Package pdftex.def Info: ./figures/f5_7.png  used on input line 102.
+(pdftex.def)             Requested size: 234.87749pt x 64.16396pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.103 ...line segments in a two-dimensional flow.}
+                                                   [36 <./figures/f5_7.png>]
+<./figures/f5_8.png, id=594, 233.87375pt x 226.8475pt>
+File: ./figures/f5_8.png Graphic file (type png)
+<use ./figures/f5_8.png>
+Package pdftex.def Info: ./figures/f5_8.png  used on input line 156.
+(pdftex.def)             Requested size: 234.87749pt x 227.83344pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.157 ...ts on the boundaries of a fluid element.}
+                                                   [37] [38 <./figures/f5_8.png>] [39]
+<./figures/f5_9.png, id=614, 441.65pt x 276.03125pt>
+File: ./figures/f5_9.png Graphic file (type png)
+<use ./figures/f5_9.png>
+Package pdftex.def Info: ./figures/f5_9.png  used on input line 238.
+(pdftex.def)             Requested size: 234.87749pt x 146.79707pt.
+ [40 <./figures/f5_9.png>]) [41] [42] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (./master.aux)
  ***********
@@ -919,21 +991,21 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `master.out' has not changed.
-(rerunfilecheck)             Checksum: 970759EF440B11213BAE96D13AA143C9;8425.
+(rerunfilecheck)             Checksum: 1B47D4A691DF3F98323217EC71975DE6;11699.
  ) 
 Here is how much of TeX's memory you used:
- 43453 strings out of 474116
- 1052537 string characters out of 5743682
- 1946187 words of memory out of 5000000
- 65018 multiletter control sequences out of 15000+600000
+ 43586 strings out of 474116
+ 1054836 string characters out of 5743682
+ 1959187 words of memory out of 5000000
+ 65107 multiletter control sequences out of 15000+600000
  573412 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 104i,13n,110p,1048b,1311s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on master.pdf (29 pages, 693189 bytes).
+ 104i,13n,110p,1048b,1146s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on master.pdf (42 pages, 952378 bytes).
 PDF statistics:
- 565 PDF objects out of 1000 (max. 8388607)
- 467 compressed objects within 5 object streams
- 108 named destinations out of 1000 (max. 500000)
- 393 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 750 PDF objects out of 1000 (max. 8388607)
+ 621 compressed objects within 7 object streams
+ 146 named destinations out of 1000 (max. 500000)
+ 540 words of extra memory for PDF output out of 10000 (max. 10000000)
 
