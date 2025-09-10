@@ -48,3 +48,10 @@ logfile
 *.bak
 *.tmp
 *.temp
+*.latexmain
+*.aux
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
