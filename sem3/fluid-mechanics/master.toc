@@ -29,9 +29,9 @@
 \contentsline {subsubsection}{\numberline {3.1.5}The Second Law of Thermodynamics}{18}{subsubsection.3.1.5}%
 \contentsline {subsubsection}{\numberline {3.1.6}Relation of System derivatives to the control volume formulation}{18}{subsubsection.3.1.6}%
 \contentsline {subsubsection}{\numberline {3.1.7}Derivation}{19}{subsubsection.3.1.7}%
-\contentsline {subsection}{\numberline {3.2}Conservation of Mass}{20}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.2}Conservation of Mass}{21}{subsection.3.2}%
 \contentsline {subsubsection}{\numberline {3.2.1}Special cases}{21}{subsubsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.3}Momentum Equation for Inertial Control Volume}{21}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.3}Momentum Equation for Inertial Control Volume}{22}{subsection.3.3}%
 \contentsline {subsubsection}{\numberline {3.3.1}Differential Control Volume Analysis}{23}{subsubsection.3.3.1}%
 \contentsline {subsection}{\numberline {3.4}Momentum equation for Control Volume with Rectilinear Acceleration}{25}{subsection.3.4}%
 \contentsline {subsection}{\numberline {3.5}The Angular-Momentum Principle}{26}{subsection.3.5}%
@@ -39,9 +39,9 @@
 \contentsline {subsection}{\numberline {3.6}The First Law of Thermodynamics}{27}{subsection.3.6}%
 \contentsline {subsubsection}{\numberline {3.6.1}Rate of Work Done by a Control Volume}{27}{subsubsection.3.6.1}%
 \contentsline {paragraph}{Shaft Work}{27}{section*.6}%
-\contentsline {paragraph}{Work Done by Normal Stresses at the Control Surface}{27}{section*.7}%
+\contentsline {paragraph}{Work Done by Normal Stresses at the Control Surface}{28}{section*.7}%
 \contentsline {paragraph}{Work Done by Shear Stresses at the Control Surface}{28}{section*.8}%
-\contentsline {paragraph}{Other Work}{28}{section*.9}%
+\contentsline {paragraph}{Other Work}{29}{section*.9}%
 \contentsline {subsubsection}{\numberline {3.6.2}The Second Law of Thermodynamics}{29}{subsubsection.3.6.2}%
 \contentsline {section}{\numberline {4}Introduction to Differential Analysis of Fluid Motion}{30}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Conservation of Mass}{30}{subsection.4.1}%
