@@ -1,6 +1,6 @@
 \documentclass[a4paper]{article}
 
-\input{./preamble.tex}
+\input{preamble.tex}
 
 \title{Take-Home Assignment weeks 37--38}
 \date{}
@@ -24,8 +24,8 @@ The pipe is hoisted using the tongs. If the coefficient of static friction at $A
 \end{figure}
 We consider one half of the tong, in this case the right half as shown on \autoref{fig:P5-1}. For this to be in equilibrium both the vector sum of all forces and moments about any point must be zero. I.e.
 \begin{align*}
-  \textbf{F}_R &= \sum \textbf{F} &= \textbf{0} \\
-  \textbf{M}_O &= \sum \textbf{M}_O &= \textbf{0} 
+  \textbf{F}_R &= \sum \textbf{F} = \textbf{0} \\
+  \textbf{M}_O &= \sum \textbf{M}_O = \textbf{0} 
 .\end{align*}
 For a couple moment not to arise, the lines of actions of all the forces must intersect at some common point, $P$, i.e. the forces must be concurrent. If the forces are not concurrent, there will always be some ``perpendicular distance'' between the lines of action of the forces and therefore a couple moment might be produced even if force equilibrium is required. 
 
@@ -50,12 +50,59 @@ The pin force $\textbf{R}_C$ at point $C$ will act along the line $CP$. If this 
 .\end{align*}
 Therefore the smallest dimension of $b$ such that the pipe can be lifted is $b_{\mathrm{min}} = \frac{h}{\mu_s} + \frac{d}{2}$.
 
+\newpage
+
 \exercise{P6-1}
 The cart supports the uniform crate having a mass of \qty{85}{kg}. Determine the vertical reactions on the three casters at $A$, $B$, and $C$. The caster at $B$ is not shown. Neglect the mass of the cart.
 \begin{figure} [ht]
   \centering
   \includegraphics[width=0.5\linewidth]{./figures/p6_1.png}
 \end{figure}
+\bigbreak
+\begin{figure}[ht]
+  \centering
+  \incfig[1]{p6-fbd}
+  \caption{Free body diagram}
+  \label{fig:p6-fbd}
+\end{figure}
+A free body diagram of the cart us shown on \autoref{fig:p6-fbd}. For the cart to be in equilibrium the equilibrium equations must be satisfied. In three dimensions these may be:
+\begin{align*}
+  \sum F &= R_A + R_B + R_C + W_{\mathrm{crate}} = 0 \\
+  \sum M_{A_x} &= \left| AB \right|_x R_B + \left| AW \right|_x W_{\mathrm{crate}} + \left| AC \right|_x R_C \\
+  \sum M_{A_y} &= \left| AB \right|_y R_B + \left| AW \right|_y W_{\mathrm{crate}} + \left| AC \right|_y R_c
+.\end{align*}
+First we find the size of $\textbf{W}_{\mathrm{crate}}$ using Newton's second law as
+\[ 
+W_{\mathrm{crate}} = \qty{85}{kg} \cdot (-\qty{9,81}{\frac{m}{s^2}}) = -\qty{833,85}{N} 
+.\]
+This weight will be acting from the center of the crate as it is assumed to be homogeneous. The distances can be read of the free body diagram to be
+\begin{align*}
+  \left| AB \right|_x &= 0 \\
+  \left| AW \right|_x &= \qty{0,45}{m}  \\
+  \left| AC \right|_x &= \qty{1,30}{m}  \\
+  \left| AB \right|_y &= \qty{0,70}{m}  \\
+  \left| AW \right|_y &= \qty{0,40}{m}  \\
+  \left| AC \right|_y &= \qty{0,35}{m} 
+.\end{align*}
+Hence
+\begin{align*}
+  R_A + R_B + R_C &= \qty{833,85}{N}  \\
+  \qty{1,30}{m} \cdot R_C &= \qty{0,45}{m} \cdot \qty{833,85}{N}   \\
+  \qty{0,70}{m} \cdot R_B + \qty{0,35}{m} \cdot R_C &= \qty{0,40}{m} \cdot \qty{833,85}{N} 
+.\end{align*}
+Solving for $R_C$ can easily be done as
+\[ 
+R_C = \frac{\qty{0,45}{m} \cdot \qty{833,85}{N} }{\qty{1,30}{m} } = \qty{288,64}{N} 
+.\]
+Now, solving for $R_B$ becomes trivial as
+\[ 
+  R_B = \frac{\qty{0,40}{m} \cdot \qty{833,85}{N} - \qty{0,35}{m} \cdot \qty{288,64}{N}}{\qty{0,70}{m}} = \qty{332,17}{N}  
+.\]
+Lastly, $R_A$ can be found to be
+\[ 
+R_A = \qty{833,85}{N} - \qty{288,64}{N} - \qty{332,17}{N} = \qty{213,04}{N} 
+.\]
+Hence the three reaction forces will have sizes $R_A = \qty{213}{N}$, $R_B = \qty{332}{N} $, and $R_C = \qty{289}{N}$ and they will all be acting vertically upwards in the $+z$-direction. This result makes  sense as so far as the reaction force being highest for the caster closest to the crate ($B$), a little smaller for the sole caster a little further from the crate ($C$) and smallest for the caster at $A$, which is both somewhat far from the crate and more supported by the caster at $B$ than was the case for the caster at $C$.
 
 
 \exercise{P6-2}
