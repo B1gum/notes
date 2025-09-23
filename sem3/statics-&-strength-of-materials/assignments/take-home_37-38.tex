@@ -199,11 +199,40 @@
 
 \author{Alfred G. Andersen, Benjamin R. Pašalić \& Noah R. B. Hansen (Group Leader)}
 \title{Take-Home Assignment weeks 37--38}
-\date{24. September 2025}
+\date{September 24, 2025} 
 
 \begin{document}
 
-\maketitle
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+            
+        \Huge{Take-Home Assignment week 37--38}
+            
+        \vspace{0.5cm}
+        \LARGE{Statik \& Styrkelære}
+        \vspace{1.5cm}
+        \renewcommand{\arraystretch}{1.4}
+
+        \normalsize{
+          \begin{tabular}{c | c | c}
+            Alfred Grue Andersen \quad & \quad Benjamin Rossavik Pašalić \quad & \quad Noah Rahbek Bigum Hansen \\
+            202406227 & 202407403 & 202405538 \\
+                      && Group Leader
+          \end{tabular}
+        }
+        \vfill
+            
+        \includegraphics[width=0.4\textwidth]{./figures/AU}
+            
+        \Large
+        Mekanik \& Teknologi \\
+        Aarhus Universitet \\
+        Denmark \\
+        September 24, 2025
+            
+    \end{center}
+\end{titlepage}
 
 \exercise{P5-1}
 The pipe is hoisted using the tongs. If the coefficient of static friction at $A$ and $B$ is $\mu_s$, determine the smallest dimension $b$ so that any pipe of inner diameter $d$ can be lifted.
@@ -300,7 +329,7 @@ R_A = \qty{833,85}{N} - \qty{288,64}{N} - \qty{332,17}{N} = \qty{213,04}{N}
 .\]
 Hence the three reaction forces will have sizes \underline{\underline{ $R_A = \qty{213}{N}$, $R_B = \qty{332}{N} $, and $R_C = \qty{289}{N}$}} and they will all be acting vertically upwards in the $+z$-direction. This result makes  sense as so far as the reaction force being highest for the caster closest to the crate ($B$), a little smaller for the sole caster a little further from the crate ($C$) and smallest for the caster at $A$, which is both somewhat far from the crate and more supported by the caster at $B$ than was the case for the caster at $C$.
 
-
+\newpage
 \exercise{P6-2}
 Both pulleys are fixed to the shaft and as the shaft turns with constant angular velocity the power of pulley $A$ is transmitted to pulley $B$. Determine the horizontal tension $\textbf{T}$ in the belt on pulley $B$ and the $x$, $y$, $z$ components of reaction of the journal bearing $C$ and thrust bearing $D$ if $\theta = \ang{45}$. The bearings are in proper alignment and exert only force reactions on the shaft.
 
@@ -331,7 +360,7 @@ Substituting in our two expressions for $\left( M_A \right)_x$ and $\left( M_B \
   T &= \frac{\qty{1,20}{N.m} }{\qty{150}{mm}} + \qty{50}{N} \\
   T &= \qty{58,0}{N} 
 .\end{align*}
-This tension $T = \qty{58,0}{N}$ is acting vertically in the positiv $y$-direction and therefore the horizontal tension \underline{\underline{$\textbf{T} = \qty{58,0}{N} \, \hat{j}$}} in the belt on pulley $B$. 
+This tension $T = \qty{58,0}{N}$ is acting vertically in the positiv $y$-direction and therefore the horizontal tension $\textbf{T} = \qty{58,0}{N} \, \hat{j}$ in the belt on pulley $B$. 
 
 \bigbreak
 Now to find the bearing reactions we will utilize a force equilibrium in each coordinate direction and a moment equilibrium about the $y$, and $z$ axes (no moment is produced on the shaft in the $x$ direction by the reaction forces). The moment equilibrium will be found relative to bearing $D$. I.e.
@@ -390,8 +419,9 @@ and
 \implies  D_y &= \qty{-93,355}{N} - C_y = - \qty{93,355}{N} -  (- \qty{24,889}{N})  \\
       &= -\qty{68,466}{N} 
 .\end{align*}
-Therefore, the reaction at the bearings are \underline{\underline{$\textbf{R}_C = \left( 0; \qty{-24,889}{N}; \qty{77,57}{N}  \right)$ and $\textbf{R}_D = \left( 0; \qty{-68,466}{N}; \qty{32,074}{N} \right)$}}. The fact that the reaction at the bearings is in the $-y$ and $+z$ directions makes sense considering that the applied loads are mainly in the $+y$ and $-z$ directions.
+Therefore, the reaction at the bearings are \underline{\underline{$\textbf{R}_C = \left( 0; \qty{-24,889}{N}; \qty{77,57}{N}  \right)$ and $\textbf{R}_D = \left( 0; \qty{-68,466}{N}; \qty{32,074}{N} \right)$}} \underline{\underline{and the horizontal tension $\textbf{T} = \qty{58,0}{N} \, \hat{j}$}}. The fact that the reaction at the bearings is in the $-y$ and $+z$ directions makes sense considering that the applied loads are mainly in the $+y$ and $-z$ directions.
 
+\newpage
 \exercise{P7-1}
 Determine the force in each member of the truss and state if the members are in tension or compression. Set $P_1 = \qty{8}{kN}$, $P_2 = \qty{12}{kN}$.
 \begin{figure} [ht]
@@ -509,21 +539,22 @@ Here $FG$ will be in tension. \underline{\underline{All in all, the following me
   F_{CB} &= \qty{6,00}{kN}  \\
   F_{EB} &= \qty{17,0}{kN}  \\
   F_{BA} &= \qty{18,0}{kN} \\
-  F_{FA} &= \qty{22,36}{kN} 
+  F_{FA} &= \qty{22,4}{kN} 
 \end{align*}
 \underline{\underline{and $F_{CE} = 0$ is a zero-force member.}}
 
+\newpage
 \exercise{P8-1}
 Determine the force in members $ED$, $EH$, and $GH$ of the truss and state if the members are in tension or compression.
 
 \begin{figure} [ht]
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/p8_1.png}
+  \includegraphics[width=0.4\linewidth]{./figures/p8_1.png}
 \end{figure}
 \bigbreak
 \begin{figure}[ht]
   \centering
-  \incfig[0.7]{p8_1_1}
+  \incfig[0.65]{p8_1_1}
   \caption{Free-body diagram for the entire truss.}
   \label{fig:p8-1-1}
 \end{figure}
@@ -639,6 +670,6 @@ Now a force equilibrium can be made in the $x$ and $y$ directions as
   F_{AB} &= -\frac{\num{4,0697}  \cdot \qty{2473,86}{N}}{2 \cdot \sqrt{17}} = \qty{-1221}{N} \\
   F_{AC} &= F_{AB} = \qty{-1221}{N} 
 .\end{align*}
-Therefore $F_{AD} = \qty{2,47}{kN}$ is in tension and $F_{AB} = F_{AC} = \qty{1,22}{kN}$ is in compression.
+Therefore \underline{\underline{$F_{AD} = \qty{2,47}{kN}$ is in tension and $F_{AB} = F_{AC} = \qty{1,22}{kN}$ is in compression}}.
 
 \end{document}
