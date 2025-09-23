@@ -1,9 +1,205 @@
 \documentclass[a4paper]{article}
 
-\input{preamble.tex}
+\usepackage[english]{babel}
+\usepackage{amsfonts, amssymb, mathtools, amsthm, amsmath}
+\usepackage{graphicx, pgfplots}
+\usepackage{url}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{lastpage}
+\usepackage{chngcntr}
+  \counterwithin{figure}{section}
+  \renewcommand{\thefigure}{\thesection.\arabic{figure}}
 
+\usepackage{lastpage}
+
+%loaded last
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink]{cleveref} 
+
+\usepackage{siunitx}
+  \sisetup{exponent-product = \cdot,
+    output-decimal-marker = {,}}
+
+%Giles Castelles incfig
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+  \def\svgwidth{#1\columnwidth}
+  \import{./figures/}{#2.pdf_tex}
+}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{12pt}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{18pt}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\thepage{} of \pageref{LastPage}}
+\fancyhead[L]{Alfred A, Benjamin, P \& Noah H}
+\fancyhead[C]{Assignment w. 37--38}
+\fancyhead[R]{24. September 2025}
+
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{every axis/.append style={
+  axis x line=middle,    % put the x axis in the middle
+  axis y line=middle,    % put the y axis in the middle
+  axis line style={<->,color=black}, % arrows on the axis
+}}
+
+\usepackage{thmtools}
+\usepackage{tcolorbox}
+  \tcbuselibrary{skins, breakable}
+  \tcbset{
+    space to upper=1em,
+    space to lower=1em,
+  }
+
+\theoremstyle{definition}
+
+\newtcolorbox[auto counter]{definition}[1][]{%
+  breakable,
+  colframe=ForestGreen,  %frame color
+  colback=ForestGreen!5, %background color
+  colbacktitle=ForestGreen!25, %background color for title
+  coltitle=ForestGreen!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{ForestGreen},  %display left line
+  title=Definition \thetcbcounter: #1,
+}
+
+\newtcolorbox{greenline}{%
+  breakable,
+  colframe=ForestGreen,  %frame color
+  colback=white,          %remove background color
+  left=1em,              %space on left side in box
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{ForestGreen},  %display left line
+}
+
+\newtcolorbox[auto counter, number within=section]{dis}[1][]{%
+  breakable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,            %space on left side in box,
+  enhanced,            %more options
+  frame hidden,        %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Discussion \thetcbcounter: #1
+}
+
+\newtcolorbox{blueline}{%
+  breakable,
+  colframe=NavyBlue,     %frame color
+  colback=white,         %remove background
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+}
+
+\newtcolorbox{exa}[1][]{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=RawSienna!5, %background color
+  colbacktitle=RawSienna!25,    %background color for title
+  coltitle=RawSienna!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+  title=Example: #1,
+}
+
+\newtcolorbox[auto counter, number within=section]{sæt}[1][]{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=RawSienna!5, %background color
+  colbacktitle=RawSienna!25,    %background color for title
+  coltitle=RawSienna!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+  title=Sætning \thetcbcounter: #1,
+  before lower={\textbf{Bevis:}\par\vspace{0.5em}},
+  colbacklower=RawSienna!25,
+}
+
+\newtcolorbox{redline}{%
+  breakable,
+  colframe=RawSienna,  %frame color
+  colback=white,       %Remove background color
+  left=1em,            %space on left side in box,
+  enhanced,            %more options
+  frame hidden,        %hide frame
+  borderline west={2pt}{0pt}{RawSienna},  %display left line
+}
+
+\newtcolorbox{des}[1][]{%
+  breakable,
+  colframe=NavyBlue,  %frame color
+  colback=NavyBlue!5, %background color
+  colbacktitle=NavyBlue!25,    %background color for title
+  coltitle=NavyBlue!70!black,  %title color
+  fonttitle=\bfseries\sffamily, %title font
+  left=1em,              %space on left side in box,
+  enhanced,              %more options
+  frame hidden,          %hide frame
+  borderline west={2pt}{0pt}{NavyBlue},  %display left line
+  title=Description of #1,
+}
+
+\makeatother
+\def\@lecture{}%
+\newcommand{\lecture}[3]{
+  \ifthenelse{\isempty{#3}}{%
+    \def\@lecture{Lecture #1}%
+  }{%
+    \def\@lecture{Lecture #1: #3}%
+  }%
+  \subsection*{\makebox[\textwidth][l]{\@lecture \hfill \normalfont\small\textsf{#2}}}
+}
+
+\makeatletter
+
+\newcommand{\exercise}[1]{%
+ \def\@exercise{#1}%
+ \subsection*{Exercise #1}
+}
+
+\makeatother
+
+%Format lim the same way in intext and in display
+\let\svlim\lim\def\lim{\svlim\limits}
+
+% horizontal rule
+\newcommand\hr{
+\noindent\rule[0.5ex]{\linewidth}{0.5pt}
+}
+
+\author{Alfred G. Andersen, Benjamin R. Pašalić \& Noah R. B. Hansen (Group Leader)}
 \title{Take-Home Assignment weeks 37--38}
-\date{}
+\date{24. September 2025}
 
 \begin{document}
 
@@ -48,7 +244,7 @@ The pin force $\textbf{R}_C$ at point $C$ will act along the line $CP$. If this 
   \implies \mu_s \left( b_{\mathrm{min}} - \frac{d}{2} \right) - h &= 0 \\
   b_{\mathrm{min}} &= \frac{h}{\mu_s} + \frac{d}{2}
 .\end{align*}
-Therefore the smallest dimension of $b$ such that the pipe can be lifted is $b_{\mathrm{min}} = \frac{h}{\mu_s} + \frac{d}{2}$.
+Therefore the smallest dimension of $b$ such that the pipe can be lifted is $ \underline{\underline{b_{\mathrm{min}} = \frac{h}{\mu_s} + \frac{d}{2}}}$.
 
 \newpage
 
@@ -68,12 +264,12 @@ The cart supports the uniform crate having a mass of \qty{85}{kg}. Determine the
 A free body diagram of the cart us shown on \autoref{fig:p6-fbd}. For the cart to be in equilibrium the equilibrium equations must be satisfied. In three dimensions these may be:
 \begin{align*}
   \sum F &= R_A + R_B + R_C + W_{\mathrm{crate}} = 0 \\
-  \sum M_{A_x} &= \left| AB \right|_x R_B + \left| AW \right|_x W_{\mathrm{crate}} + \left| AC \right|_x R_C \\
-  \sum M_{A_y} &= \left| AB \right|_y R_B + \left| AW \right|_y W_{\mathrm{crate}} + \left| AC \right|_y R_c
+  \sum \left( M_A \right)_x &= \left| AB \right|_x R_B + \left| AW \right|_x W_{\mathrm{crate}} + \left| AC \right|_x R_C \\
+  \sum \left( M_{A} \right)_y &= \left| AB \right|_y R_B + \left| AW \right|_y W_{\mathrm{crate}} + \left| AC \right|_y R_c
 .\end{align*}
 First we find the size of $\textbf{W}_{\mathrm{crate}}$ using Newton's second law as
 \[ 
-W_{\mathrm{crate}} = \qty{85}{kg} \cdot (-\qty{9,81}{\frac{m}{s^2}}) = -\qty{833,85}{N} 
+W_{\mathrm{crate}} = \qty{85}{kg} \cdot \left( -\qty{9,81}{\frac{m}{s^2}} \right) = -\qty{833,85}{N} 
 .\]
 This weight will be acting from the center of the crate as it is assumed to be homogeneous. The distances can be read of the free body diagram to be
 \begin{align*}
@@ -102,7 +298,7 @@ Lastly, $R_A$ can be found to be
 \[ 
 R_A = \qty{833,85}{N} - \qty{288,64}{N} - \qty{332,17}{N} = \qty{213,04}{N} 
 .\]
-Hence the three reaction forces will have sizes $R_A = \qty{213}{N}$, $R_B = \qty{332}{N} $, and $R_C = \qty{289}{N}$ and they will all be acting vertically upwards in the $+z$-direction. This result makes  sense as so far as the reaction force being highest for the caster closest to the crate ($B$), a little smaller for the sole caster a little further from the crate ($C$) and smallest for the caster at $A$, which is both somewhat far from the crate and more supported by the caster at $B$ than was the case for the caster at $C$.
+Hence the three reaction forces will have sizes \underline{\underline{ $R_A = \qty{213}{N}$, $R_B = \qty{332}{N} $, and $R_C = \qty{289}{N}$}} and they will all be acting vertically upwards in the $+z$-direction. This result makes  sense as so far as the reaction force being highest for the caster closest to the crate ($B$), a little smaller for the sole caster a little further from the crate ($C$) and smallest for the caster at $A$, which is both somewhat far from the crate and more supported by the caster at $B$ than was the case for the caster at $C$.
 
 
 \exercise{P6-2}
@@ -112,5 +308,337 @@ Both pulleys are fixed to the shaft and as the shaft turns with constant angular
   \centering
   \includegraphics[width=0.5\linewidth]{./figures/p6_2.png}
 \end{figure}
+\bigbreak
+As the angular velocity of the shaft is constant the system must be in dynamic equilibrium. For dynamic equilibrium to be possible the net moment must be zero about any axis must be zero.
+\[ 
+\sum M = 0
+.\]
+The moment about the $x$-axis at pulley $A$, $\left( M_A \right)_x$ is simply the sum of the two opposing moments applied here, as
+\[ 
+\left( M_A \right)_x = \qty{65}{N} \cdot \qty{80}{mm} - \qty{80}{N} \cdot \qty{80}{mm} = \left( \qty{65}{N} -\qty{80}{N}  \right) \cdot \qty{80}{mm} = \qty{-1,20}{N.m} 
+.\]
+Following the same procedure, we can write an expression for the moment about the $x$-axis at pulley $B$, as
+\[ 
+\left( M_B \right)_x = \left( T - \qty{50}{N}  \right) \cdot \qty{150}{mm} 
+.\]
+These two moments are the only moments applied. Hence, the total moment about the $x$-axis is 
+\[
+\sum M_x = \left( M_A \right)_x + \left( M_B \right)_x = 0
+.\]
+Substituting in our two expressions for $\left( M_A \right)_x$ and $\left( M_B \right)_x$ we get
+\begin{align*}
+  \left( T - \qty{50}{N}  \right) \cdot \qty{150}{mm} &= \qty{1,20}{N.m} \\
+  T &= \frac{\qty{1,20}{N.m} }{\qty{150}{mm}} + \qty{50}{N} \\
+  T &= \qty{58,0}{N} 
+.\end{align*}
+This tension $T = \qty{58,0}{N}$ is acting vertically in the positiv $y$-direction and therefore the horizontal tension \underline{\underline{$\textbf{T} = \qty{58,0}{N} \, \hat{j}$}} in the belt on pulley $B$. 
+
+\bigbreak
+Now to find the bearing reactions we will utilize a force equilibrium in each coordinate direction and a moment equilibrium about the $y$, and $z$ axes (no moment is produced on the shaft in the $x$ direction by the reaction forces). The moment equilibrium will be found relative to bearing $D$. I.e.
+\begin{align*}
+  \sum \textbf{F} &= 0 \\
+  \sum \left( M_D \right)_y &= 0 \\
+  \sum \left( M_D \right)_z &= 0
+.\end{align*}
+Before the force equilibrium is applied, we must first determine the forces acting on the system. In this case, we have an unknown reaction force at each bearing, $\textbf{R}_C = C_x \cdot \hat{i} + C_y \cdot \hat{j} + C_z \cdot \hat{k}$ and $\textbf{R}_D = D_x \cdot \hat{i} + D_y \cdot \hat{j} + D_z \cdot \hat{k}$, an applied force on pulley $A$ in the negative $z$-direction, $\textbf{F}_A = \left( F_A \right)_z \cdot \hat{k}$, and an applied force on pulley $B$ in the positive $y$ and $z$-directions $\textbf{F}_B = \left( F_B \right)_y \cdot \hat{j} + \left( F_B \right)_z \cdot \hat{k}$. 
+
+Using these expressions for the applied forces and bearing reactions we can write out the force equilibrium in Cartesian coordinates as
+\begin{align*}
+  F_x &= C_x + D_x = 0 \\
+  F_y &= C_y + D_y + \left( F_B \right)_y = 0\\
+  F_z &= C_z + D_z + \left( F_A \right)_z + \left( F_B \right)_z = 0
+.\end{align*}
+As no external forces are applied in the $x$-direction no reaction force can arise, hence $C_x = D_x = 0$. Using trigonometry we can substitute the unknown force components in the expressions for $F_y$ and $F_z$ as
+\begin{align*}
+  C_y + D_y + \left( T + \cos \theta  \cdot \qty{50}{N} \right) &= 0 \\
+  C_z + D_z + \left( (\qty{-65}{N} ) + \left( \qty{-80}{N} \right) \right) + \left( \sin \theta \cdot \qty{50}{N} \right) &= 0
+.\end{align*}
+Substituting in the known value of $T$ and $\theta$ in these expressions we get
+\begin{align*}
+  C_y + D_y + \left( \qty{58}{N} + \cos \ang{45} \cdot \qty{50}{N} \right) &= 0 \\
+ \implies C_y + D_y &= \qty{-93,355}{N} \\
+  C_z + D_z + \left( \qty{-145}{N}  \right) + \sin \ang{45} \cdot \qty{50}{N} &= 0 \\
+\implies  C_z + D_z &= \qty{109,644}{N} 
+.\end{align*}
+Now to find $C_y$ and $C_z$ we will utilize moment equilibrium about bearing $D$. In general for a force that acts at some distance $x$ and has only $y$ or $z$ components the momentum is given by
+\[ 
+\textbf{M} = \textbf{r} \times \textbf{F} = \left( x, 0, 0 \right) \times \left( 0, F_y, F_z \right) = \left( 0, -x F_z, x F_y \right)
+.\]
+Hence,
+\begin{align*}
+  \sum \left( M_D \right)_z &= 0 \\
+  \implies x_C C_y - x_B \left( F_B \right)_y &= 0 \\
+  \implies C_y &= \frac{x_B}{x_C} \left( F_B \right)_y \\
+             &= \frac{\qty{0,2}{m} }{\qty{0,75}{m}} \cdot (\qty{- 93,355}{N}) = \qty{-24,889}{N} 
+\end{align*}
+and
+\begin{align*}
+  \sum \left( M_D \right)_y &= 0 \\
+  \implies - x_C C_z - x_A \left( \qty{-145}{N}  \right) - x_B \left( \qty{50}{N}  \sin \theta \right) &= 0 \\
+  \implies C_z &= \frac{ x_A \qty{145}{N} - x_B \left( \qty{50}{N}  \sin \theta \right) }{x_C} \\
+        &= \frac{\qty{0,45}{m} \cdot \qty{145}{N} - \qty{0,200}{m} \left( \qty{50}{N} \cdot \sin \ang{45}  \right)}{\qty{0,75}{m} } = \qty{77,57}{N} 
+.\end{align*}
+Finally, the reactions in bearing $D$ can be found using the force equilibrium from above as
+\begin{align*}
+  C_z + D_z &= \qty{109,644}{N} \\
+\implies D_z &= \qty{109,644}{N} - C_z = \qty{109,644}{N} - \qty{77,57}{N} \\
+             &= \qty{32,074}{N} 
+\end{align*}
+and
+\begin{align*}
+  C_y + D_y &= \qty{-93,355}{N}  \\
+\implies  D_y &= \qty{-93,355}{N} - C_y = - \qty{93,355}{N} -  (- \qty{24,889}{N})  \\
+      &= -\qty{68,466}{N} 
+.\end{align*}
+Therefore, the reaction at the bearings are \underline{\underline{$\textbf{R}_C = \left( 0; \qty{-24,889}{N}; \qty{77,57}{N}  \right)$ and $\textbf{R}_D = \left( 0; \qty{-68,466}{N}; \qty{32,074}{N} \right)$}}. The fact that the reaction at the bearings is in the $-y$ and $+z$ directions makes sense considering that the applied loads are mainly in the $+y$ and $-z$ directions.
+
+\exercise{P7-1}
+Determine the force in each member of the truss and state if the members are in tension or compression. Set $P_1 = \qty{8}{kN}$, $P_2 = \qty{12}{kN}$.
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.5\linewidth]{./figures/P7_1.png}
+\end{figure}
+\bigbreak
+To be able to use the method of joints, we must start at a joint with at least one known force and at most two unknown forces. For this joint we choose joint $D$ for which a free-body diagram has been constructed on \autoref{fig:p7-1a}. 
+\begin{figure}[ht]
+  \centering
+  \incfig[0.3]{p7_1a}
+  \caption{Free-body diagram of joint $D$.}
+  \label{fig:p7-1a}
+\end{figure}
+Based on this we can use the equilibrium equations to get
+\begin{align*}
+  F_y &= 0 & F_x &= 0 \\
+  \qty{-12}{kN} + \frac{2}{\sqrt{5}} F_{DE} &= 0 & F_{DC} - \frac{1}{\sqrt{5}} F_{DE} &= 0 \\
+  \frac{2}{\sqrt{5}} F_{DE} &= \qty{12}{kN} & F_{DC} &= \frac{1}{\sqrt{5}} F_{DE}  \\
+  F_{DE} &= \frac{\qty{12}{kN} }{2} \cdot \sqrt{5} = \qty{13,42}{kN} & F_{DC} &= \frac{\qty{12}{kN} }{2} = \qty{6}{kN} 
+.\end{align*}
+Here $DE$ is in tension and $DC$ is in compression. Now we can continue to joint $C$ shown on \autoref{fig:p7-1b}.
+
+\begin{figure}[ht]
+  \centering
+  \incfig[0.3]{p7_1b}
+  \caption{Free-body diagram of joint $C$.}
+  \label{fig:p7-1b}
+\end{figure}
+
+We quickly see that $F_{CE} = 0$ and that $CE$ therefore is a zero-force member as this is the only force acting in the $y$-direction. For the force equilibrium in the $x$-direction we have
+\[ 
+\sum F_x = 0 \implies F_{CB} + F_{DC} = 0 \implies F_{CB} = - F_{DC} = - (\qty{-6}{kN}) = \qty{6}{kN} 
+.\]
+Where $CB$ is in compression. 
+
+Now we will move on to joint $E$ shown on \autoref{fig:p7-1c}. 
+\begin{figure}[ht]
+  \centering
+  \incfig[0.4]{p7_1c}
+  \caption{Free-body diagram of joint $E$.}
+  \label{fig:p7-1c}
+\end{figure}
+
+Here we can once again employ the force balance. We start in the $y$-direction as
+\begin{align*}
+  \sum F_y &= 0 \\
+  \frac{1}{\sqrt{2}} F_{EB} - \frac{2}{\sqrt{5}} \cdot \qty{13,42}{kN} &= 0 \\
+  F_{EB} &= \frac{2 \sqrt{2}}{\sqrt{5}} \cdot \qty{13,42}{kN} = \qty{16,98}{kN}
+.\end{align*}
+And in the $x$-direction we get
+\begin{align*}
+  \sum F_x &= 0 \\
+  F_{EF} + \frac{1}{\sqrt{2}} \cdot \qty{16,98}{kN} + \frac{1}{\sqrt{5}} \cdot \qty{13,42}{kN} &= 0 \\
+  F_{EF} &= - \left( \frac{1}{\sqrt{2}} \cdot \qty{16,98}{kN} + \frac{1}{\sqrt{5}} \cdot \qty{13,42}{kN}  \right) = \qty{-18,00}{kN} 
+.\end{align*}
+Here, $EF$ is in tension and $EB$ is in compression. 
+
+Now we can move on to joint $B$ shown on \autoref{fig:p7-1d}. 
+
+\begin{figure}[ht]
+  \centering
+  \incfig[0.55]{p7_1d}
+  \caption{Free-body diagram of joint $B$.}
+  \label{fig:p7-1d}
+\end{figure}
+
+We start by setting up the force balance in the $x$-direction as
+\begin{align*}
+  \sum F_x &= 0 \\
+  F_{BA} - \qty{6}{kN} - \frac{1}{\sqrt{2}} \cdot \qty{16,98}{kN} &= 0 \\
+  F_{BA} &= \qty{6}{kN} +  \frac{1}{\sqrt{2}} \cdot \qty{16,98}{kN} = \qty{18,0}{kN} 
+.\end{align*}
+Where $BA$ is in compression.
+
+Now we consider the $y$-direction and get
+\begin{align*}
+  \sum F_y &= 0 \\
+  F_{BF} - \frac{1}{\sqrt{2}} \cdot \qty{16,98}{kN} - \qty{8}{kN} &= 0 \\
+  F_{BF} &= \qty{8}{kN} + \frac{1}{\sqrt{2}} \cdot \qty{16,98}{kN} = \qty{20}{kN} 
+.\end{align*}
+Where $BF$ is in tension. 
+
+Now we can move onto joint $F$ shown on \autoref{fig:p7-1e}
+
+\begin{figure}[ht]
+  \centering
+  \incfig[0.35]{p7_1e}
+  \caption{Free-body diagram of joint $F$.}
+  \label{fig:p7-1e}
+\end{figure}
+
+We start in the $y$-direction and get
+\begin{align*}
+  \sum F_y &= 0 \\
+  \frac{2}{\sqrt{5}} F_{FA} - \qty{20}{kN} &= 0 \\
+  F_{FA} &=\frac{\sqrt{5} \cdot \qty{20}{kN} }{2} = \qty{22,36}{kN} 
+.\end{align*}
+Here, $FA$ will be in compression. Moving on to the $x$-direction we get
+\begin{align*}
+  \sum F_x &= 0 \\
+  F_{FG} + \qty{12}{kN} + \frac{1}{\sqrt{5}} \cdot \qty{22,36}{kN} &= 0 \\
+  F_{FG} &= \qty{-12}{kN} - \frac{1}{\sqrt{5}}\cdot \qty{22,36}{kN} = \qty{-22}{kN} 
+.\end{align*}
+Here $FG$ will be in tension. \underline{\underline{All in all, the following members are in tension}}:
+\begin{align*}
+  F_{DE} &= \qty{13,4}{kN}  \\
+  F_{EF} &= \qty{18,0}{kN}  \\
+  F_{BF} &= \qty{20,0}{kN}  \\
+  F_{FG} &= \qty{22,0}{kN} 
+\end{align*}
+\underline{\underline{these are in compression:}}
+\begin{align*}
+  F_{DC} &= \qty{6,00}{kN}  \\
+  F_{CB} &= \qty{6,00}{kN}  \\
+  F_{EB} &= \qty{17,0}{kN}  \\
+  F_{BA} &= \qty{18,0}{kN} \\
+  F_{FA} &= \qty{22,36}{kN} 
+\end{align*}
+\underline{\underline{and $F_{CE} = 0$ is a zero-force member.}}
+
+\exercise{P8-1}
+Determine the force in members $ED$, $EH$, and $GH$ of the truss and state if the members are in tension or compression.
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.5\linewidth]{./figures/p8_1.png}
+\end{figure}
+\bigbreak
+\begin{figure}[ht]
+  \centering
+  \incfig[0.7]{p8_1_1}
+  \caption{Free-body diagram for the entire truss.}
+  \label{fig:p8-1-1}
+\end{figure}
+First we will apply the equilibrium equations on the entire structure shown on \autoref{fig:p8-1-1} to determine the reactions at $F$ and $A$. Here we will use the forces in the $x$ and $y$- directions as well as the moment about $A$. I.e.
+\begin{align*}
+  \sum F_x &= 0 \\
+  \sum F_y &= 0 \\
+  \sum M_A &= 0
+.\end{align*}
+Only $A$ can supply a reaction force in the $x$-direction as $F$ is a roller. Therefore the sum of forces in the $x$-direction can be used to find this reaction as:
+\[ 
+\sum F_x = A_x - \qty{30}{kN} - \qty{40}{kN} = 0 \implies A_x = \qty{70}{kN} 
+.\]
+The sum of moments about point $A$ can be written as
+\[ 
+  \sum M_A = \qty{1,5}{m} \cdot \qty{40}{kN} + \qty{3,0}{m} \cdot \qty{30}{kN} + \qty{2,0} \cdot \qty{40}{kN} - \qty{4,0}{m} \cdot F_y = 0
+.\]
+Solving this for $F_y$ we get
+\[ 
+  F_y = \frac{\qty{1,5}{m} \cdot \qty{40}{kN} + \qty{3,0}{m} \cdot \qty{30}{kN} + \qty{2,0}{m} \cdot \qty{40}{kN}}{\qty{4,0}{m}} = \qty{57,5}{kN} 
+.\]
+Now we only need to find the reaction in the $y$-direction for $A$. This can be done with the force equilibrium in the $y$-direction as
+\[ 
+ \sum F_y = \qty{57,5}{kN} - \qty{40}{kN} - \qty{50}{kN} + A_y = 0 \implies A_y = \qty{32,5}{kN} 
+.\]
+
+Now that the reaction forces are found we can use the method of sections as shown on \autoref{fig:p8-1fbd}.
+\begin{figure}[ht]
+  \centering
+  \incfig[0.5]{p8_1fbd}
+  \caption{Free-body diagram of a section of the truss.}
+  \label{fig:p8-1fbd}
+\end{figure}
+
+We start by considering the moment about joint $E$. The external force and forces $F_{ED}$ and $F_{EH}$ all pass through $E$, therefore the only forces capable of inducing a moment about $E$ is $F_y$ and $F_{GH}$. For moment equilibrium to hold about $E$ we therefore have
+\begin{align*}
+  \sum M_E &= 0 \\
+  F_{GH} \cdot \qty{1,5}{m} - \qty{57,5}{kN} \cdot \qty{2,0}{m} &= 0 \\
+  F_{GH} &= \frac{\qty{57,5}{kN} \cdot \qty{2,0}{m} }{\qty{1,5}{m}} = \qty{76,7}{kN} 
+.\end{align*}
+As this is positive the direction of $F_{GH}$ (tension in $GH$) assumed on the free body diagram is true.
+
+Now all forces acting in the $y$-direction are known. Hence, a force equilibrium can easily be made in this direction (as we realize $EH$ constitutes the hypotenuse of a 3-4-5 triangle). 
+\begin{align*}
+  \sum F_y &= 0 \\
+  \qty{57,5}{kN} - \qty{40}{kN} - \frac{3}{5} F_{EH} &= 0 \\
+  F_{EH} &= \frac{5}{3} \left( \qty{17,5}{kN}  \right) = \qty{29,2}{kN}
+.\end{align*}
+As this is also positive our assumption of $EH$ being in tension holds.
+
+Now, we only need to find $F_{ED}$. For this we will use the force equilibrium in the $x$-direction as
+\begin{align*}
+  \sum F_x &= 0 \\
+  F_{ED} + F_{GH} + \frac{4}{5} F_{EH} &= 0 \\
+  F_{ED} &= - \left( F_{GH} + \frac{4}{5} F_{EH} \right) = \qty{-100}{kN} 
+.\end{align*}
+As this is negative the assumption of $ED$ being in tension, as shown on \autoref{fig:p8-1fbd} is \textit{not} true, hence $ED$ must be in compression. 
+
+All in all, \underline{\underline{$F_{GH} = \qty{76,7}{kN}$ and $F_{EH} = \qty{29,2}{kN}$ are in tension and $F_{ED} = \qty{100}{kN}$ is in compression}}.
+
+
+\newpage
+\exercise{P8-2}
+Determine the force in members $AB$, $AD$, and $AC$ of the space truss and state if the members are in tension or compression.
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.5\linewidth]{./figures/p8_2.png}
+\end{figure}
+\bigbreak
+\begin{figure}[ht]
+  \centering
+  \incfig[0.6]{p8_2}
+  \caption{Free-body diagram of the space truss}
+  \label{fig:p8-2}
+\end{figure}
+
+We use the method of joints starting at point $A$ as shown on \autoref{fig:p8-2}. At this point, only the applied force $\textbf{F}$ and the $z$-component of $F_{AD}$ acts in the $z$-direction. To find the $z$-component of $F_{AD}$ we first must find the length $|AD|$. This can be found using the Pythagorean theorem as
+\[ 
+\left| AD \right| = \sqrt{ \left( \qty{4}{m}  \right)^2 + \left( \qty{1}{m}  \right)^2 } = \sqrt{17} \, \unit{m}
+.\]
+Now an expression for the $z$-component of $F_{AD}$ can easily be found by trigonometry as
+\[ 
+\left( F_{AD} \right)_z = \frac{1}{\sqrt{17}} \cdot F_{AD}
+.\]
+Now we can write out the force equilibrium in the $z$-direction as
+\begin{align*}
+  \sum F_z &= 0 \\
+  \qty{-600}{N} + \frac{1}{\sqrt{17}} \cdot F_{AD} &= 0 \\
+  F_{AD} &= \qty{600}{N} \cdot \sqrt{17} = \qty{2473,86}{N} 
+.\end{align*}
+To balance the applied force out $AD$ must be in tension.
+
+Now we only need to find the forces $F_{AC}$ and $F_{AB}$ (both of which must be in compression to balance the applied force and $F_{AD}$). To do this we will use the force equilibria in the $x$ and $y$-directions. Before we can do this, however, we must first determine the length $\left| AC \right| = \left| AB \right|$ using the Pythagorean theorem. 
+\[ 
+\left| AC \right| = \left| AB \right| = \sqrt{\left( \qty{0,75}{m}  \right)^2 + \left( \qty{4}{m}  \right)^2} =  \qty{4,0697}{m}  
+.\]
+Using this length we can write expressions for the $x$ and $y$ components of $F_{AB}$ and $F_{AC}$. We will also find the $y$ component of $F_{AD}$
+\begin{align*}
+  \left( F_{AB} \right)_x &= \frac{\num{0,75} }{\num{4,0697}} \cdot F_{AB} \\
+  \left( F_{AC} \right)_x &= \frac{\num{0,75}}{\num{4,0697} } \cdot F_{AC} \\
+  \left( F_{AB} \right)_y &= \frac{4}{\num{4,0697} } \cdot F_{AB} \\
+  \left( F_{AC} \right)_y &= \frac{4}{\num{4,0697}} \cdot F_{AC} \\
+  \left( F_{AD} \right)_y &= \frac{4}{\sqrt{17}} F_{AD}
+.\end{align*}
+Now a force equilibrium can be made in the $x$ and $y$ directions as
+\begin{align*}
+  \sum F_x &= 0 \\
+  \frac{\num{0,75} }{\num{4,0697} } \cdot (F_{AB} - F_{AC} ) &= 0 \\
+  F_{AB} &= F_{AC} \\
+  \sum F_y &= 0 \\
+  - \frac{4}{\num{4,0697} } \left( F_{AB} + F_{AC} \right) - \frac{4}{\sqrt{17}} \cdot F_{AD} &= 0 \\
+  - \frac{4}{\num{4,0697} } \left( 2 F_{AB} \right) &= \frac{4 \cdot F_{AD}}{\sqrt{17}} \\
+  F_{AB} &= -\frac{\num{4,0697}  \cdot \qty{2473,86}{N}}{2 \cdot \sqrt{17}} = \qty{-1221}{N} \\
+  F_{AC} &= F_{AB} = \qty{-1221}{N} 
+.\end{align*}
+Therefore $F_{AD} = \qty{2,47}{kN}$ is in tension and $F_{AB} = F_{AC} = \qty{1,22}{kN}$ is in compression.
 
 \end{document}
