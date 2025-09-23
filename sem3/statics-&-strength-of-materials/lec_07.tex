@@ -1,0 +1,37 @@
+\lecture{7}{15. September 2025}{Structural Analysis -- Simple trusses}
+
+\section{Structural Analysis}
+
+\subsection{Simple Trusses}
+\begin{definition}[Truss]
+  A \textit{truss} is a structure consisting of slender members joined at their end points.
+
+  A special case of this is \textit{planar trusses}, which lie in a single plane and are often used to support roofs and bridges. 
+\end{definition}
+When working with trusses it is assumed that all forces are applied at the joints, and that the members are joined by smooth pins -- These two assumptions means that each truss member will act as a two-force member, i.e. either be in compression or tension. 
+
+\subsubsection{Simple truss}
+If one connects three members at their ends they form a triangular truss as shown on \autoref{fig:f7_1}. This structure will always be rigid. Attaching the new connected members one can form a larger truss as shown on \autoref{fig:f7_2}. This procedure can be repeated and a \textit{simple truss} will always be formed. 
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.25\linewidth]{./figures/f7_1.png}
+  \caption{Triangular simple truss}
+  \label{fig:f7_1}
+\end{figure}
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.25\linewidth]{./figures/f7_2.png}
+  \caption{Extended version of the truss from \autoref{fig:f7_1}}
+  \label{fig:f7_2}
+\end{figure}
+
+
+\subsection{The method of joints}
+One, commonly used, way to determine the force in each member of a truss is by using the method joints. This is based on the fact that if the entire truss is in equilibrium then each joint must also be in equilibrium. Therefore, one can use the force equilibrium equations in two dimensions on each joint. 
+
+When using the method joints, one must make sure to start at a joint having at least one known force and at most two unknown forces. 
+
+
+\subsection{Zero-force members}
+Some members in a truss will under certain circumstances support \emph{no} loading -- these are termed \textit{zero-force members}. In general, one can identify the zero-force members of a truss by inspection of the free-body diagrams for each joint. Also, it is important to remember that, if three members form a truss joint, for which two of the members are colinear, the third member is a zero-force member provided no external force or support reaction acts along this member. 
