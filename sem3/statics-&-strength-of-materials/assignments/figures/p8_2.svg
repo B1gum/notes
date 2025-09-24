@@ -25,12 +25,12 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="0.69733099"
-     inkscape:cx="389.34165"
-     inkscape:cy="532.74558"
+     inkscape:cx="572.89867"
+     inkscape:cy="579.35185"
      inkscape:window-width="1440"
-     inkscape:window-height="900"
+     inkscape:window-height="787"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="25"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1" /><defs
      id="defs1"><pattern
@@ -189,7 +189,7 @@
          id="tspan22-2-6-9"
          style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.4"
          x="157.94148"
-         y="117.02034">$F = \qty{600}{kN}$</tspan></text><text
+         y="117.02034">$F = \qty{600}{N}$</tspan></text><text
        xml:space="preserve"
        style="font-size:5.64444px;font-family:'Noto Sans Inscriptional Parthian';-inkscape-font-specification:'Noto Sans Inscriptional Parthian';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.4;stroke-miterlimit:35.2;stroke-dasharray:2.4, 0.799999;stroke-dashoffset:0;stroke-opacity:1"
        x="156.21465"

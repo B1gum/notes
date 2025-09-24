@@ -2,13 +2,14 @@
 
 \usepackage[english]{babel}
 \usepackage{amsfonts, amssymb, mathtools, amsthm, amsmath}
-\usepackage{graphicx, pgfplots}
+\usepackage{graphicx, wrapfig, pgfplots}
 \usepackage{url}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{lastpage}
-\usepackage{chngcntr}
-  \counterwithin{figure}{section}
-  \renewcommand{\thefigure}{\thesection.\arabic{figure}}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} % optional, safe default
+\usepackage{newtxtext} % Times-like text + math
 
 \usepackage{lastpage}
 
@@ -235,38 +236,41 @@
 \end{titlepage}
 
 \exercise{P5-1}
+\begin{wrapfigure}{r}{2.5cm}
+  \vspace{-1cm}
+  \includegraphics[width=2.5cm]{./figures/P5_1_1.png}
+\end{wrapfigure} 
+
 The pipe is hoisted using the tongs. If the coefficient of static friction at $A$ and $B$ is $\mu_s$, determine the smallest dimension $b$ so that any pipe of inner diameter $d$ can be lifted.
-\begin{figure} [ht]
-  \centering
-  \includegraphics[width=0.15\linewidth]{./figures/P5_1_1.png}
-\end{figure}
-\bigbreak
+
+
+We consider one half of the tong, in this case the right half as shown on \autoref{fig:P5-1}. For this to be in equilibrium both the vector sum of all forces and moments about any point must be zero. I.e.
+\begin{align*}
+  \textbf{F}_R &= \sum \textbf{F} = \textbf{0} \\
+  \textbf{M}_O &= \sum \textbf{M}_O = \textbf{0} 
+.\end{align*}
+For a couple moment not to arise, the lines of actions of all the forces must intersect at some common point, $P$, i.e. the forces must be concurrent. If the forces are not concurrent, there will always be some ``perpendicular distance'' between the lines of action of the forces and therefore a couple moment might be produced even if force equilibrium is required. I.e. with three non-parallel forces on a rigid body in equilibrium, their lines of action must be concurrent -- Using this knowledge we will find the point of concurrency $P$ between $x = b$ and the friction resultant at $B$.
+
 \begin{figure}[ht]
   \centering
   \incfig[0.3]{P5_1}
   \caption{Free-body diagram of the right tong half}
   \label{fig:P5-1}
 \end{figure}
-We consider one half of the tong, in this case the right half as shown on \autoref{fig:P5-1}. For this to be in equilibrium both the vector sum of all forces and moments about any point must be zero. I.e.
-\begin{align*}
-  \textbf{F}_R &= \sum \textbf{F} = \textbf{0} \\
-  \textbf{M}_O &= \sum \textbf{M}_O = \textbf{0} 
-.\end{align*}
-For a couple moment not to arise, the lines of actions of all the forces must intersect at some common point, $P$, i.e. the forces must be concurrent. If the forces are not concurrent, there will always be some ``perpendicular distance'' between the lines of action of the forces and therefore a couple moment might be produced even if force equilibrium is required. 
 
-At point $B$, right at the verge of slippage, the line of action of the resultant force at $B$ (which is the sum of the friction force and normal force components at this point) makes the friction angle, $\phi = \tan^{-1} \mu_s$ below the horizontal. We can therefore find the equation of the line using the formula for a line through a point, which in this case is $\left( -h, \frac{d}{2} \right)$ and a slope, which in this case is $\mu$ as:
+At point $B$, right at the verge of slippage, the resultant of the friction force is inclined by the angle of friction $\theta = \tan^{-1} \mu_s$ below the horizontal. We can therefore find the equation of the line using the formula for a line through a point, which in this case is $\left( \frac{d}{2}, -h \right)$ and a slope, which in this case is $\mu_s$ as:
 \[ 
-y + h= \mu_s (x - \frac{d}{2}) \implies y = \mu _s \left( x - \frac{d}{2} \right) - h
+y + h= \mu_s \left( x - \frac{d}{2} \right) \implies y = \mu _s \left( x - \frac{d}{2} \right) - h
 .\]
 The line of action at point $B$ will lie along this line.
 
-At the top the tong is attached to a vertical chain, such that the force that is transmittet to the tong at the top is vertical, with a line of action of $x = b$. 
+At the top the tong is attached to a vertical chain, such that the force that is transmitted to the tong at the top is vertical, with a line of action of $x = b$. 
 
 As mentioned above, all the lines of actions of the forces must intersect at a common point $P$. This means that the two lines defined above must intersect at this point $P$. The intersection between the line of action of $\textbf{T}$ and the line of action of $\textbf{R}_B$ can now be found as:
 \[ 
 P = \left( b, \mu_s \left( b - \frac{d}{2} \right) - h \right)
 .\]
-The pin force $\textbf{R}_C$ at point $C$ will act along the line $CP$. If this point $P$ is below point $C$ one can imagine that the tongues will ``open up'' and not press against the wall. Therefore, for the jaws to wedge and hold, the concurrency point $P$ must be at or above $C$ as:
+The pin force $\textbf{R}_C$ at point $C$ will act along the line $CP$. If this point $P$ is below point $C$ one can imagine that the tongs will ``open up'' and not press against the wall. Therefore, for the jaws to wedge and hold, the concurrency point $P$ must be at or above $C$ as:
 \begin{align*}
   y_p &\geq 0 \\
   \mu_s \left( b - \frac{d}{2} \right) - h &\geq 0 \\
@@ -287,10 +291,10 @@ The cart supports the uniform crate having a mass of \qty{85}{kg}. Determine the
 \begin{figure}[ht]
   \centering
   \incfig[1]{p6-fbd}
-  \caption{Free body diagram}
+  \caption{Free-body diagram}
   \label{fig:p6-fbd}
 \end{figure}
-A free body diagram of the cart us shown on \autoref{fig:p6-fbd}. For the cart to be in equilibrium the equilibrium equations must be satisfied. In three dimensions these may be:
+A free body diagram of the cart is shown on \autoref{fig:p6-fbd}. For the cart to be in equilibrium the equilibrium equations must be satisfied. In three dimensions these may be:
 \begin{align*}
   \sum F &= R_A + R_B + R_C + W_{\mathrm{crate}} = 0 \\
   \sum \left( M_A \right)_x &= \left| AB \right|_x R_B + \left| AW \right|_x W_{\mathrm{crate}} + \left| AC \right|_x R_C \\
@@ -344,11 +348,11 @@ As the angular velocity of the shaft is constant the system must be in dynamic e
 .\]
 The moment about the $x$-axis at pulley $A$, $\left( M_A \right)_x$ is simply the sum of the two opposing moments applied here, as
 \[ 
-\left( M_A \right)_x = \qty{65}{N} \cdot \qty{80}{mm} - \qty{80}{N} \cdot \qty{80}{mm} = \left( \qty{65}{N} -\qty{80}{N}  \right) \cdot \qty{80}{mm} = \qty{-1,20}{N.m} 
+\left( M_A \right)_x = \qty{65}{N} \cdot \qty{0,08}{m} - \qty{80}{N} \cdot \qty{0,08}{m} = \left( \qty{65}{N} -\qty{80}{N}  \right) \cdot \qty{0,08}{m} = \qty{-1,20}{N.m} 
 .\]
 Following the same procedure, we can write an expression for the moment about the $x$-axis at pulley $B$, as
 \[ 
-\left( M_B \right)_x = \left( T - \qty{50}{N}  \right) \cdot \qty{150}{mm} 
+\left( M_B \right)_x = \left( T - \qty{50}{N}  \right) \cdot \qty{0,15}{m} 
 .\]
 These two moments are the only moments applied. Hence, the total moment about the $x$-axis is 
 \[
@@ -356,13 +360,12 @@ These two moments are the only moments applied. Hence, the total moment about th
 .\]
 Substituting in our two expressions for $\left( M_A \right)_x$ and $\left( M_B \right)_x$ we get
 \begin{align*}
-  \left( T - \qty{50}{N}  \right) \cdot \qty{150}{mm} &= \qty{1,20}{N.m} \\
-  T &= \frac{\qty{1,20}{N.m} }{\qty{150}{mm}} + \qty{50}{N} \\
+  \left( T - \qty{50}{N}  \right) \cdot \qty{0,15}{m} &= \qty{1,20}{N.m} \\
+  T &= \frac{\qty{1,20}{N.m} }{\qty{0,15}{m}} + \qty{50}{N} \\
   T &= \qty{58,0}{N} 
 .\end{align*}
-This tension $T = \qty{58,0}{N}$ is acting vertically in the positiv $y$-direction and therefore the horizontal tension $\textbf{T} = \qty{58,0}{N} \, \hat{j}$ in the belt on pulley $B$. 
+This tension $T = \qty{58,0}{N}$ is acting vertically in the positive $y$-direction and therefore the horizontal tension $\textbf{T} = \qty{58,0}{N} \, \hat{j}$ in the belt on pulley $B$. 
 
-\bigbreak
 Now to find the bearing reactions we will utilize a force equilibrium in each coordinate direction and a moment equilibrium about the $y$, and $z$ axes (no moment is produced on the shaft in the $x$ direction by the reaction forces). The moment equilibrium will be found relative to bearing $D$. I.e.
 \begin{align*}
   \sum \textbf{F} &= 0 \\
@@ -389,7 +392,7 @@ Substituting in the known value of $T$ and $\theta$ in these expressions we get
   C_z + D_z + \left( \qty{-145}{N}  \right) + \sin \ang{45} \cdot \qty{50}{N} &= 0 \\
 \implies  C_z + D_z &= \qty{109,644}{N} 
 .\end{align*}
-Now to find $C_y$ and $C_z$ we will utilize moment equilibrium about bearing $D$. In general for a force that acts at some distance $x$ and has only $y$ or $z$ components the momentum is given by
+Now to find $C_y$ and $C_z$ we will utilize moment equilibrium about bearing $D$. In general for a force that acts at some distance $x$ and has only $y$ or $z$ components the moment is given by
 \[ 
 \textbf{M} = \textbf{r} \times \textbf{F} = \left( x, 0, 0 \right) \times \left( 0, F_y, F_z \right) = \left( 0, -x F_z, x F_y \right)
 .\]
@@ -419,7 +422,7 @@ and
 \implies  D_y &= \qty{-93,355}{N} - C_y = - \qty{93,355}{N} -  (- \qty{24,889}{N})  \\
       &= -\qty{68,466}{N} 
 .\end{align*}
-Therefore, the reaction at the bearings are \underline{\underline{$\textbf{R}_C = \left( 0; \qty{-24,889}{N}; \qty{77,57}{N}  \right)$ and $\textbf{R}_D = \left( 0; \qty{-68,466}{N}; \qty{32,074}{N} \right)$}} \underline{\underline{and the horizontal tension $\textbf{T} = \qty{58,0}{N} \, \hat{j}$}}. The fact that the reaction at the bearings is in the $-y$ and $+z$ directions makes sense considering that the applied loads are mainly in the $+y$ and $-z$ directions.
+Therefore, the reaction at the bearings \underline{\underline{$\textbf{R}_C = \qty{-24,9}{N}\,  \hat{j} + \qty{77,6}{N}\,  \hat{k}$ and $\textbf{R}_D = \qty{-68,5}{N} \, \hat{j} + \qty{32,1}{N} \, \hat{k}$}} and the horizontal tension \underline{\underline{$\textbf{T} = \qty{58,0}{N} \, \hat{j}$}}. The fact that the reaction at the bearings is in the $-y$ and $+z$ directions makes sense considering that the applied loads are mainly in the $+y$ and $-z$ directions.
 
 \newpage
 \exercise{P7-1}
@@ -523,15 +526,15 @@ We start in the $y$-direction and get
 Here, $FA$ will be in compression. Moving on to the $x$-direction we get
 \begin{align*}
   \sum F_x &= 0 \\
-  F_{FG} + \qty{12}{kN} + \frac{1}{\sqrt{5}} \cdot \qty{22,36}{kN} &= 0 \\
-  F_{FG} &= \qty{-12}{kN} - \frac{1}{\sqrt{5}}\cdot \qty{22,36}{kN} = \qty{-22}{kN} 
+  F_{FG} + \qty{18}{kN} + \frac{1}{\sqrt{5}} \cdot \qty{22,36}{kN} &= 0 \\
+  F_{FG} &= \qty{-18}{kN} - \frac{1}{\sqrt{5}}\cdot \qty{22,36}{kN} = \qty{-28}{kN} 
 .\end{align*}
 Here $FG$ will be in tension. \underline{\underline{All in all, the following members are in tension}}:
 \begin{align*}
   F_{DE} &= \qty{13,4}{kN}  \\
   F_{EF} &= \qty{18,0}{kN}  \\
   F_{BF} &= \qty{20,0}{kN}  \\
-  F_{FG} &= \qty{22,0}{kN} 
+  F_{FG} &= \qty{28,0}{kN} 
 \end{align*}
 \underline{\underline{these are in compression:}}
 \begin{align*}

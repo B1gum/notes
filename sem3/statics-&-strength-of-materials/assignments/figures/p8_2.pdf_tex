@@ -61,7 +61,7 @@
     \put(0.06399945,0.51089551){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\qty{1}{m}$\end{tabular}}}}%
     \put(0.05000386,0.3990135){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\qty{0,75}{m}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{p8_2.pdf}}%
-    \put(0.56822604,0.25992186){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$F = \qty{600}{kN}$\end{tabular}}}}%
+    \put(0.56822604,0.25992186){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$F = \qty{600}{N}$\end{tabular}}}}%
     \put(0.56193399,0.367321){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$A$\end{tabular}}}}%
     \put(0.20957227,0.58350564){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$D$\end{tabular}}}}%
     \put(0.26155999,0.46894796){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C$\end{tabular}}}}%

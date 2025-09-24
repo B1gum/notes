@@ -60,7 +60,7 @@
     \put(0.3042644,0.2181101){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$2$\end{tabular}}}}%
     \put(0.1110301,0.21911212){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\sqrt{5}$\end{tabular}}}}%
     \put(0.09413025,0.3718053){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$F_{FA}$ \end{tabular}}}}%
-    \put(0.42635294,0.52739759){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$F_{EF} = \qty{12}{kN}$ \end{tabular}}}}%
+    \put(0.42635294,0.52739759){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$F_{EF} = \qty{18}{kN}$ \end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{p7_1e.pdf}}%
     \put(0.06494475,0.52739759){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$F_{FG} $ \end{tabular}}}}%
     \put(0.56202669,0.00709325){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
