@@ -1,0 +1,188 @@
+\lecture{7}{15. September 2025}{Euler and Bernoulli equation}
+
+\section{Incompressible Inviscid Flow}
+The Navier-Stokes equations introduced in \autoref{sec:navsto} describe fluid behaviour in a wide range of problems. However these are not analytically solvable except in simple cases. Instead of the Navier-Stokes equations we can instead use Euler's equation, which applies to an inviscid ($\mu = 0$) fluid (which itself is an idealized notion as no flow is truly inviscid).
+
+\subsection{Momentum Equation for Frictionless Flow: Euler's Equation}
+Euler's equation can be obtained from the Navier-Stokes equations simply by neglecting the viscous term. I.e.
+\begin{equation} \label{eq:eul}
+  \rho \frac{\mathrm{D}\textbf{V}}{\mathrm{D}t} = \rho \textbf{g} - \nabla p
+\end{equation}
+This states that for an inviscid flow, the change in momentum of a fluid particle is caused by the body force and the net pressure force. In rectangular coordinates this is
+\begin{align*}
+  \rho \left( \frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v \frac{\partial u}{\partial y} + w \frac{\partial u}{\partial z}  \right) &= \rho g_x - \frac{\partial p}{\partial x}  \\
+  \rho \left( \frac{\partial v}{\partial t} + u\frac{\partial v}{\partial x} + v \frac{\partial v}{\partial y} + w \frac{\partial v}{\partial z}  \right) &= \rho g_y - \frac{\partial p}{\partial y}  \\
+  \rho \left( \frac{\partial w}{\partial t} + u\frac{\partial w}{\partial x} + v \frac{\partial w}{\partial y} + w \frac{\partial w}{\partial z}  \right) &= \rho g_z - \frac{\partial p}{\partial w}
+.\end{align*}
+If the $z$-axis is vertical, then $\textbf{g} = - g \hat{k} \implies g_x = g_y = 0, g_z = -g$.
+
+In general, \autoref{eq:eul} is applicable for any problem in which there is no viscous stresses. This also includes rigid-body motion problems. 
+
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.5\linewidth]{./figures/f6_1.png}
+  \caption{Fluid particle moving along a streamline.}
+  \label{fig:f6_1}
+\end{figure}
+
+We consider the flow in the $yz$-plane shown on \autoref{fig:f6_1}. Here our goal is to write the equations of motion in terms of the distance along the streamline $s$ and the distance normal to the streamline $n$. The pressure at the center of the fluid element is assumed to be $p$. If we apply Newton's second law in the direction $s$ of the streamline, to the fluid element on \autoref{fig:f6_1} with volume $\mathrm{d}s \, \mathrm{d}n \, \mathrm{d}x$, neglecting viscous forces we obtain
+\[ 
+\left( p - \frac{\partial p}{\partial s} \frac{\mathrm{d}s}{2}  \right) \, \mathrm{d}n \, \mathrm{d}x - \left( p + \frac{\partial p}{\partial s} \frac{\mathrm{d}s}{2} \right) \, \mathrm{d}n \, \mathrm{d}x - \rho g \sin \beta \, \mathrm{d}s \, \mathrm{d}n \, \mathrm{d}x = \rho a_s \, \mathrm{d}s \, \mathrm{d}n \, \mathrm{d}x
+\]
+where $\beta$ is the angle between the tangent to the streamline and the horizontal, and $a_s$ is the acceleration of the fluid particle along the streamline. By simplification, we obtain
+\[ 
+- \frac{\partial p}{\partial s} - \rho g \sin \beta = \rho a_s
+.\]
+Since $\sin \beta = \frac{\partial z}{\partial s} $, this can be written as
+\[ 
+- \frac{1}{\rho} \frac{\partial p}{\partial s} - g \frac{\partial z}{\partial s}  = a_s
+\]
+which holds along any streamline $V = V(s,t)$. We remember that the total acceleration of a fluid particle in the streamwise direction is
+\[ 
+a_s = \frac{\mathrm{D}V}{\mathrm{D}t} = \frac{\partial V}{\partial t} + V \frac{\partial V}{\partial s}
+.\]
+Hence Euler's equation in the streamwise direction with the $z$-axis directed vertically upward is
+\[ 
+- \frac{1}{\rho} \frac{\partial p}{\partial s} - g \frac{\partial z}{\partial s} = \frac{\partial V}{\partial t} + V \frac{\partial V}{\partial s} 
+.\]
+For steady flow this reduces to
+\begin{equation} \label{eq:euleqstrste}
+\frac{1}{\rho} \frac{\partial p}{\partial s} = - g \frac{\partial z}{\partial s} - V \frac{\partial V}{\partial s}   
+\end{equation}
+
+This indicates that the pressure along a streamline is influenced by the gravitational field and the velocity. The gravitational effect has already been described in \autoref{sec:flusta} -- When $V = 0$, the pressure increases directly proportionally with the change in elevation. In the $xy$-plane, in which there is no influence of gravity \autoref{eq:euleqstrste} reduces to
+\[ 
+\frac{1}{p} \frac{\partial p}{\partial s}  = - V \frac{\partial V}{\partial s} 
+\]
+which states that for an incompressible, inviscid flow a decrease in pressure will cause an increased velocity and v.v. 
+
+To obtain Euler's equation in a direction normal to the streamlines, we apply Newton's second law in the $n$ direction to the fluid element. Again, neglecting viscous forces, we get
+\[ 
+\left( p - \frac{\partial p}{\partial n} \frac{\mathrm{d}n}{2} \right) \, \mathrm{d}s \, \mathrm{d}x  - \left( p + \frac{\partial p}{\partial n} \frac{\mathrm{d}n}{2} \right) \, \mathrm{d}s \, \mathrm{d}x - \rho g \cos \beta \, \mathrm{d}n \, \mathrm{d}x \, \mathrm{d}s = \rho a_n \, \mathrm{d}n \, \mathrm{d}x \, \mathrm{d}s
+\]
+where $\beta$ is the angle between the $n$-direction and the vertical and $a_n$ is the acceleration of the fluid particle in the $n$-direction
+On simplification this becomes
+\[ 
+- \frac{\partial p}{\partial n} - \rho g \cos \beta = \rho a_n 
+.\]
+And since $\cos \beta = \frac{\partial z}{\partial n} $ this can be written as
+\[ 
+- \frac{1}{\rho} \frac{\partial p}{\partial n} - g \frac{\partial z}{\partial n} = a_n
+.\]
+The normal acceleration of the fluid element is toward the center of curvature of the streamline -- in the $-n$-direction. Hence
+\[ 
+a_n = - \frac{V^2}{R}
+.\]
+Therefore, for steady flow, where $R$ is the radius of curvature of the streamline at the point chosen, Euler's equation normal to the streamline is
+\[ 
+\frac{1}{\rho} \frac{\partial p}{\partial n} + g\frac{\partial z}{\partial n} = \frac{V^2}{R}
+.\]
+In a horizontal plane this becomes
+\[ 
+\frac{1}{\rho} \frac{\partial p}{\partial n} = \frac{V^2}{R}
+.\]
+
+
+\subsection{Bernoulli Equation: Integration of Euler's Equation Along a Streamline for Steady Flow}
+Compared to the Navier-Stokes equations the Euler's equation for incompressible inviscid flow is mathematically simpler -- however solving it still presents difficulty in complex cases. One convenient approach to circumvent this for a steady flow is to integrate Euler's equation along a streamline.
+
+\subsubsection{Derivation of the Bernoulli Equation Using Streamline Coordinates} \label{sec:bernstre}
+Euler's equation for steady flow along a streamline is given in \autoref{eq:euleqstrste} as
+\[ 
+- \frac{1}{\rho} \frac{\partial p}{\partial s} - g \frac{\partial z}{\partial s} = V \frac{\partial V}{\partial s}
+.\]
+If a fluid particle moves an infinitesimal distance $\mathrm{d}s$ along a streamline, then
+\begin{align*}
+  \frac{\partial p}{\partial s} \, \mathrm{d}s &= \mathrm{d}p & &(\text{The change in pressure along } s) \\
+  \frac{\partial z}{\partial s} \, \mathrm{d}s &= \mathrm{d}z & &(\text{The change in elevation along } s) \\
+  \frac{\partial V}{\partial s} \, \mathrm{d}V &= \mathrm{d}p & &(\text{The change in speed along } s)
+.\end{align*}
+Thus, by multiplying \autoref{eq:euleqstrste} be $\mathrm{d}s$ we get
+\[ 
+- \frac{\mathrm{d}p}{\rho} - g \, \mathrm{d}z = V \, \mathrm{d}V \implies \frac{\mathrm{d}p}{\rho} + V \, \mathrm{d}V + g \, \mathrm{d}z = 0 \qquad (\text{along } s)
+.\]
+Integration of this equation gives
+\[ 
+\int \frac{\mathrm{d}p}{\rho} + \frac{V^2}{2} + gz = \mathrm{constant} \qquad (\text{along } s)
+.\]
+To use this one must first find the inverse change in density with pressure $\frac{1}{\rho} \, \mathrm{d}p$. For incompressible flow $\rho = \mathrm{constant}$ so the above equation becomes the Bernoulli equation,
+\begin{equation} \label{eq:berneq}
+  \frac{p}{\rho} + \frac{V^2}{2} + gz = \mathrm{constant}
+\end{equation}
+For \autoref{eq:berneq} to be applicable the flow must be steady, incompressible, frictionless and happen along a streamline. 
+
+
+\subsubsection{Derivation of the Bernoulli Equation Using Rectangular Coordinates}
+Instead of using Euler's equation on streamline-coordinate form as in \autoref{sec:bernstre} one could also integrate the vector form of Euler's equation from \autoref{eq:eul} along a streamline. As we are simply interested in the Bernoulli equation we will only consider the case of steady flow.
+
+For steady flow, Euler's equation in rectangular coordinates is
+\begin{equation}\label{eq:eulrec}
+  \frac{\mathrm{D}\textbf{V}}{\mathrm{D}t} = u \frac{\partial \textbf{V}}{\partial x} + v \frac{\partial \textbf{V}}{\partial y} + w \frac{\partial \textbf{V}}{\partial z} = \left( \textbf{V} \cdot \nabla  \right)\textbf{V} = - \frac{1}{\rho} \nabla p - g \hat{k}
+\end{equation}
+For steady flow the velocity field is $\textbf{V} = \textbf{V}\left( x,y,z \right)$. The motion of a particle along a streamline is governed by \autoref{eq:eulrec}. During the time interval $\mathrm{d}t$ the particle has a displacement $\mathrm{d}\textbf{s}$ along the streamline.
+
+If we take the dot product of \autoref{eq:eulrec} and the displacement $\mathrm{d}\textbf{s}$ along the streamline, a scalar equation relating pressure, speed, and elevation is obtained along the streamline. I.e.
+\[ 
+\left( \textbf{V} \cdot \nabla  \right) \textbf{V} \cdot \mathrm{d}\textbf{s} = - \frac{1}{\rho} \nabla p \cdot \mathrm{d}\textbf{s} - g \hat{k} \cdot \mathrm{d}\textbf{s}
+\]
+where
+\[ 
+\mathrm{d}\textbf{s} = \mathrm{d}x \hat{i} + \mathrm{d}y \hat{j} + \mathrm{d} z \hat{k} \qquad (\text{along } s)
+.\]
+Now we can evaluate each of the three terms one-by-one, starting with $-\frac{1}{\rho} \nabla p \cdot \mathrm{d}\textbf{s}$,
+\begin{align*}
+  - \frac{1}{\rho} \nabla p \cdot \mathrm{d}\textbf{s} &= - \frac{1}{\rho} \left( \hat{i} \frac{\partial p}{\partial x} + \hat{j} \frac{\partial p}{\partial y} + \hat{k} \frac{\partial p}{\partial z}  \right) \cdot \left( \mathrm{d}x \hat{i} + \mathrm{d} y \hat{j} + \mathrm{d}z \hat{k} \right) & &(\text{along } s) \\
+   &= - \frac{1}{\rho} \left( \frac{\partial p}{\partial x} \, \mathrm{d}x + \frac{\partial p}{\partial y} \, \mathrm{d}y + \frac{\partial p}{\partial z} \, \mathrm{d}z \right) & &(\text{along } s) \\
+  &= - \frac{1}{\rho} \, \mathrm{d}p & &(\text{along } s)
+.\end{align*}
+Moving on to $- g \hat{k} \cdot \mathrm{d}\textbf{s}$, we get
+\begin{align*}
+  - g \hat{k} \cdot \mathrm{d}\textbf{s} &= - g \hat{k} \cdot \left( \mathrm{d}x \hat{i} + \mathrm{d}y \hat{j} + \mathrm{d}z \hat{k} \right) &&(\text{along }s)\\
+    &= - g \, \mathrm{d}z & &(\text{along }s)
+.\end{align*}
+Now we just need to evaluate $\left( \textbf{V}\cdot \nabla  \right)\textbf{V}\cdot \mathrm{d}\textbf{s}$. A common vector identity allows us to rewrite this as
+\begin{align*}
+  \left( \textbf{V}\cdot \nabla  \right)\textbf{V}\cdot \mathrm{d}\textbf{s} &= \left( \frac{1}{2} \nabla \left( \textbf{V} \cdot \textbf{V} \right) - \textbf{V} \times \left( \nabla \times \textbf{V} \right) \right) \cdot \mathrm{d}\textbf{s} \\
+      &= \left( \frac{1}{2}\nabla  \left( \textbf{V} \cdot \textbf{V} \right) \right)  \cdot \mathrm{d}\textbf{s} - \left( \textbf{V} \times \left( \nabla \times \textbf{V} \right) \right) \cdot \mathrm{d}\textbf{s}
+.\end{align*}
+The last term in this is zero, since $\textbf{V}$ is parallel to $\mathrm{d}\textbf{s}$. Hence,
+\begin{align*}
+  \left( \textbf{V} \cdot \nabla  \right) \textbf{V} \cdot \mathrm{d} \textbf{s} &= \frac{1}{2} \nabla  \left( \textbf{V} \cdot \textbf{V} \right) \cdot \mathrm{d}\textbf{s} &&\left( \text{along }s \right) \\
+  &= \frac{1}{2} \nabla \left( V^2 \right) \cdot \mathrm{d}\textbf{s} &&(\text{along }s) \\
+  &= \frac{1}{2} \left( \hat{i} \frac{\partial V^2}{\partial x} + \hat{j} \frac{\partial V^2}{\partial y} + \hat{k} \frac{\partial V^2}{\partial z}  \right) \cdot \left( \mathrm{d}x \hat{i} + \mathrm{d}y \hat{j} + \mathrm{d}z \hat{k} \right) &&(\text{along }s)\\
+  &= \frac{1}{2} \left( \frac{\partial V^2}{\partial x} \, \mathrm{d}x + \frac{\partial V^2}{\partial y} \, \mathrm{d}y + \frac{\partial V^2}{\partial z} \, \mathrm{d}z \right) &&(\text{along }s)\\
+  &= \frac{1}{2} d \left( V^2 \right) &&(\text{along }s)
+.\end{align*}
+Substituting these three evaluated terms into the expression yields
+\[ 
+\frac{\mathrm{d}p}{\rho} + \frac{1}{2}d \left( V^2 \right) + g \mathrm{d}z = 0 \qquad (\text{along }s)
+.\]
+Integrating this we obtain
+\[ 
+\int \frac{\mathrm{d}p}{\rho} + \frac{V^2}{2} + gz = \mathrm{constant}
+.\]
+And for constant density this becomes the Bernoulli equation, \autoref{eq:berneq},
+\[ 
+\frac{p}{\rho} + \frac{V^2}{2} + gz = \mathrm{constant}
+.\]
+Once again, for \autoref{eq:berneq} to be applicable the flow must be steady, incompressible, frictionless and happen along a streamline. 
+
+\subsubsection{Static, Stagnation, and Dynamic Pressures}
+The pressure $p$ which is used in the Bernoulli equation, \autoref{eq:berneq} is the thermodynamic pressure, also called the \textit{static pressure}. This is the pressure measured by an observer riding along with the fluid. 
+
+The \textit{stagnation pressure} is obtained when a flowing fluid is decelerated to zero speed by a frictionless process. For incompressible flow, the Bernoulli equation can be used to relate changes in speed and pressure along a streamline for such a process. Neglecting elevation differences \autoref{eq:berneq} becomes
+\[ 
+\frac{p}{\rho} + \frac{V^2}{2} = \mathrm{constant}
+.\]
+The stagnation pressure $p_0$ can then be computed by setting the stagnation speed $V_0 = 0$, as
+\begin{equation}\label{eq:stagpre}
+  \frac{p_0}{\rho} + 0 = \frac{p}{\rho} + \frac{V^2}{2} \implies p_0 = p + \frac{1}{2}\rho V^2
+\end{equation}
+This is the mathematical definition of stagnation pressure for incompressible flow. The term $\frac{1}{2}\rho V^2$ is called the \textit{dynamic pressure}. Thus, the stagnation  (or \textit{total}) pressure is the sum of the static pressure and the dynamic pressure.
+
+Solving \autoref{eq:stagpre} for the local flow speed $V$ yields
+\[ 
+V = \sqrt{\frac{2 \left( p_0 - p \right)}{\rho}}
+.\]
+Thus if one knows the stagnation pressure and the local pressure one could calculate the corresponding flow speed.
