@@ -1,0 +1,156 @@
+\lecture{9}{22. September 2025}{Dimensional Analysis}
+
+\section{Dimensional Analysis and Similitude} \label{sec:diman}
+Many phenomena in fluid mechanics depend on complex interplay between geometry and flow phenomena. E.g. consider the drag force on a stationary smooth sphere immersed in a uniform stream. We expect this to depend on the size of the sphere (defined by the diameter, $D$), the fluid speed $V$, the fluid density $\rho$ and the fluid viscosity $\mu$. If the drag force is called $F$ this can be written symbolically as
+\[ 
+F = f(D, V, \rho, \mu)
+.\]
+If we then wanted to determine how $F$ depends on $V$, $D$, $\rho$, and $\mu$ we could not simply vary one parameter at a time in an experimental setting one by one as with just four parameters with 10 different experimental runs at different values each we have $10^{4}$ different experiments.
+
+Instead of doing this extremely cumbersome task we can use dimensional analysis to show that all the data for drag on a smooth sphere can be plotted as a single relationship between two nondimensional parameters in the form
+\[ 
+\frac{F}{\rho V^2 D^2} = f \left( \frac{\rho V D}{\mu} \right)
+.\]
+The form of the function $f$ must still be determined experimentally, however all spheres, in all fluids, for most velocities are expected to fall on this same function curve. This includes everything from the drag on a hot-air ballon to red blood cells moving through an aorta. 
+
+\subsection{Nondimensionalizing the Basic Differential Equations}
+We consider a steady, incompressible two-dimensional flow of a Newtonian fluid with constant viscosity. The mass conservation equation becomes
+\begin{equation}\label{eq:masscons2d}
+  \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = 0
+\end{equation}
+and the Navier-Stokes equations reduce to
+\begin{align} 
+  \rho \left( u \frac{\partial u}{\partial x} + v \frac{\partial u}{\partial y}  \right) &= - \frac{\partial p}{\partial x} + \mu \left( \frac{\partial ^2 u}{\partial x^2} + \frac{\partial ^2u}{\partial y^2}  \right) \label{eq:navsto2d1} \\
+  \rho \left( u \frac{\partial v}{\partial x} + v \frac{\partial v}{\partial y}  \right) &= - \rho g - \frac{\partial p}{\partial y} + \mu \left( \frac{\partial ^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2}  \right) \label{eq:navsto2d2}
+.\end{align}
+These equations form a set of coupled nonlinear partial differential equations for $u$, $v$, and $p$, and are rather cumbersome to solve for most flows. The mass conservation equation, \autoref{eq:masscons2d}, here has dimensions of $\left[ \frac{1}{\text{time}} \right]$, and the Navier-Stokes equations, \cref{eq:navsto2d1,eq:navsto2d2}, have dimensions of $\left[ \frac{\text{force}}{\text{volume}} \right]$. We will now try to convert these to dimensionless equations.
+
+To nondimensionalize these equations, we divide all lengths be a reference length $L$ and all the velocities by a reference speed $V_{\infty}$ often taken as the freestream velocity. Furthermore, we make the pressure nondimensional by dividing by $\rho V^2_{\infty}$. If we denote the nondimensional quantities with asterisks, we obtain
+\[ 
+x^{*} = \frac{x}{L}, \qquad y^{*} = \frac{y}{L}, \qquad u^{*} = \frac{u}{V_{\infty}}, \qquad v^{*} \frac{v}{V_{\infty}}, \qquad p^{*} = \frac{p}{\rho V^2_{\infty}}
+.\]
+If we substitute this into~\cref{eq:navsto2d1,eq:navsto2d2,eq:masscons2d} we get
+\begin{align}
+  \frac{V_{\infty}}{L} \frac{\partial u^{*}}{\partial x^{*}}  + \frac{V_{\infty}}{L} \frac{\partial v^{*}}{\partial y^{*}} &= 0 \label{eq:mcons2dsubs} \\
+  \frac{\rho V^2_{\infty}}{L} \left( u^{*} \frac{\partial u^{*}}{\partial x^{*}} + v^{*} \frac{\partial u^{*}}{\partial y^{*}}  \right) &= - \frac{\rho V^2_{\infty}}{L} \frac{\partial p^{*}}{\partial x^{*}} + \frac{\mu V_{\infty}}{L^2} \left( \frac{\partial^2 u^{*}}{\partial x^{*2}} + \frac{\partial^2 u^{*} }{\partial y^{*2}}  \right) \label{eq:ns2dsubs1} \\
+  \frac{\rho V_{\infty}^2}{L} \left( u^{*} \frac{\partial v^{*}}{\partial x^{*}} + v^{*} \frac{\partial v^{*}}{\partial y^{*}}  \right) &= - \rho g - \frac{\rho V_{\infty}^2}{L} \frac{\partial p^{*}}{\partial y^{*}}  + \frac{\mu V_{\infty}}{L^2} \left( \frac{\partial ^2 u^{*}}{\partial x^{*2}} + \frac{\partial ^2 v^{*}}{\partial y^{*2}}  \right) \label{eq:ns2subs2} \\
+.\end{align}
+Dividing~\Cref{eq:mcons2dsubs} by $\frac{V_{\infty}}{L}$ and~\Cref{eq:ns2dsubs1,eq:ns2subs2} by $\frac{\rho V_{\infty}^2}{L}$ yields
+\begin{align}
+  \frac{\partial u^{*}}{\partial x^{*}}  + \frac{\partial v^{*}}{\partial y^{*}} &= 0 \label{eq:mc2dnondim} \\
+  u^{*} \frac{\partial u^{*}}{\partial x^{*}} + v^{*} \frac{\partial y^{*}}{\partial y^{*}} &= - \frac{\partial p^{*}}{\partial x^{*}}  + \frac{\mu}{\rho V_{\infty}L} \left( \frac{\partial ^2 u^{*}}{\partial x^{*2}} + \frac{\partial ^2 u^{*}}{\partial x^{*2}} + \frac{\partial ^2 u^{*}}{\partial y^{*1}}  \right) \label{eq:ns2dnondim1} \\
+  u^{*} \frac{\partial v^{*}}{\partial x^{*}} + v^{*} \frac{\partial v^{*}}{\partial y^{*}} &= - \frac{gL}{V_{\infty}^2} - \frac{\partial p^{*}}{\partial y^{*}} + \frac{\mu}{\rho V_{\infty}L} \left( \frac{\partial ^2 v^{*}}{\partial x^{*2}} + \frac{\partial ^2 v^{*}}{\partial y^{*2}}  \right) \label{eq:ns2nondim2}
+.\end{align}
+\Cref{eq:ms2dnondim,eq:ns2dnondim1,eq:ns2dnondim2} are the nondimensonal forms of our original equations, \Cref{eq:masscons2d,eq:navsto2d1,eq:navsto2d2}. 
+
+
+\subsection{Buckingham Pi Theorem}
+At the start of \Cref{sec:diman} it was discussed how the drag $F$ on a sphere can be modelled as
+\[ 
+F = F(D, \rho, \mu, V)
+\]
+where either theory or experiment is needed to determine the nature of the function $f$. More formally, we write
+\[ 
+g(F, D, \rho, \mu,V) = 0
+\]
+where $g$ is an unspecified function, different from $f$. The Buckingham Pi theorem states that we can transform a relationship between $n$ parameters of the form
+\[ 
+g(q_1,q_2,\ldots ,q_n) = 0
+\]
+into a corresponding relationship between $n-m$ independent dimensionless $\Pi$ parameters in the form
+\[ 
+G \left( \Pi_1,\Pi_2,\ldots,\Pi_{n-m} \right) = 0
+\]
+or
+\[ 
+\Pi_1 = G_1 \left( \Pi_2,\ldots ,\Pi_{n-m} \right)
+\]
+where $m$ usually is the minimum number $r$ of independent dimensions (e.g. mass, length, time) required to define the dimensions of all the parameters $q_1, q_2,\ldots q_n$. For the sphere problem it can be shown that
+\[ 
+g(F,D,\rho,\mu,V) = 0 \qquad \text{or}\qquad F=F(D,\rho,\mu,V)
+\]
+leads to
+\[ 
+G \left( \frac{F}{\rho V^2 D^2}, \frac{\mu}{\rho V D} \right) = 0 \qquad \text{or} \qquad \frac{F}{\rho V^2 D ^2} = G_1 \left( \frac{\mu}{\rho VD} \right)
+.\]
+
+The theorem does not predict the form of neither $G$ nor $G_1$. I.e. the functional relation among the independent dimensionless $\Pi$ parameters must be determined experimentally.
+
+The $n-m$ dimensionless $\Pi$ parameters obtained from this procedure are independent. A $\Pi$ parameter is not said to be independent if it can be formed from any combination of one or more of the other $\Pi$ parameters.
+
+The following six steps outline the normal procedure for determining the $\Pi$ parameters
+\begin{enumerate}
+  \item List all the dimensional parameters involved. Let $n$ be the number of parameters. If not all the important parameters are included then a relation will still be obtained however it will not give the full story. If parameters that actually have no effect are included these will either vanish during the dimensional analysis or result in extraneous dimensional groups that do not have any effect.
+  \item Select a set of fundamental (or primary) dimensions, e.g. $MLt$ or $FLt$. For a heat transfer problem it might be wise to include $T$ for temperature and in electrical systems $q$ for charge and so on.
+  \item List the dimensions of all parameters in terms of primary dimensions. Let $r$ be the number of primary dimensions. Either force or mass may be selected as a primary dimension.
+  \item Select a set of $r$ dimensional parameters that includes all the primary dimensions. These parameters will all be combined with each of the remaining parameters, one at a time, and will therefore be called \textit{repeating parameters}. No repeating parameter should have dimensions that are a power of the dimensions of another repeating parameter, e.g. do not include both an area $\left[ L^2 \right]$ and a second moment $\left[ L^{4} \right]$ as repeating parameters. The repeating parameter chosen may appear in all the dimensionless groups obtained. Therefore one should not include the dependent parameter in the repeating parameters.
+  \item Set up dimensional equations, combining the parameters selected in the previous step with each of the other parameters, in turn, to form dimensionless groups. There will be $n-m$ equations. Solve the dimensional equations to obtain the $n-m$ dimensionless groups.
+  \item Check to see that each group obtained is actually dimensionless. If mass was initially selected as a primary dimension, it is wise to check the groups using force as a primary dimension, or vice versa.
+\end{enumerate}
+The functional relationship among the $\Pi$ parameters obtained from the above method must be determined by experiment.
+
+The $n-m$ dimensionless groups obtained by this procedure are independent but not unique. If a different set of repeating parameters is chosen different dimensionless groups are found. Based on experience viscosity should appear in only one dimensionless parameter. Therefore $\mu$ should not be chosen as a repeating parameter as these may appear in all the dimensionless groups obtained.
+
+It usually works best to choose density $\rho = \left[ \frac{M}{L^3} \right]$, speed $V = \left[ \frac{L}{t} \right]$, and characteristic length $L$ as repeating parameters as these typically lead to dimensionless parameters suitable for a wide range of data and they are all easily measurable. 
+
+\subsection{Significant Dimensionless Groups in Fluid Mechanics}
+Many important dimensionless groups have been identified. Several of these are so fundamental they are worth remembering. 
+
+The typical forces encountered in flowing fluids are due to inertia, viscosity, pressure, gravity, surface tension, and compressibility. The ratio of any two forces will be dimensionless. It has previously been shown that the inertia force is proportional to $\rho V^2 L^2$. hence, we can compare the relative magnitude of various fluid forces to the inertia force:
+\begin{align*}
+  &\text{Viscous Force} & &\sim  & \tau A = \mu \frac{\mathrm{d}u}{\mathrm{d}y} A &\propto \mu \frac{V}{L}L^2 = \mu V L & &\text{so} & &\frac{\text{viscous}}{\text{inertia}} & &\sim & \frac{\mu VL}{\rho V^2L^2} &= \frac{\mu}{\rho V L} \\
+  &\text{Pressure Force} & &\sim & \Delta p A &\propto \Delta pL^2 & &\text{so} & &\frac{\text{pressure}}{\text{inertia}} &&\sim& \frac{\Delta p L^2}{\rho V^2 L^2} &= \frac{\Delta p}{\rho V^2} \\
+  &\text{Gravity Force} & &\sim & mg &\propto g\rho L^3 & &\text{so} & &\frac{\text{gravity}}{\text{inertia}} &&\sim& \frac{g\rho L^3}{\rho V^2L^2} &= \frac{gL}{V^2} \\
+  &\text{Surface Tension} & &\sim &  &\sigma L & &\text{so} & &\frac{\text{Surface Tension}}{\text{inertia}} &&\sim& \frac{\sigma L}{\rho V^2 L^2} &= \frac{\sigma}{\rho V^2 L}\\
+  &\text{Compressibility Force} & &\sim & E_v A &\propto E_v L^2 & &\text{so} & &\frac{\text{Compressibility}}{\text{inertia}} &&\sim& \frac{E_v L^2}{\rho V^2 L^2} &= \frac{E_v}{\rho V^2}
+.\end{align*}
+All of these occur so frequently that they have been given identifying names.
+
+The first parameter $\frac{\mu}{\rho VL}$, is by tradition inverted to the form $\frac{\rho VL}{\mu}$. This is termed \textit{Reynolds number} after Osborne Reynolds who discovered that
+\[ 
+\mathrm{Re} = \frac{\rho \overline{V} D}{\mu} = \frac{\overline{V} D}{\nu}
+\]
+is a criterion by which the flow regime may be determined. In general this is
+\[ 
+  \mathrm{Re} = \frac{\rho V L}{\mu} = \frac{VL}{\nu}
+\]
+where $L$ is a characteristic length descriptive of the flow field geometry. The Reynolds number can be seen as the ratio of inertia forces to viscous forces. Flows with ``large'' Reynolds numbers are generally more turbulent and flows in which the inertia forces are ``small'' compared to the viscous forves are characteristically laminar. 
+
+
+In aerodynamics, the second parameter, $\frac{\Delta p}{\rho V^2}$ is normally modified by inserting a factor $\frac{1}{2}$ in the denominator such that it represents the dynamic pressure. The ratio
+\[ 
+\mathrm{Eu} = \frac{\Delta p}{\frac{1}{2}\rho V^2}
+\]
+is formed, where $\Delta p$ is the local pressure minus the freestream pressure, and $\rho$ and $V$ are properties of the freestream flow. This ratio is called the \textit{Euler number} (not to be confused with Euler's number $e$) named after Leonhard Euler. This is also sometimes called the \textit{pressure coefficient}, $C_p$. 
+
+When studying cavitation, the pressure difference, $\Delta p$, is taken as $\Delta p = p - p_v$ where $p$ is the pressure in the liquid stream and $p_v$ is the vapor pressure at the test temperature. Combining these with $\rho$ and $V$ in the stream yields the dimensionless parameter called the \textit{cavitation number},
+\[ 
+\mathrm{Ca} = \frac{p - p_v}{\frac{1}{2} \rho V^2}
+.\]
+The smaller the cavitation number, the more likely cavitation is to occur. This is usually unwanted.
+
+William Froude and his son Robert E. Froude are credited with discovering that the parameter
+\[ 
+\mathrm{Fr} = \frac{V}{\sqrt{gL}}
+\]
+was significant for flows with free surface effects. Squaring the \textit{Froude number} gives
+\[ 
+\mathrm{Fr}^2 = \frac{V^2}{gL}
+\]
+which is the ratio of inertia to gravity (the inverse of the third ratio above). The length $L$ is, once again, a characteristic length descriptive of the flow field. For open-channel flow $L$ will equal the water depth. Froude numbers less than unity indicate subcritical flow and values greater than unity represents supercritical flow. 
+
+By convention the inverse of the fourth force ratio $\frac{\sigma}{\rho V^2L}$ is called the \textit{Weber number} and indicates the ratio of inertia to surface tension forces,
+\[ 
+\mathrm{We} = \frac{\rho V^2L}{\sigma}
+.\]
+The value of the Weber number is indicative of the existence of and frequency of capillary waves at a free surface.
+
+Ernst Mach introduced the parameter
+\[ 
+M = \frac{V}{c}
+\]
+where $V$ is the flow speed and $c$ is the local sonic speed. This is a key parameter that characterizes compressibility effects in a flow. This may also be written as:
+\[ 
+M = \frac{V}{c} = \frac{V}{\sqrt{\frac{\mathrm{d}p}{\mathrm{d}\rho}}} = \frac{V}{\sqrt{\frac{E_v}{\rho}}} \implies M^2 = \frac{\rho V^2 L^2}{E_v L^2} = \frac{\rho V^2}{E_v}
+\]
+which is the inverse of the final force ratio $\frac{E_v}{\rho V^2}$ discussed above. For truly incompressible flow, $c = \infty$ so $M = 0$.
