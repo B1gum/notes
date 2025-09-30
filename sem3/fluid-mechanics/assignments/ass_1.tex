@@ -1,25 +1,43 @@
 \documentclass[a4paper]{article}
 
+\usepackage[a4paper,margin=25mm]{geometry}
 \usepackage[english]{babel}
-\usepackage{amsfonts, amssymb, mathtools, amsthm, amsmath}
-\usepackage{graphicx, wrapfig, pgfplots}
-\usepackage{url}
-\usepackage[dvipsnames]{xcolor}
-\usepackage{lastpage}
 
+\usepackage{parskip} 
 \usepackage[T1]{fontenc}
-\usepackage{lmodern} % optional, safe default
-\usepackage{newtxtext} % Times-like text + math
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.2}
 
-\usepackage{lastpage}
 
-%loaded last
-\usepackage[hidelinks]{hyperref}
-\usepackage[nameinlink]{cleveref} 
+\usepackage{mathtools, amssymb}
+\renewcommand{\Vec}[1]{\boldsymbol{#1}}
+\DeclareMathOperator{\divergence}{div}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\curl}{curl}
+
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+
+
+\usepackage[dvipsnames]{xcolor}
+\definecolor{AUblue}{RGB}{0,61,115}
+\definecolor{AUblueDark}{RGB}{0,37,70}
+
+
+\usepackage{graphicx}
+\graphicspath{{./figures/}}
+\usepackage{tikz}
+\usetikzlibrary{calc, arrows.meta}
+
+\usepackage{enumitem}
+\setlist{topsep=4pt,itemsep=2pt,parsep=0pt}
 
 \usepackage{siunitx}
-  \sisetup{exponent-product = \cdot,
-    output-decimal-marker = {,}}
+\sisetup{
+  exponent-product = \cdot,
+  output-decimal-marker = {,}
+}
 
 %Giles Castelles incfig
 \usepackage{import}
@@ -32,207 +50,268 @@
   \import{./figures/}{#2.pdf_tex}
 }
 
-\setlength{\parindent}{0in}
-\setlength{\parskip}{12pt}
-\setlength{\oddsidemargin}{0in}
-\setlength{\textwidth}{6.5in}
-\setlength{\textheight}{8.8in}
-\setlength{\topmargin}{0in}
-\setlength{\headheight}{18pt}
-
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AUblueDark}\leaders\hrule height 0.6pt\hfill}}
+\setlength{\headheight}{20pt}
+\fancyhead[L]{\small\AuthorName}
+\fancyhead[C]{\small\ReportTitle}
+\fancyhead[R]{\small\TheDate}
+\usepackage{lastpage}
+\fancyfoot[R]{\small\thepage{} of \pageref{LastPage}}
+\fancyfoot[L]{\small\CourseName}
 
-\fancyhead{}
-\fancyfoot{}
-\fancyfoot[R]{\thepage{} of \pageref{LastPage}}
-\fancyhead[L]{Alfred A, Benjamin, P \& Noah H}
-\fancyhead[C]{Assignment w. 37--38}
-\fancyhead[R]{September 24, 2025}
+\newcommand{\Dept}{Department of Mechanical and Production Engineering}
+\newcommand{\Uni}{Aarhus University}
+\newcommand{\ReportTitle}{Assignment 1}
+\newcommand{\AuthorName}{Noah Rahbek Bigum Hansen}
+\newcommand{\StudentID}{202405538}
+\newcommand{\CourseName}{Fluid Mechanics}
+\newcommand{\CourseNumber}{290211U004}
+\newcommand{\Course}{\CourseName{} --- \CourseNumber}
+\newcommand{\TheDate}{October 3, 2025}
+\newcommand{\Wordcount}{8,123}
+\newcommand{\Logo}{figures/AU}
 
-\pgfplotsset{compat=newest}
 
-\pgfplotsset{every axis/.append style={
-  axis x line=middle,    % put the x axis in the middle
-  axis y line=middle,    % put the y axis in the middle
-  axis line style={<->,color=black}, % arrows on the axis
-}}
-
-\usepackage{thmtools}
-\usepackage{tcolorbox}
-  \tcbuselibrary{skins, breakable}
-  \tcbset{
-    space to upper=1em,
-    space to lower=1em,
-  }
-
-\theoremstyle{definition}
-
-\newtcolorbox[auto counter]{definition}[1][]{%
-  breakable,
-  colframe=ForestGreen,  %frame color
-  colback=ForestGreen!5, %background color
-  colbacktitle=ForestGreen!25, %background color for title
-  coltitle=ForestGreen!70!black,  %title color
-  fonttitle=\bfseries\sffamily, %title font
-  left=1em,              %space on left side in box,
-  enhanced,              %more options
-  frame hidden,          %hide frame
-  borderline west={2pt}{0pt}{ForestGreen},  %display left line
-  title=Definition \thetcbcounter: #1,
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=AUblue,
+  citecolor=AUblue,
+  urlcolor=AUblue,
+  pdftitle={\ReportTitle},
+  pdfauthor={\AuthorName},
+  pdfsubject={\Course},
+  pdfcreator={LaTeX + Vimtex + pdfTeX + Libertinus},
 }
+\usepackage[nameinlink]{cleveref}
 
-\newtcolorbox{greenline}{%
-  breakable,
-  colframe=ForestGreen,  %frame color
-  colback=white,          %remove background color
-  left=1em,              %space on left side in box
-  enhanced,              %more options
-  frame hidden,          %hide frame
-  borderline west={2pt}{0pt}{ForestGreen},  %display left line
-}
-
-\newtcolorbox[auto counter, number within=section]{dis}[1][]{%
-  breakable,
-  colframe=NavyBlue,  %frame color
-  colback=NavyBlue!5, %background color
-  colbacktitle=NavyBlue!25,    %background color for title
-  coltitle=NavyBlue!70!black,  %title color
-  fonttitle=\bfseries\sffamily, %title font
-  left=1em,            %space on left side in box,
-  enhanced,            %more options
-  frame hidden,        %hide frame
-  borderline west={2pt}{0pt}{NavyBlue},  %display left line
-  title=Discussion \thetcbcounter: #1
-}
-
-\newtcolorbox{blueline}{%
-  breakable,
-  colframe=NavyBlue,     %frame color
-  colback=white,         %remove background
-  left=1em,              %space on left side in box,
-  enhanced,              %more options
-  frame hidden,          %hide frame
-  borderline west={2pt}{0pt}{NavyBlue},  %display left line
-}
-
-\newtcolorbox{exa}[1][]{%
-  breakable,
-  colframe=RawSienna,  %frame color
-  colback=RawSienna!5, %background color
-  colbacktitle=RawSienna!25,    %background color for title
-  coltitle=RawSienna!70!black,  %title color
-  fonttitle=\bfseries\sffamily, %title font
-  left=1em,              %space on left side in box,
-  enhanced,              %more options
-  frame hidden,          %hide frame
-  borderline west={2pt}{0pt}{RawSienna},  %display left line
-  title=Example: #1,
-}
-
-\newtcolorbox[auto counter, number within=section]{sæt}[1][]{%
-  breakable,
-  colframe=RawSienna,  %frame color
-  colback=RawSienna!5, %background color
-  colbacktitle=RawSienna!25,    %background color for title
-  coltitle=RawSienna!70!black,  %title color
-  fonttitle=\bfseries\sffamily, %title font
-  left=1em,              %space on left side in box,
-  enhanced,              %more options
-  frame hidden,          %hide frame
-  borderline west={2pt}{0pt}{RawSienna},  %display left line
-  title=Sætning \thetcbcounter: #1,
-  before lower={\textbf{Bevis:}\par\vspace{0.5em}},
-  colbacklower=RawSienna!25,
-}
-
-\newtcolorbox{redline}{%
-  breakable,
-  colframe=RawSienna,  %frame color
-  colback=white,       %Remove background color
-  left=1em,            %space on left side in box,
-  enhanced,            %more options
-  frame hidden,        %hide frame
-  borderline west={2pt}{0pt}{RawSienna},  %display left line
-}
-
-\newtcolorbox{des}[1][]{%
-  breakable,
-  colframe=NavyBlue,  %frame color
-  colback=NavyBlue!5, %background color
-  colbacktitle=NavyBlue!25,    %background color for title
-  coltitle=NavyBlue!70!black,  %title color
-  fonttitle=\bfseries\sffamily, %title font
-  left=1em,              %space on left side in box,
-  enhanced,              %more options
-  frame hidden,          %hide frame
-  borderline west={2pt}{0pt}{NavyBlue},  %display left line
-  title=Description of #1,
-}
-
-\makeatother
-\def\@lecture{}%
-\newcommand{\lecture}[3]{
-  \ifthenelse{\isempty{#3}}{%
-    \def\@lecture{Lecture #1}%
-  }{%
-    \def\@lecture{Lecture #1: #3}%
-  }%
-  \subsection*{\makebox[\textwidth][l]{\@lecture \hfill \normalfont\small\textsf{#2}}}
-}
-
+\usepackage{chngcntr}
+\newcounter{problem}
+\renewcommand{\theproblem}{\arabic{problem}}
+\counterwithin{figure}{problem}
+\counterwithin{table}{problem}
+\numberwithin{equation}{problem}
 \makeatletter
-
-\newcommand{\exercise}[1]{%
- \def\@exercise{#1}%
- \subsection*{Exercise #1}
-}
-
+\providecommand*\theHproblem{\theproblem}
+\renewcommand{\theHfigure}{problem.\theHproblem.\arabic{figure}}
+\renewcommand{\theHtable}{problem.\theHproblem.\arabic{table}}
+\renewcommand{\theHequation}{problem.\theHproblem.\arabic{equation}}
 \makeatother
 
-%Format lim the same way in intext and in display
-\let\svlim\lim\def\lim{\svlim\limits}
+\crefname{problem}{problem}{problems}
+\Crefname{problem}{Problem}{Problems}
 
-% horizontal rule
-\newcommand\hr{
-\noindent\rule[0.5ex]{\linewidth}{0.5pt}
+\newenvironment{problem}%
+{%
+  \refstepcounter{problem}%
+  \par\vspace{0pt}%
+  {\large\bfseries\sffamily\color{AUblueDark}%
+    Problem \theproblem%
+  }%
+  \par\vspace{.35\baselineskip}%
+}%
+{%
+  \par\vspace{.6\baselineskip}%
+  {\color{AUblueDark}\rule{\linewidth}{0.8pt}}%
+  \vspace{.6\baselineskip}\par%
 }
 
-\author{Alfred G. Andersen, Benjamin R. Pašalić \& Noah R. B. Hansen (Group Leader)}
-\title{Take-Home Assignment weeks 37--38}
-\date{September 24, 2025} 
+\newcommand{\AUheading}[1]{%
+  \par\vspace{.4\baselineskip}%
+  {\sffamily\bfseries\color{AUblueDark}#1\par}%
+  \nobreak%
+}
+
+\newenvironment{assumptions}[1][Assumptions]{%
+  \AUheading{#1}
+  \begin{itemize}[leftmargin=*,nosep]
+}{\end{itemize}\par\medskip}
+
+\newenvironment{derivation}[1][Derivation]{%
+  \AUheading{#1}
+  \begingroup\allowdisplaybreaks
+  \setlength{\abovedisplayskip}{6pt}%
+  \setlength{\belowdisplayskip}{6pt}%
+  \setlength{\abovedisplayshortskip}{4pt}%
+  \setlength{\belowdisplayshortskip}{4pt}%
+}{\par\endgroup\medskip}
+
+\newcommand{\finalresult}[1]{%
+  \vspace{.2\baselineskip}%
+  \begin{equation}
+    {\color{AUblueDark}\boxed{\displaystyle #1}}
+    \tag*{\textsc{\textcolor{AUblueDark}{Result}}}
+  \end{equation}
+  \newpage
+}
+
+\usepackage{environ}
+\newlength{\pbfigsep}
+\setlength{\pbfigsep}{8mm}
+
+\NewEnviron{problemwithimage}[2][0.38\linewidth]{%
+  \begin{problem}%
+    \noindent
+    \begin{minipage}[t]{\dimexpr\linewidth-#1-\pbfigsep\relax}
+      \vspace{-0.2\baselineskip}\BODY
+    \end{minipage}\hfill
+    \begin{minipage}[t]{#1}
+      \vspace{-\baselineskip}\centering
+      \includegraphics[width=\linewidth]{#2}%
+    \end{minipage}%
+  \end{problem}%
+}
 
 \begin{document}
-
 \begin{titlepage}
-    \begin{center}
-        \vspace*{1cm}
-            
-        \Huge{Take-Home Assignment week 37--38}
-            
-        \vspace{0.5cm}
-        \LARGE{Statik \& Styrkelære}
-        \vspace{1.5cm}
-        \renewcommand{\arraystretch}{1.4}
+\thispagestyle{empty}
+\onehalfspacing
 
-        \normalsize{
-          \begin{tabular}{c | c | c}
-            Alfred Grue Andersen \quad & \quad Benjamin Rossavik Pašalić \quad & \quad Noah Rahbek Bigum Hansen \\
-            202406227 & 202407403 & 202405538 \\
-                      && Group Leader
-          \end{tabular}
-        }
-        \vfill
-            
-        \includegraphics[width=0.4\textwidth]{./figures/AU}
-            
-        \Large
-        Mekanik \& Teknologi \\
-        Aarhus Universitet \\
-        Denmark \\
-        September 24, 2025
-            
-    \end{center}
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[AUblue] ([xshift=-8mm]current page.west |- current page.north)
+       rectangle ([xshift=7mm]current page.west |- current page.south);
+\end{tikzpicture}
+
+\vspace*{8mm}
+{\large\bfseries \Dept}\\[2pt]
+{\normalsize \Uni}
+\hfill
+
+\vspace{28mm}
+{\fontsize{30pt}{32pt}\selectfont\bfseries \ReportTitle\par}
+\vspace{12mm}
+{\color{AUblueDark}\rule{\linewidth}{1.5pt}}
+
+\vspace{10mm}
+\begin{tabular}{@{}ll}
+\textbf{Author:}     & \AuthorName \\
+\textbf{Student ID:} & \StudentID \\
+\textbf{Course:}     & \Course \\
+\textbf{Date:}       & \TheDate \\
+\end{tabular}
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=south east, inner sep=0] at
+    ($ (current page.south east) + (-20mm, 20mm) $)
+    {\includegraphics[width=42mm]{\Logo}};
+\end{tikzpicture}
+
+\vfill
+{\small Word count: \Wordcount}
 \end{titlepage}
 
+\setcounter{page}{1}
+
+\begin{problem}
+Water flows steadily through a fire hose and nozzle.
+The hose is \qty{35}{mm} in diameter and the nozzle tip is \qty{25}{mm} in diameter; water gauge pressure in the hose is \qty{510}{kPa}, and the stream leaving the nozzle is uniform.
+The exit speed and pressure are \qty{32}{m/s} and atmospheric, respectively.
+
+Find the force transmitted by the coupling between the nozzle and hose.
+Indicate whether the coupling is in tension or compression.
+State the assumptions made and sketch the situation.
+\end{problem}
+\begin{figure}[ht]
+    \centering
+    \incfig{p1_1}
+    \caption{Sketch of the coupling.}
+    \label{fig:p1_1}
+\end{figure}
+
+\begin{assumptions}
+  \item Steady flow
+  \item Uniform flow at interfaces between coupling, hose, and nozzle
+  \item Incompressible and frictionless liquid with negligible mass
+\end{assumptions}
+
+\begin{derivation}
+The momentum equation for an inertial control volume (as is the case for the coupling) is
+\[ 
+\Vec{F} = \Vec{F}_B + \Vec{F}_S + \frac{\partial }{\partial t} \int_{\mathrm{CV}} \Vec{V} \rho \, \mathrm{d}V + \int_{\mathrm{CS}} \Vec{V}\rho \Vec{V} \cdot \mathrm{d}\Vec{A}
+.\]
+In this case the flow is steady, hence $\frac{\partial }{\partial t} = 0$, hence the $\Vec{F}_B = 0$. Reducing the vector equation to a scalar equation in the $x$-direction (defined on \Cref{fig:p1_1}) we obtain
+\[ 
+F_x = F_{S_x} = \int_{CS} u \rho \Vec{V} \cdot \mathrm{d}\Vec{A}
+.\]
+As the flow is assumed uniform at both the inlet and outlet the integral further reduces to a sum as
+\begin{equation}\label{eq:momste1d}
+  F_x = F_{S_x} = \sum_{\mathrm{CS}} u \rho \Vec{V} \cdot \Vec{A}
+\end{equation}
+The forces in the $x$-direction on the control volume are the pressure at the interface between the hose and the coupling ($+p_h A_h$), the pressure at the nozzle ($-p_n A_n$), and the reaction on the coupling $R_x$. From \Cref{eq:momste1d} we get
+\begin{equation} \label{eq:momste1dsub}
+  R_x + p_h A_h - p_n A_n = \rho Q \left( V_n - V_h \right)
+\end{equation}
+As we are using gauge pressures $p_n = \qty{0}{kPa} \implies p_n A_n = \qty{0}{N}$, therefore \Cref{eq:momste1dsub} reduces to
+\begin{equation} \label{eq:momste1dsubred}
+  R_x + p_h A_h = \rho Q \left( V_n - V_h \right)
+\end{equation}
+The continuity equation prescribes that the flow rate $Q = V A = \mathrm{const.}$ Hence,
+\begin{subequations} \label{eq:cont}
+  \begin{align}
+  Q &= A_n V_n\\
+  V_h &= \frac{Q}{A_h} = \frac{A_n V_n}{A_h}
+\end{align}
+\end{subequations}
+Substituting \Cref{eq:cont} into \Cref{eq:momste1dsubred} and solving for $R_x$ we obtain
+\begin{align*}
+  R_x + p_h A_h &= \rho A_n V_n \left( V_n - \frac{A_n V_n}{A_h} \right) \\
+  R_x &= \rho A_n V_n^2 \left( 1 - \frac{A_n}{A_h} \right) - p_h A_h \\
+  R_x &= \qty{1000}{\frac{kg}{m^3}} \cdot \left( \pi \cdot \left( \qty{12,5}{mm}  \right)^2 \right) \cdot \left( \qty{32}{\frac{m}{s}}  \right)^2 \left( 1 - \frac{ \left( \qty{12,5}{mm}  \right)^2 }{\left( \qty{17,5}{mm}  \right)^2} \right) - \qty{510}{kPa} \cdot \pi \cdot \left( \qty{17,5}{mm} \right)^2 \\
+  R_x &= \qty{-244,48}{N} 
+.\end{align*}
+The negative sign (with $+x$ being to the right as shown on \Cref{fig:p1_1}) means the coupling reaction force points to the left, and the joint will therefore be in a tension of about \qty{245}{N}.
+\end{derivation}
+
+\finalresult{R_c = \qty{245}{N} \hspace{0.5em} \left( \text{Tension} \right)}
+
+
+\begin{problemwithimage}[0.35\linewidth]{./figures/p2_1.png}
+  Determine the gauge pressure in \unit{kPa} at point $a$, if liquid $A$ has $\mathrm{SG} = \num{1,20} $ and liquid $B$ has $\mathrm{SG} = \num{0,75}$.
+  The liquid surrounding point $a$ is water, and the tank on the left is open to the atmosphere.
+\end{problemwithimage}
+
+\begin{problem}
+ Determine the stream function $\psi$ that will yield the velocity field.
+\[ 
+\Vec{V} = 2y \left( 2x + 1 \right) \hat{i} + \left( x \left( x + 1 \right) - 2y^2 \right) \hat{j} \, V
+.\] 
+\end{problem}
+
+
+\begin{problemwithimage}[0.5\linewidth]{./figures/p4_1.png}
+Water flows steadily through the nozzle, shown in the figure below, discharging to atmosphere. Calculate the horizontal component of force in the flanged joint.
+Indicate whether the joint is in tension or compression.
+Use density of $\mathrm{water} = \qty{1000}{\frac{kg}{m^3}}$.
+\end{problemwithimage}
+
+
+\begin{problem}
+The velocity components for an incompressible steady flow field are given below
+\[ 
+u = A \left( x^2 + z^2 \right) \qquad v = B \left( xy + yz \right)
+.\]
+Determine the $z$-component of velocity for steady and unsteady flow.
+\end{problem}
+
+
+\begin{problemwithimage}[0.35\linewidth]{./figures/p6_1.png}
+The water flow rate through the vertical bend shown in the figure below is $\qty{2,83}{\frac{m^3}{s}}$.
+Calculate the magnitude, direction, and location of the resultant force of the water pipe bend.
+Use density of $\mathrm{water}= \qty{999}{\frac{kg}{m^3}}$.
+\end{problemwithimage}
+
+
+
+\begin{problem}
+A viscous liquid is sheared between two parallel disks of radius $R$, one of which rotates while the other is fixed.
+The velocity field is purely tangential, and the velocity varies linearly with $z$ from $V_{\phi} = 0$ at $z = 0$ (the fixed disk) to the velocity of the rotating disk at its surface ($z = h$).
+
+Derive an expression for the velocity field between the disks.
+\end{problem}
+
+
 \end{document}
+
