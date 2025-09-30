@@ -273,6 +273,58 @@ The negative sign (with $+x$ being to the right as shown on \Cref{fig:p1_1}) mea
   The liquid surrounding point $a$ is water, and the tank on the left is open to the atmosphere.
 \end{problemwithimage}
 
+\begin{assumptions}
+  \item All fluids are at rest
+  \item All liquids are incompressible
+  \item Temperature is uniform
+  \item The left tank is open to the atmosphere, i.e. $p_b = 0$ gauge at the surface
+\end{assumptions}
+
+\begin{figure}[ht]
+    \centering
+    \incfig[0.9]{p2_2}
+    \caption{Sketch of the system}
+\end{figure}
+
+\begin{derivation}
+For an incompressible fluid with density $\rho$ the pressure $p$ scales linearly with the depth $h$ as
+\[ 
+\Delta p = \rho g h
+.\]
+To find the pressure difference $\Delta p$ between two points separated by a series of fluids with densities and heights of $\rho_i$ and $h_i$, respectively, the total change in pressure is simply
+\begin{equation}\label{eq:delp}
+  \Delta p = g \sum_i \rho_i h_i
+\end{equation}
+Starting at point $a$ we go a distance $h_1$ ``up'' in the water corresponding to a height of
+\[ 
+h_1 = \qty{0,25}{m} (\text{up to the }A \text{ /water-interface}) + \qty{0,125}{m} = \qty{0,375}{m} 
+.\]
+This corresponds to a pressure difference of
+\[ 
+p_1 = p_a - \rho_w g h_1
+.\]
+Inside liquid $A$ a distance of $h_2 = \qty{0,25}{m}$ must be traversed vertically down to reach the $A$/$B$-interface. This gives a pressure difference of
+\[ 
+p_2 = p_1 + \rho_{A} G h_2
+.\]
+Now in liquid $B$ the net rise to the open tank surface is $h_3 = \qty{0,9}{m} - \qty{0,4}{m} = \qty{0,5}{m}$. Which gives our atmospheric (gauge) pressure
+\[ 
+p_{\mathrm{atm}} = p_b = p_2 - \rho_B g h_3 = 0
+.\]
+Combining these per \Cref{eq:delp} yields
+\begin{align*}
+  p_a - \rho_w g h_1 + \rho_{A} g h_2 - \rho B g h_3 &= 0 \\
+  \implies p_a &= \rho_w g \left( h_1 - \mathrm{SG}_A h_2 + \mathrm{SG}_B h_3 \right) \\
+    &= \qty{1000}{\frac{kg}{m^3}} \cdot \qty{9,81}{\frac{m}{s^2}} \left( \qty{0,375}{m} - \num{1,2} \cdot \qty{0,25}{m} + \num{0,75} \cdot \qty{0,5}{m} \right) \\
+    &= \qty{4,41}{kPa}
+.\end{align*}
+The gauge pressure at $a$ is therefore $p_a = \qty{4,41}{kPa}$.
+\end{derivation}
+Therefore a gauge pressure of $p_a = \qty{4,41}{kPa}$ can be measured at point $a$.
+
+\finalresult{p_a = \qty{4,41}{kPa} \hspace{0.5em} (\text{gauge})}
+
+
 \begin{problem}
  Determine the stream function $\psi$ that will yield the velocity field.
 \[ 
@@ -280,9 +332,44 @@ The negative sign (with $+x$ being to the right as shown on \Cref{fig:p1_1}) mea
 .\] 
 \end{problem}
 
+\begin{assumptions}
+ \item Incompressible flow in the $xy$-plane
+\end{assumptions}
+
+\begin{derivation}
+The stream function for two-dimensional incompressible flow is defined as
+\begin{equation}\label{eq:strfun}
+  u \equiv \frac{\partial \psi}{\partial y} \qquad \text{and} \qquad v \equiv - \frac{\partial \psi}{\partial x}
+\end{equation}
+Starting with the $u$-coordinate we can integrate with respect to $y$ as
+\begin{align*}
+  \frac{\partial \psi}{\partial y} &= 2y + \left( 2x + 1 \right) \\
+  \psi(x,y) &= \int 2y (2x + 1) \, \mathrm{d}y \\
+            &= 2xy^2 + y^2 + f(x)
+.\end{align*}
+Doing the same with the $v$-coordinate but integrating with respect to $x$ we obtain
+\begin{align*}
+  -\frac{\partial \psi}{\partial x} &= x \cdot \left( x+1 \right) - 2y^2 \\
+  \psi(x,y) &= -\int \left( x \cdot (x+1)- 2y^2 \right) \, \mathrm{d}x  \\
+            &= - \frac{x^3}{3} - \frac{x^2}{2} + 2xy^2 + g(y)
+.\end{align*}
+Comparing these we see that $f(x) = - \frac{x^3}{3} - \frac{x^2}{2}$ and $g(y) = y^2$. Hence the stream function is
+\[ 
+\psi(x,y) = y^2 + 2xy^2 - \frac{x^2}{2} - \frac{x^3}{3}
+.\]
+This solution can be verified by checking that the found stream function does not break the definition of the stream function presented in \Cref{eq:strfun} as
+\begin{align*}
+  u(x,y) &= \frac{\partial }{\partial y} \left( y^2 + 2xy^2 - \frac{x^3}{3} - \frac{x^2}{2} \right) & &\implies & u(x,y) &= 2y + 4xy = 2y(2x + 1) \\
+  v(x,y) &= \frac{\partial}{\partial x} \left( y^2 + 2xy^2 - \frac{x^3}{3} - \frac{x^2}{2} \right) & &\implies & v(x,y) &= x^2 + x - 2y^2 = x(x+1) - 2y^2
+.\end{align*}
+Which means the stream function is correct.
+\end{derivation}
+
+\finalresult{\psi(x,y) = y^2 + 2xy^2 - \frac{x^3}{3} - \frac{x^2}{2}}
+
 
 \begin{problemwithimage}[0.5\linewidth]{./figures/p4_1.png}
-Water flows steadily through the nozzle, shown in the figure below, discharging to atmosphere. Calculate the horizontal component of force in the flanged joint.
+Water flows steadily through the nozzle, shown in the figure, discharging to atmosphere. Calculate the horizontal component of force in the flanged joint.
 Indicate whether the joint is in tension or compression.
 Use density of $\mathrm{water} = \qty{1000}{\frac{kg}{m^3}}$.
 \end{problemwithimage}
