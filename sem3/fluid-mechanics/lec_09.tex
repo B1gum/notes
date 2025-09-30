@@ -33,15 +33,15 @@ If we substitute this into~\cref{eq:navsto2d1,eq:navsto2d2,eq:masscons2d} we get
 \begin{align}
   \frac{V_{\infty}}{L} \frac{\partial u^{*}}{\partial x^{*}}  + \frac{V_{\infty}}{L} \frac{\partial v^{*}}{\partial y^{*}} &= 0 \label{eq:mcons2dsubs} \\
   \frac{\rho V^2_{\infty}}{L} \left( u^{*} \frac{\partial u^{*}}{\partial x^{*}} + v^{*} \frac{\partial u^{*}}{\partial y^{*}}  \right) &= - \frac{\rho V^2_{\infty}}{L} \frac{\partial p^{*}}{\partial x^{*}} + \frac{\mu V_{\infty}}{L^2} \left( \frac{\partial^2 u^{*}}{\partial x^{*2}} + \frac{\partial^2 u^{*} }{\partial y^{*2}}  \right) \label{eq:ns2dsubs1} \\
-  \frac{\rho V_{\infty}^2}{L} \left( u^{*} \frac{\partial v^{*}}{\partial x^{*}} + v^{*} \frac{\partial v^{*}}{\partial y^{*}}  \right) &= - \rho g - \frac{\rho V_{\infty}^2}{L} \frac{\partial p^{*}}{\partial y^{*}}  + \frac{\mu V_{\infty}}{L^2} \left( \frac{\partial ^2 u^{*}}{\partial x^{*2}} + \frac{\partial ^2 v^{*}}{\partial y^{*2}}  \right) \label{eq:ns2subs2} \\
+  \frac{\rho V_{\infty}^2}{L} \left( u^{*} \frac{\partial v^{*}}{\partial x^{*}} + v^{*} \frac{\partial v^{*}}{\partial y^{*}}  \right) &= - \rho g - \frac{\rho V_{\infty}^2}{L} \frac{\partial p^{*}}{\partial y^{*}}  + \frac{\mu V_{\infty}}{L^2} \left( \frac{\partial ^2 u^{*}}{\partial x^{*2}} + \frac{\partial ^2 v^{*}}{\partial y^{*2}}  \right) \label{eq:ns2subs2}
 .\end{align}
 Dividing~\Cref{eq:mcons2dsubs} by $\frac{V_{\infty}}{L}$ and~\Cref{eq:ns2dsubs1,eq:ns2subs2} by $\frac{\rho V_{\infty}^2}{L}$ yields
 \begin{align}
   \frac{\partial u^{*}}{\partial x^{*}}  + \frac{\partial v^{*}}{\partial y^{*}} &= 0 \label{eq:mc2dnondim} \\
   u^{*} \frac{\partial u^{*}}{\partial x^{*}} + v^{*} \frac{\partial y^{*}}{\partial y^{*}} &= - \frac{\partial p^{*}}{\partial x^{*}}  + \frac{\mu}{\rho V_{\infty}L} \left( \frac{\partial ^2 u^{*}}{\partial x^{*2}} + \frac{\partial ^2 u^{*}}{\partial x^{*2}} + \frac{\partial ^2 u^{*}}{\partial y^{*1}}  \right) \label{eq:ns2dnondim1} \\
-  u^{*} \frac{\partial v^{*}}{\partial x^{*}} + v^{*} \frac{\partial v^{*}}{\partial y^{*}} &= - \frac{gL}{V_{\infty}^2} - \frac{\partial p^{*}}{\partial y^{*}} + \frac{\mu}{\rho V_{\infty}L} \left( \frac{\partial ^2 v^{*}}{\partial x^{*2}} + \frac{\partial ^2 v^{*}}{\partial y^{*2}}  \right) \label{eq:ns2nondim2}
+  u^{*} \frac{\partial v^{*}}{\partial x^{*}} + v^{*} \frac{\partial v^{*}}{\partial y^{*}} &= - \frac{gL}{V_{\infty}^2} - \frac{\partial p^{*}}{\partial y^{*}} + \frac{\mu}{\rho V_{\infty}L} \left( \frac{\partial ^2 v^{*}}{\partial x^{*2}} + \frac{\partial ^2 v^{*}}{\partial y^{*2}}  \right) \label{eq:ns2dnondim2}
 .\end{align}
-\Cref{eq:ms2dnondim,eq:ns2dnondim1,eq:ns2dnondim2} are the nondimensonal forms of our original equations, \Cref{eq:masscons2d,eq:navsto2d1,eq:navsto2d2}. 
+\Cref{eq:mc2dnondim,eq:ns2dnondim1,eq:ns2dnondim2} are the nondimensonal forms of our original equations, \Cref{eq:masscons2d,eq:navsto2d1,eq:navsto2d2}. 
 
 
 \subsection{Buckingham Pi Theorem}
@@ -93,7 +93,7 @@ The $n-m$ dimensionless groups obtained by this procedure are independent but no
 
 It usually works best to choose density $\rho = \left[ \frac{M}{L^3} \right]$, speed $V = \left[ \frac{L}{t} \right]$, and characteristic length $L$ as repeating parameters as these typically lead to dimensionless parameters suitable for a wide range of data and they are all easily measurable. 
 
-\subsection{Significant Dimensionless Groups in Fluid Mechanics}
+\subsection{Significant Dimensionless Groups in Fluid Mechanics} \label{sec:sigdim}
 Many important dimensionless groups have been identified. Several of these are so fundamental they are worth remembering. 
 
 The typical forces encountered in flowing fluids are due to inertia, viscosity, pressure, gravity, surface tension, and compressibility. The ratio of any two forces will be dimensionless. It has previously been shown that the inertia force is proportional to $\rho V^2 L^2$. hence, we can compare the relative magnitude of various fluid forces to the inertia force:
