@@ -71,7 +71,7 @@
 \newcommand{\CourseNumber}{290211U004}
 \newcommand{\Course}{\CourseName{} --- \CourseNumber}
 \newcommand{\TheDate}{October 3, 2025}
-\newcommand{\Wordcount}{8,123}
+\newcommand{\Wordcount}{\num{762}}
 \newcommand{\Logo}{figures/AU}
 
 
@@ -83,7 +83,7 @@
   urlcolor=AUblue,
   pdftitle={\ReportTitle},
   pdfauthor={\AuthorName},
-  pdfsubject={The solution by \AuthorName (\StudentID) to \ReportTitle of the course \CourseName taught at the \Dept of \Uni. Submitted on \TheDate with a total word count of \Wordcount},
+  pdfsubject={The solution by \AuthorName{} (\StudentID) to \ReportTitle{} of the course \CourseName{} taught at the \Dept{} of \Uni. Submitted on \TheDate{}.},
   pdfcreator={LaTeX + Vimtex + pdfTeX + Libertinus},
 }
 \usepackage[nameinlink]{cleveref}
@@ -103,6 +103,8 @@
 
 \crefname{problem}{problem}{problems}
 \Crefname{problem}{Problem}{Problems}
+\crefname{pluralequation}{equations}{equations}
+\Crefname{pluralequation}{Equations}{Equations}
 
 \newenvironment{problem}%
 {%
@@ -205,7 +207,8 @@
 
 \setcounter{page}{1}
 
-\begin{problem}
+\begin{problem} \label{prob:1}
+%TC:ignore
 Water flows steadily through a fire hose and nozzle.
 The hose is \qty{35}{mm} in diameter and the nozzle tip is \qty{25}{mm} in diameter; water gauge pressure in the hose is \qty{510}{kPa}, and the stream leaving the nozzle is uniform.
 The exit speed and pressure are \qty{32}{m/s} and atmospheric, respectively.
@@ -213,6 +216,7 @@ The exit speed and pressure are \qty{32}{m/s} and atmospheric, respectively.
 Find the force transmitted by the coupling between the nozzle and hose.
 Indicate whether the coupling is in tension or compression.
 State the assumptions made and sketch the situation.
+%TC:endignore
 \end{problem}
 \begin{figure}[ht]
     \centering
@@ -229,10 +233,11 @@ State the assumptions made and sketch the situation.
 
 \begin{derivation}
 The momentum equation for an inertial control volume (as is the case for the coupling) is
-\[ 
-\Vec{F} = \Vec{F}_B + \Vec{F}_S + \frac{\partial }{\partial t} \int_{\mathrm{CV}} \Vec{V} \rho \, \mathrm{d}V + \int_{\mathrm{CS}} \Vec{V}\rho \Vec{V} \cdot \mathrm{d}\Vec{A}
-.\]
-In this case the flow is steady, hence $\frac{\partial }{\partial t} = 0$, hence the $\Vec{F}_B = 0$. Reducing the vector equation to a scalar equation in the $x$-direction (defined on \Cref{fig:p1_1}) we obtain
+\begin{equation} \label{eq:mominvec}
+\Vec{F} = \Vec{F}_B + \Vec{F}_S = \frac{\partial }{\partial t} \int_{\mathrm{CV}} \Vec{V} \rho \, \mathrm{d}V + \int_{\mathrm{CS}} \Vec{V}\rho \Vec{V} \cdot \mathrm{d}\Vec{A}  
+\end{equation}
+In this case the flow is steady, hence $\frac{\partial }{\partial t} = 0$, hence the $\Vec{F}_B = 0$. 
+Reducing the vector equation to a scalar equation in the $x$-direction (defined on \Cref{fig:p1_1}) we obtain
 \[ 
 F_x = F_{S_x} = \int_{CS} u \rho \Vec{V} \cdot \mathrm{d}\Vec{A}
 .\]
@@ -240,7 +245,8 @@ As the flow is assumed uniform at both the inlet and outlet the integral further
 \begin{equation}\label{eq:momste1d}
   F_x = F_{S_x} = \sum_{\mathrm{CS}} u \rho \Vec{V} \cdot \Vec{A}
 \end{equation}
-The forces in the $x$-direction on the control volume are the pressure at the interface between the hose and the coupling ($+p_h A_h$), the pressure at the nozzle ($-p_n A_n$), and the reaction on the coupling $R_x$. From \Cref{eq:momste1d} we get
+The forces in the $x$-direction on the control volume are the pressure at the interface between the hose and the coupling ($+p_h A_h$), the pressure at the nozzle ($-p_n A_n$), and the reaction on the coupling $R_x$.
+From \Cref{eq:momste1d} we get
 \begin{equation} \label{eq:momste1dsub}
   R_x + p_h A_h - p_n A_n = \rho Q \left( V_n - V_h \right)
 \end{equation}
@@ -248,10 +254,11 @@ As we are using gauge pressures $p_n = \qty{0}{kPa} \implies p_n A_n = \qty{0}{N
 \begin{equation} \label{eq:momste1dsubred}
   R_x + p_h A_h = \rho Q \left( V_n - V_h \right)
 \end{equation}
-The continuity equation prescribes that the flow rate $Q = V A = \mathrm{const.}$ Hence,
-\begin{subequations} \label{eq:cont}
+The continuity equation prescribes that the flow rate $Q = V A = \mathrm{const.}$
+Hence,
+\begin{subequations} \label[pluralequation]{eq:cont}
   \begin{align}
-  Q &= A_n V_n\\
+  Q &= A_n V_n \label{eq:conta}\\
   V_h &= \frac{Q}{A_h} = \frac{A_n V_n}{A_h}
 \end{align}
 \end{subequations}
@@ -269,8 +276,10 @@ The negative sign (with $+x$ being to the right as shown on \Cref{fig:p1_1}) mea
 
 
 \begin{problemwithimage}[0.35\linewidth]{./figures/p2_1.png}
+%TC:ignore
   Determine the gauge pressure in \unit{kPa} at point $a$, if liquid $A$ has $\mathrm{SG} = \num{1,20} $ and liquid $B$ has $\mathrm{SG} = \num{0,75}$.
   The liquid surrounding point $a$ is water, and the tank on the left is open to the atmosphere.
+%TC:endignore
 \end{problemwithimage}
 
 \begin{assumptions}
@@ -291,7 +300,7 @@ For an incompressible fluid with density $\rho$ the pressure $p$ scales linearly
 \[ 
 \Delta p = \rho g h
 .\]
-To find the pressure difference $\Delta p$ between two points separated by a series of fluids with densities and heights of $\rho_i$ and $h_i$, respectively, the total change in pressure is simply
+Given two points separated by a series of fluids with densities and heights of $\rho_i$ and $h_i$, respectively, the total change in pressure $\Delta p$ is simply
 \begin{equation}\label{eq:delp}
   \Delta p = g \sum_i \rho_i h_i
 \end{equation}
@@ -303,7 +312,8 @@ This corresponds to a pressure difference of
 \[ 
 p_1 = p_a - \rho_w g h_1
 .\]
-Inside liquid $A$ a distance of $h_2 = \qty{0,25}{m}$ must be traversed vertically down to reach the $A$/$B$-interface. This gives a pressure difference of
+Inside liquid $A$ a distance of $h_2 = \qty{0,25}{m}$ must be traversed vertically down to reach the $A$/$B$-interface.
+This gives a pressure difference of
 \[ 
 p_2 = p_1 + \rho_{A} G h_2
 .\]
@@ -326,10 +336,12 @@ Therefore a gauge pressure of $p_a = \qty{4,41}{kPa}$ can be measured at point $
 
 
 \begin{problem}
+%TC:ignore
  Determine the stream function $\psi$ that will yield the velocity field.
 \[ 
 \Vec{V} = 2y \left( 2x + 1 \right) \hat{i} + \left( x \left( x + 1 \right) - 2y^2 \right) \hat{j} \, V
 .\] 
+%TC:endignore
 \end{problem}
 
 \begin{assumptions}
@@ -353,7 +365,8 @@ Doing the same with the $v$-coordinate but integrating with respect to $x$ we ob
   \psi(x,y) &= -\int \left( x \cdot (x+1)- 2y^2 \right) \, \mathrm{d}x  \\
             &= - \frac{x^3}{3} - \frac{x^2}{2} + 2xy^2 + g(y)
 .\end{align*}
-Comparing these we see that $f(x) = - \frac{x^3}{3} - \frac{x^2}{2}$ and $g(y) = y^2$. Hence the stream function is
+Comparing these we see that $f(x) = - \frac{x^3}{3} - \frac{x^2}{2}$ and $g(y) = y^2$.
+Hence the stream function is
 \[ 
 \psi(x,y) = y^2 + 2xy^2 - \frac{x^2}{2} - \frac{x^3}{3}
 .\]
@@ -369,36 +382,264 @@ Which means the stream function is correct.
 
 
 \begin{problemwithimage}[0.5\linewidth]{./figures/p4_1.png}
+%TC:ignore
 Water flows steadily through the nozzle, shown in the figure, discharging to atmosphere. Calculate the horizontal component of force in the flanged joint.
 Indicate whether the joint is in tension or compression.
 Use density of $\mathrm{water} = \qty{1000}{\frac{kg}{m^3}}$.
+%TC:endignore
 \end{problemwithimage}
+
+\begin{assumptions}
+  \item Steady flow
+  \item Incompressible flow
+  \item Uniform flow
+  \item Negligible mass (negligible body forces)
+\end{assumptions}
+
+\begin{figure}[ht]
+    \centering
+    \incfig[0.8]{p4_2}
+    \caption{Sketch of the joint.}
+    \label{fig:p4_2}
+\end{figure}
+
+\begin{derivation}
+We can once again apply the momentum equation for an inertial control volume, \Cref{eq:mominvec},
+\[ 
+\Vec{F} = \Vec{F}_B + \Vec{F}_S = \frac{\partial }{\partial t} \int_{\mathrm{CV}} \Vec{V} \rho \, \mathrm{d}V + \int_{\mathrm{CS}} \Vec{V} \rho \Vec{V} \cdot \mathrm{d}\Vec{A}
+.\]
+Following the same argumentation as in \Cref{prob:1} with the same assumptions this reduces to the sum from \Cref{eq:momste1d}
+\[ 
+F_x = F_{S_x} = \sum_{\mathrm{CS}} u \rho \Vec{V} \cdot \Vec{A}
+.\]
+Hence,
+\begin{subequations}
+  \begin{align}
+    R_x + p_1 \cdot A_1 + p_2 \cdot A_2 &= V_1 \cdot \left( -\rho \cdot V_1 \cdot A_1 \right) + V_2 \cdot \cos \theta \cdot \left( \rho \cdot V_2 \cdot A_2 \right) \\
+    R_x &= - p_1 \cdot A_1 + \rho \left( V_2^2 \cdot \cos \theta \cdot A_2 - V_1^2 A_1 \right)  \label{eq:momp4}
+  .\end{align}
+\end{subequations}
+From the continuity equation we have that
+\begin{align*}
+  A_2 V_2 &= A_1 V_1 \\
+  V_2 &= V_1 \frac{A_1}{A_2} \\
+      &= V_1 \left( \frac{D_1}{D_2} \right)^2 \\
+      &= \qty{1,5}{\frac{m}{s}} \cdot \left( \frac{\qty{30}{cm} }{\qty{15}{cm}} \right)^2 \\
+      &= \qty{6}{\frac{m}{s}} 
+.\end{align*}
+Now plugging all the known values into \Cref{eq:momp4} we obtain
+\begin{align*}
+  R_x &= \qty{-15}{kPa} \cdot \pi \cdot \frac{\left( \qty{30}{cm}  \right)^2}{4} + \qty{1000}{\frac{kg}{m^3}} \cdot \left( \left( \qty{6}{\frac{m}{s}}  \right)^2 \cdot \cos \ang{30} \cdot \pi \cdot \frac{\left( \qty{15}{cm}  \right)^2}{4} - \left( \qty{1,5}{\frac{m}{s}}  \right)^2 \cdot \pi \cdot \frac{\left( \qty{30}{cm}  \right)^2}{4}\right) \\
+      &= \qty{-668,39}{N} 
+.\end{align*}
+Therefore, the reaction force in the joint will be in the $-x$-direction, as defined on \Cref{fig:p4_2}, and the joint will be in tension. This aligns with the expectation given that it needs to withstand high pressure and a large change in momentum of the fluid.  
+\end{derivation}
+
+\finalresult{R_x = \qty{668}{N} \vspace{0.5em} (\text{Tension})}
+
+
 
 
 \begin{problem}
+%TC:ignore
 The velocity components for an incompressible steady flow field are given below
 \[ 
 u = A \left( x^2 + z^2 \right) \qquad v = B \left( xy + yz \right)
 .\]
 Determine the $z$-component of velocity for steady and unsteady flow.
+%TC:endignore
 \end{problem}
+
+\begin{assumptions}
+  \item Steady flow
+  \item Incompressible flow
+\end{assumptions}
+
+\begin{derivation}
+The continuity equation on differential form can be written as
+\begin{equation} \label{eq:convec}
+  \nabla \cdot \rho \Vec{V} + \frac{\partial \rho}{\partial t} = 0
+\end{equation}
+As we are assuming the flow to be incompressible $\rho = \mathrm{const.}$ This means that $\frac{\partial \rho}{\partial t} = 0$ and $\nabla \cdot \rho \Vec{V} = \nabla \cdot \Vec{V}$ in \Cref{eq:convec} which therefore reduces to
+\begin{equation} \label{eq:convecinc}
+  \nabla \cdot \Vec{V} = 0
+\end{equation}
+for an incompressible flow. On Cartesian form \Cref{eq:convecinc} becomes
+\[ 
+\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \frac{\partial w}{\partial z} = 0
+.\]
+Substituting in our known values we get
+\begin{align*}
+\frac{\partial }{\partial x} \left( A \left( x^2 + z^2 \right) \right) + \frac{\partial}{\partial y} \left( B \left( xy + yz \right) \right) + \frac{\partial w}{\partial z} &= 0 \\
+  - \frac{\partial w}{\partial z} &= 2Ax + B \left( x+z \right) \\
+  \frac{\partial w}{\partial z} &= -2Ax - Bx - Bz \\
+  w &= - \int \left( 2A + B \right)x \, \mathrm{d}z - \int Bz \, \mathrm{d}z \\
+  &= - \left( 2A + B \right)xz - \frac{B}{2} z^2 + f(x,y)
+\end{align*}
+where $f(x,y)$ is a general function of $x$ and $y$. As the time-variant term $\frac{\partial \rho}{\partial t} = 0$ in \Cref{eq:convec} for both steady and unsteady flows, as long as they are incompressible as in this case $\rho = \mathrm{const.}$ Therefore the general expression for the $z$-component of the velocity will be the same for both steady and unsteady flow.
+
+\finalresult{w = - (2A + B) xz - \frac{B}{2}z^2 + f(x,y)}
+
+
+
+\end{derivation}
 
 
 \begin{problemwithimage}[0.35\linewidth]{./figures/p6_1.png}
+%TC:ignore
 The water flow rate through the vertical bend shown in the figure below is $\qty{2,83}{\frac{m^3}{s}}$.
 Calculate the magnitude, direction, and location of the resultant force of the water pipe bend.
 Use density of $\mathrm{water}= \qty{999}{\frac{kg}{m^3}}$.
+%TC:endignore
 \end{problemwithimage}
 
+\begin{assumptions}
+\item Steady flow
+\item Incompressible flow
+\item Inviscid flow
+\end{assumptions}
+
+\begin{figure}[ht]
+\centering
+    \incfig{p6_2}
+    \caption{Sketch of the vertical bend.}
+    \label{fig:p6_2}
+\end{figure}
+
+\begin{derivation}
+The continuity equation is generally
+\begin{equation}\label{eq:contgen}
+  \frac{\partial}{\partial t} \int_{\mathrm{CV}} \rho \, \mathrm{d}V + \int_{\mathrm{CS}} \rho \Vec{V} \cdot \mathrm{d} \Vec{A} = 0
+.\end{equation}
+For a steady incompressible flow \Cref{eq:contgen} reduces to \Cref{eq:conta},
+\[ 
+Q = A_n V_n = \mathrm{const.}
+.\]
+For any point $n$. Using this we can calculate the flow velocity through the bend, as
+\[ 
+V = \frac{Q}{A} = \frac{Q}{\pi\cdot \frac{d^2}{4}} = \frac{\qty{2,83}{\frac{m^3}{s}} }{\pi \cdot \frac{\left( \qty{0,9}{m}  \right)^2}{4}} = \qty{4,45}{\frac{m}{s}}
+.\]
+As shown in \Cref{eq:conta} flow speed $V$ will be constant for constant area $A = A_1 = A_2$, hence the flow speed through the entire bend must be $V = V_1 = V_2 = \qty{4,45}{\frac{m}{s}}$.
+
+The Bernoulli equation is
+\begin{equation} \label{eq:berneq}
+  \frac{p}{\rho} + \frac{V^2}{2} + gh = \mathrm{constant}
+.\end{equation}
+Using the Bernoulli equation, \Cref{eq:berneq}, we can find the pressure $p_2$ at the outlet of the bend as
+\begin{align*}
+  \frac{p_1}{\rho} + \frac{V^2}{2} + g \cdot 0 &= \frac{p_2}{\rho} + \frac{V^2}{2} + gh \\
+  \frac{p_2}{\rho} &= \frac{p_1}{\rho} - gh \\
+  p_2 &= p_1 - \rho g h \\
+      &= p_1 - \rho g \left( r + \frac{d}{2} \right) \\
+      &= \qty{34,5}{kPa} - \qty{999}{\frac{kg}{m^3}} \cdot \qty{9,81}{\frac{m}{s^2}} \cdot \left( \qty{0,6}{m} + \frac{\qty{0,9}{m} }{2} \right) \\
+      &= \qty{24,2}{kPa} 
+.\end{align*}
+Note that in the above the height difference $h$ has been calculated as the median height difference for the water. Now we can use the momentum equation for an inertial control volume, \Cref{eq:mominvec},
+\[ 
+\Vec{F} = \Vec{F}_B + \Vec{F}_S = \frac{\partial }{\partial t} \int_{CV} \Vec{V} \rho \, \mathrm{d}V + \int_{\mathrm{CS}} \Vec{V} \rho \Vec{V} \cdot \mathrm{d}\Vec{A}
+.\]
+In the case of steady flow \Cref{eq:mominvec} reduces to
+\begin{equation}\label{eq:mominvecste}
+    \Vec{F}_B + \Vec{F}_S = \int_{CS} \Vec{V} \rho \Vec{V} \cdot \mathrm{d} \Vec{A}
+.\end{equation}
+Splitting \Cref{eq:mominvecste} into Cartesian coordinates yields
+\begin{subequations} \label[pluralequation]{eq:mominsvecstecar}
+  \begin{align}
+  \left( F_B \right)_x + \left( F_S \right)_x &= \int_{\mathrm{CS}} u \rho \Vec{V} \cdot \mathrm{d}\Vec{A} \label{eq:mominsvecstex} \\ 
+  \left( F_B \right)_y + \left( F_S \right)_y &= \int_{\mathrm{CS}} v \rho \Vec{V} \cdot \mathrm{d}\Vec{A} \label{eq:mominsvecstey}
+.\end{align}
+\end{subequations}
+As $V = V_1 = V_2 = \qty{4,45}{\frac{m}{s}}$, $u = v = V = \qty{4,45}{\frac{m}{s}}$ in \Cref{eq:mominsvecstecar}. From \Cref{eq:mominsvecstex} we get
+\begin{align*}
+  R_x + \left( F_B \right)_x + \left( F_S \right)_x &= V^2 \cdot \rho \cdot A \\
+  R_x - p_2 A &= V^2 \cdot \rho \cdot A \\
+  R_x &= \pi \cdot \frac{d^2}{4} \left( V^2 \cdot \rho + p_2 \right) \\
+      &= \pi \cdot \frac{\left( \qty{0,9}{m}  \right)^2}{4} \left( \left( \qty{4,45}{\frac{m}{s}}  \right)^2 \cdot \qty{999}{\frac{kg}{m^3}} + \qty{24,2}{kPa} \right) \\
+  &= \qty{28,0}{kN}
+.\end{align*}
+I.e. the water will experience a reaction force of $R_x = \qty{28,0}{kN}$ from the bend, which means that the water will exert a force $F_x = - R_x = \qty{-28,0}{kN}$ on the bend.
+
+From \Cref{eq:mominsvecstey} we get
+\begin{align*}
+  R_y + \left( F_B \right)_y + \left( F_S \right)_y &= - V^2 \cdot \rho \cdot A \\
+  R_y + \left( \rho g A \frac{2\pi}{4} h \right) + \left( p_1 A \right) &= - V^2 \cdot \rho\cdot A \\
+  R_y &= - V^2 \cdot \rho \cdot A - p_1 A - \rho g A \frac{2\pi}{4}h   \\
+      &= - A \left( p_1 + \rho \left( V^2 + g \frac{\pi}{2} h \right) \right) \\
+      &= - \pi \cdot \frac{d^2}{4} \left( p_1 + \rho \left( V^2 + g \frac{\pi}{2} \left( r + \frac{d}{2} \right) \right) \right) \\
+      &= - \pi \cdot \frac{\left( \qty{0,9}{m}  \right)^2}{4} \left( \qty{34,5}{kPa} + \qty{999}{\frac{kg}{m^3}} \left( \left( \qty{4,45}{\frac{m}{s}}  \right)^2 + \left( -\qty{9,81}{\frac{m}{s^2}}  \right) \frac{\pi}{2} \left( \qty{0,6}{m} + \frac{\qty{0,9}{m} }{2} \right) \right) \right) \\
+  &= \qty{-24,2}{kN}
+.\end{align*}
+This means the water will experience a reaction force of $R_y = \qty{-24,2}{kN}$ from the bend, hence, the water will exert a force $F_y = - R_y = \qty{24,2}{kN}$ on the bend. Using $F_x$ and $F_y$ the total force exerted by the water on the bend can be computed as
+\[ 
+F = \sqrt{F_x^2 + F_y^2} = \sqrt{\left( -\qty{28,0}{kN}  \right)^2 + \left( \qty{24,2}{kN}  \right)^2} = \qty{37,0}{kN} 
+.\]
+The direction of the force can be found using trigonometry as
+\begin{align*}
+  \tan \alpha &= \frac{F_y}{F_x} \\
+  \alpha &= \tan^{-1} \left( \frac{F_y}{F_x} \right)\\
+  &= \tan^{-1} \left( \frac{\qty{24,2}{kN} }{\qty{-28}{kN} } \right) \\
+  &= \ang{139,16}
+.\end{align*}
+Hence the water will exert a force with a size of $F = \qty{37,0}{kN}$ at an angle of \ang{139} with respect to the $+x$ direction.
+\end{derivation}
+
+\finalresult{F = \qty{37,0}{kN} \, \angle \,  \ang{139}}
 
 
 \begin{problem}
+%TC:ignore
 A viscous liquid is sheared between two parallel disks of radius $R$, one of which rotates while the other is fixed.
 The velocity field is purely tangential, and the velocity varies linearly with $z$ from $V_{\phi} = 0$ at $z = 0$ (the fixed disk) to the velocity of the rotating disk at its surface ($z = h$).
 
 Derive an expression for the velocity field between the disks.
+%TC:endignore
 \end{problem}
 
+\begin{assumptions}
+\item Incompressible flow
+\item Purely tangential flow
+\item Velocity varies linearly with $z$
+\end{assumptions}
+
+\begin{derivation}
+Here we will apply the continuity equation on cylindrical form
+\begin{equation}\label{eq:contcyn}
+  \frac{1}{r} \frac{\partial}{\partial r} r \rho V_r + \frac{1}{r}\frac{\partial }{\partial \phi} \rho V_{\phi} + \frac{\partial }{\partial z} \rho V_z + \frac{\partial \rho}{\partial t} = 0
+\end{equation}
+As the flow is assumed incompressible $\frac{\partial \rho}{\partial t} = 0$ in \Cref{eq:contcyn} and the assumption of purely tangential flow means $V_r = V_z = 0$ in \Cref{eq:contcyn}. Hence the continuity equation reduces to
+\[ 
+  \frac{\partial V_{\phi}}{\partial \phi} = 0
+.\]
+This means that the velocity $V_{\phi}$ is not a function of $\phi$ and hence $V_{\phi} = V_{\phi} \left( r, z \right)$. As we know the velocity scales linearly with $z$ we can write the function for $z$ as a normal linear function,
+\begin{equation} \label{eq:linvel}
+ V_{\phi} \left( r, z \right) = z \cdot f(r) + C
+\end{equation}
+Applying the given boundary conditions of $V_{\phi} \left( r, 0 \right) = 0$ and $V_{\phi} \left( r, h \right) = r \omega$ to \Cref{eq:linvel} yields
+\begin{subequations}
+  \begin{align}
+  V_{\phi} \left( r, 0 \right) &= 0 \\
+  0 \cdot f(r) + C &= 0 \\
+  \implies C &= 0 \\
+  V_{\phi} \left( r, h \right) &= r \omega \\
+  \implies h \cdot f(r) &= r\omega \\
+  \implies f(r) &= \frac{r\omega}{h} \label{eq:fr}
+.\end{align}
+\end{subequations}
+Substituting \Cref{eq:fr} into \Cref{eq:linvel} gives an expression for the tangential velocity $V_{\phi}$
+\begin{equation}\label{eq:vphi}
+    V_{\phi} = \frac{r\omega}{h}z
+.\end{equation}
+The velocity flow field on cylindrical coordinates is
+\begin{equation}\label{eq:velcyn}
+  \Vec{V} = V_r \,  \hat{e}_r + V_{\phi} \, \hat{e}_{\phi} + V_z \,  \hat{k}
+\end{equation}
+In \Cref{eq:velcyn} $V_r = V_z = 0$ since the flow is assumed purely tangential. Therefore the entire velocity flow field is given by substituting \Cref{eq:vphi} into \Cref{eq:velcyn},
+\[ 
+\Vec{V} = V_{\phi} \, \hat{e}_{\phi} = \frac{r\omega}{h}z \, \hat{e}_{\phi}
+.\]
+\end{derivation}
+
+\finalresult{\Vec{V} = \frac{r\omega}{h}z \,  \hat{e}_{\phi}}
 
 \end{document}
 
