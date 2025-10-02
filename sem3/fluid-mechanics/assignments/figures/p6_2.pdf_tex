@@ -54,13 +54,20 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{p6_2.pdf}}%
-    \put(0.55891081,0.3897337){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$d = \qty{0,9}{m}$\end{tabular}}}}%
-    \put(0.28671001,0.07427038){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$d = \qty{0,9}{m}$\end{tabular}}}}%
-    \put(0.43181807,0.228136){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$r = \qty{0,6}{m}$\end{tabular}}}}%
-    \put(0.32140284,0.35527967){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R = \qty{1,5}{m}$\end{tabular}}}}%
-    \put(0.1594573,0.228136){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$p = \qty{34,5}{kPa}$\end{tabular}}}}%
+    \put(0.61919912,0.37752914){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$d = \qty{0,9}{m}$\end{tabular}}}}%
+    \put(0.32338855,0.07478312){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$d = \qty{0,9}{m}$\end{tabular}}}}%
+    \put(0.44008824,0.21127942){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$r = \qty{0,6}{m}$\end{tabular}}}}%
+    \put(0.25674729,0.3823101){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Vec{F}$\end{tabular}}}}%
+    \put(0.34617618,0.36342303){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\theta$\end{tabular}}}}%
+    \put(0.17147458,0.22341391){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$p = \qty{34,5}{kPa}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{p6_2.pdf}}%
-    \put(0.75874818,0.0602445){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
-    \put(0.60051352,0.20484645){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
+    \put(0.75310218,0.1051281){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
+    \put(0.65625877,0.20034122){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{p6_2.pdf}}%
+    \put(0.31548525,0.44473839){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R = \qty{1,5}{m}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{p6_2.pdf}}%
+    \put(0.52111836,0.44480697){\color[rgb]{0.39607843,0.35294118,0.62352941}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$p_2 \Vec{A}$\end{tabular}}}}%
+    \put(0.40052251,0.17534998){\color[rgb]{0.39607843,0.35294118,0.62352941}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$p_1 \Vec{A}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{p6_2.pdf}}%
   \end{picture}%
 \endgroup%
