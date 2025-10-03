@@ -15,9 +15,7 @@
 \let\oldhat\hat
 \renewcommand{\hat}[1]{\oldhat{\mathbf{#1}}}
 
-\usepackage{newtxtext}
-\usepackage{newtxmath}
-
+\usepackage{fourier}
 
 \usepackage[dvipsnames]{xcolor}
 \definecolor{AUblue}{RGB}{0,61,115}
@@ -285,7 +283,7 @@ Substituting \Cref{eq:cont} into \Cref{eq:momste1dsubred} and solving for $R_x$ 
 The negative sign (with $+x$ being to the right as shown on \Cref{fig:p1_1}) means the coupling reaction force points to the left, and the joint will therefore be in tension.
 \end{derivation}
 
-\finalresult{R_c = \qty{245}{\newton} \hspace{0.5em} \left( \text{Tension} \right)}
+\finalresult{R_c = \qty{245}{\newton} \, \left( \text{Tension} \right)}
 
 
 \begin{problemwithimage}[0.35\linewidth]{./figures/p2_1.png}
@@ -344,7 +342,7 @@ Combining these per \Cref{eq:delp} yields
 The gauge pressure at $a$ is therefore $p_a = \qty{4,41}{\kilo\pascal}$.
 \end{derivation}
 
-\finalresult{p_a = \qty{4,41}{\kilo\pascal} \hspace{0.5em} (\text{gauge})}
+\finalresult{p_a = \qty{4,41}{\kilo\pascal} \, (\text{gauge})}
 
 
 \begin{problem}
@@ -450,7 +448,7 @@ Therefore, the reaction force in the joint will be in the $-x$-direction, as def
 This aligns with the expectation given that it needs to withstand high pressure and a large change in momentum of the fluid.  
 \end{derivation}
 
-\finalresult{R_x = \qty{668}{\newton} \vspace{0.5em} (\text{Tension})}
+\finalresult{R_x = \qty{668}{\newton} \,  (\text{Tension})}
 
 
 
@@ -594,14 +592,15 @@ From \Cref{eq:mominsvecstey} we get
       &= \qty{-24,2}{\kilo\newton}
 .\end{align*}
 This means the water will experience a reaction force of $R_y = \qty{-24,2}{\kilo\newton}$ from the bend, hence, the water will exert a force $F_y = - R_y = \qty{24,2}{\kilo\newton}$ on the bend.
+In the above calculation the body force $\left( F_B \right)_y$ has been calculated as the gravitational force on the water in the bend.
 Using $F_x$ and $F_y$ the total force exerted by the water on the bend can be computed as
 \[ 
 F = \sqrt{F_x^2 + F_y^2} = \sqrt{\left( -\qty{28,0}{\kilo\newton}  \right)^2 + \left( \qty{24,2}{\kilo\newton}  \right)^2} = \qty{37,0}{\kilo\newton} 
 .\]
 The direction of the force can be found using trigonometry as
 \begin{align*}
-  \tan \alpha &= \frac{F_y}{F_x} \\
-  \alpha &= \tan^{-1} \left( \frac{F_y}{F_x} \right)\\
+  \tan \theta &= \frac{F_y}{F_x} \\
+  \theta &= \tan^{-1} \left( \frac{F_y}{F_x} \right)\\
   &= \tan^{-1} \left( \frac{\qty{24,2}{\kilo\newton} }{\qty{-28}{\kilo\newton} } \right) \\
   &= \ang{139,16}
 .\end{align*}
@@ -650,16 +649,14 @@ As we know the velocity scales linearly with $z$ we can write the function for $
  V_{\phi} \left( r, z \right) = z \cdot f(r) + C
 \end{equation}
 Applying the given boundary conditions of $V_{\phi} \left( r, 0 \right) = 0$ and $V_{\phi} \left( r, h \right) = r \omega$ to \Cref{eq:linvel} yields
-\begin{subequations}
   \begin{align}
-  V_{\phi} \left( r, 0 \right) &= 0 \\
-  0 \cdot f(r) + C &= 0 \\
-  \implies C &= 0 \\
-  V_{\phi} \left( r, h \right) &= r \omega \\
-  \implies h \cdot f(r) &= r\omega \\
+  V_{\phi} \left( r, 0 \right) &= 0 \nonumber \\
+  0 \cdot f(r) + C &= 0 \nonumber \\
+  \implies C &= 0 \nonumber \\
+  V_{\phi} \left( r, h \right) &= r \omega \nonumber \\
+  \implies h \cdot f(r) &= r\omega \nonumber \\
   \implies f(r) &= \frac{r\omega}{h} \label{eq:fr}
 .\end{align}
-\end{subequations}
 Substituting \Cref{eq:fr} into \Cref{eq:linvel} gives an expression for the tangential velocity $V_{\phi}$
 \begin{equation}\label{eq:vphi}
     V_{\phi} = \frac{r\omega}{h}z
