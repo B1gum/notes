@@ -1,0 +1,55 @@
+\lecture{10}{25. September 2025}{Internal Loading and Stress}
+
+\section{Stress and Strain}
+
+\subsection{Internal Resultant Loadings}
+When one seeks to determine the internal loadings that act within a body a convenient method is to use the method of sections. E.g. for the body shown on \Cref{fig:f10_1} it is necessary to pass an imaginary section through the region where the internal loadings are to be determined.  Doing this the body is separated into two separate bodies each of which a free diagram can be constructed for. 
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.5\linewidth]{./figures/f10_1.png}
+  \caption{Body held in equilibrium by four external forces. }
+  \label{fig:f10_1}
+\end{figure}
+
+It is convenient to split both the force and moment into components as shown on \Cref{fig:f10_2}. Here the force is split into a normal force component $N$, a shear force component $V$, a torque $T$ and a bending moment $M$. 
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.5\linewidth]{./figures/f10_2.png}
+  \caption{Components of force and moment}
+  \label{fig:f10_2}
+\end{figure}
+
+
+\subsection{Stress}
+On \cref{fig:f10_2} the resultant internal force and moment acting at $O$ represents the effects of the distributed loading over the sectioned area. To describe this distribution the concept of stress is often applied. As we know from materials science stress is defined as the limit
+\[ 
+\sigma = \lim_{\Delta A \to 0}\frac{\Delta F}{\Delta A}
+.\]
+Using this we can define a stress component in each of the coordinate directions (assuming $+z$ is upwards), namely a normal stress, 
+\[ 
+\sigma_{z} = \lim_{\Delta A \to 0} \frac{\Delta F_z}{\Delta A}
+,\]
+and two shear stresses
+\begin{align*}
+  \tau_{zx} &= \lim_{\Delta A \to 0} \frac{\Delta F_x}{\Delta A} \\
+  \tau_{zy} &= \lim_{\Delta A \to 0} \frac{\Delta F_y}{\Delta A}
+.\end{align*}
+Here, the subscript $z$ specifies the orientation of a normal vector of the area $\Delta A$. 
+
+
+\subsection{Average Normal Stress in an Axially Loaded Bar}
+We consider the axially loaded bar shown on \Cref{fig:f10_3}.
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.5\linewidth]{./figures/f10_3.png}
+  \caption{Axially loaded bar, deformed axially loaded bar and section of the axially loaded bar.}
+  \label{fig:f10_3}
+\end{figure}
+
+Using the method sections one can quite easily show that the average stress $\sigma$ is given by
+\[ 
+\sigma = \frac{N}{A}
+.\]
+where $N$ is the internal resultant normal force (in this case $N=P$) and $A$ is the cross sectional area. 

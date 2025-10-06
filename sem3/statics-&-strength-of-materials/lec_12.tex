@@ -1,0 +1,30 @@
+\lecture{12}{2. Oktober 2025}{Axially Loaded Members}
+
+\section{Axial Load}
+
+\subsection{Saint-Venant's Principle}
+In short, Saint-Venant's principle predicts that for an applied force $P$ the distortion of a body will be large locally around the applied force but rather small everywhere else.
+
+\subsection{Elastic Dispalcement of an Axially Loaded Member}
+We wish to determine the relative displacement $\delta$ of one end of an axially loaded bar with respect to the other caused by axial loading. We neglect the localized concentrated deformations at the loadings with reference to Saint-Venant's principle. 
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.5\linewidth]{./figures/f12_1.png}
+  \caption{Axially loaded bar and differential element.}
+  \label{fig:f12_1}
+\end{figure}
+
+We consider the bar shown on \Cref{fig:f12_1}. Using the method of sections, we extract a differential element of length $\mathrm{d}x$ and cross sectional area $A(x)$ at position $x$ where the modulus of elasticity is $E(x)$ and the internal axial force is $N(x)$. The stress and strain in the element will then be
+\[ 
+\sigma = \frac{N(x)}{A(x)} \qquad  \epsilon = \frac{\mathrm{d}\delta}{\mathrm{d}x}
+.\]
+From Hooke's law the elongation can then be determined as
+\[ 
+\delta = \int_{0}^{L} \frac{N(x)}{A(x)E(x)}\, \mathrm{d}x
+.\]
+
+If the bar is assumed to have constant cross sectional area, and the material is assumed homogeneous and the external force is applied at each end the elongation is simply
+\[ 
+\delta = \frac{NL}{AE}
+.\]
