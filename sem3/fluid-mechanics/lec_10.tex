@@ -5,7 +5,264 @@
 \subsection{Internal Flow Characteristics}
 
 \subsubsection{Laminar Versus Turbulent Flow}
-The pipe flow regime, i.e. if the flow is turbulent or laminar, is determined by the Reynolds number, briefly mentioned in \autoref{sec:sigdim}, $\mathrm{Re} = \frac{\rho \overline{V} D}{\mu}$. Under normal conditions, the transition to turbulence occurs at roughly $\mathrm{Re} \approx \num{2300} $ for flow in pipes. For water in a $Ø=\qty{1}{in.}$ pipe, this corresponds to an average speed of $V \approx \qty{0,1}{\frac{m}{s}}$. Turbulence occurs when the viscous forces are not able to damp out the random fluctuations in fluid motion. This means that a fluid of higher viscosity (e.g. motor oil compared to water) is able to be flowing at a higher rate before becoming turbulent. On the other hand, high-density fluids will exacerbate the inertial forces due to random fluctuations in motion, and therefore this fluid will become turbulent at a lower flow rate.
+The pipe flow regime, i.e. if the flow is turbulent or laminar, is determined by the Reynolds number, briefly mentioned in \autoref{sec:sigdim}, $\mathrm{Re} = \frac{\rho \overline{V} D}{\mu}$.
+Under normal conditions, the transition to turbulence occurs at roughly $\mathrm{Re} \approx \num{2300} $ for flow in pipes.
+For water in a $\textit{Ø}=\qty{1}{in.}$ pipe, this corresponds to an average speed of $V \approx \qty{0,1}{\frac{m}{s}}$.
+Turbulence occurs when the viscous forces are not able to damp out the random fluctuations in fluid motion.
+This means that a fluid of higher viscosity (e.g. motor oil compared to water) is able to be flowing at a higher rate before becoming turbulent.
+On the other hand, high-density fluids will exacerbate the inertial forces due to random fluctuations in motion, and therefore this fluid will become turbulent at a lower flow rate.
+
 
 \subsubsection{The Entrance Region}
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.5\linewidth]{./figures/f8_1.png}
+  \caption{Flow in the entrance region of a pipe.}
+  \label{fig:f8_1}
+\end{figure}
+
+On \Cref{fig:f8_1} laminar flow in the entrance region of a circular pipe is portrayed.
+The flow has uniform velocity $U_0$ at the pipe entrance.
+Due to the no-slip condition, we know that the velocity along the wall must be zero along the entire length of the pipe.
+Therefore, a boundary layer will develop along the wall.
+As the fluid flows through the pipe the shear force from the pipe walls will slowly lead to this boundary layer expanding until the fully developed velocity profile is reached.
+For incompressible flow, mass conservation requires that as the speed close to the wall is reduced, the speed in the central frictionless region of the pipe must increase to compensate.
+
+A \textit{fully developed flow} is one which does not change velocity profile with distance.
+The distance from the entrance to the point at which the flow is fully developed is termed the \textit{entrance length}.
+
+For laminar flow the entrance length $L$, is a function of Reynolds number,
+\[ 
+\frac{L}{D} \approx \num{0,06} \frac{\rho \overline{V} D}{\mu}
+\]
+where $\overline{V} = \frac{Q}{A}$ is the average velocity.
+If the flow is instead turbulent, the enhanced mixing of fluid layers will lead to the boundary layer growing quicker and therefore lead to a shorter entrance length.
+
+
+\subsection{Fully Developed Laminar Flow Between Infinite Parallel Plates}
+
+\subsubsection{Both Plates Stationary}
+Fluid in high-pressure hydraulic systems, such as automobile brake systems, often leaks through the annular gap between a piston and cylinder, as shown on \Cref{fig:f8_2}.
+For very small gaps this flow field may be modeled as flow between infinite parallel plates.
+To calculate the leakage flow rate, we will first determine the velocity field.
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.35\linewidth]{./figures/f8_2.png}
+  \caption{Piston-cylinder system approximated as infinite parallel plates.}
+  \label{fig:f8_2}
+\end{figure}
+
+We consider the fully developed laminar flow between horizontal infinite plates.
+The plates are separated by a distance $a$ and considered infinite in the $z$-direction with no variation of any fluid property in this direction.
+The flow is also assumes steady and incompressible.
+From the no-slip condition the boundary conditions are
+\begin{align*}
+  y &= 0 &\implies u &=0 \\
+  y &= a &\implies u &=0
+.\end{align*}
+
+Since the flow is fully developed it cannot vary with $x$ and, hence, depends only on $y$, so that $u = u(y)$.
+Furthermore, there will be no component of velocity in the $y$ or $z$ directions, as the flow is fully developed.
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.5\linewidth]{./figures/f8_3.png}
+  \caption{Control volume for analysis of laminar flow between stationary infinite parallel plates.}
+  \label{fig:f8_3}
+\end{figure}
+
+We consider a differential control volume of side $\mathrm{d}V = \mathrm{d}x \, \mathrm{d}y \, \mathrm{d}z$ as shown on \cref{fig:f8_3}.
+To this control volume we apply the momentum equation in the $x$ direction.
+\[ 
+F_{S_x} + F_{B_x} = \frac{\partial }{\partial t} \int_{\mathrm{CV}} u \rho \, \mathrm{d}V + \int_{\mathrm{CS}} u \rho \Vec{V} \cdot \mathrm{d} \Vec{A}
+.\]
+In this $F_{B_x} = 0$ due to the assumed geometry and as the flow is assumed steady the first term on the RHS will also equal zero.
+Hence,
+\[ 
+F_{S_x} = \int_{\mathrm{CS}} u \rho \Vec{V} \cdot \mathrm{d} \Vec{A}
+.\]
+
+For fully developed flow, a basic feature is that the velocity profile is the same at all locations along the flow; hence there is no change in momentum. Therefore the above equation reduces to the simple result,
+\[ 
+F_{S_x} = 0
+.\]
+
+Therefore the next step is to sum up the forces acting on the control volume in the $x$ direction.
+These are the pressure forces on the left and right faces and the shear forces on the top and bottom faces.
+
+If we assume the pressure at the center of the element to be $p$, then the pressure force on the left face is
+\[ 
+\mathrm{d}F_{L} = \left( p - \frac{\mathrm{d}p}{\mathrm{d}x} \frac{\mathrm{d}x}{2} \right) \, \mathrm{d}y \, \mathrm{d}z
+\]
+and the pressure force on the right face is
+\[ 
+\mathrm{d}F_R = - \left( p + \frac{\mathrm{d}p}{\mathrm{d}x} \frac{\mathrm{d}x}{2} \right)\, \mathrm{d}y \, \mathrm{d}z
+.\]
+
+Likewise, if the shear stress at the center of the element is assumed to be $\tau_{yx}$, then the shear force on the bottom face is
+\[ 
+\mathrm{d}F_B = - \left( \tau_{yx} - \frac{\mathrm{d}\tau_{yx}}{\mathrm{d}y} \frac{\mathrm{d}y}{2} \right) \, \mathrm{d}x \, \mathrm{d}z
+\]
+and the shear force on the top face is
+\[ 
+\mathrm{d}F_T = \left( \tau_{yx} + \frac{\mathrm{d}\tau_{yx}}{\mathrm{d}y} \frac{\mathrm{d}y}{2} \right) \, \mathrm{d}x \, \mathrm{d}z
+.\]
+Inserting all of these forces in to the momentum equation from before yields
+\[ 
+\frac{\mathrm{d}p}{\mathrm{d}x} = \frac{\mathrm{d}\tau_{yx}}{\mathrm{d}y} 
+.\]
+This equation states that as the momentum is constant, the pressure force balances the friction force.
+Here the LHS is only a function of $x$ and the $RHS$ is only a function of $y$.
+Hence, the only way for it to be valid for all $x$ and $y$ is if each side is in fact constant:
+\[ 
+\frac{\mathrm{d}p}{\mathrm{d}x} =\frac{\mathrm{d}\tau_{yx}}{\mathrm{d}y} = \mathrm{constant}
+.\]
+Upon integration of this we obtain
+\[ 
+\tau_{yx} = \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right)y + c_1
+\]
+which indicates that the shear stress varies linearly with $y$. 
+For a Newtonian fluid in one dimension the shear stress is also given by
+\[ 
+\tau_{yx} = \mu \frac{\mathrm{d}u}{\mathrm{d}y} 
+\]
+Upon equating these and integrating for $y$ the following expression is reached
+\[ 
+u = \frac{1}{2\mu} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right)y^2 - \frac{1}{2\mu} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right)ay = \frac{a^2}{2\mu} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right) \left( \left( \frac{y}{a} \right)^2 - \left( \frac{y}{a} \right) \right)
+.\]
+This is the velocity profile of the flow.
+
+The shear stress distribution is then
+\[ 
+\tau_{yx} = \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right)y + c_1 = \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right)y - \frac{1}{2} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right)a = a \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right) \left( \frac{y}{a} - \frac{1}{2} \right)
+.\]
+
+The volume flow rate per unit depth is
+\[ 
+\frac{Q}{l} = - \frac{1}{12\mu} \left( \frac{- \Delta p}{L} \right)a^3 = \frac{a^3 \Delta p}{12 \mu L}
+.\]
+
+The average velocity $\overline{V}$ is given by
+\[ 
+\overline{V} = \frac{Q}{A} = - \frac{1}{12\mu} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right) \frac{a^3 l }{la} = - \frac{1}{12\mu} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right)a^2
+.\]
+
+The point of maximum velocity will be at $y = \frac{a}{2}$ where the velocity will be
+\[ 
+u_{y = \frac{a}{2}} = u_{\mathrm{max}} = - \frac{1}{8\mu} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right)a^2 = \frac{3}{2} \overline{V}
+.\]
+
+
+\subsubsection{Upper Plate Moving with Constant Speed}
+The second basic way to generate flow between infinite parallel plates, is to have one plate moving parallel to the either.
+
+In this case the boundary conditions are
+\begin{align*}
+  u &= 0 &\implies y &= 0 \\
+  u &= U &\implies y &=a
+.\end{align*}
+
+In this case the velocity distribution is also given by
+\[ 
+u = \frac{1}{2\mu} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right)y^2 + \frac{c_1}{\mu}y + c_2
+.\]
+Evaluating for $c_1$ and $c_2$ using the boundary conditions yields
+\[ 
+u = \frac{Uy}{a} + \frac{a^2}{2\mu} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right) \left(  \left( \frac{y}{a} \right)^2 - \left( \frac{y}{a} \right) \right)
+.\]
+
+The shear stress distribution will be
+\[ 
+\tau_{yx} = \mu \frac{U}{a} + \frac{a^2}{2} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right) \left( \frac{2y}{a^2} - \frac{1}{a} \right) = \mu \frac{U}{a} + a \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right) \left( \frac{y}{a} - \frac{1}{2} \right)
+.\]
+
+The volume flow rate per unit depth is
+\[ 
+\frac{Q}{l} = \frac{Ua}{2} - \frac{1}{12\mu} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right) a^3
+.\]
+
+The average velocity magnitude $\overline{V}$ is
+\[ 
+\overline{V} = \frac{Q}{A} = \frac{l \left( \frac{Ua}{2} - \frac{1}{12\mu} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right) a^3 \right)}{la} = \frac{U}{2} - \frac{1}{12\mu} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right) a^2
+.\]
+
+The point of maximum velocity will be at
+\[ 
+y = \frac{a}{2} - \frac{\frac{U}{a}}{\left( \frac{1}{\mu} \right) \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right)}
+.\]
+However there is no simple relationship for relating the max flow velocity at this point to the mean velocity in this case.
+
+
+\subsection{Fully Developed Laminar Flow in a Pipe}
+Flow in a pipe is axisymmetric.
+Consequently it is most convenient to work in cylindrical coordinates when describing these.
+
+For a fully developed steady flow, the $x$ component of the momentum equation has been shown above to reduce to
+\[ 
+F_{S_x} = 0
+.\]
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.5\linewidth]{./figures/f8_7.png}
+  \caption{Differential control volume for analysis of fully developed laminar flow in a pipe.}
+  \label{fig:f8_7}
+\end{figure}
+
+We consider the differential control volume shown on \Cref{fig:f8_7}.
+Using the same notion as in the previous section the pressure force on the left face of the control volume is
+\[ 
+\mathrm{d}F_L = p 2\pi r \, \mathrm{d}r
+\]
+and the pressure force on the right end is
+\[ 
+\mathrm{d}F_R = - \left( p + \frac{\mathrm{d}p}{\mathrm{d}x} \, \mathrm{d}x \right) 2\pi r \, \mathrm{d}r
+.\]
+
+The shear force on the inner cylindrical surface of the control volume is
+\[ 
+\mathrm{d}F_I = - \tau_{rx} 2\pi r \, \mathrm{d}x
+\]
+and the shear force on the outer cylindrical surface is
+\[ 
+\mathrm{d}F_O = \left( \tau_{rx} + \frac{\mathrm{d}\tau_{rx}}{\mathrm{d}r} \, \mathrm{d}r  \right) 2 \pi \left( r + \mathrm{d}r \right)\, \mathrm{d}x
+.\]
+
+Substituting all of these into the momentum equation from before leads to
+\[ 
+- \frac{\mathrm{d}p}{\mathrm{d}x} 2\pi r \, \mathrm{d}r \, \mathrm{d}x + \tau_{rx} 2\pi \, \mathrm{d}r \, \mathrm{d}x  + \frac{\mathrm{d}\tau_{rx}}{\mathrm{d}r} 2\pi r \, \mathrm{d}r \, \mathrm{d}x = 0
+.\]
+Dividing this by $2\pi r$ and solving for $\frac{\partial p}{\partial x} $ gives
+\[ 
+  \frac{\partial p}{\partial x} = \frac{\tau_{rx}}{r} + \frac{\mathrm{d}\tau_{rx}}{\mathrm{d}r} = \frac{1}{r} \frac{\mathrm{d} \left( r \tau_{rx} \right)}{\mathrm{d}r} 
+.\]
+Here the same argument as we used for the parallel plates of the LHS only depending on $x$ and the RHS only depending on $r$ meaning both must be constant:
+\[ 
+\frac{1}{r} \frac{\mathrm{d} \left( r \tau_{rx} \right)}{\mathrm{d}r} = \frac{\mathrm{d}p}{\mathrm{d}x} = \mathrm{constant} \qquad \text{or} \qquad \frac{\mathrm{d}\left( r \tau_{rx} \right)}{\mathrm{d}r}  = r \frac{\mathrm{d}p}{\mathrm{d}x} 
+.\]
+This shows that in a constant diameter pipe, the pressure drops uniformly along the pipe length. Integrating this and employing the boundary conditions yields
+\[ 
+u = - \frac{R^2}{4\mu} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right) \left( 1 - \left( \frac{r}{R} \right)^2 \right)
+.\]
+
+The shear stress distribution is
+\[ 
+  \tau_{rx} = \mu \frac{\mathrm{d}u}{\mathrm{d}r}  = \frac{r}{2} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right)
+.\]
+
+The volume flow rate is
+\[ 
+Q = -\frac{\pi R^{4}}{8\mu} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right) = \frac{\pi \Delta p R^{4}}{8 \mu L}
+.\]
+
+The average velocity is
+\[ 
+\overline{V} = \frac{Q}{A} = \frac{Q}{\pi R^2} = - \frac{R^2}{8 \mu} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right)
+.\]
+
+The point of maximum velocity will be directly at the center of the pipe where the velocity will be
+\[ 
+u_{r = 0} = u_{\mathrm{max}} = - \frac{R^2}{4\mu} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right) = 2 \overline{V}
+.\]
 
