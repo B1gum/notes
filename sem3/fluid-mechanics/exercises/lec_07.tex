@@ -7,16 +7,123 @@
   Calculate the air speed in the wind-tunnel test section.
 \end{problem}
 
+\begin{assumptions}
+  \item Steady, incompressible, inviscid, and uniform flow
+  \item The air behaves as an ideal gas
+\end{assumptions}
+
+\begin{derivation}
+  The Bernoulli equation states that
+  \[ 
+  \frac{p}{\rho} + \frac{V^2}{2} + gz = \mathrm{constant}
+  .\]
+  In this case we assume only horizontal flow, hence $gz = 0$, furthermore, the air is assumed to be stationary at the entrance, hence $V_1 = 0$. 
+  Therefore
+  \[ 
+  \frac{p_1}{\rho} = \frac{p_2}{\rho} + \frac{V_2^2}{2} \implies V_2 = \sqrt{2 \cdot \frac{p_1 - p_2}{\rho}}
+  .\]
+  The manometer reading corresponds to
+  \[ 
+  p_1 - p_2 = \rho_{\mathrm{H}_2 \mathrm{O}} gh
+  .\]
+  Hence,
+  \[ 
+  V_1 = \sqrt{\frac{2 \rho_{\mathrm{H_2 \mathrm{O}}} gh}{\rho}}
+  .\]
+  The density of the air can be found using the ideal gas law
+  \[ 
+  \rho = \frac{p}{RT} = \frac{\qty{100}{\kPa}}{\qty{287}{\joule\per\kg\per\K} \cdot \qty{298}{\K} } = \qty{1,168}{\kg\per\cubic\m} 
+  .\]
+  And therefore the speed in the wind-tunnel can be calculated as
+  \[ 
+  V_1 = \sqrt{\frac{2 \cdot \qty{1000}{\kg\per\cubic\m} \cdot \qty{9,81}{\m\per\square\s} \cdot \qty{45}{\mm} }{\qty{1,168}{\kg\per\cubic\meter} }} \qty{27,47}{\m\per\s} 
+  .\]
+  
+\end{derivation}
+
+\finalresult{V_1 = \qty{27,47}{\m\per\s}}
+
 \begin{problem}{6.9}
   In a pipe \qty{0,3}{\m} in diameter, \qty{0,3}{\cubic\meter\per\s} of water are pumped up a hill.
   On the hilltop (elevation \num{48}), the line reduces to \qty{0,2}{\m} diameter.
   If the pump maintains a pressure of \qty{690}{kPa} at elevation \num{21}, calculate the pressure in the pipe on the hilltop.
 \end{problem}
 
+\begin{assumptions}
+  \item Elevation 48 and 21 correspond to $z = \qty{48}{\m}$ and $z = \qty{21}{\m}$ respectively
+  \item Steady, incompressible, inviscid, and uniform flow
+\end{assumptions}
+
+\begin{derivation}
+  From continuity the flow rate of water must be equal at all sections of the pipe.
+  Therefore we can employ the continuity equation as
+  \[ 
+  Q = A_1 V_1 = A_2 V_2
+  .\]
+  Hence the flow speeds at both elevations can be found as
+  \begin{align*}
+    V_1 &= \frac{Q}{A_1} = \frac{\qty{0,3}{\cubic\m\per\s} }{\pi \cdot \frac{\left( \qty{0,3}{\m}  \right)^2}{4}} = \qty{4,24}{\m\per\s}  \\
+    V_2 &= \frac{Q}{A_2} = \frac{\qty{0,3}{\cubic\m\per\s} }{\pi \cdot \frac{\left( \qty{0,2}{\m}  \right)^2}{4}} = \qty{9,55}{\m\per\s} 
+  .\end{align*}
+  Now we can use the Bernoulli equation
+  \begin{align*}
+    \frac{p_2}{\rho} + \frac{V_2^2}{2} + g z_2 &= \frac{p_1}{\rho} + \frac{V_1^2}{2} + g z_1 \\
+    p_2 &= p_1 + \rho\frac{V_1^2 - V_2^2}{2} + \rho g \left( z_1 - z_2 \right) \\
+        &= \qty{690}{\kPa} + \qty{1000}{\kg\per\cubic\m} \cdot \frac{\left( \qty{4,24}{\m\per\s}  \right)^2 - \left( \qty{9,55}{\m\per\s}  \right)^2}{2} + \qty{1000}{\kg\per\cubic\m} \cdot \qty{9,81}{\m\per\square\s} \cdot \left( \qty{21}{\m} - \qty{48}{\m}  \right) \\
+        &= \qty{389}{\kPa} 
+  .\end{align*}
+\end{derivation}
+
+\finalresult{p_2 = \qty{389}{\kPa} }
+
 \begin{problem}{6.2}
   The velocity field for a two-dimensional downward flow of water against a plate is given by $\Vec{V} = A x \hat{i} - A y \hat{j}$.
   Plot the pressure gradient along the centerline and determine the pressure gradient at $(x,y) = (0,2), (0,0)$, and $(2,0)$.
 \end{problem}
+
+\begin{assumptions}
+  \item Frictionless and incompressible flow
+\end{assumptions}
+
+\begin{derivation}
+  To find the pressure gradient we use Euler's equation
+  \[ 
+    \rho \left( \Vec{V} \cdot \nabla  \right) \Vec{V} = \rho \Vec{g} - \nabla p
+  .\]
+  The particle acceleration is defined as
+  \[ 
+  \Vec{a}_p = \left( \Vec{V} \cdot \nabla  \right) \Vec{V}
+  \]
+  which on scalar form is
+  \begin{align*}
+    a_{x_p} &= u \frac{\partial u}{\partial x} + v \frac{\partial u}{\partial y} + \frac{\partial u}{\partial t}  \\
+    a_{y_p} &= u \frac{\partial v}{\partial x} + v \frac{\partial v}{\partial y} + \frac{\partial v}{\partial t} 
+  .\end{align*}
+  Thus
+  \begin{align*}
+    a_{x_p} &= A^2x \\
+    a_{y_p} &= A^2 y
+  .\end{align*}
+  Hence, the total acceleration is
+  \[ 
+  \Vec{a}_p = A^2x + A^2 y
+  .\]
+  Now we can solve the Euler equation for the pressure gradient
+  \[ 
+  \nabla  p = - \rho \Vec{g} - \rho \left( A^2 x + A^2y \right)
+  .\]
+  As gravity is in the $y$-direction this can also be written as
+  \[ 
+  \nabla p = - \rho A^2 x \hat{i} - \rho \left( g + A^2 y \right) \hat{j}
+  .\]
+  The pressure gradient at the three points is therefore
+  \finalresult{
+  \begin{aligned}
+    \nabla p(0,2) &= - \rho \left( g + 2 A^2 \right) \hat{j} \\
+    \nabla p (0,0)  &= - \rho g \hat{j} \\
+    \nabla p (2,0) &= - 2 \rho A^2 \hat{i}
+  .\end{aligned}}
+\end{derivation}  
 
 \begin{problem}{6.18}
   Consider frictionless, incompressible flow of air over the wing of an airplane flying at \qty{200}{\km\per\hour}.
@@ -24,3 +131,25 @@
   At a certain point in the flow, the pressure is \qty{60}{\kPa}.
   Calculate the speed of the air relative to the wing at this point and the absolute air speed.
 \end{problem}
+
+\begin{assumptions}
+  \item Incompressible, inviscid, steady, and horizontal flow along a streamline
+\end{assumptions}
+
+\begin{derivation}
+  We start by finding the density of the air at the given conditions
+  \[ 
+  \rho = \frac{p}{RT} = \frac{\qty{65}{\kPa} }{\qty{287}{\joule\per\kg\per\K} \cdot \qty{263}{\K} } = \qty{0,861}{\kg\per\cubic\m} 
+  .\]
+  Now we can apply the Bernoulli equation as
+  \begin{align*}
+    \frac{p_1}{\rho} + \frac{V_1^2}{2} &= \frac{p_2}{\rho} + \frac{V_2^2}{2} \\
+    V_2 &= \sqrt{V_1^2 + 2\cdot \frac{p_1 - p_2}{\rho}} \\
+    &= \sqrt{\left( \qty{200}{\km\per\hour}  \right)^2 + 2 \cdot \frac{\qty{65}{\kPa} - \qty{60}{\kPa}}{\qty{0,861}{\kg\per\cubic\m} }} \\
+    &= \qty{121}{\m\per\s} 
+  .\end{align*}
+  This corresponds to an absolute velocity of
+\end{derivation}
+  \finalresult{
+  V_{2 \mathrm{abs}} = V_2 - V_1 = \qty{65,44}{\m\per\s} 
+  }
