@@ -5,14 +5,146 @@
   Calculate the shear stress at the pipe wall and within the fluid \qty{75}{\mm} from the pipe wall.
 \end{problem}
 
+\begin{assumptions}
+  \item Steady and incompressible flow
+\end{assumptions}
+
+\begin{derivation}
+  As the velocity profile is parabolic the flow is fully developed.
+  The general formula for the velocity distribution of a fully developed flow in a pipe is
+  \[ 
+  u = - \frac{R^2}{4 \mu} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right) \left( 1 - \left( \frac{r}{R} \right)^2 \right)
+  .\]
+  In this case the diameter is $D = \qty{0,3}{\m}$ meaning the radius is $R = \frac{D}{2} = \qty{0,15}{\m}$, the flow speed us $u = \qty{4,5}{\m\per\s} $ and the viscosity is $\qty{1}{\Pa.\s}$.
+  At the center of the pipe $r = 0$ we have
+  \[ 
+  u = - \frac{\left( \qty{0,15}{\m}  \right)^2}{4 \cdot \qty{1}{\Pa.\s}} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right)
+  .\]
+  Here we can solve for $\frac{\mathrm{d}p}{\mathrm{d}x} $ to get
+  \begin{align*}
+  \frac{\mathrm{d}p}{\mathrm{d}x} &= - -\frac{\qty{4,5}{\m\per\s} \cdot 4 \cdot \qty{1}{\Pa.\s}}{\left( \qty{0,15}{\m}  \right)^2} \\
+      &= \qty{-800}{\Pa\per\m}
+  .\end{align*}
+  The shear stress distribution in a pipe is
+  \[ 
+    \tau_{rx} = \frac{r}{2} \left( \frac{\mathrm{d}p}{\mathrm{d}x}  \right)
+  .\]
+  At the pipe wall this is
+  \[ 
+  \tau_{\mathrm{wall}} = \frac{R}{2} \cdot \frac{\mathrm{d}p}{\mathrm{d}x} = \frac{\qty{0,15}{\m} }{2} \cdot \qty{800}{\Pa\per\m} = \qty{60}{\Pa} 
+  .\]
+  \qty{75}{\mm} from the pipe wall this is
+  \[ 
+  \tau_{\qty{75}{\mm}} = \frac{\left( \qty{0,15}{\m} - \qty{75}{\mm} \right)}{2} \cdot \qty{800}{\Pa\per\m} = \qty{30}{\Pa} 
+  .\]
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  \tau_{\mathrm{wall}} &= \qty{60}{\Pa} \\
+  \tau_{\qty{75}{\mm} } &= \qty{30}{\Pa}
+.\end{aligned}}
+
+
 \begin{problem}{8.13}
   When a horizontal laminar flow occurs between two parallel plates of infinite extent \qty{0,3}{\m} apart, the velocity at the midpoint between the plates is \qty{2,7}{\m\per\s}. Calculate (a) the flow rate through a section \qty{0,9}{\m} wide, (b) the velocity gradient at the surface of the plate, (c) the wall shearing stress if the fluid has viscosity \qty{1,44}{\Pa.\s}, (d) the pressure drop in each \qty{30}{\m} along the flow. 
 \end{problem}
 
+\begin{assumptions}
+  \item Steady, incompressible, and fully-established flow
+\end{assumptions}
+
+\begin{derivation}
+  In this case we must use the velocity distribution for flow between infinite plates,
+  \[ 
+  u = \frac{a^2}{2\mu} \frac{\mathrm{d}p}{\mathrm{d}x} \left( \left( \frac{y}{a} \right)^2 - \frac{y}{a} \right)
+  .\]
+  In this particular case $a = \qty{0,3}{\m}$.
+  For the velocity at the midpoint ($y = \qty{0,15}{\m}$) we get
+  \[ 
+  V_c = \frac{\left( \qty{0,3}{\m}  \right)^2}{2 \cdot \mu} \frac{\mathrm{d}p}{\mathrm{d}x}  \left( \left( \frac{\qty{0,15}{\m} }{\qty{0,3}{\m} } \right)^2 - \left( \frac{\qty{0,15}{\m} }{\qty{0,30}{\m} } \right) \right) = \qty{2,7}{\m\per\s} 
+  .\]
+  And therefore the pressure gradient can be found as
+  \[ 
+    \frac{1}{2\mu}\frac{\mathrm{d}p}{\mathrm{d}x} = \frac{\qty{2,7}{\m\per\s}}{\left( \qty{0,3}{\m}  \right)^2 \cdot \left( \left( \frac{\qty{0,15}{\m} }{\qty{0,3}{\m} } \right)^2 - \frac{\qty{0,15}{\m} }{\qty{0,30}{\m} } \right)} = \qty{-120}{\per\m\per\s} 
+  .\]
+  The average velocity is given by
+  \[ 
+  \overline{V} = - \frac{1}{12\mu} \frac{\mathrm{d}p}{\mathrm{d}x} a^2
+  .\]
+  Inputting known values yields
+  \[ 
+  \overline{V} = \qty{120}{\per\m\per\s} \cdot \frac{1}{6} \cdot \left( \qty{0,3}{\m}  \right)^2 = \qty{1,8}{\m\per\s} 
+  .\]
+  Which gives a volumetric flow rate of
+  \[ 
+  Q = A \cdot \overline{V} = \qty{0,3}{\m} \cdot \qty{0,9}{\m} \cdot \qty{1,8}{\m\per\s}  = \qty{0,486}{\cubic\m\per\s} 
+  .\]
+  
+  The velocity gradient is
+  \[ 
+  \frac{\mathrm{d}u}{\mathrm{d}y} = \frac{a^2}{2\mu} \frac{\mathrm{d}p}{\mathrm{d}x} \left( \frac{2y}{a^2} - \frac{1}{a} \right) = \left( \qty{0,3}{\m}  \right)^2 \cdot \left( \qty{-120}{\per\m\per\s} \right) \cdot \left( 0 - \frac{1}{\qty{0,30}{\m} } \right) = \qty{36}{\per\s} 
+  .\]
+
+  The shear stress at the wall is
+  \[ 
+  \tau_{yx} = \mu \frac{\mathrm{d}u}{\mathrm{d}y} = \qty{1,44}{\Pa.\s} \cdot \qty{36}{\per\s} = \qty{51,84}{\Pa} 
+  .\]
+
+  For the pressure drop per \qty{30}{\m} we know that
+  \begin{align*}
+    \frac{1}{2\mu} \frac{\mathrm{d}p}{\mathrm{d}x} &= \qty{-120}{\per\m\per\s}  \\
+    \frac{\mathrm{d}p}{\mathrm{d}x} &= \qty{-120}{\per\m\per\s} \cdot 2 \cdot \qty{1,44}{\Pa.\s}  \\
+    &= \qty{-345,6}{\Pa\per\m}  \\
+  .\end{align*}
+  Now entering the length $\Delta x = \qty{30}{\m} $ we get
+  \[ 
+  \Delta p_{\qty{30}{\m} } = \frac{\mathrm{d}p}{\mathrm{d}x} \cdot (-\Delta x) = \qty{-345,6}{\Pa\per\m} \cdot \qty{-30}{\m} = \qty{10,368}{\kPa} 
+  .\]
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  Q_{\qty{0,9}{\m} } &= \qty{0,486}{\cubic\m\per\s}  \\
+  \left( \frac{\mathrm{d}u}{\mathrm{d}y}  \right)_{\mathrm{wall}} &= \qty{36}{\per\s} \\
+  \tau_{\text{wall}} &= \qty{51,8}{\Pa}  \\
+  \Delta p_{\qty{30}{\m} } &= \qty{10,4}{\kPa} 
+.\end{aligned}
+}
+
 \begin{problemwithimage}{p10_1}{8.6}
   A fully developed and laminar flow of oil occurs between parallel plates.
-  The pressure gradient creating the flow is 1\:25 \, \unit{\kPa\per\m} of length and the channel half-width is \qty{1,5}{\mm}.
+  The pressure gradient creating the flow is \qty{1,25}{\kPa\per\m} of length and the channel half-width is \qty{1,5}{\mm}.
   Calculate the magnitude and length direction of the wall shear stress at the upper plate surface.
   Find the volume flow rate through the channel.
   The viscosity is \qty{0,50}{\N.\s\per\square\m}. 
 \end{problemwithimage}
+
+\begin{derivation}
+  The basic velocity distribution is
+  \[ 
+  u = - \frac{a^2}{2\mu} \frac{\mathrm{d}p}{\mathrm{d}x} \left( 1 - \left( \frac{y}{a} \right)^2 \right)
+  .\]
+  This corresponds to a velocity gradient of
+  \[ 
+  \frac{\mathrm{d}u}{\mathrm{d}y} = - \frac{a^2}{2\mu} \frac{\mathrm{d}p}{\mathrm{d}x} \left( \frac{2y}{a^2} \right)
+  .\]
+  Now the shear stress distribution can be found as
+  \[ 
+  \tau_{yx} = \mu \frac{\mathrm{d}u}{\mathrm{d}y} = - \frac{a^2}{2} \frac{\mathrm{d}p}{\mathrm{d}x} \left( - \frac{2y}{a^2} \right) = -y \frac{\mathrm{d}p}{\mathrm{d}x} 
+  .\]
+  At the outer edge where $y = h$ this becomes
+  \[ 
+  \tau_{yx} = -h \frac{\mathrm{d}p}{\mathrm{d}x} = -\qty{1,5}{\mm} \cdot \qty{1,25}{\kPa\per\m} = \qty{-1,88}{\Pa}
+  .\]
+  The volume flow rate is
+  \[ 
+  Q = \int u \, \mathrm{d}A = \int_{-h}^{h} u \cdot b \, \mathrm{d}y = -\frac{b h^2}{2\mu} \frac{\mathrm{d}p}{\mathrm{d}x} \cdot \int_{-h}^{h} 1 - \left( \frac{y}{h} \right)^2 \, \mathrm{d}y  = - \frac{2 h^3 \cdot b}{3\mu} \frac{\mathrm{d}p}{\mathrm{d}x} 
+  .\] 
+  Now we can solve for the flow rate per unit depth $\frac{Q}{b}$ to get
+  \[ 
+  \frac{Q}{b} = - \frac{2}{3} \frac{h^3}{\mu} \frac{\mathrm{d}p}{\mathrm{d}x} = - \frac{2}{3} \cdot \left( \qty{1,5}{\mm}  \right)^3 \cdot \frac{1}{\qty{0,50}{\N\s\per\square\m}} \cdot \qty{1,25}{\kPa\per\m} = \qty{-5,6}{\square\mm\per\s} 
+  .\]
+\end{derivation}
+
+\finalresult{\frac{Q}{b} = \qty{-5,6e-6}{\square\m\per\s}}
