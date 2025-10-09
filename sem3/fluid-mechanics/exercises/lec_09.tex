@@ -6,14 +6,231 @@
   Assume that the volume flow depends on the upstream depth, channel width, and gravity to find the non-dimensional parameters for this situation and determine the dependency of flow rate on the other variables.
 \end{problem}
 
+\begin{assumptions}
+  \item The flow rate depends on the upstream depth, channel width, and gravity.
+\end{assumptions}
+
+\begin{derivation}
+  To solve this problem we will utilize the Buckingham-Pi theorem.
+  We let $Q$ denote the volumetric flow rate, $g$ denote gravity, $b$ denote the channel width and $h$ the upstream depth, corresponding to $n = 4$ parameters.
+  We let $L$ and $t$ be our fundamental dimensions and we therefore have $r = 2$ fundamental dimensions.
+  Expressing our 4 parameters based on our two fundamental dimensions we get
+  \begin{align*}
+    Q &\to \frac{L^3}{t}, & g &\to \frac{L}{t^2}, & b &\to L, & h &\to L
+  .\end{align*}
+  Here we select $g$ and $h$ as our repeating parameters, giving us $m = 2$ repeating parameters.
+  We will have $n - m = 2$ dimensionless groups.
+  Setting up dimensional equations, we obtain
+  \[ 
+  \Pi_1 = Q \cdot h^{a} \cdot g^{b} \qquad \implies \qquad L^{0} \cdot t^{0} = \frac{L^3}{t} \cdot L^{a} \cdot \left( \frac{L}{t^2} \right)^{b}
+  .\]
+  Now we can sum the exponents to get
+  \begin{align*}
+    0 &= 3 + a + b \\
+    0 &= -1 - 2b \\
+    \implies b &= - \frac{1}{2} \\
+    \implies a &= - \frac{5}{2}
+  .\end{align*}
+  Which corresponds to
+  \[ 
+  \Pi_1 = Q \cdot h^{-\frac{5}{2}} \cdot g^{-\frac{1}{2}} = \frac{Q}{h^2 \cdot \sqrt{gh}} 
+  .\]
+  We can verify that this is a correct dimensionless group as
+  \[ 
+  \left( \frac{L^3}{t} \right) \cdot \left( \frac{1}{L} \right)^2 \cdot \left( \frac{t}{L} \right) = 1
+  .\]
+  For our second dimensionless group we get
+  \[ 
+  \Pi_2 = b \cdot h^{a} \cdot g^{b} \qquad \implies \qquad L^{0} \cdot t^{0} = L \cdot L^{a} \cdot \left( \frac{L}{t^2} \right)b
+  .\]
+  Summing the exponents yields
+  \begin{align*}
+    0 &= 1 + a + b \\
+    0 &= -2b \\
+    \implies b &= 0 \\
+    \implies a &= -1
+  .\end{align*}
+  Which corresponds to
+  \[ 
+  \Pi_2 = b \cdot h^{-1} \cdot g^{0} = \frac{b}{h}
+  .\]
+  And we can verify this as
+  \[ 
+  L \cdot \frac{1}{L} = 1
+  .\]
+  The functional relationship is $\Pi_1 = f(\Pi_2)$, or
+  \[ 
+    \frac{Q}{h^2 \cdot \sqrt{gh}} = f \left( \frac{b}{h} \right)
+  .\]
+  Solving for the flow rate gives
+\end{derivation}
+
+\finalresult{Q = h^2 \sqrt{gh} \cdot f \left( \frac{b}{h} \right)}
+
 \begin{problemwithimage}[0.25\linewidth]{p9_1}{7.14}
   A ball is suspended in an air jet in a stable position as shown on the figure.
   Experiments show that the equilibrium height of the ball is found to depend on the ball diameter and weight, jet diameter and velocity, and the air density and viscosity.
   Determine the dimensionless parameters that characterize this experiment.
 \end{problemwithimage}
 
+\begin{assumptions}
+  \item The equilibrium height of the ball depends on the ball diameter and weight, the jet diameter and velocity, and the air density and viscosity.
+\end{assumptions}
+
+\begin{derivation}
+  We will once again employ the Buckingham-Pi theorem.
+  We let $h$ denote the equilibrium height, $d$ denote the ball diameter, $W$ denote the ball weight, $D$ denote the jet diameter $V$ the jet velocity, $\rho$ the air density and $\mu$ the air viscosity.
+  This corresponds to $n = 7$ parameters.
+  We choose mass $M$, length $L$ and time $t$ as our fundamental dimensions ($r = 3$) and get
+  \begin{align*}
+    h &\to L, & d &\to L, & W &\to \frac{M \cdot L}{t^2}, & D &\to L, & V &\to \frac{L}{t}, & \rho &\to \frac{M}{L^3}, & \mu &\to \frac{M}{L \cdot t} 
+  .\end{align*}
+  We choose $\rho$ $V$ and $d$ as our repeating parameters giving us $m = 3$. 
+  We will have $n - m = 4$ dimensionless groups.
+  Setting up the first dimensional equation we obtain
+  \[ 
+  \Pi_1 = h \cdot \rho^{a} \cdot V^{b} \cdot d ^{c} \qquad \implies \qquad L^{0} \cdot M^{0} \cdot t ^{0} = L \cdot \left( \frac{M}{L^3} \right)^{a} \cdot \left( \frac{L}{t} \right)^{b} \cdot L^{c}
+  .\]
+  Summing the exponents gives
+  \begin{align*}
+    0 &= 1 - 3a + b + c \\
+    0 &= a \\
+    0 &= -b \\
+    \implies c &= -1
+  .\end{align*}
+  Which corresponds to
+  \[ 
+  \Pi_1 = \frac{h}{d}
+  .\]
+  Which can be verified as
+  \[ 
+  L \cdot \frac{1}{L} = 1
+  .\]
+  For the second dimensional equation we obtain
+  \[ 
+  \Pi_2 = D \cdot \rho^a \cdot V^{b} \cdot d ^{c} \qquad \implies \qquad L^{0} \cdot M^{0} \cdot t ^{0} = L \cdot \left( \frac{M}{L^3} \right)^{a} \cdot \left( \frac{L}{t} \right)^{b} \cdot L^{c}
+  .\]
+  This is the same system as before and the exponents will therefore be the same resulting in
+  \[ 
+  \Pi_2 = \frac{D}{d}
+  .\]
+  For the third dimensional equation we obtain
+  \[ 
+  \Pi_3 = W \cdot \rho^a \cdot V^{b} \cdot d ^{c} \qquad \implies \qquad L^{0} \cdot M^{0} \cdot t ^{0} = \frac{M \cdot L}{t^2} \cdot \left( \frac{M}{L^3} \right)^{a} \cdot \left( \frac{L}{t} \right)^{b} \cdot L^{c}
+  .\]
+  Summing exponents gives
+  \begin{align*}
+    0 &= 1 - 3a + b + c \\
+    0 &= 1 + a \\
+    0 &= -2 - b \\
+    \implies a &= -1 \\
+    b &= -2 \\
+    c &= -2
+  .\end{align*}
+  Which corresponds to
+  \[ 
+  \Pi_3 = \frac{W}{\rho \cdot V^2 \cdot d^2}
+  .\]
+  And the fourth dimensional equation gives
+  \[ 
+  \Pi_4 = \mu \cdot \rho^a \cdot V^{b} \cdot d ^{c} \qquad \implies \qquad L^{0} \cdot M^{0} \cdot t ^{0} = \frac{M \cdot L}{t} \cdot \left( \frac{M}{L^3} \right)^{a} \cdot \left( \frac{L}{t} \right)^{b} \cdot L^{c}
+  .\]
+  Summing exponents gives
+  \begin{align*}
+    0 &= 1 - 3a + b + c \\
+    0 &= 1 + a \\
+    0 &= -1 - b \\
+    \implies a &= -1 \\
+    b &= -1 \\
+    c &= -1
+  .\end{align*}
+  Which corresponds to
+  \[ 
+  \Pi_4 = \frac{\mu}{\rho \cdot V\cdot d}
+  .\]
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  \Pi_1 &= \frac{h}{d}, \\
+  \Pi_2 &= \frac{D}{d}, \\
+  \Pi_3 &= \frac{W}{\rho \cdot V^2 \cdot d^2}, \\
+  \Pi_4 &= \frac{\mu}{\rho \cdot V \cdot d}
+.\end{aligned}}
+
 \begin{problem}{7.18}
   There are various applications such as freezing of food, combustion of small particles, or some chemical reactions in which a fluid flows through a matrix of particles, called a fluidized bed.
-  The fluid pressure drop is a function of the diameter of the particles $d$, the flow length of the bed $L$, the fluid velocity $V$, fluid density $\rho$m and fluid viscosity $\mu$.
+  The fluid pressure drop is a function of the diameter of the particles $d$, the flow length of the bed $L$, the fluid velocity $V$, fluid density $\rho$, and fluid viscosity $\mu$.
   Use dimensional analysis to find the functional dependence of pressure drop on the other variables.
 \end{problem}
+
+\begin{assumptions}
+  \item The fluid pressure drop depends on the diameter of the particles, the flow length, the fluid velocity, the fluid density and the fluid viscosity
+\end{assumptions}
+
+\begin{derivation}
+  We let the fluid pressure drop be termed $\Delta p$ and in total we have $n = 6$ parameters.
+  We choose mass $M$, length $L$ and time $t$ as our fundamental dimensions corresponding to $r = 3$.
+  Our parameters expressed in terms of these are
+  \begin{align*}
+    \Delta p &\to \frac{M}{L \cdot t^2}, & d &\to L, & L &\to L, & V &\to \frac{L}{t}, & \rho &\to \frac{M}{L^3}, & \mu &\to \frac{M}{L \cdot t}
+  .\end{align*}
+  We choose $L$, $V$, and $\rho$ as our repeating parameters giving $m = 3$.
+  This requires $n - m = 3$ dimensionless groups.
+  Setting up the first of these gives
+  \[ 
+    \Pi_1 = \Delta p \cdot L^{a} \cdot V^{b} \cdot \rho^{c} \qquad \implies \qquad L^{0} M ^{0} t ^{0} = \frac{M}{L \cdot t^2} \cdot L^{a} \cdot \left( \frac{L}{t} \right)^{b} \cdot \left( \frac{M}{L^3} \right)^{c}
+  .\]
+  Summing the exponents gives
+  \begin{align*}
+    0 &= -1 + a + b - 3c \\
+    0 &= 1 + c \\
+    0 &= -2 - b \\
+    \implies c &= -1 \\
+    b &= -2 \\
+    a &= 0
+  .\end{align*}
+  This corresponds to
+  \[ 
+  \Pi_1 = \frac{\Delta p}{V^2 \rho}
+  .\]
+  The second dimensionless group becomes
+  \[ 
+  \Pi_2 = d \cdot L^{a} \cdot V^{b} \cdot \rho^{c} \qquad \implies \qquad L^{0} M^{0} t ^{0} = L \cdot L^{a} \cdot \left( \frac{L}{t} \right)^{b} \cdot \left( \frac{M}{L^3} \right)^{c}
+  .\]
+  Summing exponents gives
+  \begin{align*}
+    0 &= 1 + a + b - 3c \\
+    0 &= c \\
+    0 &= -b \\
+    \implies a &= -1
+  .\end{align*}
+  Which corresponds to
+  \[ 
+  \Pi_2 = \frac{d}{L}
+  .\]
+  The third dimensionless group is
+  \[ 
+  \Pi_3 = \mu \cdot L^{a} \cdot V^{b} \cdot \rho^{c} \qquad \implies \qquad L^{0}M^{0} t ^{0} = \frac{M}{L \cdot t} \cdot L^{a} \cdot \left( \frac{L}{t} \right)^{b} \cdot \left( \frac{M}{L^3} \right)^{c}
+  .\]
+  Summing exponents gives
+  \begin{align*}
+    0 &= -1 + a + b - 3c \\
+    0 &= 1 + c \\
+    0 &= -1 - b \\
+    \implies b &= -1 \\
+    c &= -1 \\
+    a &= -1
+  .\end{align*}
+  Which corresponds to
+  \[ 
+  \Pi_3 = \frac{\mu}{L \cdot V\cdot \rho}
+  .\]
+  The functional relationship is therefore
+  \[ 
+  \frac{\Delta p}{\rho V^2} = f \left( \frac{d}{L}, \frac{\mu}{L \cdot V \cdot \rho} \right)
+  .\]
+  Here $\frac{\Delta p}{\rho V^2}$ is the pressure coefficient and $\frac{\mu}{L \cdot V \cdot \rho} = \frac{1}{\mathrm{Re}}$.
+\end{derivation}
+
+\finalresult{\frac{\Delta p}{\rho V^2} = f \left( \frac{d}{L}, \frac{\mu}{L \cdot V \cdot \rho} \right)}
