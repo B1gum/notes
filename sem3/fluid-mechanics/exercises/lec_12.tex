@@ -5,15 +5,98 @@
   Calculate the applied pressure difference.
 \end{problemwithimage}
 
+\begin{assumptions}
+  \item Incompressible and static liquid.
+\end{assumptions}
+
+\begin{derivation}
+  To find the pressure difference in the two-fluid manometer we will employ the hydrostatic equation with $z$ being vertically downwards,
+  \[ 
+  \frac{\mathrm{d}p}{\mathrm{d}z} = \rho g
+  .\]
+  We let $d$ denote the vertical distance from point 1 to the water level below point 2.
+  The pressure contribution from the distance $d$ at either side will cancel out and we therefore need not consider this distance.
+  Then, moving from point 1 to point 2 using the hydrostatic equation yields
+  \[ 
+  p_1 + \rho_{\mathrm{w}} \cdot g \cdot l - \rho_{\mathrm{ct}} \cdot g \cdot l = p_2
+.\]
+  Solving for the pressure difference $\Delta p = p_2 - p_1$ we get
+  \[ 
+  \Delta p = \rho_{\mathrm{w}} \cdot g \cdot l - \rho_{\mathrm{ct}} \cdot g \cdot l = \left( \rho_{\mathrm{w}} - \rho_{\mathrm{ct}} \right) gl
+  .\]
+  Inputting the different quantities yields
+  \[ 
+  \Delta p = \left( \qty{1000}{\kg\per\cubic\m} - \qty{1590}{\kg\per\cubic\m} \right) \cdot \qty{9,81}{\m\per\s\squared} \cdot \qty{10,2e-3}{\m} = \qty{-59,1}{\Pa} 
+  .\]
+  Therefore the pressure at point 2 will be \qty{59,1}{\Pa} lower than that at point 1.
+\end{derivation}
+
+\finalresult{\Delta p = \qty{-59,1}{\Pa} }
+
 
 \begin{problemwithimage}{p12_2}{4.10}
   Find $V$ for this mushroom cap on a pipeline.
 \end{problemwithimage}
 
+\begin{assumptions}
+  \item Steady and incompressible flow
+\end{assumptions}
+
+\begin{derivation}
+  The continuity equation for steady flow is
+  \[ 
+    0 = \int_{\mathrm{CS}} \rho \Vec{V} \cdot \, \mathrm{d} \Vec{A}
+  .\]
+  Since the density is constant the flow rate $Q = V \cdot A$ is constant.
+  Hence,
+  \[
+    Q_{\mathrm{in}} = Q_{\mathrm{out}}
+  .\]
+  The flow rate out of the cap can also be written as
+  \[ 
+  Q_{\mathrm{out}} = V \cdot \cos \ang{45} \cdot A_{\mathrm{out}}
+.\]
+  Combining these yields
+  \begin{align*}
+    Q_{\mathrm{in}} &= V \cdot \cos \ang{45} \cdot A_{\mathrm{out}} \\
+    V &= \frac{Q_{\mathrm{in}}}{\cos \ang{45} \cdot A_{\mathrm{out}}} \\
+      &= \frac{\qty{3}{\cubic\m\per\s}}{\cos \ang{45} \cdot \pi \cdot \left( \left( \qty{2}{\m}  \right)^2 - \left( \qty{1,8}{\m}  \right)^2 \right)} \\
+      &= \qty{1,78}{\m\per\s} 
+  .\end{align*}
+\end{derivation}
+
+\finalresult{V = \qty{1,78}{\m\per\s} }
+
 \begin{problemwithimage}{p12_3}{4.4}
   Fluid with \qty{1040}{\kg\per\cubic\m} density is flowing steadily through the rectangular box shown.
   Given $A_1 = \qty{0,046}{\m\squared}$, $A_2 = \qty{0,009}{\square\m}$, $A_3 = \qty{0,056}{\square\m}$, $\Vec{V}_1 = \left( \qty{3}{\m\per\s}  \right)\hat{i} $, and $\Vec{V}_2 = \left( \qty{6}{\m\per\s}  \right) \hat{j}$. Determine the velocity $\Vec{V}_3$.
 \end{problemwithimage}
+
+\begin{assumptions}
+  \item Incompressible, steady and uniform flow.
+\end{assumptions}
+
+\begin{derivation}
+  Due to the assumptions of uniform and incompressible steady flow the continuity equation reduces to
+  \[ 
+    \sum_{CS} \Vec{V} \cdot \Vec{A} = 0 
+  .\]
+  Using the convention of $\Vec{A}$ being outwards we get
+  \begin{align*}
+    V_1 \cdot A_1 + V_2 \cdot A_2 + V_3 \cdot A_3 &= 0 \\
+    V_3 &= -\frac{V_1 \cdot A_1 + V_2 \cdot A_2}{A_3} \\
+              &= \frac{\qty{3}{\m\per\s} \cdot \qty{0,046}{\square\m} - \qty{6}{\m\per\s} \cdot \qty{0,009}{\square\m}}{\qty{0,056}{\square\m} } \\
+              &= \qty{1,5}{\m\per\s} 
+  .\end{align*}
+  Using trigonometry this can be written on Cartesian form as
+  \begin{align*}
+    V_{3x} &= V_3 \cdot \cos \ang{-30} = \qty{1,5}{\m\per\s} \cdot \cos \ang{-30} = \qty{1,3}{\m\per\s} \\
+    V_{3y} &= V_3 \cdot \sin \ang{-30} = \qty{1,5}{\m\per\s} \cdot \sin \ang{-30} = \qty{-0,75}{\m\per\s}  \\
+    \Vec{V}_3 &= V_{3x} \hat{i} + V_{3y} \hat{j} = \qty{1,3}{\m\per\s} \, \hat{i} - \qty{0,75}{\m\per\s} \, \hat{j}
+  .\end{align*}
+\end{derivation}
+
+\finalresult{\Vec{V}_3 = \qty{1,3}{\m\per\s} \hat{i} - \qty{0,75}{\m\per\s} \hat{j}}
 
 
 \begin{problem}{5.19}
@@ -22,32 +105,49 @@
   Calculate the vorticity of the flow.
 \end{problem}
 
-\begin{problem}{5.6}
-  The $x$ component of velocity for a flow field is given as $u = A x^2 y^2$ where $A = \qty{0,3}{\m^{-3}.\s^{-1}}$ and $x$ and $y$ are in meters.
-  Determine the $y$ component of velocity for a steady incompressible flow.
-  Determine the equation of the streamline and plot the streamline that goes through the point $\left( x,y \right) = \left( 1,4 \right)$.
-\end{problem}
+\begin{assumptions}
+  \item The flow is steady and incompressible
+\end{assumptions}
 
-\begin{problemwithimage}{p12_4}{5.25}
-  A liquid film flows on a horizontal surface due to a constant shear stress on the top surface.
-  The liquid film is thin, the flow is fully developed, and the thickness is constant in the flow direction.
-  Determine the velocity profile $u(x)$ and the pressure gradient $\frac{\mathrm{d}p}{\mathrm{d}x} $.
-\end{problemwithimage}
+\begin{derivation}
+  The stream function for a steady velocity field $(u,v)$ is defined as
+  \[ 
+  u \equiv \frac{\partial \psi}{\partial y} \qquad v \equiv - \frac{\partial \psi}{\partial x} 
+  .\]
+  Using $u = \qty{2}{\m\per\s}$ we get
+  \[ 
+  \frac{\partial \psi}{\partial y} = 2
+  .\]
+  By integration we obtain
+  \[ 
+  \psi = 2y + f(x)
+  .\]
+  Using $v = - 4 x$ we get
+  \[ 
+  - \frac{\partial \psi}{\partial x} = -4x \implies \frac{\partial \psi}{\partial x} = 4x
+  .\]
+  By integration this becomes
+  \[ 
+  \psi = 2 x^2 + f(y)
+  .\]
+  Hence, the stream function is:
+  \[ 
+  \psi = 2x^2 + 2y + c
+  \]
+  where $c$ is a constant. 
+  The vorticity $\xi$ is given by
+  \begin{align*}
+    \xi &\equiv \nabla \times \Vec{V} \\
+        &= \left( \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y}  \right) \, \hat{k} \\
+        &= \left( -4 - 0 \right) \, \hat{k} \\
+        &= -4 \, \hat{k}
+  .\end{align*} 
+\end{derivation}
 
-\begin{problemwithimage}{p12_5}{6.4}
-  Water flows in a pipe at a velocity of \qty{3}{\m\per\s} and a pressure of \qty{120}{\kPa} absolute.
-  Two tubes are placed in the tube as shown in the figure.
-  Determine the height of the water in each column and the stagnation pressure in \unit{\kPa}.
-\end{problemwithimage}
+\finalresult{
+  \begin{aligned}
+    \psi(x,y) &= 2x^2 + 2y + c \\
+    \Vec{\xi} &= - 4 \, \hat{k}
+  \end{aligned}
+}
 
-\begin{problem}{7.22}
-  A flat plate \qty{1,5}{\m} long and \qty{0,3}{\m} wide is towed at \qty{3}{\m\per\s} in a towing basin containing water at \qty{20}{\celsius}.
-  The measured drag force is \qty{14}{\N}.
-  Calculate the dimensions of a similar plate that will yield dynamically similar conditions in an airstream at a velocity of \qty{18}{\m\per\s}, \qty{101,4}{\kPa} and \qty{15}{\celsius}.
-  Determine the expected drag force on the plate in the air stream.
-\end{problem}
-
-\begin{problem}{8.17}
-  A fluid of specific gravity \num{0,9} flows at a Reynolds number of \num{1500} in a \qty{0,3}{\m} pipeline. The velocity \qty{50}{\mm} from the wall is \qty{3}{\m\per\s}.
-  Calculate the flow rate and the velocity gradient at the wall.
-\end{problem}

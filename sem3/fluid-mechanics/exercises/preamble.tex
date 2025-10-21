@@ -2,6 +2,9 @@
 
 \usepackage[a4paper,margin=25mm]{geometry}
 \usepackage[english]{babel}
+\usepackage{titlecaps}
+
+\Addlcwords{a an the and but for or nor as at by for in of on per to via vs off up out}
 
 \usepackage{parskip} 
 \usepackage[T1]{fontenc}
@@ -63,9 +66,10 @@
 \fancyfoot[R]{\small\thepage{} of \pageref{LastPage}}
 \fancyfoot[L]{\small\CourseName}
 
+\newcommand{\PdfTitle}{Exercises}
 \newcommand{\Dept}{Department of Mechanical and Production Engineering}
 \newcommand{\Uni}{Aarhus University}
-\newcommand{\ReportTitle}{Exercises}
+\newcommand{\ReportTitle}{\titlecap{\PdfTitle}}
 \newcommand{\AuthorName}{Noah Rahbek Bigum Hansen}
 \newcommand{\StudentID}{202405538}
 \newcommand{\CourseName}{Fluid Mechanics}
@@ -81,7 +85,7 @@
   linkcolor=AUblue,
   citecolor=AUblue,
   urlcolor=AUblue,
-  pdftitle={\ReportTitle},
+  pdftitle={\PdfTitle},
   pdfauthor={\AuthorName},
   pdfsubject={The solution by \AuthorName{} (\StudentID) to the exercises to the course \CourseName{} taught at the \Dept{} of \Uni. Last updated on \TheDate{}.},
   pdfcreator={pdfTeX + newtx},

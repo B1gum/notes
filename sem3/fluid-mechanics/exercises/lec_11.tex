@@ -5,11 +5,61 @@
   Estimate the wall shear stress using the 1/7\textsuperscript{th} expression for the velocity profile.
 \end{problem}
 
+\begin{assumptions}
+  \item Fully developed, steady, and incompressible turbulent flow.
+\end{assumptions}
+
+\begin{derivation}
+  The velocity profile in the turbulent region away from a pipe wall is
+  \[ 
+  \frac{\overline{u}}{u_{*}} = \num{2,5}  \ln \frac{y u_{*}}{\nu} + \num{5,0}
+  .\]
+  The kinematic viscosity $\nu = \qty{1,00e-6}{\square\m\per\s} $ of water at \qty{20}{\celsius}.
+  Using the relation we get
+  \[ 
+  \frac{\qty{2,7}{\m\per\s} }{u_{*}} = \num{2,5} \ln \left( \frac{\qty{0,15}{\m} \cdot u_{*}}{\qty{1,00e-6}{\square\m\per\s} } \right) + \num{5,0}
+  .\]
+  Solving this expression for the friction velocity $u_{*}$ yields
+  \[ 
+  u_{*} = \qty{0,094}{\m\per\s} 
+  .\]
+  The relationship between the friction velocity and the wall shear stress is
+  \[ 
+    u_{*} = \sqrt{\frac{\tau_w}{\rho}} \implies \tau_w = u_{*}^2 \cdot \rho
+  .\]
+  For $\rho = \qty{1000}{\kg\cubic\m}$ we get
+  \[ 
+  \tau_w = \left( \qty{0,094}{\m\per\s}  \right)^{2} \cdot \qty{1000}{\kg\per\cubic\m} = \qty{8,84}{\Pa}
+  .\]
+\end{derivation}
+
+\finalresult{\tau_w = \qty{8,84}{\Pa}}
+
+
 \begin{problem}{8.24}
   A pipe runs for an elevation of \qty{45}{\m} to an elevation of \qty{115}{\m}.
   The inlet pressure is \qty{8,5}{\MPa} and the head loss is \qty{6,9}{\kJ\per\kg}.
   Calculate the outlet pressure for (a) the inlet at the \qty{45}{\m} elevation and (b) the inlet at the \qty{115}{\m} elevation.
 \end{problem}
+
+\begin{assumptions}
+  \item Incompressible and fully developed flow
+\end{assumptions}
+
+\begin{derivation}
+  The energy equation with head loss is
+  \[ 
+  \frac{p_1}{\rho} + \alpha_1 \frac{\overline{V}_1^2}{2} + gz_1 = \frac{p_2}{\rho} + \alpha_2 \frac{\overline{V}_2^2}{2} + gz_2 + h_{l_t}
+  .\]
+  As the flow is assumed incompressible $\overline{V}_1 = \overline{V}_2$, therefore the pressure at the \qty{115}{\m} outlet can be found as
+  \begin{align*}
+    p_2 &= p_1 + \rho g \left( z_1 - z_2 \right) - \rho h_{l_t} \\
+    &= \qty{8,5}{\MPa} + \qty{1000}{\kg\per\cubic\m} \cdot \qty{9,81}{\m\per\square\s} \cdot \left( \qty{-70}{\m}  \right) - \qty{1000}{\kg\per\cubic\m} \cdot \qty{6,9}{\kJ\per\kg}  \\
+    &=  \qty{2,29}{\MPa} 
+  .\end{align*}
+\end{derivation}
+
+\finalresult{p_2 = \qty{2,29}{\MPa} }
 
 \begin{problem}{8.28}
   Water flows in a smooth \qty{0,2}{\m} diameter pipeline that is \qty{65}{\m} long.
@@ -18,3 +68,55 @@
   After many years of use, minerals deposited on the pipe cause the same pressure drop to produce only one-half the original flow rate.
   Estimate the size of the relative roughness elements for the pipe.
 \end{problem}
+
+\begin{assumptions}
+  \item Fully developed, steady, and incompressible flow in pipe.
+  \item Kinetic energy coefficient equal to 1.
+  \item Constant viscosity.
+\end{assumptions}
+
+\begin{derivation}
+  Using the definition of the Reynold's number the mean velocity in the pipe can be found as
+  \[ 
+    \mathrm{Re} = \frac{\rho V D}{\mu} \implies V = \frac{\mathrm{Re} \cdot \mu}{\rho D} = \frac{\num{e6} \cdot \qty{e-3}{\Pa.\s}}{\qty{0,2}{\m} \cdot \qty{1000}{\kg\per\cubic\m}  } = \qty{5}{\m\per\s} 
+  .\]
+  This corresponds to a flow rate of
+  \[ 
+  Q = V \cdot A = \qty{5}{\m\per\s} \cdot \pi \cdot \frac{\left( \qty{0,20}{\m}  \right)^2}{4} = \qty{0,157}{\cubic\m\per\s} 
+  .\]
+  The pressure drop is given by
+  \[ 
+    \frac{\Delta p}{\rho} = f \frac{L}{D} \frac{\overline{V}^2}{2} \implies \Delta p = f \frac{L}{D} \frac{\overline{V}^2 \rho}{2}
+  .\]
+  Here the friction factor $f$ is defined as
+  \[ 
+  \frac{1}{\sqrt{f}} = - \num{2,0} \log \left( \frac{\frac{e}{D}}{\num{3,7} } + \frac{\num{2,51} }{\mathrm{Re} \sqrt{f}} \right)
+  .\]
+  In this, the pipe roughness $e = 0$, hence
+  \[ 
+  \frac{1}{\sqrt{f}} = \num{-2,0}  \log \left( \frac{\num{2,51} }{\mathrm{Re} \cdot \sqrt{f}} \right) \implies f = \num{0,0116}
+  .\]
+  And therefore the pressure drop in the non-deteriorated pipe is,
+  \[ 
+  \Delta p = \num{0,116} \cdot \frac{\qty{65}{\m} }{\qty{0,20}{\m} } \cdot \frac{\left( \qty{5}{\m\per\s}  \right)^2 \cdot \qty{1000}{\kg\per\cubic\m} }{2} = \qty{47,125}{\kPa}
+  .\]
+  For the deteriorated pipe the head loss $H_l = \frac{\Delta p}{\rho \cdot g}$ will be the same as for the undeteriorated pipe.
+  \[ 
+    H_L = f \frac{L}{D} \frac{\overline{V}^2}{2g}
+  .\]
+  Equating the head loss in the new and the deteriorated pipes we get
+  \[ 
+  f_{\mathrm{new}} \cdot \frac{L}{D} \cdot \frac{V^2_{\mathrm{new}}}{2g} = f_{\mathrm{det}} \cdot \frac{L}{D} \cdot \frac{\frac{V^2_{\mathrm{new}}}{4}}{2g} \implies f_{\mathrm{det}} = 4 \cdot f_{\mathrm{new}} = 4 \cdot \num{0,0116} = \num{0,0464} 
+  .\]
+  Now we can user the expression for the friction factor from before and solve for $\frac{e}{D}$ to get
+  \[ 
+    \frac{1}{\sqrt{\num{0,0464} }} = \num{-2,0}  \log \left( \frac{\frac{e}{D}}{\num{3,7} } \frac{\num{2,51} }{\mathrm{Re} \cdot \sqrt{\num{0,0464} }} \right) \implies \frac{e}{D} = \num{0,0176} 
+  .\]
+\end{derivation}
+
+\finalresult{
+  \begin{aligned}
+  Q &= \qty{0,157}{\cubic\m\per\s}  \\
+  \Delta p &= \qty{47,1}{\kPa}  \\
+  \frac{e}{D} &= \num{0,0176} 
+  .\end{aligned}}
