@@ -1,25 +1,47 @@
 \documentclass[a4paper]{article}
 
+\usepackage[a4paper,margin=25mm]{geometry}
 \usepackage[english]{babel}
-\usepackage{amsfonts, amssymb, mathtools, amsthm, amsmath}
-\usepackage{graphicx, wrapfig, pgfplots}
-\usepackage{url}
-\usepackage[dvipsnames]{xcolor}
-\usepackage{lastpage}
+\usepackage{titlecaps}
 
+\Addlcwords{a an the and but for or nor as at by for in of on per to via vs off up out}
+
+\usepackage{parskip} 
 \usepackage[T1]{fontenc}
-\usepackage{lmodern} % optional, safe default
-\usepackage{newtxtext} % Times-like text + math
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.2}
 
-\usepackage{lastpage}
 
-%loaded last
-\usepackage[hidelinks]{hyperref}
-\usepackage[nameinlink]{cleveref} 
+\usepackage{mathtools, amssymb}
+\renewcommand{\Vec}[1]{\boldsymbol{#1}}
+\let\oldhat\hat
+\renewcommand{\hat}[1]{\oldhat{\mathbf{#1}}}
+
+\usepackage{fourier}
+
+\usepackage[dvipsnames]{xcolor}
+\definecolor{AUblue}{RGB}{0,61,115}
+\definecolor{AUblueDark}{RGB}{0,37,70}
+
+
+\usepackage{graphicx}
+\graphicspath{{./figures/}}
+\usepackage{tikz}
+\usetikzlibrary{calc, arrows.meta}
+
+\usepackage{enumitem}
+\setlist{topsep=4pt,itemsep=2pt,parsep=0pt}
 
 \usepackage{siunitx}
-  \sisetup{exponent-product = \cdot,
-    output-decimal-marker = {,}}
+\sisetup{
+  exponent-product = \cdot,
+  output-decimal-marker = {,},
+  per-mode = fraction,
+  round-mode = figures,
+  round-precision = 3,
+  round-pad = false,
+}
 
 %Giles Castelles incfig
 \usepackage{import}
@@ -32,142 +54,123 @@
   \import{./figures/}{#2.pdf_tex}
 }
 
-\setlength{\parindent}{0in}
-\setlength{\parskip}{12pt}
-\setlength{\oddsidemargin}{0in}
-\setlength{\textwidth}{6.5in}
-\setlength{\textheight}{8.8in}
-\setlength{\topmargin}{0in}
-\setlength{\headheight}{18pt}
-
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AUblueDark}\leaders\hrule height 0.6pt\hfill}}
+\setlength{\headheight}{20pt}
+\fancyhead[L]{\small\AuthorName}
+\fancyhead[C]{\small\ReportTitle}
+\fancyhead[R]{\small\TheDate}
+\usepackage{lastpage}
+\fancyfoot[R]{\small\thepage{} of \pageref{LastPage}}
+\fancyfoot[L]{\small\CourseName}
 
-\fancyhead{}
-\fancyfoot{}
-\fancyfoot[R]{\thepage{} of \pageref{LastPage}}
-\fancyhead[L]{Alfred A, Benjamin, P \& Noah H}
-\fancyhead[C]{Assignment w. 39--40}
-\fancyhead[R]{October 22, 2025}
+\newcommand{\PdfTitle}{Take-Home Assignment w. 39–40}
+\newcommand{\Dept}{Department of Mechanical and Production Engineering}
+\newcommand{\Uni}{Aarhus University}
+\newcommand{\ReportTitle}{\titlecap{\PdfTitle}}
+\newcommand{\AuthorName}{Noah R. B.H., Benjamin R. P. \& Alfred G. A.}
+\newcommand{\StudentID}{202405538}
+\newcommand{\CourseName}{Statics \& Strength og Materials}
+\newcommand{\CourseNumber}{290221U006}
+\newcommand{\Course}{\CourseName{} --- \CourseNumber}
+\newcommand{\TheDate}{October 22, 2025}
+\newcommand{\Logo}{figures/AU}
 
-\pgfplotsset{compat=newest}
 
-\pgfplotsset{every axis/.append style={
-  axis x line=middle,    % put the x axis in the middle
-  axis y line=middle,    % put the y axis in the middle
-  axis line style={<->,color=black}, % arrows on the axis
-}}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=AUblue,
+  citecolor=AUblue,
+  urlcolor=AUblue,
+  pdftitle={\PdfTitle},
+  pdfauthor={\AuthorName},
+  pdfsubject={The solution by \AuthorName{} (\StudentID) to the exercises to the course \CourseName{} taught at the \Dept{} of \Uni. Last updated on \TheDate{}.},
+  pdfcreator={pdfTeX + newtx},
+}
+\usepackage[nameinlink]{cleveref}
 
-\usepackage{thmtools}
-\usepackage{tcolorbox}
-  \tcbuselibrary{skins, breakable}
-  \tcbset{
-    space to upper=1em,
-    space to lower=1em,
-  }
+\usepackage{chngcntr}
+\newcounter{problem}
+\renewcommand{\theproblem}{\arabic{problem}}
+\counterwithin{figure}{problem}
+\counterwithin{table}{problem}
+\numberwithin{equation}{problem}
+\makeatletter
+\providecommand*\theHproblem{\theproblem}
+\renewcommand{\theHfigure}{problem.\theHproblem.\arabic{figure}}
+\renewcommand{\theHtable}{problem.\theHproblem.\arabic{table}}
+\renewcommand{\theHequation}{problem.\theHproblem.\arabic{equation}}
+\makeatother
 
-\theoremstyle{definition}
+\crefname{problem}{problem}{problems}
+\Crefname{problem}{Problem}{Problems}
+\crefname{pluralequation}{equations}{equations}
+\Crefname{pluralequation}{Equations}{Equations}
 
-\newtcolorbox[auto counter]{definition}[1][]{%
-  breakable,
-  colframe=ForestGreen,  %frame color
-  colback=ForestGreen!5, %background color
-  colbacktitle=ForestGreen!25, %background color for title
-  coltitle=ForestGreen!70!black,  %title color
-  fonttitle=\bfseries\sffamily, %title font
-  left=1em,              %space on left side in box,
-  enhanced,              %more options
-  frame hidden,          %hide frame
-  borderline west={2pt}{0pt}{ForestGreen},  %display left line
-  title=Definition \thetcbcounter: #1,
+\usepackage{caption}
+\captionsetup{font=small}
+
+\newenvironment{problem}[1]%
+{%
+  \par\vspace{0pt}%
+  {\large\bfseries\sffamily\color{AUblueDark}%
+    Problem #1%
+  }%
+  \par\vspace{.35\baselineskip}%
+}%
+{%
+  \par\vspace{.6\baselineskip}%
+  {\color{AUblueDark}\rule{\linewidth}{0.8pt}}%
+  \vspace{.6\baselineskip}\par%
 }
 
-\newtcolorbox{greenline}{%
-  breakable,
-  colframe=ForestGreen,  %frame color
-  colback=white,          %remove background color
-  left=1em,              %space on left side in box
-  enhanced,              %more options
-  frame hidden,          %hide frame
-  borderline west={2pt}{0pt}{ForestGreen},  %display left line
+\newcommand{\AUheading}[1]{%
+  \par\vspace{.4\baselineskip}%
+  {\sffamily\bfseries\color{AUblueDark}#1\par}%
+  \nobreak%
 }
 
-\newtcolorbox[auto counter, number within=section]{dis}[1][]{%
-  breakable,
-  colframe=NavyBlue,  %frame color
-  colback=NavyBlue!5, %background color
-  colbacktitle=NavyBlue!25,    %background color for title
-  coltitle=NavyBlue!70!black,  %title color
-  fonttitle=\bfseries\sffamily, %title font
-  left=1em,            %space on left side in box,
-  enhanced,            %more options
-  frame hidden,        %hide frame
-  borderline west={2pt}{0pt}{NavyBlue},  %display left line
-  title=Discussion \thetcbcounter: #1
+\newenvironment{assumptions}[1][Assumptions]{%
+  \AUheading{#1}
+  \begin{itemize}[leftmargin=*,nosep]
+}{\end{itemize}\par\medskip}
+
+\newenvironment{derivation}[1][Derivation]{%
+  \AUheading{#1}
+  \begingroup\allowdisplaybreaks
+  \setlength{\abovedisplayskip}{6pt}%
+  \setlength{\belowdisplayskip}{6pt}%
+  \setlength{\abovedisplayshortskip}{4pt}%
+  \setlength{\belowdisplayshortskip}{4pt}%
+}{\par\endgroup\medskip}
+
+\newcommand{\finalresult}[1]{%
+  \vspace{.2\baselineskip}%
+  \begin{equation}
+    {\color{AUblueDark}\boxed{\displaystyle #1}}
+    \tag*{\textsc{\textcolor{AUblueDark}{Result}}}
+  \end{equation}
+  \newpage
 }
 
-\newtcolorbox{blueline}{%
-  breakable,
-  colframe=NavyBlue,     %frame color
-  colback=white,         %remove background
-  left=1em,              %space on left side in box,
-  enhanced,              %more options
-  frame hidden,          %hide frame
-  borderline west={2pt}{0pt}{NavyBlue},  %display left line
-}
+\usepackage{environ}
+\newlength{\pbfigsep}
+\setlength{\pbfigsep}{8mm}
 
-\newtcolorbox{exa}[1][]{%
-  breakable,
-  colframe=RawSienna,  %frame color
-  colback=RawSienna!5, %background color
-  colbacktitle=RawSienna!25,    %background color for title
-  coltitle=RawSienna!70!black,  %title color
-  fonttitle=\bfseries\sffamily, %title font
-  left=1em,              %space on left side in box,
-  enhanced,              %more options
-  frame hidden,          %hide frame
-  borderline west={2pt}{0pt}{RawSienna},  %display left line
-  title=Example: #1,
-}
-
-\newtcolorbox[auto counter, number within=section]{sæt}[1][]{%
-  breakable,
-  colframe=RawSienna,  %frame color
-  colback=RawSienna!5, %background color
-  colbacktitle=RawSienna!25,    %background color for title
-  coltitle=RawSienna!70!black,  %title color
-  fonttitle=\bfseries\sffamily, %title font
-  left=1em,              %space on left side in box,
-  enhanced,              %more options
-  frame hidden,          %hide frame
-  borderline west={2pt}{0pt}{RawSienna},  %display left line
-  title=Sætning \thetcbcounter: #1,
-  before lower={\textbf{Bevis:}\par\vspace{0.5em}},
-  colbacklower=RawSienna!25,
-}
-
-\newtcolorbox{redline}{%
-  breakable,
-  colframe=RawSienna,  %frame color
-  colback=white,       %Remove background color
-  left=1em,            %space on left side in box,
-  enhanced,            %more options
-  frame hidden,        %hide frame
-  borderline west={2pt}{0pt}{RawSienna},  %display left line
-}
-
-\newtcolorbox{des}[1][]{%
-  breakable,
-  colframe=NavyBlue,  %frame color
-  colback=NavyBlue!5, %background color
-  colbacktitle=NavyBlue!25,    %background color for title
-  coltitle=NavyBlue!70!black,  %title color
-  fonttitle=\bfseries\sffamily, %title font
-  left=1em,              %space on left side in box,
-  enhanced,              %more options
-  frame hidden,          %hide frame
-  borderline west={2pt}{0pt}{NavyBlue},  %display left line
-  title=Description of #1,
+\NewEnviron{problemwithimage}[3][0.38\linewidth]{%
+  \begin{problem}{#3}%
+    \noindent
+    \begin{minipage}[t]{\dimexpr\linewidth-#1-\pbfigsep\relax}
+      \vspace{-0.2\baselineskip}\BODY
+    \end{minipage}\hfill
+    \begin{minipage}[t]{#1}
+      \vspace{-\baselineskip}\centering
+      \includegraphics[width=\linewidth]{#2}%
+    \end{minipage}%
+  \end{problem}%
 }
 
 \makeatother
@@ -178,103 +181,294 @@
   }{%
     \def\@lecture{Lecture #1: #3}%
   }%
+  \refstepcounter{section}%
+  \phantomsection
   \subsection*{\makebox[\textwidth][l]{\@lecture \hfill \normalfont\small\textsf{#2}}}
+  \addcontentsline{toc}{section}{\protect\numberline{\thesection}\@lecture}%
 }
 
-\makeatletter
-
-\newcommand{\exercise}[1]{%
- \def\@exercise{#1}%
- \subsection*{Exercise #1}
-}
-
-\makeatother
-
-%Format lim the same way in intext and in display
-\let\svlim\lim\def\lim{\svlim\limits}
-
-% horizontal rule
-\newcommand\hr{
-\noindent\rule[0.5ex]{\linewidth}{0.5pt}
-}
-
-\author{Alfred G. Andersen, Benjamin R. Pašalić \& Noah R. B. Hansen (Group Leader)}
-\title{Take-Home Assignment weeks 39--40}
-\date{October 22, 2025} 
 
 \begin{document}
 
-\begin{titlepage}
-    \begin{center}
-        \vspace*{1cm}
-            
-        \Huge{Take-Home Assignment week 37--38}
-            
-        \vspace{0.5cm}
-        \LARGE{Statik \& Styrkelære}
-        \vspace{1.5cm}
-        \renewcommand{\arraystretch}{1.4}
+\input{titlepage.tex}
 
-        \normalsize{
-          \begin{tabular}{c | c | c}
-            Alfred Grue Andersen \quad & \quad Benjamin Rossavik Pašalić \quad & \quad Noah Rahbek Bigum Hansen \\
-            202406227 & 202407403 & 202405538 \\
-                      &Group Leader& 
-          \end{tabular}
-        }
-        \vfill
-            
-        \includegraphics[width=0.4\textwidth]{./figures/AU}
-            
-        \Large
-        Mekanik \& Teknologi \\
-        Aarhus Universitet \\
-        Denmark \\
-        October 22, 2025
-            
-    \end{center}
-\end{titlepage}
+\begin{problemwithimage}{p10_1}{P10-1}
+  Determine the resultant internal loadings acting on the cross section at point $E$ of the handle arm, and on the cross section of the short link $BC$.
+\end{problemwithimage}
 
-\exercise{P10-1}
-Determine the resultant internal loadings acting on the cross section at point $E$ of the handle arm, and on the cross section of the short link $BC$.
-\begin{figure} [ht]
-  \centering
-  \includegraphics[width=0.5\linewidth]{./figures/p10_1.png}
-\end{figure}
+\begin{derivation}
+  \begin{figure} [ht]
+    \centering
+    \includegraphics[width=0.5\linewidth]{./figures/p10_1fbd.png}
+    \caption{Free body diagram of the hole punch.}
+    \label{fig:p10_1fbd}
+  \end{figure}
+  We start by determining the force $F_{BC}$ in the link $BC$ using a moment equilibrium about $A$, using \Cref{fig:p10_1fbd} we get
+  \begin{align*}
+    R_{BC} \cdot \cos \ang{30} \cdot \qty{50}{\mm} &- \qty{120}{\N} \cdot \qty{500}{\mm} = 0 \\
+    R_{BC} &= \frac{\qty{120}{\N} \cdot \qty{500e-3}{\m} }{\cos \ang{30} \cdot \qty{50e-3}{\m} } \\
+           &= \qty{1,38564}{\kN} 
+  .\end{align*}
+  
+  \begin{figure} [ht]
+    \centering
+    \includegraphics[width=0.15\linewidth]{./figures/p10_1fbd1.png}
+    \caption{Free body diagram of $BC$}
+    \label{fig:p10_1fbd1}
+  \end{figure}
+  From \Cref{fig:p10_1fbd1} we see that
+  \[ 
+  -R_{BC} + N_{BC} = 0 \implies R_{BC} = N_{BC} = \qty{1,38564}{\kN} 
+  .\]
+  This link will not experience any shear force, torque or bending moment and the internal loadings are therefore all found.
+
+  \begin{figure} [ht]
+    \centering
+    \includegraphics[width=0.25\linewidth]{./figures/p10_1fbd2.png}
+    \caption{Free body diagram of the segment}
+    \label{fig:p10_1fbd2}
+  \end{figure}
+  From \Cref{fig:p10_1fbd2} we see that
+  \[ 
+  \sum F_x = 0 \implies N_E = 0
+  .\]
+  Likewise, in the $y$-direction we get
+  \[ 
+  \sum F_y = 0 \implies V_E = \qty{120}{\N} 
+  .\]
+  The moment in $E$ $M_E$ must balance the moment from the applied force
+  \[ 
+  - M_E - \qty{120}{\N} \cdot \qty{400}{\mm} = 0 \implies M_E = \qty{120}{\N} \cdot \qty{400e-3}{\m} = \qty{48}{\N\m} 
+  .\]
+\end{derivation}
+
+\finalresult{\begin{aligned}
+  N_{BC} &= \qty{1,38564}{\kN} \\
+  V_{E} &= \qty{120}{\N}  \\
+  M_{E} &= \qty{48}{\N\m}
+\end{aligned}}
 
 
-\exercise{P10-2}
-The bar has a cross-sectional area of \qty{400e-6}{\m\squared}. If it is subjected to a triangular axial distributed loading along its length which is $0$ at $x = 0$ and \qty{9}{\kN\per\m} at $x = \qty{1,5}{\m}$, and to two concentrated loads as shown, determine the average normal stress in the bas as a function of $x$ for $0 \leq 0 \leq \qty{0,6}{\m}$.
-
-\begin{figure} [ht]
-  \centering
-  \includegraphics[width=0.5\linewidth]{./figures/p10_2.png}
-\end{figure}
-
-
-\exercise{P11-1}
-Determine the required thickness of member $BC$ to the nearest \unit{\mm}, and the diameter of the pins at $A$ and $B$ if the allowable normal stress for member $BC$ is $\sigma_{\mathrm{allow}} = \qty{200}{\MPa}$ and the allowable shear stress for the pins is $\tau_{\text{allow}} = \qty{70}{\MPa}$.
-
-\begin{figure} [ht]
-  \centering
-  \includegraphics[width=0.5\linewidth]{./figures/p11_1.png}
-\end{figure}
-
-
-\exercise{P11-2}
-Nylon strips are fused to glass plates. When moderately heated the nylon will become soft while the glass stays approximately rigid. Determine the average shear strain in the nylon due to the load $P$ when the assembly deforms as indicated.
-
-\begin{figure} [ht]
-  \centering
-  \includegraphics[width=0.5\linewidth]{./figures/p11_2.png}
-\end{figure}
-
-\exercise{P12-1}
-The rigid beam is supported by the three suspender bars. Bars $AB$ and $EF$ are made of aluminum and bar $CD$ is made of steel. If each bar has a cross-sectional area of \qty{450}{\mm\squared}, determine the maximum value of $P$ if the allowable stress is $\left( \sigma_{\text{allow}} \right)_{\text{st}} = \qty{200}{\MPa} $ for the steel and $\left( \sigma_{\text{allow}} \right)_{\text{al}} = \qty{150}{\MPa} $ for the aluminum. $E_{\text{st}} = \qty{200}{\GPa}$ and $E_{\text{al}} = \qty{70}{\GPa}$.
+\begin{problemwithimage}{p10_2}{P10-2}
+  The bar has a cross-sectional area of \qty{400e-6}{\square\m}. 
+  If it is subjected to a triangular axial distributed loading along its length which is 0 at $x = 0$ and \qty{9}{\kN\per\m} at $x = \qty{1,5}{\m}$, and to two concentrated loads as shown, determine the average normal stress in the bar as a function of $x$ for $0 \leq x \leq \qty{0,6}{\m}$.
+\end{problemwithimage}
 
 \begin{figure} [ht]
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/p12_1.png}
+  \includegraphics[width=0.5\linewidth]{./figures/p10_2fbd.png}
+  \caption{Free body diagram of the bar.}
 \end{figure}
+\begin{derivation}
+  We consider the right segment of the bar from $x$ to $\qty{1,5}{\m}$.
+  A force balance in the $x$-direction with positive to the right yields
+  \begin{align*}
+    N &= \qty{8}{\kN} + \qty{4}{\kN} + \frac{1}{2} \left( \qty{6}{\kN\per\m} \cdot x + \qty{9}{\kN}  \right) \left( \qty{1,5}{\m} - x \right) \\
+     &= \qty{18,75}{\kN} - \qty{3}{\kN\per\square\m} \cdot x^2
+  .\end{align*}
+  The average normal stress is simply defined as
+  \[ 
+  \sigma_{\mathrm{avg}} = \frac{N}{A}
+  ,\]
+  hence,
+  \begin{align*}
+    \sigma_{\mathrm{avg}}(x) &= \frac{\qty{18,75}{\kN}}{\qty{400e-6}{\m\squared}} - \frac{\qty{3}{\kN\per\square\m}}{\qty{400e-6}{\square\m} } x^2 \\
+    &= \qty{46,875}{\MPa} - \qty{7,5}{\MPa\per\square\m} \cdot x^2
+  .\end{align*}
+\end{derivation}
+
+\finalresult{\sigma_{\mathrm{avg}}(x) = \qty{46,875}{\MPa} - \qty{7,5}{\MPa\per\square\m} \cdot x^2}
+
+
+\begin{problemwithimage}{p11_1}{P11-1}
+  Determine the required thickness of member $BC$ to the nearest \unit{\mm}, and the diameter of the pins at $A$ and $B$ if the allowable normal stress for member $BC$ is $\sigma_{\text{allow}} = \qty{200}{\MPa}$ and the allowable shear stress for the pins is $\tau_{\text{allow}} = \qty{70}{\MPa}$.
+\end{problemwithimage}
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.85\linewidth]{./figures/p11_1-1.png}
+  \caption{Free body diagram of the structure.}
+  \label{fig:p11_1-1}
+\end{figure}
+
+\begin{derivation}
+  We start by converting the distributed load into an equivalent point load, this load will be
+  \[ 
+  P = \qty{30}{\kN\per\m} \cdot \qty{2,4}{\m} = \qty{72}{\kN} 
+  .\]
+  This load will be placed at the middle of the member, \qty{1,2}{\m} from $A$ as shown on \Cref{fig:p11_1-1}.
+  We start with the moment equilibrium about point $A$ as
+  \begin{align*}
+    \sum M_A &= 0 \\
+    0 &= P \cdot \qty{1,2}{\m} - F_{BC}\cdot \sin \ang{60} \cdot \qty{2,4}{\m} \\
+    F_{BC} &= \frac{\qty{72}{\kN} \cdot \qty{1,2}{\m} }{\sin \ang{60} \cdot \qty{2,4}{\m}} \\
+           &= \qty{41,57}{\kN} 
+  .\end{align*}
+  Now a force equilibrium in the $x$-direction yields
+  \begin{align*}
+    \sum F_x &= 0 \\
+    0 &= F_{BC}\cdot \cos \ang{60} - A_x \\
+    A_x &= F_{BC} \cdot \cos \ang{60} \\
+        &= \qty{41,57}{\kN} \cdot \cos \ang{60} = \qty{20,78}{\kN} 
+  .\end{align*}
+  In the $y$-direction we get
+  \begin{align*}
+    \sum F_y &= 0 \\
+    0 &= F_{BC} \cdot \sin \ang{60} + A_y - P \\
+    A_y &= F_{BC}\cdot \sin \ang{60} - P \\
+      &= \qty{72}{\kN} - \qty{41,57}{\kN} \cdot \sin \ang{60} = \qty{36}{\kN} 
+  .\end{align*}
+  This corresponds to a total reaction at $A$ of
+  \[ 
+  R_A = \sqrt{A_x^2 + A_y^2} = \sqrt{\left( \qty{20,78}{\kN}  \right)^2 + \left( \qty{36}{\kN}  \right)^2} = \qty{41,57}{\kN}
+  .\]
+  The required thickness of $BC$ can be found from the allowable normal stress as
+  \begin{align*}
+    \sigma_{\text{allow}} &= \frac{F_{BC}}{A_{BC}} \\
+    A_{BC} &= \frac{F_{BC}}{\sigma_{\text{allow}}} \\
+    &= \frac{\qty{41,57}{\kN}}{\qty{200}{\MPa}} \\
+    &= \qty{2,078e-4}{\m\squared} \\
+    A_{BC} &= w_{BC} \cdot h_{BC} \\
+    w_{BC} &= \frac{A_{BC}}{h_{C}} \\
+      &= \frac{\qty{2,078e-4}{\m\squared }}{\qty{0,04}{\m}} \\
+      &= \qty{5,2}{\mm}
+  .\end{align*}
+  A can be seen to be a single-stress shear pin on the figure, hence
+  \begin{align*}
+    \tau_{\text{allow}} &= \frac{R_A}{A_{A}} \\
+    A_{A} &= \frac{R_A}{\tau_{\text{allow}}} \\
+    &= \frac{\qty{41,57}{\kN}}{\qty{70}{\MPa} } \\
+    &= \qty{5,9e-4}{\square\m} \\
+    A_{A} &= \pi \cdot \frac{D_A^2}{4} \\
+    D_{A} &= \sqrt{\frac{4 \cdot A_{A}}{\pi}} \\
+          &= \sqrt{\frac{4 \cdot \qty{5,9e-4}{\square\m}  }{\pi}} \\
+          &= \qty{27}{\mm} 
+  .\end{align*}
+  And as $B$ is a double-stress shear pin we get
+  \begin{align*}
+    \tau_{\text{allow}} &= \frac{F_{BC}}{2 A_{B}} \\
+    A_B &= \frac{2 \cdot \tau_{\text{allow}}}{F_{BC}} \\
+        &= \frac{\qty{41,57}{\kN}}{2 \cdot \qty{70}{\MPa} } \\
+    &=   \qty{3e-4}{\m\squared} \\
+    A_{B} &= \pi \cdot \frac{D_B^2}{4}  \\
+    D_B &= \sqrt{\frac{4 \cdot A_B}{\pi}} \\
+    &= \sqrt{\frac{4 \cdot \qty{3e-4}{\m\squared} }{\pi}} \\
+    &= \qty{19}{\mm} 
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+  \begin{aligned}
+    w_{BC} &= \qty{5,2}{\mm} \\
+    D_A &= \qty{27}{\mm}  \\
+    D_B &= \qty{19}{\mm}
+  .\end{aligned}
+}
+
+\begin{problemwithimage}{p11_2}{P11-2}
+  Nylon strips are fused to glass plates. When moderately heated the nylon will become soft while the glass stays approximately rigid. Determine the average shear strain in the nylon due to the load $\Vec{P}$ when the assembly deforms as indicated.
+\end{problemwithimage}
+
+\begin{derivation}
+  As the glass is approximately rigid we can assume it does not deform at all and that all of the material deformation is due to the nylon deforming.
+
+  \begin{figure} [ht]
+    \centering
+    \includegraphics[width=0.75\linewidth]{./figures/p11_2fbd.png}
+    \caption{Free body diagram of the system.}
+    \label{fig:p11_2fbd}
+  \end{figure}
+
+  Shear strain is defined as the angle the material deviates from perpendicular.
+  This can be thought of as a right triangle giving:
+  \begin{align*}
+    \tan \gamma &= \frac{\qty{2}{\mm} }{\qty{10}{\mm} } \\
+    \gamma &= \tan^{-1} \left( \frac{2}{10} \right) \\
+           &= \num{0,197}
+  .\end{align*}
+\end{derivation}
+\finalresult{\gamma = \num{0,197}}
+
+
+\begin{problemwithimage}{p12_1}{P12-1}
+  The rigid beam is supported by the three suspender bars. Bars $AB$ and $EF$ are made of aluminum and bar $CD$ is made of steel. If each bar har a cross-sectional area of \qty{450}{\mm\squared}, determine the maximum value of $P$ if the allowable stress is $\left( \sigma_{\text{allow}} \right)_{\mathrm{st}} = \qty{200}{\MPa}$ for the steel and $\left( \sigma_{\text{allow}} \right)_{\mathrm{al}} = \qty{150}{\MPa}$ for the aluminum. $E_{\mathrm{st}} = \qty{200}{\GPa}, E_{\mathrm{al}} = \qty{70}{\GPa}$.
+\end{problemwithimage}
+
+\begin{derivation}
+  \begin{figure} [ht]
+    \centering
+    \includegraphics[width=0.85\linewidth]{./figures/p12_1fbd.png}
+    \caption{Free body diagram of the beam.}
+  \end{figure}
+  
+  We start by considering the moment about $A$ giving us
+  \begin{align*}
+    \sum M_A &= 0 \\
+    0 &= -P \cdot \qty{0,75}{\m} + F_{CD} \cdot \qty{1,5}{\m} - 2P \cdot \qty{2,25}{\m} + F_{EF} \cdot \qty{3}{\m}  \\
+    \qty{5,25}{\m} \cdot P &= \qty{1,5}{\m} \cdot F_{CD} + \qty{3,0}{\m} \cdot F_{EF}
+  .\end{align*}
+  Using the moment equilibrium about $E$ yields,
+  \begin{align*}
+    \sum M_E &= 0 \\
+    0 &= 2P \cdot \qty{0,75}{\m} - F_{CD} \cdot \qty{1,5}{\m} + P \cdot \qty{2,25}{\m} - F_{AB}\cdot \qty{3}{\m}  \\
+    \qty{3,75}{\m} \cdot  P &= \qty{1,5}{\m} \cdot F_{CD} + \qty{3,0}{\m} \cdot F_{AB}
+  .\end{align*}
+
+  Using the fact that the bar is rigid the total system must deform as shown on \Cref{fig:p12_1def}.
+
+  \begin{figure} [ht]
+    \centering
+    \includegraphics[width=0.65\linewidth]{./figures/p12_1def.png}
+    \caption{Deformation of the system}
+    \label{fig:p12_1def}
+  \end{figure}
+
+  From similar triangles we have that:
+  \begin{align*}
+    \frac{\delta_{CD} - \delta_{AB}}{\num{1,5}} &= \frac{\delta_{EF} - \delta_{AB}}{3} \\
+    3 \delta_{CD} - 3 \delta_{AB} &= \num{1,5} \delta_{EF} - \num{1,5} \delta_{AB} \\
+    3 \delta_{CD} &= \num{1,5} \delta_{EF} + \num{1,5} \delta_{AB} \\
+    2 \delta_{CD} &= \delta_{EF} + \delta_{AB}
+  .\end{align*}
+  Now we can use the formula for deformation
+  \[ 
+  \delta = \frac{PL}{AE}
+  \]
+  and get
+  \begin{align*}
+    \frac{2 F_{CD} \cdot L}{A \cdot E_{\mathrm{st}}} &= \frac{L}{A \cdot E_{\mathrm{al}}} \left( F_{EF} + F_{AB} \right) \\
+    F_{CD} &= \frac{E_{\mathrm{st}}}{2 \cdot E_{\mathrm{al}}} \left( F_{EF} + F_{AB} \right) \\
+           &= \frac{\qty{200}{\GPa}}{2 \cdot \qty{70}{\GPa}} \left( F_{EF} + F_{AB} \right) \\
+           &= \frac{10}{7} \left( F_{EF} + F_{AB} \right)
+  .\end{align*}
+  We now have three equations with three unknowns:
+  \begin{align*}
+    \num{1,5} \cdot F_{CD} + 3 \cdot F_{EF} &= \num{5,25} P \\
+    \num{1,5} \cdot F_{CD} + 3 \cdot F_{AB} &= \num{3,75} P \\
+    F_{CD} &= \frac{10}{7} \left( F_{EF} + F_{AB} \right)
+  .\end{align*}
+  Solving these gives:
+  \begin{align*}
+    F_{AB} &= \num{0,3676} P \\
+    F_{CD} &= \num{1,7646} P \\
+    F_{EF} &= \num{0,8676} P
+  .\end{align*}
+  Now the maximally allowable value of $P$ for each beam can be found separately using the following method
+  \begin{align*}
+    \left( \sigma_{\text{allow}} \right)_{\mathrm{al}} &= \frac{F_{AB}}{A} \\
+    F_{AB} &= \left( \sigma_{\text{allow}} \right)_{\mathrm{al}} \cdot A \\
+    \num{0,368} \left( P_{\text{allow}} \right)_{AB} &= \qty{150}{\MPa} \cdot \qty{450e-6}{\m\squared}  \\
+    \left( P_{\text{allow}} \right)_{\mathrm{AB}} &= \frac{\qty{150}{\MPa} \cdot \qty{450e-6}{\m\squared} }{\num{0,368}} \\
+    &= \qty{183,6}{\kN} 
+  .\end{align*}
+  Doing the same for the other suspenders yields:
+  \begin{align*}
+    \left( P_{\text{allow}} \right)_{\mathrm{CD}} &= \qty{77,8}{\kN} \\
+    \left( P_{\text{allow}} \right)_{\mathrm{EF}} &= \qty{51,0}{\kN}
+  .\end{align*}
+  And from the above results it becomes obvious that suspender $EF$ will limit the allowable load to $P_{\mathrm{max}} = \left( P_{\text{allow}} \right)_{\mathrm{EF}} = \qty{51,0}{\kN}$.
+\end{derivation}
+
+\finalresult{P_{\mathrm{max}} = \qty{51,0}{\kN}}
 
 \end{document}
