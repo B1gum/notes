@@ -1,0 +1,66 @@
+\lecture{5}{23. September 2025}{Tvungen svingning af SDOF-systemer (del II)}
+
+\begin{problemwithimage}{p5_1}{5.1}
+  Vi betragter den viste rammestruktur, der er påført begyndelsesbetingelserne $d_0 \neq 0$ og $\dot{d}_0 \neq  0$ og er belastet af en enheds-steplast, som aktiveres ved $t_1 > 0$. 
+  Det oplyses, at den tværgående bjælke har massen $m$ og er uendelig stiv, mens hver søjle har stivheden $k$ og er masseløs.
+  Rammestrukturen ønskes beskrevet som et SDOF-system, hvori den horisontale flytning af tværbjælken er frihedsgraden.
+  Dæmpningsmekanismen yder underkritisk dæmpning.
+  a) Bestem den ækvivalente masse, ækvivalente stivhed og ækvivalente dæmpning.
+  b) Bestem systemets flytningsrespons.
+  c) Bestem det stationære flytningsrespons.
+  d) Bestem det stationære hastighedsrespons.
+\end{problemwithimage}
+
+\begin{derivation}
+  Vi kan betragte systemet som en masse påvirket af en last, holdt fast af to parallelforbundne fjedre og med dæmpning i både positiv og negativ bevægelsesretning.
+  Dæmpningnen ovenfor er blot $c_{\mathrm{eq}} = c$, de parallel-forbundne fjedre har en ækvivalent fjederkonstant på $k_{\mathrm{eq}} = 2k$ og en ækvivalent masse på $m$.
+
+  Vi har den generelle løsning
+  \[ 
+  d(t) = d_{\mathrm{h}}(t) + d_{\mathrm{p}}(t)
+  .\]
+  Idet der er underkritisk dæmpning har vi $\xi \in (0,1)$.
+  Hvilket giver den homogene løsning
+  \[ 
+  d_{\mathrm{h}}(t) = A e^{- \xi \omega_{\mathrm{u}} t} \cos \left( \omega_{\mathrm{d}} t - \psi \right)
+  .\]
+  Vha. Duhamels integrale fås
+  \begin{align*}
+    d_{\mathrm{p}}(t) &= \int_{t_1}^{t} H(t - \tau) F(\tau) \, \mathrm{d}\tau \\
+            &= \int_{t_1}^{t} \frac{1}{m \omega_{\mathrm{d}}} e^{-\xi \omega_{\mathrm{u}} \left( t - \tau \right)} \sin \left( \omega_{\mathrm{d}} \left( t - \tau \right) \right) \cdot 1 \, \mathrm{d}\tau \\
+            &= \frac{1}{m \omega_{\mathrm{d}}} e^{- \xi \omega_{\mathrm{u}} t} \int_{t_1}^{t} e^{\xi \omega_u \tau} \sin \left( \omega_{\mathrm{d}} \left( t - \tau \right) \right) \, \mathrm{d}\tau
+  .\end{align*}
+  Vi kan nu løse integralet som
+  \begin{align*}
+    \int_{t_1}^{t} e^{\xi \omega_u \tau} \sin \left( \omega_d \left( t - \tau \right) \right) \, \mathrm{d}\tau &= \frac{1}{\omega_{\mathrm{d}}^2 + \xi^2 \omega_{\mathrm{u}}^2} \left[ e^{\xi \omega_{\mathrm{u}} \tau} \left( \omega_{\mathrm{d}} \cos \left( \omega_{\mathrm{d}} \left( t - \tau \right) \right) + \xi \omega_{\mathrm{u}} \sin \left( \omega_{\mathrm{d}} \left( t - \tau \right) \right) \right) \right]_{t_1}^{t} \\
+   &= \frac{1}{\omega_{\mathrm{u}}^2} \left( \omega_{\mathrm{d}} e^{\xi \omega_{\mathrm{u}} t} - \omega_{\mathrm{d}} e^{\xi \omega_{\mathrm{u}} t_1} \cos \left( \omega_{\mathrm{d}} \left( t - t_1 \right) \right) - \xi \omega_{\mathrm{u}} e^{\xi \omega_{\mathrm{u}} t_1} \sin \left( \omega_{\mathrm{d}} \left( t - t_1 \right) \right) \right) \\
+  &= \frac{1}{\omega_{\mathrm{u}}^2} \left( \omega_{\mathrm{d}} e^{\xi \omega_{\mathrm{u}} t} - B e^{\xi \omega_{\mathrm{u}} t_1} \cos \left( \omega_{\mathrm{d}} \left( t - t_1 \right) - \epsilon \right) \right)
+  .\end{align*}
+  Hvor $B = \sqrt{\omega_{\mathrm{d}}^2 + \xi^2 \omega_{\mathrm{u}}^2} = \omega_{\mathrm{u}}$ og $\epsilon = \tan^{-1} \left( \xi / \sqrt{1 - \xi^2} \right)$.
+
+  Ved indsættelse af dette i Duhamels integrale fås:
+  \begin{align*}
+    d_{\mathrm{p}}(t) &= \frac{e^{- \xi \omega_{\mathrm{u}} t}}{m\omega_{\mathrm{d}} \omega_{\mathrm{u}}^2} \cdot \left( \omega_{\mathrm{d}} e^{\xi \omega_{\mathrm{u}} t } - e^{\xi \omega_{\mathrm{u}} t_1} \cos \left( \omega_{\mathrm{d}} \left( t - t_1 \right) - \epsilon \right) \right) \\
+    &= \frac{\omega_{\mathrm{d}}}{m \omega_{\mathrm{d}} \omega_{\mathrm{u}}^2} -  \frac{e^{- \omega_{\mathrm{u}} \xi \left( t - t_1 \right)}}{m \omega_{\mathrm{d}} \omega_{\mathrm{u}}} \cos \left( \omega_{\mathrm{d}} \left( t - t_1 \right) - \epsilon \right) \\
+    &= \frac{1}{k_{\mathrm{eq}}} - \frac{1}{m \omega_{\mathrm{u}}^2 \sqrt{1 - \xi^2}} e^{- \xi \omega_{\mathrm{u}} \left( t - t_1 \right)} \cos \left( \omega_{\mathrm{d}} \left( t - t_1 \right) - \epsilon \right) \\
+    &= \frac{1}{k_{\mathrm{eq}}} - \frac{1}{k_{\mathrm{eq}} \sqrt{1 - \xi^2}} e^{- \xi \omega_{\mathrm{u}} \left( t - t_1 \right)} \cos \left( \omega_{\mathrm{d}} \left( t - t_1 \right) - \epsilon \right)
+  .\end{align*}
+  Dermed bliver vores totale løsning:
+  \[ 
+    d(t) = Ae^{-\xi \omega_{\mathrm{u}} t } \cos \left( \omega_{\mathrm{d}} t - \psi \right) + \frac{1}{k_{\mathrm{eq}}} - \frac{1}{k_{\mathrm{eq}} \sqrt{1 - \xi^2}} e^{-\xi \omega_{\mathrm{u}} \left( t - t_1 \right)} \cos \left( \omega_{\mathrm{d}} \left( t - t_1 \right) - \epsilon \right)
+  .\]
+  
+  For $t \to \infty$ ses at $d \to \frac{1}{k_{\mathrm{eq}}}$ hvilket derfor er den stationære flytnignsrespons.
+
+  For $t \to \infty$ fås $\dot{d} \to 0$ hvilket da er den stationære hastighedsrespons.
+\end{derivation}
+
+\finalresult{
+  \begin{aligned}
+    \mathrm{a}) &\quad c_{\mathrm{eq}} = c, m_{\mathrm{eq}} = m, k_{\mathrm{eq}} = 2k \\
+    \mathrm{b}) &\quad d(t) = A e^{- \xi \omega_{\mathrm{u}} t} \cos \left( \omega_{\mathrm{d}} t - \psi \right) + \frac{1}{k_{\mathrm{eq}}} \\
+                &\hspace{2cm} -\frac{1}{k_{\mathrm{eq}} \sqrt{1 - \xi^2}} e^{-\xi \omega_{\mathrm{u}} \left( t - t_1 \right)} \cos \left( \omega_{\mathrm{d}} \left( t - t_1 \right) - \epsilon \right) \\
+    \mathrm{c}) &\quad \frac{1}{k_{\mathrm{eq}}} \\
+    \mathrm{d}) &\quad 0
+  .\end{aligned}
+}

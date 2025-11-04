@@ -1,0 +1,311 @@
+\lecture{6}{21. Oktober 2025}{Fri svingning/egensvingning af MDOF-systemer (del I)}
+
+\begin{problemwithimage}{p6_1}{6.1}
+  Vi betragter det viste masse-fjeder-system, der skal analyseres som et system med to frihedsgrader; navnligt $d_1(t)$ og $d_2(t)$.
+  a) Opstil masse- og stivhedsmatricen for systemet.
+  b) Bevis, at systemets udæmpede vinkelegenfrekvenser er givet ved
+  \[ 
+  \omega_1 = \sqrt{\frac{k}{m}}, \qquad \omega_2 = \sqrt{5}\omega_1
+  .\]
+  c) Bestem de tilhørende egensvingningsformer/-vektorer, $\phi_1$ og $\phi_2$.
+\end{problemwithimage}
+
+\begin{figure}[ht]
+    \centering
+    \incfig[0.8]{p6_1-1}
+    \caption{Frit-legeme diagram for de to masser i systemet.}
+    \label{fig:p6_1-1}
+\end{figure}
+
+\begin{derivation}
+  På \Cref{fig:p6_1-1} ses et frit-legeme diagram for hver af de to masser i systemet.
+  På baggrund af dette kan Newtons 2. lov benyttes for først den første masse, som
+  \begin{align*}
+    m \ddot{d}_1(t) &= - kd_1 + 2 k \left( d_2 - d_1 \right) \\
+                    &= 2k d_2 - 3k d_1 \\
+    \implies \quad m \ddot{d}_1 (t) + 3k d_1 - 2k d_2 &= 0
+  .\end{align*}
+  Og dernæst for den anden masse, som
+  \begin{align*}
+    m \ddot{d}_2(t) &= - 2k \left( d_2 - d_1 \right) - k d_2 \\
+          &= 2k d_1 - 3k d_2 \\
+    \implies m \ddot{d}_2 (t) + 3k d_2 - 2k d_1 &= 0
+  .\end{align*}
+  Dermed har vi de to ligninger
+  \begin{align*}
+    m \ddot{d}_1 (t) + 3k d_1 - 2k d_2 &= 0 \\
+    m \ddot{d}_2 (t) + 3k d_2 - 2k d_1 &= 0
+  .\end{align*}
+  Dette giver systemet
+  \[ 
+  \begin{bmatrix}
+  m & 0\\
+  0 & m\\
+  \end{bmatrix} \begin{bmatrix}
+  \ddot{d}_1 (t)\\
+  \ddot{d}_2 (t)\\
+  \end{bmatrix} + \begin{bmatrix}
+  3k & - 2k\\
+  -2k  & 3k \\
+  \end{bmatrix} \begin{bmatrix}
+  d_1\\
+  d_2\\
+  \end{bmatrix} = \begin{bmatrix}
+  0\\
+  0\\
+  \end{bmatrix}
+  .\]
+  Heraf ses at masse- og stivhedsmatricerne er hhv.
+  \begin{align*}
+    M &= \begin{bmatrix}
+    m & 0\\
+    0 & m\\
+    \end{bmatrix} \\
+      K &= \begin{bmatrix}
+      3k & -2k\\
+      -2k & 3k\\
+      \end{bmatrix}
+  .\end{align*}
+  Vi har at den udæmpede vinkelegenfrekvens $\omega$ kan findes ved
+  \[ 
+  \mathrm{det} \left( K - \omega^2 M \right) = 0
+  .\]
+  Ved indsættelse fås
+  \begin{equation*}
+    \mathrm{det}\left( \begin{bmatrix}
+    3k - \omega^2 m &  - 2k \\
+    - 2k & 3k - \omega^2 m\\
+    \end{bmatrix} \right) = \left( 3k - \omega^2 m \right)^2 - 4 k^2 = 0
+  .\end{equation*}
+  De positive løsninger for $\omega$ af denne er hhv.
+  \[ 
+    \omega_1 = \sqrt{\frac{k}{m}}, \qquad \omega_2 = \sqrt{5} \cdot \sqrt{\frac{k}{m}} = \sqrt{5} \omega_1
+  .\]
+  Altså er det vist.
+
+  For hver af disse 2 udæmpede vinkelegenfrekvenser findes en egenvektor $\phi_j$ givet ved
+  \[ 
+  \left( K - \omega_j^2 M \right) \phi_j = 0
+  .\]
+  For $\omega_1 = \sqrt{k / m}$ fås
+  \begin{align*}
+    0 &= \begin{bmatrix}
+    3k - \frac{k}{m}m & - 2k\\
+    -2k & 3k - \frac{k}{m}m\\
+    \end{bmatrix} \phi_1 \\
+      &= \begin{bmatrix}
+    2k & -2k\\
+    -2k & 2k\\
+    \end{bmatrix} \begin{bmatrix}
+    \phi_{11}\\
+    \phi_{21}\\
+    \end{bmatrix} \\
+      &= 2k \left( \phi_{11}- \phi_{21} \right) \\
+      \implies \qquad \phi_{11} &= \phi_{21}
+  .\end{align*}
+  Hvis vi lader $\phi_{11} = 1$ så $\phi_1 = \begin{bmatrix}
+  1\\
+  1\\
+  \end{bmatrix}$.
+  For $\omega_2 = \sqrt{5}\omega_1$ får vi
+  \begin{align*}
+    0 &= \begin{bmatrix}
+    3k - 5 \frac{k}{m}m & - 2k\\
+    -2k & 3k - 5 \frac{k}{m}m\\
+    \end{bmatrix}\phi_2  \\
+      &= \begin{bmatrix}
+    -2k & -2k\\
+    -2k & -2k\\
+    \end{bmatrix} \begin{bmatrix}
+    \phi_{12}\\
+    \phi_{22}\\
+    \end{bmatrix} \\
+      &= - 2k \left( \phi_{12} + \phi_{22} \right) \\
+      \implies \qquad \phi_{12} &= - \phi_{22}
+  .\end{align*}
+  Vi lader $\phi_{12} = 1$ så $\phi_2 = \begin{bmatrix}
+  1\\
+  -1\\
+  \end{bmatrix}$
+\end{derivation}
+
+\finalresult{
+  \begin{aligned}
+    \mathrm{a}) &\quad M = \begin{bmatrix}
+    m & 0\\
+    0 & m\\
+    \end{bmatrix}, \quad K = \begin{bmatrix}
+    3k & -2k\\
+    -2k & 3k\\
+    \end{bmatrix} \\
+    \mathrm{b}) &\quad \omega_1 = \sqrt{\frac{k}{m}}, \quad \omega_2 = \sqrt{5}\omega_1 \\
+    \mathrm{c}) &\quad \phi_1 = \begin{bmatrix}
+    1\\
+    1\\
+    \end{bmatrix}, \quad \phi_2 = \begin{bmatrix}
+    1\\
+    -1\\
+    \end{bmatrix}
+  \end{aligned}
+}
+
+\begin{problemwithimage}{p6_2}{6.2}
+  Vi betragter det viste rammesystem, hvori de horisontale/tværgående bjælker er uendeligt stive og hver har massen $m = \qty{1,5}{\kg}$, mens de vertikale bjælker er masseløse og hver har længden $L = \sqrt[3]{\num{1,2}} \, \unit{\m}$ og stivheden $k = \frac{12 EI}{L^3}$ \, \unit{\N\per\m} med $EI = \qty{10}{\N\m\squared}$.
+  Systemet skal modelleres som et system med to frihedsgrader, hvor den første frihedsgrad, $d_1(t)$, er den horisontale flytning af den øverste tværgående bjælke, mens den anden frihedsgrad, $d_2(t)$, er den horisontale flytning af den nederste tværgående bjælke.
+  Begyndelsesbetingelserne $d_0 = \phi_2$ og $\dot{d}_0 = 0$ påføres, hvortil det bemærkes, at $\phi_2$ er den anden egensvingningsform.
+  a) Opstil stivheds- og massematricen for systemet.
+  b) Bestem systemets udæmpede vinkelegenfrekvenser, $\omega_j$, og de tilhørende egensvingningsformer, $\phi_j$.
+  c) Bestem $d_1(t)$ og $d_2(t)$.
+\end{problemwithimage}
+
+\begin{figure}[ht]
+    \centering
+    \incfig[0.85]{p6_2fbd}
+    \caption{Frit-legeme diagram for systemet}
+    \label{fig:p6_2fbd}
+\end{figure}
+
+\begin{derivation}
+  Systemet kan betrates som vist på \Cref{fig:p6_2fbd}.
+  Benyttes Newtons 2. lov for den første masse fås:
+  \begin{align*}
+    m \ddot{d}_1(t) &= - 2k (d_1 - d_2) \\
+    \implies \quad m \ddot{d}_1 (t) + 2k d_1 - 2k d_2 &= 0
+  .\end{align*}
+  Gøres det samme for den anden masse fås:
+  \begin{align*}
+    m \ddot{d}_2(t) &= 2k \left( d_1 - d_2 \right) - 2k d_2 \\
+    \implies \quad m \ddot{d}_2 (t) + 4 d_2 k - 2 d_1 k &= 0
+  .\end{align*}
+  Dermed har vi ligningerne:
+  \begin{align*}
+    m \ddot{d}_1 (t) + 2k d_1 -  2k d_2 &= 0 \\
+    m \ddot{d}_2(t) + 4 d_2 k - 2 d_1 k &= 0
+  .\end{align*}
+  Hvilket giver systemet:
+  \[ 
+  \begin{bmatrix}
+  m & 0\\
+  0 & m\\
+  \end{bmatrix} \begin{bmatrix}
+  \ddot{d}_1 (t)\\
+  \ddot{d}_2(t)\\
+  \end{bmatrix} + \begin{bmatrix}
+  2k & - 2k\\
+  - 2k & 4k \\
+  \end{bmatrix} \begin{bmatrix}
+  d_1(t)\\
+  d_2(t)\\
+  \end{bmatrix} = \begin{bmatrix}
+  0\\
+  0\\
+  \end{bmatrix}
+  .\]
+  Dermed er masse- og stivhedsmatricerne hhv:
+  \begin{gather*}
+    M = \begin{bmatrix}
+    m & 0\\
+    0 & m\\
+    \end{bmatrix} = \begin{bmatrix}
+    \num{1,5} & 0\\
+    0 & \num{1,5} \\
+    \end{bmatrix} \, \unit{\kg}\\
+      K = \begin{bmatrix}
+      2k & -2k\\
+      -2k & 4k\\
+      \end{bmatrix} = 2k \begin{bmatrix}
+      1 & -1\\
+      -1 & 2\\
+      \end{bmatrix} = \frac{24 EI}{L^3} \begin{bmatrix}
+      1 & -1\\
+      -1 & 2\\
+      \end{bmatrix} = \begin{bmatrix}
+      200 & -200\\
+      -200 & 400\\
+      \end{bmatrix}\, \unit{\N\per\m}
+    .\end{gather*}
+    Den udæmpede vinkelegenfrekvens $\omega$ kan findes ved
+    \[ 
+    \mathrm{det} \left( K - \omega^2 M \right) = 0
+    .\]
+    Ved indsættelse fås
+    \begin{align*}
+      0 =& \mathrm{det} \left( \begin{bmatrix}
+    \qty{200}{\N\per\m} - \omega^2 \cdot \qty{1,5}{\kg} & \qty{-200}{\N\per\m} \\
+    \qty{-200}{\N\per\m} & \qty{400}{\N\per\m} - \omega^2 \cdot \qty{1,5}{\kg} \\
+\end{bmatrix} \right) \\
+          =& \left( \qty{200}{\N\per\m} - \omega^2 \cdot \qty{1,5}{\kg} \right) \left( \qty{400}{\N\per\m} - \omega^2 \cdot \qty{1,5}{\kg}  \right) - \left( \qty{-200}{\N\per\m}  \right) \left( \qty{-200}{\N\per\m}  \right) \\
+          \implies& \qquad \omega_1 = \qty{7,14}{\s^{-1}} \quad \omega_2 = \qty{18,68}{\s^{-1}}
+    .\end{align*}
+    Her kan vi nu løse
+    \[ 
+      \left( K - \omega^2_j M \right)\phi_j = 0
+    .\]
+    Vi får hhv.
+    \begin{align*}
+      \phi_1 &= \begin{bmatrix}
+      - \num{0,618}\\
+      1\\
+      \end{bmatrix} \\
+        \phi_2 &= \begin{bmatrix}
+        \num{1,618} \\
+        1\\
+        \end{bmatrix}
+    .\end{align*}
+    Vi har den generelle løsningsformel:
+    \[ 
+    d(t) = \phi_1 \left( A_1^{(1)} \cos \left( \omega_1 t \right) + A_1^{(2)} \sin \left( \omega_1 t \right) \right) + \phi_2 \left( A_2^{(1)} \cos \left( \omega_2 t \right) + A_2^{(2)} \sin \left( \omega_2 t \right) \right)
+    .\]
+    Begyndelsesbetingelsen $d_0 = \phi_2$ giver os
+    \begin{align*}
+      \phi_2 =& \phi_1 A_1^{(1)} + \phi_2 A_2^{(1)} \\
+      \implies& \quad A_1^{(1)} = 0, \quad A_2^{(1)} = 1
+    .\end{align*}
+    Dermed har vi
+    \[ 
+    d(t) = \phi_1 A_1^{(2)} \sin \left( \omega_1 t \right) + \phi_2 \left( \cos \left( \omega_2 t \right) + A_2^{(2)} \sin \left( \omega_2 t \right) \right)
+    .\]
+    Vi differentierer dette for at få
+    \[ 
+    \dot{d} (t) = \omega_1 \phi_1 A_1^{(2)} \cos \left( \omega_1 t \right) + \phi_2 \left( - \omega^2 \sin \left( \omega_2 t \right) + \omega_2 A_2^{(2)} \cos \left( \omega_2 t \right) \right)
+    .\]
+    Ved indsættelse af vores begyndelsesbetingelse, $\dot{d}_0 = 0$ fås
+    \begin{align*}
+      0 =& \omega_1 \phi_1 A_1^{(2)} + \phi_2 \omega_2 A_2^{(2)} \\
+      \implies& \quad A_1^{(2)} = A_2^{(2)} = 0
+    .\end{align*}
+    Dermed fås:
+    \[ 
+    d(t) = \phi_2 \cos \left( \omega_2 t \right)
+    .\]
+    Hvilket svarer til systemet
+    \[
+      d(t) = \begin{bmatrix}
+      \num{1,62}\\
+      1\\
+      \end{bmatrix} \cos \left( \qty{18,7}{\s^{-1}} \cdot t \right)
+    .\]
+  \end{derivation}
+
+\finalresult{
+\begin{aligned}
+    \mathrm{a}) &\quad M = \begin{bmatrix}
+    \num{1,5}  & 0\\
+    0 & \num{1,5} \\
+    \end{bmatrix} \, \unit{\kg}, \quad  K = \begin{bmatrix}
+    200 & -200\\
+    -200 & 400\\
+    \end{bmatrix} \, \unit{\N\per\m} \\
+    \mathrm{b}) &\quad \omega_1 = \qty{7,14}{\s^{-1}}, \quad  \omega_2 = \qty{18,7}{\s^{-1}}, \quad  \phi_1 = \begin{bmatrix}
+    \num{-0,618} \\
+    1\\
+    \end{bmatrix}, \quad \phi_2 = \begin{bmatrix}
+    \num{1,62} \\
+    0\\
+    \end{bmatrix} \\
+    \mathrm{c}) &\quad d(t) = \begin{bmatrix}
+    \num{1,618} \\
+    1\\
+    \end{bmatrix} \cos \left( \qty{18,7}{\s^{-1}} \cdot t \right)
+.\end{aligned}
+}

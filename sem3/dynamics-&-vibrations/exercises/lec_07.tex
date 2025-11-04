@@ -1,0 +1,207 @@
+\lecture{7}{28. Oktober 2025}{Fri svingning/egensvingning af MDOF-systemer (del II)}
+
+\begin{problemwithimage}{p7_1}{7.1}
+  Vi returnerer til systemet behandlet i opgave 6.1 og tilføjer en dæmpningsmekanisme som vist.
+  Bevis, at dæmpningen er klassisk.
+\end{problemwithimage}
+  
+\begin{figure}[ht]
+    \centering
+    \incfig[0.9]{p7_1fbd}
+    \caption{Free body diagram of the system}
+    \label{fig:p7_1fbd}
+\end{figure}
+
+\begin{derivation}
+  Baseret på \Cref{fig:p7_1fbd} kan Newtons 2. lov anvendes som
+  \begin{align*}
+    m \cdot \ddot{d}_1 &= 2k d_2 - 3k d_1 + c (\dot{d}_2 - \dot{d}_1) \\
+    m \cdot \ddot{d}_1 + 3k d_1 - 2k d_2 + c \dot{d}_1 - c \dot{d}_2 &= 0 \\
+    m \cdot \ddot{d}_2 &= - 3k d_2 + 2kd_1 - c (\dot{d}_2 - \dot{d}_1) \\
+    m \cdot \ddot{d}_2 - 2k d_1 + 3k d_2 + c \dot{d}_2 - c \dot{d}_1 &= 0
+  .\end{align*}
+  Dermed har vi
+\[ 
+  M = \begin{bmatrix}
+  m & 0\\
+  0 & m\\
+  \end{bmatrix}, \quad C = \begin{bmatrix}
+  c & -c\\
+  -c & c\\
+  \end{bmatrix}, \quad K = \begin{bmatrix}
+  3k & -2k\\
+  -2k & 3k\\
+  \end{bmatrix}
+.\]
+Fra Opgave 6.1 har vi at $\Phi = \begin{bmatrix}
+1 & 1\\
+1 & -1\\
+\end{bmatrix}$
+  Desuden har vi $\tilde{C}$ givet som
+  \[ 
+    \tilde{C} \equiv \Phi^{\intercal} C \Phi 
+  .\]
+  Dermed er $\tilde{C}$:
+  \[
+    \tilde{C} = \begin{bmatrix}
+    1 & 1\\
+    1 & -1\\
+    \end{bmatrix}^{\intercal} \begin{bmatrix}
+    c & -c\\
+    -c & c\\
+    \end{bmatrix} \begin{bmatrix}
+    1 & 1\\
+    1 & -1\\
+    \end{bmatrix} = \begin{bmatrix}
+    0 & 0\\
+    0 & 4c\\
+    \end{bmatrix}
+  .\]
+  Eftersom $\tilde{C} = \begin{bmatrix}
+  0 & 0\\
+  0 & 4c\\
+  \end{bmatrix}$ er diagonal må der derfor være tale om klassisk dæmpning.
+\end{derivation}
+
+\begin{problemwithimage}{p7_2}{7.2}
+  Vi betragter det viste rammesystem.
+  Heri gælder det, at de horisontale bjælker er uendeligt stive og har masserne $m_1$ og $m_2$, mens de vertikale bjælker (også kaldet søjler) er fleksible (alle med stivheden $k_1$) og masseløse.
+  En fjeder med stivheden $k_2$ er påsat den øverste horisontale bjælke.
+  Systemet modelleres som et 2DOF-system, hvori den første frihedsgrad, $d_1(t)$, er den horisontale flytning af den nederste horisontale bjælke, mens den anden frihedsgrad, $d_2(t)$, er den horisontale flytning af den øverste horisontale bjælke.
+  Det oplyses, at de udæmpede vinkelegenfrekvenser og de tilhørende masse-normaliserede egenvektorer af 2DOF-systemet er
+  \[ 
+  \omega_1 = \sqrt{200} \, \unit{rad\per\s}, \qquad \omega_2 = \sqrt{600} \, \unit{rad\per\s}, \qquad \phi_1 = \begin{bmatrix}
+  1 \\
+  1 \\
+  \end{bmatrix}, \qquad \phi_2 = \begin{pmatrix}
+  1\\
+  -1\\
+  \end{pmatrix}
+  .\]
+  a) Bestem værdierne for $k_1$ og $k_2$.
+
+  b) Bestem værdierne for $m_1$ og $m_2$.
+  
+  Hvad angår 2DOF-systemet, så oplyses begyndelsesbetingelserne $d_0 = \begin{pmatrix}
+  \num{0,1}  & \num{0,2} \\
+  \end{pmatrix}^{\intercal}$ og $\dot{d}_0 = \begin{pmatrix}
+  0 & 0\\
+  \end{pmatrix}^{\intercal}$.
+  Endvidere oplyses det, at systemet er klassisk dæmpet med de modale dæmpningskonstanter $\tilde{c}_{11} = 8$ og $\tilde{c}_{22} = 10$.
+
+  c) Bestem dæmpningsmatricen, $C \in \mathbb{R}^{2 \times 2}$.
+
+  d) Bestem begyndelsesaccelerationsvektoren, $\ddot{d}_0$.
+\end{problemwithimage}
+
+\begin{derivation}
+  Vi har fået givet to egenfrekvenser og de dertilhørende egenvektorer.
+  Vi har altså:
+  \[ 
+  \Lambda = \begin{bmatrix}
+  \qty{200}{\s^{-1}}  & 0\\
+  0 & \qty{600}{\s^{-1}}\\
+  \end{bmatrix}, \qquad \Phi = \begin{bmatrix}
+  1 & 1\\
+  1 & -1\\
+  \end{bmatrix}, \qquad \tilde{M} = I
+  .\]
+  Fra undervisningen har vi at siden vi generelt har
+  \[ 
+  \Phi^{\intercal} K \Phi = \Phi^{\intercal} M \Phi \Lambda
+  \]
+  så medfører $\tilde{M}= I$ at $\tilde{K} = \Lambda$.
+  $\tilde{K}$ er givet som:
+  \[ 
+  \tilde{K} \equiv \Phi^{\intercal} K \Phi
+  .\]
+  Altså:
+  \begin{align*}
+    \tilde{K} &= \Phi^{\intercal} K \Phi \\
+    K &= \left( \Phi^{\intercal} \right)^{-1} \tilde{K} \Phi^{-1} \\
+      &= \begin{bmatrix}
+      200 & -100\\
+      -100 & 200\\
+      \end{bmatrix}
+  .\end{align*}
+  Vi har
+  \[ 
+  K = \begin{bmatrix}
+  4k_1 & -2k_1\\
+  -2k_1 & 2k_1 + k_2\\
+  \end{bmatrix} \quad \implies \quad k_1 = 50, \: k_2 = 100
+  .\]
+  Samme procedure kan følges for masserne.
+  Siden $\tilde{M} = I$ fås:
+  \begin{align*}
+    \tilde{M} &= \Phi^{\intercal} M \Phi \\
+    M &= \left( \Phi^{\intercal} \right)^{-1} \Phi \\
+      &= \begin{bmatrix}
+      \frac{1}{2} & 0\\
+      0 & \frac{1}{2}\\
+      \end{bmatrix}
+  .\end{align*}
+  Dermed har vi $m_1 = m_2 = \frac{1}{2}$.
+
+  Udnyttes samme teknik for dæmpningsmatricen får vi
+  \begin{align*}
+    \tilde{C} &= \Phi^{\intercal} C \Phi \\
+    C &= \left( \Phi^{\intercal} \right)^{-1} \tilde{C} \Phi^{-1} \\
+      &= \begin{bmatrix}
+      \frac{1}{2} & \frac{1}{2}\\
+      \frac{1}{2} & - \frac{1}{2}\\
+      \end{bmatrix} \begin{bmatrix}
+      8 & 0\\
+      0 & 10\\
+      \end{bmatrix} \begin{bmatrix}
+      \frac{1}{2} & \frac{1}{2}\\
+      \frac{1}{2} & -\frac{1}{2}\\
+      \end{bmatrix} \\
+      &= \frac{1}{2} \begin{bmatrix}
+      9 & -1\\
+      -1 & 9\\
+      \end{bmatrix}
+  .\end{align*}
+  
+  For at bestemme $\ddot{d}_0$ benytter vi den generelle formel
+  \begin{align*}
+    M \ddot{d}_0 + C \dot{d}_0 + K d_0 &= 0 \\
+    \ddot{d}_0 &= - M^{-1} \left( C \dot{d}_0 + K d_0 \right) \\
+     &= - \begin{bmatrix}
+     \frac{1}{2} & 0\\
+     0 & \frac{1}{2}\\
+     \end{bmatrix}^{-1} \left( \frac{1}{2} \begin{bmatrix}
+     9 & -1\\
+     -1 & 9\\
+     \end{bmatrix} \cdot \begin{bmatrix}
+     0 \\
+     0 \\
+     \end{bmatrix} + \begin{bmatrix}
+     200 & -100\\
+     -100 & 200\\
+     \end{bmatrix} \cdot \begin{bmatrix}
+     \num{0,1} \\
+     \num{0,2} \\
+     \end{bmatrix}\right) \\
+     &= \begin{bmatrix}
+     0\\
+     -60\\
+     \end{bmatrix}
+  .\end{align*}
+  
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+    \mathrm{a}) &\quad k_1 = \num{50}, \, k_2 = 100 \\ 
+    \mathrm{b}) &\quad m_1 = m_2 = \frac{1}{2} \\
+    \mathrm{c}) &\quad C = \frac{1}{2} \begin{bmatrix}
+    9 & -1 \\
+    -1 & 9\\
+    \end{bmatrix} \\
+    \mathrm{d}) &\quad \ddot{d}_0 = \begin{bmatrix}
+    0\\
+    -60\\
+    \end{bmatrix}
+.\end{aligned}
+}

@@ -1,0 +1,87 @@
+\lecture{8}{4. November 2025}{Fri svingning/egensvingning af MDOF-systemer (del III)}
+
+\begin{problem}{8.1}
+  Vi returnerer til systemet behandlet i Opgave 7.1. Bevis, at dæmpningsforholdene er givet som
+  \[ 
+  \xi_1 = 0, \quad \xi_2 = \frac{c}{m \omega_2}
+  .\]
+\end{problem}
+
+\begin{derivation}
+  Fra forelæsningen har vi at $\tilde{C}$ er givet som
+  \[ 
+  \tilde{C}_{jj} = 2 \xi_{j} \tilde{m}_{jj} \omega_j
+  .\]
+  Heri kan dæmpningsforholdet $\xi_{j}$ isoleres som
+  \[ 
+  \xi_{j} = \frac{\tilde{C}_{jj}}{2 \tilde{M}_{jj} \omega_j}
+  .\]
+  Hvori $\tilde{C}$ er fundet i opgave 7.1 til
+  \[ 
+  \tilde{C} = \begin{bmatrix}
+  0 & 0\\
+  0 & 4c\\
+  \end{bmatrix}
+  .\]
+  
+  Fra Opgave 6.1 har vi hhv:
+  \[ 
+  \omega_1 = \sqrt{\frac{k}{m}}, \quad \omega_2 = \sqrt{5}\omega_1
+  .\]
+  De modale masser bestemmes som
+  \begin{align*}
+    \tilde{M} &= \Phi^{\intercal} M \Phi \\
+              &= \begin{bmatrix}
+              1 & 1\\
+              1 & -1\\
+              \end{bmatrix} \begin{bmatrix}
+              m & 0\\
+              0 & m\\
+              \end{bmatrix} \begin{bmatrix}
+              1 & 1\\
+              1 & -1\\
+              \end{bmatrix} \\
+              &= 2m \begin{bmatrix}
+              1 & 0\\
+              0 & 1\\
+              \end{bmatrix}
+  .\end{align*} 
+  Dermed har vi at $\tilde{M}_{11} = \tilde{M}_{22} = 2m$, hvorfor vi får:
+\end{derivation}
+\finalresult{
+  \begin{aligned}
+    \xi_1 &= \frac{0}{2 \cdot 2m \cdot \omega_1} = 0 \\
+    \xi_2 &= \frac{4c}{2 \cdot 2m \cdot \omega_2} = \frac{c}{m \omega_2}
+  .\end{aligned}
+}
+
+\begin{problemwithimage}{p8_2}{8.2}
+  Et eksperiment har--under antagelsen om klassisk dæmpning--resulteret i de nedenfor viste egenværdier (og deres komplekst konjugerede), der ligger på en ret linje fra origo.
+  Det oplyses, at $\lambda_1 = \num{-0,900} + \num{8,956}i $ og $\lambda_2 = \num{-2,627} + \num{26,142} i$.
+  (a) Bestem de fem dæmpningsforhold.
+
+  (b) Bestem de to første udæmpede vinkelegenfrekvenser.
+
+  Det oplyses nu, at
+  \[ 
+  K = \num{1000} \begin{bmatrix}
+  2 & -1 & 0 & 0 & 0\\
+  -1 & 2 & -1 & 0 & 0\\
+  0 & -1 & 2 & -1 & 0\\
+  0 & 0 & -1 & 2 & -1\\
+  0 & 0 & 0 & -1 & 1\\
+  \end{bmatrix}, \qquad M = I
+  .\]
+  
+  (c) Bestem dæmpningsmatricen, $C \in \mathbb{R}^{5 \times 5}$, ved brug af Rayleighs dæmpningsmodel baseret på de to første egensvingningskonfigurationer.
+
+  (d) Hvor store fejl yder Rayleighs dæmpningsmodel på $\xi_3, \xi_4$ og $\xi_5$?
+\end{problemwithimage}
+
+\begin{derivation}
+  Fra Forelæsning 7 har vi at der for klassisk dæmpning gælder at:
+  \[ 
+  \left\{ \lambda_j, \lambda_{j+n} \right\} = - \xi_j \omega_j \pm i \omega_j \sqrt{1 - \xi_j^2}, \text{ hvor } \xi_j \equiv \frac{\tilde{C}_{jj}}{2 \tilde{M}_{jj} \omega_j} \text{ for } \omega_j > 0
+  .\]
+  Se svaret i svararket for resten af den her trælse opgave...
+\end{derivation}
