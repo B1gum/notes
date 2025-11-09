@@ -1,0 +1,82 @@
+\lecture{16}{30. Oktober 2025}{Bending -- Shear and Moment Diagram}
+
+\section{Bending}
+
+\subsection{Internal Loading as a Function of Position}
+\begin{definition}[Beams]
+  A beam is a slender member that supports a load perpendicular to its longitudinal axis.
+\end{definition}
+
+In general, beams are long, straight members having a cross-sectional area.
+Oftentimes these are classified based on how they are supported.
+A few different support types are shown on \Cref{fig:f16_1}.
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=\linewidth]{./figures/f16_1.png}
+  \caption{Basic support types for beams.}
+  \label{fig:f16_1}
+\end{figure}
+
+Due to the applied loadings, beams develop an internal shear force and bending moment that, in general, varies from point to point along the axis of the beam and therefore it is important to determine the \textit{maximum} shear and moment in the beam.
+One way to do this is to express $V$ and $M$ as functions of their arbitrary position $x$ along the beam's axis and then plot these functions.
+These plots are called the shear and moment diagrams, respectively. 
+The maximum values of $V$ and $M$ can be directly obtained from these diagrams.
+Also since these provide an easily identifiable visual cue for the variation in $V$ and $M$ they are often used to determine where supports or reinforcements should be added.
+
+In cases there the beam supports several distributed loads, concentrated forces, and/or couple moments, the internal shear and moment functions of $x$ will be discontinuous at the points where the loads are applied.
+Because of this, these functions must be determined for each region of the beam \textit{between} any two discontinuities of loading.
+
+\subsubsection{Beam Sign Convention} \label{sec:sgncon}
+The ``normal'' sign convention of beam loading is shown on \Cref{fig:f16_2}.
+The positive \textit{distributed load} acts \textit{upward}, the positive \textit{internal shear force} causes a \textit{clockwise} rotation of the beam segment on which it acts, and the positive \textit{moment} causes \textit{compression} in the \textit{top} of the segment such that it bends the segment in a way that ``holds water''.
+Opposite loadings are considered negative. 
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.9\linewidth]{./figures/f16_2.png}
+  \caption{Beam Sign convention.}
+  \label{fig:f16_2}
+\end{figure}
+
+
+
+\subsection{Graphical Method for Constructing Shear and Moment Diagrams}
+We consider the beam shown on \Cref{fig:f16_3}.a which is subject to an arbitrary distributed loading.
+A free-body diagram for a small segment $\Delta x$ of the beam is depicted on \Cref{fig:f16_3}.b.
+This segment is chosen at position $x$ where there is no concentrated force or couple moment.
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.75\linewidth]{./figures/f16_3.png}
+  \caption{Distributed load on a beam.}
+  \label{fig:f16_3}
+\end{figure}
+
+Notice that all the loadings shown on the segment act in their positive directions according to the sign convention established in \Cref{sec:sgncon}.
+Both the internal resultant shear and moment acting on the right face must be increased by a small amount to maintain equilibrium.
+The distributed load (which is approximately constant over $\Delta x$) has been replaced by a resultant $w \Delta x$ that acts at the middle of the segment ($1 / 2 \Delta x$ from either side).
+The equations of equilibrium gives us
+\begin{align*}
+  \sum F_y &= 0 \\
+  V 0 w \Delta x - \left( V + \Delta V \right) &= 0 \\
+  \Delta V &= w \Delta x \\
+  \sum M_O &= 0  \\
+  - V \Delta x - M - w \Delta x \left( \frac{1}{2} \Delta x \right) + \left( M + \Delta M \right) &= 0 \\
+  \Delta M &= V \Delta x + w \frac{1}{2} \left( \Delta x \right)^2
+.\end{align*}
+
+Dividing by $\Delta x$ and taking the limit as $\Delta x \to 0$ the above two equations become:
+\begin{gather*}
+  \overbrace{\frac{\mathrm{d}V}{\mathrm{d}x}}^{\text{Slope of shear diagram}} = \overbrace{w}^{\text{Distributed loading}} \\
+  \underbrace{\frac{\mathrm{d}M}{\mathrm{d}x} }_{\text{Slope of moment diagram}} = \underbrace{V}_{\text{Shear}}
+.\end{gather*}
+
+The first of these two equations states that at any point the \textit{slope} of the shear diagram equals the intensity of the distributed loading.
+In a similar manner the second states that the slope of the moment diagram is equal to the shear.
+These may also be rewritten as
+\begin{align*}
+  \Delta V &= \int  w \, \mathrm{d}x  \\
+  \Delta M &= \int  V \, \mathrm{d}x 
+.\end{align*}
+

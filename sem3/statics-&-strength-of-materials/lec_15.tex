@@ -1,0 +1,75 @@
+\lecture{15}{27. Oktober 2025}{Statically Indeterminate Torque-loaded Members}
+
+\subsection{Angle of Twist}
+We consider a shaft with a circular cross section that can vary gradually along its length as shown on \Cref{fig:f15_1}.a.
+Furthermore, the material is assumed to be homogeneous and linear elastic.
+We neglect the localized deformation that occur at points of applications of the torque and there the cross section changes abruptly.
+
+Using the method of sections, a differential disk of thickness $\mathrm{d}x$, located at position $x$ is isolated from the shaft as shown on \Cref{fig:f15_1}.b.
+At this point the internal torque is $T(x)$.
+Due to $T(x)$, the disk will twist, such that the relative rotation of one of its faces with respect to the other $\mathrm{d}\phi$.
+As a result an element of the material located at an arbitrary radius $\rho$ within the disk will undergo a shear strain $\gamma$.
+The values of $\gamma$ and $\mathrm{d}\phi$ are related by \Cref{eq:101} as
+\[ 
+\mathrm{d}\phi = \gamma \frac{\mathrm{d}x}{\rho}
+.\]
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.85\linewidth]{./figures/f15_1.png}
+  \caption{Shaft subjected to a torque.}
+  \label{fig:f15_1}
+\end{figure}
+
+Since Hooke's law applies and the shear stress can be expressed in terms of the applied torque using the torsion formula, we can find the angle of twist as
+\[ 
+\mathrm{d}\phi = \frac{T(x)}{J(x)G(x)} \, \mathrm{d}x 
+.\]
+Integrating over the entire length $L$ of the shaft we get the angle of twist of the entire shaft as
+\[ 
+\phi = \int_{0}^{L} \frac{T(x)}{J(x) G(x)} \, \mathrm{d}x
+.\]
+
+
+\subsubsection{Constant Torque and Cross-sectional Area}
+For a homogeneous material $G$ is constant.
+Furthermore, if the cross-sectional area and external torque along the length of the shaft is also constant, the integral above reduces to
+\[ 
+\phi = \frac{TL}{JG}
+.\]
+
+
+\subsubsection{Sign Convention}
+By convention, the right-hand rule is applied with the thumb outwards from the shaft with the fingers curling in the direction of positive torque $T$.
+
+
+
+\subsection{Statically Indeterminate Torque-loaded Members}
+A torsionally loaded shaft is statically indeterminate, if the moment equation of equilibrium, about the axis of the shaft, is not adequate to determine the unknown torques acting on the shaft. 
+An example of this is shown on \Cref{fig:f15_2}.a.
+As shown on the free-body diagram of \Cref{fig:f15_2}.b the reactive torques at the fixed supports $A$ and $B$ are unknown.
+Along the axis of the shaft, we require
+
+\[ 
+\sum M = 0 \implies \qquad \qty{500}{\N.\m} - T_A - T_B = 0
+.\]
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.65\linewidth]{./figures/f15_2.png}
+  \caption{Statically indeterminate torque-loaded member.}
+  \label{fig:f15_2}
+\end{figure}
+
+In order to obtain a solution we will use the fact that the angle of twist of one end of the shaft with respect to the other end is equal to zero singe the end support are fixed.
+Therefore,
+\[ 
+\phi_{A / B} = 0
+.\]
+Provided the material is homogeneous and linear elastic, we can then apply the load displacement relation $\phi = TL / JG$ to express the equation in terms of the unknown torques.
+Realizing the internal torque in segment $AC$ is $T_A$ and in segment $CB$ it is $-T_B$ as shown on \Cref{fig:f15_2}.c.
+We get:
+\begin{gather*}
+  \frac{T_A \left( \qty{3}{\m}  \right)}{JG} - \frac{T_B \left( \qty{2}{\m}  \right)}{JG} = 0 \\
+  \implies \qquad T_A = \qty{200}{\N.\m} \qquad  \text{and} \qquad  T_B = \qty{300}{\N.\m}. \phantom{\implies} 
+\end{gather*}

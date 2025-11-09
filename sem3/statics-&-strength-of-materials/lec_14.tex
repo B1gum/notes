@@ -1,0 +1,129 @@
+\lecture{14}{23. Oktober 2025}{Torsional Deformation}
+
+
+\section{Torsion}
+
+\subsection{Torsional Deformation of a Circular Shaft}
+\begin{definition}[Torque]
+  Torque is a moment that tends to twist a member about its longtitudinal axis.
+\end{definition}
+
+
+We consider a torque applied to a circular shaft made of a highly deformable material such as rubber.
+As torque is applied, the longtitudinal grid lines tend to distort into a helix as shown on \Cref{fig:f14_1}.
+Also, all the cross sections of the shaft will remain flat and all radial lines will remain straight and simply rotate during the deformation.
+For a small angle of twist the length of the shaft and its radius will remain unchanged. 
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.85\linewidth]{./figures/f14_1.png}
+  \caption{Distortion of grid lines in a highly deformable material due to an applied torque.}
+  \label{fig:f14_1}
+\end{figure}
+
+If we now fix one end of the shaft and apply a torque to the other end, then the undeformmed plane in \Cref{fig:f14_2}.a will distort into a skewed plane as shown.
+
+A radial line, located on the cross section at distance $x$ from the fixed end of the shaft, will rotate through an angle $\phi(x)$.
+This angle is called the \textit{angle of twist}.
+As can be seen from the arguments to $\phi$ its magnitude depends on the position $x$ along the shaft.
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.85\linewidth]{./figures/f14_2.png}
+  \caption{Torque applied to a shaft fixed at the other end.}
+  \label{fig:f14_2}
+\end{figure}
+
+
+We will now consider a small disk-element, located at $x$ as shown on \Cref{fig:f14_2}.b.
+Due to the deformation, the both the front and rear faces of the element will undergo rotation -- the back face by $\phi(x)$ and the front face by an infinitesimally larger magnitude $\phi(x) + \mathrm{d}\phi$.
+The difference between these two rotations $\mathrm{d}\phi$ between the front and back face of the element causes a shear strain $\gamma$.
+
+This angle (or shear strain) can be related to the angle $\mathrm{d}\phi$ by noting that for small angles $s = \theta r$, hence the length of the red arc in \Cref{fig:f14_2}.b is
+\begin{equation} \label{eq:101}
+  \rho \, \mathrm{d}\phi = \mathrm{d}x \gamma \implies \gamma = \rho \frac{\mathrm{d}\phi}{\mathrm{d}x} 
+\end{equation}
+Since $\gamma_{\mathrm{max}}$ occurs for $\rho = c$, then $\mathrm{d}\phi / \mathrm{d}x = \gamma / \rho = \gamma_{\mathrm{max}} / c$ and therefore:
+\[ 
+\gamma = \frac{\rho}{c} \gamma_{\mathrm{max}}
+.\]
+I.e. the shear strain varies linearly along the radius of a cross section from zero at the center to a maximum $\gamma_{\mathrm{max}}$ at the outer edge.
+
+
+\subsection{The Torsion Formula}
+When an external torque is applied to a shaft it creates a corresponding internal torque $T$ within the shaft.
+Here an equation that relates this internal torque to the shear stress distribution acting on the cross section of the shaft will be found.
+
+If the material is linear elastic, then Hooke's law applies, i.e. $\tau = G \gamma$, or $\tau_{\mathrm{max}} = G \gamma_{\mathrm{max}}$.
+Consequently, a linear variation in shear strain leads to a linear variation in shear stress along the radius of a cross section.
+Hence, $\tau$ will vary from zero at the shafts longtitudinal axis to a maximum $\tau_{\mathrm{max}}$ at its outer edge.
+\begin{equation} \label{eq:103}
+  \tau = \frac{\rho}{c} \tau_{\mathrm{max}}
+\end{equation}
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.35\linewidth]{./figures/f14_3.png}
+  \caption{Linear variation of shear stress along a radial line.}
+  \label{fig:f14_3}
+\end{figure}
+
+On \Cref{fig:f14_3}, each element of the area, $\mathrm{d}A$, located at $\rho$ is subjected to a force of
+\[ 
+\mathrm{d}F = \tau \, \mathrm{d}A
+.\]
+The torque produced by this force is
+\[ 
+\mathrm{d}T = \rho \left( \tau \, \mathrm{d}A \right)
+.\]
+For the entire cross section we require
+\[ 
+T = \int_{\mathrm{A}} \rho \left( \tau \, \mathrm{d}A \right) = \int_{\mathrm{A}} \rho \frac{\rho}{c} \tau_{\mathrm{max}} \, \mathrm{d}A
+.\]
+Since $\tau_{\mathrm{max}} / c$ is constant we can rewrite this as:
+\[ 
+T = \frac{\tau_{\mathrm{max}}}{c} \int_{\mathrm{A}} \rho^2 \, \mathrm{d}A
+.\]
+
+This integral represents the polar moment of inertia of the circular cross section about the shaft's longtitudinal axis.
+This is symbolized as $J$.
+As a result the above equation can be rewritten as:
+\begin{equation} \label{eq:106}
+  \tau_{\mathrm{max}} = \frac{Tc}{J}
+\end{equation}
+Where:
+\begin{center}
+   \begin{tabular}{ll}
+      $\tau_{\mathrm{max}}$  & The maximum shear stress within the shaft, which occurs at its outer surface \\
+      $T$ & The resultant \textit{internal torque} acting at the cross section. \\
+      $J$ & The polar moment of inertia of the cross-sectional area \\
+      $c$ & The outer radius of the shaft
+  .\end{tabular}
+\end{center}
+
+We can insert \Cref{eq:106} into \Cref{eq:103} to get the shear stress at the intermediate distance $\rho$ on the cross section as
+\[ 
+\tau = \frac{T \rho}{J}
+.\]
+
+Either of the above two equation are referred to as the torsion formula.
+This is only applicable if the shaft has a circular cross section, the material is homogeneous, and behaves in a linear elastic manner.
+
+
+\subsection{Power Transmission}
+Shafts and tubes with circular cross sections are often used to transmit power from a motor.
+The work transmitted by a rotating shaft is equal to the torque applied times the angle of rotation.
+Therefore, if during an instant of time $\mathrm{d}t$ an applied torque $\Vec{T}c$ causes the shaft to rotate $\mathrm{d}\theta$, then the work done is $T \, \mathrm{d}\theta$ and the instantaneous power is
+\[ 
+P = T \frac{\mathrm{d}\theta}{\mathrm{d}t} 
+.\]
+The shaft's angular velocity is $\omega = \mathrm{d}\theta / \mathrm{d}t$, and hence the power becomes:
+\[ 
+P = T \omega
+.\]
+
+For motors the frequency of a shaft's rotation $f$ is often reported.
+Using this the power is
+\[ 
+P = 2 \pi f T
+.\]
