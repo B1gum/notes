@@ -83,5 +83,87 @@
   \[ 
   \left\{ \lambda_j, \lambda_{j+n} \right\} = - \xi_j \omega_j \pm i \omega_j \sqrt{1 - \xi_j^2}, \text{ hvor } \xi_j \equiv \frac{\tilde{C}_{jj}}{2 \tilde{M}_{jj} \omega_j} \text{ for } \omega_j > 0
   .\]
-  Se svaret i svararket for resten af den her trælse opgave...
+  Heraf ses at hældningen på den rette linje der går igennem alle egenværdierne er
+  \begin{equation} \label{eq:hældning}
+    m = \frac{\Im(\lambda_j)}{\Re(\lambda_j)} = \frac{\omega_j \sqrt{1 - \xi_j^2}}{- \xi_j \omega_j} = - \frac{\sqrt{1- \xi^2_j}}{\xi_j}
+  \end{equation}
+  Her ses at hældningen udelukkende afhænger af dæmpningsforholdet.
+  Idet hældningen er konstant må dæmpningsforholdene ligeledes være konstante
+  \[ 
+  \xi_1 = \xi_2 = \xi_3 = \xi_4 = \xi_5
+  .\]
+  I \Cref{eq:hældning} kan dæmpningsforholdet isoleres som:
+  \begin{align*}
+    m \xi_j &= \sqrt{1 - \xi_j^2} \\
+    m^2 \xi_j^2 &= 1 - \xi_j^2 \\
+    m^2 \xi_j^2 + \xi_j^2 &= 1 \\
+    \xi_j^2 \left( m^2 + 1 \right) &= 1 \\
+    \xi_j &= \sqrt{\frac{1}{m^2 + 1}} \\
+       &= \sqrt{\frac{1}{\left( \frac{\Im(\lambda_j)}{\Re(\lambda_j)} \right)^2 + 1}} \\
+    \xi_1 &= \sqrt{\frac{1}{\left( \frac{\num{8,96}}{\num{-0,900}} \right)^2 +1}} \\
+          &= \num{0,1}
+  .\end{align*}
+
+  Vinkelegenfrekvenserne kan findes ud fra $\lambda$-værdierne som:
+  \begin{align*}
+    \lambda_j &= - \xi_j \omega_j \pm i \omega_j \sqrt{1 - \xi^2_j} \\
+    |\lambda| &= \sqrt{\left( -\xi_j \omega_j \right)^2 \pm \left( i \omega_j \sqrt{1 - \xi^2_j} \right)^2} \\
+        &= \sqrt{\xi_j^2 \omega_j^2 + \omega_j^2 - \xi_j^2 \omega_j^2} \\
+        &= \omega_j
+  .\end{align*}
+  Altså kan den $j$'te vinkelegenfrekvens findes som længden af den $j$'te komplekse egenværdi som
+  \begin{align*}
+    \omega_1 &= \sqrt{\num{0,9}^2 + \num{8,96}^2} = \num{9,00508754} \\
+    \omega_2 &= \sqrt{\num{2,63}^2 + \num{26,1}^2} = \num{26,2321729942} 
+  .\end{align*}
+
+  Rayleighs dæmpningsmodel foreskriver at:
+  \[ 
+  C = \alpha M + \beta K
+  \]
+  hvor $M$ og $K$ i dette tilfælde er givet.
+  Vi kan skrive:
+  \begin{align*}
+    \begin{bmatrix}
+    \xi_1\\
+    \xi_2\\
+    \end{bmatrix} &= \begin{bmatrix}
+    \frac{1}{2\omega_1} & \frac{\omega_1}{2}\\
+    \frac{1}{2\omega_2} & \frac{\omega_2}{2}\\
+    \end{bmatrix} \begin{bmatrix}
+    \alpha\\
+    \beta\\
+    \end{bmatrix} \\
+    \begin{bmatrix}
+    \alpha\\
+    \beta\\
+    \end{bmatrix} &= \begin{bmatrix}
+    \frac{1}{2\omega_1} & \frac{\omega_1}{2}\\
+    \frac{1}{2\omega_2} & \frac{\omega_2}{2}\\
+    \end{bmatrix}^{-1} \begin{bmatrix}
+    \xi_1\\
+    \xi_2\\
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+    \frac{1}{2 \cdot \num{9,00508754}} & \frac{\num{9,00508754}}{2}\\
+    \frac{1}{2 \cdot \num{26,2321729942}} & \frac{\num{26,2321729942}}{2}\\
+    \end{bmatrix}^{-1} \begin{bmatrix}
+    \num{0,1} \\
+    \num{0,1} \\
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+    \num{1,341} \\
+    \num{0,006} \\
+    \end{bmatrix}
+  .\end{align*}
+  Dermed får vi altså:
+  \[ 
+  C = \num{1,341} M + \num{0,006} K \approx \begin{bmatrix}
+  \num{13,341}  & -6 & 0 & 0 & 0\\
+  -6 & \num{13,341}  & -6 & 0 & 0\\
+  0 & -6 & \num{13,341}  & -6 & 0\\
+  0 & 0 & -6 & \num{13,341}  & -6\\
+  0 & 0 & 0 & -6 & \num{7,341} \\
+  \end{bmatrix}
+  .\]  
 \end{derivation}

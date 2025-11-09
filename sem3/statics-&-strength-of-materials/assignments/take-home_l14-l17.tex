@@ -1,0 +1,497 @@
+\documentclass[a4paper]{article}
+
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage[english]{babel}
+\usepackage{titlecaps}
+
+\Addlcwords{a an the and but for or nor as at by for in of on per to via vs off up out}
+
+\usepackage{parskip} 
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.2}
+
+
+\usepackage{mathtools, amssymb}
+\renewcommand{\Vec}[1]{\boldsymbol{#1}}
+\let\oldhat\hat
+\renewcommand{\hat}[1]{\oldhat{\mathbf{#1}}}
+
+\usepackage{fourier}
+
+\usepackage[dvipsnames]{xcolor}
+\definecolor{AUblue}{RGB}{0,61,115}
+\definecolor{AUblueDark}{RGB}{0,37,70}
+
+
+\usepackage{graphicx}
+\graphicspath{{./figures/}}
+\usepackage{tikz}
+\usetikzlibrary{calc, arrows.meta}
+
+\usepackage{enumitem}
+\setlist{topsep=4pt,itemsep=2pt,parsep=0pt}
+
+\usepackage{siunitx}
+\sisetup{
+  exponent-product = \cdot,
+  output-decimal-marker = {,},
+  per-mode = fraction,
+  round-mode = figures,
+  round-precision = 3,
+  round-pad = false,
+}
+
+%Giles Castelles incfig
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+  \def\svgwidth{#1\columnwidth}
+  \import{./figures/}{#2.pdf_tex}
+}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AUblueDark}\leaders\hrule height 0.6pt\hfill}}
+\setlength{\headheight}{20pt}
+\fancyhead[L]{\small\AuthorName}
+\fancyhead[C]{\small\ReportTitle}
+\fancyhead[R]{\small\TheDate}
+\usepackage{lastpage}
+\fancyfoot[R]{\small\thepage{} of \pageref{LastPage}}
+\fancyfoot[L]{\small\CourseName}
+
+\newcommand{\PdfTitle}{Take-Home Assignment lec. 14–17}
+\newcommand{\Dept}{Department of Mechanical and Production Engineering}
+\newcommand{\Uni}{Aarhus University}
+\newcommand{\ReportTitle}{\titlecap{\PdfTitle}}
+\newcommand{\AuthorName}{Noah R. B. H., Mikkel K. N. \& Mathias D. R.}
+\newcommand{\StudentID}{202405538}
+\newcommand{\CourseName}{Statics \& Strength og Materials}
+\newcommand{\CourseNumber}{290221U006}
+\newcommand{\Course}{\CourseName{} --- \CourseNumber}
+\newcommand{\TheDate}{9. November 2025}
+\newcommand{\Logo}{figures/AU}
+
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=AUblue,
+  citecolor=AUblue,
+  urlcolor=AUblue,
+  pdftitle={\PdfTitle},
+  pdfauthor={\AuthorName},
+  pdfsubject={The solution by \AuthorName{} (\StudentID) to the exercises to the course \CourseName{} taught at the \Dept{} of \Uni. Last updated on \TheDate{}.},
+  pdfcreator={pdfTeX + newtx},
+}
+\usepackage[nameinlink]{cleveref}
+
+\usepackage{chngcntr}
+\newcounter{problem}
+\renewcommand{\theproblem}{\arabic{problem}}
+\counterwithin{figure}{problem}
+\counterwithin{table}{problem}
+\numberwithin{equation}{problem}
+\makeatletter
+\providecommand*\theHproblem{\theproblem}
+\renewcommand{\theHfigure}{problem.\theHproblem.\arabic{figure}}
+\renewcommand{\theHtable}{problem.\theHproblem.\arabic{table}}
+\renewcommand{\theHequation}{problem.\theHproblem.\arabic{equation}}
+\makeatother
+
+\crefname{problem}{problem}{problems}
+\Crefname{problem}{Problem}{Problems}
+\crefname{pluralequation}{equations}{equations}
+\Crefname{pluralequation}{Equations}{Equations}
+
+\usepackage{caption}
+\captionsetup{font=small}
+
+\newenvironment{problem}[1]%
+{%
+  \par\vspace{0pt}%
+  {\large\bfseries\sffamily\color{AUblueDark}%
+    Problem #1%
+  }%
+  \par\vspace{.35\baselineskip}%
+}%
+{%
+  \par\vspace{.6\baselineskip}%
+  {\color{AUblueDark}\rule{\linewidth}{0.8pt}}%
+  \vspace{.6\baselineskip}\par%
+}
+
+\newcommand{\AUheading}[1]{%
+  \par\vspace{.4\baselineskip}%
+  {\sffamily\bfseries\color{AUblueDark}#1\par}%
+  \nobreak%
+}
+
+\newenvironment{assumptions}[1][Assumptions]{%
+  \AUheading{#1}
+  \begin{itemize}[leftmargin=*,nosep]
+}{\end{itemize}\par\medskip}
+
+\newenvironment{derivation}[1][Derivation]{%
+  \AUheading{#1}
+  \begingroup\allowdisplaybreaks
+  \setlength{\abovedisplayskip}{6pt}%
+  \setlength{\belowdisplayskip}{6pt}%
+  \setlength{\abovedisplayshortskip}{4pt}%
+  \setlength{\belowdisplayshortskip}{4pt}%
+}{\par\endgroup\medskip}
+
+\newcommand{\finalresult}[1]{%
+  \vspace{.2\baselineskip}%
+  \begin{equation}
+    {\color{AUblueDark}\boxed{\displaystyle #1}}
+    \tag*{\textsc{\textcolor{AUblueDark}{Result}}}
+  \end{equation}
+  \newpage
+}
+
+\usepackage{environ}
+\newlength{\pbfigsep}
+\setlength{\pbfigsep}{8mm}
+
+\NewEnviron{problemwithimage}[3][0.38\linewidth]{%
+  \begin{problem}{#3}%
+    \noindent
+    \begin{minipage}[t]{\dimexpr\linewidth-#1-\pbfigsep\relax}
+      \vspace{-0.2\baselineskip}\BODY
+    \end{minipage}\hfill
+    \begin{minipage}[t]{#1}
+      \vspace{-\baselineskip}\centering
+      \includegraphics[width=\linewidth]{#2}%
+    \end{minipage}%
+  \end{problem}%
+}
+
+\makeatother
+\def\@lecture{}%
+\newcommand{\lecture}[3]{
+  \ifthenelse{\isempty{#3}}{%
+    \def\@lecture{Lecture #1}%
+  }{%
+    \def\@lecture{Lecture #1: #3}%
+  }%
+  \refstepcounter{section}%
+  \phantomsection
+  \subsection*{\makebox[\textwidth][l]{\@lecture \hfill \normalfont\small\textsf{#2}}}
+  \addcontentsline{toc}{section}{\protect\numberline{\thesection}\@lecture}%
+}
+
+
+\begin{document}
+
+\input{titlepage.tex}
+
+\begin{problemwithimage}{p10_30}{10-30}
+  The solid shaft is subjected to the distributed and concentrated torsional loadings shown.
+  Determine the required diameter $d$ of the shaft if the allowable shear stress for the material is $\tau_{\text{allow}} = \qty{60}{\MPa}$.
+\end{problemwithimage}
+
+\begin{derivation}
+  We let $x$ denote the distance from the free end of the shaft (i.e. $C_x = \qty{1,4}{\m} $).
+  The shaft is subject to two concentrated torsional loadings, one distributed torsional loading and an unknown reaction torsion in $C$, which we will denote $T_C$.
+  Hence, the torque equilibrium for the entire shaft yields:
+  \begin{align*}
+    0 &= \qty{-800}{\N.\m} - \qty{400}{\N.\m} + \qty{4000}{\N.\m.\per\m} \cdot \qty{0,5}{\m} + T_C  \\
+    T_C &= \left( \num{1200} - \num{2000}  \right) \, \unit{\N.\m} \\
+        &= \qty{-800}{\N.\m} 
+  .\end{align*}
+  Therefore the wall will exert a reaction torque of \qty{-800}{\N.\m} to the shaft (this is in the same direction as the two concentrated loadings per the sign).
+
+  We now split up the shaft into the following four sections:
+
+  \begin{tabular}{ll}
+    Section 1 & $0 \leq x < \qty{0,5}{\m}$ \\
+    Section 2 & $\qty{0,5}{\m} \leq x \leq \qty{1,0}{\m}$ \\
+    Section 3 & $\qty{1,0}{\m} < x \leq \qty{1,2}{\m}$ \\
+    Section 4 & $\qty{1,2}{\m} < x \leq \qty{1,4}{\m}$
+  \end{tabular}
+  
+  In section 1, only the \qty{-800}{\N.\m} torque acts on the left left side of a cut meaning the internal torque here is $T_1 = \qty{800}{\N.\m}$.
+  In section 2 the distributed torque will have a total magnitude of $\qty{4000}{\N.\m\per\m} \cdot \qty{0,5}{\m} = \qty{2000}{\N.\m}$.
+  This means, starting at $x= \qty{0,5}{\m}$ the internal torque $T$, will go from $T(\qty{0,5}{\m} ) = \qty{800}{\N.\m}$ to $T(\qty{1,0}{\m}) = \qty{-800}{\N.\m} - \qty{2000}{\N.\m} = \qty{-1200}{\N.\m}$.
+  In section 3, all of the distributed torque has acted and a cut on the left hand side will therefore sill have an internal torque of $T_3 = T(\qty{1,0}{\m}) = \qty{-1200}{\N.\m}$.
+  In section 4 an concentrated loading of $\qty{-400}{\N.\m}$ is also applied meaning that the internal torque here must become $T_4 = \qty{-800}{\N.\m}$.
+
+  Therefore the maximum internal torque is in sections 2 and 3 at \qty{-1200}{\N.\m}.
+  The torsion formula is:
+  \[ 
+  \tau_{\mathrm{max}} = \frac{T_{\mathrm{max}}\cdot c}{J}
+  .\]
+  For a solid circular shaft as here the distance from the center $c = r = d / 2$ and the polar moment of inertia $J = \pi d ^{4} / 32$.
+  Solving for the required diameter $d$ we get:
+  \begin{align*}
+    \tau_{\mathrm{max}} &= \frac{T_{\mathrm{max}} \cdot \frac{d}{2}}{\frac{\pi d ^{4}}{32}} \\
+            &= \frac{16 T_{\mathrm{max}}}{\pi d^3} \\
+  \implies d &= \sqrt[3]{\frac{16 T_{\mathrm{max}}}{\pi \tau_{\mathrm{max}}}} \\
+      &= \sqrt[3]{\frac{16 \cdot \qty{1200}{\N.\m}}{\pi \cdot \qty{60}{\MPa}}} \\
+      &= \qty{0,047}{\m} = \qty{47}{\mm} 
+  .\end{align*}
+\end{derivation}
+
+\finalresult{d = \qty{47}{\mm}}
+
+\begin{problem}{10-38}
+  The propeller of a ship is connected to an A--36 steel shaft that is \qty{60}{\m} long and has an outer diameter of \qty{340}{\mm} and an inner diameter of \qty{260}{\mm}.
+  If the power output is \qty{4,5}{\MW} when the shaft rotates at \qty{20}{s^{-1}}, determine the maximum torsional stress in the shaft and its angle of twist.
+\end{problem}
+
+\begin{derivation}
+  We start by converting the power output and frequency to an equivalent torque using the power formula:
+  \begin{align*}
+    P &= T \omega \\
+    T &= \frac{P}{\omega} \\
+      &= \frac{\qty{4,5e6}{\W} }{\qty{20}{\s^{-1}}} \\
+      &= \qty{225e3}{\N.\m} 
+  .\end{align*}
+  A tubular shaft has a polar moment of inertia of:
+  \[ 
+  J = \frac{\pi}{2} \left( c_o^{4} - c_i^{4} \right) = \frac{\pi}{2} \left( \left( \qty{170}{\mm}  \right)^{4} - \left( \qty{130}{\mm}  \right)^{4} \right) = \qty{8,6e-4}{\m^{4}} 
+  .\]
+  Therefore, using the torsion formula we can find the maximum torsional stress as:
+  \begin{align*}
+  \tau &= \frac{T c}{J} \\
+       &= \frac{\qty{225e3}{\N.\m} \cdot \qty{0,17}{\m}}{\qty{8,6e-4}{\m^{4}} } \\
+       &=   \qty{44,48}{\MPa}
+  .\end{align*}
+  The angle of shift can be found using the formula:
+  \[ 
+  \phi = \frac{TL}{JG}
+  .\]
+  The shear modulus of A--36 steel is $G = \qty{79,3}{\GPa}$. 
+  Inputting all known values we obtain:
+  \begin{align*}
+    \phi &= \frac{\qty{225e3}{\N.\m} \cdot \qty{60}{\m} }{\qty{8,6e-4}{\m^{4}} \cdot \qty{79,3e9}{\Pa}} \\
+         &= \num{0,198} = \ang{11,3} 
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+  \begin{aligned}
+    \tau &= \qty{44,5}{\MPa} \\
+    \phi &= \num{0,198} = \ang{11,3} 
+  .\end{aligned}
+}
+
+
+\begin{problemwithimage}{p10_72}{10-72}
+  A rod is made from two segments: $AB$ is steel and $BC$ is brass.
+  It is fixed at its ends and subjected to a torque of $T = \qty{680}{\N.\m}$.
+  If the steel portion has a diameter of \qty{30}{\mm}, determine the required diameter of the brass portion so the reactions at the walls will be the same.
+  Take $G_{\mathrm{st}} = \qty{75}{\GPa}, G_{\mathrm{br}} = \qty{39}{\GPa}$.
+\end{problemwithimage}
+
+\begin{derivation}
+  Since this is a statically indeterminate problem we must utilize the fact that the rotation at the two ends must be equal as both ends are fixed.
+  Using the formula for the angle of shift and the fact that the angle of shift for both ends must be equal we obtain:
+  \begin{align*}
+    \phi_{\mathrm{st}} &= \phi_{\mathrm{br}} \\
+    \frac{T_{\mathrm{st}} L_{\mathrm{st}}}{J_{\mathrm{st}} G_{\mathrm{st}}} &= \frac{T_{\mathrm{br}} L_{\mathrm{br}}}{J_{\mathrm{br}} G_{\mathrm{br}}} \\
+    \frac{L_{\mathrm{st}}}{J_{\mathrm{st}} G_{\mathrm{st}}} &= \frac{L_{\mathrm{br}}}{J_{\mathrm{br}} G_{\mathrm{br}}} \\
+    J_{\mathrm{br}} &= \frac{L_{\mathrm{br}} J_{\mathrm{st}} G_{\mathrm{st}}}{L_{\mathrm{st}} G_{\mathrm{br}}}
+  .\end{align*}
+  For a circular solid shaft we have the polar moment of inertia of
+  \[ 
+  J = \frac{\pi d ^{4}}{32}
+  .\]
+  Therefore $J_{\mathrm{st}}$ can be found as:
+  \[ 
+  J_{\mathrm{st}} = \frac{\pi \cdot \left( \qty{0,03}{\mm}  \right)^{4}}{32} = \qty{7,95e-8}{\m^{4}} 
+  .\]
+  Now we can calculate the required polar moment of inertia for the brass segment as:
+  \[ 
+  J_{\mathrm{br}} = \frac{\qty{1,60}{\m} \cdot \qty{7,95e-8}{\m^{4}} \cdot \qty{75}{\GPa}}{\qty{0,75}{\m} \cdot \qty{39}{\GPa} } = \qty{3,26e-7}{\m^{4}} 
+  .\]
+  Using the formula for the polar moment of inertia of a solid shaft and solving for the diameter, the required diameter of the brass section can be found as:
+  \begin{align*}
+    J_{\mathrm{br}} &= \frac{\pi d_{\mathrm{br}}^{4}}{32} \\
+    d_{\mathrm{br}} &= \sqrt[4]{\frac{32 J_{\mathrm{br}}}{\pi}} \\
+           &= \sqrt[4]{\frac{32 \cdot \qty{3,26e-7}{\m^{4}}}{\pi}} \\
+           &= \qty{0,04269}{\m} \approx \qty{43}{\mm} 
+  .\end{align*}
+\end{derivation}
+
+\finalresult{d_{\mathrm{br}} = \qty{43}{\mm}}
+
+\begin{problemwithimage}{p11_1-14-17}{11-1}
+  The dead-weight loading along the centerline of the airplane wing is shown.
+  If the wing is fixed to the fuselage at $A$, determine the reactions at $A$, and then draw the shear and moment diagram for the wing.
+\end{problemwithimage}
+
+\begin{derivation}
+  We start by taking a force equilibrium in the $y$-direction:
+  \begin{align*}
+    \sum F_y &= 0 \\
+    0 &= \qty{-3,75e3}{\N\per\m} \cdot \qty{1,2}{\m} \cdot \frac{1}{2} - \qty{15e3}{\N} - \left( \qty{1,5}{\m} \cdot \frac{1}{2} \cdot \left( \qty{6e3}{\N\per\m} - \qty{3,75e3}{\N\per\m} \right) \right) + \qty{75}{\kN} + A_y \\
+    A_y &= \qty{3,75e3}{\N\per\m} \cdot \qty{0,6}{\m} + \qty{15e3}{\N} + \qty{0,75}{\m} \cdot \qty{2,25e3}{\N\per\m} - \qty{75}{\kN }  \\
+        &= \qty{56,0625e3}{\N} 
+  .\end{align*}
+  No forces act in the $x$-direction and hence $\sum F_x = 0 \implies A_x = 0$.
+  A moment equilibrium about $A$ gives:
+  \begin{align*}
+    \sum M_A &= 0 \\
+    0 &= \qty{3,75e3}{\N\per\m} \cdot \qty{0,6}{\m} \cdot \qty{2,7}{\m} + \qty{15e3}{\N} \cdot \qty{1,5}{\m} + \qty{0,75}{\m} \cdot \qty{2,25e3}{\N\per\m} \cdot \qty{0,75}{\m} - \qty{75}{\kN} \cdot \qty{0,9}{\m} + M_A \\
+    M_A &= \qty{75}{\kN} \cdot \qty{0,9}{\m} - \left( \qty{3,75e3}{\N\per\m} \cdot \qty{0,6}{\m} \cdot \qty{2,7}{\m} + \qty{15e3}{\N} \cdot \qty{1,5}{\m} + \qty{0,75}{\m} \cdot \qty{2,25e3}{\N\per\m} \cdot \qty{0,75}{\m} \right) \\
+        &= \qty{37,659e3}{\N.\m} 
+.\end{align*}
+\end{derivation}
+
+\finalresult{A_x = 0, \quad A_y = \qty{56,1e3}{\N}, \quad M_A = \qty{37,7e3}{\N.\m}}
+
+
+\begin{problemwithimage}{p11_42}{11-42}
+  Determine the maximum tensile and compressive bending stress in the beam if it is subjected to a moment of $M = \qty{6}{\kN.\m}$.
+\end{problemwithimage}
+
+\begin{derivation}
+  We consider the top of the beam as our origin and measure $y$ downwards.
+  To find the neutral axis $\overline{y}$ we will use the formula:
+  \[ 
+  \overline{y} = \frac{\sum y_i A_i}{\sum A_i}
+  .\]
+  We break the beam into 4 sections as shown on the figure from the problem statement.
+  Doing this we get
+  \begin{align*}
+    \overline{y} &= \frac{\qty{99}{\mm} \cdot \qty{12}{\mm} \cdot \qty{6}{\mm} + 2 \cdot \left( \qty{12}{\mm} \cdot \qty{75}{\mm} \cdot \qty{43,5}{\mm} \right) + \qty{12}{\mm} \cdot \qty{250}{\mm} \cdot \qty{131}{\mm}}{\qty{99}{\mm} \cdot \qty{12}{\mm} + \qty{75}{\mm} \cdot \qty{12}{\mm}  + \qty{12}{\mm} \cdot \qty{250}{\mm}} \\
+                 &= \frac{\qty{99}{\mm} \cdot \qty{6}{\mm} + 2 \cdot \qty{75}{\mm} \cdot \qty{43,5}{\mm} + \qty{250}{\mm} \cdot \qty{131}{\mm} }{\qty{99}{\mm} + \qty{75}{\mm} + \qty{250}{\mm} } \\
+                 &= \qty{94,03}{\mm} 
+  .\end{align*}
+  Therefore, the neutral axis is $\qty{94,03}{\mm}$ below the top surface.
+  Now we must find the moment of inertia about this axis.
+  We will use the parallel-axis theorem for each rectangular area as:
+  \[ 
+  I_{NA} = \sum \left( I_{c,i} + A_i d_i^2 \right)
+  .\]
+  Each of the rectangles have an ``initial'' moment of inertia of $1 / 12 bh^3$.
+  Using this we can calculate the ``initial'' moment of inertia of each rectangular ``plate'' as:
+  \begin{align*}
+    I_{c, i, \text{top}} &= \frac{1}{12} \cdot \qty{99}{\mm} \cdot \left( \qty{12}{\mm}  \right)^3 = \qty{14,256e3}{\mm^{4}}  \\
+    I_{c,i, \text{side}} &= \frac{1}{12} \cdot \qty{12}{\mm} \cdot (\qty{75}{\mm})^3 = \qty{421,875e3}{\mm^{4}} \\
+    I_{c,i, \text{bottom}} &= \frac{1}{12} \cdot \qty{12}{\mm}  \left( \qty{250}{\mm}  \right)^3 = \qty{15,625e6}{\mm^{4}} 
+  .\end{align*}
+  Now, we will find the ``shifting'' term for each rectangle as:
+  \begin{align*}
+    \left( A_i d_i^2 \right)_{\text{top}} &= \qty{12}{\mm} \cdot \qty{99}{\mm} \left( \qty{94,03}{\mm} - \qty{6}{\mm} \right)^2 = \qty{9,206e6}{\mm^{4}} \\
+    \left( A_i d_i^2 \right)_{\text{side}} &= \qty{12}{\mm} \cdot \qty{75}{\mm} \cdot \left( \qty{94,03}{\mm} - \qty{43,5}{\mm}  \right)^2 = \qty{2,295e6}{\mm^{4}} \\
+    \left( A_i d_i^2 \right)_{\text{bottom}} &= \qty{12}{\mm} \cdot \qty{250}{\mm} \left( \qty{94,03}{\mm} - \qty{131}{\mm} \right)^2 = \qty{4,107e6}{\mm^{4}}  \\
+  .\end{align*}
+  Now the total moment of inertia about the neutral axis can be calculated as:
+  \begin{align*}
+    I_{NA} &= \qty{14,3e3}{\mm^{4}} + \qty{422e3}{\mm^{4}} + \qty{15,6e6}{\mm^{4}} + \qty{9,21e6}{\mm^{4}} + \qty{2,30e6}{\mm^{4}} + \qty{4,11e6}{\mm^{4}}  \\
+           &= \qty{31,656e6}{\mm^{4}} 
+  .\end{align*}
+  The flexure formula is
+  \[ 
+  \sigma = \frac{Mc}{I}
+  .\]
+  Where $c$ is the distance to the outer fiber.
+  The maximum compressive bending stress will be:
+  \[ 
+  \left( \sigma_c \right)_{\mathrm{max}} = \frac{\qty{6}{\kN.\m} \cdot \qty{94,03}{\mm} }{\qty{31,7e6}{\mm^{4}}} = \qty{17,763}{\MPa} 
+  .\]
+  And the maximum tensile bending stress will be:
+  \[ 
+  \left( \sigma_t \right)_{\mathrm{max}} = \frac{\qty{6}{\kN.\m} \cdot \left( \qty{262}{\mm} - \qty{94,0}{\mm} \right)}{\qty{31,7e6}{\mm^{4}} } = \qty{31,732}{\MPa} 
+  .\]
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  \left( \sigma_c \right)_{\mathrm{max}} &= \qty{17,763}{\MPa} \\
+  \left( \sigma_t \right)_{\mathrm{max}} &= \qty{31,732}{\MPa} 
+.\end{aligned}
+}
+
+\begin{problemwithimage}{p11_70}{11-70}
+  The tubular shaft is to have a cross section such that its inner diameter and outer diameter are related by $d_i = \num{0,8} d_0$.
+  Determine these required dimensions if the allowable bending stress is $\sigma_{\text{allow}} = \qty{155}{\MPa}$.
+\end{problemwithimage}
+
+\begin{derivation}
+  First we must find the point at which the largest internal torque is reached.
+  We start by utilizing a force balance in the $y$ direction, as:
+  \begin{align} \label{eq:p11701}
+    \sum F_y &= 0 \nonumber \\
+    R_A - \frac{1}{2} \cdot \qty{15}{\kN\per\m} \cdot \qty{3}{\m} + R_B &= 0 \nonumber \\
+    \implies R_B &= \frac{1}{2} \cdot \qty{15}{\kN\per\m} \cdot \qty{3}{\m} - R_A
+  .\end{align}
+  Taking a moment equilibrium about $A$ gives:
+  \begin{align*}
+    0 &= \sum M_A \\
+    0 &= R_B \cdot \qty{3}{\m} - \frac{2}{3} \cdot \qty{3}{\m} \cdot \left( \frac{1}{2} \cdot \qty{15}{\kN\per\m} \cdot \qty{3}{\m}  \right) - \qty{60}{\kN.\m} \\
+    \left( \frac{1}{2} \cdot \qty{15}{\kN\per\m} \cdot \qty{3}{\m} - R_A \right) \cdot \qty{3}{\m} &= \frac{2}{3} \cdot \qty{3}{\m} \cdot \left( \frac{1}{2} \cdot \qty{15}{\kN\per\m} \cdot \qty{3}{\m}  \right) + \qty{60}{\kN.\m}  \\
+    \qty{67,5}{\kN.\m} - R_A \cdot \qty{3}{\m} &= \qty{105}{\kN.\m} \\
+    R_A &= \frac{\left( \qty{67,5}{\kN.\m} - \qty{105}{\kN.\m} \right)}{\qty{3}{\m}} \\
+        &= \qty{-12,5}{\kN} 
+  .\end{align*}
+  Now inserting this into \Cref{eq:p11701} we get:
+  \begin{align*}
+    R_B &= \frac{1}{2} \cdot \qty{15}{\kN\per\m} \cdot \qty{3}{\m} + \qty{12,5}{\kN}  \\
+        &= \qty{35}{\kN} 
+  .\end{align*}
+  The moment equilibrium for $0 \leq x \leq \qty{3}{\m} $ is:
+  \begin{align*}
+    0 &=\sum M_{\qty{0}{\m}  \leq x \leq \qty{3}{\m}} \\
+    0 &=- R_A \cdot x + \frac{1}{3} x \left( \frac{1}{2} \cdot \qty{15}{\kN\per\m} \cdot \frac{x}{\qty{3}{\m}}x \right) + M  \\
+    M_{\qty{0}{\m}  \leq x \leq \qty{3}{\m}} &= \qty{-12,5}{\kN} \cdot x - \frac{1}{\qty{18}{\m}} \cdot \qty{15}{\kN\per\m}  \cdot x^3 \\
+                                  &= \qty{-12,5}{\kN} \cdot x - \qty{0,833}{\kN\per\square\m} \cdot x^3
+  .\end{align*}
+  To find the largest moment in this interval we set the derivative to zero and get the solutions:
+  \[ 
+  x_{\mathrm{max},1} = 0 \quad \text{and} \quad x_{\mathrm{max}, 2} = \qty{1,225}{\m}
+  .\]
+  These extrema have moments of:
+  \begin{align*}
+    M(\qty{0}{\m}) &= \qty{-12,5}{\kN} \cdot \qty{0}{\m} - \qty{0,833}{\kN\per\square\m} \cdot \qty{0}{\m}^3 = \qty{0}{\kN.\m} \\
+    M \left( \qty{1,225}{\m}  \right)&= \qty{12,5}{\kN} \cdot \qty{1,225}{\m} - \qty{0,833}{\kN\per\square\m} \cdot \left( \qty{1,225}{\m}  \right)^3 = \qty{30,625}{\kN.\m} 
+  .\end{align*}
+
+  For $\qty{3}{\m}  \leq x \leq \qty{4}{\m} $ the moment equilibrium is:
+  \begin{align*}
+    0 &= \sum M_{\qty{3}{\m} \leq x \leq \qty{4}{\m} } \\
+    0 &= - R_A x + \left( \frac{1}{3} \cdot \qty{3}{\m} + x - \qty{3}{\m}  \right) \left( \frac{1}{2} \cdot \qty{15}{\kN\per\m} \cdot \qty{3}{\m}  \right) + R_B \left( x - \qty{3}{\m}  \right) + M \\
+      M_{\qty{3}{\m} \leq x \leq \qty{4}{\m}} &= \qty{-12,5}{\kN} \cdot x - \left( \frac{1}{3} \cdot \qty{3}{\m} + x - \qty{3}{\m}  \right) \left( \frac{1}{2} \cdot \qty{15}{\kN\per\m} \cdot \qty{3}{\m}  \right) + \qty{35}{\kN} \cdot \left( x - \qty{3}{\m}  \right) \\
+                                              &= \qty{-60}{\kN.\m} 
+  .\end{align*}
+  The moment is constant $M_{\qty{3}{\m} \leq x \leq \qty{4}{\m}} = \qty{-60}{\kN.\m}$ for $\qty{3}{\m} \leq x \leq \qty{4}{\m}$.
+  This is also the largest internal moment in the shaft.
+
+  We know that the polar moment of inertia of a hollow shaft is:
+  \[ 
+  I = \frac{\pi}{64} \left( d_i^{4} - d_o^{4} \right)
+  .\]
+  Using the condition that $d_i = \num{0,8}  d_0$ we get:
+  \[ 
+  I = \frac{\pi}{64} \left( d_i^{4} - \left( \num{0,8} d_i \right)^{4} \right)
+  .\]
+  Therefore the maximum bending moment is:
+  \begin{align*}
+    \sigma_{\mathrm{max}} &= \frac{Mc}{I} \\
+                          &= \frac{\qty{60}{\kN.\m} \cdot \frac{d_i}{2}}{\frac{\pi}{64} \left( d_i^{4} - \left( \num{0,8} d_i \right)^{4} \right)}
+  .\end{align*}
+  Solving for the diameter we get:
+  \begin{align*}
+    d_i &= \sqrt[3]{\frac{64 \cdot \qty{60}{\kN.\m} }{\pi \cdot \num{1,1808} \cdot \qty{155}{\MPa} }} = \qty{188,318}{\mm} \\
+    d_o &= \num{0,8}  \cdot \qty{188,318}{\mm} = \qty{150,654}{\mm} 
+  .\end{align*}
+  As this is the diameter where the bending stress is below the allowable this must correspond to the smallest allowable measurements.
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  d_i &> \qty{188,318}{\mm}  \\
+  d_o &> \qty{150,654}{\mm} 
+.\end{aligned}
+}
+
+\end{document}

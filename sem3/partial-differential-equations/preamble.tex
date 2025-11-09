@@ -1,164 +1,176 @@
-\usepackage[english]{babel}
-\usepackage{amsfonts, amssymb, mathtools, amsthm, amsmath}
-\usepackage{graphicx, pgfplots}
-\usepackage{url}
-\usepackage[dvipsnames]{xcolor}
-\usepackage{lastpage}
+\documentclass[a4paper]{article}
 
-%loaded last
-\usepackage[hidelinks]{hyperref}
-\usepackage[nameinlink]{cleveref} 
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage[english]{babel}
+\usepackage{titlecaps}
+
+\Addlcwords{a an the and but for or nor as at by for in of on per to via vs off up out}
+
+\usepackage{parskip} 
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.2}
+
+
+\usepackage{mathtools, amssymb}
+\renewcommand{\Vec}[1]{\boldsymbol{#1}}
+\let\oldhat\hat
+\renewcommand{\hat}[1]{\oldhat{\mathbf{#1}}}
+
+\usepackage{fourier}
+
+\usepackage[dvipsnames]{xcolor}
+\definecolor{AUblue}{RGB}{0,61,115}
+\definecolor{AUblueDark}{RGB}{0,37,70}
+
+
+\usepackage{graphicx}
+\graphicspath{{./figures/}}
+\usepackage{tikz}
+\usetikzlibrary{calc, arrows.meta}
+
+\usepackage{enumitem}
+\setlist{topsep=4pt,itemsep=2pt,parsep=0pt}
 
 \usepackage{siunitx}
-  \sisetup{exponent-product = \cdot,
-    output-decimal-marker = {,}}
+\sisetup{
+  exponent-product = \cdot,
+  output-decimal-marker = {,},
+  per-mode = fraction,
+  round-mode = figures,
+  round-precision = 3,
+  round-pad = false,
+}
 
 %Giles Castelles incfig
 \usepackage{import}
 \usepackage{xifthen}
 \usepackage{pdfpages}
 \usepackage{transparent}
-\usepackage{enumitem}
 
 \newcommand{\incfig}[2][1]{%
   \def\svgwidth{#1\columnwidth}
   \import{./figures/}{#2.pdf_tex}
 }
 
-\setlength{\parindent}{0in}
-\setlength{\parskip}{12pt}
-\setlength{\oddsidemargin}{0in}
-\setlength{\textwidth}{6.5in}
-\setlength{\textheight}{8.8in}
-\setlength{\topmargin}{0in}
-\setlength{\headheight}{18pt}
-
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AUblueDark}\leaders\hrule height 0.6pt\hfill}}
+\setlength{\headheight}{20pt}
+\fancyhead[L]{\small\AuthorName}
+\fancyhead[C]{\small\ReportTitle}
+\fancyhead[R]{\small\TheDate}
+\usepackage{lastpage}
+\fancyfoot[R]{\small\thepage{} of \pageref{LastPage}}
+\fancyfoot[L]{\small\CourseName}
 
-\fancyhead{}
-\fancyfoot{}
-\fancyfoot[R]{\thepage}
-\fancyhead[C]{\leftmark}
+\newcommand{\PdfTitle}{Exercises}
+\newcommand{\Dept}{Department of Mechanical and Production Engineering}
+\newcommand{\Uni}{Aarhus University}
+\newcommand{\ReportTitle}{\titlecap{\PdfTitle}}
+\newcommand{\AuthorName}{Noah Rahbek Bigum Hansen}
+\newcommand{\StudentID}{202405538}
+\newcommand{\CourseName}{Partial Differential Equations}
+\newcommand{\CourseNumber}{290211U002}
+\newcommand{\Course}{\CourseName{} --- \CourseNumber}
+\newcommand{\TheDate}{\today}
+\newcommand{\Logo}{figures/AU}
 
-\pgfplotsset{compat=newest}
 
-\pgfplotsset{every axis/.append style={
-  axis x line=middle,    % put the x axis in the middle
-  axis y line=middle,    % put the y axis in the middle
-  axis line style={<->,color=black}, % arrows on the axis
-}}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=AUblue,
+  citecolor=AUblue,
+  urlcolor=AUblue,
+  pdftitle={\PdfTitle},
+  pdfauthor={\AuthorName},
+  pdfsubject={The solution by \AuthorName{} (\StudentID) to the exercises to the course \CourseName{} taught at the \Dept{} of \Uni. Last updated on \TheDate{}.},
+  pdfcreator={pdfTeX + newtx},
+}
+\usepackage[nameinlink]{cleveref}
 
-\usepackage{thmtools}
-\usepackage{tcolorbox}
-  \tcbuselibrary{skins, breakable}
-  \tcbset{
-    space to upper=1em,
-    space to lower=1em,
-  }
+\usepackage{chngcntr}
+\newcounter{problem}
+\renewcommand{\theproblem}{\arabic{problem}}
+\counterwithin{figure}{problem}
+\counterwithin{table}{problem}
+\numberwithin{equation}{problem}
+\makeatletter
+\providecommand*\theHproblem{\theproblem}
+\renewcommand{\theHfigure}{problem.\theHproblem.\arabic{figure}}
+\renewcommand{\theHtable}{problem.\theHproblem.\arabic{table}}
+\renewcommand{\theHequation}{problem.\theHproblem.\arabic{equation}}
+\makeatother
 
-\theoremstyle{definition}
+\crefname{problem}{problem}{problems}
+\Crefname{problem}{Problem}{Problems}
+\crefname{pluralequation}{equations}{equations}
+\Crefname{pluralequation}{Equations}{Equations}
 
-\newtcolorbox[auto counter]{definition}[1][]{%
-  breakable,
-  colframe=ForestGreen,  %frame color
-  colback=ForestGreen!5, %background color
-  colbacktitle=ForestGreen!25, %background color for title
-  coltitle=ForestGreen!70!black,  %title color
-  fonttitle=\bfseries\sffamily, %title font
-  left=1em,              %space on left side in box,
-  enhanced,              %more options
-  frame hidden,          %hide frame
-  borderline west={2pt}{0pt}{ForestGreen},  %display left line
-  title=Definition \thetcbcounter: #1,
+\usepackage{caption}
+\captionsetup{font=small}
+
+\newenvironment{problem}[1]%
+{%
+  \par\vspace{0pt}%
+  {\large\bfseries\sffamily\color{AUblueDark}%
+    Problem #1%
+  }%
+  \par\vspace{.35\baselineskip}%
+}%
+{%
+  \par\vspace{.6\baselineskip}%
+  {\color{AUblueDark}\rule{\linewidth}{0.8pt}}%
+  \vspace{.6\baselineskip}\par%
 }
 
-\newtcolorbox{greenline}{%
-  breakable,
-  colframe=ForestGreen,  %frame color
-  colback=white,          %remove background color
-  left=1em,              %space on left side in box
-  enhanced,              %more options
-  frame hidden,          %hide frame
-  borderline west={2pt}{0pt}{ForestGreen},  %display left line
+\newcommand{\AUheading}[1]{%
+  \par\vspace{.4\baselineskip}%
+  {\sffamily\bfseries\color{AUblueDark}#1\par}%
+  \nobreak%
 }
 
-\newtcolorbox[auto counter, number within=section]{dis}[1][]{%
-  breakable,
-  colframe=NavyBlue,  %frame color
-  colback=NavyBlue!5, %background color
-  colbacktitle=NavyBlue!25,    %background color for title
-  coltitle=NavyBlue!70!black,  %title color
-  fonttitle=\bfseries\sffamily, %title font
-  left=1em,            %space on left side in box,
-  enhanced,            %more options
-  frame hidden,        %hide frame
-  borderline west={2pt}{0pt}{NavyBlue},  %display left line
-  title=Discussion \thetcbcounter: #1
+\newenvironment{assumptions}[1][Assumptions]{%
+  \AUheading{#1}
+  \begin{itemize}[leftmargin=*,nosep]
+}{\end{itemize}\par\medskip}
+
+\newenvironment{derivation}[1][Derivation]{%
+  \AUheading{#1}
+  \begingroup\allowdisplaybreaks
+  \setlength{\abovedisplayskip}{6pt}%
+  \setlength{\belowdisplayskip}{6pt}%
+  \setlength{\abovedisplayshortskip}{4pt}%
+  \setlength{\belowdisplayshortskip}{4pt}%
+}{\par\endgroup\medskip}
+
+\newcommand{\finalresult}[1]{%
+  \vspace{.2\baselineskip}%
+  \begin{equation}
+    {\color{AUblueDark}\boxed{\displaystyle #1}}
+    \tag*{\textsc{\textcolor{AUblueDark}{Result}}}
+  \end{equation}
+  \newpage
 }
 
-\newtcolorbox{blueline}{%
-  breakable,
-  colframe=NavyBlue,     %frame color
-  colback=white,         %remove background
-  left=1em,              %space on left side in box,
-  enhanced,              %more options
-  frame hidden,          %hide frame
-  borderline west={2pt}{0pt}{NavyBlue},  %display left line
-}
+\usepackage{environ}
+\newlength{\pbfigsep}
+\setlength{\pbfigsep}{8mm}
 
-\newtcolorbox{exa}[1][]{%
-  breakable,
-  colframe=RawSienna,  %frame color
-  colback=RawSienna!5, %background color
-  colbacktitle=RawSienna!25,    %background color for title
-  coltitle=RawSienna!70!black,  %title color
-  fonttitle=\bfseries\sffamily, %title font
-  left=1em,              %space on left side in box,
-  enhanced,              %more options
-  frame hidden,          %hide frame
-  borderline west={2pt}{0pt}{RawSienna},  %display left line
-  title=Example: #1,
-}
-
-\newtcolorbox[auto counter, number within=section]{sæt}[1][]{%
-  breakable,
-  colframe=RawSienna,  %frame color
-  colback=RawSienna!5, %background color
-  colbacktitle=RawSienna!25,    %background color for title
-  coltitle=RawSienna!70!black,  %title color
-  fonttitle=\bfseries\sffamily, %title font
-  left=1em,              %space on left side in box,
-  enhanced,              %more options
-  frame hidden,          %hide frame
-  borderline west={2pt}{0pt}{RawSienna},  %display left line
-  title=Sætning \thetcbcounter: #1,
-  before lower={\textbf{Bevis:}\par\vspace{0.5em}},
-  colbacklower=RawSienna!25,
-}
-
-\newtcolorbox{redline}{%
-  breakable,
-  colframe=RawSienna,  %frame color
-  colback=white,       %Remove background color
-  left=1em,            %space on left side in box,
-  enhanced,            %more options
-  frame hidden,        %hide frame
-  borderline west={2pt}{0pt}{RawSienna},  %display left line
-}
-
-\newtcolorbox{des}[1][]{%
-  breakable,
-  colframe=NavyBlue,  %frame color
-  colback=NavyBlue!5, %background color
-  colbacktitle=NavyBlue!25,    %background color for title
-  coltitle=NavyBlue!70!black,  %title color
-  fonttitle=\bfseries\sffamily, %title font
-  left=1em,              %space on left side in box,
-  enhanced,              %more options
-  frame hidden,          %hide frame
-  borderline west={2pt}{0pt}{NavyBlue},  %display left line
-  title=Description of #1,
+\NewEnviron{problemwithimage}[3][0.38\linewidth]{%
+  \begin{problem}{#3}%
+    \noindent
+    \begin{minipage}[t]{\dimexpr\linewidth-#1-\pbfigsep\relax}
+      \vspace{-0.2\baselineskip}\BODY
+    \end{minipage}\hfill
+    \begin{minipage}[t]{#1}
+      \vspace{-\baselineskip}\centering
+      \includegraphics[width=\linewidth]{#2}%
+    \end{minipage}%
+  \end{problem}%
 }
 
 \makeatother
@@ -169,25 +181,24 @@
   }{%
     \def\@lecture{Lecture #1: #3}%
   }%
+  \refstepcounter{section}%
+  \phantomsection
+  % Typeset like a subsection (no numbering in the heading)
   \subsection*{\makebox[\textwidth][l]{\@lecture \hfill \normalfont\small\textsf{#2}}}
+  % Add a section-level TOC entry with the section number
+  \addcontentsline{toc}{section}{\protect\numberline{\thesection}\@lecture}%
 }
 
 \makeatletter
 
 \newcommand{\exercise}[1]{%
  \def\@exercise{#1}%
- \subsection*{Exercise #1}
+ \subsection{Exercise #1}
+}
+
+\newcommand\hr{
+  \noindent\rule[1ex]{\linewidth}{0.5pt}
 }
 
 \makeatother
-
-%Format lim the same way in intext and in display
-\let\svlim\lim\def\lim{\svlim\limits}
-
-% horizontal rule
-\newcommand\hr{
-\noindent\rule[1ex]{\linewidth}{0.5pt}
-}
-
-\author{Noah Rahbek Bigum Hansen}
 

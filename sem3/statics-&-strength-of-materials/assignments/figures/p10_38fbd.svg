@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
+   sodipodi:docname="p10_38fbd.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.42208687"
+     inkscape:cx="290.22462"
+     inkscape:cy="477.38988"
+     inkscape:window-width="1440"
+     inkscape:window-height="900"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="Triangle"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Lag 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <ellipse
+       style="fill:#000000;stroke:#000000;stroke-width:0.599999;stroke-miterlimit:35.2;fill-opacity:0.19291338"
+       id="path1"
+       cx="105.98714"
+       cy="122.27496"
+       rx="78.246292"
+       ry="77.425018" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.599999;stroke-miterlimit:35.2;marker-start:url(#Triangle)"
+       id="path1-4"
+       sodipodi:type="arc"
+       sodipodi:cx="-119.45982"
+       sodipodi:cy="112.9656"
+       sodipodi:rx="87.847961"
+       sodipodi:ry="86.9263"
+       sodipodi:start="0"
+       sodipodi:end="1.2062766"
+       sodipodi:arc-type="arc"
+       d="m -31.611862,112.9656 a 87.847961,86.9263 0 0 1 -56.530109,81.21481"
+       sodipodi:open="true"
+       transform="rotate(-90)" />
+    <ellipse
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.599999;stroke-miterlimit:35.2;fill-opacity:1"
+       id="path2"
+       cx="105.98714"
+       cy="122.27496"
+       rx="58.80859"
+       ry="58.817043" />
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;font-family:'Noto Sans Inscriptional Parthian';-inkscape-font-specification:'Noto Sans Inscriptional Parthian';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.600001;stroke-miterlimit:35.2"
+       x="118.08815"
+       y="129.41002"
+       id="text6"><tspan
+         sodipodi:role="line"
+         id="tspan6"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.6"
+         x="118.08815"
+         y="129.41002">c = 260 mm</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;font-family:'Noto Sans Inscriptional Parthian';-inkscape-font-specification:'Noto Sans Inscriptional Parthian';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.600001;stroke-miterlimit:35.2"
+       x="-20.807035"
+       y="156.55794"
+       id="text6-5"
+       transform="rotate(-52)"><tspan
+         sodipodi:role="line"
+         id="tspan6-8"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.6"
+         x="-20.807035"
+         y="156.55794">c  = 340 mm</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.67471px;font-family:'Noto Sans Inscriptional Parthian';-inkscape-font-specification:'Noto Sans Inscriptional Parthian';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.600001;stroke-miterlimit:35.2"
+       x="-17.696064"
+       y="158.13576"
+       id="text6-5-9"
+       transform="rotate(-52.000001)"><tspan
+         sodipodi:role="line"
+         id="tspan6-8-1"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.600001"
+         x="-17.696064"
+         y="158.13576">O</tspan></text>
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.600001;stroke-miterlimit:35.2;stroke-opacity:1"
+       d="M 27.740848,122.27496 H 184.23343"
+       id="path7" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.600001;stroke-miterlimit:35.2;stroke-opacity:1"
+       d="M 154.47586,61.508406 57.607308,183.12643"
+       id="path8" />
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;font-family:'Noto Sans Inscriptional Parthian';-inkscape-font-specification:'Noto Sans Inscriptional Parthian';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.600001;stroke-miterlimit:35.2;stroke-opacity:1"
+       x="115.9687"
+       y="27.087626"
+       id="text9"><tspan
+         sodipodi:role="line"
+         id="tspan9"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.6"
+         x="115.9687"
+         y="27.087626">ω = 20</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;font-family:'Noto Sans Inscriptional Parthian';-inkscape-font-specification:'Noto Sans Inscriptional Parthian';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.600001;stroke-miterlimit:35.2;stroke-opacity:1"
+       x="139.39674"
+       y="24.010128"
+       id="text10"><tspan
+         sodipodi:role="line"
+         id="tspan10"
+         style="stroke-width:0.6"
+         x="139.39674"
+         y="24.010128">rad</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;font-family:'Noto Sans Inscriptional Parthian';-inkscape-font-specification:'Noto Sans Inscriptional Parthian';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.600001;stroke-miterlimit:35.2;stroke-opacity:1"
+       x="138.8483"
+       y="24.624733"
+       id="text11"><tspan
+         sodipodi:role="line"
+         id="tspan11"
+         style="stroke-width:0.6"
+         x="138.8483"
+         y="24.624733">___</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;font-family:'Noto Sans Inscriptional Parthian';-inkscape-font-specification:'Noto Sans Inscriptional Parthian';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.600001;stroke-miterlimit:35.2;stroke-opacity:1"
+       x="142.62631"
+       y="29.690836"
+       id="text12"><tspan
+         sodipodi:role="line"
+         id="tspan12"
+         style="stroke-width:0.6"
+         x="142.62631"
+         y="29.690836">s</tspan></text>
+  </g>
+</svg>

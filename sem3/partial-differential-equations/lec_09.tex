@@ -1,0 +1,42 @@
+\lecture{9}{7. November 2025}{D'Alembert's solution of the one-dimensional wave equation}
+
+\begin{problem}{9.1}
+  Calculate the second derivatives of
+  \[ 
+  u(x,t) = \Phi(x + ct) + \Psi(x-ct)
+  \]
+  with respect to $t$ and $x$ and show that any function of this type is a solution to the one-dimensional wave equation
+  \[ 
+  u_{t t}(x,t) = c^2 u_{x x}(x,t)
+  \]
+  for arbitrary twice differentiable functions $\Phi$ and $\Psi$.
+\end{problem}
+
+\begin{problem}{9.2}
+  Consider the PDE
+  \[ 
+  u_{xt}(x,t) = 0
+  \]
+  and the change of variables
+  \begin{align*}
+    v &= v(x,t) = x + 2t, & w &= w(x,t) = x - 2t \\
+    x &= x(v,w) = \frac{1}{2}(v+w), & t &= t(v,w) = \frac{1}{4}(v-w)
+  .\end{align*}
+  Derive the corresponding PDE for
+  \[ 
+  \overline{u}(v,w) = u (x(v,w), t(v,w))
+  .\]
+  You may assume that $\overline{u}(v,w)$ is twice continuously differentiable, i.e. $\overline{u}_{vw}(v,w) = \overline{u}_{wv}(v, w)$.
+\end{problem}
+
+\begin{problem}{9.3}
+  Calculate d'Alembert's solution corresponding to the initial conditions
+  \[ 
+  u(x,0) = k_0 \sin \left( 3 \pi x \right), u_t (x,0) = 3 \pi k_0 \sin \left( 3 \pi x \right), - \infty < x < \infty
+  ,\]
+  where $k_0$ is a constant.
+
+  Compare your result to that of Exercice 5, Lecture 5.
+
+  \textit{Hint}: $\sin \left( \alpha + \beta \right) = \sin \alpha \cos \beta + \cos \alpha \sin \beta, \cos(\alpha + \beta) = \cos \alpha \cos \beta - \sin \alpha \sin \beta$.
+\end{problem}

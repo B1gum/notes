@@ -1,0 +1,100 @@
+\lecture{7}{24. Oktober 2025}{The heat equation continued}
+
+\begin{problem}{7.1}
+  Consider the one-dimensional heat equation
+  \[ 
+  u_t(x,t) = c^2 u_{x x}(x, t), 0 \leq x \leq L
+  \]
+  subject to the boundary conditions
+  \[ 
+  u(0,t) = u(L,t) = 0
+  \]
+  for all $t$.
+  
+  Let $T_0$ be a constant and
+  \[ 
+  u(x,0) = \begin{cases}
+  T_0, & 0 < x < L\\
+  0, & x = 0 \\
+  0, & x = L
+  .\end{cases}
+  \]
+  This set-up can be used to describe the situation where a very thin, latterally insulated bar of constant temperature $T_0$ is, at time $t = 0$, thrown into a heat bath of zero temperature.
+  Find the solution $u(x,t)$.
+\end{problem}
+
+\begin{derivation}
+  From the lecture, the general solution to the one-dimensional heat equation with the given boundary conditions, is
+  \[ 
+  u(x,t) = \sum_{n = 1}^{\infty} B_n e^{- \lambda^2_n t} \sin \left( \frac{n \pi x}{L} \right)
+  .\]
+  Where $B_n$ is:
+  \begin{align*}
+    B_n &= \frac{2}{L} \int_{0}^{L} u(x,0) \sin \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x \\
+        &= \frac{2}{L} \int_{0}^{L} T_0 \sin \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x \\
+        &= \frac{2 T_0}{L} \int_{0}^{L} \sin \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x \\
+        &= - \frac{2 T_0}{L} \left( \cos \left( n \pi \right) - 1 \right)
+  .\end{align*}
+  Hence the solution becomes:
+\end{derivation}
+
+\finalresult{u(x,t) = \sum_{n = 1}^{\infty}  e^{- \lambda^2_n t} \frac{2 T_0}{L} \left( 1 - \cos \left( n \pi \right) \right)  \sin \left( \frac{n \pi x}{L} \right)}
+
+\begin{problem}{7.2}
+  Consider the one-dimensional heat equation
+  \[ 
+  u_t(x,t) = c^2 u_{x x} (x,t), 0 \leq x \leq L
+  \]
+  subject to the boundary conditions
+  \[ 
+  u(0,t) = T_1, u(L,t) = T_2
+  \]
+  for all $t$.
+
+  Let $T_0$ be a constant and
+  \[ 
+  u(x,0) = \begin{cases}
+  \frac{T_2 - T_1}{L}x + T_0, & 0 < x < L\\
+  T_1, & X = 0 \\
+  T_2, & x = L
+  .\end{cases}
+  \]
+  Find the solution $u(x,t)$.
+\end{problem}
+
+
+\begin{problem}{7.3}
+  Consider the steady heat flow on a thin plate in the $xy$-plane, $0 \leq x \leq 1, 0 \leq y \leq 1$, insulated from above/below, governed by
+  \[ 
+  u_{x x}(x,y) + u_{yy}(x,y) = 0
+  .\]
+  Find the solution that corresponds to the boundary conditions
+  \begin{align*}
+    u(x,0) &= 0, & u(x,1) &= 0, & 0 \leq& x \leq 1 \\
+    u(0,y) &= 0, & u(1,y) &= 0, & 0 \leq& y \leq 1
+  .\end{align*}
+\end{problem}
+
+\begin{problem}{7.4}
+  Consider the steady heat flow on a thin plate in the $xy$-plane, $0 \leq x\leq 3, 0 \leq y \leq 2$, insulated from above/below, governed by
+  \[ 
+  u_{x x} (x,y) + u_{y y}(x,y) = 0 
+  .\]
+  Find the solution that corresponds to the boundary conditions
+  \begin{align*}
+    u(x,0) &= 0, & u(x,2) &= 2 \sin \frac{4 \pi x}{3}, & 0 \leq& x \leq 3 \\
+    u(0,y) &= 0, & u(3,y) &= 0, & 0 \leq& y \leq 2
+  .\end{align*}
+\end{problem}
+
+\begin{problem}{7.5}
+  Consider the steady heat flow on a thin plate in the $xy$-plane, $0 \leq x\leq 1, 0 \leq y \leq 1$, insulated from above/below, governed by
+  \[ 
+  u_{x x} (x,y) + u_{y y}(x,y) = 0 
+  .\]
+  Find the solution that corresponds to the boundary conditions
+  \begin{align*}
+    u(x,0) &= 0, & u_y(x,1) &= 0, & 0 \leq& x \leq 1 \\
+    u(0,y) &= 0, & u(1,y) &= 0, & 0 \leq& y \leq 1
+  .\end{align*}
+\end{problem}

@@ -1,0 +1,57 @@
+\lecture{8}{31. Oktober 2025}{Vibrating rectangular membranes and Double Fourier Sine Series}
+
+\begin{problem}{8.1}
+  Consider the function
+  \[ 
+  f(x,y) = 3 \sin \left( \frac{4 \pi y}{3} \right) \sin \left( \frac{3 \pi x}{2} \right) + 2 \sin \left( \frac{4 \pi y}{3} \right) \sin \left( \frac{3 \pi x}{6} \right), 0 \leq x \leq 2, 0 \leq y \leq 3
+  .\]
+  Find the Fourier coefficients of the double Fourier sine series of $f(x,y)$.
+
+  \textit{Hint:} Coefficients of double Fourier sine series are unique.
+\end{problem}
+
+\begin{problem}{8.2}
+  Consider the deflection $u(x,t)$ of a vibrating elastic membrane in the $xy$-plane, $0 \leq x \leq 1, 0 \leq y \leq 1$, fixed along its boundaries and governed by
+  \[ 
+  u_{t t}(x,y,t) = c^2 \left( u_{x x}(x,y,t) + u_{yy}(x,y,t) \right)
+  .\]
+
+  (a) Find the solution that corresponds to the initial conditions
+  \begin{align*}
+    u(x,y,0) &= \sin \left( 6 \pi x \right) \sin \left( 2 \pi y \right) \\
+    u_t(x,y,0) &= 0
+  .\end{align*}
+
+  (b) Find the solution that corresponds to the initial conditions
+  \begin{align*}
+    u(x,y,0) &= 0 \\
+    u_t(x,y,0) &= \sin \left( 6 \pi x \right) \sin \left( 2 \pi y \right)
+  .\end{align*}
+
+  (c) Find the solution that corresponds to the initial conditions
+  \begin{align*}
+    u(x,y,0) &= \sin \left( 6 \pi x \right) \sin \left( 2 \pi y \right) \\
+    u_t(x,y,0) &= \sin \left( 6 \pi x \right) \sin \left( 2 \pi y \right)
+  .\end{align*}
+
+  \textit{Hint}: Coefficients of double Fourier dine series are unique.
+\end{problem}
+
+\begin{problem}{8.3}
+  Consider the two-dimensional heat equation
+  \[ 
+  u_t(x,y,t) = c^2 (u_{x x}(x,y,t) + u_{yy}(x,y,t))
+  .\]
+  
+  (a) Assume $u(x,y,t) = F(x,y)G(t)$ and derive a PDE for $F(x,y)$ and an ODE for $G(t)$.
+
+  (b) Assume $F(x,y) = H(x) Q(y)$ to finally derive three ODEs for $H(x)$, $Q(y)$ and $G(t)$.
+\end{problem}
+
+\begin{problem}{8.4}
+  Consider the PDE
+  \[ 
+  u_t(x,y,z,t) = u_x(x,y,z,t) + u_y(x,y,z,t) + u_z(x,y,z,t)
+  .\]
+  Assume $u(x,y,z,t) = H(x)Q(y)P(z)G(t)$ and derive 4 ODEs for $H(x), Q(y), P(z),$ and $G(t)$.
+\end{problem}
