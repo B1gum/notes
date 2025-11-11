@@ -12,6 +12,28 @@
   for arbitrary twice differentiable functions $\Phi$ and $\Psi$.
 \end{problem}
 
+\begin{derivation}
+  Starting with the derivatives with respect to $t$ we obtain:
+  \begin{align*}
+    \frac{\partial u(x,t)}{\partial t} &= \frac{\mathrm{d}\Phi(x+ct)}{\mathrm{d}t} + \frac{\mathrm{d}\Psi(x-ct)}{\mathrm{d}t}  \\
+          &= \frac{\mathrm{d}\Phi(x+ct)}{\mathrm{d}(x+ct)} \frac{\mathrm{d}(x+ct)}{\mathrm{d}t} + \frac{\mathrm{d}\Psi(x-ct)}{\mathrm{d}(x-ct)} \frac{\mathrm{d}(x-ct)}{\mathrm{d}t}    \\
+          &= c \left( \frac{\mathrm{d}\Phi(x+ct)}{\mathrm{d}(x+ct)} - \frac{\mathrm{d}\Psi(x-ct)}{\mathrm{d}(x-ct)}   \right) \\
+          \frac{\partial ^2 u(x,t)}{\partial t^2} &= c \left( \frac{\mathrm{d}^2\Phi(x+ct)}{\mathrm{d}(x+ct)^2} \frac{\mathrm{d}(x+ct)}{\mathrm{d}t} - \frac{\mathrm{d}^2\Psi(x-ct)}{\mathrm{d}(x-ct)^2} \frac{\mathrm{d}(x-ct)}{\mathrm{d}t}   \right) \\
+          &= c^2 \left( \frac{\mathrm{d}^2 \Phi(x+ct)}{\mathrm{d}(x+ct)^2} + \frac{\mathrm{d}^2 \Psi(x-ct)}{\mathrm{d}(x-ct)^2}   \right)
+  .\end{align*}
+  With respect to $x$ we obtain the derivatives:
+  \begin{align*}
+    \frac{\partial u(x,t)}{\partial x} &= \frac{\partial \Phi(x+ct)}{\partial x} + \frac{\mathrm{d}\Psi(x-ct)}{\mathrm{d}x}  \\
+    &= \frac{\mathrm{d}\Phi(x+ct)}{\mathrm{d}(x+ct)} \frac{\mathrm{d}(x+ct)}{\mathrm{d}x} + \frac{\mathrm{d}\Psi(x-ct)}{\mathrm{d}(x-ct)} \frac{\mathrm{d}(x-ct)}{\mathrm{d}x}    \\
+    &= \frac{\mathrm{d}\Phi(x+ct)}{\mathrm{d}(x+ct)} + \frac{\mathrm{d}\Psi(x-ct)}{\mathrm{d}(x-ct)}   \\
+    \frac{\partial^2 u(x,t) }{\partial x^2} &= \frac{\mathrm{d}^2 \Phi(x+ct)}{\mathrm{d}(x+ct)^2} \frac{\mathrm{d}(x+ct)}{\mathrm{d}x} + \frac{\mathrm{d}^2 \Psi(x-ct)}{\mathrm{d}(x-ct)^2} \frac{\mathrm{d}(x-ct)}{\mathrm{d}x}  \\
+    &= \frac{\mathrm{d}^2 \Phi(x+ct)}{\mathrm{d}(x+ct)^2} + \frac{\mathrm{d}^2 \Psi(x-ct)}{\mathrm{d}(x-ct)^2}  
+  .\end{align*}
+  I.e. we see that $u_{t t}(x,t) = c^2 u_{x x}(x,t)$ and $u(x,t) = \Phi(x+ct) + \Psi(x-ct)$ is a valid solution.
+\end{derivation}
+
+\newpage
+
 \begin{problem}{9.2}
   Consider the PDE
   \[ 
@@ -29,6 +51,29 @@
   You may assume that $\overline{u}(v,w)$ is twice continuously differentiable, i.e. $\overline{u}_{vw}(v,w) = \overline{u}_{wv}(v, w)$.
 \end{problem}
 
+\begin{derivation}
+  We have that
+  \[ 
+  u_{xt} (x,t) = \overline{u}_{xt}(v(x,t), w(x,t))
+  .\]
+  Taking the first derivative in $t$, we obtain
+  \begin{align*}
+    \overline{u}_t(v,w) &= \overline{u}_v(v,w)v_t(x,t) + \overline{u}_w (v,w)w_t(x,t) \\
+    &= 2\overline{u}(v,w) - 2 \overline{u}_w(v,w) \\
+    &= 2 \left( \overline{u}(v,w) - \overline{u}_w(v,w) \right)
+  .\end{align*}
+  Now taking the derivative in $x$, we obtain
+  \begin{align*}
+    \overline{u}_{xt}(v,w) &= 2 \left( \overline{u}_{vv} (v,w) v_x(x,t) + \overline{u}_{wv}w_x(x,t) - \overline{u}_{vw}(v,w)v_x(x,t) - \overline{u}_{ww}(v,w) w_x(x,t) \right) \\
+    &= 2 \left( \overline{u}_{vv}(v,w) - \overline{u}_{ww}(v,w) \right)
+  .\end{align*}
+  Therefore, the corresponding PDE for $\overline{u}(v,w)$ is:
+\end{derivation}
+
+\finalresult{\overline{u}_{vv}(v,w) - \overline{u}_{ww}(v,w) = 0}
+
+
+
 \begin{problem}{9.3}
   Calculate d'Alembert's solution corresponding to the initial conditions
   \[ 
@@ -40,3 +85,22 @@
 
   \textit{Hint}: $\sin \left( \alpha + \beta \right) = \sin \alpha \cos \beta + \cos \alpha \sin \beta, \cos(\alpha + \beta) = \cos \alpha \cos \beta - \sin \alpha \sin \beta$.
 \end{problem}
+
+\begin{derivation}
+  From the lecture we have D'Alembert's solution as
+  \[ 
+  u(x,t) = \frac{1}{2} \left( F(x+ct) + F(x-ct) \right) + \frac{1}{2c} \int_{x - ct}^{x + ct} G(s) \, \mathrm{d}s
+  .\]
+  Our initial conditions are:
+  \begin{align*}
+    F(x) &= u(x,0) = k_0 \sin (3\pi x), \quad - \infty < x < \infty \\
+    G(x) &= u_t(x,0) = 3 \pi k_0 \sin (3 \pi x), \quad - \infty < x < \infty
+  .\end{align*}
+  By insertion, we get:
+  \begin{align*}
+    u(x,t) &= \frac{1}{2} \left( k_0 \sin \left( 3 \pi \left( x + ct \right) \right )+ k_0 \sin \left( 3 \pi \left( x - ct \right) \right) \right) + \frac{1}{2c} \int_{x - ct}^{x + ct} 3 \pi k_0 \sin \left( 3 \pi s \right) \, \mathrm{d}s\\
+    &= \frac{k_0}{2} \left( 2 \sin \left( 3 \pi x \right) \cos \left( 3 \pi ct \right) \right) + \frac{k_0}{2c} \left( \cos \left( 3\pi \left( x - ct \right) \right) - \cos \left( 3\pi \left( x + ct \right) \right) \right) \\
+    &= k_0 \sin \left( 3 \pi x \right) \cos \left( 3 \pi ct \right) + \frac{k_0}{c} \sin \left( 3 \pi x \right) \sin \left( 3 \pi ct \right)
+  .\end{align*}
+  Comparing this to Exercise 5, Lecture 5 we see that both solutions are equal for $0 < x < 1$ if $c = 1$.
+\end{derivation}
