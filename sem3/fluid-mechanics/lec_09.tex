@@ -2,9 +2,9 @@
 
 \section{Dimensional Analysis and Similitude} \label{sec:diman}
 Many phenomena in fluid mechanics depend on complex interplay between geometry and flow phenomena. E.g. consider the drag force on a stationary smooth sphere immersed in a uniform stream. We expect this to depend on the size of the sphere (defined by the diameter, $D$), the fluid speed $V$, the fluid density $\rho$ and the fluid viscosity $\mu$. If the drag force is called $F$ this can be written symbolically as
-\[ 
-F = f(D, V, \rho, \mu)
-.\]
+\begin{equation} \label{eq:dragsym}
+  F = f(D, V, \rho, \mu)
+\end{equation}
 If we then wanted to determine how $F$ depends on $V$, $D$, $\rho$, and $\mu$ we could not simply vary one parameter at a time in an experimental setting one by one as with just four parameters with 10 different experimental runs at different values each we have $10^{4}$ different experiments.
 
 Instead of doing this extremely cumbersome task we can use dimensional analysis to show that all the data for drag on a smooth sphere can be plotted as a single relationship between two nondimensional parameters in the form
