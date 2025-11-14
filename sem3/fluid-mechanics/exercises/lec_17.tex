@@ -6,13 +6,137 @@
   Determine the wing drag at this condition.
 \end{problem}
 
+\begin{assumptions}
+  \item The temperature is \qty{20}{\celsius} 
+\end{assumptions}
+
+\begin{derivation}
+  The general formula for the lift force is
+  \begin{equation*}
+    F_L = \frac{1}{2} \rho C_L V^2 A_p
+  \end{equation*}
+  where $A_p$ is the planform area given by
+  \begin{equation*}
+    A_p = s \cdot l
+  \end{equation*}
+  where $s$ is span and $l$ is the chord length.
+  Substituting this into the formula for the lift and solving for the required span $s$ we obtain
+  \begin{align*}
+    F_L &= \frac{1}{2} \rho C_L V^2 s \cdot l \\
+    s &= \frac{2F_L}{\rho C_L V^2 \cdot l}
+  .\end{align*}
+  For air at \qty{20}{\celsius} the density can, in Table A.10 in appendix A of the course literature be found to be approximately $\rho_{\text{air}} = \qty{1,21}{\kg\per\cubic\m}$.
+  Plugging in the numbers we get
+  \begin{equation*}
+    s = \frac{2 \cdot \qty{3560}{kN}}{\qty{1,21}{\kg\per\cubic\m} \cdot \num{1,0} \cdot \left( \qty{282}{\km\per\hour}  \right)^2 \cdot \qty{10}{\m} } = \qty{95,9}{\m}
+  .\end{equation*}
+  The drag force is given as
+  \begin{equation*}
+    F_D = \frac{1}{2}\rho C_D A U^2
+  .\end{equation*}
+  Plugging in the numbers we get
+  \begin{equation*}
+    F_D = \frac{1}{2} \cdot \qty{1,21}{\kg\per\cubic\m} \cdot \num{0,05} \cdot \qty{95,9}{\m} \cdot \qty{10}{\m} \cdot \left( \qty{282}{\km\per\hour}  \right)^2 = \qty{178}{\kN} 
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  s &= \qty{95,9}{\m}  \\
+  F_{D} &= \qty{178}{\kN} 
+.\end{aligned}
+}
+
 \begin{problem}{9.30}
   The mean velocity over the top of a wing with a \qty{1,8}{\m} chord moving through air at \qty{33,5}{\m\per\s} is \qty{40}{\m\per\s}, and that over the bottom of the wing is \qty{31}{\m\per\s}.
   Determine the lift per meter of span and the lift coefficient.
 \end{problem}
+
+\begin{assumptions}
+  \item Steady flow at \qty{20}{\celsius} 
+\end{assumptions}
+
+\begin{derivation}
+  We will use the Bernoulli equation to calculate the difference in pressure over the top of the wing as
+  \begin{align*}
+    p_t + \frac{1}{2} \rho U_t^2 &= p_a + \frac{1}{2} \rho U_a^2 \\
+    p_t - p_a &= \frac{1}{2} \rho \left( U_a^2 - U_t^2 \right) \\
+              &= \frac{1}{2} \cdot \qty{1,225}{\kg\per\cubic\m} \cdot \left( \left( \qty{33,5}{\m\per\s} \right)^2 - \left( \qty{40}{\m\per\s}  \right)^2 \right) \\
+              &= \qty{-293}{\Pa} 
+  .\end{align*}
+  Doing the same over the bottom of the wing we get
+  \begin{align*}
+    p_b - p_a &= \frac{1}{2} \rho \left( U_a^2 - U_b^2 \right) \\
+    &= \frac{1}{2} \cdot \qty{1,225}{\kg\per\cubic\m} \cdot \left( \left( \qty{33,5}{\m\per\s}  \right)^2 - \left( \qty{31}{\m\per\s}  \right)^2 \right) \\
+    &= \qty{98,77}{\Pa} 
+  .\end{align*}
+  The difference in pressure between the top and bottom is then
+  \begin{equation*}
+    p_b - p_t = \qty{98,77}{\Pa} - \left( \qty{-293}{\Pa}  \right) = \qty{391,77}{\Pa} 
+  .\end{equation*}
+  The lift force is the pressure difference times the area, hence the lift per meter of spa, where $l$ is the length of the airfoil chord is
+  \begin{equation*}
+    F_L = \left( p_b - p_t \right) l = \qty{391,77}{\Pa} \cdot \qty{1,8}{\m} = \qty{705,186}{\N\per\m} 
+  .\end{equation*}
+  The lift coefficient can then be determined as
+  \begin{equation*}
+    C_L = \frac{F_L}{\frac{1}{2} \cdot \rho \cdot V^2 \cdot l} = \frac{\qty{705,186}{\N\per\m} }{\frac{1}{2}\cdot \qty{1,225}{\kg\per\cubic\m} \cdot \left( \qty{33,5}{\m\per\s}  \right)^2 \cdot \qty{1,8}{\m} } = \num{0,567} 
+  .\end{equation*}
+  
+\end{derivation}
+
+\finalresult{
+  \begin{aligned}
+    F_L &= \qty{705,186}{\N\per\m} \\
+    C_L &= \num{0,567} 
+  .\end{aligned}
+}
+
 
 \begin{problem}{9.6RP}
   A high voltage transmission line cable \qty{10}{\cm} in diameter runs between two towers \qty{500}{\m} apart.
   Determine the force on the cable for a wind speed of \qty{15}{\m\per\s}.
   Determine whether the total force would be less of four \qty{5}{\cm} cables with the same electrical capacity were used.
 \end{problem}
+
+\begin{assumptions}
+  \item Steady flow at \qty{20}{\celsius} 
+  \item The cable is a rigid circular cylinder
+\end{assumptions}
+
+\begin{derivation}
+  The drag coefficient is 
+  \begin{equation*}
+    C_D = \frac{F_D}{\frac{1}{2} \rho U^2 A}
+  .\end{equation*}
+  As the drag coefficient of a circular cylinder is a function of the Reynolds number we must first determine the Reynolds number as:
+  \begin{equation*}
+    \mathrm{Re} = \frac{\rho \cdot U \cdot D}{\mu} = \frac{\qty{1,21}{\kg\per\cubic\m} \cdot \qty{15}{\m\per\s} \cdot \qty{10}{\cm}}{\qty{1,81e-5}{\N\s\per\square\m}} = \num{e5} 
+  .\end{equation*}
+  From Fig. 9.13 of the course literature, the drag coefficient is determined to be about $C_D = \num{1,0}$ for a Reynolds number of $\mathrm{Re} = \num{e5}$.
+  As the frontal area of the cylinder-shaped cable is $A = DL$ the drag force is
+  \begin{equation*}
+    F_D = \frac{1}{2} \rho C_D U^2 A = \frac{1}{2} \cdot \qty{1,21}{\kg\per\cubic\m} \cdot \left( \qty{15}{\m\per\s}  \right)^2 \cdot \qty{10}{\cm} \cdot \qty{500}{\m}  = \qty{6,8}{\kN} 
+  .\end{equation*}
+  For the four smaller cables the Reynolds number is:
+  \begin{equation*}
+    \mathrm{Re} = \frac{\qty{1,21}{\kg\per\cubic\m} \cdot \qty{15}{\m\per\s} \cdot \qty{5}{\cm} }{\qty{1,81e-5}{\N\s\per\square\m}} = \num{5e4} 
+  .\end{equation*}
+  This also corresponds to a drag coefficient of approximately $C_D = \num{1,0}$ per Fig. 9.13.
+  Thus:
+  \begin{equation*}
+    F_D = \frac{1}{2} \rho C_D U^2 A = \frac{1}{2} \cdot \qty{1,21}{\kg\per\cubic\m} \cdot \left( \qty{15}{\m\per\s}  \right)^2 \cdot \qty{5}{\cm} \cdot \qty{500}{\m} = \qty{3,4}{\kN} 
+  .\end{equation*}
+  This is the drag force on each cable.
+  For all four \qty{5}{\cm}  cables the total drag force is
+  \begin{equation*}
+    \left( F_{D} \right)_{\text{4 cable}} = 4 \cdot \qty{3,4}{\kN} = \qty{13,6}{\kN} 
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{
+  \begin{aligned}
+    F_D &= \qty{6,8}{\kN}  \\
+    \left( F_{D} \right)_{\text{4 cable}} &= \qty{13,6}{\kN}
+  .\end{aligned}
+}
