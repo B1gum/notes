@@ -4,6 +4,35 @@
   For a flow at \qty{9,0}{\m\per\s} over a smooth flat plate, estimate the maximum length of the laminar layer for air and for water as the fluid.
 \end{problem}
 
+\begin{assumptions}
+  \item The transition to turbulent happens at a length Reynolds number of exactly \num{5e5}
+  \item Uniform and incompressible flow at \qty{20}{\celsius} 
+\end{assumptions}
+
+\begin{derivation}
+  The length Reynolds number is defined as
+  \begin{equation*}
+    \mathrm{Re}_x = \frac{u \cdot x}{\nu} \implies x = \frac{\mathrm{Re}_x \cdot \nu}{u}
+  .\end{equation*}
+  The kinematic viscosity of air at \qty{20}{\celsius} is approximately $\nu_{\text{air}} = \qty{1,5e-5}{\m\squared\per\s}$ (Fig. A.3. in Appendix A of the course literature).
+  Using this in the above equation for the distance before the flow turns turbulent for the flow of air under the given assumptions and conditions, we get:
+  \begin{equation*}
+    x_{\text{air}} = \frac{\num{5e5} \cdot \qty{1,5e-5}{\m\squared\per\s} }{\qty{9,0}{\m\per\s}} = \qty{0,83}{\m} 
+  .\end{equation*}
+  From the same figure as the kinematic viscosity of the air was found the kinematic viscosity of water at \qty{20}{\celsius} is determined to be approximately \qty{9e-7}{\m\squared\per\s}.
+  Thus, for water we get a turbulent transition after approximately:
+\begin{equation*}
+  x_{\text{water}} = \frac{\num{5e5} \cdot \qty{9e-7}{\m\squared\per\s}}{\qty{9,0}{\m\per\s}} =   \qty{0,05}{\m} 
+.\end{equation*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  x_{\text{air}} &= \qty{0,83}{\m}  \\
+  x_{\text{water}} &= \qty{0,05}{\m} 
+.\end{aligned}
+}
+
 \begin{problem}{9.8}
   Air at \qty{5}{\m\per\s}, atmospheric pressure, and \qty{20}{\celsius} flows over both sides of a flat plate that is \qty{0,8}{\m} long and \qty{0,3}{\m} wide.
   Determine the total drag force on the plate.
@@ -11,8 +40,86 @@
   Explain why there is a difference in the total drag even though the total surface area is the same.
 \end{problem}
 
+\begin{assumptions}
+  \item Steady and incompressible flow
+  \item The plate is infinitesimally thin
+\end{assumptions}
+
+\begin{derivation}
+  The drag force is given by
+  \begin{equation*}
+    F_D = \frac{1}{2}\rho V^2 C_D A
+  .\end{equation*}
+  For air at \qty{20}{\celsius} the density can, in Table A.10 in appendix A of the course literature be found to be approximately $\rho_{\text{air}} = \qty{1,21}{\kg\per\cubic\m}$.
+  To find the drag coefficient we must use the Reynolds number.
+  This is given as
+  \begin{equation*}
+    \mathrm{Re} = \frac{V L}{\nu}
+  .\end{equation*}
+  For the case with the single plate we thus get
+  \begin{equation*}
+    \mathrm{Re} = \frac{\qty{5}{\m\per\s} \cdot \qty{0,8}{\m}}{\qty{1,5e-5}{\m\squared\per\s} } = \num{2,67e5} 
+  .\end{equation*}
+  The drag coefficient for flow over a flat plate is
+  \begin{equation*}
+    C_D = \frac{\num{1,33} }{\sqrt{\mathrm{Re}_L}} = \frac{\num{1,33} }{\sqrt{\num{2,67e5} }} = \num{2,57e-3}
+  .\end{equation*}
+  Now, plugging these values into the formula for the drag force (remembering that both sides experience drag) we get:
+  \begin{equation*}
+    \left( F_D \right)_{\text{1 plate}} = \frac{1}{2} \cdot \qty{1,21}{\kg\per\cubic\m} \cdot  \left( \qty{5}{\m\per\s}  \right)^2 \cdot \num{2,57e-3} \cdot \qty{0,8}{\m} \cdot \qty{0,3}{\m} \cdot 2 = \qty{1,866e-2}{\N} 
+  .\end{equation*}
+  For the case of two plates we have
+  \begin{align*}
+    \mathrm{Re} &= \frac{\qty{5}{\m\per\s} \cdot \qty{0,4}{\m} }{\qty{1,5e-5}{\square\m\per\s} } = \num{1,33e5}  \\
+    C_D &= \frac{\num{1,33}}{\sqrt{\num{1,33e5}}}= \num{3,64e-3}  \\
+    \left( F_D \right)_{\text{2 plates}} &= \frac{1}{2} \cdot \qty{1,21}{\kg\per\cubic\m} \cdot \left( \qty{5}{\m\per\s}  \right)^2 \cdot \num{3,64e-3} \cdot 2 \cdot 2 \cdot \qty{0,4}{\m} \cdot \qty{0,3}{\m} = \qty{2,64e-2}{\N} 
+  .\end{align*}
+  The difference in the drag here is due to the difference between the Reynolds numbers for the two flows.
+  This difference gives rise to a difference between the boundary layers.
+\end{derivation}
+
+\finalresult{
+  \begin{aligned}
+    \left( F_{D} \right)_{\text{1 plate}} &= \qty{1,87e-2}{\N}  \\
+    \left( F_{D} \right)_{\text{2 plates}} &= \qty{2,64e-2}{\N} 
+  .\end{aligned}
+}
+
+
 \begin{problem}{9.7}
   For the flow of air over a flat plate, plot on the same graph the laminar boundary-layer thickness as a function of distance along the plate, up to the point of transition, for freestream speeds of \qty{1}{\m\per\s}, \qty{3}{\m\per\s} and \qty{5}{\m\per\s}.
   Draw some conclusions from your plot.
 \end{problem}
 
+\begin{assumptions}
+  \item The critical Reynolds number is \num{5e5} 
+  \item The flow is happening at \qty{20}{\celsius} 
+\end{assumptions}
+
+\begin{derivation}
+  For laminar flow over a plate, the thickness of the boundary layer $\delta$ changes with length $x$ as
+  \begin{equation*}
+    \frac{\delta}{x} = \frac{\num{5,48} }{\sqrt{\mathrm{Re}_x}} = \num{5,48} \sqrt{\frac{\nu x}{U}}
+  .\end{equation*}
+  Solving for the critical length in the Reynolds number formula we obtain
+  \begin{align*}
+    x &= \num{5e5} \frac{\nu}{U} \\
+    x_{\qty{1}{\m\per\s}} &= \num{5e5} \cdot \frac{\qty{1,5e-5}{\m\squared\per\s}}{\qty{1}{\m\per\s} } = \qty{7,5}{\m}  \\
+    x_{\qty{3}{\m\per\s}} &= \num{5e5} \cdot \frac{\qty{1,5e-5}{\m\squared\per\s}}{\qty{3}{\m\per\s} } = \qty{2,5}{\m}  \\
+    x_{\qty{5}{\m\per\s}} &= \num{5e5} \cdot \frac{\qty{1,5e-5}{\m\squared\per\s}}{\qty{5}{\m\per\s} } = \qty{1,5}{\m}
+  .\end{align*}
+
+  \begin{figure} [ht]
+    \centering
+    \includegraphics[width=0.7\linewidth]{./figures/p9_7.png}
+    \caption{Plot of boundary layer thickness $\delta$ as a function of distance $x$.}
+  \end{figure}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+      x_{\qty{1}{\m\per\s}} &= \num{5e5} \cdot \frac{\qty{1,5e-5}{\m\squared\per\s}}{\qty{1}{\m\per\s} } = \qty{7,5}{\m}  \\
+    x_{\qty{3}{\m\per\s}} &= \num{5e5} \cdot \frac{\qty{1,5e-5}{\m\squared\per\s}}{\qty{3}{\m\per\s} } = \qty{2,5}{\m}  \\
+    x_{\qty{5}{\m\per\s}} &= \num{5e5} \cdot \frac{\qty{1,5e-5}{\m\squared\per\s}}{\qty{5}{\m\per\s} } = \qty{1,5}{\m}
+.\end{aligned}
+}
