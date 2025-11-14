@@ -1,0 +1,35 @@
+\lecture{10}{14. November 2025}{Solutions of PDEs by Fourier methods}
+
+\begin{problem}{10.1}
+  Consider the one-dimensional heat equation and the Fourier transform of the solution $\hat{u}(\omega, t) = C(\omega)e^{-c^2\omega^2 t}$ derived in Section 7.1.
+
+  \begin{enumerate}[label=\alph*)]
+    \item Use the modified initial condition
+      \begin{equation*}
+        u_x(x,0) = f(x)
+      .\end{equation*}
+      to fint an expression relating $C(\omega)$ to the Fourier transform of $f$.
+    \item How does expression (1) in Section 7.1 change under the situation described in a)?
+    \item Use the result from b) and arguments similar to those used in the derivation of (2) in Section 7.1 to derive an expression for $u(x,t)$ that does not contain the complex unit $i$.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{10.2}
+  Use the Fourier cosine transform to find the solution of
+  \begin{equation*}
+    u_t(x,t) = c^2 u_{x x}(x,t), \quad 0 \leq x < \infty
+  \end{equation*}
+  subject to the initial condition
+  \begin{equation*}
+    u(x,0) = f(x) \quad 0 \leq x < \infty
+  \end{equation*}
+  and the boundary condition
+  \begin{equation*}
+    u_x(0,t) = 0
+  .\end{equation*}
+  You may exchange integration and differentiation whenever needed.
+\end{problem}
+
+\begin{problem}{10.3}
+  Prove Equation (3).
+\end{problem}
