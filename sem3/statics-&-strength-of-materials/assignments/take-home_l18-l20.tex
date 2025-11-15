@@ -115,9 +115,11 @@
 
 \newenvironment{problem}[1]%
 {%
+  \edef\theproblem{#1}%
+  \refstepcounter{problem}%
   \par\vspace{0pt}%
   {\large\bfseries\sffamily\color{AUblueDark}%
-    Problem #1%
+    Problem \theproblem
   }%
   \par\vspace{.35\baselineskip}%
 }%
@@ -161,7 +163,7 @@
 \setlength{\pbfigsep}{8mm}
 
 \NewEnviron{problemwithimage}[3][0.38\linewidth]{%
-  \begin{problem}{#3}%
+\begin{problem}{#3}%
     \noindent
     \begin{minipage}[t]{\dimexpr\linewidth-#1-\pbfigsep\relax}
       \vspace{-0.2\baselineskip}\BODY
@@ -192,29 +194,282 @@
 
 \input{titlepage.tex}
 
-\begin{problemwithimage}{p16_17}{16.17}
+\begin{problemwithimage}{p16_17}{16.17}\label{pro:16-17}
   Determine the maximum deflection of the beam.
   $EI$ is constant.
 \end{problemwithimage}
+
+\begin{derivation}
+  Assuming the load varies linearly, which looks to be the case based on the figure, the weight $w$ as a function of distance $x$ is
+  \begin{equation*}
+    w(x) = \frac{x}{L} w_0
+  .\end{equation*}
+  If we take a cut off the figure at distance $x$, the resultant on the left hand side ($A \to x$) is
+  \begin{equation*}
+    W_x = \frac{1}{2} \frac{x}{L} w_0 \cdot x = \frac{x^2}{2 L} w_0
+  .\end{equation*}
+  This will act at $1 / 3 x$ from the cut towards $A$.
+  A moment equilibrium about the cut gives
+  \begin{align*}
+    0 &= \sum M_x \\
+    0 &= - A_y x + W_x \frac{x}{3} + M \\
+    M(x) &= A_y x - W_x \frac{x}{3} \\
+         &= A_y x - \frac{x^3}{6L} w_0
+  .\end{align*}
+
+  Now we will take a moment equilibrium about point $B$ to obtain the reaction force $A_y$.
+  The total distributed load on the beam is
+  \begin{equation*}
+    W = \frac{1}{2} w_0 L
+  \end{equation*}
+  which acts at $1 / 3 L$ from $B$.
+  Hence,
+  \begin{align*}
+    0 &= \sum M_B \\
+    0 &= - A_yL + W \frac{L}{3} \\
+    A_y &= \frac{W}{3} \\
+      &= \frac{L}{6} w_0
+  .\end{align*}
+  Inserting this into the expression for the internal moment as a function of distance $M(x)$ from before, we obtain
+  \begin{equation*}
+    M(x) = \frac{w_0 L}{6} \cdot x - \frac{w_0}{6 L} x^3
+  .\end{equation*}
+  
+  For a beam of constant flexural rigidity ($EI$) a common result is
+  \begin{equation*}
+    EI \frac{\mathrm{d}^2 v}{\mathrm{d}x^2} = M(x) 
+  .\end{equation*}
+  By insertion and subsequent integration, we obtain:
+  \begin{align*}
+    EI \frac{\mathrm{d}^2 v}{\mathrm{d}x^2} = M(x) &= \frac{w_0 L}{6} x - \frac{w_0}{6L}x^3 \\
+    EI \frac{\mathrm{d}v}{\mathrm{d}x} = \int M(x) \, \mathrm{d}x &= \frac{w_0 L}{12} x^2 - \frac{w_0}{24L} x^{4} + C_1 \\
+    EI \cdot v(x) = \int \int M(x) \, \mathrm{d}x \, \mathrm{d}x  &= \frac{w_0 L}{36}x^3 - \frac{w_0}{120 L}x^{5} + C_1 x + C_2
+  .\end{align*}
+  As the ends are fixed, our boundary conditions are
+  \begin{equation*}
+    v(0) = 0, \quad v(L) = 0
+  .\end{equation*}
+  For $v(0) = 0$ to hold, $C_2$ must be zero.
+  At $x = L$, we then get:
+  \begin{align*}
+    0 &= \frac{w_0 L}{36}L^3 - \frac{w_0}{120 L}L^{5} + C_1 L \\
+    \implies C_1 &= - \frac{7}{360} w_0 L^3
+  .\end{align*}
+  Hence,
+  \begin{equation*}
+    EI \cdot v(x) = \frac{w_0 L}{36} x^3 - \frac{w_0}{120 L} x^{5} - \frac{7 w_0 L^3}{360} x
+  .\end{equation*}
+  
+  To find the point of largest deflection we must find the extremum of this function.
+  Hence, we set the derivative equal to zero as (note $EI$ is ignored here, as from the above equation it can be seen to solely scale the deformation $v(x)$ and will therefore not matter when determining the point of maximum deformation):
+  \begin{align*}
+    0 &= \frac{\mathrm{d}v(x)}{\mathrm{d}x} \\
+    0 &= \frac{w_0 L}{12} x^2 - \frac{w_0}{24 L} x^{4} - \frac{7 w_0 L^3}{360}
+  .\end{align*}
+  Solving the above 4th degree polynomial gives the following 4 solutions (assuming $L \neq 0$ and $w_0 \neq 0$):
+  \begin{align*}
+    x_1 &\approx \num{-1,31541} L \\
+    x_2 &\approx \num{-0,51933} L \\
+    x_3 &\approx \num{0,51933} L \\
+    x_4 &\approx \num{1,31541} L
+  .\end{align*}
+  Of these, only the solution $x_3 \approx \num{0,51933} L$ can be the correct solution, as the other three values all lie at a point not on the beam.
+  Substituting this solution of $x = x_3$ into our expression for $v(x)$ we obtain:
+  \begin{equation*}
+    v_{\mathrm{max}} = v(x_3) \approx \num{-6,52e-3}  \frac{L^{4}w_0}{EI}
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{
+v_{\mathrm{max}} \approx \num{-6,52e-3} \frac{L^{4}w_0}{EI}
+}
 
 \begin{problemwithimage}{p16_17}{16.18}
   Determine the maximum slope of the beam.
   $EI$ is constant.
 \end{problemwithimage}
 
-\begin{problemwithimage}{p16_36}{16.36}
+\begin{derivation}
+  From \Cref{pro:16-17} we have the results:
+  \begin{align*}
+    EI \frac{\mathrm{d}^2 v(x)}{\mathrm{d}x^2} &= \frac{w_0 L}{6}x - \frac{w_0}{6 L}x^3 \\
+    EI \frac{\mathrm{d}v(x)}{\mathrm{d}x} &= \frac{w_0 L}{12}x^2 - \frac{w_0}{24L}x^{4} - \frac{7 w_0 L^3}{360}
+  .\end{align*}
+  As $\mathrm{d}^2v / \mathrm{d}x^2 = \mathrm{d}\theta / \mathrm{d}x$ and $\mathrm{d}v / \mathrm{d}x = \theta$ the above can also be written as:
+  \begin{align*}
+    EI \frac{\mathrm{d}\theta(x)}{\mathrm{d}x} &= \frac{w_0 L}{6}x - \frac{w_0}{6 L}x^3 \\
+    EI \,  \theta(x) &= \frac{w_0 L}{12}x^2 - \frac{w_0}{24L}x^{4} - \frac{7 w_0 L^3}{360}
+  .\end{align*}
+  Finding the maximum slope $\theta(x)$ corresponds to finding the value of $x$ for which $\mathrm{d}\theta(x) / \mathrm{d}x = 0$.
+  Hence, assuming, $L \neq 0$
+  \begin{gather*}
+    0 = \frac{w_0 L}{6} x - \frac{w_0}{6 L} x^3 \\
+    \implies \qquad x_1 = 0, \quad x_2 = L \phantom{\qquad \implies}
+  .\end{gather*}
+  Solving the equation for the slope for these values, we obtain:
+  \begin{gather*}
+    \theta (x) = \frac{1}{EI} \left( \frac{w_0 L}{12} x^2 - \frac{w_0}{24 L} x^{4} - \frac{7 w_0 L^3}{360} \right) \\
+    \theta(x_1) = \frac{1}{EI} \left( - \frac{7 w_0 L^3}{360} \right) = - \frac{7 w_0 L^3}{360 EI} \\
+    \theta(x_2) = \frac{w_0 L^3}{EI} \left( \frac{1}{12} - \frac{1}{24} - \frac{7}{360} \right) = \frac{w_0 L^3}{45 EI}
+  .\end{gather*}
+  As $\left| - 7 / 360 \right| < \left| 1 / 45 \right|$ the maximum deflection occurs at $x_2 = L$, where:
+\end{derivation}
+
+\finalresult{
+\theta_{\mathrm{max}} = \frac{w_0 L^3}{45EI}
+}
+
+\begin{problemwithimage}{p16_36}{16.36}\label{pro:16-36}
   Determine the slope at $A$ and the deflection at point $D$ of the overhang beam.
   $EI$ is constant.
 \end{problemwithimage}
 
-\begin{problemwithimage}{p16_46}{16.46}
+\begin{derivation}
+  As the load varies linearly with displacement (constant distributed load) and the load is not assumed large enough to significantly distort the original geometry of the beam, the method of superposition can be employed.
+  Using this, we split up the beam into the two sections shown on XXXFBDXXX. %TODO: FBD
+  One of these is the simply supported beam $AB$ with the uniform load $w$ and the other being the effect on $AB$ from the uniform load on the overhang $BC$.
+
+  \subsubsection*{Simply supported beam $AB$}
+  For the simply supported beam, depicted on XXXFBDXXX, Appendix D gives the slope at $A$ as %TODO: FBD
+  \begin{equation*}
+    \theta_{A,1} = - \frac{w L^3}{24 EI} = - \frac{w \left( 2a \right)^3}{24 EI} = - \frac{wa^3}{3EI}
+  .\end{equation*}
+  The deflection at point $D$ will, due to symmetry, be the maximum deflection.
+  From Appendix D, this is seen to be
+  \begin{equation*}
+    v_{D,1} = - \frac{5 w L^{4}}{384 EI} = - \frac{5 w \left( 2a \right)^{4}}{384 EI} =- \frac{5 w a^{4}}{24EI}
+  .\end{equation*}
+  
+  \subsubsection*{Contribution from overhang $BC$}
+  We will replace the distributed load over $BC$ with a corresponding couple moment and a force acting downwards on $R_B$.
+  The equivalent moment $M_{\mathrm{eq}}$ is then given by
+  \begin{equation*}
+    M_{\mathrm{eq}} = - w \cdot a \cdot \frac{1}{2} \cdot a = - \frac{1}{2} w a^2
+  .\end{equation*}
+  From the Appendix D the slope at $A$ caused by the moment from the overhang $BC$ is
+  \begin{equation*}
+    \theta_{A,2} = \frac{- M_0 L}{6 EI} = - \frac{\left( - \frac{1}{2}w a^2 \right) 2a}{6 EI} = \frac{w a^3}{6 EI}
+  .\end{equation*}
+  And the deflection is found from the elastic curve given in the Appendix as
+  \begin{equation*}
+    v(x) = \frac{- M_0 x}{6 EIL} \left( L^2 - x^2 \right) = \frac{wax}{24 EI} \left( 4a^2 - x^2 \right)
+  .\end{equation*}
+  Evaluating this at $x = a$ gives the deflection for $D$ as
+  \begin{equation*}
+    v(a) = v_{D,2} = \frac{w a^2}{24 EI} \left( 4a^2 - a^2 \right) = \frac{wa^{4}}{8 EI}
+  .\end{equation*}
+  
+  \subsubsection*{Principle of superposition}
+  Using the principle of superposition we find the total slope at $A$ as the algebraic sum of the slopes caused by either section, as:
+  \begin{equation*}
+    \theta_A = \theta_{A,1} + \theta_{A,2} = -\frac{w a^3}{3 EI} + \frac{wa^3}{6EI} = - \frac{wa^3}{6EI}
+  .\end{equation*}
+  Likewise, the total deflection at $D$ will be the algebraic sum of the deflections at $D$ caused by either of the two sections:
+  \begin{equation*}
+    v_{D} = v_{D,1} + v_{D,2} = - \frac{5 w a^{4}}{24 EI} + \frac{wa^{4}}{8 EI} = - \frac{wa^{4}}{12EI}
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  \theta_A &= - \frac{wa^3}{6 EI} \\
+  v_D &= - \frac{wa^{4}}{12 EI}
+.\end{aligned}
+}
+
+\begin{problemwithimage}{p16_46}{16.46}\label{pro:16-46}
   The assembly consists of a cantilevered beam $CB$ and a simply supported beam $AB$.
   If each beam is made of A--36 steel and has a moment of inertia about its principal axis of $I_x = \qty{50e6}{\mm^{4}}$, determine the displacement at the center $D$ of beam $BA$.
 \end{problemwithimage}
+
+\begin{derivation}
+  Due to symmetry, it must be true that $R_A = R_B = R_C = - P / 2 = \qty{35}{\kN}$.
+  As was the case in \Cref{pro:16-36} we will once again use the principle of superposition.
+  This time we split the system up into subdivisions consisting of member $BC$ and $AB$ respectively, as shown on XXXFBDXXX. %TODO: FBD
+  
+  Member $BC$ is a cantilevered beam.
+  From Appendix D, the maximum displacement of this (which will be at point $B$) is
+  \begin{equation*}
+    v_{B,1} = - \frac{\frac{P}{2} L^3}{3 EI} = - \frac{P L^3}{6EI}
+  .\end{equation*}
+  If we do not consider the deflection caused by the load the member $AB$ will simply rotate rigidly between $A$ and $B$.
+  I.e. if $B$ ``sinks'' by a distance of $- P L^3 / (6EI)$, then the midpoint $D$ of $AB$ will ``sink'' half this distance:
+  \begin{equation*}
+    v_{D,1} = \frac{1}{2} \left( - \frac{PL^3}{6EI} \right) = - \frac{PL^3}{12EI}
+  .\end{equation*}
+
+  For member $AB$ Appendix D gives a deflection of
+  \begin{equation*}
+    v_{D, \text{load}} = - \frac{PL^3}{48 EI}
+  .\end{equation*}
+  
+  From the principle of superposition, the total deflection at $D$ will therefore be:
+  \begin{equation*}
+    v_D = v_{D,1} + v_{D, \text{load}} = - \frac{PL^3}{12 EI} - \frac{PL^3}{48 EI} = - \frac{5 PL^3}{48EI}
+  .\end{equation*}
+  From the figure we see that $P = \qty{70}{\kN}$ and $L = \qty{4,8}{\m}$.
+  Furthermore $I_x = \qty{50e6}{\mm^{4}}$ is given.
+  In the course literature the elastic modulus of A--36 steel is given as $E = \qty{200}{\GPa}$.
+  Hence
+  \begin{equation*}
+    v_D = - \frac{5 \cdot \qty{70}{\kN} \cdot \left( \qty{4,8}{\m}  \right)^3}{48 \cdot \qty{200}{\GPa} \cdot \qty{50e6}{\mm^{4}} } = \qty{-8,064}{\cm}
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{
+  v_D = \qty{-8,064}{\cm} 
+}
 
 \begin{problemwithimage}{r16_7}{R16.7}
   Using the method of superposition, determine the displacement at $C$ of beam $AB$.
   The beams are made of wood having a modulus of elasticity of $E = \qty{10}{\GPa}$.
 \end{problemwithimage}
+
+\begin{derivation}
+  Here, we will utilize the same idea of using the principle of superposition as was the case in \Cref{pro:16-46}.
+
+  Due to symmetry we have that
+  \begin{equation*}
+    R_B = R_A = - \frac{1}{2} W
+  .\end{equation*}
+  The equivalent load $W$ that corresponds to our distributed load $w = \qty{1,5}{\kN\per\m}$ is
+  \begin{equation*}
+    W = w \cdot L_{AB} = \qty{-1,5}{\kN\per\m} \cdot \qty{3,6}{\m} = \qty{-5,4}{\kN} 
+  .\end{equation*}
+  Hence,
+  \begin{equation*}
+    R_B = R_A = \qty{2,7}{\kN}
+  .\end{equation*}
+  
+  The deflection at the center point $B$ of the simply supported beam $DE$ is, per Appendix D:
+  \begin{equation*}
+    v_{B} = - \frac{R_BL_{DE}^3}{48 EI}
+  .\end{equation*}
+  Using the same line of reasoning as was the case in \Cref{pro:16-46}, the deflection at $C$ will be exactly half of the deflection at $B$, hence
+  \begin{equation*}
+    v_{C,1} = \frac{1}{2} v_B = - \frac{R_B L_{DE}^3}{96 EI}
+  .\end{equation*}
+  
+  The deflection at the midpoint $C$ (the maximum deflection) for the simply supported beam $AB$ is, per Appendix D:
+  \begin{equation*}
+    v_{C,2} = - \frac{5 w L_{AB}^{4}}{384 EI}
+  .\end{equation*}
+
+  The moment of inertia around the neutral axis of each beam is
+  \begin{equation*}
+    I = \frac{b h^3}{12} = \frac{\qty{75}{\mm} \cdot \left( \qty{150}{\mm}  \right)^3}{12} = \qty{2,11e-5}{\m^{4}} 
+  .\end{equation*}
+  
+  Hence, the total displacement becomes:
+  \begin{align*}
+    v_{C,1} &= - \frac{R_B L_{DE}^3}{96 EI} = - \frac{\qty{2,7}{\kN} \cdot \left( \qty{2,4}{\m}  \right)^3}{24 \cdot \qty{10}{\GPa} \cdot \qty{2,11e-5}{\m^{4}} } = \qty{-1,84e-3}{\m} \\
+    v_{C,2} &= - \frac{5 w L_{AB}^{4}}{384 EI} = - \frac{5 \cdot \qty{1,5}{\kN\per\m} \cdot \left( \qty{3,6}{\m}  \right)^{4}}{384 \cdot \qty{10}{\GPa} \cdot \qty{2,11e-5}{\m^{4}} } = \qty{-1,55e-2}{\m}  \\
+    \implies \quad v_C &= v_{C,1} + v_{C,2} = \qty{-1,84e-3}{\m} - \qty{1,55e-2}{\m} = \qty{-17,3}{\mm}  \\
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+  v_C = \qty{-17,3}{\mm}
+}
 
 \end{document}
