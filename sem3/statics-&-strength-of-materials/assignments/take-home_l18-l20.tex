@@ -199,6 +199,13 @@
   $EI$ is constant.
 \end{problemwithimage}
 
+\begin{figure}[ht]
+    \centering
+    \incfig{p16_17fbd}
+    \caption{Free body diagram of the beam.}
+    \label{fig:p16_17fbd}
+\end{figure}
+
 \begin{derivation}
   Assuming the load varies linearly, which looks to be the case based on the figure, the weight $w$ as a function of distance $x$ is
   \begin{equation*}
@@ -212,12 +219,12 @@
   A moment equilibrium about the cut gives
   \begin{align*}
     0 &= \sum M_x \\
-    0 &= - A_y x + W_x \frac{x}{3} + M \\
-    M(x) &= A_y x - W_x \frac{x}{3} \\
-         &= A_y x - \frac{x^3}{6L} w_0
+    0 &= - \left( R_A \right)_y x + W_x \frac{x}{3} + M \\
+    M(x) &= \left( R_A \right)_y x - W_x \frac{x}{3} \\
+         &= \left( R_A \right)_y x - \frac{x^3}{6L} w_0
   .\end{align*}
 
-  Now we will take a moment equilibrium about point $B$ to obtain the reaction force $A_y$.
+  Now we will take a moment equilibrium about point $B$ to obtain the reaction force $\left( R_A \right)_y$.
   The total distributed load on the beam is
   \begin{equation*}
     W = \frac{1}{2} w_0 L
@@ -226,8 +233,8 @@
   Hence,
   \begin{align*}
     0 &= \sum M_B \\
-    0 &= - A_yL + W \frac{L}{3} \\
-    A_y &= \frac{W}{3} \\
+    0 &= - \left( R_A \right)_y L + W \frac{L}{3} \\
+    \left( R_A \right)_y &= \frac{W}{3} \\
       &= \frac{L}{6} w_0
   .\end{align*}
   Inserting this into the expression for the internal moment as a function of distance $M(x)$ from before, we obtain
@@ -289,6 +296,14 @@ v_{\mathrm{max}} \approx \num{-6,52e-3} \frac{L^{4}w_0}{EI}
   $EI$ is constant.
 \end{problemwithimage}
 
+\begin{figure}[ht]
+    \centering
+    \incfig{p16_18fbd}
+    \caption{Free body diagram of the beam.}
+    \label{fig:p16_18fbd}
+\end{figure}
+
+
 \begin{derivation}
   From \Cref{pro:16-17} we have the results:
   \begin{align*}
@@ -324,13 +339,21 @@ v_{\mathrm{max}} \approx \num{-6,52e-3} \frac{L^{4}w_0}{EI}
   $EI$ is constant.
 \end{problemwithimage}
 
+
+
 \begin{derivation}
   As the load varies linearly with displacement (constant distributed load) and the load is not assumed large enough to significantly distort the original geometry of the beam, the method of superposition can be employed.
   Using this, we split up the beam into the two sections shown on XXXFBDXXX. %TODO: FBD
   One of these is the simply supported beam $AB$ with the uniform load $w$ and the other being the effect on $AB$ from the uniform load on the overhang $BC$.
 
   \subsubsection*{Simply supported beam $AB$}
-  For the simply supported beam, depicted on XXXFBDXXX, Appendix D gives the slope at $A$ as %TODO: FBD
+  \begin{figure}[ht]
+    \centering
+    \incfig{p16_36fbda}
+    \caption{Free Body diagram of the simply supported beam $AB$.}
+    \label{fig:p16_36fbda}
+\end{figure}
+  For the simply supported beam, depicted on \Cref{fig:p16_36fbda}, Appendix D gives the slope at $A$ as:
   \begin{equation*}
     \theta_{A,1} = - \frac{w L^3}{24 EI} = - \frac{w \left( 2a \right)^3}{24 EI} = - \frac{wa^3}{3EI}
   .\end{equation*}
@@ -341,7 +364,15 @@ v_{\mathrm{max}} \approx \num{-6,52e-3} \frac{L^{4}w_0}{EI}
   .\end{equation*}
   
   \subsubsection*{Contribution from overhang $BC$}
-  We will replace the distributed load over $BC$ with a corresponding couple moment and a force acting downwards on $R_B$.
+
+  \begin{figure}[ht]
+    \centering
+    \incfig[0.7]{p16_36fbdb}
+    \caption{Free Body diagram of the contribution from the overhang $BC$.}
+    \label{fig:p16_36fbdb}
+  \end{figure}
+
+  We will replace the distributed load over $BC$ with a corresponding couple moment and a force acting downwards on $R_B$ as shown on \Cref{fig:p16_36fbdb}.
   The equivalent moment $M_{\mathrm{eq}}$ is then given by
   \begin{equation*}
     M_{\mathrm{eq}} = - w \cdot a \cdot \frac{1}{2} \cdot a = - \frac{1}{2} w a^2
@@ -382,17 +413,32 @@ v_{\mathrm{max}} \approx \num{-6,52e-3} \frac{L^{4}w_0}{EI}
   If each beam is made of A--36 steel and has a moment of inertia about its principal axis of $I_x = \qty{50e6}{\mm^{4}}$, determine the displacement at the center $D$ of beam $BA$.
 \end{problemwithimage}
 
+\begin{figure}[ht]
+    \centering
+    \incfig{p16_46fbda}
+    \caption{Free Body diagram of the cantilevered beam $BC$.}
+    \label{fig:p16_46fbda}
+\end{figure}
+
 \begin{derivation}
   Due to symmetry, it must be true that $R_A = R_B = R_C = - P / 2 = \qty{35}{\kN}$.
   As was the case in \Cref{pro:16-36} we will once again use the principle of superposition.
-  This time we split the system up into subdivisions consisting of member $BC$ and $AB$ respectively, as shown on XXXFBDXXX. %TODO: FBD
-  
-  Member $BC$ is a cantilevered beam.
+  This time we split the system up into subdivisions consisting of member $BC$ and $AB$ respectively.
+
+  Member $BC$ is a cantilevered beam, shown on \Cref{fig:p16_46fbda}.
   From Appendix D, the maximum displacement of this (which will be at point $B$) is
   \begin{equation*}
     v_{B,1} = - \frac{\frac{P}{2} L^3}{3 EI} = - \frac{P L^3}{6EI}
   .\end{equation*}
-  If we do not consider the deflection caused by the load the member $AB$ will simply rotate rigidly between $A$ and $B$.
+
+
+\begin{figure}[ht]
+    \centering
+    \incfig{p16_46fbdb}
+    \caption{Free Body diagram of the rigid rotation of member $AB$}
+    \label{fig:p16_46fbdb}
+\end{figure}
+  If we do not consider the deflection caused by the load the member $AB$ will simply rotate rigidly between $A$ and $B$ as depicted on \Cref{fig:p16_46fbdb}.
   I.e. if $B$ ``sinks'' by a distance of $- P L^3 / (6EI)$, then the midpoint $D$ of $AB$ will ``sink'' half this distance:
   \begin{equation*}
     v_{D,1} = \frac{1}{2} \left( - \frac{PL^3}{6EI} \right) = - \frac{PL^3}{12EI}
@@ -441,7 +487,14 @@ v_{\mathrm{max}} \approx \num{-6,52e-3} \frac{L^{4}w_0}{EI}
     R_B = R_A = \qty{2,7}{\kN}
   .\end{equation*}
   
-  The deflection at the center point $B$ of the simply supported beam $DE$ is, per Appendix D:
+\begin{figure}[ht]
+    \centering
+    \incfig{r16_7fbda}
+    \caption{Deflection of the simply supported member $DE$ due to the loading at point $B$}
+    \label{fig:r16_7fbda}
+\end{figure}
+
+  The deflection at the center point $B$ of the simply supported beam $DE$ shown on \Cref{fig:r16_7fbda} is, per Appendix D:
   \begin{equation*}
     v_{B} = - \frac{R_BL_{DE}^3}{48 EI}
   .\end{equation*}
