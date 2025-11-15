@@ -14,6 +14,70 @@
   \end{enumerate}
 \end{problem}
 
+\begin{derivation}
+  We have the rule that the Fourier transform of a derivative is
+  \begin{equation*}
+    \mathcal{F}(u_x(x,t)) = i \omega \mathcal{F}\left( u \left( x,t \right) \right)
+  .\end{equation*}
+  As $u_x (x,0) = f(x)$ we thus get
+  \begin{equation*}
+    \mathcal{F}\left( f \right) = i \omega \mathcal{F}(u (x,0)) \implies \mathcal{F}\left( u(x,0) \right) = \frac{1}{i \omega} \mathcal{F}(f)
+  .\end{equation*}
+  
+  We have the general solution
+  \begin{equation*}
+    \hat{u} (\omega, t) = C (\omega) e^{-c^2 \omega^2 t}
+  .\end{equation*}
+  At $t = 0$ this is
+  \begin{equation*}
+    \hat{u} (\omega,0) = C(\omega)
+  .\end{equation*}
+  From above we have that:
+  \begin{equation*}
+    \hat{u}(\omega, 0) = \mathcal{F}(u(x,0)) = \frac{1}{i \omega} \mathcal{F}(f)
+  .\end{equation*}
+  Hence,
+  \begin{equation*}
+    C(\omega) = \frac{1}{i \omega} \mathcal{F}(f)
+  .\end{equation*}
+  
+
+  We have the solution
+  \begin{equation*}
+    \hat{u} (\omega, t) = \frac{1}{i\omega} \hat{f}(\omega) e^{-c^2 \omega^2 t}
+  .\end{equation*}
+  Taking the inverse Fourier transform of this, we get
+  \begin{align*}
+    u(x,t) &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \hat{u}(\omega, t) e^{i\omega x} \, \mathrm{d}\omega \\
+    &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \frac{1}{i\omega} \hat{f}(\omega) e^{-c^2 \omega^2 t} e^{i \omega x} \, \mathrm{d}\omega \\
+    &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}}\frac{1}{i\omega} \int_{-\infty}^{\infty} f(v) e^{-iv\omega} \, \mathrm{d}v e^{-c^2 \omega^2 t} e^{i\omega x} \, \mathrm{d}\omega \\
+    &= \frac{1}{2\pi} \int_{-\infty}^{\infty} f(v) \left( \int_{-\infty}^{\infty} e^{-c^2 \omega^2 t} \frac{e^{i \left( \omega x - \omega v \right)}}{i\omega} \, \mathrm{d}\omega \right) \, \mathrm{d}v
+  .\end{align*}
+
+  The inner integral is
+  \begin{equation*}
+    \int_{-\infty}^{\infty} e^{-c^2 \omega^2t} \frac{e^{i \left( \omega x - \omega v \right)}}{i \omega} \, \mathrm{d}\omega
+  .\end{equation*}
+  Using the Euler formula $e^{i \alpha} = \cos \alpha + i \sin \alpha$ we can rewrite the integrand:
+  \begin{align*}
+    e^{-c^2 \omega^2 t} \frac{e^{i \left( \omega x - \omega v \right)}}{i \omega} &= e^{-c^2\omega^2 t} \frac{\cos \left( \omega(x - v) \right)}{i \omega} + i e^{-c^2 \omega^2 t} \frac{\sin \left( \omega \left( x - v \right) \right)}{i \omega} \\
+  \implies \quad \int_{-\infty}^{\infty} e^{-c^2 \omega^2 t} \frac{e^{i \left( \omega x - \omega v \right)}}{i\omega} \, \mathrm{d}\omega &= 2 \int_{0}^{\infty} e^{-c^2 \omega^2 t} \frac{\sin \left( \omega \left( x - v \right) \right)}{\omega} \, \mathrm{d}\omega
+  .\end{align*}
+  Therefore we get
+  \begin{align*}
+    u(x,t) &= \frac{1}{2\pi} \int_{-\infty}^{\infty} f(v) \left( \int_{-\infty}^{\infty} e^{-c^2 \omega^2 t} \frac{e^{i \left( \omega x - \omega v \right)}}{i\omega} \, \mathrm{d}\omega \right) \, \mathrm{d}v \\
+           &= \frac{1}{\pi} \int_{-\infty}^{\infty} f(v) \left( \int_{0}^{\infty} e^{-c^2 \omega^2 t} \frac{\sin \left( \omega \left( x - v \right) \right)}{\omega} \, \mathrm{d}\omega \right) \, \mathrm{d}v
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  (&\mathrm{a}) &  C(\omega) &= \frac{1}{i\omega} \mathcal{F}(f) \\
+  (&\mathrm{b}) & u(x,t) &= \frac{1}{2\pi} \int_{-\infty}^{\infty} f(v) \left( \int_{-\infty}^{\infty} e^{-c^2 \omega^2 t} \frac{e^{i \left( \omega x - \omega v \right)}}{i \omega} \, \mathrm{d}\omega \right) \, \mathrm{d}v \\
+  (&\mathrm{c}) & u(x,t) &= \frac{1}{\pi} \int_{-\infty}^{\infty} f(v) \left( \int_{0}^{\infty} e^{-c^2 \omega^2 t} \frac{\sin \left( \omega (x-v) \right)}{\omega} \, \mathrm{d}\omega \right) \, \mathrm{d}v
+.\end{aligned}
+}
+
 \begin{problem}{10.2}
   Use the Fourier cosine transform to find the solution of
   \begin{equation*}
@@ -30,6 +94,49 @@
   You may exchange integration and differentiation whenever needed.
 \end{problem}
 
+\begin{derivation}
+  Following the same line of reasoning as for the Fourier sine integral from the lecture we apply the Fourier cosine transform to the heat equation as:
+  \begin{align*}
+    \mathcal{F}_C (u_t(x,t)) &= \mathcal{F}_C \left( c^2 u_{x x} (x,t) \right) \\
+                             &= c^2 \mathcal{F}_C \left( u_{x x} (x,t) \right) \\
+                             &= c^2 \left( - \omega^2 \mathcal{F}_C \left( u(x,t) \right) - \sqrt{\frac{2}{\pi}} u_x (0,t) \right) \\
+                             &= - c^2 \omega^2 \hat{u}_C (\omega t) \\
+    \implies \quad \frac{\partial \hat{u}_C(\omega,t)}{\partial t} &= - c^2 \omega^2 \hat{u}_C(\omega, t)
+  .\end{align*}
+  Which corresponds to the general solution
+  \begin{equation*}
+    \hat{u}_C(\omega,t) = C(\omega) e^{-c^2 \omega^2 t}
+  .\end{equation*}
+  
+  Now, applying the initial condition we get:
+  \begin{align*}
+    \mathcal{F}_C(u(x,0)) &= \mathcal{F}_C (f(x)) \\
+    \implies \hat{u}_C (\omega, 0) &= \hat{f}_C (\omega) \\
+    \implies C(\omega) &= \hat{f}_C(\omega) \\
+    \implies \hat{u}_C(\omega, t) &= \hat{f}_C(\omega) e^{-c^2 \omega^2 t}
+  .\end{align*}
+
+  The Fourier cosine transform of $f(x)$ is
+  \begin{equation*}
+    \hat{f}_C(\omega) = \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} f(p) \cos (\omega p) \, \mathrm{d}p
+  .\end{equation*}
+
+  Taking the inverse Fourier cosine transform of $\hat{u}(\omega,t)$ we get:
+  \begin{align*}
+    u(x,t) &= \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} \hat{u}_C (\omega, t) \cos (\omega x) \, \mathrm{d}\omega \\
+          &= \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} \hat{f}_C(\omega) e^{-c^2 \omega^2 t} \cos \left( \omega x \right) \, \mathrm{d}\omega \\
+          &= \frac{2}{\pi} \int_{0}^{\infty} \int_{0}^{\infty} f(p) \cos (\omega p) e^{-c^2 \omega^2 t} \cos (\omega x) \, \mathrm{d}p \, \mathrm{d}\omega
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+  u(x,t) = \frac{2}{\pi} \int_{0}^{\infty} \int_{0}^{\infty} f(p) \cos \left( \omega p \right) e^{-c^2 \omega^2 t} \cos \left( \omega x \right) \, \mathrm{d}p \, \mathrm{d}\omega
+}
+
 \begin{problem}{10.3}
   Prove Equation (3).
 \end{problem}
+
+\begin{derivation}
+  No
+\end{derivation}
