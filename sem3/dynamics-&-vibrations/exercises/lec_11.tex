@@ -1,0 +1,36 @@
+\lecture{11}{18. November 2025}{Modellering af Diskrete Systemer}
+
+\begin{problemwithimage}{p11_1}{11.1}
+  Vi betragter det viste bjælkesystem, der skal analyseres som et ækvivalent SDOF-system med den transverse bevægelse af punktmassen $m$ ved $x = a$ som frihedsgraden.
+  En dæmpningsmekanisme er påført som vist, og systemet påvirkes i punktet $x = 2a$ af en ekstern kraft $F(t)$.
+  Bjælken, der er uniform samt masse og dæmpningsløs, har længden $L = 3a$, arealinertimomentet $I$ samt elasticitetsmodulet $E$.
+
+  \begin{enumerate}[label=\alph*)]
+    \item Bestem stivheden af det ækvivalente SDOF-system, $k_{\mathrm{eq}}$, angivet med hensyn til $E$, $I$ og $L$.
+    \item Bevis, at  den eksterne kraft i det ækvivalente SDOF-system bliver
+      \begin{equation*}
+        F_{\mathrm{eq}}(t) = \frac{7}{8} F(t)
+      .\end{equation*}
+  \end{enumerate}
+  Det oplyses nu, at vi (i SI-enheder) har $F(t) = 300$, $EI = 100$, $L = 2$, $m = 3$, $c = 10$ samt $d_0 = \dot{d}_0 = 0$.
+  \begin{enumerate}[resume]
+    \item Er det ækvivalente SDOF-system underkritisk, kritisk eller overkritisk dæmpet?
+    \item Bestem den stationære flytningsrespons i det ækvivalente SDOF-system.
+    \item Bestem den stationære accelerationsrespons i det ækvivalente SDOF-system.
+  \end{enumerate}
+\end{problemwithimage}
+
+\begin{problemwithimage}{p11_2}{11.2}
+  Vi betragter det viste system, hvori bjælken er masseløs of uniform og har længden $L = 2a$, arealinertimomentet $I$ samt elasticitetsmodulet $E$.
+  En punktmasse med størrelsen $m$ er placeret ved $x = a$, og en punktmasse med størrelsen $m$ er placeret ved $x = 2a$.
+  Systemet skal analyseres som et 2DOF-system, hvori $d_1$ og $d_2$ udgør frihedsgraderne.
+  Bjælken skal behandles som en Euler-Bernoulli-bjælke.
+
+  \begin{enumerate}[label=\alph*)]
+    \item Opstil stivheds- og massematricen (hint: anvend D'Alemberts princip).
+    \item Bevis, at de udæmpede vinkelegenfrekvenser er givet ved
+      \begin{equation*}
+        \omega_1 = \sqrt{\frac{6EI}{7ma^3} \left( 9 - \sqrt{74} \right)}, \qquad \omega_2 = \sqrt{\frac{6EI}{7ma^3} \left( 9 + \sqrt{74} \right)}
+      .\end{equation*}
+  \end{enumerate}
+\end{problemwithimage}

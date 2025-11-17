@@ -11,3 +11,138 @@
     \item Bestem den stationære del af $d_1(t)$ og $d_2(t)$ via Foruier-transformation.
   \end{enumerate}
 \end{problemwithimage}
+
+\begin{derivation}
+  Indledende defineres systemet, i MATLAB som vist herunder:
+  \begin{verbatim}
+    %Definition af kendte størrelser:
+    m = 1.5;
+    L = 1.2^(1/3); 
+    EI = 10;
+    k = 12*EI/L^3;
+    dof = 2;
+    zeta = [0.05; 0.05];
+    F_0 = [0; 4];
+    Omega = 5.5;
+    F = F0 * cos(Omega*t);
+
+    %Modellering af systemet:
+    K = 2 * [k -k ;-k 2*k]; %Stivhedsmatrice
+    M = m*eye(dof); %Massematrice
+    [Phi, Lambda] = eig(K,M); %Egenvektorer og dertilhørende egenværdier
+    omegaN = sqrt(diag(Lambda)); %Udtræk egenfrekvenser fra egenværdier
+    [omegaN, origOrder] = sort(omegaN); %Sorter egenfrekvenser mens vi tracker den
+    %oprindelige rækkefølge for at kunne sortere egenvektorer
+
+    Phi = Phi(:, origOrder); %Sorter egenvektorer i samme rækkefølge som egenfrek.
+    Phi = Phi./Phi(1,:); %Smart trick fra løsningforslag – her skaleres alle 
+    %egenvektorer med deres første index idet egenvektorer ikke er entydige
+  \end{verbatim}
+  Vi definerer ligeledes et ``standard'' tidsinterval:
+  \begin{verbatim}
+    N = 1500; %Antal "tidspunkter"
+    dt = 0.01; %Afstand mellem "tidspunkter"
+    t = 0:dt:(N-1)*dt; %Alle "tidspunkter"
+  \end{verbatim}
+
+  Vi har at modaldæmpningsmatricen er givet ved:
+  \begin{equation*}
+    \tilde{c}_{ii} = 2\zeta_i \tilde{m}_{ii} \omega_i
+  .\end{equation*}
+  Heri mangler vi blot at finde modalmassematricen
+  \begin{equation*}
+    \tilde{M} = \Phi^{\intercal} M \Phi
+  .\end{equation*}
+  Dernæst kan modaldæmpningsmatricen omregnes til den ``almindelige dæmpningsmatrice'' som:
+  \begin{equation*}
+    C = \left( \Phi^{\intercal} \right)^{-1} \tilde{C} \Phi^{-1}
+  .\end{equation*}
+  
+  Dette implementeres i MATLAB som:
+  \begin{verbatim}
+    MTilde = Phi' * M * Phi;
+    CTilde = diag(2.*zeta.*diag(MTilde).*omegaN);
+    C = (Phi')^-1 * CTilde * Phi^-1
+  \end{verbatim}
+  
+  Køres dette program fås dæmpningsmatricen til:
+  \begin{equation*}
+    C = \begin{bmatrix}
+      \num{1,5492}  &  \num{-0,7746} \\
+      \num{-0,7746} & \num{2,328} \\
+    \end{bmatrix}
+  .\end{equation*}
+  
+  Fra modaldekobling har vi at:
+  \begin{equation*}
+    \tilde{M} \ddot{q}(t) + \tilde{C} \dot{q}(t) + \tilde{K} q(t) = \tilde{F}(t)
+  .\end{equation*}
+  Heri definerer vi i øvrigt
+  \begin{equation*}
+    \tilde{F}(t) = \Phi^{\intercal}F(t), \quad \tilde{K} = \Phi^{\intercal} K \Phi
+  .\end{equation*}
+  Det ovenstående modaldekoblede system svarer til et SDOF-system med den partikulære løsning:
+  \begin{equation*}
+    d_p(t) = B \cos \left( \Omega t - \epsilon \right)
+  ,\end{equation*}
+  hvori
+  \begin{equation*}
+    B = \frac{\tilde{F}}{\sqrt{\left( \tilde{K} - \tilde{M}\Omega^2 \right)^2 + \tilde{C}^2\Omega^2}}, \qquad \epsilon = \left( \frac{\tilde{C} \Omega}{\tilde{K} - \tilde{M} \Omega^2} \right)
+  .\end{equation*}
+  Slutteligt omregnes $q$-værdierne som det ovenstående giver til de tilsvarende ``almindelige'' forskydninger ved at formultiplicere med $\Phi$.
+  Dette implementerer vi i MATLAB som:
+  \begin{verbatim}
+    KTilde = Phi' * K * Phi;
+    FTilde = Phi' * F;
+    qPart = zeros(dof, N);
+    for jj=1:dof
+      Bj = FTilde(jj,1)/sqrt((KTilde(jj,jj) - MTilde(jj,jj)*Omega^2)^2
+                                            + CTilde(jj,jj)^2*Omega^2);
+      epsj=atan2(CTilde(jj,jj) * Omega, (KTilde(jj,jj) - MTilde(jj,jj) * Omega^2));
+      qPart(jj,:) = Bj * cos(Omega*t-epsj);
+    end
+    dPart = Phi * qPart;
+
+    figure; plot(t, dPart(1,:))
+  \end{verbatim}
+  Hvilket givet plottet på \Cref{fig:p9_1b} når det køres.
+
+  \begin{figure} [ht]
+    \centering
+    \includegraphics[width=0.5\linewidth]{./figures/p9_1b.png}
+    \caption{Plot der viser den partikulære del af $d_1$ og $d_2$.}
+    \label{fig:p9_1b}
+  \end{figure}
+
+  Vi beholder nu kun den første mode og modaltrunkerer resten som:
+  \begin{verbatim}
+    modeToKeep = 1;
+    dPartTrunc = Phi(:, modeToKeep) * qPart(modeToKeep, :);
+
+
+    figure; plot(t, dPartTrunc(1,:), t, dPartTrunc(2,:))
+    xlabel('Tid (s)'); ylabel('Flytning (m)')
+    legend('DOF1 m. trunk.', 'DOF2 m. trunk.')
+
+
+    figure; plot(t, dPart(1,:), t, dPartTrunc(1,:), t, dPart(2,:), t, dPartTrunc(2,:))
+    xlabel('Tid (s)'); ylabel('Flytning (m)')
+    legend('DOF1', 'DOF1 m. trunk.', 'DOF2', 'DOF2 m. trunk.')
+  \end{verbatim}
+
+  Hvilket giver de to plots på hhv. \Cref{fig:p9_1c1} og \Cref{fig:p9_1c2}.
+
+  \begin{figure} [ht]
+    \centering
+    \includegraphics[width=0.5\linewidth]{./figures/p9_1c1.png}
+    \caption{De to trunkerede løsninger.}
+    \label{fig:p9_1c1}
+  \end{figure}
+
+  \begin{figure} [ht]
+    \centering
+    \includegraphics[width=0.5\linewidth]{./figures/p9_1c2.png}
+    \caption{Do to trunkerede løsninger samt de to ikke-trunkerede løsninger.}
+    \label{fig:p9_1c2}
+  \end{figure}
+\end{derivation}
