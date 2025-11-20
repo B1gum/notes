@@ -60,7 +60,6 @@
 \renewcommand{\headrule}{\hbox to\headwidth{\color{AUblueDark}\leaders\hrule height 0.6pt\hfill}}
 \setlength{\headheight}{20pt}
 \fancyhead[L]{\small\AuthorName}
-\fancyhead[C]{\small\ReportTitle}
 \fancyhead[R]{\small\TheDate}
 \usepackage{lastpage}
 \fancyfoot[R]{\small\thepage{} of \pageref{LastPage}}
@@ -70,12 +69,12 @@
 \newcommand{\Dept}{Department of Mechanical and Production Engineering}
 \newcommand{\Uni}{Aarhus University}
 \newcommand{\ReportTitle}{\titlecap{\PdfTitle}}
-\newcommand{\AuthorName}{Noah R. B. H., Mikkel K. N. \& Mathias D. R.}
-\newcommand{\StudentID}{202405538}
+\newcommand{\AuthorName}{Noah R. B. H. (Group Leader), Mikkel K. N. \& Mathias D. R.}
+\newcommand{\StudentID}{202405538 \quad 202407678 \quad 202405101}
 \newcommand{\CourseName}{Statics \& Strength og Materials}
 \newcommand{\CourseNumber}{290221U006}
 \newcommand{\Course}{\CourseName{} --- \CourseNumber}
-\newcommand{\TheDate}{9. November 2025}
+\newcommand{\TheDate}{23. November 2025}
 \newcommand{\Logo}{figures/AU}
 
 
@@ -87,7 +86,7 @@
   urlcolor=AUblue,
   pdftitle={\PdfTitle},
   pdfauthor={\AuthorName},
-  pdfsubject={The solution by \AuthorName{} (\StudentID) to the exercises to the course \CourseName{} taught at the \Dept{} of \Uni. Last updated on \TheDate{}.},
+  pdfsubject={The solution by \AuthorName{} to the exercises to the course \CourseName{} taught at the \Dept{} of \Uni. Last updated on \TheDate{}.},
   pdfcreator={pdfTeX + newtx},
 }
 \usepackage[nameinlink]{cleveref}
@@ -202,7 +201,7 @@
 \begin{figure}[ht]
     \centering
     \incfig{p16_17fbd}
-    \caption{Free body diagram of the beam.}
+    \caption{(a) Free body diagram of the beam and (b) a cut of said beam taken at a distance $x$.}
     \label{fig:p16_17fbd}
 \end{figure}
 
@@ -211,7 +210,7 @@
   \begin{equation*}
     w(x) = \frac{x}{L} w_0
   .\end{equation*}
-  If we take a cut off the figure at distance $x$, the resultant on the left hand side ($A \to x$) is
+  If we take a cut off the figure at distance $x$, (as shown on \Cref{fig:p16_17fbd}b) the resultant on the left hand side is
   \begin{equation*}
     W_x = \frac{1}{2} \frac{x}{L} w_0 \cdot x = \frac{x^2}{2 L} w_0
   .\end{equation*}
@@ -319,8 +318,8 @@ v_{\mathrm{max}} \approx \num{-6,52e-3} \frac{L^{4}w_0}{EI}
   Hence, assuming, $L \neq 0$
   \begin{gather*}
     0 = \frac{w_0 L}{6} x - \frac{w_0}{6 L} x^3 \\
-    \implies \qquad x_1 = 0, \quad x_2 = L \phantom{\qquad \implies}
-  .\end{gather*}
+    \implies \qquad x_1 = 0, \quad x_2 = L. \phantom{\qquad \implies}
+  \end{gather*}
   Solving the equation for the slope for these values, we obtain:
   \begin{gather*}
     \theta (x) = \frac{1}{EI} \left( \frac{w_0 L}{12} x^2 - \frac{w_0}{24 L} x^{4} - \frac{7 w_0 L^3}{360} \right) \\
@@ -338,8 +337,6 @@ v_{\mathrm{max}} \approx \num{-6,52e-3} \frac{L^{4}w_0}{EI}
   Determine the slope at $A$ and the deflection at point $D$ of the overhang beam.
   $EI$ is constant.
 \end{problemwithimage}
-
-
 
 \begin{derivation}
   As the load varies linearly with displacement (constant distributed load) and the load is not assumed large enough to significantly distort the original geometry of the beam, the method of superposition can be employed.
@@ -367,15 +364,15 @@ v_{\mathrm{max}} \approx \num{-6,52e-3} \frac{L^{4}w_0}{EI}
 
   \begin{figure}[ht]
     \centering
-    \incfig[0.7]{p16_36fbdb}
+    \incfig{p16_36fbdb}
     \caption{Free Body diagram of the contribution from the overhang $BC$.}
     \label{fig:p16_36fbdb}
   \end{figure}
 
   We will replace the distributed load over $BC$ with a corresponding couple moment and a force acting downwards on $R_B$ as shown on \Cref{fig:p16_36fbdb}.
-  The equivalent moment $M_{\mathrm{eq}}$ is then given by
+  The equivalent moment $M_{0}$ is then given by
   \begin{equation*}
-    M_{\mathrm{eq}} = - w \cdot a \cdot \frac{1}{2} \cdot a = - \frac{1}{2} w a^2
+    M_{0} = - w \cdot a \cdot \frac{1}{2} \cdot a = - \frac{1}{2} w a^2
   .\end{equation*}
   From the Appendix D the slope at $A$ caused by the moment from the overhang $BC$ is
   \begin{equation*}
@@ -435,7 +432,7 @@ v_{\mathrm{max}} \approx \num{-6,52e-3} \frac{L^{4}w_0}{EI}
 \begin{figure}[ht]
     \centering
     \incfig{p16_46fbdb}
-    \caption{Free Body diagram of the rigid rotation of member $AB$}
+    \caption{Free Body diagram of the rigid rotation of member $AB$.}
     \label{fig:p16_46fbdb}
 \end{figure}
   If we do not consider the deflection caused by the load the member $AB$ will simply rotate rigidly between $A$ and $B$ as depicted on \Cref{fig:p16_46fbdb}.
@@ -444,11 +441,18 @@ v_{\mathrm{max}} \approx \num{-6,52e-3} \frac{L^{4}w_0}{EI}
     v_{D,1} = \frac{1}{2} \left( - \frac{PL^3}{6EI} \right) = - \frac{PL^3}{12EI}
   .\end{equation*}
 
-  For member $AB$ Appendix D gives a deflection of
+  For member $AB$, depicted on \Cref{fig:p16_46fbdc}, Appendix D gives a deflection of
   \begin{equation*}
     v_{D, \text{load}} = - \frac{PL^3}{48 EI}
   .\end{equation*}
-  
+
+  \begin{figure}[ht]
+    \centering
+    \incfig{p16_46fbdc}
+    \caption{Free body diagram of the deflection of member $AB$.}
+    \label{fig:p16_46fbdc}
+  \end{figure}
+
   From the principle of superposition, the total deflection at $D$ will therefore be:
   \begin{equation*}
     v_D = v_{D,1} + v_{D, \text{load}} = - \frac{PL^3}{12 EI} - \frac{PL^3}{48 EI} = - \frac{5 PL^3}{48EI}
@@ -498,15 +502,29 @@ v_{\mathrm{max}} \approx \num{-6,52e-3} \frac{L^{4}w_0}{EI}
   \begin{equation*}
     v_{B} = - \frac{R_BL_{DE}^3}{48 EI}
   .\end{equation*}
-  Using the same line of reasoning as was the case in \Cref{pro:16-46}, the deflection at $C$ will be exactly half of the deflection at $B$, hence
+  Using the same line of reasoning as was the case in \Cref{pro:16-46}, the deflection at $C$ will be exactly half of the deflection at $B$, as shown on \Cref{fig:r16_7fbdb}, hence
   \begin{equation*}
     v_{C,1} = \frac{1}{2} v_B = - \frac{R_B L_{DE}^3}{96 EI}
   .\end{equation*}
+
+\begin{figure}[ht]
+    \centering
+    \incfig{r16_7fbdb}
+    \caption{Rigid rotation of the member $AB$.}
+    \label{fig:r16_7fbdb}
+\end{figure}
   
-  The deflection at the midpoint $C$ (the maximum deflection) for the simply supported beam $AB$ is, per Appendix D:
+  The deflection at the midpoint $C$ (the maximum deflection) for the simply supported beam $AB$, depicted on \Cref{fig:r16_7fbdc} is, per Appendix D:
   \begin{equation*}
     v_{C,2} = - \frac{5 w L_{AB}^{4}}{384 EI}
   .\end{equation*}
+
+\begin{figure}[ht]
+    \centering
+    \incfig{r16_7fbdc}
+    \caption{Deflection of the simply supported member $AB$ due to the distributed loading $w$.}
+    \label{fig:r16_7fbdc}
+\end{figure}
 
   The moment of inertia around the neutral axis of each beam is
   \begin{equation*}
@@ -517,12 +535,131 @@ v_{\mathrm{max}} \approx \num{-6,52e-3} \frac{L^{4}w_0}{EI}
   \begin{align*}
     v_{C,1} &= - \frac{R_B L_{DE}^3}{96 EI} = - \frac{\qty{2,7}{\kN} \cdot \left( \qty{2,4}{\m}  \right)^3}{24 \cdot \qty{10}{\GPa} \cdot \qty{2,11e-5}{\m^{4}} } = \qty{-1,84e-3}{\m} \\
     v_{C,2} &= - \frac{5 w L_{AB}^{4}}{384 EI} = - \frac{5 \cdot \qty{1,5}{\kN\per\m} \cdot \left( \qty{3,6}{\m}  \right)^{4}}{384 \cdot \qty{10}{\GPa} \cdot \qty{2,11e-5}{\m^{4}} } = \qty{-1,55e-2}{\m}  \\
-    \implies \quad v_C &= v_{C,1} + v_{C,2} = \qty{-1,84e-3}{\m} - \qty{1,55e-2}{\m} = \qty{-17,3}{\mm}  \\
+    \implies \quad v_C &= v_{C,1} + v_{C,2} = \qty{-1,84e-3}{\m} - \qty{1,55e-2}{\m} = \qty{-17,3}{\mm}
   .\end{align*}
 \end{derivation}
 
 \finalresult{
   v_C = \qty{-17,3}{\mm}
+}
+
+\begin{problemwithimage}{p12_33}{12.33}
+  The nails are on both sides of the cantilever beam and each can resist a shear of \qty{2}{\kN}.
+  In addition to the distributed loading, determine the maximum load $P$ that can be applied to the end of the beam.
+  The nails are spaced \qty{100}{\mm} apart and the allowable shear stress for the wood is $\tau_{\text{allow}} = \qty{3}{\MPa}$.
+\end{problemwithimage}
+
+\begin{figure}[ht]
+    \centering
+    \incfig[0.75]{p12_33fbda}
+    \caption{Cross section of the composite beam.}
+    \label{fig:p12_33fbda}
+\end{figure}
+
+\begin{derivation}
+  From the figure, we see that the maximum shear occurs in the interval from $A$ to $B$, where the shear is constant.
+  Taking a force equilibrium in the $y$ direction we obtain:
+  \begin{align*}
+    0 &= \sum F_y \\
+    0 &= V_{\mathrm{max}} - \qty{2}{\kN\per\m} \cdot \qty{1,5}{\m} - P  \\
+    \implies \quad V_{\mathrm{max}} &= \qty{3}{\kN\per\m} + P
+  .\end{align*}
+
+  To find the centroid of the composite cantilever beam, we will consider it as consisting of three boards (two identical boards for the sides and a separate board for the top as depicted on \Cref{fig:p12_33fbda}).
+  The cross-sectional areas of these are, respectively:
+  \begin{align*}
+    A_{s} &= \qty{20}{\mm} \cdot \qty{200}{\mm} = \qty{4e3}{\mm^2} \\
+    A_{t} &= \qty{40}{\mm} \cdot \qty{200}{\mm} = \qty{8e3}{\mm^2} 
+  .\end{align*}
+  Taking the bottom face of the beam as our origin, the formula for the centroid $\overline{y}$, can be used as:
+  \begin{align*}
+    \overline{y} &= \frac{\sum A_i y_i}{\sum A_i} \\
+    &= \frac{2 \cdot A_s \cdot y_s + A_t \cdot y_t}{A_s + A_t} \\
+    &= \frac{2 \cdot \qty{4e3}{\mm^2} \cdot \qty{100}{\mm} + \qty{8e3}{\mm^2} \cdot \qty{180}{\mm} }{2 \cdot \qty{4e3}{\mm^2} + \qty{8e3}{\mm^2} } \\
+    &= \qty{140}{\mm} 
+  .\end{align*}
+  This is also shown on \Cref{fig:p12_33fbdb}
+
+  The moment of the area inducing shear is therefore:
+  \begin{equation*}
+    Q = A_t \cdot (y_t - \overline{y}) = \qty{8e3}{\mm^2} \left( \qty{180}{\mm} - \qty{140}{\mm}  \right) = \qty{3,2e5}{\mm^3} 
+  .\end{equation*}
+
+\begin{figure}[ht]
+    \centering
+    \incfig{p12_33fbdb}
+    \caption{Cross section of the composite beam showing the position of the neutral axis, NA.}
+    \label{fig:p12_33fbdb}
+\end{figure}
+
+  Now we must determine the moment of inertia $I$ about the neutral axis.
+  Using the general formula for the moment of inertia of a rectangle and the parallel-axis theorem, we can determine the moment of inertia about the neutral axis.
+  This is done first for each side, as:
+  \begin{align*}
+    I_s &= \frac{1}{12} b_s h_s^3 + A_s d_s^2\\
+    &= \frac{1}{12} \cdot  \qty{20}{\mm} \cdot \left( \qty{200}{\mm}  \right)^3 + \qty{4e3}{\mm^2} \cdot \left( \qty{140}{\mm} - \qty{100}{\mm}   \right)^2 \\
+    &= \qty{1,9733333e7}{\mm^{4}} 
+  .\end{align*}
+  And now for the top plank as:
+  \begin{align*}
+    I_t &= \frac{1}{12} b_t h_t^3 + A_t d_t^2 \\
+    &= \frac{1}{12} \cdot \qty{200}{\mm} \cdot \left( \qty{40}{\mm}  \right)^3 + \qty{8e3}{\mm^2} \left( \qty{180}{\mm} - \qty{140}{\mm} \right)^2 \\
+    &= \qty{1,386666667e7}{\mm^{4}} 
+  .\end{align*}
+  Summing the moments of inertia about the neutral axis of each of the constituent boards of the composite beam we obtain:
+  \begin{equation*}
+    I = 2 \cdot I_s + I_t = 2 \cdot \qty{1,97e7}{\mm^{4}} + \qty{1,39e7}{\mm^{4}} = \qty{5,333333333e7}{\mm^{4}}  
+  .\end{equation*}
+  
+  Using the shear flow formula we find the maximum shear flow by using the previously found maximum shear force.
+  \begin{equation} \label{eq:shearforce}
+    q_{\mathrm{max}} = \frac{V_{\mathrm{max}} \cdot Q}{I}
+  .\end{equation}
+  The nails can each hold $F = \qty{2}{\kN}$ and are spaced by a distance of $s = \qty{100}{\mm}$ between each pair.
+  Hence, the allowable shear flow is:
+  \begin{equation*}
+    q_{\text{allow}} = 2 \cdot \frac{\qty{2}{\kN} }{\qty{100}{\mm}} = \qty{40}{\kN\per\m} 
+  .\end{equation*}
+  Inserting this into \Cref{eq:shearforce} we can solve for the maximum allowable magnitude of the load $P$ as:
+  \begin{align*}
+    q_{\text{allow}} &\geq q_{\mathrm{max}} \\
+    &\geq \frac{\left( \qty{3}{\kN} + P \right)\cdot  Q}{I} \\
+    \implies \quad P &\leq \frac{q_{\text{allow}} \cdot I}{Q} - \qty{3}{\kN} \\
+                     &\leq \frac{\qty{40}{\kN\per\m} \cdot \qty{5,333333e7}{\mm^{4}} }{\qty{3,2e5}{\mm^3}} - \qty{3}{\kN} \\
+                     &\leq \qty{3,67}{\kN} 
+  .\end{align*}
+  This result implies that the nails are each capable of withstanding a maximum load of $P = \qty{3,67}{\kN}$.
+
+  We must also check if this is within the allowable shear stress limit for the wood of $\tau_{\text{allow}} = \qty{3}{\MPa}$.
+  The largest vertical shear stress in the section will occur at the neutral axis.
+  We have the formula for shear stress as:
+  \begin{equation*}
+    \tau = \frac{VQ}{I t}
+  .\end{equation*}
+  Here the shear $V = \qty{3}{\kN} + \qty{3,67}{\kN}$ is the shear at our limiting load of $P = \qty{3,67}{\kN}$.
+  Furthermore $t = 2 \cdot \qty{20}{mm} $ is the effective thickness where the shear is evaluated (twice the thickness of a single of the side boards).
+  Lastly $Q$ is the first moment of area at either side of the neutral axis (in this case we will use the bottom).
+  The cross sectional areas of the boards below the neutral axis are:
+  \begin{equation*}
+    A = 2 \cdot \qty{20}{\mm} \cdot \qty{140}{\mm}
+  .\end{equation*}
+  The distance from the centroid of this area to the neutral axis will be:
+  \begin{equation*}
+    d = \qty{140}{\mm} - \qty{70}{\mm} = \qty{70}{\mm}
+  .\end{equation*}
+  Hence;
+  \begin{equation*}
+    Q = A d = 2 \cdot \qty{20}{\mm} \cdot \qty{140}{\mm} \cdot \qty{70}{\mm} = \qty{3,92e-4}{\m^3 } 
+  .\end{equation*}
+  The shear stress is then:
+  \begin{equation*}
+    \tau_{\mathrm{max}} = \frac{V \cdot Q}{I \cdot  t} = \frac{\left( \qty{3}{\kN} + \qty{3,67}{\kN} \right)\cdot \qty{3,92e-4}{\m^3}}{\qty{5,33e-5}{\m^{4}} \cdot \qty{20}{\mm} \cdot 2} = \qty{1,225}{\MPa} 
+  .\end{equation*}
+  As $\tau_{\mathrm{max}} = \qty{1,225}{\MPa} < \tau_{\text{allow}} = \qty{3}{\MPa}$ the nails will be the limiting factor.
+\end{derivation}
+
+\finalresult{
+P_{\mathrm{max}} = \qty{3,67}{\kN}
 }
 
 \end{document}

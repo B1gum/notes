@@ -54,20 +54,24 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{p16_36fbdb.pdf}}%
-    \put(0.91680752,0.19078896){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
-    \put(0.82531302,0.27903944){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
+    \put(0.32138967,0.19156881){\color[rgb]{0,0.23921569,0.45098039}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(R_A)_y$\end{tabular}}}}%
+    \put(0.29872417,0.26769198){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$A$\end{tabular}}}}%
+    \put(0.5748379,0.28647721){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$D$\end{tabular}}}}%
+    \put(0.77657689,0.22426165){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B$\end{tabular}}}}%
+    \put(0.81303351,0.19156881){\color[rgb]{0,0.23921569,0.45098039}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(R_B)_y$\end{tabular}}}}%
+    \put(0.8124538,0.30498001){\color[rgb]{0,0.23921569,0.45098039}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$P$\end{tabular}}}}%
+    \put(0.21040907,0.09942248){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
+    \put(0.13305006,0.17781705){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{p16_36fbdb.pdf}}%
-    \put(0.48318751,0.15641408){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a$\end{tabular}}}}%
+    \put(0.16053724,0.12789996){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}+\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{p16_36fbdb.pdf}}%
-    \put(0.856256,0.22064189){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}+\end{tabular}}}}%
+    \put(0.44014332,0.10276189){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a$\end{tabular}}}}%
+    \put(0.67606343,0.10276189){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{p16_36fbdb.pdf}}%
-    \put(0.49460356,0.32191167){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$D$\end{tabular}}}}%
-    \put(0.3788645,0.3707433){\color[rgb]{0,0.50196078,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\theta_{D,1}$\end{tabular}}}}%
-    \put(0.0995908,0.37344391){\color[rgb]{0,0.37647059,0.45098039}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v_{D,1}$\end{tabular}}}}%
-    \put(0.19589339,0.30932038){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$A$\end{tabular}}}}%
-    \put(0.74967361,0.35711796){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B$\end{tabular}}}}%
-    \put(0.75896914,0.44226594){\color[rgb]{0.31372549,0.17647059,0.08627451}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$P$\end{tabular}}}}%
-    \put(0.61133832,0.30186887){\color[rgb]{1,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$M_{\mathrm{eq}}$\end{tabular}}}}%
+    \put(0.25112631,0.28546606){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v_{D,2}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{p16_36fbdb.pdf}}%
+    \put(0.49267021,0.29831701){\color[rgb]{0,0.67058824,0.64313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\theta_{A,2}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{p16_36fbdb.pdf}}%
+    \put(0.82911348,0.27155792){\color[rgb]{0.37647059,0,0.18823529}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$M_0$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

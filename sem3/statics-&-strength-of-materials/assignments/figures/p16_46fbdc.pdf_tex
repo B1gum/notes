@@ -1,0 +1,80 @@
+%% Creator: Inkscape 1.4.2 (ebf0e940, 2025-05-08), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'p16_46fbdc.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{547.09301566bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.38670695)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{p16_46fbdc.pdf}}%
+    \put(0.12645079,0.26261187){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{p16_46fbdc.pdf}}%
+    \put(0.74145072,0.26261189){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$A$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{p16_46fbdc.pdf}}%
+    \put(0.4360391,0.26370671){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$D$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{p16_46fbdc.pdf}}%
+    \put(0.95339467,0.02928612){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
+    \put(0.85719806,0.12677045){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{p16_46fbdc.pdf}}%
+    \put(0.89137862,0.06469811){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}+\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{p16_46fbdc.pdf}}%
+    \put(0.25953194,0.08976599){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\qty{2,4}{m}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{p16_46fbdc.pdf}}%
+    \put(0.56112599,0.08976599){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\qty{2,4}{m}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{p16_46fbdc.pdf}}%
+    \put(0.03269949,0.26243859){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v_{B,\text{load}}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{p16_46fbdc.pdf}}%
+    \put(0.45125093,0.36580927){\color[rgb]{0,0.23921569,0.45098039}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$P = \qty{70}{\kN}$\end{tabular}}}}%
+    \put(0.35376693,0.00522633){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$L = \qty{4,8}{\m}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{p16_46fbdc.pdf}}%
+    \put(0.74396958,0.17205575){\color[rgb]{0,0.23921569,0.45098039}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(R_A)_y$\end{tabular}}}}%
+    \put(0.12892982,0.17205575){\color[rgb]{0,0.23921569,0.45098039}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(R_B)_y$\end{tabular}}}}%
+  \end{picture}%
+\endgroup%

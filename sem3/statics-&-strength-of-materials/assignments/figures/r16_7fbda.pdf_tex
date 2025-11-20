@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{680.31496063bp}%
+    \setlength{\unitlength}{542.22373662bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,21 +50,29 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.5)%
+  \begin{picture}(1,0.36749614)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0.85756098,0.09321899){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
-    \put(0.76606649,0.18146947){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{r16_7fbda.pdf}}%
-    \put(0.24839579,0.20266091){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\qty{1,2}{\m}$\end{tabular}}}}%
+    \put(0.10294469,0.15521772){\color[rgb]{0,0.23921569,0.45098039}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(R_D)_y$\end{tabular}}}}%
+    \put(0.72106103,0.15218262){\color[rgb]{0,0.23921569,0.45098039}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(R_E)_y$\end{tabular}}}}%
+    \put(0.92807866,0.0121913){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
+    \put(0.83101819,0.11055107){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{r16_7fbda.pdf}}%
-    \put(0.53449445,0.20266097){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\qty{1,2}{\m}$\end{tabular}}}}%
+    \put(0.86550569,0.0479213){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}+\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{r16_7fbda.pdf}}%
-    \put(0.79700947,0.12307192){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}+\end{tabular}}}}%
-    \put(0.07000285,0.30642141){\color[rgb]{0,0.37647059,0.45098039}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v_{B}$\end{tabular}}}}%
-    \put(0.16027921,0.34029325){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$D$\end{tabular}}}}%
-    \put(0.46271213,0.38412387){\color[rgb]{1,0,1}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_B$\end{tabular}}}}%
-    \put(0.75133864,0.33949235){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$E$\end{tabular}}}}%
+    \put(0.23357309,0.06381112){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\qty{1,2}{\m}$\end{tabular}}}}%
+    \put(0.54409194,0.06381112){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\qty{1,2}{\m}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{r16_7fbda.pdf}}%
+    \put(0.00351736,0.16127881){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v_B$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{r16_7fbda.pdf}}%
+    \put(0.41242866,0.29332575){\color[rgb]{0,0.23921569,0.45490196}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_B$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{r16_7fbda.pdf}}%
+    \put(0.10028673,0.24169349){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$D$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{r16_7fbda.pdf}}%
+    \put(0.35517461,0.29286627){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{r16_7fbda.pdf}}%
+    \put(0.71527682,0.24169349){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$E$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{r16_7fbda.pdf}}%
   \end{picture}%
 \endgroup%
