@@ -50,28 +50,28 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.5)%
+  \begin{picture}(1,0.26096121)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{p16_36fbdb.pdf}}%
-    \put(0.32138967,0.19156881){\color[rgb]{0,0.23921569,0.45098039}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(R_A)_y$\end{tabular}}}}%
-    \put(0.29872417,0.26769198){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$A$\end{tabular}}}}%
-    \put(0.5748379,0.28647721){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$D$\end{tabular}}}}%
-    \put(0.77657689,0.22426165){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B$\end{tabular}}}}%
-    \put(0.81303351,0.19156881){\color[rgb]{0,0.23921569,0.45098039}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(R_B)_y$\end{tabular}}}}%
-    \put(0.8124538,0.30498001){\color[rgb]{0,0.23921569,0.45098039}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$P$\end{tabular}}}}%
-    \put(0.21040907,0.09942248){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
-    \put(0.13305006,0.17781705){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
+    \put(0.28948417,0.12933311){\color[rgb]{0,0.23921569,0.45098039}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(R_A)_y$\end{tabular}}}}%
+    \put(0.26681867,0.20545628){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$A$\end{tabular}}}}%
+    \put(0.54293203,0.2242415){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$D$\end{tabular}}}}%
+    \put(0.74467102,0.16202595){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B$\end{tabular}}}}%
+    \put(0.78112764,0.12933311){\color[rgb]{0,0.23921569,0.45098039}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(R_B)_y$\end{tabular}}}}%
+    \put(0.78054793,0.24274431){\color[rgb]{0,0.23921569,0.45098039}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$P$\end{tabular}}}}%
+    \put(0.17850373,0.03718607){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
+    \put(0.10114473,0.11558064){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{p16_36fbdb.pdf}}%
-    \put(0.16053724,0.12789996){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}+\end{tabular}}}}%
+    \put(0.12863191,0.06566355){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}+\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{p16_36fbdb.pdf}}%
-    \put(0.44014332,0.10276189){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a$\end{tabular}}}}%
-    \put(0.67606343,0.10276189){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a$\end{tabular}}}}%
+    \put(0.40823786,0.04052619){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a$\end{tabular}}}}%
+    \put(0.64415756,0.04052619){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{p16_36fbdb.pdf}}%
-    \put(0.25112631,0.28546606){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v_{D,2}$\end{tabular}}}}%
+    \put(0.21922082,0.22323035){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v_{D,2}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{p16_36fbdb.pdf}}%
-    \put(0.49267021,0.29831701){\color[rgb]{0,0.67058824,0.64313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\theta_{A,2}$\end{tabular}}}}%
+    \put(0.46076465,0.2360813){\color[rgb]{0,0.67058824,0.64313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\theta_{A,2}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{p16_36fbdb.pdf}}%
-    \put(0.82911348,0.27155792){\color[rgb]{0.37647059,0,0.18823529}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$M_0$\end{tabular}}}}%
+    \put(0.7972076,0.20932222){\color[rgb]{0.37647059,0,0.18823529}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$M_0$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

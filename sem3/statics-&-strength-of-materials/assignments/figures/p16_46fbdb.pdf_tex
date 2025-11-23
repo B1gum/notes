@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{579.17633778bp}%
+    \setlength{\unitlength}{587.50492607bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,27 +50,26 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.38754686)%
+  \begin{picture}(1,0.31383651)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{p16_46fbdb.pdf}}%
-    \put(0.07886756,0.36866248){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B$\end{tabular}}}}%
+    \put(0.09192569,0.29521978){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{p16_46fbdb.pdf}}%
-    \put(0.65979971,0.36866249){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$A$\end{tabular}}}}%
+    \put(0.66462245,0.29521982){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$A$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{p16_46fbdb.pdf}}%
-    \put(0.36832555,0.26120541){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$D$\end{tabular}}}}%
+    \put(0.37728029,0.18928607){\color[rgb]{0.88627451,0,0.10196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$D$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{p16_46fbdb.pdf}}%
-    \put(0.86000307,0.01141347){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
-    \put(0.76913525,0.10349769){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
+    \put(0.86198768,0.01963043){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
+    \put(0.77240802,0.11040925){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{p16_46fbdb.pdf}}%
-    \put(0.80142238,0.04486383){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}+\end{tabular}}}}%
+    \put(0.80423744,0.05260659){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}+\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{p16_46fbdb.pdf}}%
-    \put(0.20457669,0.12769495){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\qty{2,4}{m}$\end{tabular}}}}%
+    \put(0.21585278,0.05766828){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\qty{2,4}{m}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{p16_46fbdb.pdf}}%
-    \put(0.48946401,0.12769495){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\qty{2,4}{m}$\end{tabular}}}}%
+    \put(0.49670146,0.05766828){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\qty{2,4}{m}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=8]{p16_46fbdb.pdf}}%
-    \put(0.70621834,0.36783294){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v_{D,1}$\end{tabular}}}}%
-    \put(0.86810883,0.36310954){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v_{B,1}$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=9]{p16_46fbdb.pdf}}%
+    \put(0.71038305,0.29440202){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v_{D,1}$\end{tabular}}}}%
+    \put(0.86997854,0.28974558){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v_{B,1}$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

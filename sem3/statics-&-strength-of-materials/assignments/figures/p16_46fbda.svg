@@ -3,8 +3,8 @@
 
 <svg
    width="240mm"
-   height="120mm"
-   viewBox="0 0 240 120"
+   height="67.595581mm"
+   viewBox="0 0 240 67.595581"
    version="1.1"
    id="svg8"
    inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
@@ -30,7 +30,7 @@
        inkscape:collect="always"
        xlink:href="#linearGradient8"
        id="linearGradient9"
-       x1="212.00271"
+       x1="212.00272"
        y1="264.5123"
        x2="215.46434"
        y2="264.5123"
@@ -153,9 +153,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.9362482"
-     inkscape:cx="225.95243"
-     inkscape:cy="181.02018"
+     inkscape:zoom="0.30479907"
+     inkscape:cx="182.08717"
+     inkscape:cy="337.92754"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1-7"
      showgrid="false"
@@ -164,9 +164,9 @@
      showguides="true"
      inkscape:guide-bbox="true"
      inkscape:window-width="1440"
-     inkscape:window-height="872"
+     inkscape:window-height="813"
      inkscape:window-x="0"
-     inkscape:window-y="28"
+     inkscape:window-y="25"
      inkscape:window-maximized="0"
      inkscape:showpageshadow="2"
      inkscape:pagecheckerboard="0"
@@ -178,15 +178,15 @@
        spacingy="10"
        empspacing="4"
        dotted="false"
-       originx="0"
-       originy="0" /></sodipodi:namedview><metadata
+       originx="-4.7468807e-07"
+       originy="-32.474816" /></sodipodi:namedview><metadata
      id="metadata5"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-177)"><g
+     transform="translate(-4.7468807e-7,-209.47482)"><g
        inkscape:label="Layer 1"
        id="layer1-7"
        transform="translate(3.522686,-140.45761)"><rect

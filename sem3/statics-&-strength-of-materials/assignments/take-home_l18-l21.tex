@@ -193,14 +193,14 @@
 
 \input{titlepage.tex}
 
-\begin{problemwithimage}{p16_17}{16.17}\label{pro:16-17}
+\begin{problemwithimage}[0.33\linewidth]{p16_17}{16.17}\label{pro:16-17}
   Determine the maximum deflection of the beam.
   $EI$ is constant.
 \end{problemwithimage}
 
 \begin{figure}[ht]
     \centering
-    \incfig{p16_17fbd}
+    \incfig[0.9]{p16_17fbd}
     \caption{(a) Free body diagram of the beam and (b) a cut of said beam taken at a distance $x$.}
     \label{fig:p16_17fbd}
 \end{figure}
@@ -290,18 +290,17 @@
 v_{\mathrm{max}} \approx \num{-6,52e-3} \frac{L^{4}w_0}{EI}
 }
 
-\begin{problemwithimage}{p16_17}{16.18}
+\begin{problemwithimage}[0.33\linewidth]{p16_17}{16.18}
   Determine the maximum slope of the beam.
   $EI$ is constant.
 \end{problemwithimage}
 
 \begin{figure}[ht]
     \centering
-    \incfig{p16_18fbd}
+    \incfig[0.75]{p16_18fbd}
     \caption{Free body diagram of the beam.}
     \label{fig:p16_18fbd}
 \end{figure}
-
 
 \begin{derivation}
   From \Cref{pro:16-17} we have the results:
@@ -316,10 +315,8 @@ v_{\mathrm{max}} \approx \num{-6,52e-3} \frac{L^{4}w_0}{EI}
   .\end{align*}
   Finding the maximum slope $\theta(x)$ corresponds to finding the value of $x$ for which $\mathrm{d}\theta(x) / \mathrm{d}x = 0$.
   Hence, assuming, $L \neq 0$
-  \begin{gather*}
-    0 = \frac{w_0 L}{6} x - \frac{w_0}{6 L} x^3 \\
-    \implies \qquad x_1 = 0, \quad x_2 = L. \phantom{\qquad \implies}
-  \end{gather*}
+  \begin{equation*}
+    0 = \frac{w_0 L}{6} x - \frac{w_0}{6 L} x^3 \qquad \implies \qquad x_1 = 0, \quad x_2 = L.   \end{equation*}
   Solving the equation for the slope for these values, we obtain:
   \begin{gather*}
     \theta (x) = \frac{1}{EI} \left( \frac{w_0 L}{12} x^2 - \frac{w_0}{24 L} x^{4} - \frac{7 w_0 L^3}{360} \right) \\
@@ -410,17 +407,17 @@ v_{\mathrm{max}} \approx \num{-6,52e-3} \frac{L^{4}w_0}{EI}
   If each beam is made of A--36 steel and has a moment of inertia about its principal axis of $I_x = \qty{50e6}{\mm^{4}}$, determine the displacement at the center $D$ of beam $BA$.
 \end{problemwithimage}
 
+\begin{derivation}
+  Due to symmetry, it must be true that $R_A = R_B = R_C = - P / 2 = \qty{35}{\kN}$.
+  As was the case in \Cref{pro:16-36} we will once again use the principle of superposition.
+  This time we split the system up into subdivisions consisting of member $BC$ and $AB$ respectively.
+
 \begin{figure}[ht]
     \centering
     \incfig{p16_46fbda}
     \caption{Free Body diagram of the cantilevered beam $BC$.}
     \label{fig:p16_46fbda}
 \end{figure}
-
-\begin{derivation}
-  Due to symmetry, it must be true that $R_A = R_B = R_C = - P / 2 = \qty{35}{\kN}$.
-  As was the case in \Cref{pro:16-36} we will once again use the principle of superposition.
-  This time we split the system up into subdivisions consisting of member $BC$ and $AB$ respectively.
 
   Member $BC$ is a cantilevered beam, shown on \Cref{fig:p16_46fbda}.
   From Appendix D, the maximum displacement of this (which will be at point $B$) is
@@ -431,7 +428,7 @@ v_{\mathrm{max}} \approx \num{-6,52e-3} \frac{L^{4}w_0}{EI}
 
 \begin{figure}[ht]
     \centering
-    \incfig{p16_46fbdb}
+    \incfig[0.8]{p16_46fbdb}
     \caption{Free Body diagram of the rigid rotation of member $AB$.}
     \label{fig:p16_46fbdb}
 \end{figure}
@@ -448,7 +445,7 @@ v_{\mathrm{max}} \approx \num{-6,52e-3} \frac{L^{4}w_0}{EI}
 
   \begin{figure}[ht]
     \centering
-    \incfig{p16_46fbdc}
+    \incfig[0.9]{p16_46fbdc}
     \caption{Free body diagram of the deflection of member $AB$.}
     \label{fig:p16_46fbdc}
   \end{figure}
