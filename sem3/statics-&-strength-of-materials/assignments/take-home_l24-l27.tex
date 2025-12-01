@@ -1,0 +1,213 @@
+\documentclass[a4paper]{article}
+
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage[english]{babel}
+\usepackage{titlecaps}
+
+\Addlcwords{a an the and but for or nor as at by for in of on per to via vs off up out}
+
+\usepackage{parskip} 
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.2}
+
+
+\usepackage{mathtools, amssymb}
+\renewcommand{\Vec}[1]{\boldsymbol{#1}}
+\let\oldhat\hat
+\renewcommand{\hat}[1]{\oldhat{\mathbf{#1}}}
+
+\usepackage{fourier}
+
+\usepackage[dvipsnames]{xcolor}
+\definecolor{AUblue}{RGB}{0,61,115}
+\definecolor{AUblueDark}{RGB}{0,37,70}
+
+
+\usepackage{graphicx}
+\graphicspath{{./figures/}}
+\usepackage{tikz}
+\usetikzlibrary{calc, arrows.meta}
+
+\usepackage{enumitem}
+\setlist{topsep=4pt,itemsep=2pt,parsep=0pt}
+
+\usepackage{siunitx}
+\sisetup{
+  exponent-product = \cdot,
+  output-decimal-marker = {,},
+  per-mode = fraction,
+  round-mode = figures,
+  round-precision = 3,
+  round-pad = false,
+}
+
+%Giles Castelles incfig
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+  \def\svgwidth{#1\columnwidth}
+  \import{./figures/}{#2.pdf_tex}
+}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AUblueDark}\leaders\hrule height 0.6pt\hfill}}
+\setlength{\headheight}{20pt}
+\fancyhead[L]{\small\AuthorName}
+\fancyhead[R]{\small\TheDate}
+\usepackage{lastpage}
+\fancyfoot[R]{\small\thepage{} of \pageref{LastPage}}
+\fancyfoot[L]{\small\CourseName}
+
+\newcommand{\PdfTitle}{Take-Home Assignment lec. 24–27}
+\newcommand{\Dept}{Department of Mechanical and Production Engineering}
+\newcommand{\Uni}{Aarhus University}
+\newcommand{\ReportTitle}{\titlecap{\PdfTitle}}
+\newcommand{\AuthorName}{Noah R. B. H., Mikkel K. N. \& Mathias D. R.}
+\newcommand{\StudentID}{202405538 \quad 202407678 \quad 202405101}
+\newcommand{\CourseName}{Statics \& Strength og Materials}
+\newcommand{\CourseNumber}{290221U006}
+\newcommand{\Course}{\CourseName{} --- \CourseNumber}
+\newcommand{\TheDate}{XXXXXXXXXXX}
+\newcommand{\Logo}{figures/AU}
+
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=AUblue,
+  citecolor=AUblue,
+  urlcolor=AUblue,
+  pdftitle={\PdfTitle},
+  pdfauthor={\AuthorName},
+  pdfsubject={The solution by \AuthorName{} to the exercises to the course \CourseName{} taught at the \Dept{} of \Uni. Last updated on \TheDate{}.},
+  pdfcreator={pdfTeX + newtx},
+}
+\usepackage[nameinlink]{cleveref}
+
+\usepackage{chngcntr}
+\newcounter{problem}
+\renewcommand{\theproblem}{\arabic{problem}}
+\counterwithin{figure}{problem}
+\counterwithin{table}{problem}
+\numberwithin{equation}{problem}
+\makeatletter
+\providecommand*\theHproblem{\theproblem}
+\renewcommand{\theHfigure}{problem.\theHproblem.\arabic{figure}}
+\renewcommand{\theHtable}{problem.\theHproblem.\arabic{table}}
+\renewcommand{\theHequation}{problem.\theHproblem.\arabic{equation}}
+\makeatother
+
+\crefname{problem}{problem}{problems}
+\Crefname{problem}{Problem}{Problems}
+\crefname{pluralequation}{equations}{equations}
+\Crefname{pluralequation}{Equations}{Equations}
+
+\usepackage{caption}
+\captionsetup{font=small}
+
+\newenvironment{problem}[1]%
+{%
+  \edef\theproblem{#1}%
+  \refstepcounter{problem}%
+  \par\vspace{0pt}%
+  {\large\bfseries\sffamily\color{AUblueDark}%
+    Problem \theproblem
+  }%
+  \par\vspace{.35\baselineskip}%
+}%
+{%
+  \par\vspace{.6\baselineskip}%
+  {\color{AUblueDark}\rule{\linewidth}{0.8pt}}%
+  \vspace{.6\baselineskip}\par%
+}
+
+\newcommand{\AUheading}[1]{%
+  \par\vspace{.4\baselineskip}%
+  {\sffamily\bfseries\color{AUblueDark}#1\par}%
+  \nobreak%
+}
+
+\newenvironment{assumptions}[1][Assumptions]{%
+  \AUheading{#1}
+  \begin{itemize}[leftmargin=*,nosep]
+}{\end{itemize}\par\medskip}
+
+\newenvironment{derivation}[1][Derivation]{%
+  \AUheading{#1}
+  \begingroup\allowdisplaybreaks
+  \setlength{\abovedisplayskip}{6pt}%
+  \setlength{\belowdisplayskip}{6pt}%
+  \setlength{\abovedisplayshortskip}{4pt}%
+  \setlength{\belowdisplayshortskip}{4pt}%
+}{\par\endgroup\medskip}
+
+\newcommand{\finalresult}[1]{%
+  \vspace{.2\baselineskip}%
+  \begin{equation}
+    {\color{AUblueDark}\boxed{\displaystyle #1}}
+    \tag*{\textsc{\textcolor{AUblueDark}{Result}}}
+  \end{equation}
+  \newpage
+}
+
+\usepackage{environ}
+\newlength{\pbfigsep}
+\setlength{\pbfigsep}{8mm}
+
+\NewEnviron{problemwithimage}[3][0.38\linewidth]{%
+\begin{problem}{#3}%
+    \noindent
+    \begin{minipage}[t]{\dimexpr\linewidth-#1-\pbfigsep\relax}
+      \vspace{-0.2\baselineskip}\BODY
+    \end{minipage}\hfill
+    \begin{minipage}[t]{#1}
+      \vspace{-\baselineskip}\centering
+      \includegraphics[width=\linewidth]{#2}%
+    \end{minipage}%
+  \end{problem}%
+}
+
+\makeatother
+\def\@lecture{}%
+\newcommand{\lecture}[3]{
+  \ifthenelse{\isempty{#3}}{%
+    \def\@lecture{Lecture #1}%
+  }{%
+    \def\@lecture{Lecture #1: #3}%
+  }%
+  \refstepcounter{section}%
+  \phantomsection
+  \subsection*{\makebox[\textwidth][l]{\@lecture \hfill \normalfont\small\textsf{#2}}}
+  \addcontentsline{toc}{section}{\protect\numberline{\thesection}\@lecture}%
+}
+
+
+\begin{document}
+
+\input{titlepage.tex}
+
+\begin{problemwithimage}{p14_22}{14.22}
+  A paper tube is formed by rolling a cardboard strip in a spiral and then gluing the edges together as shown.
+  Determine the shear stress acting along the seam, which is at \ang{40} from the vertical, when the tube is subjected to an axial compressive force of \qty{200}{\N}.
+  The paper is \qty{2}{\mm} thick and the tube has an outer diameter of \qty{100}{\mm}.
+\end{problemwithimage}
+
+\begin{problemwithimage}{p14_45}{14.45}
+  The rotor shaft of the helicopter is subjected to the tensile force and torque shown when the rotor blades provide the lifting force to suspend the helicopter at midair.
+  If the shaft has a diameter of \qty{150}{\mm}, determine the principal stress and maximum in-plane shear stress at a point located on the surface of the shaft.
+\end{problemwithimage}
+
+\begin{problemwithimage}{p14_51}{14.51}
+  The stress at a point is shown on the element.
+  Determine the principal stress and the absolute maximum shear stress.
+\end{problemwithimage}
+
+\end{document}
+
