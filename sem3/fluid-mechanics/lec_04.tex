@@ -195,7 +195,7 @@ This can also be written in components as:
   F_{S_z} + F_{B_z} - \int_{\mathrm{CV}} a_{rf_z} \rho \, \mathrm{d}V &= \frac{\partial }{\partial t} \int_{\mathrm{CV}} w_{xyz} \rho \, \mathrm{d}V + \int_{\mathrm{CS}} w_{xyz} \rho \textbf{V}_{xyz} \cdot \mathrm{d}\textbf{A}
 .\end{align*}
 
-\subsection{The Angular-Momentum Principle}
+\subsection{The Angular-Momentum Principle} \label{sec:angmomprin}
 
 \subsubsection{Equation for Fixed Control Volume}
 The angular-momentum principle for a system in an inertial frame is
@@ -208,9 +208,9 @@ where $\textbf{T}$ is the total torque exerted on the system by its surroundings
 .\]
 
 If we let $\textbf{r}$ locate each mass or volume element of the system with respect to the coordinate system, then the torque $\textbf{T}$ applied to the system may be written:
-\[ 
-\textbf{T} = \textbf{r} \times \textbf{F}_s + \int_{M (\mathrm{system})} \textbf{r} \times \textbf{g} \, \mathrm{d}m + \textbf{T}_{\mathrm{shaft}}
-.\]
+\begin{equation*} \label{eq:angmomprin}
+  \textbf{T} = \textbf{r} \times \textbf{F}_s + \int_{M (\mathrm{system})} \textbf{r} \times \textbf{g} \, \mathrm{d}m + \textbf{T}_{\mathrm{shaft}}
+.\end{equation*}
 
 The relation between the system and fixed control volume formulation is
 \[ 
