@@ -1,0 +1,53 @@
+\lecture{22}{20. November 2025}{Combined Loading}
+
+\section{Combined Loadings}
+
+\subsection{Thin-Walled Pressure Vessels}
+The stresses acting in a cylindrical or spherical pressure vessel can easily be analyzed provided it has a \textit{thin wall} -- i.e. an inner-radius-to-wall--thickness ratio of 10 or more.
+Specifically, when $r / t = 10$ the results of a thin-wall analysis will predict a stress that is approximately 4\% less than the actual maximum stress in the vessel.
+For larger $r / t$ ratios this error will be even smaller.
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.5\linewidth]{./figures/f13_1.png}
+  \caption{Thin-walled cylindrical vessel.}
+  \label{fig:f13_1}
+\end{figure}
+
+\subsubsection{Cylindrical vessels}
+The cylindrical vessel on \Cref{fig:f13_1}a has a wall thickness $t$, inner radius $r$ and is subjected to internal gas pressure $p$.
+To find the \textit{circumferential} or \textit{hoop stress} we will section the vessel by planes $a$, $b$, and $c$.
+A free-body diagram of the back segment along with its contained gas is shown on \Cref{fig:f13_1}b.
+For simplicity, only the loadings in the $x$ direction are shown.
+These are caused bu the uniform hoop stress $\sigma_1$ acting on the vessel's wall, and the pressure acting on the vertical face of the gas.
+For equilibrium in the $x$-direction we require
+\begin{equation*}
+  2 \left( \sigma_1 (t \, \mathrm{d}y ) \right) - p (2r \, \mathrm{d}y ) = 0 \implies \sigma_1 = \frac{pr}{t}
+.\end{equation*}
+
+The longitudinal stress can be determined by considering the left portion of section $b$ on \Cref{fig:f13_1}a.
+As shown on the free-body diagram on \Cref{fig:f13_1}c, $\sigma_2$ acts uniformly throughout the wall, and $p$ acts on the section of the contained gas.
+Since the mean radius is approximately equal to the vessels inner radius, equilibrium in the $y$ direction requires:
+\begin{equation*}
+  \sigma_2 (2\pi rt) - p \left( \pi r^2 \right) = 0 \implies \sigma_2 = \frac{pr}{2t}
+.\end{equation*}
+Where $\sigma_1$ and $\sigma_2$ are the normal stress in the hoop and longitudinal directions, respectively, $p$ is the internal gauge pressure, $r$ is the inner radius and $t$ the wall thickness.
+
+By comparison, we see that the hoop stress is twice as large as the longitudinal stress.
+
+
+\subsubsection{Spherical Vessels}
+For a spherical vessel, the analysis is rather similar.
+We section the vessel on \Cref{fig:f13_2}a in half as shown, which leaves us with the free-body diagram of \Cref{fig:f13_2}b.
+Equilibrium in the $y$ direction requires
+\begin{equation*}
+  \omega_2 \left( 2 \pi rt \right) - p \left( \pi r^2 \right) = 0 \implies \sigma_2 = \frac{pr}{2t}
+.\end{equation*}
+This is the same as the longitudinal stress for a cylindrical vessel. 
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.5\linewidth]{./figures/f13_2.png}
+  \caption{Thin-walled spherical vessel}
+  \label{fig:f13_2}
+\end{figure}
