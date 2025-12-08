@@ -1,0 +1,213 @@
+\lecture{4}{19. September 2025}{Fourier sine and cosine  transformations}
+
+\exercise{1.}
+Represent $f(x)$, $0 < x < \infty$, defined as
+\[ 
+f(x) = \begin{cases}
+\cos x, & 0 < x < \pi\\
+0, & x > \pi
+.\end{cases}
+\]
+as a Fourier sine integral.
+\textit{Hint:}
+\[ 
+\int_{0}^{\pi} \cos x \sin \left( \omega x \right) \, \mathrm{d}x = \frac{\omega \left( 1 + \cos \left( \omega \pi \right) \right)}{\omega^2 - 1}
+\]
+\hr
+We start by determining the value of $B(\omega)$ as
+\begin{align*}
+  B(\omega) &= \frac{2}{\pi} \int_{0}^{\pi} f(x) \sin (\omega x) \, \mathrm{d}x  \\
+       &= \frac{2}{\pi} \int_{0}^{\pi} \cos x \sin \left( \omega x \right) \, \mathrm{d}x \\
+       &= \frac{2}{\pi} \cdot \frac{\omega \left( 1 + \cos \left( \omega \pi \right) \right)}{\omega^2 - 1} \\
+.\end{align*}
+Hence, the Fourier sine integral becomes
+\[ 
+f(x) = \int_{0}^{\infty} B(\omega) \sin \left( \omega x \right) \, \mathrm{d}\omega = \int_{0}^{\infty} \frac{2}{\pi} \frac{\omega \left( 1 + \cos (\omega \pi) \right)}{\omega^2 - 1} \sin (\omega x) \, \mathrm{d}\omega
+.\]
+
+\exercise{2.}
+Represent $f(x),$ $0 < x < \infty$, defined as
+\[ 
+f(x) = \begin{cases}
+\sin x, & 0 < x < \pi \\
+0, & x > \pi
+\end{cases}
+\]
+as a Fourier cosine integral.
+\textit{Hint:}
+\[ 
+\int_{0}^{\pi} \sin x \cos \left( \omega x \right) \, \mathrm{d}x = \frac{1 + \cos \left( \omega \pi \right)}{1 - \omega^2}
+.\]
+\hr
+We determine the value of $A(\omega)$ as
+\begin{align*}
+  A \left( \omega \right) &= \frac{2}{\pi} \int_{0}^{\infty} f(x) \cos (\omega x) \, \mathrm{d}x  \\
+  &= \frac{2}{\pi} \int_{0}^{\pi} \sin x \cos (\omega x) \\
+  &= \frac{2}{\pi} \frac{1 + \cos (\omega \pi)}{1 - \omega^2}
+.\end{align*}
+Hence, the Fourier cosine integral becomes
+\[ 
+f(x) = \int_{0}^{\infty} A(\omega) \sin(\omega x) \, \mathrm{d}\omega = \int_{0}^{\infty} \frac{2}{\pi} \frac{1 + \cos (\omega \pi)}{1 - \omega^2} \cos (\omega x) \, \mathrm{d}\omega
+.\]
+
+
+
+\exercise{3.}
+Find the Fourier cosine transform of $f(x), 0 < x < \infty$, defined as
+\[ 
+f(x) = \begin{cases}
+1, & 0<x<1\\
+-1 & 1<x<2 \\
+0, & x > 2
+\end{cases}
+.\]
+\hr
+We have the general formula for the cosine transform
+\begin{align*}
+  \mathcal{F}_C (f) &= \sqrt{\frac{2}{\pi}} A(\omega) \\
+          &= \sqrt{\frac{2}{\pi}} \left( \int_{0}^{1} \cos (\omega x) \, \mathrm{d}x - \int_{1}^{2} \cos (\omega x) \, \mathrm{d}x  \right) \\
+          &= \sqrt{\frac{2}{\pi}} \left( \left[ \frac{\sin (\omega x) }{\omega} \right]_0^{1} - \left[ \frac{\sin (\omega x)}{\omega} \right]_1^{2} \right) \\
+          &= \sqrt{\frac{2}{\pi}} \left( \frac{\sin \omega}{\omega} - \left( \frac{\sin 2 \omega}{\omega} - \frac{\sin \omega}{\omega} \right) \right) \\
+          &= \sqrt{\frac{2}{\pi}} \left( \frac{2 \sin \omega}{\omega} - \frac{\sin 2\omega}{\omega} \right)
+.\end{align*} 
+
+
+
+\exercise{4.}
+Find the Fourier transform of
+\[ 
+f(x) = \begin{cases}
+e^{2ix}, & -1 < x < 1\\
+0, & \text{otherwise}
+.\end{cases}
+.\]
+\hr
+We employ the definition of the Foruier transform
+\[ 
+\mathcal{F}(f) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(x) e^{-i \omega x} \, \mathrm{d}x 
+.\]
+This becomes
+\begin{align*}
+  \mathcal{F}(f) &= \frac{1}{\sqrt{2\pi}} \int_{-1}^{1} e^{2ix} e^{-i\omega x} \, \mathrm{d}x \\
+       &= \frac{1}{\sqrt{2\pi}} \int_{-1}^{1} e^{i (2 - \omega)x} \, \mathrm{d}x  \\
+       &= \frac{1}{\sqrt{2\pi}} \left[ \frac{e^{i(2 - \omega) x}}{i (2 - \omega)} \right]_{-1}^{1}   \\
+       &= \frac{1}{\sqrt{2\pi}} \left( \frac{e^{i (2 - \omega)} - e^{-i (2-\omega)}}{i (2 - \omega)} \right) \\
+       &= \frac{1}{\sqrt{2\pi}} \frac{\cos (2 -\omega) + i \sin (2 - \omega) - \cos (\omega - 2) + i \sin(\omega - 2)}{i (2 - \omega)} \\
+       &= \frac{1}{\sqrt{2 \pi}} \frac{2i \sin (2 - \omega)}{i (2 - \omega)} \\
+       &= \sqrt{\frac{2}{\pi}} \frac{\sin (2 - \omega)}{2 - \omega}
+.\end{align*} 
+
+
+\exercise{5.}
+Use the formulae of the Fourier transform, Fourier cosine transform and Fourier sine transform for first and second derivatives from the Lecture to derive the corresponding formulae for third derivatives, i.e. for
+\[ 
+\mathcal{F}_C \left( f''' \right), \mathcal{F}_S \left( f''' \right), \mathcal{F} \left( f''' \right)
+.\]
+\hr
+We have that
+\begin{align*}
+  \mathcal{F}_C (f') &= \omega \mathcal{F}_S (f) - \sqrt{\frac{2}{\pi}} f(0) \\
+  \mathcal{F}_C (f'') &= - \omega^2 \mathcal{F}_C (f) - \sqrt{\frac{2}{\pi}}f'(0) \\
+  \mathcal{F}_S (f') &= - \omega \mathcal{F}_C (f) \\
+  \mathcal{F}_S (f'') &= - \omega^2 \mathcal{F}_S(f) + \sqrt{\frac{2}{\pi}} \omega f(0) \\
+  \mathcal{F}(f') &= i \omega \mathcal{F}(f) \\
+  \mathcal{F}(f'') &= - \omega^2 \mathcal{F}(f)
+.\end{align*}
+We will use that $f''' = (f'')'$ to get
+\begin{align*}
+  g' &= f''' \\
+  \mathcal{F}_C (f''') &= \mathcal{F}_C (g') \\
+  \mathcal{F}_C(g') &= \omega \mathcal{F}_S \left( g \right) - \sqrt{\frac{2}{\pi}} g(0) \\
+  \mathcal{F}_C \left( f''' \right) &= \omega \mathcal{F}_S (f'') - \sqrt{\frac{2}{\pi}} f''(0) \\
+  &= - \omega^3 \mathcal{F}_S (f) + \sqrt{\frac{2}{\pi}} \omega^2 f(0) - \sqrt{\frac{2}{\pi}} f''(0)
+.\end{align*}
+
+The same procedure can now be followed for $\mathcal{F}_S(f''')$ to get:
+\begin{align*}
+  \mathcal{F}_S(f''') &= \mathcal{F}_S (g') \\
+  \mathcal{F}_S (g')  &= - \omega \mathcal{F}_C (f) \\
+  \mathcal{F}_S (f''') &= - \omega \mathcal{F_C}(f'') \\
+  &= \omega^3 \mathcal{F}_C (f) + \sqrt{\frac{2}{\pi}} \omega f'(0)
+.\end{align*}
+
+For $\mathcal{F} (f''')$ we get
+\begin{align*}
+  \mathcal{F}(f''') &= \mathcal{F}(g') \\
+  \mathcal{F}(g') &= i \omega \mathcal{F}(f'') \\
+  &= i \omega \left( - \omega^2 \mathcal{F}(f) \right)\\
+  &= - i \omega^3 \mathcal{F}(f)
+.\end{align*}
+
+\exercise{6.}
+Let
+\[ 
+\hat{f}_S \left( \omega \right) = \begin{cases}
+1, & 0 < \omega < 1 \\
+0, & \text{otherwise}
+\end{cases}
+.\]
+Find $f(x)$.
+
+\hr
+We will use the definition of the inverse Fourier sine transform
+\[ 
+f(x) = \mathcal{F}_S^{-1} (\hat{f}_S) = \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} \hat{f}_S (\omega) \sin (\omega x) \, \mathrm{d}\omega
+.\]
+In this case we have
+\begin{align*}
+  f(x) &= \sqrt{\frac{2}{\pi}} \int_{0}^{1} \sin (\omega x) \, \mathrm{d}\omega \\
+  &= \sqrt{\frac{2}{\pi}} \left( - \frac{\cos x}{x} + \frac{1}{x} \right) \\
+  &= \sqrt{\frac{2}{\pi}} \left( \frac{1 -\cos x}{x} \right)
+.\end{align*}
+
+
+\exercise{7.}
+Let
+\[ 
+\hat{f} \left( \omega \right) = \begin{cases}
+1, & -1 < \omega < 1 \\
+0, & \text{otherwise} \\
+\end{cases}
+.\]
+Find $f(x)$.
+
+\hr
+
+We will now use the definition of the general Fourier transform
+\begin{align*}
+  f(x) &= \mathcal{F}^{-1}(\hat{f}) \\
+  &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \hat{f}(\omega) e^{i\omega x} \, \mathrm{d}\omega \\
+  &= \frac{1}{\sqrt{2\pi}} \int_{-1}^{1} e^{i \omega x} \, \mathrm{d}\omega \\
+  &= \frac{1}{\sqrt{2\pi}} \left[ \frac{e^{i\omega x}}{ix} \right]_{-1}^{1} \\
+  &= \frac{1}{\sqrt{2\pi}} \frac{e^{ix} - e^{-ix}}{ix} \\
+  &= \frac{1}{\sqrt{2\pi}} \frac{\cos x + i \sin x - \cos (-x) - i \sin (-x)}{ix} \\
+  &= \frac{1}{\sqrt{2\pi}} \frac{2 \sin x}{x} \\
+.\end{align*}
+
+\exercise{8.}
+Consider the ODE
+\[ 
+f''(x) + f(x) = r(x)
+\]
+where
+\[ 
+r(x) = \begin{cases}
+1, & 0<x<1\\
+-1, & 1<x<2 \\
+0, & x > 2
+\end{cases}
+\]
+and assume that we have the boundary condition $f'(0) = 0$.
+Apply the Fourier cosine transform to both sides of the ODE to derive the corresponding equation for $\hat{f}_C (\omega)$.
+Find $\hat{f}_C (\omega)$.
+
+\textit{Hint:} You may want to use the solution of Exercise 3.
+
+\hr
+
+Using linearity of Fourier transforms and the result form exercise 3 we get
+\begin{align*}
+  \mathcal{F}_C(f'') + \mathcal{F}_C (f) &= \sqrt{\frac{2}{\pi}} \left( \frac{2 \sin \omega - \sin 2 \omega}{\omega} \right) \\
+  - \omega^2 \hat{f}_C (\omega) + \hat{f}_C (\omega) &= \sqrt{\frac{2}{\pi}} \left( \frac{2 \sin \omega - \sin 2\omega}{\omega} \right) \\
+  \hat{f}_C (\omega) &= \sqrt{\frac{2}{\pi}} \frac{2 \sin \omega - \sin 2\omega}{\omega \left( 1 - \omega^2 \right)}
+.\end{align*}

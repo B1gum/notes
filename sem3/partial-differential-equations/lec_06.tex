@@ -1,7 +1,7 @@
 \lecture{6}{3. Oktober 2025}{Heat equation}
 
-\exercise{1.}
-Consider the one-dimensional heat equation
+\begin{problem}{6.1}
+  Consider the one-dimensional heat equation
 \[ 
 u_t(x,t) = u_{x x}(x,t), 0 \leq x \leq 1
 \]
@@ -21,38 +21,10 @@ u_N(x,0) = \sin (\pi x) + \sin (N \pi x)
 where $N$ is an integer number.
 Let $u(x,t)$ and $u_N(x,t)$ be the corresponding solutions to the above heat equation.
 Find the integrated squared error between these solutions (integration with respect to $0 \leq x \leq 1$) as a function of time.
+\end{problem}
 
-\hr
-
-From the initial condition we have
-\[ 
-u(x,0) = \sin ( \pi x) \implies B_1 = 1
-.\]
-Meaning the solution becomes
-\[ 
-u(x,t) = e^{- \lambda_1^2 t} \sin (\pi x)
-.\]
-
-
-And
-\[ 
-u_N(x,0) = \sin (\pi x) + \sin (N \pi x) \implies B_1 = B_N = 1
-.\]
-Meaning the solution is
-\[ 
-u_N(x,t) = e^{-\lambda_1^2 t} \sin (\pi x) + e^{- \lambda_N^2 t} \sin (N \pi x)
-.\]
-
-The integrated squared error then is
-\begin{align*}
-  E_N (t) &= \int_{0}^{1} \left( u (x,t) - u_N (x,t) \right)^2 \, \mathrm{d}x  \\
-  &= e^{-2 \lambda_N^2 t} \int_{0}^{1} \sin^2 (N \pi x) \, \mathrm{d}x  \\
-  &= \frac{1}{2} e^{- 2\lambda^2_N t}
-.\end{align*}
-
-
-\exercise{2.}
-Consider the one-dimensional heat equation
+\begin{problem}{6.2}
+  Consider the one-dimensional heat equation
 \[ 
 u_t (x,t) = u_{x x}(x,t), 0 \leq x \leq L
 \]
@@ -65,133 +37,42 @@ for all $t$ and initial condition
 u_t(x, 0) = h(x), 0 \leq x \leq L
 .\]
 Find the general solution for this situation.
-
-\hr
-
-The general solution that fulfils the boundary conditions are
-\[ 
-u(x,t) = B_0 + \sum_{n = 1}^{\infty} B_n e^{- \lambda_n^2 t} \cos \left( \frac{n \pi x}{L} \right)
-.\]
-The derivative at $t = 0$ is given as $h(x)$. This can also be found from the above as
-\[ 
-u_t(x,0) = \sum_{n = 1}^{\infty} \left( - \lambda^2_n B_n \right) \cos \left( \frac{n \pi x}{L} \right)
-.\]
-From the formula for the Fourier coefficients we get
-\[ 
-B_n = - \frac{2}{\lambda_n^2 L} \int_{+}^{L} h(x) \cos \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x
-.\]
-Which means the general solution that fulfills the boundary conditions are
-\[ 
-u(x,t) = B_0 + \sum_{n = 1}^{\infty} \left( - \frac{2}{\lambda_n^2 L} \int_{0}^{L} h(x) \cos \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x  \right) e^{- \lambda_n^2 t} \cos \left( \frac{n \pi x}{L} \right)
-.\]
-With arbitrary $B_0$.
+\end{problem}
 
 
-\exercise{3.}
-Consider the PDE
+\begin{problem}{6.3}
+  Consider the PDE
 \[ 
 u_{xx} (x,t) = u_{t t}(x,t), 0 \leq x \leq 1
 .\]
-(a) Find the general solution that fulfils the conditions
+\begin{enumerate}[label=(\alph*)]
+  \item Find the general solution that fulfils the conditions
 \[ 
 u_x(0,t) = u_x(1,t) = 0
 \]
 for all $t$. 
-
-\hr
-
-From separation of variables we get
-\[ 
-u(x,t) = F(x)G(t) \implies \frac{F''(x)}{F(x)} = \frac{G''(t)}{G(t)} = k
-.\]
-
-The boundary conditions gives
-\begin{align*}
-  u_x(0,t) &= F'(0) G(t) = 0 \implies F'(0) = 0 \\
-  u_x(1,t) &= F'(1) G(t) = 0 \implies F'(1) = 0
-.\end{align*}
-
-Now for $k < 0$ we get
-\begin{align*}
-  F(x) &= A \cos (px) + B \sin (px), \qquad  p = \sqrt{-k} \\
-  F'(x) &= - A p \sin (px) + Bp \cos (px) \\
-  F'(0) &= B_p = 0 \implies B = 0\\
-  F'(1) &= -A p \sin p = 0 \implies p = p_n = n \pi, \qquad n = 1,2, \ldots  \\
-        &\implies F_n(x) = \cos (n \pi x) \text{ for } A = 1
-.\end{align*}
-
-For $k = 0$ we get
-\begin{align*}
-  F(x) &= B + Ax \\
-  F'(0) &= 0 \implies A = 0 \implies F'(1) = 0 \\
-        &\implies F(x) = 1 \text{ for } B = 1
-.\end{align*}
-
-For $k > 0$ we get
-\begin{align*}
-  F(x) &= A e^{\sqrt{k}x} + B e^{- \sqrt{k}x} \\
-  F'(x) &= A \sqrt{k}e^{\sqrt{k}x} - B \sqrt{k}e^{- \sqrt{k}x} \\
-  F'(0) &= A \sqrt{k} - B \sqrt{k} = 0 \implies A = B \\
-  F'(1) &= A \sqrt{k} \left( e^{\sqrt{k}} - e^{- \sqrt{k}} \right) = 0 \implies A = B = 0 \\
-        &\implies F(x) = 0 \\
-.\end{align*}
-
-Hence only the cases for $k = 0$ and $k < 0$ are interesting.
-
-The spatial solutions become
-\begin{align*}
-  F_0(x) &= 1 & k &= 0 \\
-  F_n(x) &= \cos (n\pi x) & k &< 0, k = -p^2_n
-.\end{align*}
-
-The temporal solutions become
-\begin{align*}
-  G_0(t) &= B_0 + B_0^{*} t & k &= 0\\
-  G_n(t) &= B_n \cos (n \pi t) + B_n^{*} \sin (n \pi t) & k &<0, k = - p_n^2
-.\end{align*}
-
-And the fundamental solutions become
-\begin{align*}
-  u_0(x,t) &= G_0 (t) F_0(x) = B_0 + B_0^{*}t & k &= 0 \\
-  u_n (x,t) &= G_n(t) F_n(x) = (B_n \cos(n \pi t) + B_n^{*} \sin \left( n \pi t \right) ) \cos (n \pi x) & k &<0, k = -p^{2}_n
-.\end{align*}
-
-Which corresponds to the general solution
-
-\begin{align*}
-  u(x,t) &= u_0(x,t) + \sum_{n = 1}^{\infty} u_n (x,t) \\
-         &= B_0 + B_0^{*}t + \sum_{n = 1}^{\infty} \left( B_n \cos \left( n \pi t \right) + B_n^{*} \sin \left( n \pi t \right) \right) \cos \left( n \pi x  \right)
-\end{align*}
-
-
-
-(b) Find the general solution that fulfils the conditions
-\[ 
-u_x(0,t) = u_x(1,t) = 0
-\]
-for all $t$ and
-\[ 
-u(x,0) = 1 + \cos (3 \pi x)
-\]
-for $0 \leq x \leq 1$.
-
-\hr
-
-Here we have the additional condition compared to above of
-\[ 
-u(x,0) = B_0 + \sum_{n = 1}^{\infty} B_n \cos (n \pi x) = 1 + \cos(3 \pi x) \implies B_0 = B_3 = 1
-.\]
-
-Which gives the general solution
-\[ 
-u(x,t) = 1 + B_0^{*}t + \cos (3 \pi t) \cos (3 \pi x) + \sum_{n = 1}^{\infty} B_n^{*} \sin (n \pi t) \cos (n \pi x)
-.\]
+\item Find the general solution that fulfils the conditions
+  \begin{equation*}
+    u_x(0,t) = u_x(1,t ) = 0
+  \end{equation*}
+  for all $t$.
+  \item Find the general solution that fulfils the conditions
+    \begin{equation*}
+      u_x(0,t) = u_x(1,t) = 0
+    \end{equation*}
+    for all $t$ and
+    \begin{equation*}
+      u(x,0) = 1 + \cos (3 \pi x)
+    \end{equation*}
+    for $0 \leq x \leq 1$.
+\end{enumerate}
+\end{problem}
 
 
 
 
-\exercise{4.}
-Consider the one-dimensional heat equation
+\begin{problem}{6.4}
+  Consider the one-dimensional heat equation
 \[ 
 u_t(x,t) = u_{x x}(x,t), 0 \leq x \leq L
 \]
@@ -200,44 +81,18 @@ with boundary conditions
 u(0,t) = u(L,t) = 0
 .\]
 
-(a) Calculate the average temperature
-\[ 
-\frac{1}{L} \int_{0}^{L} u(x,t) \, \mathrm{d}x 
-\]
-for the initial condition
-\[ 
-u(x,0) = \sin \left( \frac{\pi x}{L} \right)
-.\]
-
-\hr
-
-
-The solution is
-\[ 
-u(x,0) = \sin \left( \frac{\pi x}{L} \right) \implies u(x,t) = e^{- \lambda_1^2 t} \sin \left( \frac{\pi x}{L} \right)
-.\]
-And thus, the average temperature is
-\[ 
-\frac{1}{L} \int_{0}^{L} u(x,t) \, \mathrm{d}x = \frac{2}{\pi } e^{-\lambda_1^2t}
-.\]
-
-
-
-(b) Calculate the average temperature for the initial condition
-\[ 
-u(x,0) = \sin \left( \frac{\pi x}{L} \right) + \sin \left( \frac{2 \pi x}{L} \right)
-.\]
-
-\hr
-
-Here the solution is
-\begin{align*}
-  u(x,o) &= \sin \left( \frac{\pi x }{L} \right) + \sin \left( \frac{2 \pi x}{L} \right) \\
-  \implies u(x,t) &= e^{-\lambda_1^2t} \sin \left( \frac{\pi x}{L} \right) + e^{-\lambda_2^2t} \sin \left( \frac{2 \pi x}{L} \right)
-.\end{align*}
-
-Which gives the average temperature
-\[ 
-\frac{1}{L} \int_{0}^{L} u(x,t) \, \mathrm{d}x = \frac{2}{\pi} e^{-\lambda_1^2t}
-.\]
-
+\begin{enumerate}[label=(\alph*)]
+  \item Calculate the average temperature
+    \begin{equation*}
+      \frac{1}{L} \int_{0}^{L} u(x,t) \, \mathrm{d}x 
+    \end{equation*}
+    for the initial condition
+    \begin{equation*}
+      u(x,0) = \sin \left( \frac{\pi x}{L} \right)
+    .\end{equation*}
+  \item Calculate the average temperature for the initial condition
+    \begin{equation*}
+      u(x,0) = \sin \left( \frac{\pi x}{L} \right) + \sin \left( \frac{2 \pi x}{L} \right)
+    .\end{equation*}
+\end{enumerate}
+\end{problem}

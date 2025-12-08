@@ -1,141 +1,239 @@
 \lecture{1}{29. August 2025}{Fourier Theory}
 
-\exercise{1.}
-Consider the following periodic functions. Find possible values for the period, using the definition of periodic functions.
+\begin{problem}{1.1}
+  Consider the following periodic functions.
+  Find possible values for the period, using the definition of periodic functions.
 
-\begin{enumerate}[label=(\alph*)]
-  \item $f(x) = e^{\cos x}$
-  \item $f(x) = \cos \left( x + \frac{\pi}{3} \right)$
-  \item $f(x) = \cos \frac{\pi x}{3}$
-  \item $f(x) = \cos x + \cos 3x$
-  \item $f(x) = \cos x \cos 3x$
-  \item $f(x) = \cos x + \cos \left( \num{0,6} x \right)$
-\end{enumerate}
+  \begin{enumerate}[label=\alph*)]
+    \item $f(x) = e^{\cos x}$
+    \item $f(x) = \cos \left( x + \frac{\pi}{3} \right)$
+    \item $f(x) = \cos \left( \frac{\pi x}{3} \right)$
+    \item $f(x) = \cos x + \cos (3x)$
+    \item $f(x) = \cos(x)\cos(3x)$
+    \item $f(x) = \cos x + \cos(\num{0,6} x)$
+  \end{enumerate}
+\end{problem}
 
-For (a) the exponent to $e$, i.e. $\cos x$ only has a range of $(-1; 1)$. This means that the exponent will change between $-1$ and $1$ with a period of $2\pi$, therefore the period $p_a = 2\pi$ will also be the case for the function described in (a).
+\begin{derivation}
+  \begin{enumerate}[label=\alph*)]
+    \item From the lecture (p. 1), we know that a function $f$ is periodic, with period $p$, if
+      \begin{equation*}
+        f(x) = f(x+p)
+      .\end{equation*}
+      Using this definition we obtain:
+      \begin{align*}
+        e^{\cos x} &= e^{\cos (x + p)} \\
+        \cos x &= \cos \left( x + p \right) \\
+        \implies p &= 2 \pi, 4\pi, 6\pi,\ldots 
+      .\end{align*}
+    \item We use the same definition of periodicity to obtain
+      \begin{align*}
+        \cos \left( x + \frac{\pi}{3} \right) &= \cos \left( x + p + \frac{\pi}{3} \right) \\
+        \implies p &= 2 \pi, 4\pi, 6\pi
+      .\end{align*}
+    \item Following the same procedure we get
+      \begin{align*}
+        \cos \left( \frac{\pi x}{3} \right) &= \cos \left( \frac{\pi \left( x + p) \right)}{3} \right) \\
+        \cos \left( \frac{\pi x}{3} \right) &= \cos \left( \frac{\pi x}{3} + \frac{\pi p}{3} \right) \\
+        \implies \frac{\pi p}{3} &= 2\pi, 4\pi, 6\pi,\ldots  \\
+        \implies p &= 6, 12, 18, \ldots 
+      .\end{align*}
+    \item We follow the same procedure and get
+      \begin{align*}
+        \cos x + \cos \left( 3x \right) &= \cos \left( x+p \right) + \cos \left( 3 (x+p) \right) \\
+        \cos x + \cos (3x) &= \cos (x+p) + \cos \left( 3x + 3p \right)
+      .\end{align*}
+      This holds if $p$ is an integer multiple of $2 \pi$ and $3p$ is an integer multiple of $2\pi$, i.e. $p = 2\pi, 4\pi, 6\pi,\ldots $
+    \item Once again, we follow the procedure and obtain
+      \begin{align*}
+        \cos (x) \cos (3x) &= \cos (x + p) \cos (3(x + p)) \\
+        \cos (x) \cos (3x) &= \cos (x+p) \cos (3x + 3p)
+      .\end{align*}
+      From the above, we see that $p = \pi, 2\pi, 3\pi$.
+      This is due to the fact, that the two functions are multiplied, hence $\cos(0) \cdot \cos (0) = \cos (\pi) \cos (3\pi) = 1$
+    \item We follow the same procedure as in the previous subproblems and obtain
+      \begin{align*}
+        \cos x + \cos (\num{0,6} x) &= \cos (x+p) + \cos \left( \num{0,6} x + \num{0,6} p \right)
+      .\end{align*}
+      I.e. $p$ must be an integer multiple of $2\pi$ and $\num{0,6} p$ must be an integer multiple of $2\pi$.
+      Hence $p = 10\pi, 20\pi, 30\pi,\ldots $
+  \end{enumerate}
+\end{derivation}
 
-For (b) we are once again working with a $\cos$ function. This time it is however shifted by $\frac{\pi}{3}$ along the $x$-axis. A translation along the $x$-axis will, however, not affect the period of the function and therefore the period here is once again $p_b = 2\pi$.
-
-For (c) the $x$ is multiplied by $\frac{\pi}{3} \approx \num{1,047}$. This means that the argument to the cosine will reach $2\pi$ at a speed that is $\frac{\pi}{3} \approx \num{1,047}$ times faster than a normal cosine. Therefore the period of this is $p_c = \frac{3 \cdot  2\pi}{\pi} = 6$
-
-For (d) we use that
-\[ 
-f(x) = f(x + p)
-\]
-for a periodic function to get
-\begin{align*}
-  \cos x + \cos 3x &= \cos \left( x + p \right) + \cos \left( 3 \left( x + p \right) \right) \\
-  \cos x + \cos 3x &= \cos (x + p) + \cos \left( 3x + 3p \right)
-.\end{align*}
-We see that this is true when both $p$ and $3p$ are integer multiples of $2\pi$ so $p_d = 2\pi$
-
-
-For (e) we use the same definition to get
-\[
-  \cos x \cos 3x = \cos \left( x+p \right) \cos \left( 3x + 3p \right)
-.\]
-We see that this is also true only when both $p$ and $3p$ are integer multiples of $2\pi$ so $p_e = 2\pi$
-
-
-For (f) we can once again use the same definition to get
-\[ 
-\cos x + \cos \left( \num{0,6} x \right) = \cos \left( x + p \right) + \cos \left( \num{0,6} x + \num{0,6} p \right)
-.\]
-This is true when $p$ and $\num{0,6} p$ are integer multiples of $2\pi$, so $p_f = 10\pi$. 
-
-
-\exercise{2.}
-Let
-\[ 
-f(x) = x, \quad -1 \leq x \leq 1, \quad f(x) = f(x + p), \quad p = 2
-.\]
-\begin{itemize}
-  \item Sketch $f$.
-  \item Find a Fourier series representation of $f$.
-\end{itemize}
-
-\begin{figure} [ht]
-  \centering
-  \includegraphics[width=0.5\linewidth]{./figures/e1_2.png}
-  \caption{}
-  \label{fig:e1_2}
-\end{figure}
-
-$f$ has been sketched on \textbf{\autoref{fig:e1_2}}. The Fourier series of this can, as it is a ``nice'' function be found by the formula:
-\[ 
-f(x) = a_0 + \sum_{n=1}^{\infty} \left( a_n \cos \frac{n \pi x}{L} + b_n \sin \frac{n \pi x}{L} \right)
-.\]
-Where $L = \frac{p}{2} = 1$ with $p = 2$ being the period of the function. The Fourier coefficients can be found by the Euler formulas:
-\begin{align*}
-  a_0 &= \frac{1}{2L} \int_{-L}^{L} f(x) \, \mathrm{d}x \\
-  a_n &= \frac{1}{L}\int _{-L}^{L} f(x) \cos \frac{n \pi x}{L} \, \mathrm{d}x, \quad n = 1, 2, 3, \ldots  \\
-  b_n &= \frac{1}{L} \int_{-L}^{L} f(x) \sin \frac{n \pi x}{L} \, \mathrm{d}x, \quad n = 1, 2, 3, \ldots
-.\end{align*}
-We start by solving for $a_0$ as:
-\[ 
-  a_0 =  \int_{-1}^{1} x \, \mathrm{d}x =  \left[ \frac{1}{2} x^2 \right]_{-1}^{1} = \cdot 0 = 0
-.\]
-We now solve for $a_n$ using integration by parts as:
-\begin{align*}
-  a_n &= \int_{-1}^{1} x \cos n\pi x \, \mathrm{d}x \\
-  &= \left[ x \frac{\sin n\pi x}{n \pi} \right]_{-1}^{1} - \int_{-1}^{1} \frac{\sin n \pi x}{n \pi} \, \mathrm{d}x  \\
-  &= \left( - \frac{1}{n\pi} \right) \int_{-1}^{1} \sin n \pi x \, \mathrm{d}x  \\
-  &= \left[ - \frac{1}{n \pi} \right] \left[ - \frac{\cos n \pi x}{n \pi} \right]_{-1}^{1} \\
-  &= 0
-.\end{align*}
-We similarly solve for $b_n$ as:
-\begin{align*}
-  b_n &= \int_{-1}^{1} x \sin n \pi x \, \mathrm{d}x  \\
-      &= \left[ x \frac{- \cos n \pi x}{n \pi} \right]_{-1}^{1} - \int_{-1}^{1} \frac{- \cos n \pi x}{n \pi} \, \mathrm{d}x  \\
-      &= \left( - \frac{2}{n\pi} \right) \cos n \pi + \frac{1}{n\pi} \left[ \frac{\sin n \pi x}{n \pi} \right]_{-1}^{1}\\
-      &= \left( - \frac{2}{n \pi} \right) \cos n \pi
-.\end{align*}
-The full Fourier series therefore becomes:
-\[ 
-f(x) = \sum_{n = 1}^{\infty} \left( - \frac{2}{n \pi} \right) \cos n \pi \cdot \sin n \pi x
-.\]
+\finalresult{
+  \begin{aligned}
+  &\mathrm{a}) & p &= 2\pi, 4\pi, 6\pi, \ldots \\
+  &\mathrm{b}) & p &= 2\pi, 4\pi, 6\pi, \ldots \\
+  &\mathrm{c}) & p &= 6, 12, 18,\ldots \\
+  &\mathrm{d}) & p &= 2\pi, 4\pi, 6\pi, \ldots \\
+  &\mathrm{e}) & p &= \pi, 2\pi, 3\pi,\ldots \\
+  &\mathrm{f}) & p &= 10\pi, 20\pi, 30\pi,\ldots \\ 
+\end{aligned}
+}
 
 
-\exercise{3.}
-Let $a \neq 0$ and $b \neq 0$. Let $f(x) = f(x + p_0)$ be a periodic function with period $p_0$. Is $f(ax + b)$ periodic? If yes, find a period. Give arguments for your answer.
-\bigbreak
-The $b$ only serves to translate the function $f(x)$ along the $x$-axis, this does not change the period. The value of $a$ corresponds to how ``quickly'' some value is reached, e.g. if $ax$ is an argument to a function a doubling of the value of $a$ will mean that the function will reach its maximum for a value of $x$ only half as big. I.e. there is an inverse relation between the size of $a$ and the period as:
-\[ 
-p_2 = \frac{p_1}{a}
-.\]
+\begin{problem}{1.2}
+  Let
+  \begin{equation*}
+    f(x) = x, \quad -1 \leq x \leq 1, \quad f(x) = f(x+p), \quad p=2
+  .\end{equation*}
+  \begin{enumerate}[label=\alph*)]
+    \item Sketch $f$
+    \item Find a Fourier series representation of $f$.
+  \end{enumerate}
+\end{problem}
 
+\begin{derivation}
+  \begin{enumerate}[label=\alph*)]
+    \item On \Cref{fig:f1_2} the periodic repeating function $f(x)$ is depicted.
+      \begin{figure} [ht]
+        \centering
+        \includegraphics[width=0.8\linewidth]{./figures/f1_2.png}
+        \caption{Sketch of $f$.}
+        \label{fig:f1_2}
+      \end{figure}
+    \item From the lecture (p. 5), we have the general representation of a Fourier series as
+      \begin{equation*}
+        f(x) = a_0 + \sum_{n = 1}^{\infty} \left( a_n \cos \left( \frac{n \pi x}{L} \right) + b_n \sin \left( \frac{n \pi x}{L} \right) \right)
+      \end{equation*}
+      for
+      \begin{align*}
+        a_0 &= \frac{1}{2L} \int_{-L}^{L} f(x) \, \mathrm{d}x \\
+        a_n &= \frac{1}{L} \int_{-L}^{L} f(x) \cos \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x, n = 1,2,3,\ldots  \\
+        b_n &= \frac{1}{L} \int_{-L}^{L} f(x) \sin \left( \frac{n \pi x}{L} \right)\, \mathrm{d}x, n = 1,2,3,\ldots 
+      .\end{align*}
+      In this case, $L = \frac{p}{2} \implies L = 1$.
+      Therefore:
+      \begin{align*}
+        a_0 &= \frac{1}{2} \int_{-1}^{1} x \, \mathrm{d}x  \\
+          &= \frac{1}{2} \left[ \frac{x^2}{2} \right]_{-1}^{1} \\
+          &= \frac{1}{2} \left( \frac{1}{2} - \frac{1}{2} \right) \\
+          &= 0 \\
+        a_n &= \int_{-1}^{1} x \cos \left( n \pi x \right) \, \mathrm{d}x  \\
+            &= 0 \\
+        b_n &= \int_{-1}^{1} x \sin \left( n \pi x \right) \, \mathrm{d}x \\
+            &= \left[ \frac{\sin (\pi  n x)}{\pi ^2 n^2}-\frac{x \cos (\pi  n x)}{\pi  n}\right]_{-1}^{1} \\
+            &= \left[ - \frac{x \cos \left( n \pi x \right)}{\pi n} \right]_{-1}^{1} \\
+            &= \left( - \frac{\cos \left( n \pi \right)}{\pi n} + \left( \frac{\cos \left( - n\pi \right)}{\pi n} \right) \right) \\
+            &= \left( - \frac{\cos \left( n \pi \right)}{\pi n} - \frac{\cos \left( n\pi \right)}{\pi n} \right) \\
+            &= - \frac{2}{\pi n} \cos \left( \pi n \right)
+      .\end{align*}
+      Hence, the complete Fourier representation is
+      \begin{equation*}
+        f(x) = \sum_{n = 1}^{\infty}  - \frac{2}{\pi n} \cos \left(\pi n \right) \sin \left( n \pi x \right)
+      .\end{equation*}
+  \end{enumerate}
+\end{derivation}
 
+\finalresult{
+\begin{aligned}
+  & \mathrm{a}) & &\text{See \Cref{fig:f1_2}} \\
+  &\mathrm{b}) & &f(x) = \sum_{n = 1}^{\infty} - \frac{2}{\pi n} \cos (\pi n) \sin \left( n\pi x \right)
+.\end{aligned}
+}
 
-\exercise{4.}
-Calculate the left hand limit and the right hand limit of
-\[ 
-f(x) = \frac{\left| x \right|}{x}
-\]
-at $x = 0$.
-\bigbreak
-We start with the right-hand limit as:
-\[ 
-f(0+) = \lim_{h \to 0} \left( 0 + h \right) = \lim_{h \to 0} \frac{|h|}{h} = \lim_{h \to 0} \frac{h}{h} = 1
-.\]
-And now we can similarly do the left-hand limit as:
-\[ 
-f(0-) = \lim_{h \to 0} \left(  0- h \right) = \lim_{h \to 0} \frac{\left| -h \right|}{-h} = \lim_{h \to 0} \frac{h}{-h} = -1
-.\]
+\begin{problem}{1.3}
+  Let $a\neq 0$ and $b\neq 0$.
+  Let $f(x) = f(x+p_0)$ be a periodic function with period $p_0$.
+  Is $f(ax+b)$ periodic?
+  If yes, find a period.
+  Give arguments for your answer.
+\end{problem}
 
+\begin{derivation}
+  We let $f(x) = f(x+p)$ denote the function given in the assignment and $g(x) = f(ax +b)$ be the function which we wish to determine is periodic or not.
+  To determine of $g(x)$ is periodic we must determine if $g(x) = g(x+p)$ holds.
+  We get:
+  \begin{align*}
+    g(x + p) &= g(x) \\
+    &= f(a(x+p) + b) \\
+    &= f(ax + b + ap)
+  .\end{align*}
+  Comparing this with the original function $f$ we see that it repeats when $ap = p_0$.
+  Since $a \neq 0$ we can divide by $a$ and obtain
+  \begin{equation*}
+    p = \frac{p_0}{a}
+  .\end{equation*}
+\end{derivation}
 
-\exercise{5.}
-Calculate the left-hand derivative and the right-hand derivative of
-\[ 
-f(x) = x \left| x \right|
-\]
-at $x = 0$.
-\bigbreak
-We start with the right-hand derivative as:
-\[ 
-f'(0+) = \lim_{h \to 0} \frac{f(0 + h) - f(0)}{h} = \lim_{h \to 0} \frac{h |h|}{h} = \lim_{h \to 0} h = 0
-.\]
-And the left-hand derivative can likewise be computed as:
-\[ 
-f'(0-) = \lim_{h \to 0} \frac{f(0) - f(0 - h)}{h} = \lim_{h \to 0} \frac{-(-h) |-h|}{h} = \lim_{h \to 0} h = 0 
-.\]
+\finalresult{
+\text{The function is periodic with period } p = \frac{p_0}{a}
+}
 
+\begin{problem}{1.4}
+  Calculate the left-hand limit and the right hand limit of
+  \begin{equation*}
+    f(x) = \frac{|x|}{x}
+  \end{equation*}
+  at $x = 0$.
+\end{problem}
+
+\begin{derivation}
+  From the lecture (p. 2), we know that the left hand limit of $f(x)$ at $x_0$ is defined as
+  \begin{equation*}
+    f(x_0 -) = \lim_{h \to 0} f(x_0 - h)
+  \end{equation*}
+  and the right hand limit of $f(x)$ at $x_0$ is
+  \begin{equation*}
+    f(x_0 +) = \lim_{h \to 0} f(x_0 + h)
+  \end{equation*}
+  for positive $h$.
+
+  Using these two definitions we get:
+  \begin{align*}
+    f(0 -) &= \lim_{h \to 0} f(0 - h) \\
+    &= \lim_{h \to 0} \frac{\left| -h \right|}{- h} \\
+    &= \lim_{h \to 0}\frac{|h|}{-h} \\
+    &= -1 \\
+    f(0+) &= \lim_{h \to 0} f(0 + h) \\
+    &= \lim_{h \to 0} \frac{\left| h \right|}{h} \\
+    &= 1
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  f(0-) &= -1 \\
+  f(0+) &= 1
+.\end{aligned}
+}
+
+\begin{problem}{1.5}
+  Calculate the left-hand derivative and the right-hand derivative of
+  \begin{equation*}
+    f(x) = x |x|
+  \end{equation*}
+  at $x = 0$.
+\end{problem}
+
+\begin{derivation}
+  From the lecture (p. 4) the definition of the left hand derivative of $f(x)$ at $x_0$ is defined as
+  \begin{equation*}
+    f'(x_0-) = \lim_{h \to 0} \frac{f(x_0) - f(x_0 - h)}{h}
+  \end{equation*}
+  and the right hand derivative of $f(x)$ at $x_0$ is defined as
+  \begin{equation*}
+    f'(x_0+) = \lim_{h \to 0} \frac{f(x_0 + h) - f(x_0)}{h}
+  \end{equation*}
+  for positive $h$.
+
+  Using these definitions we get:
+  \begin{align*}
+    f'(0 - )&= \lim_{h \to 0} \frac{f(0) - f(-h)}{h} \\
+    &= \lim_{h \to 0} \frac{- \left( -h \left| -h \right| \right)}{h} \\
+    &= \lim_{h \to 0} \frac{h \left| h \right|}{h} \\
+    &= \lim_{h \to 0} \left| h \right| \\
+    &= 0 \\
+    f'(0+) &= \lim_{h \to 0} \frac{f(0+h) - f(0)}{h} \\
+    &= \lim_{h \to 0} \frac{h \left| h \right|}{h} \\
+    &= \lim_{h \to 0} \left| h \right| \\
+    &= 0
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  f'(0-) &= 0 \\
+  f'(0+) &= 0
+.\end{aligned}
+}

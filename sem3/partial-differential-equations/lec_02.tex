@@ -1,98 +1,130 @@
 \lecture{2}{5. September 2025}{Even and odd functions}
 
-\exercise{1.} Find a period and the corresponding Fourier coefficients of
+\begin{problem}{2.1}
+   Find a period and the corresponding Fourier coefficients of
+   \begin{enumerate}[label=\alph*)]
+    \item $f(x) = \sin \left( \frac{\pi}{4} \right) \sin \left( \frac{2x}{4} \right) + \cos \left( \frac{\pi}{5} \right) \sin \left( \frac{3x}{7} \right)$
+    \item $f(x) = \sin \left( \sqrt{2}x \right) + \cos \left( \frac{x}{\sqrt{2}} \right)$
+    \item $f(x) = \sin \left( \frac{\pi}{3} + \frac{3 \pi x}{4} \right)$.
+   \end{enumerate}
+   \textit{Hint:} You may want to use
+   \begin{equation*}
+     \sin \left( \alpha + \beta \right) = \sin \alpha \cos \beta  + \sin \beta \cos \alpha
+   .\end{equation*}
+\end{problem}
 
-\paragraph{a)} $f(x) = \sin \left( \frac{\pi}{4} \right) \sin \left( \frac{2x}{4} \right) + \cos \left( \frac{\pi}{5}\right) \sin \left( \frac{3x}{7} \right)$
-\bigbreak
-We rewrite the given function as:
-\begin{align*}
-  f(x) &= \sin \left( \frac{\pi}{4} \right) \sin \left( \frac{2x}{4} \right) + \cos \left( \frac{\pi}{5} \right) \sin \left( \frac{3x}{7} \right) \\
-  &= \sin \left( \frac{\pi}{4} \right) \sin \left( \frac{7 \pi x}{14 \pi} \right) + \cos \left( \frac{\pi}{5} \right) \sin \left( \frac{6 \pi x}{14 \pi} \right)
-.\end{align*}
-We will now compare this to the general formulation of the Fourier series as:
-\[ 
-f(x) = a_0 + \sum_{n = 1}^{\infty} \left( a_n \cos \left( \frac{n \pi x}{L} \right) + b_n \sin \left( \frac{n \pi x}{L} \right) \right)
-.\]
-We can quickly see that $L = 14 \pi \implies p = 28 \pi$, $b_6 = \cos \left( \frac{\pi}{5} \right)$, $b_7 = \sin \left( \frac{\pi}{4} \right)$. All other unmentioned Fourier coefficients are zero.
+\begin{derivation}
+  \begin{enumerate}[label=\alph*)]
+    \item We start by rewriting the given function as
+      \begin{equation*}
+        f(x) = \sin \left( \frac{\pi}{4} \right) \sin \left( \frac{7 \pi x}{14 \pi} \right) + \cos \left( \frac{\pi}{5} \right) \sin \left( \frac{6 \pi x}{14 \pi} \right)
+      .\end{equation*}
+      Now, comparing with the general form of a Fourier series:
+     \begin{equation*}
+      f(x) = a_0 + \sum_{n = 1}^{\infty} \left( a_n \cos \left( \frac{n \pi x}{L} \right) + b_n \sin \left( \frac{n \pi x}{L} \right) \right)
+     \end{equation*}
+     We see that $L = 14\pi$, $p = 28\pi$, $b_6 = \cos (\pi / 5)$ and $b_7 = \sin (\pi / 4)$.
+     All other Fourier coefficients are 0.
+    \item We rewrite as:
+      \begin{equation*}
+        f(x) = \sin \left(\frac{2\pi x}{\sqrt{2} \pi} \right) + \cos \left( \frac{\pi x}{\sqrt{2}\pi} \right)
+      .\end{equation*}
+      By comparison with the general form we see that $L = \sqrt{2}\pi$, $p = 2 \sqrt{2}\pi$, $b_2 = 1$, and $a_1 = 1$.
+      All other Fourier coefficients are 0.
+    \item We use the hint to rewrite as
+      \begin{align*}
+        f(x) &= \sin \left( \frac{\pi}{3} + \frac{3\pi x}{4} \right) \\
+             &= \sin \left( \frac{\pi}{3} \right) \cos \left( \frac{3 \pi x}{4} \right) + \cos \left( \frac{\pi}{3} \right) \sin \left( \frac{3 \pi x}{4} \right)
+      .\end{align*}
+      By comparison, we see that $L = 4$, $p = 8$, $a_3 = \sin (\pi / 3)$, and $b_3 = \cos (\pi / 3)$.
+      All other Fourier coefficients are zero
+  \end{enumerate}
+\end{derivation}
 
-
-\paragraph{b)} $f(x) = \sin \left( \sqrt{2x} \right) + \cos \left( \frac{x}{\sqrt{2}} \right)$
-\bigbreak
-We once again start by rewriting as:
-\begin{align*}
-  f(x) &= \sin \left( \sqrt{2x} \right) + \cos \left( \frac{x}{\sqrt{2}} \right) \\
-       &= \sin \left( \frac{2\pi x}{\sqrt{2}\pi} \right) + \cos \left( \frac{\pi x}{\sqrt{2}\pi} \right)
-.\end{align*}
-Comparing this with the general formulation of the Fourier series:
-\[ 
-f(x) = a_0 + \sum_{n = 1}^{\infty} \left( a_n \cos \left( \frac{n \pi x}{L} \right) + b_n \sin \left( \frac{n \pi x}{L} \right) \right)
-.\]
-We see that $L = \sqrt{2} \pi \implies p = 2 \sqrt{2} \pi$, $a_1 = 1$, $b_2 = 1$. All other Fourier coefficients are zero.
-
-\paragraph{c)} $f(x) = \sin \left( \frac{\pi}{3} + \frac{3 \pi x}{4} \right)$
-\bigbreak
-We use that
-\[ 
-\sin (\alpha + \beta) = \sin \alpha \cos \beta + \sin \beta \cos \alpha
-\]
-to rewrite the equation as:
-\begin{align*}
-  f(x) &= \sin \left( \frac{\pi}{3} + \frac{3\pi x}{4}\right) \\
-  &= \sin \frac{\pi}{3} \cdot \cos \frac{3\pi x}{4} + \sin \frac{3\pi x}{4} \cdot \cos \frac{\pi}{3}
-.\end{align*}
-Comparing this to the general formulation of the Fourier series
-\[ 
-f(x) = a_0 + \sum_{n = 1}^{\infty} \left( a_n \cos \left( \frac{n \pi x}{L} \right) + b_n \sin \left( \frac{n \pi x}{L} \right) \right)
-\]
-we see that $L = 4 \implies p = 8$, $a_3 = \sin \frac{\pi}{3}$, $b_3 = \cos \frac{\pi}{3}$. All other Fourier coefficients are zero
-
-\exercise{2.} Are the following functions even or odd? Give arguments.
-
-\paragraph{a)} $f(x) = \left( \cos x^2 + \cos x \right) \sin x$
-\bigbreak
-We check if the function is even or odd by checking what happens for an input of $-x$ as:
-\begin{align*}
-  f(-x) &= \left( \cos (-x)^2 + \cos (-x) \right) \sin (-x) \\
-  &= \left( \cos x^2 + \cos (-x) \right) (- \sin x) \\
-  &= - f(x)
-.\end{align*}
-Hence the function is odd.
-
-\paragraph{b)} $f(x) = \frac{1 + \cos x}{2 + \cos x^2}$
-\bigbreak
-We follow the same procedure:
-\begin{align*}
-  f(-x) &= \frac{1 + \cos (-x)}{2 + \cos (-x)^2} \\
-  &= \frac{1 + \cos x}{2 + \cos x} \\
-  &= f(x)
-.\end{align*}
-Hence the function is even.
-
-\paragraph{c)} $f(x) = \frac{1 + \sin x}{2 + \sin x^2}$
-\bigbreak
-The same procedure is applied:
-\begin{align*}
-  f(-x) &= \frac{1 + \sin (-x)}{2 + \sin (-x)^2} \\
-  &= \frac{1 -\sin x}{2 + \sin x} \\
-  &\neq \begin{cases}
-  f(x)\\
-  -f(x)
-  \end{cases}
-\end{align*}
-Hence the function is neither even nor odd.
-
-\paragraph{d)} $f(x) = x |x|$
-\bigbreak
-The same procedure is applied:
-\begin{align*}
-  f(-x) &= (-x) \left| -x \right| \\
-        &= -x \left| x \right| \\
-        &= -f(x)
-.\end{align*}
-Hence the function is odd.
+\finalresult{
+\begin{aligned}
+  &\mathrm{a}) & p &= 28\pi, & b_6 &= \cos \left( \frac{\pi}{5} \right), & b_7 &= \sin \left( \frac{\pi}{4} \right), \\
+  &\mathrm{b}) & p &= 2 \sqrt{2}\pi,&  a_1 &= 1,& b_2 &= 1, \\
+  &\mathrm{c}) & p &= 8, & a_3 &= \sin \left( \frac{\pi}{3} \right), & b_3 &= \cos \left( \frac{\pi}{3} \right)
+.\end{aligned}
+}
 
 
-\exercise{3.} Consider the periodic function
+\begin{problem}{2.2}
+  Are the following functions even or odd?
+  Give arguments.
+  \begin{enumerate}[label=\alph*)]
+    \item $f(x) = \left( \cos \left( x^2 \right) + \cos (x) \right) \sin(x)$
+    \item $f(x) = \frac{1 + \cos x}{2 + \cos \left( x^2 \right)}$
+    \item $f(x) = \frac{1 + \sin(x)}{2 +\sin \left( x^2 \right)}$
+    \item f(x) = x |x|.
+  \end{enumerate}
+\end{problem}
+
+\begin{derivation}
+  From the lecture (p. 3), we know that a function $f$ is even if
+  \begin{equation*}
+    f(x) = f(-x) \quad \text{for all } x
+  \end{equation*}
+  and that a function $f$ is odd if
+  \begin{equation*}
+    f(x) = - f(-x) \quad \text{for all } x
+  .\end{equation*}
+  We will therefore try to insert $-x$ in the place of $x$ and see if that causes a change of sign for each of the given functions.
+
+  We will however, instead utilize the simple fact that multiplication of functions follow the same rules for even/odd as multiplication of numbers.
+  Furthermore, we know that $x$ is odd, $\cos$ is even, $\sin$ is odd and $\left| x \right|$ is even.
+  In the following, odd functions are called $O$ and even functions are called $E$.
+
+  \begin{enumerate}[label=\alph*)]
+    \item Using the method described above we get:
+      \begin{align*}
+        f(x) &= \left( \cos \left( x \cdot x \right) + \cos(x) \right) \sin(x) \\
+        &= \cos (x \cdot x) \sin x + \cos (x) \sin (x) \\
+        &= E(O\cdot O) \cdot O + E \cdot O \\
+        &= E \cdot O + E \cdot O \\
+        &= O + O \\
+        &= O
+      .\end{align*}
+    \item Again,
+      \begin{align*}
+        f(x) &= \frac{1 + \cos x}{2 + \cos(x\cdot x)} \\
+        &= \frac{E + E}{E + E} \\
+        &= \frac{E}{E} \\
+        &= E
+      .\end{align*}
+    \item Again,
+      \begin{align*}
+        f(x) &= \frac{1 + \sin x}{2 + \sin \left( x \cdot x\right)} \\
+        &= \frac{E + O}{E + O(E)} \\
+        &= \frac{E + O}{E + E} \\
+        &= \frac{E + O}{E} \\
+        &= \frac{E}{E} + \frac{O}{E} \\
+        &= E + O
+      .\end{align*}
+      As the sum of an even and an odd function is neither even nor odd if none of the functions are $0$.
+      Hence the function in question is neither even nor odd.
+    \item Lastly,
+      \begin{align*}
+        f(x) &= x \cdot \left| x \right| \\
+        &= O \cdot E \\
+        &= O
+      .\end{align*}
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &\mathrm{a}) & &\text{Odd}, \\
+  &\mathrm{b}) & &\text{Even}, \\
+  &\mathrm{c}) & &\text{Neither even nor odd}, \\
+  &\mathrm{d}) & &\text{Odd}
+.\end{aligned}
+}
+
+
+\begin{problem}{2.3}
+Consider the periodic function
 \begin{align*}
   f(x) &= \begin{cases}
     x, & -2 < x < -1 \\
@@ -102,36 +134,59 @@ Hence the function is odd.
     f(x) &= f(x+p), p = 4
 \end{align*}
 where $k$ is a constant. Decompose $f(x)$ into its even and odd part.
-\bigbreak
-We apply the definition of decomposition into odd and even parts for the first interval, $-2<x< -1$ as:
-\begin{align*}
-  f_1(x) &= \frac{1}{2} (f(x) + f(-x)) = \frac{1}{2}(x + (-x)) = 0 \\
-  f_2 (x) &= \frac{1}{2} (f(x) - f(-x) = \frac{1}{2} (x - (-x)) = x
-.\end{align*}
-For the second interval, $-1 < x < 1$ we get
-\begin{align*}
-  f_1(x) &= \frac{1}{2} (f(x) + f(-x)) = \frac{1}{2}((x+k) + (-x + k)) = k \\
-  f_2 (x) &= \frac{1}{2} (f(x) - f(-x) = \frac{1}{2} ((x+k) - (-x + k)) = x
-.\end{align*}
-And for the last interval, $1 < x < 2$ we get:
-\begin{align*}
-  f_1(x) &= \frac{1}{2} (f(x) + f(-x)) = \frac{1}{2}(x + (-x)) = 0 \\
-  f_2 (x) &= \frac{1}{2} (f(x) - f(-x) = \frac{1}{2} (x - (-x)) = x
-.\end{align*}
-We thus have:
-\begin{align*}
-  f(x) &= f_1(x) + f_2(x) \\
-  f_1(x) &= \begin{cases}
-  0 & -2 < x < -1\\
-  k & -1 < x < 1 \\
-  0 & 1<x<2
-  .\end{cases} \\
-  f_1(x) &= f_1(x+p), \quad p = 4 \\
-  f_2(x) &= x, \qquad -2 < x < 2 \\
-  f_2(x) &= f_2(x+p), \quad p = 4
-.\end{align*}
+\end{problem}
 
-\exercise{4.} Consider the periodic function
+\begin{derivation}
+  For $-2 < x < -1$ we get
+  \begin{align*}
+    f_1(x) &= \frac{1}{2} \left( f(x) + f(-x) \right) = \frac{1}{2} (x + (-x)) = 0\\
+    f_2(x) &= \frac{1}{2} \left( f(x) - f(-x) \right) = \frac{1}{2} (x - (-x)) = x
+  .\end{align*}
+  For $-1<x<1$ we get
+  \begin{align*}
+    f_1(x) &= \frac{1}{2} \left( f(x) + f(-x) \right) = \frac{1}{2} (x + k + (-x+k)) = k\\
+    f_2(x) &= \frac{1}{2} \left( f(x) - f(-x) \right) = \frac{1}{2} \left( x + k - \left( -x + k \right) \right) = x
+  .\end{align*}
+  And for $1< x<2$ we get
+  \begin{align*}
+    f_1(x) &= \frac{1}{2} \left( f(x) + f(-x) \right) = \frac{1}{2} (x + (-x)) = 0\\
+    f_2(x) &= \frac{1}{2} \left( f(x) - f(-x) \right) = \frac{1}{2} (x - (-x)) = x
+  .\end{align*}
+  We thus have the decomposed function $f(x)$
+  \begin{equation*}
+    f(x) = f_1(x) + f_2(x)
+  \end{equation*}
+  with
+  \begin{align*}
+    f_1 (x) &= \begin{cases}
+      0, & -2<x< -1\\
+    k, & -1<x<1 \\
+    0, & 1<x<2
+    .\end{cases} \\
+    f_1(x) &= f_1(x+p), \quad p = 4
+  \end{align*}
+  and
+  \begin{align*}
+    f_2(x) &= x, \quad -2<x <2 \\
+    f_2(x) &= f_2(x+p), \quad p=4
+  .\end{align*}
+\end{derivation}
+\finalresult{
+  \begin{aligned}
+    f(x) &= f_1(x) + f_2(x) \\
+    f_1(x) &= \begin{cases}
+      0, & -2<x< -1\\
+    k, & -1<x <1 \\
+    0, & 1< x <2
+    .\end{cases} \\
+    f_1(x) &= f_1(x+p), \quad p = 4 \\
+    f_2(x) &= x, \quad -2 < x < 2 \\
+    f_2(x) &= f_2(x + p), \quad p=4
+  .\end{aligned}
+}
+
+\begin{problem}{2.4}
+ Consider the periodic function
 \begin{align*}
   f(x) &= \begin{cases}
   0, & -\pi < x < 0\\
@@ -142,58 +197,80 @@ We thus have:
 Decompose $f(x)$ into its even and odd part and find its Fourier series.
 
 Hint: You may want to use examples from the lecture.
-\bigbreak
-For the interval $-\pi < x < 0$ we have
-\begin{align*}
-  f_1(x) &= \frac{1}{2} (0 + (-2x)) = -x \\
-  f_2(x) = \frac{1}{2} (0 - (-2x)) = x
-.\end{align*}
-And for $ 0 < x < \pi$ we have
-\begin{align*}
-  f_1 (x) &= \frac{1}{2} (2x + 0) = x \\
-  f_2(x) &= \frac{1}{2} (2x - 0) = x
-.\end{align*}
-We thus have 
-\begin{align*}
-  f(x) &= f_1(x) + f_2(x) \\
-  f_1(x) &= |x|, -\pi < x < \pi \\
-  f_1(x) &= f_1(x+p), \quad p = 2\pi \\
-  f_2(x) &= x, \quad -\pi < x < \pi \\
-  f_2(x) &= f_2(x+p) \quad p = 2\pi
-.\end{align*}
-From the lecture we know that $f_1$ has the Fourier cosine series
-\[ 
-f_1(x) = \frac{\pi}{2} + \sum_{n = 1}^{\infty} \frac{2}{\pi n^2} \left( \cos n\pi - 1 \right) \cos nx
-\]
-and that $f_2$ has the Fourier sine series:
-\[ 
-f_2(x) = \sum_{n = 1}^{\infty} \left( -1 \right)^{n+1} \frac{2}{n} \sin nx
-.\]
-Combining these we get the Fourier series for $f(x)$ as:
-\[ 
-f(x) = \frac{\pi}{2} + \sum_{n = 1}^{\infty} \left( \frac{2}{\pi n^2} (\cos n \pi -1) \cos nx + (-1)^{n+1} \frac{2}{n} \sin nx \right)
-.\]
+\end{problem}
 
+\begin{derivation}
+  For $-\pi < x < 0$ we get
+  \begin{align*}
+    f_1(x) &= \frac{1}{2} \left( f(x) + f(-x) \right) = \frac{1}{2} \left( 0 + (-2x) \right) = -x \\
+    f_2(x) &= \frac{1}{2} \left( f(x) - f(-x) \right) = \frac{1}{2} \left( 0 - (-2x) \right) = x
+  .\end{align*}
+  For $0 < x< \pi$ we get
+  \begin{align*}
+    f_1(x) &= \frac{1}{2} \left( f(x) + f(-x) \right) = \frac{1}{2} \left( 2x + (0) \right) = x \\
+    f_2(x) &= \frac{1}{2} \left( f(x) - f(-x) \right) = \frac{1}{2} \left( 2x - (0) \right) = x
+  .\end{align*}
+  Therefore
+  \begin{equation*}
+    f_1(x) = \left| x \right|, -\pi < x < \pi
+  .\end{equation*}
+  From the lecture (p. 7) the Fourier cosine series of this is
+  \begin{equation*}
+    f_1(x) = \frac{\pi}{2} + \sum_{n = 1}^{\infty} \frac{2}{\pi n^2} \left( \cos(n\pi) - 1 \right) \cos (nx)
+  .\end{equation*}
+  Also
+  \begin{equation*}
+    f_2(x) = x, -\pi<x<\pi
+  .\end{equation*}
+  Which has the Fourier sine series (p. 6)
+  \begin{equation*}
+    f_2(x) = \sum_{n = 1}^{\infty} \left( -1 \right)^{n+1}  \frac{2}{n} \sin (nx)
+  .\end{equation*}
+  Combining these two Fourier series we get the complete Fourier series:
+  \begin{equation*}
+    f(x) = \frac{\pi}{2} + \sum_{n = 1}^{\infty} \left( \frac{2}{\pi n^2} \left( \cos(n\pi - 1) \right) \cos(nx) + \left( -1 \right)^{n+1} \frac{2}{n} \sin (nx) \right)
+  .\end{equation*}
+\end{derivation}
 
-\exercise{5.} Decompose
+\finalresult{
+\begin{aligned}
+  f_1(x) &= \left| x \right|, \quad - \pi < x < \pi \\
+  f_2(x) &= x, -\pi < x < \pi \\
+  f(x) &= \frac{\pi}{2} + \sum_{n = 1}^{\infty} \left( \frac{2}{\pi n^2} \left( \cos(n\pi - 1) \right) \cos(nx) + \left( -1 \right)^{n+1} \frac{2}{n} \sin (nx) \right)
+.\end{aligned}
+}
+
+\begin{problem}{2.5}
+Decompose
 \[ 
 f(x) = e^{ix}
 \]
 into its even and odd part.
 
 Hint; you may want to use the representation of $f(x)$ in terms of $\cos x$ and $\sin x$.
-\bigbreak
-We apply the same procedure as in the last couple of exercises whilst remembering that:
-\[ 
-e^{ix} = \cos x + i \sin x
-.\]
-We therefore get:
-\begin{align*}
-  f_1(x) &= \frac{1}{2} (f(x) + f(-x)) \\
-  &= \frac{1}{2} \left( \cos x + i \sin x + \cos x - i \sin x \right) \\
-  &= \cos x \\
-  f_2(x) &= \frac{1}{2} \left( f(x) - f(-x) \right) \\
-  &= \frac{1}{2} \left( \cos x + i \sin x - (\cos x - i \sin x) \right) \\
-  &= i \sin x
-.\end{align*}
-This also is what would be expected when looking at the representation of $e^{ix}$ introduced at the start of this answer.
+\end{problem}
+
+\begin{derivation}
+  We rewrite the function as
+  \begin{equation*}
+    f(x) = e^{ix} = \cos x + i \sin x
+  .\end{equation*}
+  Now, to decompose we follow the same procedure as above:
+  \begin{align*}
+    f_1(x) &= \frac{1}{2} \left( f(x) + f(-x) \right) \\
+    &= \frac{1}{2} \left( \cos x + i \sin x + \cos(-x) + i \sin(-x \right) \\
+    &= \frac{1}{2} \left( \cos x + i \sin x + \cos x - i \sin (x) \right) \\
+    &= \cos x \\
+    f_2(x) &= \frac{1}{2} \left( f(x) - f(-x) \right) \\
+    &= \frac{1}{2} \left( \cos x + i \sin x - \cos(-x) - i \sin(-x) \right) \\
+    &= \frac{1}{2} \left( \cos x + i \sin x - \cos x + i \sin x \right) \\
+    &= i \sin x
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  f_1(x) &= \cos x \\
+  f_2(x) &= i \sin x
+.\end{aligned}
+}

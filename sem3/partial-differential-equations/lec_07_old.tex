@@ -23,6 +23,22 @@
   Find the solution $u(x,t)$.
 \end{problem}
 
+\begin{derivation}
+  From the lecture, the general solution to the one-dimensional heat equation with the given boundary conditions, is
+  \[ 
+  u(x,t) = \sum_{n = 1}^{\infty} B_n e^{- \lambda^2_n t} \sin \left( \frac{n \pi x}{L} \right)
+  .\]
+  Where $B_n$ is:
+  \begin{align*}
+    B_n &= \frac{2}{L} \int_{0}^{L} u(x,0) \sin \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x \\
+        &= \frac{2}{L} \int_{0}^{L} T_0 \sin \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x \\
+        &= \frac{2 T_0}{L} \int_{0}^{L} \sin \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x \\
+        &= - \frac{2 T_0}{L} \left( \cos \left( n \pi \right) - 1 \right)
+  .\end{align*}
+  Hence the solution becomes:
+\end{derivation}
+
+\finalresult{u(x,t) = \sum_{n = 1}^{\infty}  e^{- \lambda^2_n t} \frac{2 T_0}{L} \left( 1 - \cos \left( n \pi \right) \right)  \sin \left( \frac{n \pi x}{L} \right)}
 
 \begin{problem}{7.2}
   Consider the one-dimensional heat equation
@@ -82,4 +98,3 @@
     u(0,y) &= 0, & u(1,y) &= 0, & 0 \leq& y \leq 1
   .\end{align*}
 \end{problem}
-

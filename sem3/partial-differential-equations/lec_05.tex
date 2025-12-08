@@ -1,50 +1,21 @@
 \lecture{5}{26. September 2025}{Partial Differential Equations}
 
-\exercise{1.}
-Write down the general expression for a linear first order PDE for $u(x,y,t)$.
+\begin{problem}{5.1}
+  Write down the general expression for a linear first order PDE for $u(x,y,t)$.
+\end{problem}
 
-\hr
-From the lecture we see that the general form is
-\[ 
-a_0(x,y,t) + a_1(x,y,t)u(x,y,t) + a_2(x,y,t) \frac{\partial u (x,y,t)}{\partial x} + a_3(x,y,t) \frac{\partial u(x,y,t)}{\partial y} + a_4(x,y,t) \frac{\partial u(x,y,t)}{\partial t} = 0
-.\]
-
-
-\exercise{2.}
-Write down the general expression for a linear second order PDE for $u(x,y)$.
+\begin{problem}{5.2}
+  Write down the general expression for a linear second order PDE for $u(x,y)$.
 You may assume that $u(x,y)$ is twice continuously differentiable.
+\end{problem}
 
-\hr
-
-From the lecture the general form is
-\begin{multline*}
-     0 = a_0(x,y) + a_1(x,y) u(x,y) + a_2(x,y) \frac{\partial u(x,y)}{\partial x} + a_3(x,y) \frac{\partial u(x,y)}{\partial y} \\
-    + a_4(x,y) \frac{\partial^2 u(x,y)}{\partial x^2} + a_5(x,y) \frac{\partial^2 u(x,y)}{\partial y^2} + a_6(x,y) \frac{\partial u(x,y)}{\partial x \partial y}
-\end{multline*}
-
-
-\exercise{3.}
-Consider the general homogeneous first order PDE for $u(x,t)$ with solutions $u_1(x,t)$ and $u_2(x,t)$.
+\begin{problem}{5.3}
+  Consider the general homogeneous first order PDE for $u(x,t)$ with solutions $u_1(x,t)$ and $u_2(x,t)$.
 Show that $u(x,t) = c_1 u_1 (x,t) + c_2 u_2 (x,t)$ is also a solution for arbitrary constants $c_1$ and $c_2$.
+\end{problem}
 
-\hr
-
-We have given the following two solutions
-\begin{align*}
-  a_1(x,t) u_1(x,t) + a_2(x,t) \frac{\partial u_1(x,t)}{\partial x} + a_3(x,t) \frac{\partial u_1(x,t)}{\partial t} &= 0 \\
-  a_1(x,t) u_2(x,t) + a_2(x,t) \frac{\partial u_2(x,t)}{\partial x} + a_3(x,t) \frac{\partial u_2(x,t)}{\partial t} &= 0
-.\end{align*}
-Now if we try to input $u(x,t) = c_1 u_1(x,t) + c_2 u_2(x,t)$ as our solution we get
-\begin{align*}
-  0 &= a_1 \left( c_1 u_1 + c_2 u_2 \right) + a_2 \frac{\partial (c_1 u_1 + c_2 u_2)}{\partial x}  + a_3 \frac{\partial (c_1 u_1 + c_2 u_2)}{\partial t} \\
-&= c_1 \left( a_1 u_1 + a_2 \frac{\partial u_1}{\partial x} + a_3 \frac{\partial u_1}{\partial t}  \right) + c_2 \left( a_1 u_2 + a_2 \frac{\partial u_2}{\partial x} + a_3 \frac{\partial u_2}{\partial t}  \right) \\
-&= 0 \\
-\implies c_1 u_1 + c_2 u_2 \text{ is a solution.}
-.\end{align*}
-
-
-\exercise{4.}
-Find the solution of the one-dimensional wave equation
+\begin{problem}{5.4}
+  Find the solution of the one-dimensional wave equation
 \[ 
 u_{tt} (x,t) = u_{x x} (x,t), \quad 0 \leq x \leq 1
 \]
@@ -58,31 +29,11 @@ u(x,0) = k_0 \sin \left( 3 \pi x \right), \quad u_t(x,0) = 0, \quad 0 \leq x\leq
 \]
 where $k_0$ is a constant.
 You may start your calculations directly from the general solution given in the Lecture.
-
-\hr
-
-The general solution of the wave equation is
-\[ 
-u(x,t) = \sum_{n = 1}^{\infty} \left( B_n \cos \left( \lambda_n t \right) + B_n^{*} \sin \left( \lambda_n t \right) \right) \sin \left( n \pi x \right), \qquad \lambda_n = n \pi
-.\]
-We use the initial elongation to get
-\[ 
-u(x,0) = \sum_{n = 1}^{\infty} \left( B_n \right) \sin \left( n \pi x \right) = k_0 \sin (3 \pi x) \implies B_3 = k_0
-.\]
-All other coefficients $B_n$ are zero.
-The initial velocity now gives
-\[ 
-u_t (x,0) = B_n^{*} \sin \left( n \pi x \right) = 0 \implies B_n^{*} = 0
-.\]
-
-Therefore the unique solution becomes
-\[ 
-  u (x,t) = k_0 \cos \left( 3 \pi t \right) \sin \left( 3 \pi x \right)
-.\]
+\end{problem}
 
 
-\exercise{5.}
-Find the solution of the one-dimensional wave equation
+\begin{problem}{5.5}
+  Find the solution of the one-dimensional wave equation
 \[ 
 u_{tt} (x,t) = u_{xx}(x,t), 0 \leq x \leq 1
 \]
@@ -96,25 +47,4 @@ u(x,0) = k_0 \sin \left( 3 \pi x \right), \quad u_t (x,0) = 3\pi k_0 \sin \left(
 \]
 where $k_0$ is a constant.
 You may start your calculation directly from the general solution given in the Lecture.
-
-\hr
-
-The general solution of the wave equation is
-\[ 
-u(x,t) = \sum_{n = 1}^{\infty} \left( B_n \cos \left( \lambda_n t \right) + B_n^{*} \sin \left( \lambda_n t \right) \right) \sin \left( n \pi x \right), \qquad \lambda_n = n \pi
-.\]
-
-The initial elongation gives us
-\[ 
-u (x,0) = \sum_{n = 1}^{\infty} B_n \sin (n \pi x) = k_0 \sin (3 \pi x) \implies B_3 = k_0
-.\]
-
-The initial velocity gives
-\[ 
-u_t(x,0) = \sum_{n = 1}^{\infty} B_n^{*}\lambda_n \sin (n \pi x) = 3 \pi k_0 \sin \left( 3 \pi x \right) \implies B_3^{*} = k_0
-.\]
-
-Which corresponds to the solution
-\[ 
-u(x,t) = \left( k_0 \cos \left( 3 \pi t \right) + k_0 \sin \left( 3 \pi t  \right) \right) \sin (3 \pi x)
-.\]
+\end{problem}
