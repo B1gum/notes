@@ -4,15 +4,56 @@
   Write down the general expression for a linear first order PDE for $u(x,y,t)$.
 \end{problem}
 
+\begin{derivation}
+  From the Lecture (p. 1) the general expression for a linear first order PDE for $u(x,y)$ is
+  \begin{equation*}
+    a_0(x,t) + a_1(x,t)u(x,t) + a_2(x,t) \frac{\partial u(x,t)}{\partial x} + a_3(x,t) \frac{\partial u(x,t)}{\partial t} = 0
+  .\end{equation*}
+  Extending this pattern we can write the general expression for a linear first order ODE for $u(x,y,t)$ as
+\end{derivation}
+
+\finalresult{
+    a_0(x,y,t) + a_1(x,y,t)u(x,y,t) + a_2(x,y,t) u_x(x,y,t) + a_3(x,y,t) u_y(x,y,t) + a_4(x,y,t) u_t(x,y,t) = 0
+}
+
 \begin{problem}{5.2}
   Write down the general expression for a linear second order PDE for $u(x,y)$.
 You may assume that $u(x,y)$ is twice continuously differentiable.
 \end{problem}
 
+\begin{derivation}
+  Extending the logic from the previous answer, the general expression for a linear second order PDE for $u(x,y)$ is:
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  a_0(x,y) &+ a_1(x,y)u(x,y) + a_2(x,y) u_x(x,y) + a_3 (x,y) u_y(x,y) \\
+                            & \qquad + a_4(x,y) u_{x x}(x,y) + a_5(x,y) u_{yy}(x,y) + a_6(x,y) u_{xy}(x,y) = 0
+\end{aligned}
+}
+
 \begin{problem}{5.3}
   Consider the general homogeneous first order PDE for $u(x,t)$ with solutions $u_1(x,t)$ and $u_2(x,t)$.
 Show that $u(x,t) = c_1 u_1 (x,t) + c_2 u_2 (x,t)$ is also a solution for arbitrary constants $c_1$ and $c_2$.
 \end{problem}
+
+\begin{derivation}
+  From the Lecture (p. 2) the general homogeneous first order PDE for $u(x,t)$ is
+  \begin{equation*}
+    a_1(x,t) u(x,t) + a_2(x,t) u_x(x,t) + a_3(x,t) u_t(x,t) = 0
+  .\end{equation*}
+  We will see if this holds for arbitrary constants $c_1$ and $c_2$ as
+  \begin{align*}
+    & \quad a_1 (c_1 u_1 + c_2 u_2) + a_2 \frac{\partial c_1 u_1 + c_2 u_2}{\partial x} + a_3 \frac{\partial c_1 u_1 + c_2 u_2}{\partial t} \\
+    &= a_1 c_1 u_1 + a_1 c_2 u_2 + a_2 \frac{\partial c_1 u_1}{\partial x} + a_2 \frac{\partial c_2 u_2}{\partial x} + a_3 \frac{\partial c_1 u_1}{\partial t} + a_3 \frac{\partial c_2 u_2}{\partial t}  \\
+    &= c_1 \left( a_1 u_1 + a_2 \frac{\partial u_1}{\partial x} + a_3 \frac{\partial u_1}{\partial t}  \right) + c_2 \left( a_1 u_2 + a_2 \frac{\partial u_2}{\partial x} + a_2 \frac{\partial u_2}{\partial t}  \right) \\
+    &= c_1 \left( 0 \right) + c_2 \left( 0 \right) \\
+    &= 0
+  .\end{align*}
+  Hence $u(x,t) = c_1 u_1(x,t) + c_2 u_2(x,t)$ is also a solution of the general homogeneous first order PDE for $u(x,t)$.
+\end{derivation}
+
+\newpage
 
 \begin{problem}{5.4}
   Find the solution of the one-dimensional wave equation
@@ -31,6 +72,31 @@ where $k_0$ is a constant.
 You may start your calculations directly from the general solution given in the Lecture.
 \end{problem}
 
+\begin{derivation}
+  From the Lecture (p. 8) the general solution to the one-dimensional wave equation is
+  \begin{equation*}
+    u(x,t) = \sum_{n = 1}^{\infty} \left( B_n \cos \left( \lambda_n t \right) + B_n^{*} \sin \left( \lambda_n t \right) \right) \sin \left( n \pi x \right) \quad \lambda = n \pi
+  .\end{equation*}
+  From the initial elongation (p. 9) we get
+  \begin{align*}
+    u(x,0) &= \sum_{n = 1}^{\infty} B_n \sin \left( n \pi x \right) \\
+    &= k_0 \sin \left( 3\pi x \right) \\
+    \implies \quad B_3 &= k_0
+  .\end{align*}
+  And all other coefficients $B_n$ are zero.
+
+  From the initial velocity (p. 10) we get
+  \begin{align*}
+    u_t(x,0) &= \sum_{n = 1}^{\infty} B_n^{*}\lambda_n \sin \left( n \pi x \right) = 0\\
+    \implies \quad B_n^{*} &= 0 \text{ for all } n
+  .\end{align*}
+  Hence, the particular solution is
+\end{derivation}
+
+\finalresult{
+    u(x,t) = k_0 \cos (3\pi t) \sin (3 \pi x)
+}
+
 
 \begin{problem}{5.5}
   Find the solution of the one-dimensional wave equation
@@ -48,3 +114,20 @@ u(x,0) = k_0 \sin \left( 3 \pi x \right), \quad u_t (x,0) = 3\pi k_0 \sin \left(
 where $k_0$ is a constant.
 You may start your calculation directly from the general solution given in the Lecture.
 \end{problem}
+
+\begin{derivation}
+  As the equation, solution and initial elongation are the same as for Problem 5.4 we know that $B_3 = k_0$.
+  We therefore start with the initial velocity (which differs in this case).
+  We get
+  \begin{align*}
+    u_t(x,0) &= \sum_{n = 1}^{\infty} B_n^{*}\lambda_n \sin \left( n \pi x \right) \\
+    &= 3 \pi k_0 \sin \left( 3 \pi x \right) \\
+    \implies \quad B_3^{*} &= k_0
+  .\end{align*}
+  And all other coefficients $B_n^{*} = 0$.
+  Hence,
+\end{derivation}
+
+\finalresult{
+u(x,t) = k_0 \sin (3\pi x) ( \cos (3\pi t) + \sin(3\pi t))
+}

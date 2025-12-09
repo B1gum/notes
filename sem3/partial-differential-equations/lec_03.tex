@@ -13,12 +13,138 @@ Consider the function $f(x) = \cos x, 0<x<\pi$.
 Hint: In some cases the expansion can be an even/odd function.
 
 Hint: For $m, n \in \mathbb{N}, m \neq n, L > 0$:
-\begin{align*}
-  \int_{0}^{\frac{\pi}{2}} \cos x \sin(2nx) \, \mathrm{d}x &= - \frac{2n}{1 - 4 n^2} \\
-  \int_{0}^{L} \cos \left( \frac{m \pi x}{L} \right) \sin \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x  &= \frac{nL}{\pi \left( m^2 - n^2 \right)} \left( \cos \left( n \pi  \right) \cos \left( m \pi \right) - 1 \right) \\
-  \int_{0}^{L} \cos \left( \frac{\pi x}{L} \right) \sin \left( \frac{\pi x}{L} \right) \, \mathrm{d}x &= 0
-.\end{align*}
+\begin{gather*}
+  \int_{0}^{\frac{\pi}{2}} \cos x \sin(2nx) \, \mathrm{d}x = - \frac{2n}{1 - 4 n^2} \\
+  \int_{0}^{L} \cos \left( \frac{m \pi x}{L} \right) \sin \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x  = \frac{nL}{\pi \left( m^2 - n^2 \right)} \left( \cos \left( n \pi  \right) \cos \left( m \pi \right) - 1 \right) \\
+  \int_{0}^{L} \cos \left( \frac{\pi x}{L} \right) \sin \left( \frac{\pi x}{L} \right) \, \mathrm{d}x = 0
+.\end{gather*}
 \end{problem}
+
+\begin{derivation}
+  \begin{enumerate}[label=\alph*)]
+    \item The expansion of $f$ is depicted on \Cref{fig:f3_1}.
+      \begin{figure} [ht]
+        \centering
+        \includegraphics[width=0.8\linewidth]{./figures/f3_1.png}
+        \caption{Expansion of $f$.}
+        \label{fig:f3_1}
+      \end{figure}
+      Based on the figure the expansion looks to generate an odd function.
+      We check that this is the case using the definition of odd functions (Lec. 2, p. 3):
+      \begin{equation*}
+        f(x) = -f(-x), \text{ for all } x
+      .\end{equation*}
+      For $-\pi / 2 < x<0$ inputting $-x$ in the place of $x$ gives:
+      \begin{align*}
+        f(x) &= - \cos x \\
+        f(-x) &= - \cos (-x) \\
+        f(-x) &= \cos x \\
+        f(-x) &= - f(x)
+      .\end{align*}
+      And for $0 < x < \pi / 2$ we get
+      \begin{align*}
+        f(x) &= \cos x \\
+        f(-x) &= \cos (-x) \\
+        f(-x) &= - \cos x \\
+        f(-x) &= - f(x)
+      .\end{align*}
+      Hence, the expansion of $f$ is odd and the corresponding Fourier series will therefore be a Fourier sine series.
+      The period is $p = \pi \implies L = \pi / 2$.
+      From Lecture 2 (p. 5) the Fourier sine series is defined as
+      \begin{equation*}
+        f(x) = \sum_{n = 1}^{\infty} b_n \sin \left( \frac{n\pi x}{L} \right)
+      \end{equation*}
+      for
+      \begin{equation*}
+        b_n = \frac{2}{L} \int_{0}^{L} f(x) \sin \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x
+      .\end{equation*}
+      
+      We start by determining the Fourier coefficients $b_n$ as
+      \begin{align*}
+        b_n &= \frac{4}{\pi} \int_{0}^{\frac{\pi}{2}} \cos x \sin \left( \frac{2n \pi x}{\pi} \right) \, \mathrm{d}x  \\
+        &= \frac{4}{\pi} \int_{0}^{\frac{\pi}{2}} \cos (x) \sin \left( 2 n x \right) \, \mathrm{d}x  \\
+        &= \frac{8n}{\pi \left( 4n^2 - 1\right)}
+      .\end{align*}
+      Hence,
+      \begin{equation*}
+        f(x) = \sum_{n = 1}^{\infty} \frac{8n}{\pi \left( 4n^2 - 1 \right)} \sin \left( 2nx \right)
+      .\end{equation*}
+      
+
+  \item The even expansion of $f$ is depicted on \Cref{fig:f3_1e}.
+    \begin{figure} [ht]
+      \centering
+      \includegraphics[width=0.8\linewidth]{./figures/f3_1e.png}
+      \caption{Even expansion of $f$.}
+      \label{fig:f3_1e}
+    \end{figure}
+    The even expansion of $\cos x, 0 < x < \pi$ is simply $\cos x$ and the Fourier series can therefore be found by comparison:
+    \begin{align*}
+      f(x) &= \cos x \\
+      f(x) &= a_0 + \sum_{n = 1}^{\infty} a_n \cos \left( \frac{n \pi x}{L} \right) \\
+      \implies \quad a_0 &= 0 \quad a_1 = 1
+    .\end{align*}
+
+  \item The odd expansion of $f$ is depicted on \Cref{fig:f3_1o}.
+     \begin{figure} [ht]
+      \centering
+      \includegraphics[width=0.8\linewidth]{./figures/f3_1o.png}
+      \caption{Odd expansion of $f$.}
+      \label{fig:f3_1o}
+    \end{figure}
+    Per definition, the odd expansion results in an odd function.
+    Therefore, we must find a Fourier sine series.
+    From Lecture 2 (p. 5) this is defined as
+    \begin{equation*}
+      f(x) = \sum_{n = 1}^{\infty} b_n \sin \left( \frac{n\pi x}{L} \right)
+    \end{equation*}
+    for
+    \begin{equation*}
+      b_n = \frac{2}{L} \int_{0}^{L} f(x) \sin \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x     .\end{equation*}
+
+    We start by determining the Fourier coefficients $b_n$ as:
+    \begin{align*}
+      b_n &= \frac{2}{\pi} \int_{0}^{\pi} f(x) \sin \left( \frac{n \pi x}{\pi} \right) \\
+      &= \frac{2}{\pi} \int_{0}^{\pi} \cos x \sin (nx) \, \mathrm{d}x \\
+      &=  \frac{2n}{\pi (1 - n^2)} \left( \cos (n \pi) \cos (\pi) - 1 \right)
+    .\end{align*}
+    From the hints we know that this is 0 for $n = 1$, hence:
+    \begin{equation*}
+      f(x) = \sum_{n = 1}^{\infty} b_n \sin \left( \frac{n\pi x}{L} \right) = \sum_{n = 2}^{\infty} \frac{2n}{\pi \left( n^2 -1 \right)} (1 - \cos (n \pi)) \sin (n x)
+    .\end{equation*}
+  \item From the lecture (p. 5), the error $E_N$ is defined as
+    \begin{equation*}
+      E_N = \int_{-L}^{L} f^2(x) \, \mathrm{d}x - L \left( 2a_0^2 + \sum_{n = 1}^{N} \left( a_n^2 + b_n^2 \right) \right)
+    .\end{equation*}
+    For the expansion we get
+    \begin{align*}
+      E_N &= \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \cos^2(x) \, \mathrm{d}x - \frac{\pi}{2} \left( \sum_{n = 1}^{N} \left( \frac{8n}{\pi \left( 4n^2 - 1 \right)} \right)^2 \right) \\
+          &= \frac{\pi}{2} - \frac{\pi}{2} \left( \sum_{n = 1}^{N} \left( \frac{64n^2}{\pi^2 \left( 4n^2 - 1 \right)^2} \right) \right) \\
+          &= \frac{\pi}{2} - \frac{32}{\pi} \sum_{n = 1}^{N} \frac{n^2}{\left( 4n^2 - 1 \right)^2} \\
+      E_1 &= \frac{\pi}{2} - \frac{32}{\pi} \cdot \frac{1}{9} = \num{0,439} \\
+      E_2 &= \frac{\pi}{2} - \frac{32}{\pi} \cdot \left( \frac{1}{9} + \frac{4}{15^2} \right) = \num{0,2579448851} \\
+      E_3 &= \frac{\pi}{2} - \frac{32}{\pi} \cdot \left( \frac{1}{9} + \frac{4}{15^2} + \frac{9}{35^2} \right) = \num{0,1831095813} 
+    .\end{align*}
+    And for the odd expansion we get:
+    \begin{align*}
+      E_{N}^{(o)} &= \int_{-\pi}^{\pi} \cos^2(x) \, \mathrm{d}x - \pi \left( \sum_{n = 2}^{N}   \left( \frac{2n}{\pi \left( n^2 - 1 \right)} \left( 1 + \cos (n\pi) \right)\right)^2 \right) \\
+      &= \pi - \pi \left( \sum_{n = 2}^{N} \frac{4n^2}{\pi^2 \left( n^2 - 1 \right)^2} \left( 1 + \cos(\pi n) \right)^2 \right) \\
+      &= \pi - \frac{4}{\pi} \left( \sum_{n = 2}^{N} \frac{n^2}{\left( n^2 - 1 \right)^2} \left( 1 + \cos(\pi n) \right)^2 \right) \\
+      E_1^{(o)} &= \pi - \frac{4}{\pi} \cdot 0 = \pi \\
+      E_2^{(o)} &= \pi - \frac{4}{\pi} \cdot \left( 0 + \frac{4}{9} \cdot 4 \right) = \num{0,8780556852}  \\
+      E_3^{(o)} &= \pi - \frac{4}{\pi} \cdot \left( 0 + \frac{16}{9} + \frac{9}{64} \cdot 0 \right) = \num{0,8780556852} 
+    .\end{align*}
+    All in all, the expansion seems to work better than the odd expansion even when taking into account the difference in interval lengths.
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &\mathrm{a}) & f(x) &= \sum_{n = 1}^{\infty} \frac{8n}{\pi \left( 4n^2 - 1 \right)} \sin (2nx) \\
+  &\mathrm{b}) & f(x) &= \cos x \\
+  &\mathrm{c}) & f(x) &= \sum_{n = 2}^{\infty} \frac{2n}{\pi \left( n^2-1 \right)} \left(1- \cos (n\pi) \right) \sin (nx)
+.\end{aligned}
+}
 
 
 \begin{problem}{3.2}
@@ -33,6 +159,32 @@ f(x) = \begin{cases}
 .\]
 \end{problem}
 
+\begin{derivation}
+  From the lecture (p. 8) the Fourier integral is represented as
+  \begin{equation*}
+    f(x) = \int_{0}^{\infty} \left( A(\omega) \cos(\omega x) + B(\omega) \sin(\omega x) \right) \, \mathrm{d}\omega
+  \end{equation*}
+  with
+  \begin{align*}
+    A(\omega) &= \frac{1}{\pi} \int_{-\infty}^{\infty} f(x) \cos(\omega x) \, \mathrm{d}\omega \\
+    B(\omega) &= \frac{1}{\pi} \int_{-\infty}^{\infty} f(x) \sin(\omega x) \, \mathrm{d}\omega
+  .\end{align*}
+
+  We determine the Fourier coefficients as:
+  \begin{align*}
+    A(\omega) &= \frac{1}{\pi} \left( \int_{-2}^{-1} - 1 \cdot \cos (\omega x) \, \mathrm{d}\omega + \int_{-1}^{1} 1 \cdot \cos(\omega x) \, \mathrm{d}\omega + \int_{1}^{2} -1 \cdot \cos(\omega x) \, \mathrm{d}\omega  \right)   \\
+      &= \frac{1}{\pi} \left( \int_{-1}^{1} \cos (\omega x) \, \mathrm{d}\omega - \int_{-2}^{-1} \cos (\omega x) \, \mathrm{d}\omega - \int_{1}^{2} \cos (\omega x) \, \mathrm{d}\omega \right) \\
+      &= \frac{4 \sin \omega - 2 \sin (2\omega)}{\omega} \\
+    B(\omega) &= \frac{1}{\pi} \left( \int_{-1}^{1} \sin (\omega x) \, \mathrm{d}\omega - \int_{-2}^{-1} \sin (\omega x) \, \mathrm{d}\omega - \int_{1}^{2} \sin (\omega x) \, \mathrm{d}\omega \right) \\
+              &= 0
+  .\end{align*}
+  Hence, the Fourier integral representation is:
+\end{derivation}
+
+\finalresult{
+f(x) = \int_{0}^{\infty} \frac{4 \sin \omega - 2 \sin (2\omega)}{\omega} \cos (\omega x) \, \mathrm{d}\omega
+}
+
 \begin{problem}{3.3}
 Find the Fourier integral representation of
 \[ 
@@ -44,6 +196,61 @@ f(x) = \begin{cases}
 .\]
 \end{problem}
 
+\begin{derivation}
+  Here, we follow the same procedure as above:
+  \begin{align*}
+    A(\omega) &= \frac{1}{\pi} \left( \int_{0}^{2} \cos (\omega x) \, \mathrm{d}\omega - \int_{-2}^{0} \cos (\omega x) \, \mathrm{d}\omega \right) \\
+    &= 0 \\
+    B(\omega) &= \frac{1}{\pi} \left( \int_{0}^{2} \sin \left( \omega x \right) \, \mathrm{d}\omega - \int_{-2}^{0} \sin \left( \omega x \right) \, \mathrm{d}\omega \right) \\
+    &= \frac{1}{\pi}\cdot \frac{4 \sin^2(\omega)}{\omega} \\
+    &= \frac{4 \sin^2(\omega)}{\pi \omega}
+  .\end{align*}
+  Hence, the Fourier integral representation is:
+\end{derivation}
+
+\finalresult{
+f(x) = \int_{0}^{\infty} \frac{4 \sin^2(\omega)}{\omega \pi} \sin (\omega x) \, \mathrm{d}\omega
+}
+
+
 \begin{problem}{3.4}
 Consider the periodic rectangular wave and its Fourier series as discussed in Lecture 1. Calculate the error of the $N$-th approximation for $N = 1,2,3$.
 \end{problem}
+
+\begin{derivation}
+  From Lecture 1 pp. 5-6 the periodic rectangular wave is given by
+  \begin{align*}
+    f(x) &= \begin{cases}
+      -k, & -\pi < x < 0\\
+    k, & 0 < x < \pi
+    .\end{cases} \\
+      f(x) &= f(x + 2\pi), \quad p = 2L = 2\pi
+  .\end{align*}
+  And its Fourier coefficients are
+  \begin{align*}
+    a_0 &= 0 \\
+    a_n &= 0 \\
+    b_n &= \frac{2k}{n\pi} \left( 1 - \cos(n\pi) \right)
+  .\end{align*}
+  From Problem 3.1 the error $E_N$ is defined as
+  \begin{equation*}
+    E_N = \int_{-L}^{L} f^2(x) \, \mathrm{d}x - L \left( 2a_0^2 + \sum_{n = 1}^{N} \left( a_n^2 + b_n^2 \right) \right)
+  .\end{equation*}
+  Which corresponds to:
+  \begin{align*}
+    E_N &= \int_{-\pi}^{\pi} k^2 \, \mathrm{d}x - \pi \left( \sum_{n = 1}^{N} \left( \frac{2k}{n\pi}(1 - \cos(n\pi) \right)^2 \right) \\
+    &= 2\pi k^2 - \pi  \left( \sum_{n = 1}^{N} \frac{4k^2}{n^2\pi^2} \left( 1 - \cos (n\pi) \right)^2 \right) \\
+    &= 2\pi k^2 - \frac{4k^2}{\pi}  \left( \sum_{n = 1}^{N} \frac{1}{n^2} \left( 1 - \cos (n\pi) \right)^2 \right) \\
+    E_1 &= 2\pi k^2 - \frac{4k^2}{\pi} \cdot 4 = \num{1,19} k^2 \\
+    E_2 &= E_1 \\
+    E_3 &= 2 \pi k^2 - \frac{4k^2}{\pi} \cdot \left( 4 + \frac{4}{9} \right) = \num{0,6243428861} k^2
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  E_1 &= \num{1,19} k^2 \\
+  E_2 &= E_1 \\
+  E_3 &= \num{0,642} k^2
+.\end{aligned}
+}

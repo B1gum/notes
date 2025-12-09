@@ -15,6 +15,27 @@ as a Fourier sine integral.
 \]
 \end{problem}
 
+\begin{derivation}
+  From the Lecture p. 1 the Fourier sine integral is defined as
+  \begin{equation*}
+    f(x) = \int_{0}^{\infty} B(\omega) \sin(\omega x) \, \mathrm{d}\omega
+  \end{equation*}
+  with
+  \begin{equation*}
+    B(\omega) = \frac{2}{\pi} \int_{0}^{\infty} f(x) \sin(\omega x) \, \mathrm{d}x
+  .\end{equation*}
+  Plugging in the $f(x)$ from the problem we get
+  \begin{align*}
+    B(\omega) &= \frac{2}{\pi} \int_{0}^{\pi} \cos x \sin \omega(x) \, \mathrm{d}x \\
+    &= \frac{2\omega \left( 1 + \cos (\omega \pi) \right)}{\pi \left( \omega^2 - 1 \right)}
+  .\end{align*}
+  Hence,
+\end{derivation}
+
+\finalresult{
+f(x) = \int_{0}^{\infty} \frac{2\omega \left( 1 + \cos (\omega \pi) \right)}{\pi \left( \omega^2 - 1 \right)} \sin (\omega x) \, \mathrm{d}\omega
+}
+
 
 \begin{problem}{4.2}
   Represent $f(x),$ $0 < x < \infty$, defined as
@@ -31,6 +52,27 @@ as a Fourier cosine integral.
 .\]
 \end{problem}
 
+\begin{derivation}
+  The Fourier cosine integral is in the Lecture p. 1 given as
+  \begin{equation*}
+    f(x) = \int_{0}^{\infty} A(\omega) \cos(\omega x) \, \mathrm{d}\omega
+  \end{equation*}
+  with
+  \begin{equation*}
+    A(\omega) = \frac{2}{\pi} \int_{0}^{\infty} f(x) \cos (\omega x) \, \mathrm{d}x
+  .\end{equation*}
+  As was the case for problem 4.1 we find $A(\omega)$ as
+  \begin{align*}
+    A(\omega ) &= \frac{2}{\pi} \int_{0}^{\pi} \sin x \cos (\omega x) \, \mathrm{d}x \\
+    &= \frac{2 \left( 1 + \cos(\omega\pi) \right)}{\pi \left( 1 - \omega^2 \right)}
+  .\end{align*}
+  Thus,
+\end{derivation}
+
+\finalresult{
+f(x) = \int_{0}^{\infty} \frac{2 \left( 1 + \cos (\omega \pi) \right)}{\pi \left( 1 - \omega^2 \right) } \cos (\omega x) \mathrm{d}\omega
+}
+
 
 \begin{problem}{4.3}
   Find the Fourier cosine transform of $f(x), 0 < x < \infty$, defined as
@@ -43,6 +85,22 @@ f(x) = \begin{cases}
 .\]
 \end{problem}
 
+\begin{derivation}
+  From the Lecture (p. 4) the Fourier cosine transform is given as
+  \begin{equation*}
+    \hat{f}_C(\omega) = \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} f(x) \cos(\omega x) \, \mathrm{d}x
+  .\end{equation*}
+  We find $A(\omega)$ as
+  \begin{align*}
+    A(\omega) &= \sqrt{\frac{2}{\pi}} \left( \int_{0}^{1} \cos (\omega x) \, \mathrm{d}x - \int_{1}^{2} \cos(\omega x) \, \mathrm{d}x \right) \\
+    &= \sqrt{\frac{2}{\pi}} \frac{2\sin (\omega ) - \sin (2\omega)}{\omega }
+  .\end{align*}
+  Hence,
+\end{derivation}
+\finalresult{
+f(x) =  \sqrt{\frac{2}{\pi}} \frac{2 \sin \omega - \sin (2\omega)}{\omega} \cos (\omega x) 
+}
+
 
 \begin{problem}{4.4}
   Find the Fourier transform of
@@ -54,12 +112,68 @@ e^{2ix}, & -1 < x < 1\\
 .\]
 \end{problem}
 
+\begin{derivation}
+  From the Lecture (p. 7) the Fourier transform is defined as
+  \begin{equation*}
+    \hat{f}(\omega) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(x) e^{-i\omega x} \, \mathrm{d}x 
+  .\end{equation*}
+  By insertion we get:
+  \begin{align*}
+    \hat{f}(\omega) &= \frac{1}{\sqrt{2\pi}} \int_{-1}^{1} e^{2ix} e^{-i\omega x} \\
+    &= \frac{1}{\sqrt{2\pi}} \int_{-1}^{1} e^{i(2 - \omega)x} \, \mathrm{d}x \\
+    &= \frac{1}{\sqrt{2\pi}} \left[ \frac{e^{i(2-\omega)x}}{i(2-\omega) x} \right]_{-1}^{1} \\
+    &= \frac{1}{\sqrt{2\pi}} \left( \frac{e^{i (2-\omega)} - e^{-i (2 - \omega)} }{i (2 - \omega)} \right)\\
+    &= \frac{1}{\sqrt{2\pi}} \left( \frac{\cos (2 - \omega) + i \sin (2 - \omega ) - \cos(\omega - 2) - i \sin (\omega - 2)}{i (2 -\omega)} \right) \\
+    &= \frac{1}{\sqrt{2\pi}} \frac{2 i \sin (2 - \omega)}{i(2 - \omega)} \\
+    &= \frac{1}{\sqrt{2\pi}} \frac{2 \sin (2 - \omega)}{2 - \omega}
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\hat{f}(\omega) = \frac{1}{\sqrt{2\pi}} \frac{2 \sin (2 - \omega)}{2 - \omega}
+}
+
 \begin{problem}{4.5}
   Use the formulae of the Fourier transform, Fourier cosine transform and Fourier sine transform for first and second derivatives from the Lecture to derive the corresponding formulae for third derivatives, i.e. for
 \[ 
 \mathcal{F}_C \left( f''' \right), \mathcal{F}_S \left( f''' \right), \mathcal{F} \left( f''' \right)
 .\]
 \end{problem}
+
+\begin{derivation}
+  From the Lecture (pp. 5 \& 8) the first and second derivatives of each of the Fourier transforms are:
+  \begin{align*}
+    \mathcal{F}_C (f') &= \omega \mathcal{F}_S (f) - \sqrt{\frac{2}{\pi}}f(0) & \mathcal{F}_C(f'') &= - \omega^2 \mathcal{F}_C(f) - \sqrt{\frac{2}{\pi}} f'(0) \\
+    \mathcal{F}_S(f') &= -\omega \mathcal{F}_C (f) & \mathcal{F}_S(f'') &= - \omega^2 \mathcal{F}_S(f) + \sqrt{\frac{2}{\pi}} \omega f(0) \\
+    \mathcal{F} (f') &= i \omega \mathcal{F}(f) & \mathcal{F}(f'') &= - \omega^2 \mathcal{F}(f)
+  .\end{align*}
+  Starting with the Fourier cosine transform, we will simply apply the first derivative to the second derivative as:
+  \begin{align*}
+    \mathcal{F}_C (f''') &= \mathcal{F}_C(f'')' \\
+    &= \omega \mathcal{F}_S (f'') - \sqrt{\frac{2}{\pi}}f''(0) \\
+    &= \omega \left( - \omega^2 \mathcal{F}_S(f) + \sqrt{\frac{2}{\pi}} \omega f(0) \right) - \sqrt{\frac{2}{\pi}} f''(0) \\
+    &= - \omega^3 \mathcal{F}_S(f) + \sqrt{\frac{2}{\pi}}\omega^2 f(0) - \sqrt{\frac{2}{\pi}}f''(0)
+  .\end{align*}
+  Now we follow the same procedure for the Fourier sine and Fourier transforms as
+  \begin{align*}
+    \mathcal{F}_S (f''') &= \mathcal{F}_S (f'')' \\
+    &= - \omega \mathcal{F}_C(f'') \\
+    &= - \omega \left( - \omega^2 \mathcal{F}_C(f) - \sqrt{\frac{2}{\pi}}f'(0) \right) \\
+    &= \omega^3 \mathcal{F}_C (f) + \sqrt{\frac{2}{\pi}} \omega f'(0) \\
+    \mathcal{F}(f''') &= \mathcal{F}(f'')' \\
+    &= i \omega \mathcal{F}(f'') \\
+    &= i \omega \left( - \omega^2 \mathcal{F}(f) \right) \\
+    &= - i\omega^3 \mathcal{F}(f)
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  \mathcal{F}_C(f''') &= - \omega^3 \mathcal{F}_S(f) + \sqrt{\frac{2}{\pi}} \omega^2 f(0) - \sqrt{\frac{2}{\pi}} f''(0) \\
+  \mathcal{F}_S(f''') &= \omega^3 \mathcal{F}_C (f) + \sqrt{\frac{2}{\pi}} \omega f'(0) \\
+  \mathcal{F}(f''') &= - i \omega^3 \mathcal{F}(f)
+.\end{aligned}
+}
 
 \begin{problem}{4.6}
 Let
@@ -72,6 +186,22 @@ Let
 Find $f(x)$.
 \end{problem}
 
+\begin{derivation}
+  From the Lecture (p. 5) the inverse Fourier sine transform is given as:
+  \begin{equation*}
+    \mathcal{F}_S^{-1}(\hat{f}_S(\omega) = f(x) = \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} \hat{f}_S(\omega) \sin (\omega x) \, \mathrm{d}\omega
+  .\end{equation*}
+  We substitute the $\hat{f}_S(\omega)$ given in the assignment into the above expression to get $f(x)$ as
+  \begin{align*}
+    f(x) &= \sqrt{\frac{2}{\pi}} \int_{0}^{1} \sin (\omega x) \, \mathrm{d}\omega \\
+         &= \sqrt{\frac{2}{\pi}} \frac{1 - \cos(x)}{x}
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+f(x) = \sqrt{\frac{2}{\pi}} \frac{1 - \cos x}{x}
+}
+
 
 \begin{problem}{4.7}
 Let
@@ -83,6 +213,25 @@ Let
 .\]
 Find $f(x)$.
 \end{problem}
+
+\begin{derivation}
+  From the Lecture (p. 7) the inverse Fourier transform is given as:
+  \begin{equation*}
+    \mathcal{F}^{-1}(\hat{f}) = f(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \hat{f}(\omega) e^{i \omega x} \, \mathrm{d}\omega
+  .\end{equation*}
+  Following the same logic as in the above problem we get
+  \begin{align*}
+    f(x) &= \frac{1}{\sqrt{2\pi}} \int_{-1}^{1} e^{i \omega x} \, \mathrm{d}\omega \\
+    &= \frac{1}{\sqrt{2\pi}} \left[ \frac{e^{i \omega x}}{i x} \right]_{\omega = -1}^{\omega = 1} \\
+    &= \frac{1}{\sqrt{2\pi}} \frac{e^{ix} - e^{-ix}}{ix} \\
+    &= \frac{1}{\sqrt{2\pi}} \frac{\cos(x) + i \sin(x) - \cos(-x) - i \sin (-x)}{ix} \\
+    &= \frac{1}{\sqrt{2\pi}} \frac{2\sin (x)}{x}
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+f(x) = \frac{1}{\sqrt{2\pi}} \frac{2 \sin x}{x}
+}
 
 
 \begin{problem}{4.8}
@@ -102,5 +251,21 @@ and assume that we have the boundary condition $f'(0) = 0$.
 Apply the Fourier cosine transform to both sides of the ODE to derive the corresponding equation for $\hat{f}_C (\omega)$.
 Find $\hat{f}_C (\omega)$.
 
-\textit{Hint:} You may want to use the solution of Exercise 3.
+\textit{Hint:} You may want to use the solution of Problem 4.3.
 \end{problem}
+
+\begin{derivation}
+  We apply the Fourier cosine transform to both sides of the ODE as:
+  \begin{equation*}
+    \mathcal{F}_C(f'' + f) = \mathcal{F}_C(r) \implies \mathcal{F}_C(f'') + \mathcal{F}_C(f) = \mathcal{F}_C(r)
+  .\end{equation*}
+  Which corresponds to
+  \begin{align*}
+    - \omega^2 \hat{f}_C(\omega) + \hat{f}_C(\omega) &= \sqrt{\frac{2}{\pi}} \frac{2 \sin \omega - \sin (2\omega)}{\omega} \\
+    \hat{f}_C(\omega) &= \sqrt{\frac{2}{\pi}} \frac{2 \sin \omega - \sin (2\omega)}{\omega \left( 1 - \omega^2 \right)}
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\hat{f}_C(\omega) = \sqrt{\frac{2}{\pi}} \frac{2 \sin \omega - \sin (2\omega)}{\omega (1 - \omega^2)}
+}
