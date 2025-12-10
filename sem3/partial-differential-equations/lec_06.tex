@@ -23,6 +23,49 @@ Let $u(x,t)$ and $u_N(x,t)$ be the corresponding solutions to the above heat equ
 Find the integrated squared error between these solutions (integration with respect to $0 \leq x \leq 1$) as a function of time.
 \end{problem}
 
+\begin{derivation}
+  From the Lecture (p. 4) we have that
+  \begin{equation*}
+    u(x,t) = \sum_{n = 1}^{\infty} B_n e^{-\lambda_n^2 t }\sin \left( \frac{n \pi x }{L} \right)
+  \end{equation*}
+  with
+  \begin{equation*}
+    \lambda_n = \frac{c \pi n}{L}, \quad B_n = \frac{2}{L} \int_{0}^{L} f(x) \sin \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x 
+  .\end{equation*}
+  
+  Since the PDE is $u_t(x,t) = u_{x x}(x,t)$, $c^2 = 1$.
+  Also, $L = 1$.
+  
+  For our initial temperature profile our Fourier sine transform is simply $\sin$ with $B_1 = 1$ and all other $B_n = 0$.
+  Thus
+  \begin{align*}
+    u(x,t) &= \sum_{n = 1}^{\infty} B_n e^{- \lambda_n^2 t} \sin (n \pi x) \\
+    &= e^{-\lambda_1^2 t}\sin(\pi x)
+  .\end{align*}
+
+  The second initial temperature profile we a Fourier sine transform of $\sin$ with $B_1 = 1$, $B_N = 1$ and all other $B_n = 0$.
+
+  Hence
+  \begin{equation*}
+    u(x,t) = e^{-\lambda_1^2 t} \sin (\pi x) + e^{- \lambda_N^2 t} \sin (N \pi x)
+  .\end{equation*}
+  
+  The integrated square error is defined as
+  \begin{equation*}
+    E_N = \int_{0}^{L} \left( u(x,t) - u_N(x,t) \right)^2 \, \mathrm{d}x
+  .\end{equation*}
+  Hence
+  \begin{align*}
+    E_N &= \int_{0}^{1} \left( e^{- \lambda_1^2 t} \sin (\pi x) - e^{-\lambda_1^2 t} \sin (\pi x) - e^{-\lambda_N^2 t} \sin (N\pi x) \right)^2 \, \mathrm{d}x  \\
+    &= e^{-\lambda_N ^2 t} \int_{0}^{1} \sin^2(N \pi x) \, \mathrm{d}x \\
+    &= e^{-\lambda_N^2 t}\left( \frac{1}{2}-\frac{\sin (2 \pi  N)}{4 \pi  N} \right)
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+E_N = e^{-\lambda^2_N t} \left( \frac{1}{2} - \frac{\sin (2 \pi N)}{4 \pi N} \right)
+}
+
 \begin{problem}{6.2}
   Consider the one-dimensional heat equation
 \[ 
@@ -39,6 +82,45 @@ u_t(x, 0) = h(x), 0 \leq x \leq L
 Find the general solution for this situation.
 \end{problem}
 
+\begin{derivation}
+  From the Lecture (p. 7) the general solution that fulfills the boundary conditions is
+  \begin{equation*}
+    u(x,t) = B_0 + \sum_{n = 1}^{\infty} B_n e^{-\lambda_n^2 t} \cos \left( \frac{n \pi x}{L} \right)
+  .\end{equation*}
+
+  The time derivative of the above is
+  \begin{equation*}
+    u_t(x,t) = \sum_{n =1}^{\infty} (- \lambda_n^2 B_n)e^{-\lambda_n^2 t} \cos \left( \frac{n \pi x}{L} \right)
+  .\end{equation*}
+  Evaluating at $t = 0$ gives
+  \begin{equation*}
+    u_t(x,0) = \sum_{n = 1}^{\infty} \left( - \lambda_n^2 B_n \right) \cos \left( \frac{n \pi x}{L} \right) = h(x)
+  .\end{equation*}
+
+  Now we have a Fourier cosine series for $h(x)$.
+  Comparing this with the general representation:
+  \begin{equation*}
+    u(x,0) = f(x) = B^{*}_0 + \sum_{n = 1}^{\infty} B^{*}_n \cos \left( \frac{n \pi x}{L} \right)
+  .\end{equation*}
+  We see that $f(x) = h(x)$ when $B^{*}_0 = 0$ and $B_n^{*} = -\lambda^2 B_n$.
+
+  The general formula for $B_n^{*}$ is (p. 7)
+  \begin{equation*}
+    B^{*}_n = \frac{2}{L} \int_{0}^{L} h(x) \cos \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x 
+  .\end{equation*}
+  
+  Inserting our expression for $B_n^{*}$ and solving for $B_n$ we get
+  \begin{align*}
+    -\lambda^2 B_n &= \frac{2}{L} \int_{0}^{L} h(x) \cos \left( \frac{n \pi x}{L} \right) \\
+    B_n &= -\frac{2}{\lambda^2 L} \int_{0}^{L} h(x) \cos \left( \frac{n \pi x}{L} \right)
+  .\end{align*}
+  
+  Which corresponds to the solution
+\end{derivation}
+
+\finalresult{
+  u(x,t) = B_0 + \sum_{n = 1}^{\infty} \left(  - \frac{2}{\lambda^2 L} \int_{0}^{L} h(x) \cos \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x  \right) e^{-\lambda_n^2 t} \cos \left( \frac{n \pi x}{L} \right)
+}
 
 \begin{problem}{6.3}
   Consider the PDE
@@ -55,19 +137,150 @@ for all $t$.
   \begin{equation*}
     u_x(0,t) = u_x(1,t ) = 0
   \end{equation*}
-  for all $t$.
-  \item Find the general solution that fulfils the conditions
-    \begin{equation*}
-      u_x(0,t) = u_x(1,t) = 0
-    \end{equation*}
-    for all $t$ and
-    \begin{equation*}
-      u(x,0) = 1 + \cos (3 \pi x)
-    \end{equation*}
-    for $0 \leq x \leq 1$.
+  for all $t$ and
+  \begin{equation*}
+    u(x,0) = 1 + \cos(3 \pi x)
+  \end{equation*}
+  for $0 \leq x \leq 1$.
 \end{enumerate}
 \end{problem}
 
+\begin{derivation}
+  \begin{enumerate}[label=\alph*)]
+    \item We use the method of separation of variables.
+      \begin{equation*}
+        u(x,t) = F(x) G(t)
+      .\end{equation*}
+      and get
+      \begin{equation*}
+        F''(x) G(t) = F(x) G''(t) \implies \frac{F''(x)}{F(x)} = \frac{G''(t)}{G(t)} = k
+      .\end{equation*}
+      We are therefore left with two ODE's, one for each of the unknown functions.
+      \begin{align*}
+        F''(x) - F(x) k &= 0 \\
+        G''(t) - G(t) k &= 0
+      \end{align*}
+      with the boundary conditions
+      \begin{align*}
+        F'(0) G(t) &= 0 & &\implies & F'(0) &= 0 \\
+        F'(1) G(t) &= 0 & &\implies & F'(1) &= 0
+      .\end{align*}
+
+      We start by assuming $k = 0$ (p. 3).
+      For this case the spatial ODE is
+      \begin{equation*}
+        F''(x) = 0 \implies F(x) = Ax + B
+      \end{equation*}
+      with some constants $A$ and $B$.
+
+      Our boundary conditions are on $u_x$:
+      \begin{equation*}
+        u_x(x,t) = F'(x) G(t)
+      \end{equation*}
+      so
+      \begin{align*}
+        u_x(0,t) &= 0 & &\implies & F'(0) G(t) &= 0 \\
+        u_x(1,t) &= 0 & &\implies & F'(1) G(t) &= 0
+      .\end{align*}
+      Here we want a non-trivial solution, i.e. $G(t) \neq 0$.
+      This forces
+      \begin{equation*}
+        F'(0) = 0, \quad F'(1) = 0
+      \end{equation*}
+      but since $F'(x) = A$ these conditions just give $A = 0$.
+      Therefore $F(x) = B \quad (\text{constant})$.
+      We choose $B = 1$ and get the interesting case $F(0) = 1$.
+
+      If we instead assume $k>0$ (ibid.) we then get
+      \begin{equation*}
+        F_{x x}(x) = kF(x) \implies F(x) = A e^{\sqrt{k}x} + Be^{-\sqrt{k}x}
+      \end{equation*}
+      for some constants $A$ and $B$.
+      To apply the boundary conditions we take the derivative of this and get
+      \begin{equation*}
+        F'(x) = A\sqrt{k} e^{\sqrt{k}x} - B \sqrt{k} e^{-\sqrt{k}x}
+      .\end{equation*}
+      We now apply the boundary conditions as
+      \begin{align*}
+        F'(0) &= 0 \\
+        A \sqrt{k} - B \sqrt{k} &= 0\\
+        \implies A &= B \\
+        \implies A \sqrt{k} e^{\sqrt{k}x} - B \sqrt{k} e^{-\sqrt{k}x} &= A \sqrt{k}\left( e^{\sqrt{k}x} - e^{-\sqrt{k}x} \right) \\
+        F'(1) &= 0 \\
+        \implies A &= 0 = B
+      .\end{align*}
+      Hence, we only get the uninteresting case $F(x) = 0$ for $k > 0$.
+
+      For $k < 0$ (p. 6) we assume $p = \sqrt{-k}$ and get
+      \begin{equation*}
+        F_{x x}(x) + p^2 F(x) = 0 \implies F(x) = A \cos (px) +  B \sin (px) 
+      \end{equation*}
+      for some constants $A$ and $B$.
+      We take the derivative of this to get
+      \begin{equation*}
+        F'(x) = - Ap \sin (px) + B p \cos(px)
+      .\end{equation*}
+      Applying the boundary conditions we get
+      \begin{align*}
+        F'(0) &= 0 \\
+        B p \cos p &= 0 \\
+        \implies B &= 0 \\
+        F'(1) &= 0 \\
+        - Ap \sin (p) &= 0 \\
+        \implies p &= p_n = n\pi, \quad n = 1,2,3,\ldots 
+      .\end{align*}
+      We choose $A= 1$ and for each $n = 0,1,2,3,\ldots $ the solution becomes (p. 7)
+      \begin{equation*}
+        F_n(x) = \cos \left( n \pi x \right), \quad n = 0,1,2,3,\ldots 
+      .\end{equation*}
+      
+      We therefore have the two interesting cases $F_0(x) = 1$ and $F_n = \cos (n \pi x)$.
+
+      For the temporal equation we start assuming $k = 0$ as an interesting case was found here.
+      We get
+      \begin{align*}
+        G''(t) &= 0 \\
+        G'(t) &= B_0^{*} \\
+        G_0(t) &= B_0 + B_{0}^{*}t
+      .\end{align*}
+
+      For $k < 0$, where the other interesting case was found we get
+      \begin{align*}
+        G''(t) - k G(t) &= 0 \\
+        G''(t) - \left( -p_n^2 \right) G(t) &= 0 \\
+        G_n(t) &= B_n \cos (n \pi t)+ B_n^{*} \sin (n \pi t)
+      .\end{align*}
+
+      We therefore have the two fundamental solutions
+      \begin{align*}
+        u_0(x,t) &= G_0(t) F_0(x) = B_0 + B_0^{*}t \\
+        u_n(x,t) &= G_n(t) F_n(x) = \left( B_n \cos (n\pi t) + B_n^{*}\sin (n \pi t) \right) \cos ( n \pi x) \\
+      .\end{align*}
+      Which gives the general solution
+      \begin{equation*}
+        u(x,t) = u_0(x,t) + \sum_{n = 1}^{\infty} u_n(x,t) = B_0 + B_0^{*}t + \sum_{n = 1}^{\infty} \left( B_n \cos \left( n \pi t \right) + B_n^{*} \sin \left( n \pi t \right) \right) \cos \left( n \pi x \right)
+      .\end{equation*}
+      
+    \item Here, we have the additional condition that $u(x,0) = 1 + \cos (3 \pi x)$ for $0 \leq x \leq 1$.
+      Writing this as a Fourier cosine series
+      \begin{equation*}
+        u(x,0) = B_0 + \sum_{n = 1}^{\infty} B_n \cos \left( n \pi x \right) = 1 + \cos (3\pi x)
+      .\end{equation*}
+      We see that $B_0 = 1$ and $B_3 = 1$ and all other coefficients $B_n = 0$.
+
+      Hence the general solution is
+      \begin{equation*}
+        u(x,t) = 1 + B_0^{*}t + \cos(3 \pi t) \cos (3\pi x) + \sum_{n = 1}^{\infty} B_n^{*} \sin \left(  n \pi t \right) \cos ( n \pi x)
+      .\end{equation*}
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &\mathrm{a}) & u(x,t) &= B_0 + B_0^{*}t + \sum_{n = 1}^{\infty} \left( B_n \cos (n \pi t) + B_n^{*}\sin ( n \pi t) \right) \cos ( n \pi x) \\
+  &\mathrm{b}) & u(x,t) &= 1 + B_0^{*}t \cos \left( 3 \pi t \right) \cos \left( 3 \pi x \right) + \sum_{n = 1}^{\infty} B_n^{*} \sin \left( n \pi t \right) \cos \left( n \pi x \right)
+.\end{aligned}
+}
 
 
 
@@ -96,3 +309,38 @@ u(0,t) = u(L,t) = 0
     .\end{equation*}
 \end{enumerate}
 \end{problem}
+
+\begin{derivation}
+      \textit{Note: Relevant theory on p. 2}
+  \begin{enumerate}[label=\alph*)]
+  \item   From the Lecture (pp. 4-5) we know that for an initial temperature profile $u(x,0)$ expressed as a sum of temperature waves each will decay exponentially with time as
+    \begin{equation*}
+      e^{-\lambda_n^2t}
+    .\end{equation*}
+
+    Hence, for the initial condition $u(x,0) = \sin (\pi x / L)$ the solution is
+    \begin{equation*}
+      u(x,t) = e^{-\lambda_1^2 t} \sin \left( \frac{x \pi}{L}\right)
+    .\end{equation*}
+
+    Plugging this into the equation we get
+    \begin{equation*}
+      \frac{1}{L} \int_{0}^{L} e^{-\lambda_1^2 t} \sin \left( \frac{\pi x}{L} \right) \, \mathrm{d}x  = \frac{2 e^{-\lambda _1^2 t}}{\pi }
+    .\end{equation*}
+  \item Here, we get the solution
+    \begin{equation*}
+      u(x,t) = e^{-\lambda_1^2 t} \sin \left( \frac{\pi x}{L} \right) + e^{-\lambda_2^2 t} \sin \left( \frac{2\pi x}{L} \right)
+    .\end{equation*}
+    Plugging this into the equation we get
+    \begin{equation*}
+      \frac{1}{L} \int_{0}^{L} e^{-\lambda_1^2 t} \sin \left( \frac{\pi x}{L} \right) + e^{-\lambda_2^2 t} \sin \left( \frac{2 \pi x}{L} \right) \, \mathrm{d}x  = \frac{2 e^{-\lambda _1^2t}}{\pi }
+    .\end{equation*}
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &\mathrm{a}) & & \frac{2 e^{-\lambda_1^2 t}}{\pi} \\
+  &\mathrm{b}) & & \frac{2 e^{-\lambda_1^2 t}}{\pi}
+.\end{aligned}
+}

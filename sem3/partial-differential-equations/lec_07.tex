@@ -23,6 +23,27 @@
   Find the solution $u(x,t)$.
 \end{problem}
 
+\begin{derivation}
+  From the Lecture (p. 2) we have the general solution
+  \begin{equation*}
+    u(x,t) = \sum_{n = 1}^{\infty} B_n e^{- \lambda_n^2t} \sin \left( \frac{n \pi x}{L} \right)
+  .\end{equation*}
+  From the Lecture (p. 3) the coefficients $B_n$ are determined as
+  \begin{equation*}
+    B_n = \frac{2}{L} \int_{0}^{L} \left( f(x) \right) \sin \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x 
+  .\end{equation*}
+  Substituting our variables we get
+  \begin{align*}
+    B_n &= \frac{2}{L} \int_{0}^{L} T_0 \sin \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x  \\
+    &= \frac{2 T_0}{L} \int_{0}^{L} \sin \left( \frac{n \pi x}{L} \right)\, \mathrm{d}x  \\
+    &=  \frac{2T_0 (1- \cos (\pi  n))}{\pi  n}
+  .\end{align*}
+  Hence, the solution is  
+\end{derivation}
+\finalresult{
+u(x,t) = \sum_{n = 1}^{\infty} \frac{2 T_0 (1 - \cos (\pi n)}{\pi n} e^{- \lambda_n^2t} \sin \left( \frac{n \pi x}{L} \right)
+}
+
 
 \begin{problem}{7.2}
   Consider the one-dimensional heat equation
@@ -46,6 +67,27 @@
   Find the solution $u(x,t)$.
 \end{problem}
 
+\begin{derivation}
+  From the Lecture (p. 2) we have the general solution
+  \begin{equation*}
+    u(x,t) = \frac{T_2 - T_1}{L}x + T_1 + \sum_{n = 1}^{\infty} B_n e^{-\lambda_n^2t} \sin \left( \frac{n \pi x}{L} \right)
+  \end{equation*}
+  with coefficients
+  \begin{equation*}
+    B_n = \frac{2}{L} \int_{0}^{L}  \left( f(x) - \frac{T_2 - T_1}{L}x - T_1 \right) \sin \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x 
+  .\end{equation*}
+  Substituting, we get
+  \begin{align*}
+    B_n &= \frac{2}{L} \int_{0}^{L} \left( \frac{T_2 - T_1}{L} x + T_0 - \frac{T_2 - T_1}{L}x - T_1 \right) \sin \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x \\
+        &= \frac{2}{L} \int_{0}^{L} \left( T_0 - T_1 \right) \sin \left( \frac{n \pi x}{L} \right) \\
+        &= \frac{2 \left( T_0 - T_1 \right) \left(1 - \cos (\pi n) \right)}{\pi n}
+  .\end{align*}
+  Which gives the solution
+\end{derivation}
+
+\finalresult{
+  u(x,t) = \frac{T_2 - T_1}{L}x + T_1 + \sum_{n = 1}^{\infty} \frac{2 \left( T_0 - T_1 \right) \left( 1 - \cos \left( \pi n \right) \right)}{\pi n} e^{-\lambda_n^2 t} \sin \left( \frac{n \pi x}{L} \right)
+}
 
 \begin{problem}{7.3}
   Consider the steady heat flow on a thin plate in the $xy$-plane, $0 \leq x \leq 1, 0 \leq y \leq 1$, insulated from above/below, governed by
@@ -59,6 +101,29 @@
   .\end{align*}
 \end{problem}
 
+\begin{derivation}
+  From the Lecture (p. 7) we have the general solution
+  \begin{equation*}
+    u(x,y) = \sum_{n = 1}^{\infty} C_n^{*} \sin \left( \frac{n \pi x}{a} \right) \sinh \left( \frac{n \pi y}{a} \right)
+  \end{equation*}
+  where $a = 1$ is the length of the domain in the $x$ direction.
+  Hence,
+  \begin{equation*}
+    u(x,y) = \sum_{n = 1}^{\infty} C_n^{*} \sin (n \pi x) \sinh (n \pi y)
+  .\end{equation*}
+  We use the upper boundary condition and get
+  \begin{align*}
+    u(x,1) &= 0 \\
+    &= \sum_{n = 1}^{\infty} C_n^{*} \sin (n \pi x) \sinh(n \pi) \\
+    &= C_n^{*} = 0
+  \end{align*}
+  for all $n$.
+
+  The unique solution is therefore
+\end{derivation}
+
+\finalresult{u(x,y) = 0}
+
 \begin{problem}{7.4}
   Consider the steady heat flow on a thin plate in the $xy$-plane, $0 \leq x\leq 3, 0 \leq y \leq 2$, insulated from above/below, governed by
   \[ 
@@ -71,6 +136,27 @@
   .\end{align*}
 \end{problem}
 
+\begin{derivation}
+  Here, we have the general solution (p. 7)
+  \begin{equation*}
+    u(x,y) = \sum_{n = 1}^{\infty} C_n^{*} \sin \left( \frac{n \pi x}{3} \right) \sinh \left( \frac{n \pi y}{3} \right)
+  .\end{equation*}
+  We use the upper boundary condition and get
+  \begin{align*}
+    u(x,2) &= 2 \sin \frac{8 \pi}{3} \\
+    2 \sin \frac{8 \pi}{3} &= \sum_{n = 1}^{\infty} C_n^{*} \sin \left(\frac{2n \pi}{3} \right) \sinh \left(\frac{2 n \pi}{3} \right)
+  \end{align*}
+  by comparison, we see that
+  \begin{equation*}
+    C_4^{*} \sinh \frac{8 \pi}{3} = 2 \implies C_4^{*} = \frac{2}{\sinh \frac{8 \pi}{3}}
+  .\end{equation*}
+  
+  Hence, the solution is
+\end{derivation}
+\finalresult{
+u(x,y) = \frac{2}{\sinh \frac{8 \pi}{3}} \sin \left( \frac{4 \pi x}{3} \right) \sinh \left( \frac{4 \pi y}{3} \right)
+}
+
 \begin{problem}{7.5}
   Consider the steady heat flow on a thin plate in the $xy$-plane, $0 \leq x\leq 1, 0 \leq y \leq 1$, insulated from above/below, governed by
   \[ 
@@ -82,4 +168,10 @@
     u(0,y) &= 0, & u(1,y) &= 0, & 0 \leq& y \leq 1
   .\end{align*}
 \end{problem}
+
+\begin{derivation}
+  See Problem 7.3.
+\end{derivation}
+
+\newpage
 

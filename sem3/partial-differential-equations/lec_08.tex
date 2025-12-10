@@ -10,6 +10,23 @@
   \textit{Hint:} Coefficients of double Fourier sine series are unique.
 \end{problem}
 
+\begin{derivation}
+  From the Lecture (p. 2) the general representation of the double Fourier sine series of $f(x,y)$ is
+  \begin{equation*}
+    f(x,y) = \sum_{m = 1}^{\infty} \sum_{n = 1}^{\infty} S_{m,n} \sin \left( \frac{m \pi x}{a} \right) \sin \left( \frac{n \pi y}{b} \right)
+  .\end{equation*}
+  
+  First of all we simplify the given function as
+  \begin{equation*}
+    f(x,y) = 3 \sin \left( \frac{3 \pi x}{2} \right)\sin \left( \frac{4 \pi y}{3} \right) + 2 \sin \left( \frac{\pi x}{2} \right) \sin \left( \frac{4\pi y}{3} \right)
+  .\end{equation*}
+  By comparison, we see that
+\end{derivation}
+
+\finalresult{
+  S_{3,4} = 3, \quad S_{1,4} = 2, \qquad  \text{All other Fourier coefficients are } 0
+}
+
 \begin{problem}{8.2}
   Consider the deflection $u(x,t)$ of a vibrating elastic membrane in the $xy$-plane, $0 \leq x \leq 1, 0 \leq y \leq 1$, fixed along its boundaries and governed by
   \[ 
@@ -37,6 +54,76 @@
   \textit{Hint}: Coefficients of double Fourier dine series are unique.
 \end{problem}
 
+\begin{derivation}
+  \begin{enumerate}[label=\alph*)]
+    \item From the Lecture (p. 6) the general solution is
+      \begin{equation*}
+        u(x,y,t) = \sum_{m = 1}^{\infty} \sum_{n = 1}^{\infty} \left( E_{m,n} \cos \left( \lambda_{m,n}t \right) + J_{m,n} \sin \left( \lambda_{m,n}t \right) \right) \sin \left( \frac{m \pi x}{a} \right) \sin \left( \frac{n \pi y}{b} \right)
+      .\end{equation*}
+      Which, in this case simplifies to
+      \begin{equation*}
+        u(x,y,t) = \sum_{m = 1}^{\infty} \sum_{n = 1}^{\infty} \left( E_{m,n} \cos \left( \lambda_{m,n}t \right) + J_{m,n} \sin \left( \lambda_{m,n}t \right) \right) \sin \left( m \pi x \right) \sin \left( n \pi y \right)
+      .\end{equation*}
+
+      We now employ the initial elongation (p. 6) to get
+      \begin{align*}
+        u(x,y,0) &= \sin (6 \pi x) \sin (2 \pi y) \\
+        &= \sum_{m = 1}^{\infty} \sum_{n = 1}^{\infty} E_{m,n} \sin (n \pi x) \sin (m \pi y)\\
+        \implies E_{6,2} &= 1
+      .\end{align*}
+
+      Using the initial velocity we get
+      \begin{align*}
+        u_t(x,y,0) &= 0 \\
+        &=  \sum_{m = 1}^{\infty} \sum_{n = 1}^{\infty} \left( J_{m,n} \lambda_{m,n} \cos \left( \lambda_{m,n}t \right) \right) \sin \left( m \pi x \right) \sin \left( n \pi y \right) \\
+        \implies J_{m,n} &= 0
+      .\end{align*}
+      
+      From the Lecture (p. 5) we have that
+      \begin{equation*}
+        \lambda_{m,n} = c\pi \sqrt{\frac{m^2}{a^2} + \frac{n^2}{b^2}}
+      .\end{equation*}
+      To find $\lambda_{6,2}$ we simply use
+      \begin{equation*}
+        \lambda_{6,2} = c \pi \sqrt{\frac{6^2}{1} + \frac{2^2}{1}} = c\pi \sqrt{40}
+      .\end{equation*}
+      Hence, the solution is
+      \begin{equation*}
+        u(x,y,t) =\cos \left( c \pi \sqrt{40}t \right) \sin (6 \pi x) \sin (2 \pi y)
+      .\end{equation*}
+
+    \item In this gave the initial elongation gives
+      \begin{equation*}
+        u(x,y,0) = 0 \implies E_{m,n} = 0
+      .\end{equation*}
+      From the initial velocity, we get
+      \begin{align*}
+        u_t(x,y,0) &= \sin (6 \pi x) \sin (2 \pi y) \\
+        &= \sum_{m = 1}^{\infty} \sum_{n = 1}^{\infty} \left( J_{m,n} \lambda_{m,n} \right) \sin (m  \pi x) \sin (n \pi y) \\
+        \implies J_{6,2}\lambda_{6,2} &= 1 \\
+        J_{6,2} &= \frac{1}{c\pi \sqrt{40}}
+      .\end{align*}
+      Hence, the solution is
+      \begin{equation*}
+        u(x,y,t) = \frac{1}{c \pi \sqrt{40}} \sin \left( c \pi \sqrt{40}t \right) \sin (6 \pi x) \sin (2 \pi y)
+      .\end{equation*}
+      
+    \item For this case we have in the above two parts found $E_{6,2} = 1$ and $J_{6,2} = 1 / (\sqrt{40} c \pi)$.
+      Hence, the general solution is
+      \begin{equation*}
+        u(x,y,t) = \left( \cos (\sqrt{40}c\pi t) + \frac{1}{\sqrt{40}c\pi} \sin (\sqrt{40}c \pi t)  \right) \sin(6\pi x) \sin (2\pi y)
+      .\end{equation*}
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &\mathrm{a}) & u(x,y,t) &= \cos \left( \sqrt{40} c \pi t \right) \sin (6 \pi x) \sin (2 \pi y) \\
+  &\mathrm{b}) & u(x,y,t) &= \frac{1}{\sqrt{40}c\pi} \sin \left( \sqrt{40}c \pi t \right) \sin \left( 6 \pi x \right) \sin (2 \pi y) \\
+  &\mathrm{c}) & u(x,y,t) &= \left( \cos \left( \sqrt{40}c\pi t \right) + \frac{1}{\sqrt{40}c\pi} \sin \left( \sqrt{40}c \pi t \right) \right) \sin \left( 6 \pi x \right) \sin \left( 2 \pi y \right)
+.\end{aligned}
+}
+
 \begin{problem}{8.3}
   Consider the two-dimensional heat equation
   \[ 
@@ -48,6 +135,34 @@
   (b) Assume $F(x,y) = H(x) Q(y)$ to finally derive three ODEs for $H(x)$, $Q(y)$ and $G(t)$.
 \end{problem}
 
+\begin{derivation}
+  \begin{enumerate}[label=\alph*)]
+    \item By insertion, we obtain
+      \begin{align*}
+        F(x,y) G'(t) &= c^2 \left( F_{x x}(x,y)G(t) + F_{yy}(x,y)G(t) \right) \\
+        \frac{G'(t)}{c^2 G(t)} &= \frac{F_{x x}(x,y) + F_{yy}(x,y)}{F(x,y)} = c_0 \\
+        \implies F_{x x}(x,y) + F_{yy}(x,y) - c_0 F(x,y) &= 0 \\
+        G'(t) - c_0 c^2 G(t) &= 0
+      .\end{align*}
+    \item Again, we insert and get
+      \begin{align*}
+        H''(x) Q(y) + H(x) Q''(y) - c_0 H(x) Q(y) &= 0 \\
+        \frac{H''(x)}{H(x)} &= -\frac{Q''(y)}{Q(y)} + c_0 = c_1 \\
+        \implies H''(x) - c_1 H(x) &= 0 \\
+        Q''(y) - (c_0 - c_1) Q(y) &= 0 \\
+        G'(t) - c_0 c^2 G(t) &= 0
+      .\end{align*}
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  H''(x) - c_1 H(x) &= 0 \\
+  Q''(y) - (c_0 - c_1) Q(y) &= 0 \\
+  G'(t) - c_0 c^2 G(t) &= 0
+.\end{aligned}
+}
+
 \begin{problem}{8.4}
   Consider the PDE
   \[ 
@@ -55,3 +170,46 @@
   .\]
   Assume $u(x,y,z,t) = H(x)Q(y)P(z)G(t)$ and derive 4 ODEs for $H(x), Q(y), P(z),$ and $G(t)$.
 \end{problem}
+
+\begin{derivation}
+  We assume $u(x,y,z,t) = A(x,y,z) G(t)$ and get
+  \begin{align*}
+    A(x,y,z) G'(t) &= A_x(x,y,z)G(t) + A_y(x,y,z) G(t) + A_z (x,y,z)G(t)  \\
+    \frac{G'(t)}{G(t)} &= \frac{A_x(x,y,z) + A_y(x,y,z) + A_z(x,y,z)}{A(x,y,z)} = c_0 \\
+    \implies G'(t) - c_0 G(t) &= 0
+  .\end{align*}
+  Leaving us with
+  \begin{equation*}
+    A_x (x,y,z) + A_y(x,y,z) + A_z(x,y,z) - c_0 A(x,y,z) = 0
+  .\end{equation*}
+  
+  Now we assume $A(x,y,z) = B(x,y) P(z)$ and get
+  \begin{align*}
+    B_x(x,y) P(z) + B_y(x,y) P(z) + B(x,y) P'(z) - c_0 B(x,y) P(z) &= 0 \\
+    B_x(x,y) P(z) + B_y(x,y) P(z) &= c_0 B(x,y) P(z) - B(x,y) P'(z) \\
+    \frac{B_x (x,y) + B_y(x,y)}{B(x,y)} &= c_0 - \frac{P'(z)}{P(z)} = c_1 \\
+    \implies P'(z) - (c_0 - c_1 ) P(z) &= 0
+  .\end{align*}
+  Leaving us with
+  \begin{equation*}
+    B_x (x,y) + B_y(x,y) - c_1 B(x,y) = 0
+  .\end{equation*}
+  
+  Now we assume $B(x,y) = H(x) Q(y)$ and get
+  \begin{align*}
+    H'(x) Q(y) + H(x) Q'(y) - c_1 H(x) Q(y) &= 0 \\
+    \frac{H'(x)}{H(x)} &= c_1 - \frac{Q'(y)}{Q(y)} = c_2 \\
+    H'(x) - c_2 H(x) &= 0 \\
+    Q'(y) - (c_1 - c_2) Q(y) &= 0
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  H'(x) - c_2 H(x) &= 0 \\
+  Q'(y) - (c_1 - c_2) Q(y) &= 0 \\
+  P'(z) - (c_0 - c_1) P(z) &= 0 \\
+  G'(t) - c_0 G(t) &= 0
+.\end{aligned}
+}
+
