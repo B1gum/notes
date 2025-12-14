@@ -8,6 +8,39 @@
   where $(r, \theta, \Phi)$ are spherical coordinates as defined in Section 8.2.2.
 \end{problem}
 
+\begin{derivation}
+  Spherical coordinates are defined in Section 8.2.2 as
+  \begin{equation*}
+    r = \sqrt{x^2 + y^2 + z^2}, \qquad \cos \Phi = \frac{z}{\sqrt{x^2 + y^2 + z^2}}, \qquad \tan \theta = \frac{y}{x}
+  .\end{equation*}
+  From the Chain rule (p. 2) we have that
+  \begin{equation*}
+    \overline{u}_x (r, \theta, \Phi) = \overline{u}_r (r, \theta, \Phi) r_x(x,y,z) + \overline{u}_{\theta} (r, \theta, \Phi) \theta_x(x,y,z) + \overline{u}_{\Phi}(r, \theta, \Phi) \Phi_x(x,y,z)
+  .\end{equation*}
+  Therefore, we must find the derivative of each coordinate with respect to x as
+  \begin{align*}
+    r_x(x,y,z) &= \frac{\partial \sqrt{x^2 + y^2 + z^2}}{\partial x} \\
+    \frac{\partial \sqrt{x^2 + y^2 + z^2}}{\partial x} &= \frac{x}{\sqrt{x^2+y^2+z^2}} = \cos \Phi \sin \theta \\
+    \frac{\partial \tan (\theta(x,y,z)}{\partial x} &= \frac{1}{\cos^2 \theta(x,y,z)} \theta_x(x,y,z) \\
+    \frac{\partial \tan (\theta(x,y,z)}{\partial x} &= \frac{\partial }{\partial x} \frac{y}{x} \\
+       &= -\frac{y}{x^2} \\
+       - \frac{y}{x^2} &= - \frac{\sin \theta}{r \cos^2 \theta \sin \Phi} \\
+       \implies \theta_{x}(x,y,z) &= - \frac{\sin \theta}{r \sin \Phi} \\
+       \frac{\partial \cos \Phi(x,y,z)}{\partial x} &= - \sin \Phi(x,y,z) \Phi_x(x,y,z) \\
+       \frac{\partial \cos \Phi(x,y,z)}{\partial x} &= \frac{\partial }{\partial x} \frac{z}{\sqrt{x^2 + y^2 + z^2}} \\
+       &= - \frac{xz}{\left( x^2 + y^2 + z^2 \right)^{\frac{3}{2}}} \\
+       &= - \frac{\cos \theta \sin \Phi \cos \Phi}{r} \\
+       \implies \Phi_x(x,y,z) &= \frac{\cos \theta \cos \phi}{r}
+  .\end{align*}
+  By insertion we get:
+  \begin{equation*}
+    \overline{u}_x(r, \theta, \Phi) = \overline{u}(r, \theta, \Phi) \cos \Phi \sin \theta - \overline{u}_{\theta} (r, \theta, \Phi) \frac{\sin \theta}{r \sin \Phi} + \overline{u}_{\Phi} (r, \theta, \Phi) \frac{\cos \theta \cos \Phi}{r}
+  .\end{equation*}
+  Hence, it is shown.
+\end{derivation}
+
+\newpage
+
 \begin{problem}{11.2}
   Derive the expression
   \begin{equation*}
@@ -16,10 +49,58 @@
   where $(r, \theta, \Phi)$ are spherical coordinates as defined in Section 8.2.2.
 \end{problem}
 
+\begin{derivation}
+  Following the same logic as in Problem 11.1 we take the derivatives in $y$ this time as
+  \begin{align*}
+    \frac{\partial \sqrt{x^2 + y^2 + z^2}}{\partial y} &= \frac{y}{\sqrt{x^2 + y^2 + z^2}} = \sin \theta \sin \Phi \\
+    \frac{\partial \tan \theta(x,y,z)}{\partial y} &= \frac{1}{x} = \frac{1}{r \cos \theta \sin \Phi} \\
+    \implies \theta_y(x,y,z) &= \frac{\cos \theta}{r \sin \Phi} \\
+    \frac{\partial \cos \Phi(x,y,z)}{\partial y} &= - \frac{yz}{\sqrt{x^2 + y^2 + z^2}^{\frac{3}{2}}} = - \frac{\sin \theta \sin \Phi \cos \Phi}{r}\\
+    \implies \Phi_y(x,y,z) &= \frac{\sin \theta \cos \Phi}{r}
+  .\end{align*}
+  Inserting this, we get
+  \begin{equation*}
+    \overline{u}_y(r, \theta, \Phi) = \overline{u}_r(r, \theta, \Phi) \sin \theta \sin \Phi + \overline{u}_{\theta}(r, \theta, \Phi) \frac{\cos \theta}{r \sin \Phi} + \overline{u}_{\Phi}(r, \theta, \Phi) \frac{\sin \theta \cos \Phi}{r}
+  .\end{equation*}
+  Hence, it is shown.
+\end{derivation}
+
 \begin{problem}{11.3}
   Show that Equations (1) and (2) are equivalent.
 \end{problem}
 
+\begin{derivation}
+  Using the Laplacian, we rewrite (2), as
+  \begin{align*}
+    \nabla ^2 &= \frac{1}{r^2} \left( \frac{\partial }{\partial r} \left( r^2 \frac{\partial }{\partial r}  \right) + \frac{1}{\sin \Phi} \frac{\partial }{\partial \Phi} \left( \sin (\Phi) \frac{\partial }{\partial \Phi}  \right) + \frac{1}{\sin^2 \Phi} \frac{\partial ^2}{\partial \theta^2}  \right) \\
+    &= \frac{1}{r^2} \left( 2r \frac{\partial }{\partial r}  + r^2 \frac{\partial ^2}{\partial r^2} + \frac{1}{\sin \Phi} \left( \cos (\Phi) \frac{\partial}{\partial \Phi} + \sin(\Phi) \frac{\partial ^2}{\partial \Phi^2}  \right) + \frac{1}{\sin^2 \Phi} \frac{\partial ^2}{\partial \theta^2}  \right) \\
+    &= \frac{\partial ^2}{\partial r^2}  + \frac{2}{r} \frac{\partial }{\partial r} + \frac{1}{r^2} \frac{\partial ^2}{\partial \Phi^2}  + \frac{1}{r^2} \cot (\Phi) \frac{\partial }{\partial \Phi} + \frac{1}{r^2 \sin^2\Phi} \frac{\partial^2}{\partial \theta^2} 
+  .\end{align*}
+  Which is equivalent to the Laplacian of (1).
+\end{derivation}
+
+\newpage
+
 \begin{problem}{11.4}
   How does the general solution in Section 9.4 change if we are dealing with the two-dimensional heat equation on a disk of radius $R$ subject to the condition that the boundary curve is kept at zero temperature and the initial temperature profile only depends on the distance from the centre of the disk.
 \end{problem}
+
+\begin{derivation}
+  From the Lecture (p. 5) the general solution is
+  \begin{equation*}
+    \overline{u}(r,t) = \sum_{m = 1}^{\infty} \left( A_m \cos (\lambda_m t) + B_m \sin (\lambda_m t) \right) J_0 \left( \frac{\alpha_m}{R}r \right) 
+  .\end{equation*}
+  In this case, our ODE for $G(t)$ is changed to
+  \begin{equation*}
+    G_t(t) + \lambda_m^2 G(t) = 0, \quad \lambda_m = ck_m = c \frac{\alpha_m}{R}
+  .\end{equation*}
+  Which has solutions
+  \begin{equation*}
+    G_m(t) = A_m e^{-\lambda_m^2 t}, \quad \lambda_m = ck_m = c \frac{\alpha_m}{R}
+  .\end{equation*}
+  Hence, the general solution is:
+\end{derivation}
+
+\finalresult{
+\overline{u}(r, t) = \sum_{m = 1}^{\infty} A_m e^{- \lambda_m^2 t} J_0 \left( \frac{\alpha_m}{R}r \right)
+}

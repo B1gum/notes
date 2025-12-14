@@ -12,6 +12,34 @@
   for arbitrary twice differentiable functions $\Phi$ and $\Psi$.
 \end{problem}
 
+\begin{derivation}
+  We start by calculating the second derivative with respect to $t$, remembering to use the chain rule as
+  \begin{align*}
+    \frac{\partial u(x,t)}{\partial t} &= \frac{\mathrm{d} \Phi(x+ct)}{\mathrm{d} t} + \frac{\mathrm{d} \Psi(x-ct)}{\mathrm{d} t}  \\
+    &= \frac{\mathrm{d}\Phi(x+ct)}{\mathrm{d}(x + ct)} \frac{\mathrm{d}(x+ct)}{\mathrm{d}t} + \frac{\mathrm{d}\Psi(x-ct)}{\mathrm{d}(x-ct)} \frac{\mathrm{d}(x-ct)}{\mathrm{d}t}   \\
+    &= c \left( \frac{\mathrm{d}\Phi(x+ct)}{\mathrm{d}(x+ct)} - \frac{\mathrm{d}\Psi(x-ct)}{\mathrm{d}(x-ct)}  \right) \\
+    \frac{\partial^2 u(x,t)}{\partial t^2} &= c \left( \frac{\mathrm{d}^2\Phi(x+ct)}{\mathrm{d}(x+ct)^2} \frac{\mathrm{d}(x+ct)}{\mathrm{d}t} - \frac{\mathrm{d}^2\Phi(x-ct)}{\mathrm{d}(x-ct)^2} \frac{\mathrm{d}(x-ct)}{\mathrm{d}t}   \right) \\
+    &= c^2 \left( \frac{\mathrm{d}^2 \Phi(x+ct)}{\mathrm{d}(x+ct)^2} + \frac{\mathrm{d}^2 \Psi(x-ct)}{\mathrm{d}(x-ct)^2}   \right) \\
+  .\end{align*}
+
+  Now we calculate the second derivatives with respect to $x$ and get
+  \begin{align*}
+    \frac{\partial u(x,t)}{\partial x} &= \frac{\mathrm{d} \Phi(x+ct)}{\mathrm{d} x} + \frac{\mathrm{d} \Psi(x-ct)}{\mathrm{d} x}  \\
+    &= \frac{\mathrm{d}\Phi(x+ct)}{\mathrm{d}(x + ct)} \frac{\mathrm{d}(x+ct)}{\mathrm{d}x} + \frac{\mathrm{d}\Psi(x-ct)}{\mathrm{d}(x-ct)} \frac{\mathrm{d}(x-ct)}{\mathrm{d}x}   \\
+    &= \frac{\mathrm{d}\Phi(x+ct)}{\mathrm{d}(x+ct)} - \frac{\mathrm{d}\Psi(x-ct)}{\mathrm{d}(x-ct)} \\
+    \frac{\partial^2 u(x,t)}{\partial t^2} &= \frac{\mathrm{d}^2\Phi(x+ct)}{\mathrm{d}(x+ct)^2} \frac{\mathrm{d}(x+ct)}{\mathrm{d}x} - \frac{\mathrm{d}^2\Phi(x-ct)}{\mathrm{d}(x-ct)^2} \frac{\mathrm{d}(x-ct)}{\mathrm{d}x} \\
+    &= \frac{\mathrm{d}^2 \Phi(x+ct)}{\mathrm{d}(x+ct)^2} + \frac{\mathrm{d}^2 \Psi(x-ct)}{\mathrm{d}(x-ct)^2} \\
+  .\end{align*}
+  Since
+  \begin{align*}
+    \frac{\partial^2 u(x,t)}{\partial t^2} &= c^2 \frac{\partial^2 u(x,t)}{\partial x^2}  \\
+    \frac{\mathrm{d}^2 \Phi(x+ct)}{\mathrm{d}(x+ct)^2} + \frac{\mathrm{d}^2\Phi(x-ct)}{\mathrm{d}(x-ct)} &= c^2 \left( \frac{\mathrm{d}^2 \Phi(x+ct)}{\mathrm{d}(x+ct)^2} + \frac{\mathrm{d}^2 \Psi(x-ct)}{\mathrm{d}(x-ct)^2}   \right)  
+  \end{align*}
+  is is shown.
+\end{derivation}
+
+\newpage
+
 \begin{problem}{9.2}
   Consider the PDE
   \[ 
@@ -29,16 +57,68 @@
   You may assume that $\overline{u}(v,w)$ is twice continuously differentiable, i.e. $\overline{u}_{vw}(v,w) = \overline{u}_{wv}(v, w)$.
 \end{problem}
 
+\begin{derivation}
+  From the Lecture (p. 2), we have that
+  \begin{equation*}
+    u_{xt}(x,t) = \overline{u}_{xt}(v(x,t), w(x,t))
+  .\end{equation*}
+  We take the first derivative in $t$, using the chain rule, and get
+  \begin{align*}
+    \overline{u}_{t}(x,t) &= \overline{u}_v(v,w) v_t(x,t) + \overline{u}_w(v,w) w_t(x,t) \\
+    &= \overline{u}_v(v,w) \cdot 2 + \overline{u}_w(v,w) \cdot (-2) \\
+    &= 2 \left( \overline{u}_v (v,w) - \overline{u}_w(v,w) \right)
+  .\end{align*}
+  We now take the derivative of this in $x$ to get
+  \begin{align*}
+  \overline{u}_{xt}(x,t) &= 2 \left( \overline{u}_{vv}(v,w) v_x(x,t) + \overline{u}_{wv}(v,w)w_x(x,t) - \overline{u}_{uw}(v,w) v_x(x,t) - \overline{u}_{ww}(v,w) w_x(x,t) \right) \\
+    &= 2 \left( \overline{u}_{vv}(v,w) - \overline{u}_{ww}(v,w) \right)
+  .\end{align*}
+
+  Now, we insert this into the original PDE:
+  \begin{align*}
+    u_{xt}(x,t) &= 0 \\
+    2 \left( \overline{u}_{vv}(v,w) - \overline{u}_{ww}(v,w) \right) &= 0 \\
+    \overline{u}_{vv}(v,w) - \overline{u}_{ww}(v,w) &= 0
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\overline{u}_{vv}(v,w) - \overline{u}_{ww}(v,w) = 0
+}
 
 \begin{problem}{9.3}
   Calculate d'Alembert's solution corresponding to the initial conditions
   \[ 
-  u(x,0) = k_0 \sin \left( 3 \pi x \right), u_t (x,0) = 3 \pi k_0 \sin \left( 3 \pi x \right), - \infty < x < \infty
+  u(x,0) = k_0 \sin \left( 3 \pi x \right), \quad u_t (x,0) = 3 \pi k_0 \sin \left( 3 \pi x \right), \quad - \infty < x < \infty
   ,\]
   where $k_0$ is a constant.
 
   Compare your result to that of Exercice 5, Lecture 5.
 
-  \textit{Hint}: $\sin \left( \alpha + \beta \right) = \sin \alpha \cos \beta + \cos \alpha \sin \beta, \cos(\alpha + \beta) = \cos \alpha \cos \beta - \sin \alpha \sin \beta$.
+  \textit{Hint}: $\sin \left( \alpha + \beta \right) = \sin \alpha \cos \beta + \cos \alpha \sin \beta, \quad \cos(\alpha + \beta) = \cos \alpha \cos \beta - \sin \alpha \sin \beta$.
 \end{problem}
 
+\begin{derivation}
+  From the Lecture (p. 6) d'Alembert's solution to the one-dimensional wave equation is
+  \begin{equation*}
+    u(x,t ) = \frac{1}{2} \left( f(x+ct) + f(x-ct) \right) + \frac{1}{2c} \int_{x - ct}^{x + ct} g(s) \, \mathrm{d}s
+  \end{equation*}
+  with initial conditions
+  \begin{align*}
+    u(x,0) &= f(x) = k_0 \sin (3\pi x), & -\infty<&x<\infty \\
+    u_t(x,0) &= g(x) = 3\pi k_0 \sin (3\pi x), & -\infty<&x<\infty
+  .\end{align*}
+  By insertion we get
+  \begin{align*}
+    u(x,t) &= \frac{1}{2} \left( k_0 \sin (3 \pi (x+ct)) + k_0 \sin (3\pi (x-ct)) \right) + \frac{1}{2c} \int_{x-ct}^{x+ct} 3\pi k_0 \sin (3\pi s) \, \mathrm{d}s  \\
+    &= \frac{k_0}{2} \left( \sin (3 \pi x +  3\pi ct)) + \sin (3\pi x- 3\pi ct) \right) + \frac{3\pi k_0}{2c} \int_{x - ct}^{x + ct} \sin (3\pi s) \, \mathrm{d}s \\
+    &= \frac{k_0}{2} \left( \sin (3\pi x) \cos(3\pi ct) + \cos(3\pi x) \sin (3\pi ct) + \sin (3\pi x) \cos (-3 \pi ct) + \cos (3\pi x) \sin(-3\pi ct) \right) \\
+    &\qquad \qquad  + \frac{3\pi k_0}{2c} \cdot \frac{2 \sin (3 \pi  x) \sin (3 \pi  c t)}{3 \pi } \\
+    &= \frac{k_0}{2} \left( 2 \sin (3\pi x) \cos (3\pi ct) \right)+ \frac{k_0}{c} \sin (3\pi x) \sin (3\pi ct) \\
+    &= k_0 \sin (3\pi x) \cos (3\pi ct) + \frac{k_0}{c} \sin (3\pi x) \sin (3\pi ct)
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+u(x,t) = k_0 \sin (3\pi x) \cos (3\pi ct) + \frac{k_0}{c} \sin (3\pi x) \sin (3\pi ct)
+}

@@ -4,6 +4,21 @@
   Find an approximation for $u_{xy}(x,y)$.
 \end{problem}
 
+\begin{derivation}
+  We have that $u_{xy}(x,y) = (u_y(x,y))_x$.
+  Using the approximation of partial derivatives from p. 3, we know that
+  \begin{align*}
+    u_x(x,y) &\approx \frac{u(x+h, y) - u((x-h), y)}{2h} \\
+    \left( u_x(x,y) \right)_y &\approx \frac{u_y(x+h,y) - u_y(x-h, y)}{2h} \\
+    u_{xy}(x,y) &\approx \frac{\frac{u(x+h, y+h) - u(x+h,y-h)}{2h} - \frac{u(x-h, y+h) - u(x-h, y-h)}{2h}}{2h} \\
+                &= \frac{u(x+h, y+h) - u(x+h, y-h) - u(x-h, y+h) - u(x-h, y-h)}{4h^2}
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+u_{xy}(x,y) \approx \frac{u(x+h, y+h) - u(x+h, y-h) - u(x-h, y+h) - u(x-h, y-h)}{4h^2}
+}
+
 \begin{problemwithimage}{p12_2}{12.2}
     Consider the Poisson equation
   \begin{equation*}
@@ -13,6 +28,61 @@
   Find the corresponding system of difference equations for mesh size $h = \qty{4}{\cm}$.
 \end{problemwithimage}
 
+\begin{derivation}
+  From the Lecture (p. 3) the corresponding difference equation in mesh notation is
+  \begin{equation*}
+   u_{i+1, j} + u_{i, j+1} + u_{i-1, j} + u_{i, j-1} - 4u_{i,j} = \frac{ijh^{4}(12-ih) (12-jh)}{16}
+  .\end{equation*}
+  Our boundary mesh points are
+  \begin{align*}
+    u_{00} &= 100, & u_{10} &= 100, & u_{20} &= 100, & u_{30} &= 100, \\
+    u_{01} &= 100, & u_{31} &= 100, & u_{02} &= 100, & u_{32} &= 100, \\
+    u_{03} &= 100, & u_{31} &= 132, & u_{32} &= 132, & u_{33} &= 100
+  .\end{align*}
+
+  We remember that our difference equation for our unknown points are
+  \begin{equation*}
+    u_{i+1, j} + u_{i, j+1} + u_{i-1, j} + u_{i, j-1} - 4u_{i,j} = \frac{ijh^{4} (12-ih) (12-jh)}{16}
+  .\end{equation*}
+  Using this we start by finding the inner meshpoint $u_{11}$ as
+  \begin{align*}
+    u_{2, 1} + u_{1,2} + u_{0,1} + u_{1,0} - 4u_{1,1} &= \frac{1 \cdot 1 \cdot 4^{4} (12 - 4) (12- 4)}{16} \\
+    u_{2,1} + u_{1,2} + 100 + 100 - 4u_{1,1}&= 1024  \\
+     - 4u_{1,1} + u_{2,1} + u_{1,2} &= 824
+  .\end{align*}
+
+  Now we find the meshpoint $u_{21}$ as
+  \begin{align*}
+    u_{3,1} + u_{2,2} + u_{1,1} + u_{2,0} - 4u_{2,1} &= \frac{2 \cdot 1 \cdot 4^{4} (12 - 8) (12- 4)}{16} \\
+    100 + u_{2,2} + u_{1,1} + 100 - 4u(2,1) &= 1024 \\
+     - 4u_{2,1} + u_{2,2} + u_{1,1} &= 824
+  .\end{align*}
+
+  Now we find the meshpoint $u_{12}$ as
+  \begin{align*}
+    u_{2,2} + u_{1,3} + u_{0,2} + u_{1,1} - 4u_{1,2} &= \frac{1 \cdot 2 \cdot 4^{4} (12 - 4) (12-8)}{16} \\
+    u_{2,2} + 132 + 100 + u_{1,1} - 4u_{1,2} &= 1024 \\
+    -4 u_{1,2} + u_{2,2} + u_{1,1} &= 792
+  .\end{align*}
+  
+  Lastly, we find the meshpoint $u_{22}$ as
+  \begin{align*}
+    u_{3,2} + u_{2,3} + u_{1,2} + u_{2,1} - 4u_{2,2} &= \frac{2 \cdot 2 \cdot 4^{4} (12 - 8) (12-8)}{16} \\
+    100 + 132 + u_{1,2} + u_{2,1} - 4u_{2,2} &= 1024 \\
+    -4 u_{2,2} + u_{1,2} + u_{2,1} &= 792
+  .\end{align*}
+  Hence,
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  - 4 u_{1,1} + u_{2,1} + u_{1,2} &= 824 \\
+  - 4 u_{2,1} + u_{2,2} + u_{1,1} &= 824 \\
+  - 4 u_{1,2} + u_{2,2} + u_{1,1} &= 792 \\
+  - 4 u _{2,2} + u_{1,2} + u_{2,1} &= 792
+.\end{aligned}
+}
+
 \begin{problemwithimage}{p12_3}{12.3}
   Consider the Laplace equation
   \begin{equation*}
@@ -21,3 +91,53 @@
   and the situation as depicted on the figure.
   Find the corresponding system of difference equations for mesh size $h = 3$.
 \end{problemwithimage}
+
+\begin{derivation}
+  The corresponding difference equation is (p. 5)
+  \begin{equation*}
+    u_{i+1, j} + u_{i, j+1} + u_{i-1, j} + u_{i,j-1} - 4u_{i,j}= 0 
+  .\end{equation*}
+  Here, our boundary meshpoints are
+  \begin{align*}
+    u_{00} &= 100, & u_{10} &= 100, & u_{20} &= 100, & u_{30} &= 100, \\
+    u_{01} &= 100, & u_{31} &= 118, & u_{02} &= 100, & u_{32} &= 118, \\
+    u_{03} &= 100, & u_{13} &= 118, & u_{23} &= 118, & u_{33} &= 100
+  .\end{align*}
+
+  We now find meshpoint $u_{11}$ as
+  \begin{align*}
+    u_{21} + u_{12} + u_{01} + u_{10} - 4 u_{11} &= 0 \\
+    u_{21} + u_{12} + 100 + 100 - 4u_{11} &= 0 \\
+    -4 u_{11} + u_{12} + u_{21} &= -200
+  .\end{align*}
+
+  Moving on to meshpoint $u_{21}$ we get
+  \begin{align*}
+    u_{31} + u_{22} + u_{11} + u_{20} - 4u_{21} &= 0 \\
+    118 + u_{22} + u_{11} + 100 - 4 u _{21} &= 0 \\
+    u_{11} - 4u_{21} + u_{22} &= -218
+  .\end{align*}
+
+  For meshpoint $u_{12}$ we get
+  \begin{align*}
+    u_{22} + u_{13} + u_{02} + u_{11} - 4u_{12} &= 0 \\
+    u_{22} + 118 + 100 + u_{11} - 4u_{12} &= 0 \\
+    u_{11} - 4u_{12} + u_{22} &= -218
+  .\end{align*}
+
+  And for meshpoint $u_{22}$ we get
+  \begin{align*}
+    u_{32} + u_{23} + u_{12} + u_{21} - 4u_{22} &= 0 \\
+    118 + 118 + u_{12} + u_{21} - 4u_{22} &= 0 \\
+    u_{12} + u_{21} - 4u_{22} &= -236
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  -4u_{11} + u_{12} + u_{21} &= -200 \\
+  u_{11} - 4u_{21} + u_{22} &= -218 \\
+  u_{11} - 4u_{12} + u_{22} &= -218 \\
+  u_{12} + u_{21} - 4u_{22} &= -236
+.\end{aligned}
+}

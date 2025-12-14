@@ -13,6 +13,66 @@
   \end{enumerate}
 \end{problem}
 
+\begin{derivation}
+  \begin{enumerate}[label=\alph*)]
+    \item From the Lecture (p. 1), we have the general solution:
+      \begin{equation*}
+        \hat{u}(\omega, t) = C(\omega) e^{-c^2 \omega^2 t}
+      .\end{equation*}
+      Following the same procedure as in Section 7.1, we start by taking the Fourier transform of the modified initial condition, $u_x(x,0) = f(x)$ as
+      \begin{align*}
+        \mathcal{F}(u_x(x,t)) &= i \omega \mathcal{F}(u(x,t)) \\
+        \mathcal{F}(f) = \mathcal{F}(u_x(x,0)) &= i \omega\mathcal{F}(u(x,0)) \\
+        \mathcal{F}(u(x,0) &= \frac{1}{i \omega} \mathcal{F}(f)
+      .\end{align*}
+      Furthermore, we have that $\mathcal{F}(u(x,0)) = \hat{u}(\omega, t)$.
+      Hence,
+      \begin{align*}
+        \hat{u}(\omega, t) &= \frac{1}{i \omega} \mathcal{F}(f) = C (\omega) e^{-c^2 \omega^2 t} \\
+        \implies \mathcal{F}(u(x,0)) &=  C (\omega) \\
+        C(\omega) &= \frac{1}{i \omega} \mathcal{F}(f)
+      .\end{align*}
+    \item The solution is therefore
+      \begin{equation*}
+        \hat{u} (\omega,t) = \frac{1}{i \omega} \hat{f}(\omega) e^{-c^2 \omega^2 t}
+      .\end{equation*}
+      Now, to get an expression like expression (1) we must take the inverse Fourier transform.
+      We use:
+      \begin{equation*}
+        \hat{f}(\omega) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(v) e^{- i v \omega} \, \mathrm{d}v
+      .\end{equation*}
+      and get
+      \begin{align*}
+        u(x, t) &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \hat{u}(\omega, t) e^{i x \omega} \, \mathrm{d}\omega \\
+                &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \frac{1}{i \omega}\hat{f}(\omega) e^{-c^2 \omega^2 t} e^{i \omega x} \, \mathrm{d}\omega \\
+                &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}} \frac{1}{i \omega} \int_{-\infty}^{\infty} f(v) e^{-i v \omega} \, \mathrm{d}v \: e^{- c^2 \omega^2 t} \, \mathrm{d}\omega \\
+                &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(v) \left( \int_{-\infty}^{\infty} e^{-c^2 \omega^2 t} \frac{e^{i \left( \omega x - \omega v \right)}}{i \omega} \, \mathrm{d}\omega \right) \, \mathrm{d}v
+      .\end{align*}
+    \item Using the Euler formula
+      \begin{equation*}
+        e^{i \alpha} = \cos(\alpha) + i \sin (\alpha) 
+      \end{equation*}
+      we can rewrite our inner integrand as:
+      \begin{align*}
+        e^{-c^2 \omega^2 t} \frac{e^{i \left( \omega x - \omega v \right)}}{i \omega} &= e^{-c^2 \omega^2 t} \\
+        &= e^{-c^2 \omega^2 t} \frac{\cos \left( \omega (x - v) \right)}{i \omega} + i e^{-c^2 \omega ^2 t} \frac{\sin \left( \omega \left( x - v \right) \right)}{i \omega} \\
+        &= 2 \int_{0}^{\infty} e^{ - c^2 \omega^2 t} \frac{\sin (\omega (x - v))}{\omega } \, \mathrm{d}\omega
+      .\end{align*}
+      Hence,
+      \begin{equation*}
+        u(x,t) = \frac{1}{\pi} \int_{-\infty}^{\infty} f(v) \int_{0}^{\infty} e^{-c^2 \omega^2 t} \frac{\sin \omega (x - v)}{\omega} \, \mathrm{d}\omega \, \mathrm{d}v
+      .\end{equation*}
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &\mathrm{a}) & C(\omega) &= \frac{1}{i \omega} \mathcal{F}(f) \\
+  &\mathrm{b}) & u(x,t) &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(v) \int_{-\infty}^{\infty} e^{-c^2 \omega^2 t} \frac{e^{i (\omega x - \omega v)}}{i \omega} \, \mathrm{d}\omega \, \mathrm{d}v \\
+  &\mathrm{c}) & u(x,t) &= \frac{1}{\pi} \int_{-\infty}^{\infty} f(v) \int_{0}^{\infty} e^{-c^2 \omega^2 t} \frac{\sin \left( \omega (x - v) \right)}{\omega} \, \mathrm{d}\omega \, \mathrm{d}v
+.\end{aligned}
+}
+
 \begin{problem}{10.2}
   Use the Fourier cosine transform to find the solution of
   \begin{equation*}
@@ -29,8 +89,46 @@
   You may exchange integration and differentiation whenever needed.
 \end{problem}
 
-\begin{problem}{10.3}
-  Prove Equation (3).
-\end{problem}
+\begin{derivation}
+  Following the logic from the section on Fourier sine transforms (p. 3) we start by taking the cosine transform of the heat equation and get
+  \begin{align*}
+    \mathcal{F}_C (u_t(x,t)) &= \mathcal{F}_C \left( c^2 u_{x x}(x,t \right) \\
+    &= c^2 \mathcal{F}_C \left( u_{x x }(x,t) \right) \\
+    &= c^2 \left( - \omega^2 \mathcal{F}_C(u(x,t)) - \sqrt{\frac{2}{\pi}} u_x(0,t) \right) \\
+    &= - c^2 \omega^2 \mathcal{F}_C(u(x,t)) \\
+    &= -c^2 \omega^2 \hat{u}_C(\omega, t) \\
+    \frac{\partial \hat{u}_C(\omega,t)}{\partial t} &= -c^2 \omega^2 \hat{u}_C(\omega,t)
+  .\end{align*}
+  This has the general solution
+  \begin{equation*}
+    \hat{u}_C(\omega, t) = C(\omega) e^{-c^2\omega^2 t}
+  .\end{equation*}
+  From the initial condition we get
+  \begin{align*}
+    \mathcal{F}_C(u(x,0)) &= \mathcal{F}_C(f(x)) \\
+    \hat{u}_C(\omega, 0) &= \hat{u}_C(f(\omega)) \\
+    \implies C(\omega) &= \hat{f}_C(\omega)
+  .\end{align*}
+  Hence,
+  \begin{equation*}
+    \hat{u}_C(\omega, t) = \hat{f}_C(\omega) e^{-c^2 \omega^2 t}
+  .\end{equation*}
+  The Fourier cosine transform of $f(x)$ is
+  \begin{equation*}
+    \hat{f}_C (\omega) = \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} f(p) \cos(\omega p) \, \mathrm{d}p
+  .\end{equation*}
+  Hence,
+  \begin{equation*}
+    \hat{u}_C(\omega, t) = \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} f(p) \cos(\omega p) \, \mathrm{d}p e^{-c^2 \omega^2 t}
+  .\end{equation*}
+  To find the solution, all that is left is taking the inverse Fourier transform giving us:
+  \begin{align*}
+    u(x,t) &= \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} \hat{u}_C(\omega, t) \cos (\omega x) \, \mathrm{d}\omega \\
+    &= \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} f(p) \cos (\omega p) \, \mathrm{d}p \: e^{-c^2 \omega^2 t} \cos (\omega x) \, \mathrm{d}\omega \\
+    &= \frac{2}{\pi} \int_{0}^{\infty} \int_{0}^{\infty} f(p) \cos (\omega p) e^{-c^2 \omega^2 t} \cos (\omega x) \, \mathrm{d}p \, \mathrm{d}\omega
+  .\end{align*}
+\end{derivation}
 
-
+\finalresult{
+u(x,t) = \frac{2}{\pi} \int_{0}^{\infty} \int_{0}^{\infty} f(p) \cos (\omega p) e^{-c^2 \omega^2t} \cos(\omega x) \, \mathrm{d}p \, \mathrm{d}\omega
+}
