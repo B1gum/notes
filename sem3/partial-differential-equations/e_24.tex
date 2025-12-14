@@ -1,0 +1,95 @@
+\lecture{24}{15. December 2025}{Exam 2024}
+
+\begin{problem}{24.1}
+  Show that
+  \begin{equation*}
+    f(x) = \begin{cases}
+      xe^{-\left| x \right|}, & 0 < x < 1\\
+    - x e^{-|x|}, & -1 < x < 0
+    \end{cases}
+  \end{equation*}
+  is an even function.
+\end{problem}
+
+\begin{problem}{24.2}
+  Let $O_1(x)$ and $O_2(x)$ be odd functions and let $E(x)$ be an even function.
+  Show that
+  \begin{equation*}
+    f(x) = \frac{O_1(x) E(x)}{O_2(x)} \left| O_1(x) \right|
+  \end{equation*}
+  is an even function.
+\end{problem}
+
+\begin{problem}{24.3}
+  Find a period and the corresponding Fourier coefficients of
+  \begin{enumerate}[label=\alph*)]
+    \item 
+      \begin{equation*}
+        f(x) = \sin \left( \frac{\pi}{3} \right) + 7 \sin \left( \frac{3x}{\sqrt{3}\pi} \right) + 4 \cos \left( \frac{\sqrt{3}x}{4\pi} \right), -\infty < x < \infty
+      .\end{equation*}
+    \item
+      \begin{equation*}
+        f(x) = 2 \sin \left( \frac{x}{\sqrt{2}} \right) + 4 \cos \left( \sqrt{2}x \right), - \infty < x <\infty
+      .\end{equation*}
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{24.4}
+  Consider the function
+  \begin{equation*}
+    f(x) = \cos (3x), 0 \leq x \leq \frac{2\pi}{3}
+  .\end{equation*}
+  \begin{enumerate}[label=\alph*)]
+    \item Find the period and the corresponding Fourier coefficients of the expansion of $f(x)$.
+    \item Find the period and the corresponding Fourier coefficients of the even expansion of $f(x)$.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{24.5}
+  Rewrite the PDE
+  \begin{equation*}
+    u_{y y}(x,y) + u_x(x,y) = 0
+  \end{equation*}
+  in terms of the variables
+  \begin{equation*}
+    p(x,y) = \frac{y}{2}, q(x,y) = e^{x}-2
+  .\end{equation*}
+\end{problem}
+
+\begin{problem}{24.6}
+  Consider the PDE
+  \begin{equation*}
+    u_{x x x}(x,t) + u_t(x,t) = u_x(x,t) + u(x,t), -\infty < x < \infty, t \geq 0
+  \end{equation*}
+  and let $\hat{u}(\omega, t) = \mathcal{F}(u(x,t))$ be the Fourier transform of $u(x,t)$ with respect to $x$.
+  Derive an ODE for $\hat{u}(\omega, t)$ with respect to $t$.
+  You may assume that the Fourier transforms of $u(x,t), u_t(x,t), u_x(x,t)$ and $u_{x x x}(x,t)$ exist  and that
+  \begin{equation*}
+    \mathcal{F}(u_t(x,t)) = \frac{\partial }{\partial t} \mathcal{F}\left( u(x,t) \right)
+  .\end{equation*}
+\end{problem}
+
+\begin{problem}{24.7}
+  Consider the PDE
+  \begin{equation*}
+    u_{y y}(x,y) + u_x(x,y) = 0, 0 \leq y \leq 1, x \geq 0
+  \end{equation*}
+  subject to the conditions
+  \begin{equation*}
+    u_y(x,0) = u_y(x,1) = 0 \text{ for all } x
+  \end{equation*}
+  and
+  \begin{equation*}
+    u(0,y) = 3 \cos (2 \pi y) + 2 \cos (3\pi y) \text{ for } 0 \leq y \leq 1
+  .\end{equation*}
+
+  Find the solution $u(x,y)$.
+\end{problem}
+
+\begin{problem}{24.8}
+  Consider the PDE
+  \begin{equation*}
+    2u_{x x}(x,y,t) - u_y(x,y,t) + u_t(x,y,t) = u(x,y,t)
+  .\end{equation*}
+  Use the method of separation of variables to convert the above PDE into three ODEs.
+\end{problem}

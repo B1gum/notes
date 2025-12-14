@@ -1,0 +1,106 @@
+\lecture{21}{15. December 2025}{Exam 2021}
+
+\begin{problem}{21.1}
+  Are the following functions $f(x), -\infty< x < \infty$, even functions or odd functions?
+  Give arguments.
+
+  \begin{enumerate}[label=\alph*)]
+    \item $f(x) = \left( \sin \left( x^2 \right) + x^2 \cos (x) \right) \sin (x)$
+    \item $f(x) = \cos(g(x))$, where $g(x)$ is an odd function
+    \item $f(x) = \int_{-x}^{x} g(s) \, \mathrm{d}s$, where the function $f$ is such that the integral exists for $-\infty < x < \infty$
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{21.2}
+  Find a period and the corresponding Fourier coefficients of the Fourier series of
+  \begin{enumerate}[label=\alph*)]
+    \item $f(x) = \sin \left( \frac{\pi}{5} \right) \sin \left( \frac{2x}{3} \right) + \cos \left( \frac{\pi}{5} \right) \sin \left( \frac{2x}{11} \right), -\infty<x<\infty$
+    \item $f(x) = \frac{1}{2} \sin \left( \sqrt{8}x \right) + 3 \cos \left( \frac{x}{\sqrt{2}} \right) - 4, -\infty < x< \infty$.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{21.3}
+  Find the Fourier cosine transform of
+  \begin{equation*}
+    f(x) = \begin{cases}
+      \left| x \right|, &  -1 < x < 1\\
+    0,  & \text{otherwise}
+    .\end{cases}
+  .\end{equation*}
+\end{problem}
+
+\begin{problem}{21.4}
+  Consider the PDE
+  \begin{equation*}
+    u_{t}(x,t) + u_{x x}(x,t) = 0
+  \end{equation*}
+  where $0\leq x \leq 1, 0 \leq t$.
+
+  \begin{enumerate}[label=\alph*)]
+    \item Find the general solution that fulfils the conditions
+      \begin{equation*}
+        u(0,t) = u(1,t) = 0
+      \end{equation*}
+      for all $t$.
+    \item Find the unique solution that fulfils the conditions
+      \begin{equation*}
+        u(0,t) = u(1,t) = 0
+      \end{equation*}
+      for all $t$ and
+      \begin{equation*}
+        u_t(x,0) = \sin(3\pi x) + 4 \sin (2\pi x)
+      \end{equation*}
+      for $0 \leq x \leq 1$.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{21.5}
+  Consider the change of variables $(x,y) \leftrightarrow (p,q)$ given by
+  \begin{align*}
+    x(p,q) &= p + 1 \\
+    y(p,q) &= p - q 
+  \end{align*}
+  and
+  \begin{align*}
+    p(x,y) &= x-1 \\
+    q(x,y) &= x - y - 1
+  .\end{align*}
+  Rewrite
+  \begin{equation*}
+    u_x(x,y) + u_{yy}(x,y) = 0
+  \end{equation*}
+  in terms of the variables $p$ and $q$.
+\end{problem}
+
+\begin{problemwithimage}{e21_6}{21.6}
+  Consider the two-dimensional Poisson equation
+  \begin{equation*}
+    u_{x x}(x,y) + u_{yy}(x,y) = xy(x-2) (y-2), 0 \leq x \leq 2, 0\leq y \leq 2
+  \end{equation*}
+  subject to the mixed boundary conditions
+  \begin{align*}
+    u(0,y) &= y(y-2), & 0 \leq  &y\leq 2 \\
+    u_x(2,y) &= y(y-2), & 0\leq &y \leq 2 \\
+    u(x,2) &= 0, & 0 \leq &x \leq 2 \\
+    u(x,0) &= 0, & 0 \leq &x \leq 2
+  .\end{align*}
+
+  Derive the corresponding system of difference equations, using mesh size $h = 1$.
+\end{problemwithimage}
+
+\begin{problemwithimage}{e21_7}{21.7}
+  Consider the two-dimenensional Laplace equation
+  \begin{equation*}
+    u_{x x}(x,y) + u_{yy}(x,y) = 0, 0\leq x\leq 2, 0 \leq y\leq 2
+  \end{equation*}
+  subject to the boundary conditions
+  \begin{align*}
+    u(0,y) &= y(2-y) - \frac{1}{2}, & 0 \leq &y \leq 2 \\
+    u(x,2) &= - \frac{1}{2}, & 0 \leq &x \leq 2
+  \end{align*}
+  and $u(x,y) = - 1 / 2$ for $(x,y)$ on the curved line in the figure.
+  The curved line is a segment of a circle of radius 2 and centre $(0,2)$.
+  The indicated points have coordinates $A = (\sqrt{3}, 1)$ and $B = (1, 2 - \sqrt{3})$.
+  
+  Find the approximate value of $u(1,1)$, using mesh size $h = 1$.
+\end{problemwithimage}

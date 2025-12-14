@@ -1,0 +1,105 @@
+\lecture{23}{15. December 2025}{Exam 2023}
+
+\begin{problem}{23.1}
+  Show that
+  \begin{equation*}
+    f(x) = \begin{cases}
+      1-x,  & 0 < x < 1\\
+    -1-x, & -1 < x < 0
+    \end{cases}
+  \end{equation*}
+  is an odd function.
+\end{problem}
+
+\begin{problem}{23.2}
+  Let $O_1(x)$ and $O_2(x)$ be odd functions and let $E(x)$ be an even function.
+  Show that
+  \begin{equation*}
+    f(x) = O_1(x) \left( e^{\left| O_2 (x) E(x) \right|} + 1 \right)
+  \end{equation*}
+  is an odd function.
+\end{problem}
+
+\begin{problem}{23.3}
+  Find a period and the corresponding Fourier coefficients of
+  \begin{enumerate}[label=\alph*)]
+    \item
+      \begin{equation*}
+        f(x) = \sin \left( \frac{\pi}{7} \right) + 2 \cos \left( \frac{2x}{\sqrt{2}\pi} \right) + 7 \sin \left( \frac{\sqrt{2}x}{3\pi} \right), - \infty < x < \infty
+      .\end{equation*}
+    \item
+      \begin{equation*}
+        f(x) = \sin \left( \sqrt{2}x \right) + \sin \left( 3 \sqrt{2}x \right), -\infty < x < \infty
+      .\end{equation*}
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{23.4}
+  Consider the function
+  \begin{equation*}
+    f(x) = \sin(2x), 0 \leq x \leq \pi
+  .\end{equation*}
+  
+  \begin{enumerate}[label=\alph*)]
+    \item Find the period and the corresponding Fourier coefficients of the expansion of $f(x)$.
+    \item Find the period and the corresponding Fourier coefficients of the odd expansion of $f(x)$.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{23.5}
+  Rewrite the PDE
+  \begin{equation*}
+    u_{y y}(x,y) + u_x(x,y) = 0
+  \end{equation*}
+  in terms of the variables
+  \begin{equation*}
+    p(x,y) = e^{y}, q(x,y) = e^{x}
+  .\end{equation*}
+\end{problem}
+
+\begin{problem}{23.6}
+  Consider the PDE
+  \begin{equation*}
+    u_{x x}(x,t) + u_{t t}(x,t) = u(x,t), 0 \leq x \leq \infty, t \geq 0
+  \end{equation*}
+  and let $\hat{u}_C(\omega, t) = \mathcal{F}_C (u(x,t))$ be the Fourier cosine transform of $u(x,t)$ with respect to $x$.
+  Derive an ODE for $\hat{u}_C(\omega,t)$ with respect to $t$.
+  You may assume that
+  \begin{equation*}
+    \mathcal{F}_C(u_{t t}(x,t)) = \frac{\partial ^2}{\partial t^2} \mathcal{F}_C \left( u(x,t) \right)
+  \end{equation*}
+  and $u_x(0,t) = 0$ for all $t$.
+\end{problem}
+
+\begin{problem}{23.7}
+  Consider the PDE
+  \begin{equation*}
+    u_{y y}(x,y) + u_x(x,y) = 0, 0 \leq y \leq 1, x \geq 0
+  \end{equation*}
+  subject to the conditions
+  \begin{equation*}
+    u(x,0) = u(x,1) = 0 \text{ for all } x
+  \end{equation*}
+  and
+  \begin{equation*}
+    u(0,y) = 3 \sin (2\pi y) + 2 \sin (3\pi y) \text{ for } 0 \leq y \leq 1
+  .\end{equation*}
+  
+  Find the solution $u(x,y)$.
+\end{problem}
+
+\begin{problemwithimage}{e23_8}{23.8}
+  Consider the two-dimensional Laplace equation
+  \begin{equation*}
+    u_{x x}(x,y) + u_{yy}(x,y) = 0, 0 \leq x \leq 2, 0 \leq y \leq 2
+  \end{equation*}
+  subject to the mixed boundary conditions
+  \begin{align*}
+    u_x(0,y) &= 0, & 0 \leq &y \leq 2 \\
+    u_x(2,y) &= 0, & 0 \leq &y \leq 2 \\
+    u(x,2) &= 1, & 0 \leq &x \leq 2 \\
+    u(x,0) &= 0, & 0 \leq &x \leq 2
+  .\end{align*}
+  Derive the corresponding system of difference equations, using mesh size $h = 1$.
+\end{problemwithimage}
+

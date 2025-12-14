@@ -1,0 +1,96 @@
+\lecture{22}{15. December 2025}{Exam 2022}
+
+\begin{problem}{22.1}
+  Consider the function
+  \begin{equation*}
+    f(x) = \begin{cases}
+      1, & -\infty < x < 0\\
+    0, & x = 0 \\
+    1 + x, & 0 < x < \infty
+    .\end{cases}
+  .\end{equation*}
+  Find an even function $f_1(x)$ and an odd function $f_2(x)$ such that
+  \begin{equation*}
+    f(x) = f_1(x) + f_2(x), -\infty < x < \infty
+  .\end{equation*}
+\end{problem}
+
+\begin{problem}{22.2}
+  Find a period and the corresponding Fourier coefficients of the Fourier series of
+  \begin{enumerate}[label=\alph*)]
+    \item $f(x) = 2 \sin \left( \frac{x}{\pi} \right) + 3 \sin \left( \frac{2x}{3\pi} \right), -\infty < x < \infty$
+    \item $f(x) = 2 \sin (\sqrt{2}\pi x) + 3 \cos \left( \frac{2 \pi x}{\sqrt{2}} \right) - \sin \left( \frac{\pi}{5} \right), -\infty < x < \infty$.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{22.3}
+  Find the Fourier transform of $f(x), -\infty < x < \infty$, defined as
+  \begin{equation*}
+    f(x) = \begin{cases}
+      1, & 0 < x < 1\\
+    -1, & -1 < x < 0 \\
+    0, & \text{otherwise}
+    .\end{cases}
+  \end{equation*}
+\end{problem}
+
+\begin{problem}{22.4}
+  Consider the PDE
+  \begin{equation*}
+    u_{x x}(x,y,t) + u_y(x,y,t) = u_t(x,y,t)
+  .\end{equation*}
+  Use the method of separation of variables to convert the above PDE into three ODEs.
+\end{problem}
+
+\begin{problem}{22.5}
+  Consider the change of variables $(x,y) \leftrightarrow (p,q)$ given by
+  \begin{align*}
+    x(p,q) &= p + 1 \\
+    y(p,q) &= p + q
+  \end{align*}
+  and
+  \begin{align*}
+    p(x,y) &= x - 1 \\
+    q(x,y) &= y - x + 1
+  .\end{align*}
+
+  Rewrite
+  \begin{equation*}
+    u_{xy}(x,y) = 0
+  \end{equation*}
+  in terms of the variables $p$ and $q$.
+  You may assume that all functions are twice continuously differentiable.
+\end{problem}
+
+\begin{problemwithimage}{e22_6}{22.6}
+  Consider the two-dimensional Laplace equation
+  \begin{equation*}
+    u_{x x}(x,y) + u_{yy}(x,y) = 0, 0 \leq x \leq 2, 0 \leq y \leq 2
+  \end{equation*}
+  subject to the mixed boundary conditions
+  \begin{align*}
+    u_x(0,y) &= 2y(y-2), & 0 \leq &y \leq 2 \\
+    u_x(2,y) &= y(y-2), & 0\leq &y \leq 2 \\
+    u(x,2) &= 0, & 0 \leq &x \leq 2 \\
+    u(x,0) &= 0, & 0 \leq &x \leq 2
+  .\end{align*}
+
+  Derive the corresponding system of difference equations, using mesh size $h = 1$.
+\end{problemwithimage}
+
+\begin{problemwithimage}{e22_7}{22.7}
+  Consider the two-dimensional Laplace equation
+  \begin{equation*}
+    u_{x x}(x,y) + u_{yy}(x,y) = 0
+  \end{equation*}
+  on the region illustrated in the figure and subject to the boundary conditions
+  \begin{align*}
+    u(1,y) &= 4y(1-y), & 0 \leq &y \leq 1 \\
+    u(x,0) &= 0, & 0 \leq &x \leq 1
+  \end{align*}
+  and $u(x,y) = 0$ for $(x,y)$ on the curved line in the figure.
+  The curved line is a segment of a circle with radius $1$ and centre $(1,0)$.
+  The indicated points have coordinates $A = \left( 1 - \frac{\sqrt{3}}{2}, \frac{1}{2} \right)$ and $B = \left( \frac{1}{2}, \frac{\sqrt{3}}{2} \right)$.
+
+  Find the approximate value of $u \left( \frac{1}{2}, \frac{1}{2} \right)$, using mesh size $h = \frac{1}{2}$.
+\end{problemwithimage}
