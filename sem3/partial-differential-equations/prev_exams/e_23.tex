@@ -1,0 +1,350 @@
+\lecture{23}{15. December 2025}{Exam 2023}
+
+\begin{problem}{23.1}
+  Show that
+  \begin{equation*}
+    f(x) = \begin{cases}
+      1-x,  & 0 < x < 1\\
+    -1-x, & -1 < x < 0
+    \end{cases}
+  \end{equation*}
+  is an odd function.
+\end{problem}
+
+\begin{derivation}
+  To determine if the function is odd or oven, we try inserting $-x$ as the argument to $f$.
+  For $0<x<1$ we get:
+  \begin{equation*}
+    f(-x) = 1 + x = - f(x)
+  .\end{equation*}
+  And for $-1 < x < 0$ we get
+  \begin{equation*}
+    f(-x) = - 1 + x = -f(x)
+  .\end{equation*}
+  Hence the function is odd.
+\end{derivation}
+
+\newpage
+
+\begin{problem}{23.2}
+  Let $O_1(x)$ and $O_2(x)$ be odd functions and let $E(x)$ be an even function.
+  Show that
+  \begin{equation*}
+    f(x) = O_1(x) \left( e^{\left| O_2 (x) E(x) \right|} + 1 \right)
+  \end{equation*}
+  is an odd function.
+\end{problem}
+
+\begin{derivation}
+  We insert $-x$ into the function and get
+  \begin{align*}
+    f(-x) &= O_1(-x) \left( e^{\left| O_2(-x) E(-x) \right|} + 1 \right) \\
+    &= - O_1(x) \left( e^{\left| - O_2(x) \cdot E(x) \right|} + 1 \right) \\
+    &= - \left( O_1(x) \left( e^{\left| O_2(x) E(x) \right|} + 1 \right) \right) \\
+    &= - f(x)
+  .\end{align*}
+  Hence, the function is odd.
+\end{derivation}
+
+\newpage
+
+\begin{problem}{23.3}
+  Find a period and the corresponding Fourier coefficients of
+  \begin{enumerate}
+    \item
+      \begin{equation*}
+        f(x) = \sin \left( \frac{\pi}{7} \right) + 2 \cos \left( \frac{2x}{\sqrt{2}\pi} \right) + 7 \sin \left( \frac{\sqrt{2}x}{3\pi} \right), \qquad - \infty < x < \infty
+      .\end{equation*}
+    \item
+      \begin{equation*}
+        f(x) = \sin \left( \sqrt{2}x \right) + \sin \left( 3 \sqrt{2}x \right), \qquad -\infty < x < \infty
+      .\end{equation*}
+  \end{enumerate}
+\end{problem}
+
+\begin{derivation}
+  The general representation of a Fourier series is:
+  \begin{equation*}
+    f(x) = a_0 + \sum_{n = 1}^{\infty}  \left( a_n \cos \left( \frac{n \pi x}{L} \right) + b_n \sin \left( \frac{n \pi x}{L} \right) \right)
+  .\end{equation*}
+  
+  \begin{enumerate}
+    \item We rewrite our given function as
+      \begin{equation*}
+        f(x) = \underbrace{\sin \left( \frac{\pi}{7} \right)}_{a_0} + \underbrace{2}_{a_6} \cos \bigg( \frac{6 \pi x}{\underbrace{3 \sqrt{2}\pi^2}_L} \bigg) + \underbrace{7}_{b_2} \sin \bigg( \frac{2 \pi x}{\underbrace{3\sqrt{2} \pi^2}_L} \bigg)
+      .\end{equation*}
+      Hence, $p = 2 L = 6 \sqrt{2} \pi^2$, $a_0 = \sin (\pi / 7)$, $a_6 = 2$, $b_2 = 7$ and all other Fourier coefficients are zero.
+    \item Once again, we rewrite as
+      \begin{equation*}
+        f(x) = \underbrace{1}_{b_2} \cdot \sin \bigg( \frac{2\pi x}{ \underbrace{\sqrt{2}\pi}_{L}} \bigg) + \underbrace{1}_{b_6} \sin \bigg( \frac{6 \pi x}{\underbrace{\sqrt{2}\pi}_{L}} \bigg) 
+      .\end{equation*}
+      Hence, $p = 2L = 2 \sqrt{2} \pi$, $b_2 = 1$, $b_6 = 1$ and all other Fourier coefficients are zero.
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &\mathrm{a}) & p &= 6 \sqrt{2}\pi^2, \quad a_0 = \sin \frac{\pi}{7}, \quad a_6 = 2, \quad b_2 = 7 \\
+  & \mathrm{b}) & p &= 2 \sqrt{2}\pi, \quad b_2 = 1,\quad b_6 = 1
+.\end{aligned}
+}
+
+\begin{problem}{23.4}
+  Consider the function
+  \begin{equation*}
+    f(x) = \sin(2x), 0 \leq x \leq \pi
+  .\end{equation*}
+  
+  \begin{enumerate}
+    \item Find the period and the corresponding Fourier coefficients of the expansion of $f(x)$.
+    \item Find the period and the corresponding Fourier coefficients of the odd expansion of $f(x)$.
+  \end{enumerate}
+\end{problem}
+
+\begin{derivation}
+  \begin{enumerate}
+    \item As $\sin$ is in odd function, the expansion of $f(x) = \sin (2x), 0 \leq x \leq \pi$ is simply $f_0(x) = \sin(2x), - \pi / 2 \leq x \leq \pi / 2$.
+      Rewriting this we get
+      \begin{equation*}
+        f_0(x) = \underbrace{1}_{b_1} \cdot \sin \frac{\pi x}{\underbrace{\frac{\pi}{2}}_L}
+      .\end{equation*}
+      Meaning $p = 2L = \pi$ and $b_1 = 1$ and all other Fourier coefficients are zero.
+    \item The odd expansion of an odd function will also yield the same odd function, however, for the odd expansion the period will be twice as long, as $f_2 (x) = \sin(2x), - \pi \leq x \leq \pi$.
+      Rewriting, we get
+      \begin{equation*}
+        f_2(x) = \underbrace{1}_{b_2} \cdot \sin \frac{2\pi x}{\underbrace{\pi}_L}
+      .\end{equation*}
+      Hence, $p = 2L = 2\pi$, $b_2 = 1$ and all other Fourier coefficients are zero.
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &\mathrm{a}) & p &= \pi, \quad b_1 = 1 \\
+  &\mathrm{b}) & p &= 2\pi, \quad b_2 = 1
+.\end{aligned}
+}
+
+\begin{problem}{23.5}
+  Rewrite the PDE
+  \begin{equation*}
+    u_{y y}(x,y) + u_x(x,y) = 0
+  \end{equation*}
+  in terms of the variables
+  \begin{equation*}
+    p(x,y) = e^{y}, q(x,y) = e^{x}
+  .\end{equation*}
+\end{problem}
+
+\begin{derivation}
+  We define
+  \begin{equation*}
+    \overline{u}(p,q) = \overline{u}(p(x,y) , q(x,y) ) = u(x,y) \implies \overline{u}_{yy}(p,q) + \overline{u}_x(p,q) = 0
+  .\end{equation*}
+  The first derivative with respect to $x$ is
+  \begin{align*}
+    \overline{u}_x(p,q) &= \overline{u}_p(p,q) p_x(x,y) + \overline{u}_q(p,q) q_x(x,y) \\
+    &= \overline{u}_p(p,q) \cdot 0 + \overline{u}_q(p,q) \cdot e^{x} \\
+    &= \overline{u}_q(p,q) \cdot q
+  .\end{align*}
+  The first derivative with respect to $y$ is
+  \begin{align*}
+    \overline{u}_y(p,q) &= \overline{u}_p(p,q) p_y(x,y) + \overline{u}_q(p,q) q_y(x,y) \\
+    &= \overline{u}_p(p,q) \cdot e^{y} + \overline{u}_q(p,q) \cdot 0 \\
+    &= \overline{u}_p(p,q) \cdot p
+  .\end{align*}
+  The second derivative with respect to $y$ is
+  \begin{align*}
+    \overline{u}_{yy}(p,q) &= \overline{u}_{pp}(p,q) p_y((x,y) \cdot e^{y} + \overline{u}_{p} (p,1) e^{y} \\
+    &=  \overline{u}_{pp}(p,q) p^2 + \overline{u}_p(p,q) p
+  .\end{align*}
+  By insertion we get
+\end{derivation}
+
+\finalresult{
+\overline{u}_{pp}(q,p) p^2 + \overline{u}_p(q,p) p + \overline{u}_q(p,q) q = 0
+}
+
+\begin{problem}{23.6}
+  Consider the PDE
+  \begin{equation*}
+    u_{x x}(x,t) + u_{t t}(x,t) = u(x,t), 0 \leq x \leq \infty, t \geq 0
+  \end{equation*}
+  and let $\hat{u}_C(\omega, t) = \mathcal{F}_C (u(x,t))$ be the Fourier cosine transform of $u(x,t)$ with respect to $x$.
+  Derive an ODE for $\hat{u}_C(\omega,t)$ with respect to $t$.
+  You may assume that
+  \begin{equation*}
+    \mathcal{F}_C(u_{t t}(x,t)) = \frac{\partial ^2}{\partial t^2} \mathcal{F}_C \left( u(x,t) \right)
+  \end{equation*}
+  and $u_x(0,t) = 0$ for all $t$.
+\end{problem}
+
+\begin{derivation}
+  We know that $\mathcal{F}_C(f'') = -\omega^2 \mathcal{F}_C(f) - \sqrt{2 / \pi} f'(0)$.
+  Hence, we can rewrite our expression as
+  \begin{align*}
+    - \omega^2 \hat{u}_C(\omega, t) - \sqrt{\frac{2}{\pi}} \cdot 0 + \frac{\partial ^2}{\partial t^2} \hat{u}_C(\omega,t ) &= \hat{u}_C (\omega, t) \\
+    - \omega^2 \hat{u}_C(\omega, t) + \frac{\partial ^2}{\partial t^2} \hat{u}_C(\omega, t) &= \hat{u}_C(\omega, t)
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+- \omega^2 \hat{u}_C(\omega, t) + \frac{\partial ^2}{\partial t^2} \hat{u}_C(\omega, t) = \hat{u}_C(\omega, t)
+}
+
+\begin{problem}{23.7}
+  Consider the PDE
+  \begin{equation*}
+    u_{y y}(x,y) + u_x(x,y) = 0, 0 \leq y \leq 1, x \geq 0
+  \end{equation*}
+  subject to the conditions
+  \begin{equation*}
+    u(x,0) = u(x,1) = 0 \text{ for all } x
+  \end{equation*}
+  and
+  \begin{equation*}
+    u(0,y) = 3 \sin (2\pi y) + 2 \sin (3\pi y) \text{ for } 0 \leq y \leq 1
+  .\end{equation*}
+  
+  Find the solution $u(x,y)$.
+\end{problem}
+
+\begin{derivation}
+  Using the method of separation of variables, we assume $u(x,y) = F(x) Q(y)$ and get
+  \begin{align*}
+    F(x) Q''(y) + F'(x) Q(y) &= 0 \\
+    \frac{Q''(y)}{Q(y)} &= - \frac{F'(x)}{F(x)} = k
+  .\end{align*}
+  Which leaves us with the two ODEs
+  \begin{align*}
+    Q''(y) - kQ(y) &= 0 \\
+    F'(x) - k F(x) &= 0
+  .\end{align*}
+  Our boundary conditions gives us
+  \begin{align*}
+    u(x,0) &= F(x) Q(0) = 0 \\
+    \implies Q(0) &= 0 \\
+    u(x,1) &= F(x) Q(1) = 0 \\
+    \implies Q(1) &= 0
+  .\end{align*}
+
+  Assuming $k = 0 \implies F(x) = Q(y) = 0$ which is an uninteresting case.
+  
+  If we assume $k > 0$ then
+  \begin{gather*}
+    Q(y) = A e^{\sqrt{k}y} + B e^{- \sqrt{k}y} \\
+    Q(0) = 0 \implies A = - B \\
+    Q(1) = 0 \implies 0 = A e^{\sqrt{k}} + Be^{-\sqrt{k}} \implies A = 0 = B
+  .\end{gather*}
+  This is also uninteresting.
+
+  Hence, our only interesting case arises for $k < 0$, for which we get
+  \begin{gather*}
+    Q(y) = A \cos \left( \sqrt{-k} y \right) + B \sin \left( \sqrt{-k}y \right) \\
+    Q(0) = 0 \implies A = 0 \\
+    Q(1) = 0 \implies B \sin \left( \sqrt{-k} \right)  = 0
+  .\end{gather*}
+  We set $\sqrt{-k} = p$ and get
+  \begin{equation*}
+    Q(1) = B \sin p = 0 \implies p = p_n = n \pi, n = 1,2,\ldots 
+  .\end{equation*}
+  We choose $B = 1$ and get
+  \begin{equation*}
+    Q_n(y) = \sin (n \pi y)
+  .\end{equation*}
+  From the Lecture notes we have that
+  \begin{equation*}
+    F_n(x) = B_n e^{n^2 \pi^2 x}
+  .\end{equation*}
+  Hence,
+  \begin{align*}
+    u_n (x,y) &= F_n(x) Q_n(y) \\
+    &= B_n e^{n^2 \pi^2 x} \sin (n \pi y) \\
+    u(x,y) &= \sum_{n = 1}^{\infty} u_n(x,y) \\
+    u(x,y) &= \sum_{n = 1}^{\infty} B_n e^{n^2 \pi^2 x} \sin (n \pi y)
+  .\end{align*}
+  We now compare this with our initial condition:
+  \begin{gather*}
+    u(0,y) = 3 \sin (2\pi y) 2 \sin (3\pi y) \\
+    \implies B_2 = 3 \quad B_3 = 2
+  \end{gather*}
+  and all other Fourier coefficients are zero.
+
+  Hence,
+\end{derivation}
+
+\finalresult{
+ u(x,y) = 3 e^{4\pi^2 x} \sin (2\pi y) +  2 e^{9\pi^2 x} \sin (3\pi y)
+}
+
+\begin{problemwithimage}{e23_8}{23.8}
+  Consider the two-dimensional Laplace equation
+  \begin{equation*}
+    u_{x x}(x,y) + u_{yy}(x,y) = 0, 0 \leq x \leq 2, 0 \leq y \leq 2
+  \end{equation*}
+  subject to the mixed boundary conditions
+  \begin{align*}
+    u_x(0,y) &= 0, & 0 \leq &y \leq 2 \\
+    u_x(2,y) &= 0, & 0 \leq &y \leq 2 \\
+    u(x,2) &= 1, & 0 \leq &x \leq 2 \\
+    u(x,0) &= 0, & 0 \leq &x \leq 2
+  .\end{align*}
+  Derive the corresponding system of difference equations, using mesh size $h = 1$.
+\end{problemwithimage}
+
+\begin{derivation}
+  We have the known boundary values
+  \begin{align*}
+    u_{00} &= 0, & u_{10} &= 0, & u_{20} &= 0, \\
+    u_{02} &= 1, & u_{12} &= 1, & u_{22} &= 1
+  .\end{align*}
+  And a corresponding difference equation of
+  \begin{equation*}
+    u_{i+1,j} + u_{i,j+1} + u_{i-1,j} + u_{i,j-1} - 4u_{i,j} = 0
+  .\end{equation*}
+  
+  We start by calculating the unknown meshpoint $P_{01}$ using the difference equation as
+  \begin{align*}
+    u_{1,1} + u_{0,2} + u_{-1,1} + u_{0,0} - 4u_{0,1} &= 0 \\
+    u_{1,1} + 1 + u_{-1,1} + 0 - 4u_{0,1} &= 0 \\
+    u_{1,1} +u_{-1,1} - 4u_{0,1} &= -1
+  .\end{align*}
+  We find $u_{-1,1}$ using the directional derivative as
+  \begin{equation*}
+    0 = \frac{u_{1,1} - u_{-1,1}}{2} \implies u_{-1,1} = u_{1,1}
+  .\end{equation*}
+  Hence,
+  \begin{equation*}
+    2u_{11} - 4u_{01} = -1
+  .\end{equation*}
+  
+  For the meshpoint $P_{11}$ we get
+  \begin{align*}
+    u_{21} + u_{12} + u_{01} + u_{10} - 4u_{11} &= 0 \\
+    u_{21} + 1 + u_{01} + 0 - 4u_{11} &= 0 \\
+    u_{21} + u_{01} -4u_{11} &= -1
+  .\end{align*}
+
+  For the meshpoint $P_{21}$ we get
+  \begin{align*}
+    u_{31} + u_{22} + u_{11} + u_{20} - 4u_{21} &= 0 \\
+    u_{31} + 1 + u_{11} + 0 - 4u_{21} &= 0 \\
+    u_{31} + u_{11} - 4u_{21} &= -1
+  .\end{align*}
+  We find $u_{31}$ using the directional derivative as
+  \begin{equation*}
+    0 = \frac{u_{31} - u_{11}}{2} \implies u_{31} = u_{11}
+  .\end{equation*}
+  Hence
+  \begin{equation*}
+    2u_{11} - 4u_{21} = -1
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  2u_{11} - 4u_{01} &= -1 \\
+  u_{21} + u_{01} - 4u_{11} &= -1 \\
+  u_{31} + u_{11} - 4u_{21} &= -1
+.\end{aligned}
+}
