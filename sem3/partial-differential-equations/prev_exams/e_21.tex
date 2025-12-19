@@ -1,0 +1,365 @@
+\lecture{21}{15. December 2025}{Exam 2021}
+
+\begin{problem}{21.1}
+  Are the following functions $f(x), -\infty< x < \infty$, even functions or odd functions?
+  Give arguments.
+
+  \begin{enumerate}[label=\alph*)]
+    \item $f(x) = \left( \sin \left( x^2 \right) + x^2 \cos (x) \right) \sin (x)$
+    \item $f(x) = \cos(g(x))$, where $g(x)$ is an odd function
+    \item $f(x) = \int_{-x}^{x} g(s) \, \mathrm{d}s$, where the function $f$ is such that the integral exists for $-\infty < x < \infty$
+  \end{enumerate}
+\end{problem}
+
+\begin{derivation}
+  \begin{enumerate}[label=\alph*)]
+    \item To determine if the given function is even or odd we see what happens when replacing the argument of the function with $-x$.
+      We get
+      \begin{align*}
+        f(x) &= \left( \sin \left( x^2 \right) + x^2 \cos x \right) \sin x \\
+        f(-x) &= \left( \sin \left( (-x)^2 \right) + (-x)^2 \cos (-x) \right) \sin(-x) \\
+        &= \left( \sin x^2 + x^2 \cos (x) \right) (- \sin (x)) \\
+        &= -f(x)
+      .\end{align*}
+      Hence, the function is odd.
+    \item We follow the same procedure and get
+      \begin{align*}
+        f(x) &= \cos (g(x)) \\
+        f(-x) &= \cos (g(-x)) \\
+        &= \cos (- g (x)) \\
+        &= \cos (g(x)) \\
+        &= f(x)
+      .\end{align*}
+      Hence, the function is even.
+    \item Again,
+      \begin{align*}
+        f(x) &= \int_{-x}^{x} g(s) \, \mathrm{d}s \\
+        f(-x) &= \int_{x}^{-x} g(s) \, \mathrm{d}s \\
+        &= - \int_{-x}^{x} g(s) \, \mathrm{d}s \\
+        &= -f(x)
+      .\end{align*}
+      Hence, the function is odd.
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &\mathrm{a}) & &\text{Odd} \\
+  &\mathrm{b}) & &\text{Even} \\
+  &\mathrm{c}) & &\text{Odd}
+.\end{aligned}
+}
+
+\begin{problem}{21.2}
+  Find a period and the corresponding Fourier coefficients of the Fourier series of
+  \begin{enumerate}[label=\alph*)]
+    \item $f(x) = \sin \left( \frac{\pi}{5} \right) \sin \left( \frac{2x}{3} \right) + \cos \left( \frac{\pi}{5} \right) \sin \left( \frac{2x}{11} \right), -\infty<x<\infty$
+    \item $f(x) = \frac{1}{2} \sin \left( \sqrt{8}x \right) + 3 \cos \left( \frac{x}{\sqrt{2}} \right) - 4, -\infty < x< \infty$.
+  \end{enumerate}
+\end{problem}
+
+\begin{derivation}
+  The general form of a Fourier series is
+  \begin{equation*}
+    f(x) = a_0 + \sum_{n = 1}^{\infty} \left( a_n \cos \left( \frac{n \pi x}{L} \right) + b_n \sin \left( \frac{n \pi x}{L} \right) \right)
+  .\end{equation*}
+
+  \begin{enumerate}[label=\alph*)]
+    \item We rewrite our given function as
+      \begin{equation*}
+        f(x) = \underbrace{\sin \left( \frac{\pi}{5} \right)}_{b_{22}} \sin \bigg( \frac{22 \pi x}{\underbrace{33 \pi}_{L}} \bigg) + \underbrace{\cos \left( \frac{\pi}{5} \right)}_{b_{6}} \sin \bigg( \frac{6 \pi x}{\underbrace{33\pi}_L} \bigg)
+      .\end{equation*}
+      Our period is therefore $p = 2L = 66 \pi $ and our Fourier coefficients are $b_6 = \cos (\pi / 5)$ and $b_{22} = \sin (\pi / 5)$.
+      All other Fourier coefficients are zero
+    \item We rewrite as
+      \begin{equation*}
+        f(x) = \underbrace{-4}_{a_0} \underbrace{+3}_{a_1} \cos \bigg( \frac{\pi x}{\underbrace{\sqrt{2}\pi}_L} \bigg) \underbrace{+\frac{1}{2}}_{b_4} \sin \bigg( \frac{4\pi x}{\underbrace{\sqrt{2}\pi}_{L}} \bigg)
+      .\end{equation*}
+      Hence, $p = 2 L = 2 \sqrt{2}\pi$, $a_0 = -4$, $a_1 = 3$, $b_4 = \frac{1}{2}$ and all other Fourier coefficients are zero.
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &\mathrm{a}) & p &= 66\pi, \quad b_6 = \cos \frac{\pi}{5} \quad b_{22} = \sin \frac{\pi}{5} \\
+  &\mathrm{b}) & p &= 2 \sqrt{2}\pi, \quad a_0 = -4, \quad a_1 = 3, \quad b_4 = \frac{1}{2}
+.\end{aligned}
+}
+
+\begin{problem}{21.3}
+  Find the Fourier cosine transform of
+  \begin{equation*}
+    f(x) = \begin{cases}
+      \left| x \right|, &  -1 < x < 1\\
+    0,  & \text{otherwise}
+    .\end{cases}
+  .\end{equation*}
+\end{problem}
+
+\begin{derivation}
+  The Fourier cosine transform is given as
+  \begin{equation*}
+    \hat{f}_C(\omega) = \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} f(x) \cos (\omega x) \, \mathrm{d}x 
+  .\end{equation*}
+  Plugging in our function, we obtain
+  \begin{align*}
+    \hat{f}_C(\omega) &= \sqrt{\frac{2}{\pi}} \int_{0}^{1} x \cos (\omega x) \, \mathrm{d}x \\
+                      &= \sqrt{\frac{2}{\pi}} \left[ \frac{\cos (\omega  x)}{\omega ^2}+\frac{x \sin (\omega  x)}{\omega } \right]_{x = 0}^{x = 1} \\
+                      &= \sqrt{\frac{2}{\pi}} \left( \frac{\cos \omega}{\omega^2} - \frac{1}{\omega^2} + \frac{\sin \omega}{\omega}  \right) \\
+                      &= \sqrt{\frac{2}{\pi}} \frac{\omega \sin \omega + \cos \omega - 1}{\omega^2}
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\hat{f}_C(\omega) = \sqrt{\frac{2}{\pi}} \frac{\omega \sin \omega + \cos \omega -1}{\omega^2}
+}
+
+\begin{problem}{21.4}
+  Consider the PDE
+  \begin{equation*}
+    u_{t}(x,t) + u_{x x}(x,t) = 0
+  \end{equation*}
+  where $0\leq x \leq 1, 0 \leq t$.
+
+  \begin{enumerate}[label=\alph*)]
+    \item Find the general solution that fulfils the conditions
+      \begin{equation*}
+        u(0,t) = u(1,t) = 0
+      \end{equation*}
+      for all $t$.
+    \item Find the unique solution that fulfils the conditions
+      \begin{equation*}
+        u(0,t) = u(1,t) = 0
+      \end{equation*}
+      for all $t$ and
+      \begin{equation*}
+        u_t(x,0) = \sin(3\pi x) + 4 \sin (2\pi x)
+      \end{equation*}
+      for $0 \leq x \leq 1$.
+  \end{enumerate}
+\end{problem}
+
+\begin{derivation}
+  \begin{enumerate}[label=\alph*)]
+    \item Using the method of separation of variables, we assume $u(x,t) = F(x) G(t)$ and get
+      \begin{align*}
+        F(x) G'(t) + F''(x) G(t) &= 0 \\
+        \frac{F''(x)}{F(x)} &= - \frac{G'(t)}{G(t)} = k
+      .\end{align*}
+      Which corresponds to the two ODEs
+      \begin{equation*}
+        F''(x) - k F(x) = 0 \qquad G'(t) + kG(t) = 0
+      .\end{equation*}
+      
+      Our boundary conditions gives us
+      \begin{align*}
+        u(0,t) &= F(0) G(t) = 0 \\
+        \implies F(0) &= 0 \\
+        u(1,t) &= F(1) G(t) = 0 \\
+        \implies F(1) &= 0
+      .\end{align*}
+
+      We quickly see, that assuming $x = 0 \implies F(x) = G(t) = 0$ which is clearly uninteresting.
+
+      If we assume $k > 0$ then
+      \begin{gather*}
+        F(x) = A e^{\sqrt{k}x} + B e^{- \sqrt{k}x} \\
+        F(0) = 0 \implies A = -B \\
+        F(1) = 0 \implies 0 = Ae^{\sqrt{k}} + Be^{-\sqrt{k}}
+        \implies A = 0 = B
+      .\end{gather*}
+      Which is also uninteresting
+
+      Lastly, we assume $k < 0 $ and get
+      \begin{gather*}
+        F(x) = A \cos \left( \sqrt{-k}x \right) + B \sin \left( \sqrt{-k}x \right) \\
+        F(0) = 0 \implies A = 0 \\
+        F(1) = 0 \implies B \sin \left( \sqrt{-k} \right) = 0
+      .\end{gather*}
+      We set $\sqrt{-k} = p$ and get
+      \begin{equation*}
+        F(1) = B \sin \left( p \right) = 0 \implies p = p_n = n\pi, n = 1,2,\ldots 
+      .\end{equation*}
+      We choose $B = 1$ and get
+      \begin{equation*}
+        F_n(x) = \sin (n \pi x)
+      .\end{equation*}
+      From the lecture notes we have that
+      \begin{equation*}
+        G_n(t) = B_n e^{n^2 \pi^2 t}
+      .\end{equation*}
+      Hence,
+      \begin{align*}
+        u_n(x,t) &= F_n(x) G_n(t) \\
+        &= B_n e^{n^2 \pi^2 t} \sin ( n \pi x) \\
+        u(x,t) &= \sum_{n = 1}^{\infty} u_n(x,t) \\
+        u(x,t) &= \sum_{n = 1}^{\infty} B_n e^{n^2 \pi^2 t} \sin (n \pi x)
+      .\end{align*}
+    \item From above, we have the solution
+      \begin{equation*}
+        u(x,t) = \sum_{n = 1}^{\infty} B_n e^{n^2 \pi^2 t} \sin (n \pi x) 
+      .\end{equation*}
+      The initial condition gives
+      \begin{align*}
+        u_t(x,0) &= \sum_{n = 1}^{\infty} B_n n^2 \pi^2 \sin (n \pi x) \\
+                 &= \sin (3\pi x) + 4 \sin (2\pi x) \\
+        \implies B_3 &= \frac{1}{9 \pi^2}, B_2 = \frac{1}{\pi^2}
+      .\end{align*}
+      All other coefficients $B$ are zero, hence
+      \begin{equation*}
+        u(x,t) = \frac{1}{9\pi^2} e^{9 \pi^2 t} \sin (3\pi x) + \frac{1}{\pi^2} e^{4\pi^2 t} \sin(2\pi x)
+      .\end{equation*}
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &\mathrm{a}) & u(x,t) &= \sum_{n = 1}^{\infty} B_ne^{n^2 \pi^2 t} \sin (n \pi x) \\
+  &\mathrm{b}) & u(x,t) &= \frac{1}{9\pi^2} e^{9\pi^2t} \sin (3\pi x) + \frac{1}{\pi^2} e^{4\pi^2 t} \sin (2\pi x)
+.\end{aligned}
+}
+
+\begin{problem}{21.5}
+  Consider the change of variables $(x,y) \leftrightarrow (p,q)$ given by
+  \begin{align*}
+    x(p,q) &= p + 1 \\
+    y(p,q) &= p - q 
+  \end{align*}
+  and
+  \begin{align*}
+    p(x,y) &= x-1 \\
+    q(x,y) &= x - y - 1
+  .\end{align*}
+  Rewrite
+  \begin{equation*}
+    u_x(x,y) + u_{yy}(x,y) = 0
+  \end{equation*}
+  in terms of the variables $p$ and $q$.
+\end{problem}
+
+\begin{derivation}
+  We define
+  \begin{equation*}
+    \overline{u}(p,q) = \overline{u}(p(x,y), q(x,y)) = u(x,y) \implies \overline{u}_x(p,q) + \overline{u}_{yy}(p,q) = 0
+  .\end{equation*}
+  The first derivative with respect to $x$ is
+  \begin{align*}
+    \overline{u}_x(p, q) &= \overline{u}_p (p,q) p_x(x,y) + \overline{u}_q (p,q) q_x(x,y) \\
+    &= \overline{u}_p (p,q) \cdot 1 + \overline{u}_q(p,q) \cdot 1 \\
+    &= \overline{u}_p (p,q) + \overline{u}_q(p,q)
+  .\end{align*}
+  The first derivative with respect to $y$ is
+  \begin{align*}
+    \overline{u}_y(p, q) &= \overline{u}_p (p,q) p_y(x,y) + \overline{u}_q (p,q) q_y(x,y) \\
+    &= \overline{u}_p (p,q) \cdot 0 + \overline{u}_q(p,q) \cdot (-1) \\
+    &= - \overline{u}_q(p,q)
+  .\end{align*}
+  And the second derivative with respect to $y$ is
+  \begin{align*}
+    \overline{u}_{yy}(p,q) &= \left( - \overline{u}_q(p,q) \right)_y \\
+    &= - \overline{u}_{qp}(p,q) p_y(x,y) - \overline{u}_{qq}(p,q) q_y(x,y) \\
+    &= - \overline{u}_{qp}(p,q) \cdot 0 - \overline{u}_{qq}(p,q) \cdot (-1) \\
+    &= \overline{u}_{qq}(p,q)
+  .\end{align*}
+  Inserting these into the original expression yields
+  \begin{equation*}
+    \overline{u}_p(p,q) + \overline{u}_q(p,q) + \overline{u}_{qq}(p,q) = 0 
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{
+\overline{u}_p(p,q) + \overline{u}_q(p,q) + \overline{u}_{qq}(p,q) = 0
+}
+
+\begin{problemwithimage}{e21_6}{21.6}
+  Consider the two-dimensional Poisson equation
+  \begin{equation*}
+    u_{x x}(x,y) + u_{yy}(x,y) = xy(x-2) (y-2), 0 \leq x \leq 2, 0\leq y \leq 2
+  \end{equation*}
+  subject to the mixed boundary conditions
+  \begin{align*}
+    u(0,y) &= y(y-2), & 0 \leq  &y\leq 2 \\
+    u_x(2,y) &= y(y-2), & 0\leq &y \leq 2 \\
+    u(x,2) &= 0, & 0 \leq &x \leq 2 \\
+    u(x,0) &= 0, & 0 \leq &x \leq 2
+  .\end{align*}
+
+  Derive the corresponding system of difference equations, using mesh size $h = 1$.
+\end{problemwithimage}
+
+\begin{derivation}
+  The known boundary values are
+  \begin{gather*}
+    u_{00} = 0, \qquad  u_{10} = 0, \qquad  u_{20} = 0\\
+     u_{01} = -1, \qquad  u_{02} = 0,  \\
+           \quad u_{12} = 0, \qquad  u_{22} = 0. 
+  \end{gather*}
+  The corresponding difference equation is
+  \begin{equation*}
+    u_{i+1,j} + u_{i,j+1} + u_{i-1, j} + u_{i, j-1} - 4u_{i,j} = ij h^2 (ih - 2) (jh - 2) = ij (i-2) (j - 2)
+  .\end{equation*}
+  To find meshpoint $P_{11}$ we simply input the surrounding meshpoints into the above difference equation as
+  \begin{align*}
+    u_{21} + u_{12} + u_{01} + u_{10} - 4u_{11} &= 1^2 \cdot (-1) \cdot (-1) \\
+    u_{21} + 0 -1 + 0 - 4u_{11} &= 1 \\
+    u_{21} - 4u_{11} &= 2
+  .\end{align*}
+  
+  For the boundary meshpoint $P_{21}$ we follow the same procedure and get
+  \begin{align*}
+    u_{31} + u_{22} + u_{11} + u_{20} - 4u_{21} &= 2 \cdot (0) \cdot (1) \\
+    u_{11} - 4u_{21} + u_{31} &= 0
+  .\end{align*}
+  Using the directional derivative, we find $u_{31}$ as
+  \begin{gather*}
+    u_x(2,1) = -1 \\
+    \implies \frac{u_{31} - u_{11}}{2} = -1 \implies u_{31} = u_{11} - 2
+  .\end{gather*}
+  Inserting this into the previous expression we get
+  \begin{equation*}
+    2u_{11} - 4u_{21} = 2
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  u_{21} - 4u_{11} &= 2 \\
+  2u_{11} - 4u_{21} &= 2
+.\end{aligned}
+}
+
+\begin{problemwithimage}{e21_7}{21.7}
+  Consider the two-dimenensional Laplace equation
+  \begin{equation*}
+    u_{x x}(x,y) + u_{yy}(x,y) = 0, 0\leq x\leq 2, 0 \leq y\leq 2
+  \end{equation*}
+  subject to the boundary conditions
+  \begin{align*}
+    u(0,y) &= y(2-y) - \frac{1}{2}, & 0 \leq &y \leq 2 \\
+    u(x,2) &= - \frac{1}{2}, & 0 \leq &x \leq 2
+  \end{align*}
+  and $u(x,y) = - 1 / 2$ for $(x,y)$ on the curved line in the figure.
+  The curved line is a segment of a circle of radius 2 and centre $(0,2)$.
+  The indicated points have coordinates $A = (\sqrt{3}, 1)$ and $B = (1, 2 - \sqrt{3})$.
+  
+  Find the approximate value of $u(1,1)$, using mesh size $h = 1$.
+\end{problemwithimage}
+
+\begin{derivation}
+  We use
+  \begin{equation*}
+    \nabla^2 u(P_{11}) \approx \frac{2}{h^2} \left( \frac{1}{a (1 + a)} u(A) + \frac{1}{b(1+b)}u(B) + \frac{1}{1+a}u(P) + \frac{1}{1+b}u(Q) - \frac{a+ b}{ab} u(O) \right)
+  .\end{equation*}
+  We have $h = 1$, $u(A) = u(B) = - 1 / 2$:
+  From the coordinates of $A$ and $B$ we see that $a = \sqrt{3}- 1$ and $b = \sqrt{3} - 1$ (this is the coefficient one has to multiply $h$ with to move from the central point to $A$ and $B$ respectively (remember you are given coordinates and not relative distances))
+  Plugging this in we get
+  \begin{align*}
+    \nabla^2 u(P_{11}) &= \frac{2}{h^2} \left( \frac{1}{a (1 + a)} u(A) + \frac{1}{b(1+b)}u(B) + \frac{1}{1+a}u(P) + \frac{1}{1+b}u(Q) - \frac{a+ b}{ab} u(O) \right) = 0\\
+    0&= \frac{1}{\sqrt{3} (\sqrt{3}-1)} \left( -\frac{1}{2} \right) + \frac{1}{\sqrt{3}(\sqrt{3}-1)} \left( -\frac{1}{2} \right) + \frac{1}{\sqrt{3}} \left( \frac{1}{2} \right) + \frac{1}{\sqrt{3}} \left( - \frac{1}{2} \right) - \frac{2}{\sqrt{3}-1} u(P_{11}) \\
+    \implies u(P_{11}) &= - \frac{1}{2 \sqrt{3}}
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+u(P_{11}) = - \frac{1}{2 \sqrt{3}}
+}

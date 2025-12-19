@@ -1,0 +1,360 @@
+\begin{problem}{1}
+  Show that
+  \begin{equation*}
+    f(x) = x e^{\cos x}
+  \end{equation*}
+  is an odd function and $f'(x)$ is an even function.
+\end{problem}
+
+\begin{derivation}
+  For an even function
+  \begin{equation*}
+    f(-x) = f(x) 
+  \end{equation*}
+  for all $x$, whereas for an odd function
+  \begin{equation*}
+    f(-x) = -f(x)
+  \end{equation*}
+  for all $x$.
+  Therefore, to determine if the functions are even or odd we will try inserting $-x$ as our function argument.
+  
+  Starting with $f(x)$ we get:
+  \begin{align*}
+    f(x) &= x e^{\cos x} \\
+    f(-x) &= (-x) e^{\cos (-x)} \\
+    &= - x e^{\cos x} \\
+    &= - f(x)
+  .\end{align*}
+  As $f(-x) = -f(x)$ for all $x$, $f(x)$ is odd.
+
+  Moving on to $f'(x)$ we get
+  \begin{align*}
+    f'(x) &= e^{\cos x}-x \sin (x) e^{\cos x} \\
+    f'(-x) &= e^{\cos (-x)} - (-x) \sin (-x) e^{\cos (-x)} \\
+    &= e^{\cos x} - x \sin (x) e^{\cos x}\\
+    &= f'(x)
+  .\end{align*}
+  As $f'(-x) = f'(x)$ for all $x$, $f'(x)$ is even.
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &f(x): & &\mathrm{Odd} \\
+  &f'(x): & &\mathrm{Even}
+.\end{aligned}
+}
+
+\begin{problem}{2}
+  Calculate the left-hand derivative and the right-hand derivative of
+  \begin{equation*}
+    f(x) = \left( x-1 \right) \left| x-1 \right|
+  \end{equation*}
+  at  $x = 1$.
+\end{problem}
+
+\begin{derivation}
+  The left- and right-hand derivatives at $x_0$ are defined as
+  \begin{align*}
+    f'(x_0-) &= \lim_{h \to 0} \frac{f(x_0) - f(x_0 - h)}{h} \\
+    f'(x_0+) &= \lim_{h \to 0} \frac{f(x_0 + h) - f(x_0)}{h}
+  \end{align*}
+  respectively.
+
+  Starting with the left-hand derivative we get
+  \begin{align*}
+    f'(1-) &= \lim_{h \to 0} \frac{f(1) - f(1-h)}{h} \\
+    &= \lim_{h \to 0} \frac{(1-1)|1-1| - (1-h-1)|1-h-1|}{h} \\
+    &= \lim_{h \to 0}\frac{0 - (-h) |-h|}{h} \\
+    &= \lim_{h \to 0} \frac{h |h|}{h} \\
+    &= \lim_{h \to 0} |h| \\
+    &= 0
+  .\end{align*}
+
+  Moving on to the right-hand derivative we get
+  \begin{align*}
+    f'(1+) &= \lim_{h \to 0} \frac{f(1+h) - f(1)}{h} \\
+    &= \lim_{h \to 0} \frac{(1 + h - 1)|1 + h - 1| - 0}{h} \\
+    &= \lim_{h \to 0} \frac{h |h|}{h} \\
+    &= \lim_{h \to 0} |h| \\
+    &= 0
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  f'(1-) &= 0 \\
+  f'(1+) &= 0
+.\end{aligned}
+}
+
+\begin{problem}{3}
+  Find a period and the corresponding Fourier coefficients of
+  \begin{equation*}
+    f(x) = \cos \left( \frac{2\pi}{5} \right) \sin \left( \frac{2x}{\sqrt{5}} \right) + 7 \cos \left( \sqrt{5}x \right), \quad -\infty < x < \infty
+  .\end{equation*}
+\end{problem}
+
+\begin{derivation}
+  The general representation of a Fourier series is
+  \begin{equation*}
+    f(x) = a_0 + \sum_{n = 1}^{\infty} \left( a_n \cos \left( \frac{n \pi x}{L} \right) + b_n \sin \left( \frac{n \pi x}{L} \right) \right)
+  .\end{equation*}
+ 
+  We can rewrite the given function as
+  \begin{align*}
+    f(x) &= 7 \cos \left( \frac{\sqrt{5} \pi x}{\pi} \right) + \cos \left( \frac{2\pi}{5} \right) \sin \left( \frac{2 \pi x}{\sqrt{5} \pi} \right) \\
+         &= \underbrace{7}_{a_5} \cos \bigg( \frac{5 \pi x}{\underbrace{\sqrt{5} \pi}_L} \bigg) + \underbrace{\cos \left( \frac{2 \pi}{5} \right)}_{b_2} \sin \bigg( \frac{2 \pi x}{\underbrace{\sqrt{5}\pi}_L} \bigg)
+  .\end{align*}
+  Hence, $p = 2L = 2 \sqrt{5}\pi$, $a_5 = 7$, $b_2 = \cos (2\pi / 5)$, and all other Fourier coefficients are zero.
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  p &= 2 \sqrt{5}\pi & a_5 &= 7 & b_2 &= \cos \left( \frac{2\pi}{5} \right)
+.\end{aligned}
+}
+
+\begin{problem}{4}
+  Consider the function
+  \begin{equation*}
+    f(x) = \cos \left( \frac{x}{2} \right), \quad 0 \leq x \leq 4\pi
+  .\end{equation*}
+  
+  \begin{enumerate}
+    \item Find the period and the corresponding Fourier coefficients of the expansion of $f(x)$.
+    \item Find the period and the corresponding Fourier coefficients of the even expansion of $f(x)$.
+  \end{enumerate}
+\end{problem}
+
+\begin{derivation}
+\begin{enumerate}
+  \item   The expansion of $f(x)$ is
+  \begin{equation*}
+    f_0(x) = \begin{cases}
+      \cos \frac{x}{2} & 0 \leq x \leq 2\pi\\
+    - \sin  \frac{x}{2} & -2 \pi \leq x \leq 0
+    .\end{cases}
+  \end{equation*} 
+  with period $p = 2\pi$.
+  To find the Fourier coefficients we use the formulae for the Fourier coefficients as:
+  \begin{align*}
+    a_0 &= \frac{1}{2L} \int_{-L}^{L} f(x) \, \mathrm{d}x  \\
+    &= \frac{1}{4\pi} \left( \int_{0}^{2\pi} \cos \frac{x}{2} \, \mathrm{d}x - \int_{-2\pi}^{0} \sin \frac{x}{2} \, \mathrm{d}x \right) \\
+    &= \frac{1}{4\pi} \cdot (0- (-4)) \\
+    &= \frac{4}{4\pi} \\
+    &= \frac{1}{\pi}
+  .\end{align*}
+  We now move on to $a_n$ as
+  \begin{align*}
+    a_n  &= \frac{1}{L} \int_{-L}^{L} f(x) \cos \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x  \\
+    &= \frac{1}{2\pi} \left( \int_{0}^{2\pi} \cos \left( \frac{x}{2} \right) \cos \left( \frac{n \pi x}{2\pi} \right) \, \mathrm{d}x - \int_{-2\pi}^{0} \sin \left( \frac{x}{2} \right) \cos \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x  \right) \\
+    &= \frac{1}{2\pi} \left(\frac{2 \left( \cos(\pi n) +  1\right)}{n^2-1} - \frac{2n \sin(\pi n)}{n^2 - 1} \right) \\
+    &= \frac{2 (\cos (\pi n) - n \sin(\pi n) + 1)}{2\pi (n^2 - 1)}
+  .\end{align*}
+  And $b_n$ is found as
+  \begin{align*}
+    b_n  &= \frac{1}{L} \int_{-L}^{L} f(x) \sin \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x  \\
+    &= \frac{1}{2\pi} \left( \int_{0}^{2\pi} \cos \left( \frac{x}{2} \right) \sin \left( \frac{n \pi x}{2\pi} \right) \, \mathrm{d}x - \int_{-2\pi}^{0} \sin \left( \frac{x}{2} \right) \sin \left( \frac{n \pi x}{L} \right) \, \mathrm{d}x  \right) \\
+    &= \frac{1}{2\pi} \left( \frac{2n \cos(n\pi)+ 1}{n^2 - 1} - \frac{2 \sin(\pi n)}{n^2-1} \right) \\
+    &= \frac{2(n \cos (n \pi) - \sin (\pi n) )+ 1}{2 \pi \left( n^2 - 1 \right)}
+  .\end{align*}
+  I.e. the period $p^{0} = 2L = 2 \pi$ and the Fourier coefficients are
+  \begin{align*}
+    a_0^{0} &= \frac{1}{\pi} \\
+    a_n^{0} &= \frac{2 \left( \cos (\pi n) - n \sin (\pi n) + 1 \right)}{2\pi \left( n^2 - 1 \right)} \\
+    b_n^{0} &= \frac{2 \left( n \cos (n \pi) - \sin (n \pi ) \right) + 1}{2 \pi \left( n^2 - 1 \right)}
+  .\end{align*}
+
+\item We now move on to the even expansion, given by
+  \begin{equation*}
+    f(x) = \cos \frac{x}{2}, - 4\pi < x < 4\pi
+  .\end{equation*}
+  As this is an even function we must find a Fourier cosine series.
+  We compare with the general form of Fourier cosine series and get:
+  \begin{align*}
+    f(x) &= \cos \frac{\pi x}{2 \pi} \\
+    f(x)^{1} &= a_0^{1} + \sum_{n = 1}^{\infty} a_n^{1} \cos \left( \frac{n \pi x}{L} \right)\\
+  .\end{align*}
+  And see that $p = 2L = 4\pi$, $a_1^{1}$ = 1, and all other Fourier coefficients are zero.
+\end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &\mathrm{a}) & p^{0} &= 2 \pi, \quad a_0^{0} = \frac{1}{\pi}, \\
+  &&&\qquad \quad a_n^{0} = \frac{2 \left( \cos (\pi n) - n \sin (\pi n) + 1 \right)}{2\pi \left( n^2 - 1 \right)}, \\
+  &&& \qquad \quad b_n^{0} = \frac{2 (n \cos(\pi n) - \sin (\pi n)) + 1}{2 \pi \left( n^2 -1 \right)}.\\
+  &\mathrm{b}) & p&= 4\pi, \quad a_1^{1} = 1
+.\end{aligned}
+}
+
+\begin{problem}{5}
+  Rewrite the PDE
+  \begin{equation*}
+    u_{yy}(x,y) - u_{x x}(x,y) = x
+  \end{equation*}
+  in terms of the variables
+  \begin{equation*}
+    p(x,y) = x + y, \quad q(x,y) = x -y
+  .\end{equation*}
+  You may assume that you can change the order of derivatives in mixed second derivatives.
+\end{problem}
+
+\begin{derivation}
+  We define
+  \begin{equation*}
+    \overline{u}(p,q) = \overline{u}(p(x,y), q(x,y)) = u(x,y) \implies \overline{u}_{yy}(p,q) - \overline{u}_{x x}(p,q) = p + q
+  .\end{equation*}
+  The first derivative with respect to $x$ is
+  \begin{align*}
+    \overline{u}_x(p,q) &= \overline{u}_p(p,q) p_x(x,y) + \overline{u}_q(p,q) q_x(x,y) \\
+    &= \overline{u}_p(p,q) \cdot 1 + \overline{u}_q(p,q) \cdot 1 \\
+    &= \overline{u}_p(p,q) + \overline{u}_q(p,q)
+  .\end{align*}
+  The second derivative with respect to $x$ is
+  \begin{align*}
+    \overline{u}_{x x}(p,q) &= \left( \overline{u}_p(p,q) + \overline{u}_q(p,q) \right)_x \\
+    &= \left( \overline{u}_{p}(p,q) \right)_x + \left( \overline{u}_q(p,q) \right)_x \\
+    &= \overline{u}_{pp}(p,q) p_x(x,y) + \overline{u}_{pq}(p,q) q_x(x,y) + \overline{u}_{qp}(p,q) p_x(x,y) + \overline{u}_{qq}(p,q) q_x(x,y) \\
+    &= \overline{u}_{pp}(p,q) + 2 \overline{u}_{pq}(p,q) + \overline{u}_{qq}(p,q)
+  .\end{align*}
+
+  The first derivative with respect to $y$ is
+  \begin{align*}
+    \overline{u}_y(p,q) &= \overline{u}_p(p,q) p_y(x,y) + \overline{u}_q(p,q) q_y(x,y) \\
+    &= \overline{u}_p(p,q) \cdot 1 + \overline{u}_q(p,q) \cdot (-1) \\
+    &= \overline{u}_p(p,q) - \overline{u}_q(p,q)
+  .\end{align*}
+
+  The second derivative with respect to $x$ is
+  \begin{align*}
+    \overline{u}_{yy}(p,q) &= \left( \overline{u}_p(p,q) - \overline{u}_q(p,q) \right)_y \\
+    &= \left( \overline{u}_{p}(p,q) \right)_y - \left( \overline{u}_q(p,q) \right)_y \\
+    &= \overline{u}_{pp}(p,q) p_y(x,y) + \overline{u}_{pq}(p,q) q_y(x,y) - \overline{u}_{qp}(p,q) p_y(x,y) - \overline{u}_{qq}(p,q) q_y(x,y) \\
+    &= \overline{u}_{pp}(p,q) - 2 \overline{u}_{pq}(p,q) + \overline{u}_{qq}(p,q)
+  .\end{align*}
+
+  By insertion we get
+  \begin{align*}
+    \overline{u}_{pp}(p,q) - 2 \overline{u}_{pq}(p,q) + \overline{u}_{qq}(p,q) - \overline{u}_{pp}(p,q) + 2 \overline{u}_{pq}(p,q) + \overline{u}_{qq}(p,q) &= p + q \\
+    2 \overline{u}_{qq}(p,q) &= p + q
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+  2 \overline{u}_{qq}(p,q) = p + q
+}
+
+
+\begin{problem}{6}
+  Consider the PDE
+  \begin{equation*}
+    u_{x x}(x,t) + u_{t t}(x,t) = u_t(x,t) + u(x,t), \quad -\infty < x < \infty, \quad t \geq 0
+  \end{equation*}
+  and let $\hat{u}(\omega, t) = \mathcal{F}(u(x,t))$ be the Fourier transform of $u(x,t)$ with respect to $x$.
+  Derive an ODE for $\hat{u}(\omega, t)$ with respect to $t$.
+  You may assume that the Fourier transforms of $u(x,t), u_t(x,t), u_{x x}(x,t)$, and $u_{t t}(x,t)$ exist and that
+  \begin{equation*}
+    \mathcal{F}(u_t(x,t)) = \frac{\partial }{\partial t} \mathcal{F}(u(x,t)), \qquad \mathcal{F}(u_{t t}(x,t)) = \frac{\partial ^2}{\partial t^2} \mathcal{F}(u(x,t))
+  .\end{equation*}
+\end{problem}
+
+\begin{derivation}
+  We know that $\mathcal{F}(f'') = - \omega^2 \mathcal{F}(f)$.
+  Hence, we get
+  \begin{align*}
+    \mathcal{F}(u_{x x}) + \mathcal{F}(u_{t t}) &= \mathcal{F}(u_t) + \mathcal{F}(u) \\
+    - \omega^2 \mathcal{F}(u)) + \frac{\partial ^2}{\partial t^2} \mathcal{F}(u) &= \frac{\partial }{\partial t} \mathcal{F}(u) + \mathcal{F}(u) \\
+    - \omega^2 \hat{u}(\omega, t) + \frac{\partial ^2}{\partial t^2} \hat{u}(\omega, t) &= \frac{\partial }{\partial t} \hat{u}(\omega, t) + \hat{u}(\omega, t)
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+  -\omega^2 \hat{u}(\omega, t) + \frac{\partial ^2}{\partial t^2} \hat{u}(\omega, t) = \frac{\partial }{\partial t} \hat{u}(\omega, t) + \hat{u} (\omega, t)
+}
+
+\begin{problem}{7}
+  Consider the deflection $u(x,y,t)$ of a vibrating elastic membrane in the $xy$-plane, $0 \leq x \leq 1, \: 0 \leq y \leq 1$, fixed along its boundaries and governed by
+  \begin{equation*}
+    u_{t t}(x,y,t) = \left( u_{x x}(x,y,t) + u_{yy}(x,y,t) \right)
+  \end{equation*}
+  with general solution
+  \begin{equation*}
+    u(x,y,t) = \sum_{m = 1}^{\infty} \sum_{n = 1}^{\infty} \left( E_{m,n} \cos \left( \lambda_{m,n} t \right) + J_{m,n} \sin \left( \lambda_{m,n} t \right) \right) \sin (m \pi x) \sin (n \pi y)
+  \end{equation*}
+  and
+  \begin{equation*}
+    \lambda_{m,n} = \pi \sqrt{m^2 + n^2}
+  .\end{equation*}
+  Find the particular solution that corresponds to the initial conditions
+  \begin{equation*}
+    u(x,y,0) = \sin (\pi x) \sin (\pi y) + \sin (2\pi x) \sin (2\pi y))
+  \end{equation*}
+  and
+  \begin{equation*}
+    u_t(x,y,0) = 0
+  .\end{equation*}
+\end{problem}
+
+\begin{derivation}
+  We employ our initial elongation as:
+  \begin{align*}
+    u(x,y,0) &= \sin (\pi x) \sin (\pi y) + \sin (2\pi x) \sin (2\pi y) \\
+             &= \sum_{m = 1}^{\infty} \sum_{n = 1}^{\infty} E_{m,n} \sin(m \pi x) \sin (n \pi y) \\
+    \implies E_{1,1} &= 1, \quad E_{2,2} = 1
+  .\end{align*}
+  Using the initial velocity we get
+  \begin{align*}
+    u_t(x,y,0) &= 0 \\
+    &= \sum_{m = 1}^{\infty} \sum_{n  =1}^{\infty} \left( J_{m,n} \lambda_{m,n} \cos (\lambda_{m,n}t) \right) \sin (m \pi x) \sin (n \pi y) \\
+    \implies J_{m,n} &= 0
+  .\end{align*}
+  
+  We know that
+  \begin{equation*}
+    \lambda_{m,n} = \pi \sqrt{m^2 + n^2}
+  .\end{equation*}
+  Hence, $\lambda_{1,1}$ and $\lambda_{2,2}$ are found as:
+  \begin{align*}
+    \lambda_{1,1} &= \pi \sqrt{2} \\
+    \lambda_{2,2} &= \pi \sqrt{8}
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+    u(x,y,t) = \cos \left( \pi \sqrt{2} t \right) \sin (\pi x) \sin (\pi y) + \cos \left( \pi \sqrt{8}t \right) \sin (2\pi x) \sin (2\pi y)
+}
+
+\begin{problem}{8}
+  Consider the PDE
+  \begin{equation*}
+    u_{x x}(x,y,t) + 3u_{y}(x,y,t) - u_t(x,y,t) = u(x,y,t)
+  .\end{equation*}
+  Use the method of separation of variables to convert the above PDE into three ODEs.
+\end{problem}
+
+\begin{derivation}
+  Using the method of separation of variables we assume $u(x,y,t) = F(x,y) G(t) $ to first derive a PDE for $F(x,y)$ and an ODE for $G(t)$ as
+  \begin{align*}
+    F_{x x}(x,y) G(t) + 3 F_{y}(x,y) G(t) - F(x,y) G'(t) &= F(x,y)G(t) \\
+    \frac{F_{x x}(x,y) + 3 F_y(x,y) - F(x,y)}{F(x,y)} &= \frac{G'(t)}{G(t)} = c_0 \\
+    \implies G'(t) - c_0 G(t) &= 0 \\
+    F_{x x}(x,y) + 3 F_y(x,y) - F(x,y) - c_0 F(x,y) &= 0
+  .\end{align*}
+  We now assume $F(x,y) = H(x) Q(y)$ and get
+  \begin{align*}
+    H''(x) Q(y) + 3 H(x) Q'(y) - H(x) Q(y) - c_0 H(x) Q(y) &= c_1 \\
+    \frac{H''(x)}{H(x)} &= -\frac{3Q'(y)}{Q(y)} = 1 + c_0 + c_1 = c_2 \\
+    \implies H''(x) - c_2 H(x) &= 0 \\
+    - 3 Q'(y) - c_2 Q(y) &= 0
+  .\end{align*}
+  Hence,
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  H''(x) - c_2H(x) &= 0 \\
+  - 3 Q'(y) - c_2 Q(y) &= 0 \\
+  G'(t) - c_0 G(t) &= 0
+.\end{aligned}
+}
