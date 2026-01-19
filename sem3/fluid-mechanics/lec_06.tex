@@ -1,7 +1,7 @@
-\lecture{6}{10. September 2025}{Differential Analysis II: Kinematics \& Navier-Stokes equations}
+\lecture{6}{10. September 2025}{Differential Analysis II: Kinematics \& Navier-Stokes Equations}
 
 \subsection{Motion of a Fluid Particle (Kinematics)}
-On \autoref{fig:f5_4} a typical finite fluid element is shown. Within this an infinitesimal particle with mass $\mathrm{d}m$ and initial volume $\mathrm{d}x \, \mathrm{d}y \, \mathrm{d}z$, at time $t$ as well as how it may look after an infinitesimal time interval $\mathrm{d}t$. After this period the finite element has moved and changed its shape. We will examine the infinitesimal particle so that we eventually obtain results applicable to a point. We wan decompose this infinitesimal particle's motion into four components:
+On \Cref{fig:f5_4} a typical finite fluid element is shown. Within this an infinitesimal particle with mass $\mathrm{d}m$ and initial volume $\mathrm{d}x \, \mathrm{d}y \, \mathrm{d}z$, at time $t$ as well as how it may look after an infinitesimal time interval $\mathrm{d}t$. After this period the finite element has moved and changed its shape. We will examine the infinitesimal particle so that we eventually obtain results applicable to a point. We wan decompose this infinitesimal particle's motion into four components:
 \begin{itemize}
   \item translation, where the particle moves from one point to another
   \item rotation, which can occur about any or all of the $x$, $y$ or $z$ axes
@@ -11,14 +11,14 @@ On \autoref{fig:f5_4} a typical finite fluid element is shown. Within this an in
 
 \begin{figure} [ht]
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f5_4.png}
+  \includegraphics[width=0.8\linewidth]{./figures/f5_4.png}
   \caption{Finite fluid element and infinitesimal particle at times $t$ and $t + \mathrm{d}t$}
   \label{fig:f5_4}
 \end{figure}
 
 \begin{figure} [ht]
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f5_5.png}
+  \includegraphics[width=0.8\linewidth]{./figures/f5_5.png}
   \caption{Pictorial representation of the components of fluid motion.}
 \end{figure}
 
@@ -27,11 +27,11 @@ We will need the acceleration of a fluid particle to be able to apply Newton's s
 
 Consider a particle moving in a velocity field. At time, $t$, the particle is in position $x,y, z$ and has a velocity vector corresponding to the velocity at that point in space at time $t$,
 \[ 
-\textbf{V}_P \bigg]_t = \textbf{V}(x,y,z,t)
+\textbf{V}_P \bigg)_t = \textbf{V}(x,y,z,t)
 .\]
 At time $t + \mathrm{d}t$ the particle has moved to a new position with coordinates $x + \mathrm{d}x, y + \mathrm{d}y, z + \mathrm{d}z$ and its velocity will when be given by
 \[ 
-\textbf{V}_P \bigg]_{t + \mathrm{d}t} = \textbf{V} \left( x + \mathrm{d}x, y + \mathrm{d}y, z + \mathrm{d}z, t + \mathrm{d}t \right)
+\textbf{V}_P \bigg)_{t + \mathrm{d}t} = \textbf{V} \left( x + \mathrm{d}x, y + \mathrm{d}y, z + \mathrm{d}z, t + \mathrm{d}t \right)
 .\]
 
 If the particle velocity at time $t$ (position $\textbf{r}$) is given by $\textbf{V}_P = \textbf{V}(x,y,z,t)$, then $\mathrm{d}\textbf{V}_p$ is given by the chain rule as:
@@ -93,13 +93,31 @@ The fluid particle may rotate about all coordinate axes. In general,
   \boldsymbol{\omega} = \hat{i} \omega_x + \hat{j} \omega_y + \hat{k} \omega_z
 .\]
 
-We now consider the $xy$ plane view of the particle at time $t$ on \autoref{fig:f5_7}. The left and lower sides of the particle are given by the two perpendicular line segments $oa$ and $ob$ of length $\Delta x$ and $\Delta y$, respectively. After a time interval $\Delta t$ the particle will have translated to some new position and also have rotated and deformed.
+We now consider the $xy$ plane view of the particle at time $t$ on \Cref{fig:f5_7}. The left and lower sides of the particle are given by the two perpendicular line segments $oa$ and $ob$ of length $\Delta x$ and $\Delta y$, respectively. After a time interval $\Delta t$ the particle will have translated to some new position and also have rotated and deformed.
 
 These two sides may now have deformed by the same angle $\Delta \alpha$ and $\Delta \beta$. To extract a rotation from this one takes the average of the rotations of $\Delta \alpha$ and $\Delta \beta$ such that the counterclockwise rotation is $\frac{1}{2} \left( \Delta \alpha - \Delta \beta \right)$. 
 
 \begin{figure} [ht]
-  \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f5_7.png}
+  \begin{subfigure}{0.24\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{./figures/f5_7a.png}
+    \caption{Original particle}
+  \end{subfigure}
+  \begin{subfigure}{0.24\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{./figures/f5_7b.png}
+    \caption{Particle after time $\Delta t$}
+  \end{subfigure}
+  \begin{subfigure}{0.24\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{./figures/f5_7c.png}
+    \caption{Rotational component}
+  \end{subfigure}
+  \begin{subfigure}{0.24\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{./figures/f5_7d.png}
+    \caption{Angular deformation component}
+  \end{subfigure}
   \caption{Rotation and angular deformation of perpendicular line segments in a two-dimensional flow.}
   \label{fig:f5_7}
 \end{figure}
@@ -149,11 +167,11 @@ The \textit{circulation}, $\Gamma$, is defined as the line integral of the tange
 \[ 
 \Gamma = \oint_c \textbf{V} \cdot \mathrm{d}\textbf{s}
 \]
-where $\mathrm{d}\textbf{s}$ is an elemental vector tangent to the curve with length $\mathrm{d}s$ of the element of arc. We can develop a relationship between circulation and vorticity by considering the rectangular circuit shown in \autoref{fig:f5_8}, where the velocity components at $o$ are set to $(u, v)$ and the velocities along segments $bc$ and $ac$ can be derived using Taylor series approximations.
+where $\mathrm{d}\textbf{s}$ is an elemental vector tangent to the curve with length $\mathrm{d}s$ of the element of arc. We can develop a relationship between circulation and vorticity by considering the rectangular circuit shown in \Cref{fig:f5_8}, where the velocity components at $o$ are set to $(u, v)$ and the velocities along segments $bc$ and $ac$ can be derived using Taylor series approximations.
 
 \begin{figure} [ht]
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f5_8.png}
+  \includegraphics[width=0.65\linewidth]{./figures/f5_8.png}
   \caption{Velocity components on the boundaries of a fluid element.}
   \label{fig:f5_8}
 \end{figure}
@@ -168,7 +186,7 @@ Then
 \begin{equation}\label{eq:stoke2d}
  \Gamma = \oint_c \textbf{V} \cdot \mathrm{d}\textbf{s} = \int_A 2 \omega_z \, \mathrm{d}A = \int_A \left( \nabla  \times \textbf{V} \right)_z \, \mathrm{d}A 
 \end{equation}
-\autoref{eq:stoke2d} is a statement of the Stokes theorem in two dimensions; the circulation around a closed contour is equal to the total vorticity enclosed within it. 
+\Cref{eq:stoke2d} is a statement of the Stokes theorem in two dimensions; the circulation around a closed contour is equal to the total vorticity enclosed within it. 
 
 \subsubsection{Fluid Deformation}
 
@@ -231,11 +249,11 @@ Now we need a formulation for the force $\mathrm{d}\textbf{F}$ acting on the ele
 
 
 \subsubsection{Forces Acting on a Fluid Particle}
-We shall consider the $x$ component of the force acting on a differential element of mass $\mathrm{d}m$ and volume $\mathrm{d}V = \mathrm{d}x \, \mathrm{d}y \, \mathrm{d}z$. Only stresses acting in the $x$ direction will give rise to surface forces in the $x$ direction. If the stresses at the center of the differential element are taken to be $\sigma_{x x}$, $\tau_{yx}$, and $\tau_{zx}$, then the stresses acting on the $x$ direction can be obtained using a Taylor series expansion about the center of the element. The result of this is shown on \autoref{fig:f5_9}
+We shall consider the $x$ component of the force acting on a differential element of mass $\mathrm{d}m$ and volume $\mathrm{d}V = \mathrm{d}x \, \mathrm{d}y \, \mathrm{d}z$. Only stresses acting in the $x$ direction will give rise to surface forces in the $x$ direction. If the stresses at the center of the differential element are taken to be $\sigma_{x x}$, $\tau_{yx}$, and $\tau_{zx}$, then the stresses acting on the $x$ direction can be obtained using a Taylor series expansion about the center of the element. The result of this is shown on \Cref{fig:f5_9}
 
 \begin{figure} [ht]
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f5_9.png}
+  \includegraphics[width=0.8\linewidth]{./figures/f5_9.png}
   \caption{Stresses in the $x$ direction on a fluid element.}
   \label{fig:f5_9}
 \end{figure}

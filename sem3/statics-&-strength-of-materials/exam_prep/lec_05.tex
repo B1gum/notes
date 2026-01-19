@@ -1,0 +1,61 @@
+\lecture{5}{8. September 2025}{Rigid Body Equilibrium, Pt. 1}
+
+\begin{problemwithimage}{f4_15}{F4-15}
+  Determine the maximum force $P$ that can be applied without causing the two \qty{50}{\kg} crates to move.
+  The coefficient of static friction between each crate and the ground is $\mu_s = \num{0,25}$.
+\end{problemwithimage}
+
+\begin{derivation}
+  The maximum friction force that can be sustained by crate $A$ is:
+  \begin{equation*}
+    F_A = \mu_s W
+  .\end{equation*}
+  Crate $B$ is pulled upwards by the applied force, hence the friction limit for this is:
+  \begin{equation*}
+    F_B = \mu_s \cdot \left( W - P \cdot \sin \ang{30} \right)
+  .\end{equation*}
+  Hence, the horizontal force balance becomes:
+  \begin{align*}
+    P \cos \ang{30} &= F_A + F_B \\
+    P \cos \ang{30} &= \mu_s W + \mu_s W - \mu_s P \cdot \sin \ang{30} \\
+    P \left( \cos \ang{30} + \mu_s \sin \ang{30}  \right) &= 2 \mu_s W \\
+    P &= \frac{2\mu_s W}{\cos \ang{30} + \mu_s \sin \ang{30} } \\
+    &= \frac{2 \cdot \num{0.25} \cdot \qty{50}{\kg} \cdot \qty{9.81}{\m\per\second\squared} }{\cos \ang{30} + \num{0.25} \cdot \sin \ang{30} } \\
+    &= \qty{247,42}{\N}
+  .\end{align*}
+\end{derivation}
+
+\finalresult{P = \qty{247,42}{\N}}
+
+\begin{problemwithimage}{f4_55}{4-55}
+  The block brake consists of a pin-connected lever and friction block at $B$.
+  The coefficient of static friction between the wheel and the lever is $\mu_s = \num{0,3}$, and a torque of \qty{5}{\N.\m} is applied to the wheel.
+  Determine if the brake can hold the wheel stationary when the force applied to the lever is (a) $P = \qty{30}{\N}$, (b) $P = \qty{70}{\N}$.
+\end{problemwithimage}
+
+\begin{derivation}
+  The tangential friction force needed to keep the wheel in place is:
+  \begin{equation*}
+    M = F_{\mathrm{req}} \cdot R \implies F_{\mathrm{req}} = \frac{M}{R} = \frac{\qty{5}{\N.\m} }{\qty{150}{\mm}} = \qty{33,33}{\N}
+  .\end{equation*}
+  This means the normal force $N$ at the block needs to be:
+  \begin{equation*}
+    F_{\mathrm{req}} = N \cdot \mu_s \implies N = \frac{F_{\mathrm{req}}}{\mu_s} = \frac{\qty{33.33}{\N} }{\num{0.3} } = \qty{111,11}{\N}
+  .\end{equation*}
+  To eliminate the reactions at $A$ we take the moment equilibrium about $A$ and get:
+  \begin{align*}
+    M_A &= 0 \\
+    0 &= \qty{600}{\mm} \cdot P + \qty{50}{\mm} \cdot F_{\mathrm{req}} - \qty{200}{\mm} \cdot N \\
+    P &= \frac{\qty{200}{\mm} \cdot N - \qty{50}{\mm} \cdot F_{\mathrm{req}}}{\qty{600}{\mm} } \\
+    P &= \frac{\qty{200}{\mm} \cdot \qty{111.11}{\N} - \qty{50}{\mm} \cdot \qty{33.33}{\N} }{\qty{600}{\mm} }  \\
+    P &= \qty{34,23}{\N}
+  .\end{align*}
+  Hence $P \geq \qty{34,23}{\N}$ and (a) $P = \qty{30}{\N}$ is therefore not enough whilst (b) $P = \qty{70}{\N}$ is enough.
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &(\mathrm{a}) & &\text{Brake does not hold}, \\
+  &(\mathrm{b}) & &\text{Brake does hold}.
+\end{aligned}
+}

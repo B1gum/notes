@@ -1,0 +1,63 @@
+\lecture{2}{28. August 2025}{Moment of a force}
+
+\begin{problemwithimage}{f3_5}{F3-5}
+  Determine the moment of the force about point $O$.
+\end{problemwithimage}
+
+\begin{derivation}
+  The magnitude of the moment about point $O$, $M_O$, can be found, based on length of the bar $r = \qty{2,5}{\m} $, the width of the bar $w = \qty{0,25}{\m}$, the magnitude of the force $P = \qty{60}{\kN}$ and the angle between the force and the bar $\phi = \ang{180} - \ang{20} - \ang{30} = \ang{130}$ as
+  \begin{equation*}
+    M_O = \qty{2.5}{\m} \cdot \qty{60}{\kN} \cdot \ang{130} + \qty{0.25}{\m} \cdot \qty{60}{\kN} \cdot \ang{130}  = \qty{21,45e3}{\kN.\meter}
+  .\end{equation*}
+  Based on the sign ($+$) of this we conclude that this force lies in the direction outwards of the plane. 
+\end{derivation}
+
+\finalresult{M_O = \qty{21,45e3}{\kN.\m} }
+
+\begin{problemwithimage}{f3_15}{F3-15}
+  Determine the magnitude of the moment of the force $\Vec{B} = \{ 300 \Vec{i} - 200 \Vec{j} + 150 \Vec{k}\} \, \unit{\N}$ about the $OA$ axis.
+\end{problemwithimage}
+
+\begin{derivation}
+  We start by finding a unit vector in the direction of the $OA$ axis as
+  \begin{equation*}
+    \hat{u}_{OA} = \frac{\begin{pmatrix}
+      \qty{0.3}{\m} \\
+    \qty{0.4}{\m} \\
+    \qty{0}{\m} \\
+    \end{pmatrix}}{\sqrt{\qty{0.09}{\m^2} + \qty{0.16}{\m^2} }}  = \begin{pmatrix}
+      \num{0,6}  \\
+    \num{0,8} \\
+    \num{0}  \\
+    \end{pmatrix}
+  .\end{equation*}
+  Now, we can find the moment about the axis as:
+  \begin{align*}
+    \Vec{M}_{OA} &= \hat{u}_{OA} \cdot \left( \Vec{r}_{AB} \times \Vec{B} \right) \\
+    &= \begin{pmatrix}
+      \num{0,6}  & \num{0,8}  & \num{0} \\
+    \end{pmatrix}\cdot \left( \begin{pmatrix}
+      \qty{0}{\m}  \\
+    \qty{0}{\m}  \\
+    - \qty{0.2}{\m} \\
+    \end{pmatrix} \times \begin{pmatrix}
+      \qty{300}{\N} \\
+    -\qty{200}{\N} \\
+    \qty{150}{\N} \\
+    \end{pmatrix} \right) \\
+    &= \begin{pmatrix}
+      \num{0.6}  & \num{0.8}  & \num{0} \\
+    \end{pmatrix} \cdot \begin{pmatrix}
+      - \qty{40}{\N.\m}  \\
+    - \qty{60}{\N.\m} \\
+    \qty{0}{\N.\m} \\
+    \end{pmatrix} \\
+    &= -\qty{72}{\N.\m} \\
+    \left| \Vec{M}_{OA} \right| &= \left| - \qty{72}{\N.\m}  \right| \\
+                                &= \qty{72}{\N.\m} 
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\left| \Vec{M}_{OA} = \qty{72}{\N.\m}  \right|
+}

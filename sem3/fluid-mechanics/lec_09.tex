@@ -23,13 +23,13 @@ and the Navier-Stokes equations reduce to
   \rho \left( u \frac{\partial u}{\partial x} + v \frac{\partial u}{\partial y}  \right) &= - \frac{\partial p}{\partial x} + \mu \left( \frac{\partial ^2 u}{\partial x^2} + \frac{\partial ^2u}{\partial y^2}  \right) \label{eq:navsto2d1} \\
   \rho \left( u \frac{\partial v}{\partial x} + v \frac{\partial v}{\partial y}  \right) &= - \rho g - \frac{\partial p}{\partial y} + \mu \left( \frac{\partial ^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2}  \right) \label{eq:navsto2d2}
 .\end{align}
-These equations form a set of coupled nonlinear partial differential equations for $u$, $v$, and $p$, and are rather cumbersome to solve for most flows. The mass conservation equation, \autoref{eq:masscons2d}, here has dimensions of $\left[ \frac{1}{\text{time}} \right]$, and the Navier-Stokes equations, \cref{eq:navsto2d1,eq:navsto2d2}, have dimensions of $\left[ \frac{\text{force}}{\text{volume}} \right]$. We will now try to convert these to dimensionless equations.
+These equations form a set of coupled nonlinear partial differential equations for $u$, $v$, and $p$, and are rather cumbersome to solve for most flows. The mass conservation equation, \Cref{eq:masscons2d}, here has dimensions of $\left[ \frac{1}{\text{time}} \right]$, and the Navier-Stokes equations, \Cref{eq:navsto2d1,eq:navsto2d2}, have dimensions of $\left[ \frac{\text{force}}{\text{volume}} \right]$. We will now try to convert these to dimensionless equations.
 
 To nondimensionalize these equations, we divide all lengths be a reference length $L$ and all the velocities by a reference speed $V_{\infty}$ often taken as the freestream velocity. Furthermore, we make the pressure nondimensional by dividing by $\rho V^2_{\infty}$. If we denote the nondimensional quantities with asterisks, we obtain
 \[ 
 x^{*} = \frac{x}{L}, \qquad y^{*} = \frac{y}{L}, \qquad u^{*} = \frac{u}{V_{\infty}}, \qquad v^{*} \frac{v}{V_{\infty}}, \qquad p^{*} = \frac{p}{\rho V^2_{\infty}}
 .\]
-If we substitute this into~\cref{eq:navsto2d1,eq:navsto2d2,eq:masscons2d} we get
+If we substitute this into~\Cref{eq:navsto2d1,eq:navsto2d2,eq:masscons2d} we get
 \begin{align}
   \frac{V_{\infty}}{L} \frac{\partial u^{*}}{\partial x^{*}}  + \frac{V_{\infty}}{L} \frac{\partial v^{*}}{\partial y^{*}} &= 0 \label{eq:mcons2dsubs} \\
   \frac{\rho V^2_{\infty}}{L} \left( u^{*} \frac{\partial u^{*}}{\partial x^{*}} + v^{*} \frac{\partial u^{*}}{\partial y^{*}}  \right) &= - \frac{\rho V^2_{\infty}}{L} \frac{\partial p^{*}}{\partial x^{*}} + \frac{\mu V_{\infty}}{L^2} \left( \frac{\partial^2 u^{*}}{\partial x^{*2}} + \frac{\partial^2 u^{*} }{\partial y^{*2}}  \right) \label{eq:ns2dsubs1} \\

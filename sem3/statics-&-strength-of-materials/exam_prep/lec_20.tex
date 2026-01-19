@@ -1,0 +1,97 @@
+\lecture{20}{13. November 2025}{Statically Indeterminate Beams}
+
+\begin{problemwithimage}{f16_49}{16-49}
+  Determine the reactions at the supports, then draw the shear and moment diagrams.
+  $EI$ is constant.
+\end{problemwithimage}
+
+\begin{derivation}
+  The distributed loading can be reduced to a point loading of size
+  \begin{equation*}
+    W = w \cdot 2L = 2 wL
+  .\end{equation*}
+  A force equilibrium then gives
+  \begin{align*}
+    \sum F_y &= 0 \\
+    A_y + B_y + C_y &= 2 wL \\
+  .\end{align*}
+  By symmetry $A_y = C_y$ so
+  \begin{equation*}
+    2A_y + B_y = 2 wL
+  .\end{equation*}
+  Using superposition we first look at the simply supported beam $AC$ with distributed loading.
+  The deflection at the midpoint of this is:
+  \begin{equation*}
+    v_{w} = - \frac{5 w (2L)^{4}}{384 EI} = - \frac{5w L^{4}}{24EI}
+  .\end{equation*}
+  The deflection from $B_y$ is
+  \begin{equation*}
+    v_{B_y} = \frac{B_y (2L)^3}{48EI} = \frac{B_y L^3}{6EI}
+  .\end{equation*}
+  Compatibility at $B$ requires that the deflection at $x = L$ is zero.
+  So
+  \begin{align*}
+    v_w - v_{B_y} &= 0 \\
+    \frac{5 wL^{4}}{24EI} &= \frac{B_y L^3}{6EI} \\
+    B_y &= \frac{5}{4} w L
+  .\end{align*}
+  Which means that:
+  \begin{align*}
+    2A_y + B_y &= 2wL \\
+    2A_y &= 2 wL - \frac{5}{4} wL \\
+    2A_y &= \frac{3}{4}wL \\
+    A_y = C_y &= \frac{3}{8}w L
+  .\end{align*}
+\end{derivation}
+
+\newpage
+
+\begin{problemwithimage}{f16_55}{16-55}
+  Before the uniform distributed load is applied to the beam, there is a small gap of \qty{0,2}{\mm} between the beam and the post at $B$.
+  Determine the support reactions at $A$, $B$, and $C$.
+  The post at $B$ has a diameter of \qty{40}{\mm}, and the moment of inertia of the beam is $I = \qty{875e6}{\mm^{4}}$.
+  The post and the beam are made of a material having an elastic modulus of $E = \qty{200}{\GPa}$.
+\end{problemwithimage}
+
+\begin{derivation}
+  The midspan deflection of the beam is
+  \begin{equation*}
+    \delta_{w} =- \frac{5w L^{4}}{384EI}
+  .\end{equation*}
+  The upward deflection from $B$ deflects the beam by
+  \begin{equation*}
+    \delta_{R_B} = \frac{R_B L^3}{48EI}
+  .\end{equation*}
+  Which means that
+  \begin{equation*}
+    \delta_B = \delta_w + \delta_{R_B} = - \frac{5 wL^{4}}{384EI} + \frac{R_B L^3}{48EI}
+  .\end{equation*}
+  The compression of the post at $B$ is
+  \begin{equation*}
+    \delta_{\mathrm{post}} = - \frac{R_B L_p}{AE} = - \frac{4R_B L_p}{\pi d^2 E}
+  .\end{equation*}
+  With the gap condition:
+  \begin{equation*}
+    \delta_B = \delta_{\mathrm{post}} - g
+  .\end{equation*}
+  So
+  \begin{equation*}
+    - \frac{5 wL^{4}}{384EI} + \frac{R_B L^3}{48EI} = - \frac{4 R_B L_p}{\pi d^2 E} - g
+  .\end{equation*}
+  Solving for $R_B$ yields
+  \begin{equation*}
+    R_B = \qty{219,8}{\kN}
+  .\end{equation*}
+  Which means that
+  \begin{equation*}
+    R_A = R_C = \frac{w L - R_B}{2} = \frac{\qty{30}{\kN\per\m} \cdot \qty{12}{\m} - \qty{219.8}{\kN}}{2} = \qty{70,1}{\kN}
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  R_A &= \qty{70,1}{\kN}  \\
+  R_B &= \qty{219,8}{\kN}  \\
+  R_C &= \qty{70,1}{\kN} 
+.\end{aligned}
+}

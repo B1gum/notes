@@ -3,7 +3,7 @@
 \section{Fundamental Concepts}
 
 \subsection{Fluid as a Continuum}
-Fluids are normally experienced as being continuous or ``smooth'' when percieved in the macroscopic world. If one looks at a fluid microscopically one would start to see that the fluid is not continuous at all but instead composed of distinct particles. We wish to determine the minimum volume, $\partial V'$ that a point $C$ must be such that we can talk about the fluid being continous at this point. In other words, under what circumstances can a fluid be treated as a continuum, for which, by definition, properties vary smoothly over all points. 
+Fluids are normally experienced as being continuous or ``smooth'' when perceived in the macroscopic world. If one looks at a fluid microscopically one would start to see that the fluid is not continuous at all but instead composed of distinct particles. We wish to determine the minimum volume, $\partial V'$ that a point $C$ must be such that we can talk about the fluid being continuous at this point. In other words, under what circumstances can a fluid be treated as a continuum, for which, by definition, properties vary smoothly over all points. 
 
 We define the mass $\partial m$ as the instantaneous number of molecules in $\partial V $ and the mass of each of these molecules. The average density inside volume $\partial V $ is hence given by $\rho = \frac{\partial m }{\partial V }$. It is important to note that this necessarily is an \textit{average value} as the number of molecules in $\partial V $ and hence the density fluctuates. Due to the law of large numbers one will experience that for very small volume the density will fluctuate greatly over time, however at a certain volume $\partial V' $, the density becomes stable and will not fluctuate greatly over time. For $\partial V = \qty{0,001}{mm^3}  $ (about the size of a grain of sand) there will already be an average of \num{2,5e13} molecules present. Hence a liquid can be treated as a continuous medium as long as we consider a ``point'' to be no smaller than about this size -- at least this is sufficiently precise for most engineering applications.
 
@@ -19,9 +19,9 @@ The density at a specific point may also vary with time. Therefore the complete 
 \begin{equation} \label{eq:dens}
 \rho = \rho(x,y,z,t)
 \end{equation}
-As density is a scalar quantity the field given by \autoref{eq:dens} is a scalar field. 
+As density is a scalar quantity the field given by \Cref{eq:dens} is a scalar field. 
 
-The density can also be expressed as the specific gravity, i.e. the weith compared to the maximum density of water, $\rho_{\mathrm{H}_2 \mathrm{O}} = \qty{1000}{\frac{kg}{m^3}} \text{ at } \qty{4}{\celsius} $. Thus the specific gravity of a substance can be found as:
+The density can also be expressed as the specific gravity, i.e. the weight compared to the maximum density of water, $\rho_{\mathrm{H}_2 \mathrm{O}} = \qty{1000}{\frac{kg}{m^3}} \text{ at } \qty{4}{\celsius} $. Thus the specific gravity of a substance can be found as:
 \[ 
 \mathrm{SG} = \frac{\rho}{\rho_{\mathrm{H}_2 \mathrm{O}}}
 .\]
@@ -36,7 +36,7 @@ A very important property defined by a field is the velocity field, given by:
 \begin{equation} \label{eq:velo}
   \textbf{V} = \textbf{V}(x, y, z, t)
 \end{equation}
-As velocity is a vector quantity, the field given in \autoref{eq:velo} is a vector field.
+As velocity is a vector quantity, the field given in \Cref{eq:velo} is a vector field.
 
 The velocity vector, $\textbf{V}$, can also be written in terms of its scalar components. Denoting the components in the $x$-, $y$-, and $z$-directions by $u$, $v$, and $w$, respectively we get:
 \[ 
@@ -62,11 +62,11 @@ As such any property may vary from point to point in the field but remain consta
 
 
 \subsection{One-, Two-, and Three-Dimensional flows}
-A flow is either one-, two-, or three-dimensional depending on the amount of spatial coordinates required to specify the velocity field. \autoref{eq:velo} shows that the velocity field in some cases is a function of three spatial coordinates and time -- in this case it is a three-dimensional flow.
+A flow is either one-, two-, or three-dimensional depending on the amount of spatial coordinates required to specify the velocity field. \Cref{eq:velo} shows that the velocity field in some cases is a function of three spatial coordinates and time -- in this case it is a three-dimensional flow.
 
 Almost all flows are three-dimensional in nature -- however, analysis based on fewer dimensions is often sufficient. The complexity of analysis increases sharply as more dimensions are added, and oftentimes in engineering a one-dimensional analysis is sufficient. 
 
-To not break the continuum assumption all fluids must have zero velocity at any solid surface, e.g. the inner side of a pipe. Due to this all flow in pipes is inherently three-dimensional. To simplify the analysis one often uses the notion of \textit{uniform flow} at a given cross-section. In a flow that is uniform at a given cross-section, the velocity is constant across any section normal to the flow as shown in \textbf{\autoref{fig:f2_3}}. Under this assumption, the flow simplifies to be simply a function of $x$ alone. The term \textit{uniform flow field} is used to describe a flow in which the velocity is constant throughout the entire field.
+To not break the continuum assumption all fluids must have zero velocity at any solid surface, e.g. the inner side of a pipe. Due to this all flow in pipes is inherently three-dimensional. To simplify the analysis one often uses the notion of \textit{uniform flow} at a given cross-section. In a flow that is uniform at a given cross-section, the velocity is constant across any section normal to the flow as shown in \Cref{fig:f2_3}. Under this assumption, the flow simplifies to be simply a function of $x$ alone. The term \textit{uniform flow field} is used to describe a flow in which the velocity is constant throughout the entire field.
 
 \begin{figure} [ht]
   \centering
@@ -76,7 +76,7 @@ To not break the continuum assumption all fluids must have zero velocity at any 
 \end{figure}
 
 \begin{definition}[Uniform flow at a cross section]
-  An assumption that states that a fluid has the same velocity everywhere in a given cross section as shown on \textbf{\autoref{fig:f2_3}}. This actually breaks the continuum hypothesis but it makes a lot of calculations easier.
+  An assumption that states that a fluid has the same velocity everywhere in a given cross section as shown on \Cref{fig:f2_3}. This actually breaks the continuum hypothesis but it makes a lot of calculations easier.
 \end{definition}
 
 \begin{definition}[Uniform flow field]
@@ -107,7 +107,7 @@ We can use the velocity field to derive the shapes of streaklines, pathlines and
 \begin{equation} \label{eq:stre}
   \frac{\mathrm{d}y}{\mathrm{d}x} \bigg|_{\text{streamline}} = \frac{v(x,y)}{u(x,y)}
 \end{equation}
-Note that these are obtained at a given instant in time. If the flow is unsteady, time $t$ is held constant in \textbf{\autoref{eq:stre}}. Solution of the equation gives $y = y(x)$, with an undetermined integration constant, the value of which depends on the particular streamline.
+Note that these are obtained at a given instant in time. If the flow is unsteady, time $t$ is held constant in \Cref{eq:stre}. Solution of the equation gives $y = y(x)$, with an undetermined integration constant, the value of which depends on the particular streamline.
 
 For pathlines, we let $x = x_p(t)$ and $y = y_p(t)$ where $x_p(t)$ and $y_p(t)$ are the instantaneous coordinates of a specific particle. In this case we get
 \begin{equation} \label{eq:path}
@@ -115,7 +115,7 @@ For pathlines, we let $x = x_p(t)$ and $y = y_p(t)$ where $x_p(t)$ and $y_p(t)$ 
 \end{equation}
 The simultaneous solution of these equations gives the path of a particle in parametric form, $x_p(t), y_p(t)$.
 
-For streaklines, the first step is to compute the pathline of a particle with \autoref{eq:path} that was released from the streak source at $x_0$, $y_0$ at time $t_0$, in the form
+For streaklines, the first step is to compute the pathline of a particle with \Cref{eq:path} that was released from the streak source at $x_0$, $y_0$ at time $t_0$, in the form
 \[ 
 x_{\text{particle}} (t) = x(t, x_0, y_0, t_0) \qquad y_{\text{particle}}(t) = y(t, x_0, y_0, t_0)
 .\]
@@ -123,7 +123,7 @@ Then now, instead of interpreting this as the position of a particle over time, 
 \begin{equation}\label{eq:streak}
   x_{\text{streakline}} \left( t_0 \right) = x \left( t, x_0, y_0, t_0 \right) \qquad y_{\text{streakline}} \left( t_0 \right) = y \left( t, x_0, y_0, t_0 \right)
 \end{equation}
-\autoref{eq:streak} gives the line generated (by time $t$) from a streak source placed at $(x_0, y_0)$. In these equations $t_0$ is varied from $0$ to $t$ to show the \textit{instantaneous} positions of all particles released up to time $t$. 
+\Cref{eq:streak} gives the line generated (by time $t$) from a streak source placed at $(x_0, y_0)$. In these equations $t_0$ is varied from $0$ to $t$ to show the \textit{instantaneous} positions of all particles released up to time $t$. 
 
 \subsection{Stress Field}
 To understand the behaviour of fluids one must first understand the nature of the forces that act upon fluid particles. A fluid particle can experience either:
@@ -134,7 +134,7 @@ To understand the behaviour of fluids one must first understand the nature of th
 
 Surface forces on a fluid particle leads to \textit{stresses}. Stress is an important concept when describing how forces acting on the boundaries of a medium are transmitted throughout the medium. 
 
-We consider the surface of a particle in contact with other fluid particles and the contact force being generated between these. Let $\delta \textbf{A}$ be a portion of the surface at some point $C$. The orientation of $\delta \textbf{A}$ is given by the unit vector $\hat{n}$, which is perpendicular to the surface as seen in \textbf{\autoref{fig:f2_6}}.
+We consider the surface of a particle in contact with other fluid particles and the contact force being generated between these. Let $\delta \textbf{A}$ be a portion of the surface at some point $C$. The orientation of $\delta \textbf{A}$ is given by the unit vector $\hat{n}$, which is perpendicular to the surface as seen in \Cref{fig:f2_6}.
 
 The force, $\delta \textbf{F}$, acting on the surface portion $\delta \textbf{A}$ may be split into two components -- a \textit{normal stress} $\sigma_n$ normal to the surface and a \textit{shear stress} $\tau_n$ tangential to the surface, defined as:
 \begin{align*}
@@ -142,7 +142,7 @@ The force, $\delta \textbf{F}$, acting on the surface portion $\delta \textbf{A}
   \tau_n &= \lim_{\delta A_n \to 0} \frac{\delta F_t}{\delta A_n}
 .\end{align*}
 
-The subscript $n$ on the stress is a reminder that the stresses are associated with the surface portion $\delta \textbf{A}$ through $C$, which has an outward normal in the $\hat{n}$ direction. 
+The subscript $n$ on the stress is a reminder that the stresses are associated with the surface portion $\delta \textbf{A}$ through $C$, which has an outward normal in the $\hat{n}$ direction.
 
 \begin{figure} [ht]
   \centering
@@ -157,12 +157,20 @@ We consider the stress on the element $\delta A_x$ whose normal is in the $+x$-d
   \tau_{xy} &= \lim_{\delta A_x \to 0} \frac{\delta F_y}{\delta A_x} \\
   \tau_{xz} &= \lim_{\delta A_x \to 0} \frac{\delta F_z}{\delta A_x}
 .\end{align*}
-This is also shown graphically in \textbf{\autoref{fig:f2_7}}.
+This is also shown graphically in \Cref{fig:f2_7}.
 
 \begin{figure} [ht]
-  \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f2_7.png}
-  \caption{Force and stresses at surface element $\delta A_x$}
+  \begin{subfigure}{0.48\linewidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{./figures/f2_7a.png}
+    \caption{Force components}
+  \end{subfigure}
+  \begin{subfigure}{0.48\linewidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{./figures/f2_7b.png}
+    \caption{Stress components}
+  \end{subfigure}
+  \caption{Force and stresses at surface element $\delta A_x$.}
   \label{fig:f2_7}
 \end{figure}
 
@@ -181,20 +189,35 @@ Planes are normally named for the direction in which their normal vector is poin
 \subsection{Viscosity}
 For a solid stresses develop when the material is elastically deformed or strained; for a fluid, shear stresses instead arise due to viscosity. For a fluid at rest there will be no shear stresses.
 
-We consider the behaviour of a fluid element between two infinite planes sketched on \textbf{\autoref{fig:f2_9}}. The rectangular fluid element is initially at rest at time $t$. We now suppose a constant rightward force $\delta F_x$ is applied to the upper plate such that it is dragged across the fluid at constant velocity $\delta u$. The shearing action of the plates produces a shear stress $\tau_{yx}$, which acts on the fluid element, and is given by:
+We consider the behaviour of a fluid element between two infinite planes sketched on \Cref{fig:f2_9}. The rectangular fluid element is initially at rest at time $t$. We now suppose a constant rightward force $\delta F_x$ is applied to the upper plate such that it is dragged across the fluid at constant velocity $\delta u$. The shearing action of the plates produces a shear stress $\tau_{yx}$, which acts on the fluid element, and is given by:
 \[ 
 \tau_{yx} = \lim_{\delta A_y \to 0} \frac{\delta F_x}{\delta A_y} = \frac{\mathrm{d} F_x}{\mathrm{d}A_y} 
 \]
 where $\delta A_y$ is the contact area between the fluid element between the plade and $\delta F_x$ is the force exerted by the plate on the element.
 
 \begin{figure} [ht]
+  \begin{subfigure}{0.25\linewidth}
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f2_9.png}
-  \caption{(a) Fluid element at time $t$, (b) deformation of fluid element at time $t + \delta t$, (c) deformation of fluid element at time $t + 2\delta t$}.
+  \includegraphics[width=0.8\linewidth]{./figures/f2_9a.png}
+  \caption{Fluid element at time $t$,}
+  \end{subfigure}
+  \begin{subfigure}{0.35\linewidth}
+  \centering
+  \includegraphics[width=0.8\linewidth]{./figures/f2_9b.png}
+  \caption{Deformation of fluid element at time $t + \delta t$,}
+  \label{fig:f2_9b}
+  \end{subfigure}
+  \hspace{0.2cm}
+  \begin{subfigure}{0.35\linewidth}
+  \centering
+  \includegraphics[width=0.8\linewidth]{./figures/f2_9c.png}
+  \caption{Deformation of fluid element at time $t + 2\delta t$.}
+  \end{subfigure}
+  \caption{Deformation of a fluid element.}
   \label{fig:f2_9}
 \end{figure}
 
-Focusing on the time interval $\delta t$ (\textbf{\autoref{fig:f2_9}b}) the deformation of the fluid is given by:
+Focusing on the time interval $\delta t$ (\Cref{fig:f2_9b}) the deformation of the fluid is given by:
 \[ 
 \text{deformation rate} = \lim_{\delta t \to 0} \frac{\delta \alpha}{\delta t} = \frac{\mathrm{d} \alpha}{\mathrm{d}t} 
 .\]
@@ -220,15 +243,15 @@ By taking the limits of both sides of this, we get:
 Thus, the fluid element will, when subjected to a shear stress $\tau_{yx}$, experience a rate of deformation given by $\frac{\mathrm{d}u}{\mathrm{d}y} $. We have thus established that any fluid will flow and have a shear rate when subjected to a shear stress. Fluids in which the shear stress is proportional to the deformation rate are termed \textit{Newtonian} and fluids for which this is not the case are termed \textit{non-Newtonian}.
 
 \subsection{Newtonian Fluid}
-Most common fluids are Newtonian under normal conditions. If the fluid on \textbf{\autoref{fig:f2_9}} is Newtonian, then:
+Most common fluids are Newtonian under normal conditions. If the fluid on \Cref{fig:f2_9} is Newtonian, then:
 \[ 
 \tau_{yx} \propto \frac{\mathrm{d}u}{\mathrm{d}y} 
 .\]
-The constant of proportionality between these two quantities is the \textit{absolute viscosity} also called the dynamic viscosity, $\mu$. Thus in terms of the coordinates on \textbf{\autoref{fig:f2_9}} Newton's law of viscosity for one-dimensional flow is:
+The constant of proportionality between these two quantities is the \textit{absolute viscosity} also called the dynamic viscosity, $\mu$. Thus in terms of the coordinates on \Cref{fig:f2_9} Newton's law of viscosity for one-dimensional flow is:
 \begin{equation} \label{eq:newvisone}
   \tau_{yx} = \mu \frac{\mathrm{d}u}{\mathrm{d}y} 
 \end{equation}
-By dimensional analysis on \textbf{\autoref{eq:newvisone}} it can be seen that the units of viscosity are \unit{kg.\per.m.s} or \unit{Pa.s}.
+By dimensional analysis on \Cref{eq:newvisone} it can be seen that the units of viscosity are \unit{kg.\per.m.s} or \unit{Pa.s}.
 
 In fluid mechanics the ratio of absolute viscosity $\mu$ to density $\rho$ often arises. This ratio is called the \textit{kinematic viscosity} and is represented by $\nu$. The units for this is $\qty{1}{stoke} \equiv \qty{1}{cm^2.\per.s}$.
 
@@ -241,7 +264,7 @@ Here $n$ is called the \textit{flow behaviour index} and $k$ is called the \text
 \begin{equation} \label{eq:nonnewvisone}
   \tau_{yx} = k \left| \frac{\mathrm{d}u}{\mathrm{d}y}  \right|^{n-1} \frac{\mathrm{d}u}{\mathrm{d}y} = \eta \frac{\mathrm{d}u}{\mathrm{d}y} 
 \end{equation}
-Here the term $\eta = k \left| \frac{\mathrm{d}u}{\mathrm{d}y}  \right|^{n-1}$ is referred to as the \textit{apparent viscosity}. When using \textbf{\autoref{eq:nonnewvisone}} we end up with a viscosity $\eta$ that is used in a formula in the same form as \textbf{\autoref{eq:newvisone}}. The big difference between these two is that while $\mu$ is constant (at a constant temperature), $\eta$ depends on the shear rate.
+Here the term $\eta = k \left| \frac{\mathrm{d}u}{\mathrm{d}y}  \right|^{n-1}$ is referred to as the \textit{apparent viscosity}. When using \Cref{eq:nonnewvisone} we end up with a viscosity $\eta$ that is used in a formula in the same form as \Cref{eq:newvisone}. The big difference between these two is that while $\mu$ is constant (at a constant temperature), $\eta$ depends on the shear rate.
 
 Fluids for which the apparent viscosity decreases with increasing deformation rate ($n<1$) are called \textit{pseudoplastic} or shear thinning fluids. Most non-Newtonian fluids are of this type. If the apparent viscosity increases with deformation rate ($n>1$) the fluid is termed \textit{dilatant} or shear thickening.
 
@@ -253,11 +276,19 @@ A ``fluid'' that behaves as a solid until a minimum yield stress $\tau_y$ is exc
 The apparent viscosity may also be time-dependent. \textit{Thixotropic} fluids show a decrease in $\eta$ with time at a constant stress and \textit{Rheopectic} fluids show an increase in $\eta$ with time. Some fluids partially return to their original shape when the stress is removed -- these are called \textit{viscoelastic}.
 
 \subsection{Surface Tension}
-Droplets can either ``flatten out'' or remain as little drops when dropped on a surface. We define a liquid as \textit{wetting} a surface when the contact angle is $<\ang{90}$. This is shown on \textbf{\autoref{fig:f2_11}}.
+Droplets can either ``flatten out'' or remain as little drops when dropped on a surface. We define a liquid as \textit{wetting} a surface when the contact angle is $<\ang{90}$. This is shown on \Cref{fig:f2_11}.
 
 \begin{figure} [ht]
+  \begin{subfigure}{0.48\linewidth}
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f2_11.png}
+  \includegraphics[width=0.6\linewidth]{./figures/f2_11a.png}
+  \caption{A ``wetted'' surface}
+  \end{subfigure}
+  \begin{subfigure}{0.48\linewidth}
+  \centering
+  \includegraphics[width=0.6\linewidth]{./figures/f2_11b.png}
+  \caption{A nonwetted surface}
+  \end{subfigure}
   \caption{Surface tension effects on water droplets.}
   \label{fig:f2_11}
 \end{figure}
@@ -275,18 +306,27 @@ Any object moving through a fluid will experience gravity and an aerodynamic dra
 .\]
 where $\rho$ and $\mu$ are the density and viscosity of the fluid, respectively, and $V$ and $L$ are the ``characteristic'' velocity and size scale of the flow, respectively. If the Reynolds number is ``large'' viscous effects will be small; however, if the Reynolds number is neither large nor small, both are important. 
 
-The idealized notion of frictionless flow is called \textit{inviscid flow}. It predicts streamlines as shown in \textbf{\autoref{fig:f2_14}a}. These streamlines are symmetric front to back. As flow between two streamlines is constant the velocity in the vicinity of points $A$ and $C$ must be relatively low compared to the velocity at point $B$. Hence, points $A$ and $C$ have large pressures whereas $B$ will be a point of low pressure. In fact, the pressure distribution around the sphere is symmetric and there is therefore no net drag force due to pressure. As we are assuming inviscid flow there will be no drag force due to friction either -- this is the d'Alembert paradox of 1752.
+The idealized notion of frictionless flow is called \textit{inviscid flow}. It predicts streamlines as shown in \Cref{fig:f2_14a}. These streamlines are symmetric front to back. As flow between two streamlines is constant the velocity in the vicinity of points $A$ and $C$ must be relatively low compared to the velocity at point $B$. Hence, points $A$ and $C$ have large pressures whereas $B$ will be a point of low pressure. In fact, the pressure distribution around the sphere is symmetric and there is therefore no net drag force due to pressure. As we are assuming inviscid flow there will be no drag force due to friction either -- this is the d'Alembert paradox of 1752.
 
 \begin{figure} [ht]
+  \begin{subfigure}{0.48\linewidth}
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f2_14.png}
-  \caption{Incompressible flow over a sphere}
-  \label{fig:f2_14}
+  \includegraphics[width=0.6\linewidth]{./figures/f2_14a.png}
+  \caption{Inviscid flow}
+  \label{fig:f2_14a}
+  \end{subfigure}
+  \begin{subfigure}{0.48\linewidth}
+  \centering
+  \includegraphics[width=0.6\linewidth]{./figures/f2_14b.png}
+  \caption{Viscous flow}
+  \label{fig:f2_14b}
+  \end{subfigure}
+  \caption{Incompressible flow over a sphere.}
 \end{figure}
 
-The answer to this was obtained by Prandtl in 1904. The no-slip condition requires that the velocity everywhere at the surface of the ball must be zero, but inviscid theory states that it is high at point $B$. Prandtl suggested that even though friction is negligible for high-Heynolds number flows, there will always be a thin boundary layer, in which friction is significant and over which the velocity will increase rapidly from zero at the surface to the value predicted by inviscid theory at the edge of the boundary layer. 
+The answer to this was obtained by Prandtl in 1904. The no-slip condition requires that the velocity everywhere at the surface of the ball must be zero, but inviscid theory states that it is high at point $B$. Prandtl suggested that even though friction is negligible for high-Reynolds number flows, there will always be a thin boundary layer, in which friction is significant and over which the velocity will increase rapidly from zero at the surface to the value predicted by inviscid theory at the edge of the boundary layer. 
 
-This thin boundary layer explains why drag arises. The boundary layer however also has another important consequence. It often leads to bodies moving through a fluid having a \textit{wake} as shown on \textbf{\autoref{fig:f2_14}b}. Here point $D$ is termed a \textit{separation point}, where fluid particles are pushed of the object thus creating the wake. It turns out that this wake always will have low pressure compared to the front of the sphere, hence the sphere now experiences quite a large \textit{pressure} or \textit{form drag}.
+This thin boundary layer explains why drag arises. The boundary layer however also has another important consequence. It often leads to bodies moving through a fluid having a \textit{wake} as shown on \Cref{fig:f2_14b}. Here point $D$ is termed a \textit{separation point}, where fluid particles are pushed of the object thus creating the wake. It turns out that this wake always will have low pressure compared to the front of the sphere, hence the sphere now experiences quite a large \textit{pressure} or \textit{form drag}.
 
 We can now also begin to see how \textit{streamlining} works. The main drag force in most aerodynamics is due to the low pressure wake. If we can reduce or even eliminate this wake the drag will be greatly reduced. Imagine that the sphere was instead teardrop shaped -- the pressure gradient will not be changing as quickly along the back half of the object and thus the wake will be smaller leading to less drag. This illustrates the \textit{very} significant different between inviscid flow ($\mu = 0$) and flows where the viscosity can be assumed negligible but not zero ($\mu\to 0$).
 

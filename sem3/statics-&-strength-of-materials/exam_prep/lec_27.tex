@@ -1,0 +1,86 @@
+\lecture{27}{11. December 2025}{Buckling of columns}
+
+\begin{problemwithimage}{f17_11}{17-11}
+  The A--36 steel angle has a cross-sectional area of $A = \qty{1550}{\mm^2}$ and a radius of gyration about the $x$ axis of $r_x = \qty{31,5}{\mm}$ and about the $y$ axis of $r_y = \qty{21,975}{\mm}$.
+  The smallest radius of gyration occurs about the $z$ axis and is $r_z = \qty{16,1}{\mm}$.
+  If the angle is to be used as a pin-connected \qty{3}{\m} long column, determine the largest axial load that can be applied through its centroid $C$ without causing it to buckle.
+\end{problemwithimage}
+
+\begin{derivation}
+  As the smallest radius of gyration is about the $z$ axis this is also the axis which buckling occurs about.
+  We convert the radius of gyration to a second moment of area as:
+  \begin{equation*}
+    I_z = A r_z^2 = \qty{1550}{\mm^2} \cdot \left( \qty{16.1}{\mm}  \right)^2 = \qty{401,775e3}{\mm^4}
+  .\end{equation*}
+  We now use the formula for Euler buckling:
+  \begin{align*}
+    P_{\mathrm{cr}} &= \frac{\pi^2 \cdot E \cdot I}{\left( KL \right)^2}\\
+    &= \frac{\pi^2 \cdot \qty{200}{\GPa} \cdot \qty{401,775e3}{\mm^{4}} }{\left( 1 \cdot \qty{3}{\m}  \right)^2} \\
+    &= \qty{88,12}{\kN} 
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+  P_{\mathrm{cr}} = \qty{88,12}{\kN} 
+}
+
+\begin{problemwithimage}{f17_29}{17-29}
+  If the diameter of the solid L2-steel rod $AB$ is \qty{50}{\mm}, determine the maximum mass $C$ that the rod can support without buckling.
+  Use $\mathrm{F.S.} = 2$ against buckling.
+\end{problemwithimage}
+
+\begin{derivation}
+  The compressive force in the column is:
+  \begin{equation*}
+    P_x = P \cos \ang{60} \qquad P_y = P \sin \ang{60} 
+  \end{equation*}
+  and the cable tension is
+  \begin{equation*}
+    T_x = - T \cos \ang{45} \qquad P_y = - T \sin \ang{45} 
+  .\end{equation*}
+  
+  A force equilibrium in the $x$ direction gives:
+  \begin{equation*}
+    P \cos \ang{60} - T \cos \ang{45} = 0 \implies T = \frac{\cos \ang{60} }{\cos \ang{45} }P = \num{0,7071} P
+  .\end{equation*}
+  And an equilibrium in the $y$ direction gives:
+  \begin{align*}
+    P \sin \ang{60} - T \sin \ang{45}  - W &= 0 \\
+    W &= P \sin \ang{60} - \num{0,7071} P \sin \ang{45} = P \left( \frac{\sqrt{3}}{2} - \frac{1}{2} \right) \\
+    \implies P &= \num{2,732} W
+  .\end{align*}
+  
+  The moment of inertia for the solid circular rod is:
+  \begin{equation*}
+    I = \frac{\pi d^{4}}{64} = \frac{\pi \cdot \left( \qty{50}{\mm}  \right)^{4}}{64} = \qty{306,796e3}{\mm^{4}} 
+  .\end{equation*}
+  
+  We now use Euler buckling formulas as:
+  \begin{align*}
+    P_{\mathrm{cr}} &= \frac{\pi^2 \cdot E \cdot I}{\left( KL^2 \right)} \\
+                    &= \frac{\pi^2 \cdot \qty{200}{\GPa} \cdot \qty{306,796e3}{\mm^{4}} }{\left( \qty{4}{\m}  \right)^2} \\
+                    &= \qty{37,85e3}{\N} 
+  .\end{align*}
+  We need a factor of safety of 2 against buckling:
+  \begin{equation*}
+    P_{\mathrm{allow}} = \frac{P_{\mathrm{cr}}}{2} = \qty{18,925e3}{\N} 
+  .\end{equation*}
+  Which means the allowable weight is:
+  \begin{align*}
+    P_{allow} &= \num{2,732} W_{\mathrm{allow}} \\
+    W_{\mathrm{allow}} &= \frac{P_{\mathrm{allow}}}{\num{2,732} } \\
+    &= \frac{\qty{18,925e3}{\N}}{\num{2,732} } \\
+    &= \qty{6,927e3}{\N} 
+  .\end{align*}
+  Corresponding to a mass of
+  \begin{align*}
+    W_{\mathrm{allow}} &= m_{\mathrm{allow}}g \\
+    m_{\mathrm{allow}} &= \frac{W_{\mathrm{allow}}}{g} \\
+    &= \frac{\qty{6,927e3}{\N}}{\qty{9,82}{\m\per\s^2} } \\
+    &= \qty{705,4}{\kg}
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+m_{\mathrm{allow = \qty{705,4}{\kg}}}
+}

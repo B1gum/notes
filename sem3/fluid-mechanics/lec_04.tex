@@ -1,9 +1,9 @@
-\lecture{4}{3. September 2025}{ Control volume analysis II: Momentum \& energy equation}
+\lecture{4}{3. September 2025}{Control Volume Analysis II: Momentum \& Energy Equation}
 
 \subsection{Momentum Equation for Inertial Control Volume}
-We will now find a control volume form of Newton's second law. Note that in the following the coordinates (with respect to which velocities are meassured) are inertial, i.e. either at rest or moving at a constant speed with respect to an ``absolute'' set of coordinates.
+We will now find a control volume form of Newton's second law. Note that in the following the coordinates (with respect to which velocities are measured) are inertial, i.e. either at rest or moving at a constant speed with respect to an ``absolute'' set of coordinates.
 
-We have previously defined Newton's second law for a system moving relative to an inertial coordinate system in \autoref{afs:N2} as:
+We have previously defined Newton's second law for a system moving relative to an inertial coordinate system in \Cref{afs:N2} as:
 \[ 
 \textbf{F} = \frac{\mathrm{d}\textbf{P}}{\mathrm{d}t} \bigg)_{\mathrm{system}}
 \]
@@ -16,7 +16,7 @@ and the resultant force $\textbf{F}$ includes all surface and body forces acting
 \textbf{F} = \textbf{F}_S + \textbf{F}_B
 .\]
 
-We have previously derived the relation between the system and control volume formulations in \autoref{eq:reytra} as:
+We have previously derived the relation between the system and control volume formulations in \Cref{eq:reytra} as:
 \[ 
 \frac{\mathrm{d}N}{\mathrm{d}t} \bigg)_{\mathrm{system}} = \frac{\partial }{\partial t} \int_{\mathrm{CV}} \eta \rho \, \mathrm{d}V + \int_{\mathrm{CS}} \eta \rho \textbf{V} \cdot \mathrm{d}\textbf{A}
 .\]
@@ -24,7 +24,7 @@ In this we now set $N = \textbf{P}$ and $\eta = \textbf{V}$. We thus obtain:
 \[ 
 \frac{\mathrm{d}\textbf{P}}{\mathrm{d}t} \bigg)_{\mathrm{system}} = \frac{\partial }{\partial t} \int_{\mathrm{CV}} \textbf{V} \rho \, \mathrm{d}V + \int_{\mathrm{CS}} \textbf{V} \rho \textbf{V} \cdot \mathrm{d} \textbf{A}
 .\]
-Since in deriving \autoref{eq:reytra} the system and control volume conincided at $t_0$, then
+Since in deriving \Cref{eq:reytra} the system and control volume coincided t $t_0$, then
 \[ 
 \textbf{F})_{\text{on system}} = \textbf{F})_{\text{on control volume}} = \textbf{F}_S + \textbf{F}_B
 .\]
@@ -38,7 +38,7 @@ For cases with uniform flow at each inlet and exit this becomes:
 \textbf{F} = \textbf{F}_S + \textbf{F}_B = \frac{\partial }{\partial t} \int_{\mathrm{CV}} \textbf{V} \rho \, \mathrm{d}V + \sum_{\mathrm{CS}} \textbf{V} \rho \textbf{V} \cdot \textbf{A}
 .\]
 
-When applying \autoref{eq:convolN2} we need to be a little careful. First we must choose a control volume and its control surface such that the volume integral and surface integral can be evaluated. In fluid mechanics the body force is usually gravity, so
+When applying \Cref{eq:convolN2} we need to be a little careful. First we must choose a control volume and its control surface such that the volume integral and surface integral can be evaluated. In fluid mechanics the body force is usually gravity, so
 \[ 
 \textbf{F}_B = \int_{\mathrm{CV}} \rho \textbf{g} \, \mathrm{d}V = \textbf{W}_{\mathrm{CW}} = M \textbf{g}
 .\]
@@ -47,7 +47,7 @@ In many applications the surface force is due to pressure,
 \textbf{F}_S = \int_A - p \, \mathrm{d}\textbf{A}
 .\]
 
-The momentum equation in \autoref{eq:convolN2} is a vector equation therefore it can be written in three scalar components as:
+The momentum equation in \Cref{eq:convolN2} is a vector equation therefore it can be written in three scalar components as:
 \begin{align*}
   F_x &= F_{S_x} + F_{B_x} = \frac{\partial }{\partial t} \int_{\mathrm{CV}} u \rho \, \mathrm{d}V + \int_{\mathrm{CS}} u \rho \textbf{V} \cdot \mathrm{d}\textbf{A} \\
     F_y &= F_{S_y} + F_{B_y} = \frac{\partial }{\partial t} \int_{\mathrm{CV}} v \rho \, \mathrm{d}V + \int_{\mathrm{CS}} v \rho \textbf{V} \cdot \mathrm{d}\textbf{A} \\
@@ -63,13 +63,13 @@ Or in the case of uniform flow at each inlet and exit as
 \subsubsection{Differential Control Volume Analysis}
 The control volume approach that has been presented in the above is useful when applied to a finite region.
 
-If we instead apply the approach to a differential control volume, we can obtain differential equations describing a flow field. Let us apply the continuity and momentum equations to a steady incompressible flow without friction as on \autoref{fig:f4_4}. The control volume is fixed in space and bounded by flow streamlines, and is thus an element of a stream tube. The length of the control volume is $\mathrm{d}s$. 
+If we instead apply the approach to a differential control volume, we can obtain differential equations describing a flow field. Let us apply the continuity and momentum equations to a steady incompressible flow without friction as on \Cref{fig:f4_4}. The control volume is fixed in space and bounded by flow streamlines, and is thus an element of a stream tube. The length of the control volume is $\mathrm{d}s$. 
 
 As the control volume is bounded by streamlines, flow across the boundaries of the control volume only happens at the end sections located at coordinates $s$ and $s + \mathrm{d}s$. Properties at the inlet sections are assigned arbitrary symbolic values and the properties at the outlet section are assumed to increase by differential amounts. 
 
 \begin{figure} [ht]
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f4_4.png}
+  \includegraphics[width=0.8\linewidth]{./figures/f4_4.png}
   \caption{Differential control volume through a stream tube.}
   \label{fig:f4_4}
 \end{figure}
@@ -174,7 +174,7 @@ where the linear momentum of the system is
 \]
 and the force $\textbf{F}$ includes all surface and body forces that are acting on the system.
 
-To derive the control volume formulation of Newton's second law, we set $N = \textbf{P}_{xyz}$ and $\eta = \textbf{V}_{xyz}$. Substituting this into \autoref{eq:reytra} we obtain:
+To derive the control volume formulation of Newton's second law, we set $N = \textbf{P}_{xyz}$ and $\eta = \textbf{V}_{xyz}$. Substituting this into \Cref{eq:reytra} we obtain:
 \[ 
 \frac{\mathrm{d}\textbf{P}_{xyz}}{\mathrm{d}t} \bigg)_{\mathrm{system}} = \frac{\partial }{\partial t} \int_{\mathrm{CV}} \textbf{V}_{xyz} \rho \, \mathrm{d}V + \int_{\mathrm{CS}} \textbf{V}_{xyz} \rho \textbf{V}_{xyz} \cdot \mathrm{d}\textbf{A}
 .\]
@@ -186,7 +186,7 @@ And since $\textbf{F} = \textbf{F}_S + \textbf{F}_B$ this becomes
 \begin{equation}\label{eq:convolN2acc}
   \textbf{F}_S + \textbf{F}_B - \int_{\mathrm{CV}} \textbf{a}_{rf} \rho \, \mathrm{d}V = \frac{\partial}{\partial t} \int_{\mathrm{CV}} \textbf{V}_{xyz} \rho \, \mathrm{d}V + \int_{\mathrm{CS}} \textbf{V}_{xyz} \rho \textbf{V}_{xyz} \cdot \mathrm{d}\textbf{A}
 \end{equation}
-Comparing \autoref{eq:convolN2acc} to that for a non-accelerating control volume we see that they only differ by the introduction of the term $- \int_{\mathrm{CV}} \textbf{a}_{rf} \rho \, \mathrm{d}V$, and for a non-accelerating reference frame $\textbf{a}_{rf} = 0$ and it reduces to the equation for a non-accelerating reference frame. 
+Comparing \Cref{eq:convolN2acc} to that for a non-accelerating control volume we see that they only differ by the introduction of the term $- \int_{\mathrm{CV}} \textbf{a}_{rf} \rho \, \mathrm{d}V$, and for a non-accelerating reference frame $\textbf{a}_{rf} = 0$ and it reduces to the equation for a non-accelerating reference frame. 
 
 This can also be written in components as:
 \begin{align*}
@@ -242,7 +242,7 @@ and
 \[ 
 e = u + \frac{V^2}{2} + gz
 .\]
-We set $N = E$ and $\eta = e$ in \autoref{eq:reytra} and obtain:
+We set $N = E$ and $\eta = e$ in \Cref{eq:reytra} and obtain:
 \[ 
 \frac{\mathrm{d}E}{\mathrm{d}t} \bigg)_{\mathrm{system}} = \frac{\partial }{\partial t} \int_{\mathrm{CV}} e \rho \, \mathrm{d}V + \int_{\mathrm{CS}} e \rho \textbf{V} \cdot \mathrm{d} \textbf{A}
 .\]
@@ -254,7 +254,7 @@ where
 \[ 
 e = u + \frac{V^2}{2} + gz
 .\]
-Note that for steady flow the right hand side of \autoref{eq:convolT1} is zero.
+Note that for steady flow the right hand side of \Cref{eq:convolT1} is zero.
 
 \subsubsection{Rate of Work Done by a Control Volume}
 The rate of work done by a control volume is subdivided into four classifications,
@@ -276,12 +276,12 @@ If we divide this by the time increment $\Delta t$ and take the limit as $\Delta
 .\]
 \begin{figure} [ht]
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f4_6.png}
+  \includegraphics[width=0.65\linewidth]{./figures/f4_6.png}
   \caption{Normal and shear stress forces.}
   \label{fig:f4_6}
 \end{figure}
 
-We can use this to compute the rate of work done by normal and shear stresses. We consider the segment og control surface shown on \autoref{fig:f4_6}. For an element of area $\mathrm{d}\textbf{A}$ we can write an expression for the normal stress force $\mathrm{d}\textbf{F}_{\mathrm{normal}}$. This will be given by the normal stress $\sigma_{nn}$ multiplied by the vector element $\mathrm{d}\textbf{A}$. Hence:
+We can use this to compute the rate of work done by normal and shear stresses. We consider the segment og control surface shown on \Cref{fig:f4_6}. For an element of area $\mathrm{d}\textbf{A}$ we can write an expression for the normal stress force $\mathrm{d}\textbf{F}_{\mathrm{normal}}$. This will be given by the normal stress $\sigma_{nn}$ multiplied by the vector element $\mathrm{d}\textbf{A}$. Hence:
 \[ 
 \mathrm{d}\textbf{F}_{\mathrm{normal}} \cdot \textbf{V} = \sigma_{nn} \, \mathrm{d}\textbf{A} \cdot \textbf{V}
 .\]
@@ -291,7 +291,7 @@ Since the work out from the control volume is the negative work done on the cont
 .\]
 
 \paragraph{Work Done by Shear Stresses at the Control Surface}
-As shown on \autoref{fig:f4_6} the shear force acting on an element of the control surface is given by:
+As shown on \Cref{fig:f4_6} the shear force acting on an element of the control surface is given by:
 \[ 
 \mathrm{d} \textbf{F}_{\mathrm{shear}} = \bm{\tau} \, \mathrm{d}A
 \]
@@ -343,7 +343,7 @@ where the total entropy of the system is given by
 \[ 
 S_{\mathrm{system}} = \int_{M (\mathrm{system})} s \, \mathrm{d}m = \int_{V (\mathrm{system})} s \rho \, \mathrm{d}V
 .\]
-We set $N = S$ and $\eta = s$ in \autoref{eq:reytra} and obtain
+We set $N = S$ and $\eta = s$ in \Cref{eq:reytra} and obtain
 \[ 
 \frac{\mathrm{d}S}{\mathrm{d}t} \bigg)_{\mathrm{system}} = \frac{\partial }{\partial t} \int_{\mathrm{CV}} s \rho \, \mathrm{d}V + \int_{\mathrm{CS}} s \rho \textbf{V} \cdot \mathrm{d}\textbf{A}
 .\]

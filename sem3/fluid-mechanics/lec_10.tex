@@ -5,7 +5,7 @@
 \subsection{Internal Flow Characteristics}
 
 \subsubsection{Laminar Versus Turbulent Flow}
-The pipe flow regime, i.e. if the flow is turbulent or laminar, is determined by the Reynolds number, briefly mentioned in \autoref{sec:sigdim}, $\mathrm{Re} = \frac{\rho \overline{V} D}{\mu}$.
+The pipe flow regime, i.e. if the flow is turbulent or laminar, is determined by the Reynolds number, briefly mentioned in \Cref{sec:sigdim}, $\mathrm{Re} = \frac{\rho \overline{V} D}{\mu}$.
 Under normal conditions, the transition to turbulence occurs at roughly $\mathrm{Re} \approx \num{2300} $ for flow in pipes.
 For water in a $\textit{Ø}=\qty{1}{in.}$ pipe, this corresponds to an average speed of $V \approx \qty{0,1}{\frac{m}{s}}$.
 Turbulence occurs when the viscous forces are not able to damp out the random fluctuations in fluid motion.
@@ -16,7 +16,7 @@ On the other hand, high-density fluids will exacerbate the inertial forces due t
 \subsubsection{The Entrance Region}
 \begin{figure} [ht]
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f8_1.png}
+  \includegraphics[width=0.8\linewidth]{./figures/f8_1.png}
   \caption{Flow in the entrance region of a pipe.}
   \label{fig:f8_1}
 \end{figure}
@@ -48,7 +48,7 @@ To calculate the leakage flow rate, we will first determine the velocity field.
 
 \begin{figure} [ht]
   \centering
-  \includegraphics[width=0.35\linewidth]{./figures/f8_2.png}
+  \includegraphics[width=0.4\linewidth]{./figures/f8_2.png}
   \caption{Piston-cylinder system approximated as infinite parallel plates.}
   \label{fig:f8_2}
 \end{figure}
@@ -66,8 +66,16 @@ Since the flow is fully developed it cannot vary with $x$ and, hence, depends on
 Furthermore, there will be no component of velocity in the $y$ or $z$ directions, as the flow is fully developed.
 
 \begin{figure} [ht]
-  \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f8_3.png}
+  \begin{subfigure}{0.48\linewidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{./figures/f8_3a.png}
+    \caption{Geometry of CV}
+  \end{subfigure}
+  \begin{subfigure}{0.48\linewidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{./figures/f8_3b.png}
+    \caption{Forces acting on CV}
+  \end{subfigure}
   \caption{Control volume for analysis of laminar flow between stationary infinite parallel plates.}
   \label{fig:f8_3}
 \end{figure}
@@ -159,8 +167,8 @@ The second basic way to generate flow between infinite parallel plates, is to ha
 
 In this case the boundary conditions are
 \begin{align*}
-  u &= 0 &\implies y &= 0 \\
-  u &= U &\implies y &=a
+  u &= 0 & &\implies & y &= 0 \\
+  u &= U & &\implies & y &=a
 .\end{align*}
 
 In this case the velocity distribution is also given by
@@ -204,8 +212,21 @@ F_{S_x} = 0
 .\]
 
 \begin{figure} [ht]
-  \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f8_7.png}
+  \begin{subfigure}{0.24\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{./figures/f8_7a.png}
+    \caption{End view of CV}
+  \end{subfigure}
+  \begin{subfigure}{0.34\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{./figures/f8_7b.png}
+    \caption{Side view CV}
+  \end{subfigure}
+  \begin{subfigure}{0.39\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{./figures/f8_7c.png}
+    \caption{Forces on CV}
+  \end{subfigure}
   \caption{Differential control volume for analysis of fully developed laminar flow in a pipe.}
   \label{fig:f8_7}
 \end{figure}

@@ -1,0 +1,49 @@
+\lecture{12}{2. Oktober 2025}{Axially Loaded Members}
+
+\begin{problemwithimage}{f9_18}{9-18}
+  The A--36 steel pipe has a 6061--T6 aluminum core.
+  It is subjected to a tensile force of \qty{200}{\kN}.
+  Determine the average normal stress in the aluminum and the steel due to this loading.
+  The pipe has an outer diameter of \qty{80}{\mm} and an inner diameter of \qty{70}{\mm}.
+\end{problemwithimage}
+
+\begin{derivation}
+  We assume that the steel and aluminum does not slip relative to each other and that the strains therefore must be equal everywhere.
+  \begin{equation*}
+    \epsilon_{\mathrm{st}} = \epsilon_{\mathrm{al}} = \epsilon
+  .\end{equation*}
+  Hence,
+  \begin{equation*}
+    \sigma_{\mathrm{st}} = E_{\mathrm{st}} \cdot \epsilon \qquad \sigma_{\mathrm{al}} = E_{\mathrm{al}} \cdot \epsilon
+  .\end{equation*}
+  The force is then
+  \begin{equation*}
+    P = \sigma_{\mathrm{st}} A_{\mathrm{st}} + \sigma_{\mathrm{al}} A_{\mathrm{al}} = \epsilon \left( E_{\mathrm{st}} \cdot A_{\mathrm{st}} + E_{\mathrm{al}} \cdot A_{\mathrm{al}} \right)
+  .\end{equation*}
+
+  The areas are:
+  \begin{align*}
+    A_{\mathrm{st}} &= \frac{\pi}{4}\cdot \left( \left( \qty{80}{\mm}  \right)^2 - \left( \qty{70}{\mm}  \right)^2 \right)  = \qty{11.78}{\cm^2}\\
+    A_{\mathrm{al}} &= \frac{\pi}{4} \cdot \left( \qty{70}{\mm}  \right)^2  = \qty{38.48}{\cm^2}
+  .\end{align*}
+  
+  We can find the elongation using table values for $E_{\mathrm{st}} = \qty{200}{\GPa}$ and $E_{\mathrm{al}} = \qty{69}{\GPa}$ as
+  \begin{align*}
+    \epsilon &= \frac{P}{E_{\mathrm{st}}\cdot A_{\mathrm{st}} + E_{\mathrm{al}}\cdot A_{\mathrm{al}}} \\
+    &= \frac{\qty{200}{\kN}}{\qty{200}{\GPa} \cdot \qty{11.78}{\cm^2} + \qty{69}{\GPa} \cdot \qty{38.48}{\cm^2} } \\
+    &= \num{3,991e-4}
+  .\end{align*}
+
+  Hence,
+  \begin{align*}
+    \sigma_{\mathrm{st}} &= \qty{200}{\GPa} \cdot \num{3.991e-4} = \qty{79.8}{\MPa} \\
+    \sigma_{\mathrm{al}} &= \qty{69}{\GPa} \cdot \num{3.991e-4} = \qty{27.5}{\MPa} 
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  \sigma_{\mathrm{st}} &= \qty{200}{\GPa} \cdot \num{3.991e-4} = \qty{79.8}{\MPa} \\
+  \sigma_{\mathrm{al}} &= \qty{69}{\GPa} \cdot \num{3.991e-4} = \qty{27.5}{\MPa} 
+.\end{aligned}
+}

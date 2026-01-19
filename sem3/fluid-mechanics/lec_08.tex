@@ -1,15 +1,15 @@
 \lecture{8}{17. September 2025}{Bernoulli Equation Continued}
 
 \subsection{The Bernoulli Equation as an Energy Equation}
-The Bernoulli equation, \autoref{eq:berneq}, has been derived by integration of Euler's equation along a streamline for a steady, incompressible, frictionless flow -- I.e. it was derived from the momentum equation for a fluid particle. 
+The Bernoulli equation, \Cref{eq:berneq}, has been derived by integration of Euler's equation along a streamline for a steady, incompressible, frictionless flow -- I.e. it was derived from the momentum equation for a fluid particle. 
 
-Another equation, that looks almost identical to \autoref{eq:berneq}, although requiring very different restrictions can be obtained from the first law of thermodynamics. 
+Another equation, that looks almost identical to \Cref{eq:berneq}, although requiring very different restrictions can be obtained from the first law of thermodynamics. 
 
-We consider steady flow in the absence of shear forces. We choose a control volume bounded by streamlines as shown on \autoref{fig:f6_5}, which is often called a \textit{stream tube}.
+We consider steady flow in the absence of shear forces. We choose a control volume bounded by streamlines as shown on \Cref{fig:f6_5}, which is often called a \textit{stream tube}.
 
 \begin{figure} [ht]
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f6_5.png}
+  \includegraphics[width=0.6\linewidth]{./figures/f6_5.png}
   \caption{Flow through a stream tube.}
   \label{fig:f6_5}
 \end{figure}
@@ -63,7 +63,7 @@ If we also assume the flow is incompressible then $v_1 = v_2 = \frac{1}{\rho}$ a
 \[ 
 \frac{p_1}{\rho} + \frac{V_1^2}{2} + gz_1 = \frac{p_2}{\rho} + \frac{V_2^2}{2} + gz_2 + \left( u_2 - u_1 - \frac{\delta Q}{\mathrm{d}m} \right)
 .\]
-We can see that this reduces to the Bernoulli Equation, \autoref{eq:berneq} if the term in parentheses were zero. Therefore if we impose the further restriction,
+We can see that this reduces to the Bernoulli Equation, \Cref{eq:berneq} if the term in parentheses were zero. Therefore if we impose the further restriction,
 \[ 
 \left( u_2 - u_1 - \frac{\delta Q}{\mathrm{d}m} \right) = 0
 ,\]
@@ -76,7 +76,7 @@ which is the Bernoulli equation.
 Here we note that the Bernoulli equation has been derived in two different ways from entirely different frameworks. It may seem that the restriction, relating heat transfer and internal thermal energy change, is needed for the energy equation to transform to the Bernoulli equation.  However, for an incompressible and frictionless flow without shear forces, heat transfer results only in a temperature change and does not affect neither pressure nor velocity. 
 
 \subsection{Energy Grade Line and Hydraulic Grade Line} \label{sec:egl}
-For a steady, incompressible, frictionless flow we may use the Bernoulli equation, \autoref{eq:berneq}:
+For a steady, incompressible, frictionless flow we may use the Bernoulli equation, \Cref{eq:berneq}:
 \[ 
 \frac{p}{\rho} + \frac{V^2}{2} + gz = \mathrm{constant}
 .\]
@@ -96,11 +96,11 @@ From these we get
 \[ 
 \mathrm{EGL} - \mathrm{HGL} = \frac{V^2}{2g}
 ,\]
-i.e. the difference between the EGL and HGL is the dynamic pressure term. The function of this is shown graphically on \autoref{fig:f6_6}. Here it is worth noting that for incompressible, inviscid flow without work devices the EGL is constant. Furthermore, the HGL will always be lower than the EGL by distance $\frac{V^2}{2g}$. 
+i.e. the difference between the EGL and HGL is the dynamic pressure term. The function of this is shown graphically on \Cref{fig:f6_6}. Here it is worth noting that for incompressible, inviscid flow without work devices the EGL is constant. Furthermore, the HGL will always be lower than the EGL by distance $\frac{V^2}{2g}$. 
 
 \begin{figure} [ht]
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f6_6.png}
+  \includegraphics[width=0.7\linewidth]{./figures/f6_6.png}
   \caption{Energy and hydraulic grade lines for frictionless flow}
   \label{fig:f6_6}
 \end{figure}
@@ -137,7 +137,7 @@ This is applicable for incompressible, frictionless flow along a streamline. Thi
 
 
 \subsection{Irrotational Flow}
-Irrotational flows were briefly mentioned in \autoref{sec:rot}. These are flows in which the fluid particles do not rotate ($\boldsymbol{\omega} = 0$). The only stresses that can generate particle rotation are shear stresses. Therefore, all inviscid flows are inherently irrotational unless the particles were somehow initially rotating. The irrotationality condition is
+Irrotational flows were briefly mentioned in \Cref{sec:rot}. These are flows in which the fluid particles do not rotate ($\boldsymbol{\omega} = 0$). The only stresses that can generate particle rotation are shear stresses. Therefore, all inviscid flows are inherently irrotational unless the particles were somehow initially rotating. The irrotationality condition is
 \[ 
 \nabla \times \textbf{V} = 0 \implies \frac{\partial w}{\partial y} - \frac{\partial v}{\partial z} = \frac{\partial u}{\partial z} - \frac{\partial w}{\partial x} = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y} = 0
 .\]

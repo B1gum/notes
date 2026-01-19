@@ -1,0 +1,35 @@
+\lecture{11}{29. September 2025}{Stress Design and Deformation}
+
+\begin{problemwithimage}{f7_22}{F7-22}
+  The bolt is made of a material having a failure shear stress of $\tau_{\mathrm{fail}} = \qty{100}{\MPa}$.
+  Determine the minimum required diameter of the bolt to the nearest \unit{\mm}.
+  Apply a factor of safety of $\mathrm{F.S.} = \num{2,5}$ against shear failure.
+\end{problemwithimage}
+
+\begin{derivation}
+  First, we find the allowable stress as
+  \begin{equation*}
+    \tau_{\mathrm{allow}} = \frac{\tau_{\mathrm{fail}}}{\mathrm{F.S.}} = \frac{\qty{100}{\MPa} }{\num{2.5} } = \qty{40}{\MPa} 
+  .\end{equation*}
+  
+  The average stress is given as
+  \begin{equation*}
+    \tau_{\mathrm{avg}} = \frac{V}{A}
+  .\end{equation*}
+  We assume that all \qty{80}{\kN} of applied force goes into the bolt as a shear load.
+  Furthermore, we assume the bolt is cylindrical and that it shears at both the top bracket and bottom bracket.
+  \begin{align*}
+    \tau_{\mathrm{allow}} &= \frac{V}{2A} \\
+    A &= \frac{V}{2\tau_{\mathrm{allow}}} \\
+    A &= \frac{\qty{80}{\kN} }{2 \cdot \qty{40}{\MPa} } \\
+    A &= \qty{1000}{\mm^2}
+  \end{align*}
+  Now we find the required diameter as:
+  \begin{align*}
+    \pi \cdot \frac{D^2}{4} &= \qty{1000}{\mm^2} \\
+    D &= \sqrt{\frac{\qty{4000}{\mm^2} }{\pi}} \\
+    D &= \qty{35,68}{\mm}\\
+  .\end{align*}
+\end{derivation}
+
+\finalresult{D = \qty{36}{\mm}}

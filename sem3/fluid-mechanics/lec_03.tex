@@ -1,4 +1,4 @@
-\lecture{3}{1. September 2025}{Control volume analysis I: Basic laws and mass conservation}
+\lecture{3}{1. September 2025}{Control Volume Analysis I: Basic Laws and Mass Conservation}
 
 \section{Basic Equations in Integral Form for a Control Volume} \label{sec:intconvol}
 In general, there are two approaches to study flowing fluids. Either one can study how an individual particle or group of particles move through space, this is often called the \textit{system approach}. This often leds to one needing to solve a set of partial differential equations.
@@ -76,7 +76,7 @@ S_{\mathrm{system}} = \int _{M(\mathrm{system})} s \, \mathrm{d}m = \int_{V (\ma
 .\]
 
 
-\subsubsection{Relation of System derivatives to the control volume formulation}
+\subsubsection{Relation of System Derivatives to the Control Volume Formulation}
 Let any of the parameters $M, \textbf{P}, \textbf{H}, E,$ or $S$ be represented by the symbol $N$. Corresponding to the extensive property ($N$) that we are trying to find we, will need the intensive (i.e., per unit mass) property $\eta$. Thus:
 \[ 
 N_{\mathrm{system}} = \int_{M (\mathrm{system})} \eta \, \mathrm{d}m = \int_{V (\mathrm{system})} \eta \rho \, \mathrm{d}V
@@ -92,8 +92,16 @@ I.e. if:
 
 \subsubsection{Derivation}
 \begin{figure} [ht]
-  \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f4_1.png}
+  \begin{subfigure}{0.48\linewidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{./figures/f4_1a.png}
+    \caption{Time, $t_0$}
+  \end{subfigure}
+  \begin{subfigure}{0.48\linewidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{./figures/f4_1b.png}
+    \caption{Time, $t_0 + \Delta t$}
+  \end{subfigure}
   \caption{Configuration of the system and control volume.}
   \label{fig:f4_1}
 \end{figure}
@@ -104,7 +112,7 @@ Let $t$ represent the initial time for the system and $t + \Delta t$ represent a
 \end{equation}
 Here subscript $s$ is used to denote the system.
 
-From the geometry of \textbf{\autoref{fig:f4_1}},
+From the geometry of \Cref{fig:f4_1},
 \[ 
 N_s)_{t_0 + \Delta t} = \left( N_{\mathrm{II}} + N_{\mathrm{III}} \right)_{t_0 + \Delta t} = \left( N_{\mathrm{CV}} - N_{\mathrm{I}} + N_{\mathrm{III}} \right)_{t_0 + \Delta t}
 \]
@@ -113,7 +121,7 @@ and
 N_s )_{t_0} = \left( N_{\mathrm{CV}} \right)_{t_0}
 .\]
 
-Substituting these into the definition of the system derivative in \textbf{\autoref{eq:sysder}} we get
+Substituting these into the definition of the system derivative in \Cref{eq:sysder} we get
 \[ 
 \frac{\mathrm{d}N}{\mathrm{d}t} \bigg)_{s} = \lim_{\Delta t \to 0} \frac{\left( N_{\mathrm{CV}} - N_{\mathrm{I}} + N_{\mathrm{III}} \right)_{t_0 + \Delta t} - N_{\mathrm{CV} )_{t_0}}}{\Delta t}
 .\]
@@ -128,12 +136,12 @@ Each of the three terms can now be evaluated individually. We start with term 1,
 
 \begin{figure} [ht]
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f4_2.png}
-  \caption{Enlarged view of subregion 3 from \textbf{\autoref{fig:f4_1}}}
+  \includegraphics[width=0.6\linewidth]{./figures/f4_2.png}
+  \caption{Enlarged view of subregion 3 from \Cref{fig:f4_1}}
   \label{fig:f4_2}
 \end{figure}
 
-To evaluate term 2 we first need develop an expression for $N_{\mathrm{III}})_{t_0 + \Delta t}$ by looking at the subregion 3 of region III shown on \textbf{\autoref{fig:f4_2}}. The vector area element $\mathrm{d}\textbf{A}$ of the control surface has magnitude $\mathrm{d}A$ and its direction is normal outward of the area element. The velocity vector $\textbf{V}$ will be at some angle $\alpha$ with respect to $\mathrm{d}\textbf{A}$
+To evaluate term 2 we first need develop an expression for $N_{\mathrm{III}})_{t_0 + \Delta t}$ by looking at the subregion 3 of region III shown on \Cref{fig:f4_2}. The vector area element $\mathrm{d}\textbf{A}$ of the control surface has magnitude $\mathrm{d}A$ and its direction is normal outward of the area element. The velocity vector $\textbf{V}$ will be at some angle $\alpha$ with respect to $\mathrm{d}\textbf{A}$
 
 For this subregion we have
 \[ 
@@ -160,7 +168,7 @@ As $\mathrm{CS}_{\mathrm{I}}$ and $\mathrm{CS}_{\mathrm{III}}$ constitute the en
   \frac{\mathrm{d}N}{\mathrm{d}t} \bigg)_{\mathrm{system}} = \frac{\partial}{\partial t} \int_{\mathrm{CV}} \eta \rho \, \mathrm{d}V + \int_{\mathrm{CS}} \eta \rho \textbf{V} \cdot \mathrm{d} \textbf{A}
 \end{equation}
 
-\textbf{\autoref{eq:reytra}} is the fundamental relation between the rate of change of any extensive property $N$ of a system and the variations of this property associated with a control volume. This is also called the \textit{Reynolds Transport Theorem}. 
+\Cref{eq:reytra} is the fundamental relation between the rate of change of any extensive property $N$ of a system and the variations of this property associated with a control volume. This is also called the \textit{Reynolds Transport Theorem}. 
 
 Here it is important to note that the system is defined as the matter that happens to be passing through the chosen control volume at the instant we chose. I.e.
 \begin{itemize}
@@ -170,11 +178,11 @@ Here it is important to note that the system is defined as the matter that happe
 \end{itemize}
 
 \subsection{Conservation of Mass}
-We remember from \autoref{afs:consmass} that the mass of the system remains constant,
+We remember from \Cref{afs:consmass} that the mass of the system remains constant,
 \[ 
 \frac{\mathrm{d}M}{\mathrm{d}t} \bigg)_{\mathrm{system}} = 0
 .\]
-If we set $N = M$ and $\eta = 1$ and plug it into \autoref{eq:reytra} we obtain
+If we set $N = M$ and $\eta = 1$ and plug it into \Cref{eq:reytra} we obtain
 \[ 
 \frac{\mathrm{d}M}{\mathrm{d}t} \bigg)_{\mathrm{system}} = \frac{\partial }{\partial t} \int_{\mathrm{CV}} \rho \, \mathrm{d}V + \int_{\mathrm{CS}} \rho \textbf{V} \cdot \mathrm{d}\textbf{A} 
 .\]
@@ -184,8 +192,8 @@ And combining these two gives the control volume formulation of conservation of 
 \end{equation}
 
 
-\subsubsection{Special cases}
-In some special cases \autoref{eq:convolconmas} can be simplified. Consider first the case of an incompressible fluid, i.e. $\rho$ is constant in space and time. Consequently \autoref{eq:convolconmas} can be written as:
+\subsubsection{Special Cases}
+In some special cases \Cref{eq:convolconmas} can be simplified. Consider first the case of an incompressible fluid, i.e. $\rho$ is constant in space and time. Consequently \Cref{eq:convolconmas} can be written as:
 \[ 
 \rho \frac{\partial }{\partial t} \int_{\mathrm{CV}} \, \mathrm{d}V + \rho \int_{\mathrm{CS}} \textbf{V} \cdot \mathrm{d}A = 0
 .\]
@@ -202,7 +210,7 @@ A useful special case is when we have uniform velocity at each inlet and exit. I
 \sum_{\mathrm{CS}} \textbf{V} \cdot \textbf{A} = 0
 .\]
 
-We now consider the case of \textit{steady}, \textit{compressible flow} through a fixed control volume. Since the flow is steady no fluid property varies with time. Consequently the first term of \autoref{eq:convolconmas} must be zero and hence for steady flow the statement of conservation of mass becomes:
+We now consider the case of \textit{steady}, \textit{compressible flow} through a fixed control volume. Since the flow is steady no fluid property varies with time. Consequently the first term of \Cref{eq:convolconmas} must be zero and hence for steady flow the statement of conservation of mass becomes:
 \[ 
 \int_{\mathrm{CS}} \rho \textbf{V} \cdot \mathrm{d}\textbf{A} = 0
 .\]

@@ -1,4 +1,4 @@
-\lecture{25}{1. December 2025}{Introduction to compressible flow}
+\lecture{25}{1. December 2025}{Introduction to Compressible Flow}
 
 \section{Introduction to Compressible Flow}
 Any flow in which density variation is not negligible is termed \textit{compressible}.
@@ -17,22 +17,31 @@ The Mach number $M$ is defined as
 \end{equation*}
 where $V$ is the speed of the fluid.
 
-We consider the propagation of a sound wave of infinitesimal strength into an undisturbed medium, shown on \Cref{fig:f12_1}a.
+We consider the propagation of a sound wave of infinitesimal strength into an undisturbed medium, shown on \Cref{fig:f12_1a}.
 We want to relate the speed of wave propagation $c$ to fluid property changes across the wave.
 We denote the pressure and density in the undisturbed medium by $p$ and $\rho$ respectively.
 Passage of the wave will cause these to undergo infinitesimal changes to become $p + \mathrm{d}p$ and $\rho + \mathrm{d}\rho$. 
 Since the wave propagates into a stationary fluid, the velocity ahead of the wave $V_x$ is zero.
 The magnitude of the velocity behind the wave $V_x + \mathrm{d}V_x$ will thus simply be $\mathrm{d}V_x$.
 
-The flow of \Cref{fig:f12_1}a appears unsteady to a stationary observer, viewing the wave motion from a fixed point.
-However, the flow appears steady to an observer located \textit{on} an inertial control volume moving with a segment of the wave as shown on \Cref{fig:f12_1}b.
+The flow of \Cref{fig:f12_1a} appears unsteady to a stationary observer, viewing the wave motion from a fixed point.
+However, the flow appears steady to an observer located \textit{on} an inertial control volume moving with a segment of the wave as shown on \Cref{fig:f12_1b}.
 The velocity approaching the control volume is then $c$ and the velocity leaving is $c - \mathrm{d}V_x$.
 
 \begin{figure} [ht]
-  \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f12_1.png}
+  \begin{subfigure}{0.46\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{./figures/f12_1a.png}
+    \caption{Propagating wave}
+    \label{fig:f12_1a}
+  \end{subfigure}
+  \begin{subfigure}{0.46\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{./figures/f12_1b.png}
+    \caption{Inertial control volume moving with wave, velocity $c$}
+    \label{fig:f12_1b}
+  \end{subfigure}
   \caption{Propagating sound wave showing control volume chosen for analysis.}
-  \label{fig:f12_1}
 \end{figure}
 
 Assuming steady flow and uniform flow at each section the continuity equation is
@@ -49,7 +58,7 @@ Furthermore, assuming negligible body forces the momentum equation becomes:
   F_{S_x} = \int_{\mathrm{CS}} V_x \rho \Vec{V} \cdot \mathrm{d}\Vec{A}
 .\end{equation*}
 
-The only surface acting in the $x$ direction on the control volume of \Cref{fig:f12_1}b are due to pressure.
+The only surface acting in the $x$ direction on the control volume of \Cref{fig:f12_1b} are due to pressure.
 The upper and lower areas have zero friction as the areas are infinitesimal.
 This leaves us with:
 \begin{equation*}
@@ -115,7 +124,38 @@ There are four possibilities, each shown on \Cref{fig:f12_2}.
 
 \begin{figure} [ht]
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f12_2.png}
+  \begin{subfigure}{0.45\linewidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{./figures/f12_2a.png}
+    \caption{$V = 0$: Stationary source}
+    \label{fig:f12_2a}
+  \end{subfigure}
+  \begin{subfigure}{0.45\linewidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{./figures/f12_2b.png}
+    \caption{$V < c$: Doppler shift}
+    \label{fig:f12_2b}
+  \end{subfigure}
+  \\
+  \begin{subfigure}{0.45\linewidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{./figures/f12_2c.png}
+    \caption{$V = c$}
+    \label{fig:f12_2c}
+  \end{subfigure}
+  \begin{subfigure}{0.45\linewidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{./figures/f12_2d.png}
+    \caption{$V > c$: Supersonic motion}
+    \label{fig:f12_2d}
+  \end{subfigure}
+  \\
+  \begin{subfigure}{0.8\linewidth}
+    \centering
+    \includegraphics[width=0.6\linewidth]{./figures/f12_2e.png}
+    \caption{$M > 1$: The Mach cone}
+    \label{fig:f12_2e}
+  \end{subfigure}
   \caption{Propagation of sound waves from a moving source: The Mach cone.}
   \label{fig:f12_2}
 \end{figure}
@@ -123,12 +163,12 @@ There are four possibilities, each shown on \Cref{fig:f12_2}.
 \begin{enumerate}
   \item $V = 0$.
     The point is \textit{stationary}.
-    \Cref{fig:g12_2}a shows the conditions for the scenario after $3 \Delta t$ seconds.
+    \Cref{fig:f12_2a} shows the conditions for the scenario after $3 \Delta t$ seconds.
     The first pulse has expanded to a sphere of radius $c (3 \Delta t)$, the second to a sphere of radius $c (2 \Delta t)$, and the third to a sphere of radius $c(\Delta t)$; a new pulse is about to be emitted.
     The pulses therefore constitute a set of ever-expanding concentric spheres.
   \item $0 < V < c$.
     The point source moves to the left at \textit{subsonic} speed.
-    \Cref{fig:f12_2}b shows the conditions for the scenario after $3 \Delta t$ seconds.
+    \Cref{fig:f12_2b} shows the conditions for the scenario after $3 \Delta t$ seconds.
     The source is shown at times $t = 0, \Delta t, 2 \Delta t$, and $3 \Delta t$.
     The first pulse har expanded to a sphere radius $c (3 \Delta t)$ centered where the source was originally, the second to a sphere of radius $c(2\Delta t)$ centered where the source was at time $t$ and so on.
     Again, the pulses constitute a set of ever-expanding spheres, except now they are not concentric.
@@ -138,7 +178,7 @@ There are four possibilities, each shown on \Cref{fig:f12_2}.
     Also, note that an observer ahead of the sound will hear the source \textit{before} the source itself reaches the observer.
   \item $V = c$.
     The point source moves to the left at \textit{sonic} speed.
-    \Cref{fig:f12_2}c shows conditions after $3\Delta t$ seconds.
+    \Cref{fig:f12_2c} shows conditions after $3\Delta t$ seconds.
     The source is shown at times $t = 0$, $\Delta t$, $2 \Delta t$, and $3 \Delta t$.
     The first pulse has expanded to sphere 1 of radius $c (3\Delta t)$ centered at point 1, the second to sphere 2 of radius $c(2\Delta t)$ centered at point 2 and so on.
     We can see once more that the pulses constitute a set of ever-expanding spheres, except now they are tangent to one another on the left.
@@ -147,12 +187,12 @@ There are four possibilities, each shown on \Cref{fig:f12_2}.
     Secondly, over time an unlimited number of pulses will accumulate at the front of the source lading to a sound wave of unlimited amplitude.
   \item $V>c$.
     The point source moves to the left at \textit{supersonic} speed.
-    \Cref{fig:f12_2}d shows the conditions after $3 \Delta t$ seconds.
+    \Cref{fig:f12_2d} shows the conditions after $3 \Delta t$ seconds.
     We can see once more that the pulses constitute a set of ever-expanding spheres, except now the source is moving so fast it moves ahead of each sphere that it generates.
     For supersonic motion, the spheres generate what is called a \textit{Mach cone} tangent to each sphere.
     In this case, an observer who is ahead of the source will not hear the pulses until after the source passes the observer.
-    The region inside the cone is called the \textit{zone of action} and that outside the cone the \textit{zone of silence} as shown in \Cref{fig:f12_2}e.
-    From geometry, we see from \Cref{fig:f12_2}d, that
+    The region inside the cone is called the \textit{zone of action} and that outside the cone the \textit{zone of silence} as shown in \Cref{fig:f12_2e}.
+    From geometry, we see from \Cref{fig:f12_2d}, that
     \begin{equation*}
       \sin \alpha = \frac{c}{V} = \frac{1}{M}
     .\end{equation*}
@@ -199,7 +239,7 @@ For the process shown schematically on \Cref{fig:f12_4}, we can depict the proce
 
 \begin{figure} [ht]
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f12_5.png}
+  \includegraphics[width=0.8\linewidth]{./figures/f12_5.png}
   \caption{Compressible flow in an infinitesimal stream tube.}
   \label{fig:f12_5}
 \end{figure}
@@ -353,7 +393,7 @@ We also have that
 \end{equation*}
 or its equivalent
 \begin{equation*}
-  \frac{p_1}{\rho_1^{k}} = \frac{p_2}{\rho_2^{k}} = \frac{p}{\rho^{k}} = \text{constant}lii
+  \frac{p_1}{\rho_1^{k}} = \frac{p_2}{\rho_2^{k}} = \frac{p}{\rho^{k}} = \text{constant}
 .\end{equation*}
 This leads to the set of equations:
 \begin{gather} \label{eq:1225}

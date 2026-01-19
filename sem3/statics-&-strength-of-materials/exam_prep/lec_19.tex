@@ -1,0 +1,140 @@
+\lecture{19}{10. November 2025}{Superposition}
+
+\begin{problemwithimage}{f16_38}{16-38}
+  Determine the vertical deflection and slope at the end $A$ of the bracket.
+  Assume that the bracket is fixed supported at its base, and neglect the axial deformation of segment $AB$.
+  $EI$ is constant.
+\end{problemwithimage}
+
+\begin{derivation}
+  We split the problem into two cases, the distributed loading on $AB$ and the point loading $P$ on $BC$ which will then be added at the end using the principle of superposition.
+
+  \paragraph{Distributed loading case}
+  For the cantilevered beam $AB$ we have the maximum deflection and slope from Appendix D of the book as:
+  \begin{equation*}
+    v_{\mathrm{max}}^{w} = -\frac{wL^{4}}{8EI} \qquad \theta^{w}_{\mathrm{max}} = - \frac{wL^3}{6EI}
+  .\end{equation*}
+  The moment at $B$ from the distributed loading is:
+  \begin{equation*}
+    M_0^{w} = \frac{w}{2} \cdot L^2
+  .\end{equation*}
+  
+  This moment will deflect the $BC$ cantilever beam too. From Appendix D we see that the total slope in $BC$ caused by the moment $M_0$ applied at the free end is:
+  \begin{equation*}
+    \theta_{B}^{w} = \frac{M_0 h}{EI} = \frac{w L^2 h}{2EI}
+  .\end{equation*}
+  This corresponds to a deflection at $A$ of
+  \begin{equation*}
+    v_A^{w} = L \theta_B^{w} = L \frac{wL^2 h}{2EI} = \frac{wL^3h}{2EI}
+  .\end{equation*}
+  That aforementioned rotation also adds to the slope at $A$:
+  \begin{equation*}
+    \theta_A^{w} = \frac{wL^2 h}{2EI}
+  .\end{equation*}
+  We add this to the standard tabulated formulas to get:
+  \begin{align*}
+    v_A^{(1)} &= v_{\mathrm{max}}^{w} + v_A^{w} = - \frac{wL^3h}{2EI} - \frac{2L^{4}}{8EI} \\
+    \theta_A^{(1)} &= \theta_{\mathrm{max}}^{w} + \theta_A^{w} = - \frac{wL^2h}{2EI} - \frac{wL^3}{6EI}
+  .\end{align*}
+  
+  \paragraph{Point loading case}
+  We treat $BC$ as a cantilever with a load $P = \qty{400}{\N}$ applied to the tip.
+  This gives the standard formula for the deflection:
+  \begin{equation*}
+    \theta_B^{P} = - \frac{PL^2}{2EI}
+  .\end{equation*}
+  Which swings $A$ down by
+  \begin{equation*}
+    v_A^{p} = \theta_B^{p} \cdot h = - \frac{PL^2h}{2EI}
+  .\end{equation*}
+  And the slope at $A$ from this case is just that rigid rotation:
+  \begin{equation*}
+    \theta_A^{p} = - \frac{PL^2}{2EI}
+  .\end{equation*}
+  
+  \paragraph{Superposition}
+  Now we just add those results:
+  \begin{align*}
+    v_A &= v_A^{(1)} + v_A^{p} = - \frac{wL^3h}{2EI} - \frac{2L^{4}}{8EI} - \frac{PL^2h}{2EI} \\
+    \theta_{A} &= \theta_A^{(1)} + \theta_A^{p} = - \frac{wL^2h}{2EI} - \frac{wL^3}{6EI} - \frac{PL^2}{2EI}
+  .\end{align*}
+  Or numerically:
+  \begin{align*}
+    v_A &= - \qty{312,5e6}{\mm} \cdot \frac{1}{EI} \\
+    \theta_A &= - \qty{3,2917e6}{rad} \cdot \frac{1}{EI}
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  v_A &= - \qty{312,5e6}{\mm} \cdot \frac{1}{EI} \\
+  \theta_A &= - \qty{3,2917e6}{rad} \cdot \frac{1}{EI}
+.\end{aligned}
+}
+
+\begin{problemwithimage}{f16_43}{16-43}
+  The simply supported beam carries a uniform load of \qty{30}{\kN\per\m}.
+  Code restrictions, due to a plaster ceiling, require the maximum deflection not to exceed $1 / 360$ of the span length.
+  Select the lightest-weight A--36 steel wide-flange beam from Appendix C that will satisfy this requirement and safely support the load.
+  The allowable bending stress is $\sigma_{\mathrm{allow}} = \qty{168}{\MPa} $ and the allowable shear stress is $\tau_{\mathrm{allow}} = \qty{100}{\MPa}$.
+  Assume $A$ is a pin and $B$ a roller support.
+\end{problemwithimage}
+
+\begin{derivation}
+  We start by converting the distributed load into an equivalent point loading as
+  \begin{equation*}
+    W = wL =  \qty{30}{\kN\per\m} \cdot \qty{4.8}{\m}  = \qty{144}{\kN}
+  .\end{equation*}
+  A force equilibrium gives:
+  \begin{align*}
+    \sum F_y &= 0 \\
+    A_y + B_y - \qty{40}{\kN} - \qty{144}{\kN} - \qty{40}{\kN} &= 0 \\
+    A_y + B_y &= \qty{224}{\kN} 
+  .\end{align*}
+  Due to symmetry $A_y = B_y = \qty{112}{\kN}$ so
+  \begin{equation*}
+    V_{\mathrm{max}} = \qty{112}{\kN}
+  .\end{equation*}
+  
+  From symmetry, the maximum moment is in the middle (where shear crosses zero).
+  The moment at the middle is:
+  \begin{equation*}
+    M_{\mathrm{max}} = R_A x - \frac{wx^2}{2}  - P \left( x - \qty{1,2}{\m}  \right) = \qty{112}{\kN} \cdot \qty{2.4}{\m} - \frac{\qty{30}{\kN\per\m} \cdot \left( \qty{2.4}{\m}  \right)^2}{2} - \qty{40}{\kN} \left( \qty{2.4}{\m} - \qty{1.2}{\m}  \right) = \qty{134,4}{\kN.\m}
+  .\end{equation*}
+  
+  The allowable bending stress is $\sigma_{\mathrm{allow}} = \qty{168}{\MPa}$. 
+  This means the elastic section modulus $S$ has to be at least:
+  \begin{equation*}
+    S_{x, \mathrm{min}} = \frac{M_{\mathrm{max}}}{\sigma_{\mathrm{allow}}} = \frac{\qty{134.4}{\kN.\m}}{\qty{168}{\MPa}} = \qty{8e5}{\mm^3} = \qty{48.82}{in^3}  
+  .\end{equation*}
+  
+  The deflection requirement means the maximum allowed deflection is:
+  \begin{equation*}
+    \delta_{\mathrm{max}} = \frac{1}{360} \cdot \qty{4.8}{\m}  = \qty{13.33}{mm}
+  .\end{equation*}
+  
+  We now use superposition.
+  The deflection from the distributed load is:
+  \begin{equation*}
+    \delta_w = \frac{5wL^{4}}{384EI}
+  .\end{equation*}
+  And the deflection from the point loads are
+  \begin{equation*}
+    \delta_{2P} = \frac{Pa \left( \frac{3}{4}L^2 - a^2 \right)}{6EI}
+  .\end{equation*}
+  So
+  \begin{align*}
+    \delta &= \delta_w + \delta_{2P} \\
+           &= \frac{5 w L^{4}}{384 EI} + \frac{Pa \left( \frac{3}{4} L^2 - a^2 \right)}{6EI} = \frac{5 \cdot \qty{30}{\kN\per\m} \cdot \left( \qty{4.8}{\m}  \right)^{4}}{384 \cdot \qty{200}{\GPa}} \cdot \frac{1}{I} + \frac{\qty{40}{\kN} \cdot \qty{1.2}{\m} \left( \frac{3}{4} \cdot \left( \qty{4.8}{\m}  \right)^2 - \left( \qty{1.2}{\m}  \right)^2 \right)}{6\cdot \qty{200}{\GPa} } \cdot \frac{1}{I} \\
+           &= \qty{1.0368e-6}{\m^5} \cdot \frac{1}{I} + \qty{6.336e-7}{\m^5} \cdot \frac{1}{I} \\
+           &= \frac{\qty{6,336e-7}{\m^{5}}}{I}
+  .\end{align*}
+  Which means:
+  \begin{equation*}
+    I_{\mathrm{min}} = \frac{\qty{6,336e-7}{\m^{5}}}{\qty{13,33}{\mm} } = \qty{301}{in ^{4}} 
+  .\end{equation*}
+  
+  The lightest steel satisfying this in Appendix C is W14x38.
+\end{derivation}
+
+\newpage

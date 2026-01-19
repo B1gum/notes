@@ -1,0 +1,80 @@
+\lecture{14}{20. Oktober 2025}{Torsional Deformation}
+
+\begin{problemwithimage}{f10_1}{10-1}
+  The tube is subjected to a torque of \qty{750}{\N.\m}.
+  Determine the amount of this torque that is resisted by the gray shaded section.
+  Solve the problem two ways: (a) by using the torsion formula, (b) by finding the resultant of the shear stress distribution.
+\end{problemwithimage}
+
+\begin{derivation}
+  \begin{enumerate}[label=(\alph*)]
+    \item The torsion formula is
+      \begin{equation*}
+        \tau(r) = \frac{T r}{J}
+      .\end{equation*}
+      With $\tau$ being the shear stress at distance $r$ from the center, $T$ the internal torque, $J$ the polar moment of inertia.
+
+      The polar moment of inertia of the rod is
+      \begin{equation*}
+        J = \frac{\pi}{2} \left( r_o^{4} - r_i^{4} \right)
+      .\end{equation*}
+      
+      The share of the torque carried by the shaded part of the rod will be proportional to its share of the entire polar moment of inertia:
+      \begin{equation*}
+        \frac{T_{\mathrm{gray}}}{J_{\mathrm{gray}}} = \frac{T_{\mathrm{tot}}}{J_{\mathrm{tot}}} \implies T_{\mathrm{gray}} = T_{\mathrm{tot}} \frac{J_{\mathrm{gray}}}{J_{\mathrm{tot}}}
+      .\end{equation*}
+      So,
+      \begin{equation*}
+      T_{\mathrm{gray}} = \qty{750}{\N.\m} \cdot \frac{\frac{\pi}{2} \cdot \left( \left( \qty{100}{\mm}  \right)^4 - \left( \qty{75}{\mm} \right)^4 \right)}{\frac{\pi}{2} \cdot \left( \qty{100}{\mm}  \right)^{4} - \left( \qty{25}{\mm}  \right)^{4}} = \qty{513,9}{\N.\m}
+    .\end{equation*}
+  \item The torque contributed by an area element is
+    \begin{equation*}
+      \mathrm{d}T = \tau r \, \mathrm{d}A
+    \end{equation*}
+    so with
+    \begin{equation*}
+      \tau(r) = \frac{T r}{J_{\mathrm{tot}}}
+    \end{equation*}
+    we get
+    \begin{align*}
+      \mathrm{d}T &= \frac{T r^2}{J_{\mathrm{tot}}} \, \mathrm{d}A \\
+      T_{\mathrm{gray}} &= \frac{T}{J_{\mathrm{tot}}} \int_A r^2 \, \mathrm{d}A \\
+      T_{\mathrm{gray}} &= \frac{T}{J_{\mathrm{tot}}} J_{\mathrm{gray}} \\
+      &= \qty{513,9}{\N.\m} 
+    .\end{align*}
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{T_{\mathrm{gray}} = \qty{513,9}{\N.\m}}
+
+\begin{problemwithimage}{f10_26}{10-26}
+  The \qty{160}{\mm} diameter solid shaft is supported by bearings at $A$ and $E$.
+  Determine the maximum shear stress developed in each segment of the shaft.
+\end{problemwithimage}
+
+\begin{derivation}
+  The internal torque at a section is the sum of the torques applied to the left of the section.
+  So
+  \begin{itemize}
+    \item $AB$: \qty{0}{\kN.\m}
+    \item $BC$: \qty{-40}{\kN.\m} 
+    \item $CD$: \qty{20}{\kN.\m} 
+    \item $DE$: \qty{50}{\kN.\m}
+    \item $EF$: \qty{50}{\kN.\m}
+    \item $F+$: \qty{0}{\kN.\m} 
+  \end{itemize}
+  From the torsion formula we get
+  \begin{equation*}
+    \tau_{\mathrm{max}} = \frac{Tc}{J} = \frac{16}{\pi d^3} T = \frac{16}{\pi \left( \qty{160}{\mm}  \right)^3} T = \qty{1,24e-6}{\per\mm^3} \cdot T 
+  .\end{equation*}
+  So for each segment:
+\end{derivation}
+\finalresult{
+\begin{aligned}
+    &AB: & \tau_{\mathrm{max}} &= \qty{1.24e-6}{\mm^3} \cdot \qty{0}{\kN.\m} & &= \qty{0}{\MPa}  \\
+    &BC: & \tau_{\mathrm{max}} &= \qty{1.24e-6}{\mm^3} \cdot \qty{-40}{\kN.\m} & &= \qty{-49,6}{\MPa}  \\
+    &CD: & \tau_{\mathrm{max}} &= \qty{1.24e-6}{\mm^3} \cdot \qty{20}{\kN.\m} & &= \qty{24,8}{\MPa}  \\
+    &DE: & \tau_{\mathrm{max}} &= \qty{1.24e-6}{\mm^3} \cdot \qty{50}{\kN.\m} & &= \qty{62,0}{\MPa}  \\
+    &EF: & \tau_{\mathrm{max}} &= \qty{1.24e-6}{\mm^3} \cdot \qty{50}{\kN.\m} & &= \qty{62,0}{\MPa}
+.\end{aligned}
+}

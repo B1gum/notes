@@ -1,16 +1,16 @@
-\lecture{5}{8. September 2025}{Differential Analysis I: Mass conservation}
+\lecture{5}{8. September 2025}{Differential Analysis I: Mass Conservation}
 
 \section{Introduction to Differential Analysis of Fluid Motion}
-In the previous \autoref{sec:intconvol} the basic equations in integral form for a control volume were introduced. These are useful when we are interested in the overall behaviour of a fluid field and its effects on its surroundings. To determine what happens at each point of the flow field we must ude the differential forms of the equations of motion.
+In the previous \Cref{sec:intconvol} the basic equations in integral form for a control volume were introduced. These are useful when we are interested in the overall behaviour of a fluid field and its effects on its surroundings. To determine what happens at each point of the flow field we must ude the differential forms of the equations of motion.
 
 \subsection{Conservation of Mass}
 
 \subsubsection{Rectangular Coordinate System}
-To find the differential equation for conservation of mass in a rectangular coordinate system we choose a control volume that is an infinitesimal cube with sides of length $\mathrm{d}x, \mathrm{d}y, \mathrm{d}z$ as shown on \autoref{fig:f5_1}. The density at the center, $O$, of the control volume is assumed to be $\rho$ and the velocity there is assumed to be $\textbf{V} = \hat{i} u + \hat{j} v + \hat{k} w$.
+To find the differential equation for conservation of mass in a rectangular coordinate system we choose a control volume that is an infinitesimal cube with sides of length $\mathrm{d}x, \mathrm{d}y, \mathrm{d}z$ as shown on \Cref{fig:f5_1}. The density at the center, $O$, of the control volume is assumed to be $\rho$ and the velocity there is assumed to be $\textbf{V} = \hat{i} u + \hat{j} v + \hat{k} w$.
 
 \begin{figure} [ht]
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f5_1.png}
+  \includegraphics[width=0.6\linewidth]{./figures/f5_1.png}
   \caption{Differential control volume in rectangular coordinates.}
   \label{fig:f5_1}
 \end{figure}
@@ -32,7 +32,7 @@ where $\rho$, $u$, $\frac{\partial p}{\partial x}$, and $\frac{\partial u}{\part
   \rho)_{x - \frac{\mathrm{d}x}{2}} &= \rho - \left( \frac{\partial p}{\partial x} \right) \frac{\mathrm{d}x}{2} \\
   u)_{x - \frac{\mathrm{d}x}{2}} &= u - \left( \frac{\partial u}{\partial x} \right) \frac{\mathrm{d}x}{2}
 .\end{align*}
-Similar expressions for $\rho$ and $v$ for the front and back faces and $\rho$ and $w$ for the top and bottom faces of the infinitesimal control volume can be made. These can then be used to evaluate the surface integral in \autoref{eq:convolconmas} (i.e. we can find the net flux of mass out of the control volume). \autoref{eq:convolconmas} states
+Similar expressions for $\rho$ and $v$ for the front and back faces and $\rho$ and $w$ for the top and bottom faces of the infinitesimal control volume can be made. These can then be used to evaluate the surface integral in \Cref{eq:convolconmas} (i.e. we can find the net flux of mass out of the control volume). \Cref{eq:convolconmas} states
 \[ 
 \frac{\partial }{\partial t} \int_{\mathrm{CV}} \rho \, \mathrm{d}V + \int_{\mathrm{CS}} \rho \textbf{V} \cdot \mathrm{d}\textbf{A} = 0
 .\]
@@ -40,15 +40,15 @@ If we assume that the velocity components $u$, $v$, and $w$ are positive in the 
 \[ 
 \int_{\mathrm{CS}} \rho \textbf{V} \cdot \mathrm{d}\textbf{A} = \left( \frac{\partial \rho u}{\partial x} + \frac{\partial \rho v}{\partial y} + \frac{\partial \rho w}{\partial z} \right) \, \mathrm{d}x \, \mathrm{d}y \, \mathrm{d}z
 .\]
-To complete \autoref{eq:convolconmas} we need to evaluate the volume integral:
+To complete \Cref{eq:convolconmas} we need to evaluate the volume integral:
 \[ 
 \frac{\partial }{\partial t} \int_{\mathrm{CV}} \rho \, \mathrm{d}V = \frac{\partial }{\partial t} \left( \rho \, \mathrm{d}x \, \mathrm{d}y \, \mathrm{d}z \right) = \frac{\partial \rho}{\partial t} \, \mathrm{d}x \, \mathrm{d}y \, \mathrm{d}z
 .\]
 Hence we obtain the differential form of the mass conservation law:
-\begin{equation}\label{eq:coneq}
+\begin{equation}\label{eq:coneq1}
   \frac{\partial \rho u}{\partial x} + \frac{\partial \rho v}{\partial y} + \frac{\partial \rho w}{\partial z} + \frac{\partial \rho}{\partial t} = 0
 \end{equation}
-\autoref{eq:coneq} is often called the \textit{continuity equation}.
+\Cref{eq:coneq1} is often called the \textit{continuity equation}.
 
 Since $\nabla $ is given by:
 \[ 
@@ -58,11 +58,11 @@ then
 \[ 
 \frac{\partial \rho u}{\partial x} + \frac{\partial \rho v}{\partial y} + \frac{\partial \rho w}{\partial z} = \nabla \cdot \rho \textbf{V}
 .\]
-Therefore the conservation of mass from \autoref{eq:coneq} can also be written as:
+Therefore the conservation of mass from \Cref{eq:coneq1} can also be written as:
 \begin{equation}\label{eq:coneqvec}
   \nabla \cdot \rho \textbf{V} + \frac{\partial \rho}{\partial t} = 0
 \end{equation}
-When \autoref{eq:coneq} is written on vector form as in \autoref{eq:coneqvec} it may be applied in any coordinate system -- even a cylindrical or polar one.
+When \Cref{eq:coneq1} is written on vector form as in \Cref{eq:coneqvec} it may be applied in any coordinate system -- even a cylindrical or polar one.
 
 Two special cases of the continuity equation are worth a mention.
 
@@ -97,7 +97,7 @@ We now define the stream function by:
 \[ 
 u \equiv \frac{\partial \psi}{\partial y} \qquad \mathrm{and} \qquad v \equiv - \frac{\partial \psi}{\partial x}
 .\]
-By doing this \autoref{eq:twodimconinc} is automatically satisfied for any $\psi(x,y,t)$. Using the ``naive'' definition of streamlines introduced at the beginning of this section we can obtain an equation that is only valid along a streamline:
+By doing this \Cref{eq:twodimconinc} is automatically satisfied for any $\psi(x,y,t)$. Using the ``naive'' definition of streamlines introduced at the beginning of this section we can obtain an equation that is only valid along a streamline:
 \[ 
  u \, \mathrm{d}y  - v \, \mathrm{d}x  = 0
 \]
@@ -110,11 +110,11 @@ From a strictly mathematical point of view, at any instant in time $t$ the varia
 \begin{equation}\label{eq:strfunmat}
   \mathrm{d}\psi = \frac{\partial \psi}{\partial x} \, \mathrm{d}x + \frac{\partial \psi}{\partial y} \, \mathrm{d}y 
 \end{equation} 
-Comparing \autoref{eq:strfunconeq2} and \autoref{eq:strfunmat} we see that along an instantaneous streamline $\mathrm{d}\psi = 0$, i.e. $\psi$ is constant along a streamline. Therefore we can specify individual streamlines by their stream function values $\psi = 0, 1, 2,\ldots $. Furthermore, these $\psi$ values can be used to obtain the volume flow rate between any two streamlines. Consider the streamlines shown on \autoref{fig:f5_3}. We can compute the volume flow rate between $\psi_1$ and $\psi_2$ by using line $AB$, $BC$, $DE$, or $EF$ (remember there is no flow across a streamline). 
+Comparing \Cref{eq:strfunconeq2} and \Cref{eq:strfunmat} we see that along an instantaneous streamline $\mathrm{d}\psi = 0$, i.e. $\psi$ is constant along a streamline. Therefore we can specify individual streamlines by their stream function values $\psi = 0, 1, 2,\ldots $. Furthermore, these $\psi$ values can be used to obtain the volume flow rate between any two streamlines. Consider the streamlines shown on \Cref{fig:f5_3}. We can compute the volume flow rate between $\psi_1$ and $\psi_2$ by using line $AB$, $BC$, $DE$, or $EF$ (remember there is no flow across a streamline). 
 
 \begin{figure} [ht]
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f5_3.png}
+  \includegraphics[width=0.7\linewidth]{./figures/f5_3.png}
   \caption{Instantaneous streamlines in a two-dimensional flow}
   \label{fig:f5_3}
 \end{figure}

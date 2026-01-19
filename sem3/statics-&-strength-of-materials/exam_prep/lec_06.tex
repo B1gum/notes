@@ -1,0 +1,65 @@
+\lecture{6}{11. September 2025}{Free-body diagrams and equilibrium equations 3D}
+
+\begin{problemwithimage}{f4_9}{F4-9}
+  The rod is supported by smooth journal bearings at $A$, $B$, and $C$ and is subjected to the two forces.
+  Determine the reactions at these supports.
+\end{problemwithimage}
+
+\begin{derivation}
+  The bearings at $A$ and $B$ lie along the $y$-axis meaning these can only exert a force perpendicular to the $y$-axis.
+  So,
+  \begin{equation*}
+    \Vec{R}_A = A_x \Vec{i} + A_z \Vec{k}, \qquad \Vec{R}_B = B_x \Vec{i} + B_z \Vec{k}
+  .\end{equation*}
+  Similarly, for $C$ we have
+  \begin{equation*}
+    \Vec{R}_C = C_x \Vec{i} + C_y \Vec{j}
+  .\end{equation*}
+  Hence, a force equilibrium gives,
+  \begin{align*}
+    A_x + B_x + C_x &= 0 \\
+    C_y + \qty{400}{\N} &= 0 \\
+    A_z + B_z + \qty{600}{\N} &= 0
+  .\end{align*}
+  From this, we get:
+  \begin{align*}
+    A_x + B_x + C_x &= 0 \\
+    C_y &= - \qty{400}{\N}  \\
+    A_z + B_z &= - \qty{600}{\N}
+  .\end{align*}
+  
+  A moment equilibrium about point $A$ yields
+  \begin{align*}
+    \qty{0,6}{\m} \cdot B_z + \qty{0,4}{\m} \cdot  C_y + \qty{1,2}{\m} \cdot  \qty{600}{\N} &= 0 \\
+    - \qty{0,4}{\m} \cdot  C_x - \qty{360}{\N.\m}  &= 0 \\
+    - \qty{0,6}{\m} \cdot B_x + \qty{0,6}{\m} \cdot  C_y - \qty{1,2}{\m} \cdot  C_x &= 0
+  .\end{align*}
+  We see that,
+  \begin{equation*}
+    C_x = -\frac{\qty{360}{\N.\m}}{\qty{0.4}{\m} }  = -\qty{900}{\N}
+  .\end{equation*}
+  
+  Furthermore, we know that $C_y = -\qty{400}{\N} $, yielding us
+  \begin{equation*}
+    B_z = - \frac{\qty{0.4}{\m} \cdot (- \qty{400}{\N} ) + \qty{1.2}{\m} \cdot \qty{600}{\N}}{\qty{0.6}{\m} } = \qty{-0.933}{\kN}
+  .\end{equation*}
+  And
+  \begin{align*}
+    B_x \cdot \qty{0,6}{\m} &= \qty{0,6}{\m} C_y - \qty{1,2}{\m} C_x \\
+    B_x &= \frac{\qty{0.6}{\m} \cdot (- \qty{400}{\N} ) - \qty{1.2}{\m} \cdot \left( - \qty{900}{\N}  \right)}{\qty{0.6}{\m} }  = \qty{1400}{\N}\\
+  .\end{align*}
+  Inserting this into our force equilibrium yields
+  \begin{align*}
+    A_x &= - \qty{1400}{\N} + \left( \qty{900}{\N}  \right) = -\qty{500}{\N} \\
+    A_z &= - \qty{600}{\N} + \qty{933.3}{\N} = \qty{333,33}{\N}
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  A_x &= - \qty{500}{\N}  & A_y &= \qty{0}{\N}  & A_z &= \qty{333,33}{\N}  \\
+  B_x &= \qty{1400}{\N}  & B_y &= \qty{0}{\N} & B_z &= - \qty{933,33}{\N}  \\
+  C_x &= - \qty{900}{\N} & C_y &= - \qty{400}{\N} & C_z &= \qty{0}{\N}
+.\end{aligned}
+}
+

@@ -1,0 +1,141 @@
+\lecture{17}{3. November 2025}{Bending – Deformation of Beams}
+
+\begin{problemwithimage}{f11_43}{11-43}
+  A member having the dimensions shown is used to resist an internal bending moment of $M = \qty{90}{\kN.\m}$.
+  Determine the maximum stress in the member if the moment is applied (a) about the $z$ axis (as shown), (b) about the $y$ axis.
+  Sketch the stress distribution for each case.
+\end{problemwithimage}
+
+\begin{derivation}
+  We start by calculating the second moments for the rectangular cross section about each of the two axes.
+  \begin{align*}
+    I_z = \frac{bh^3}{12} &= \frac{\qty{200}{\mm} \cdot \left( \qty{150}{\mm}  \right)^3}{12}  = \qty{56,25e6}{\mm^4}\\
+    I_y = \frac{bh^3}{12} &= \frac{\qty{150}{\mm} \cdot \left( \qty{200}{\mm}  \right)^3}{12} = \qty{100e6}{\mm^4}
+  .\end{align*}
+
+  \begin{enumerate}[label=(\alph*)]
+    \item For the moment about the $z$ axis we use the formula for the maximum stress:
+      \begin{equation*}
+        \sigma_{\mathrm{max}} = \frac{Mc}{I}
+      .\end{equation*}
+      For this case, we have $c_z = \frac{h}{2} = \qty{75}{\mm}$ and we get
+      \begin{equation*}
+        \sigma_{z_{\mathrm{max}}} = \frac{M_z c_z}{I_z} = \frac{\qty{90}{\kN.\m} \cdot \qty{75}{\mm} }{\qty{56,25e6}{\mm^{4}} }  = \qty{120}{\MPa} 
+      .\end{equation*}
+    \item For the moment about the $y$ axis we use the same formula, however, this time $c_y = \frac{b}{2} = \qty{100}{\mm}$.
+      Hence,
+      \begin{equation*}
+        \sigma_{y_{\mathrm{max}}} = \frac{M_y c_y}{I_y} = \frac{\qty{90}{\kN.\m} \cdot \qty{100}{\mm}}{\qty{100e6}{\mm^{4}} } = \qty{90}{\MPa} 
+      .\end{equation*}
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  \sigma_{z_{\mathrm{max}}} &= \qty{120}{\MPa} \\
+  \sigma_{y_{\mathrm{max}}} &= \qty{90}{\MPa} 
+.\end{aligned}
+}
+
+\begin{problemwithimage}{f11_64}{11-63}
+  The man has a mass of \qty{78}{\kg} and stands motionless at the end of the diving board.
+  If the board has the cross section shown, determine the maximum normal strain developed in the board.
+  The modulus of elasticity for the material is $E = \qty{125}{\GPa}$.
+  Assume $A$ is a pin and $B$ is a roller. 
+\end{problemwithimage}
+
+\begin{derivation}
+  The weight of the man is
+  \begin{equation*}
+    W = mg = \qty{78}{\kg} \cdot \qty{9.82}{\m\per\second\squared}  = \qty{765,96}{\N}
+  .\end{equation*}
+  We now take a global force equilibrium:
+  \begin{align*}
+    \sum F_y &= 0 \\
+    A_y + B_y - \qty{765.96}{\N} &= 0 \\
+    A_y + B_y &= \qty{765.96}{\N} 
+  .\end{align*}
+  Now, we take a moment equilibrium about $A$ to get:
+  \begin{align*}
+    \sum M_A &= 0 \\
+    B_y \cdot \qty{1.5}{\m} - \qty{4}{\m} \cdot \qty{765.96}{\N} &= 0 \\
+    B_y &= \frac{\qty{765.96}{\N} \cdot \qty{4}{\m} }{\qty{1.5}{\m} }  = \qty{2042,56}{\N}
+  .\end{align*}
+  Which means that
+  \begin{equation*}
+    A_y = \qty{765.96}{\N} - \qty{2042.56}{\N}   = \qty{-1276,6}{\N}
+  .\end{equation*}
+  Which means that the vertical forces at $A$, $B$, and $C$ are
+  \begin{align*}
+    A_y &= \qty{-1276,6}{\N} & B_y &= \qty{2042.56}{\N} & C_y &= \qty{-765.96}{\N} 
+  .\end{align*}
+  As the shear is constant on each span, the moment will be linear and the maximum moment will thus be at $B$:
+  \begin{equation*}
+    M_B = A_y \cdot \qty{1.5}{\m} = -\qty{1276.76}{\N} \cdot \qty{1.5}{\m}  = \qty{-1915,14}{\N.\m}
+  .\end{equation*}
+  
+  To investigate the cross-section we break it into four parts, one top flange and three webs.
+  The cross-sectional area of the top flange is:
+  \begin{equation*}
+    A_f = \qty{350}{\mm} \cdot \qty{20}{\mm} =  \qty{7e3}{\mm^2} 
+  \end{equation*}
+  and the cross-sectional areas of each of the webs are
+  \begin{equation*}
+    A_w = \qty{10}{\mm} \cdot \qty{30}{\mm} = \qty{300}{\mm^2} 
+  .\end{equation*}
+  Measuring from the top, the location of the centroid of the flange is:
+  \begin{equation*}
+    y_f = \qty{10}{\mm} 
+  \end{equation*}
+  and the centroidal location of the webs are:
+  \begin{equation*}
+    y_w = \qty{20}{\mm} + \frac{\qty{30}{\mm} }{2} = \qty{35}{\mm} 
+  .\end{equation*}
+  
+  The neutral axis of the composite board is then found as:
+  \begin{equation*}
+    \overline{y} = \frac{\sum A_i y_i}{A_i} = \frac{\qty{7e3}{\mm^2} \cdot \qty{10}{\mm} + 3 \left( \qty{300}{\mm^2} \cdot \qty{35}{\mm}  \right)}{\qty{7e3}{\mm^2} + 3 \cdot \qty{300}{\mm^2} } = \qty{12.85}{\mm} 
+  .\end{equation*}
+  
+  Now we will find the second moment of the board about the neutral axis.
+  The flange has a second moment about its own axis of:
+  \begin{equation*}
+    I_{c,f} = \frac{bh^3}{12} = \frac{\qty{350}{\mm} \cdot \left( \qty{20}{\mm}  \right)^3}{12} = \qty{233333}{\mm^4}
+  .\end{equation*}
+  The distance from its centroidal axis to the neutral axis is
+  \begin{equation*}
+    d_f = \qty{12.85}{\mm} - \qty{10}{\mm} = \qty{2.85}{\mm} 
+  .\end{equation*}
+  So using the parallel-axis theorem the flange's second moment about the neutral axis is
+  \begin{equation*}
+    I_f = I_{c,f} + A_f d_f^2 = \qty{233333}{\mm^{4}} + \qty{7000}{\mm^2} \cdot \left( \qty{2.85}{\mm}  \right)^2 = \qty{290190}{\mm^4}
+  .\end{equation*}
+  Using the same method for the webs we get:
+  \begin{align*}
+    I_{c,w} &= \frac{bh^3}{12} =  \frac{\qty{10}{\mm} \cdot \left( \qty{30}{\mm}  \right)^3}{12}  = \qty{22500}{\mm^4} \\
+    d_w &= \qty{35}{\mm} - \qty{12.85}{\mm}   = \qty{22,15}{\mm}\\
+    I_w &= I_{c,w} + A_w d_w^2 = \qty{22500}{\mm^{4}} + \qty{300}{\mm^2} \cdot \left( \qty{22.15}{\mm}  \right)^2  = \qty{169686}{\mm^4}
+  .\end{align*}
+  Hence, the total $I$ about the neutral axis is:
+  \begin{equation*}
+    I = I_f + 3 I_w = \qty{290190}{\mm^{4}} + 3 \cdot \qty{169686}{\mm^{4}}  = \qty{799248}{\mm^4}
+  .\end{equation*}
+
+  The extreme fiber distance from the neutral axis is to the bottom
+  \begin{equation*}
+    c_{\mathrm{max}} = \left( \qty{20}{\mm} + \qty{30}{\mm}  \right)- \overline{y} = \qty{37.15}{\mm} 
+  .\end{equation*}
+  
+  The magnitude of the maximum bending stress is then:
+  \begin{equation*}
+    \sigma_{\mathrm{max}} = \frac{M_{\mathrm{max}} c_{\mathrm{max}}}{I} = \frac{\qty{1915}{\N.\m} \cdot \qty{37.15}{\mm} }{\qty{799248}{\mm^{4}} } = \qty{89,0}{\MPa} 
+  .\end{equation*}
+  
+  Which means the maximum strain is:
+  \begin{equation*}
+    \epsilon_{\mathrm{max}} = \frac{\sigma_{\mathrm{max}}}{E} = \frac{\qty{89,0}{\MPa}}{\qty{125}{\GPa} } = \num{7,12e-4} 
+  .\end{equation*}
+  Which occurs at the bottom-fiber at $B$.
+\end{derivation}
+
+\finalresult{\epsilon_{\mathrm{max}} = \num{7,12e-4}}

@@ -1,0 +1,83 @@
+\lecture{26}{4. December 2025}{Plane strain transformation \& strain rosettes}
+
+\begin{problemwithimage}{f14_55}{14-55}
+  The state of strain at the point has components of $\epsilon_x = \num{100e-6}$, $\epsilon_y = \num{300e-6}$, and $\gamma_{xy} = \num{-150e-6}$.
+  Use the strain transformation equations to determine the equivalent in-plane strains on an element oriented $\theta = \ang{30}$ clockwise.
+  Sketch the deformed element due to these strains within the $x$--$y$ plane.
+\end{problemwithimage}
+
+\begin{derivation}
+  An angle of $\theta = \ang{30}$ clockwise corresponds to an angle of $\phi = \ang{-30}$ in the standard convention.
+  We use the strain transformation formulae as:
+  \begin{align*}
+    \epsilon_{x'} &= \frac{\epsilon_x + \epsilon_y}{2} + \frac{\epsilon_x - \epsilon_y}{2} \cos 2\phi + \frac{\gamma_{xy}}{2} \sin 2 \phi \\
+           &= \frac{\num{100e-6}  + \num{300e-6}}{2} + \frac{\num{100e-6} - \num{300e-6}}{2} \cos \ang{-60}  + \frac{\num{-150e-6} }{2} \sin \ang{-60}  \\
+           &= \num{214,95e-6}  \\
+    \epsilon_{y'} &= \frac{\epsilon_x + \epsilon_y}{2} - \frac{\epsilon_x - \epsilon_y}{2} \cos 2\phi - \frac{\gamma_{xy}}{2} \sin 2\phi \\
+                  &= \frac{\num{100e-6} + \num{300e-6} }{2} - \frac{\num{100e-6} - \num{300e-6} }{2} \cos \ang{-60} - \frac{\num{-150e-6}}{2} \sin \ang{-60} \\
+                  &= \num{185,048e-6}  \\
+    \gamma_{x'y'} &= - (\epsilon_x - \epsilon_y) \sin 2 \phi + \gamma_{xy} \cos 2\phi \\
+    &= - \left( \num{100e-6} - \num{300e-6}  \right) \sin \ang{-60} - \num{150e-6} \cos \ang{-60}   \\
+    &= \num{-248,21e-6} 
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  \epsilon_{x'} &= \num{214,95e-6}  \\
+  \epsilon_{y'} &= \num{185,048e-6}  \\
+  \gamma_{x'y'} &= \num{-248,21e-6} 
+.\end{aligned}
+}
+
+\begin{problemwithimage}{f14_58}{14-58}
+  The state of strain at the point has components of $\epsilon_x = \num{-100e-6}$, $\epsilon_y = \num{-200e-6}$, and $\gamma_{xy} = \num{100e-6}$.
+  Use the strain transformation equations to determine (a) The in-plane principal strains and (b) the maximum in-plane shear strain and average normal strain.
+  In each case specify the orientation of the element and show how the strains deform the element within the $x$--$y$ plane.
+\end{problemwithimage}
+
+\begin{derivation}
+  \begin{enumerate}[label=(\alph*)]
+    \item We have the general result that the principal strains are determined from:
+      \begin{equation*}
+        \epsilon_{1,2} = \frac{\epsilon_x + \epsilon_y}{2} \pm \sqrt{\left( \frac{\epsilon_x - \epsilon_y}{2} \right)^2 + \left( \frac{\gamma_{xy}}{2} \right)^2}
+      .\end{equation*}
+      Which means that:
+      \begin{align*}
+      \epsilon_{1,2} &= \frac{\num{-100e-6} - \num{200e-6}}{2} \pm \sqrt{\left( \frac{\num{-100e-6} + \num{200e-6} }{2} \right)^2 + \left( \frac{\num{100e-6} }{2} \right)^2} \\
+      &= \num{-150e-6} \pm \num{70,71e-6}  \\
+      \epsilon_1 = \num{-79,29e-6} \quad &\vee \quad \epsilon_2 = \num{-220,71e-6} 
+      .\end{align*}
+      Which are oriented at:
+      \begin{align*}
+        \tan 2 \theta_p &= - \left( \frac{\epsilon_x - \epsilon_y}{\gamma_{xy}} \right) \\
+        \theta_p &= \tan^{-1} \left( - \frac{\epsilon_x - \epsilon_y}{\gamma_{xy}} \right) \cdot \frac{1}{2} \\
+        &= \tan^{-1} (1) \cdot \frac{1}{2} \\
+        &= \ang{45} \cdot \frac{1}{2} \\
+        &= \ang{22,5} 
+      .\end{align*}
+    \item We have that the maximum in-plane shear strain is
+      \begin{equation*}
+        \gamma_{\mathrm{max}, \mathrm{in-plane}} = 2 R = 2 \cdot \num{70,71e-6} = \num{141,42e-6}  
+      .\end{equation*}
+      And that the average normal stain on the max shear planes is:
+      \begin{equation*}
+        \epsilon_{\mathrm{avg}} = \frac{\epsilon_x + \epsilon_y}{2} = \num{-150e-6} 
+      .\end{equation*}
+      Which lies at:
+      \begin{equation*}
+        \theta_s = \theta_p \pm \ang{45}  = \ang{22,5} \pm \ang{45} 
+      .\end{equation*}
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &(\mathrm{a}) & \epsilon_1 &= \num{-79,29e-6}  \\
+  && \epsilon_2 &= \num{-220,71e-6}  \\
+  && \theta_p &= \ang{22,5}  \\
+  &(\mathrm{b}) & \gamma_{\mathrm{max}, \mathrm{in-plane}} &= \num{141,42e-6}  \\
+  && \epsilon_{\mathrm{avg}} &= \num{-160e-6}  \\
+  && \theta_s &= \ang{22,5} \pm \ang{45} 
+.\end{aligned}
+}

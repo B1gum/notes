@@ -1,0 +1,83 @@
+\lecture{24}{27. November 2025}{Plane stress transformation}
+
+\begin{problemwithimage}{f14_3}{14-3}
+  The state of stress at a point in a member is shown on the element.
+  Determine the stress components acting on the inclined plane $AB$.
+  Solve the problem using the method of equilibrium described in Sec. 14.1.
+\end{problemwithimage}
+
+\begin{derivation}
+  We have the stress state:
+  \begin{equation*}
+    \sigma_y = \qty{-500}{\MPa}, \qquad \tau_{xy} = \qty{350}{\MPa}
+  .\end{equation*}
+  Furthermore, $AB$ lies at an inclination of \ang{60} with respect to $x$ which means its normal lies at \ang{30}.
+  We define $x'$ to be the outward normal of $AB$ and $y'$ to be along $AB$ so $x'$ is rotated \ang{30} clockwise from $x$ and $y'$ lies along $AB$.
+
+  The top (horizontal) face area is then
+  \begin{equation*}
+    \Delta A \sin \ang{30} 
+  .\end{equation*}
+  and the vertical face area is
+  \begin{equation*}
+    \Delta A \cos \ang{30} 
+  .\end{equation*}
+  
+  On the top face we have a \qty{500}{\MPa} downward stress which corresponds to a force of $\qty{500}{\MPa} \cdot \Delta A \sin \ang{30}$ and a rightward shear stress of \qty{350}{\MPa} corresponding to a force of $\qty{350}{\MPa} \cdot \Delta A \sin \ang{30} $.
+
+  On the left face we have a \qty{350}{\MPa} downward shear corresponding to a force of $\qty{350}{\MPa} \cdot \Delta A \cos \ang{30}$.
+
+  Now, we will do equilibrium on the slanted axes. 
+  \begin{align*}
+    \sum F_{x'} &= 0 \\
+    \sigma_{x'} \Delta A + \qty{500}{\MPa} \cdot \Delta A \sin \ang{30} \cdot \sin \ang{30} + \qty{350}{\MPa} \cdot \Delta A \sin \ang{30} \cos \ang{30} + \qty{350}{\MPa} \cdot \Delta A \cos \ang{30} \sin \ang{30} &= 0 \\
+    \sigma_{x'} + \qty{500}{\MPa} \sin \ang{30} \sin \ang{30}  + \qty{350}{\MPa} \sin \ang{30} \cos \ang{30} + \qty{350}{\MPa} \cos \ang{30} \sin \ang{30} &= 0 \\
+    \sigma_{x'} = - \qty{500}{\MPa} \cdot \sin \ang{30} \cdot \sin \ang{30} - \qty{350}{\MPa} \cdot \sin \ang{30} \cos \ang{30} - \qty{350}{\MPa} \cdot \cos \ang{30} \sin \ang{30}  &= \qty{-428}{\MPa}
+  .\end{align*}
+
+  And in the $y'$ direction:
+  \begin{align*}
+    \sum F_{y'} &= 0 \\
+    \tau_{x'y'} \Delta A + \qty{350}{\MPa} \Delta A \sin \ang{30} \sin \ang{30} - \qty{500}{\MPa} \Delta A \sin \ang{30} \cos \ang{30} - \qty{350}{\MPa} \Delta A \cos \ang{30} \cos \ang{30} &= 0 \\
+    \tau_{x'y'} + \qty{350}{\MPa} \sin^2 \ang{30} - \qty{500}{\MPa} \sin \ang{30} \cos \ang{30} - \qty{350}{\MPa} \cos^2 \ang{30} &= 0 \\
+    \tau_{x'y'} = \qty{500}{\MPa} \cdot \sin \ang{30} \cdot \cos \ang{30} + \qty{350}{\MPa} \cdot \cos \ang{30} \cdot \cos \ang{30} - \qty{350}{\MPa} \cdot \sin \ang{30} \cdot \sin \ang{30}  &= \qty{391,5}{\MPa}
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  \sigma_{n} &= \sigma_{x'} = \qty{-428}{\MPa} \\
+  \tau_{AB} &= \tau_{x'y'} = \qty{391,5}{\MPa} 
+.\end{aligned}
+}
+
+\begin{problemwithimage}{f14_22}{14-22}
+  A paper tube is formed by rolling a cardboard strip in a spiral and then gluing the edges together as shown.
+  Determine the shear stress acting along the seam, which is at \ang{40} from the vertical, when the tube is subjected to an axial compressive force of \qty{200}{\N}.
+  The paper is \qty{2}{\mm} thick and the tube has an outer diameter of \qty{100}{\mm}.
+\end{problemwithimage}
+
+\begin{derivation}
+  The average axial normal stress is found by dividing the applied compressive load by the cross sectional area of the strip:
+  \begin{equation*}
+    \sigma = \frac{P}{A} = \frac{\qty{200}{\N}}{\pi \cdot \frac{\left( \qty{100}{\mm} - \qty{96}{\mm}   \right)^2}{4}} = \qty{0,3248}{\MPa}
+  .\end{equation*}
+  
+  The seams are at \ang{40} from vertical so they are at \ang{50} from horizontal:
+  \begin{equation*}
+    \theta = \ang{50} 
+  .\end{equation*}
+  
+  We use:
+  \begin{equation*}
+    \tau_{x'y'} = - \frac{\sigma_x - \sigma_y}{2} \sin 2\theta + \tau_{xy} \cos 2 \theta
+  .\end{equation*}
+  With $\sigma_x = \tau_{xy} = 0$ giving:
+  \begin{equation*}
+    \tau_{x'y'} = \frac{\sigma_y}{2} \sin 2 \theta = \frac{\qty{0.3248}{\MPa} }{2} \cdot \sin (2 \cdot \ang{50} ) = \qty{159,9}{\kPa}
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{
+\tau_{x'y'} = \qty{159,9}{\kPa}
+}

@@ -1,0 +1,147 @@
+\lecture{8}{18. September 2025}{Structural Analysis -- Indeterminate trusses}
+
+\begin{problemwithimage}{f5_19}{5-19}
+  Determine the force developed in members $FE$, $EB$, and $BC$ of the truss and state if these members are in tension or compression.
+\end{problemwithimage}
+
+\begin{derivation}
+  As we have no horizontal loads, we know that $A_x = 0$.
+  Taking a moment equilibrium about $A$ yields:
+  \begin{equation*}
+    - \qty{11}{\kN} \cdot \qty{2}{\m} - \qty{22}{\kN} \cdot \qty{3.5}{\m} + D_y \cdot \qty{5,5}{\m} = 0 \implies D_y = \frac{\qty{11}{\kN} \cdot \qty{2}{\m} + \qty{22}{\kN} \cdot \qty{3.5}{\m} }{\qty{5.5}{\m} } = \qty{18}{\kN}
+  .\end{equation*}
+  A force equilibrium on the entire truss in the $y$ direction yields
+  \begin{equation*}
+    A_y + D_y - \qty{11}{\kN} - \qty{22}{\kN} = 0 \implies A_y = \qty{33}{\kN} - D_y = \qty{15}{\kN} 
+  .\end{equation*}
+  Hence, the support reactions are
+  \begin{equation*}
+    A_y = \qty{15}{\kN} \quad \text{and} \quad D_y = \qty{18}{\kN} 
+  .\end{equation*}
+  Now, we can start at joint $D$ and write a force equilibrium in the $y$ direction to get:
+  \begin{equation*}
+    \qty{18}{\kN} + F_{DE} \cdot \sin \ang{45} = 0 \implies F_{DE} = - \frac{\qty{18}{\kN}}{\sin \ang{45} }  = - \qty{25,46}{\kN}
+  .\end{equation*}
+  Which gives the equilibrium in the $x$ direction:
+  \begin{equation*}
+    - F_{CD} - F_{DE} \cdot \cos \ang{45} = 0 \implies F_{CD} = \qty{18}{\kN} 
+  .\end{equation*}
+  
+  Moving to joint $C$, in the $x$ direction, we get
+  \begin{equation*}
+    F_{CD} - F_{BC} = 0 \implies F_{BC} = F_{CD} = \qty{18}{\kN} 
+  .\end{equation*}
+  And in the $y$ direction, we get
+  \begin{equation*}
+    F_{CE} - \qty{22}{\kN} = 0 \implies F_{CE} = \qty{22}{\kN} 
+  .\end{equation*}
+  
+  For joint $A$, in the $y$ direction we get
+  \begin{equation*}
+    \qty{15}{\kN} + F_{AF} \sin \ang{45} = 0 \implies F_{AF} = - \frac{\qty{15}{\kN} }{\sin \ang{45}} = - \qty{21,21}{\kN} 
+  .\end{equation*}
+  In the $x$ direction at $A$ we get
+  \begin{equation*}
+    F_{AB} + F_{AF} \cdot \cos \ang{45} = 0 \implies F_{AB} = \qty{15}{\kN} 
+  .\end{equation*}
+  
+  Now, we can move to joint $B$ in the $x$ direction and get
+  \begin{align*}
+    F_{BC} - F_{AB} + F_{BE} \cdot \num{0,6} &= 0 \\
+    F_{BE} &= \frac{\qty{15}{\kN} - \qty{18}{\kN}}{\num{0.6} } = - \qty{5}{\kN}
+  .\end{align*}
+
+  Now, we move on to joint $F$ and use a horizontal equilibrium and get
+  \begin{equation*}
+    F_{FE} - F_{AF} \cdot \cos \ang{45} = 0 \implies F_{EF} = - \qty{15}{\kN} 
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  F_{BC} &= \qty{18}{\kN} (\text{T}) \\
+  F_{BE} &= \qty{5}{\kN} (\text{C}) \\
+  F_{FE} &= \qty{15}{\kN} (\text{C})
+.\end{aligned}
+}
+
+\begin{problemwithimage}{f5_36}{*5-36}
+  Determine the resultant force at pins $A$, $B$, and $C$ on the two-member frame.
+\end{problemwithimage}
+
+\begin{derivation}
+  We start by finding a resultant force $W$ to replace the distributed loading on $AC$ with.
+  We start by calculating the length of $AC$ using trigonometry,
+  \begin{equation*}
+    AC = \frac{\qty{2}{\m}}{\sin \ang{60} } = \qty{2.31}{\m}
+  .\end{equation*}
+  Hence, the resultant of the load is
+  \begin{equation*}
+    W = wL = \qty{200}{\N\per\m} \cdot \qty{2.31}{\m}  = \qty{461,9}{\N}
+  .\end{equation*}
+  This will act perpendicular to the member meaning the force components are
+  \begin{equation*}
+    W_x = \qty{461.9}{\N} \cdot \cos \ang{30}  = \qty{400}{\N}, \qquad W_y = \qty{461.9}{\N} \cdot \sin (\ang{-30})  = -\qty{230.9}{\N}
+  .\end{equation*}
+  
+  We will start by taking a global moment equilibrium about pin $A$.
+  The distance from $A$ to $B$ is
+  \begin{equation*}
+    |AB| = \qty{2}{\m} + \cos \ang{60} \cdot \qty{2.31}{\m}  = \qty{3.155}{\meter}
+  .\end{equation*}
+  Hence,
+  \begin{align*}
+    M_{A} &= 0 \\
+    \qty{800}{\N} \cdot \qty{2}{\m} + \qty{3.155}{\m} \cdot B_y - \qty{461.9}{\N} \cdot \qty{1.155}{\m}  &= 0 \\
+    B_y &= \frac{\qty{461.9}{\N} \cdot \qty{1.155}{\m} - \qty{800}{\N} \cdot \qty{2}{\m} }{\qty{3.155}{\m} } \\
+    B_y &= \qty{-338,04}{\N}
+  .\end{align*}
+
+  Now, we will take a force equilibrium of the whole frame in the $y$ direction as
+  \begin{align*}
+    F_y &= 0 \\
+    A_y + B_y - W_y &= 0 \\
+    A_y - \qty{338.04}{\N} - \qty{230.9}{\N} &= 0 \\
+    A_y &= \qty{230.9}{\N} + \qty{338.04}{\N} \\
+    A_y &= \qty{568,94}{\N}
+  .\end{align*}
+  
+  Now, we will take a force equilibrium of the whole frame in the $x$ direction and get
+  \begin{align*}
+    F_x &= 0 \\
+    W_x - \qty{800}{\N} + A_x + B_x &= 0 \\
+    \qty{400}{\N} - \qty{800}{\N} + A_x + B_x &= 0 \\
+    A_x + B_x &= \qty{400}{\N}
+  .\end{align*}
+
+  Using the method of sections, we will now cut the frame at pin $C$ and isolate the left part (member $AC$). 
+  As $C$ is also a pin, the total moment here must also be zero -- Using the method of sections we further know that the total moment about $C$ from the left free body must also equal zero).
+  Hence,
+  \begin{align*}
+    M_C &= 0 \\
+    A_x \cdot \qty{2}{\m} - A_y \cdot \qty{1.155}{\m} + W \cdot \qty{1.155}{\m} &= 0 \\
+    A_x &= \frac{A_y \cdot \qty{1.155}{\m} - W \cdot \qty{1.155}{\m}}{\qty{2}{\m} } \\
+    A_x &= \left( \qty{568.94}{\N} - \qty{461.9}{\N} \right) \cdot \frac{\qty{1.155}{\m} }{\qty{2}{\m} } \\
+    A_x &= \qty{61,78}{\N}
+  .\end{align*}
+  Hence,
+  \begin{align*}
+    A_x + B_x &= \qty{400}{\N}  \\
+    B_x &= \qty{400}{\N} - \qty{61.78}{\N}  = \qty{338,22}{\N}
+  .\end{align*}
+  
+  To get the resultant of pin $C$ we will use a force equilibrium to find the required force from the pin on the left part of the frame.
+  \begin{align*}
+    A_x + W_x + C_x &= 0 \\
+    C_x &= -\qty{400}{\N} - \qty{61.78}{\N} = - \qty{461,78}{\N} \\
+    A_y + W_y + C_y &= 0 \\
+    C_y &= \qty{230.9}{\N} - \qty{568.94}{\N}   = \qty{-338,04}{\N}
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  A_x &= \qty{61,78}{\N}, & B_x &= \qty{338.22}{\N}, & C_x &= - \qty{461,78}{\N}  \\
+  A_y &= \qty{568,94}{\N}, & B_y &= - \qty{338,04}{\N}, & C_y &= \qty{-338,04}{\N} 
+.\end{aligned}
+}

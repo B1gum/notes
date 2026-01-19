@@ -1,0 +1,89 @@
+\lecture{21}{17. November 2025}{Transverse Shear}
+
+\begin{problemwithimage}{f12_2}{12-2}
+  If the wide-flange beam is subjected to a shear of $V = \qty{20}{\kN}$, determine the shear stress on the web at $A$.
+  Indicate the shear stress components on a volume element located at this point.
+\end{problemwithimage}
+
+\begin{derivation}
+  We want to find the transverse shear in the beam at point $A$.
+  To do this, we use the shear formula:
+  \begin{equation*}
+    \tau = \frac{VQ}{It}
+  \end{equation*}
+  with shear stress $\tau$, shear force $V$, $Q$ is the moment of the area above the cut through the point about the neutral axis, $I$ is the second moment of area of the entire cross section about its neutral axis and $t$ is the thickness in the direction of shear flow (here the thickness of the web).
+
+  From symmetry, the neutral axis lies at $c = \qty{170}{\mm}$. This means that the distance from $A$ to $c$ is $y = \qty{170}{\mm} - \qty{20}{\mm} = \qty{150}{\mm}$. We also note, that the area above the cut is just the top flange.
+
+  We now compute $I$ about the neutral axis using the standard formulae for rectangles and the parallel-axis theorem:
+  \begin{align*}
+    I_w &= \frac{bh^3}{12} = \frac{\qty{20}{\mm} \cdot \left( \qty{300}{\mm}  \right)^3}{12}  = \qty{45e6}{\mm^4}\\
+    I_{f, \mathrm{cent}} &= \frac{bh^3}{12} = \frac{\qty{200}{\mm} \cdot \left( \qty{20}{\mm}  \right)^3}{12}  = \qty{1,33e5}{\mm^4}\\
+    I_f &= I_{f, \mathrm{cent}} + A_f d_f^2 = \qty{1,33e5}{\mm^{4}}  + \qty{200}{\mm} \cdot \qty{20}{\mm} \cdot \left( \qty{160}{\mm}  \right)^2 = \qty{1,02e8}{\mm^{4}}  \\
+    I &= I_w + 2 I_f = \qty{45e6}{\mm^{4}}  + 2 \cdot \qty{1,02e8}{\mm^{4}} = \qty{2,49e8}{\mm^{4}}
+  .\end{align*}
+
+  We can now compute the moment of the area above the neutral axis $Q$ using:
+  \begin{equation*}
+    Q = A_f \overline{y} = \qty{200}{\mm} \cdot \qty{20}{\mm} \cdot \qty{160}{\mm} = \qty{6,4e5}{\mm^{3}} 
+  .\end{equation*}
+
+  So, the shear stress in the web at $A$ is:
+  \begin{equation*}
+    \tau_A = \frac{\qty{20}{\kN} \cdot \qty{6,4e5}{\mm^{4}} }{\qty{2,49e8}{\mm^{4}} \cdot \qty{20}{\mm} } = \qty{2,59}{\MPa} 
+  .\end{equation*}
+
+  We take $x$ to be along the beam length, $y$ to be vertical and $z$ to be across the beam width.
+  At $A$ the transverse shear gives a pair of complementary shears:
+  \begin{equation*}
+    \tau_{xy} = \tau_{yx} = \qty{2,59}{\MPa} 
+  .\end{equation*}
+  On the face normal to $x$ this corresponds to the shear acting downwards in the $-y$ direction and on the face normal to $y$ the complementary shear acts along the beam axis in the $+x$ direction (so the little element does not spin).
+\end{derivation}
+
+\finalresult{\tau_{A} = \qty{2,59}{\MPa}}
+
+\begin{problemwithimage}{f12_27}{12-27}
+  The double T-beam is fabricated by welding three plates together as shown.
+  If the weld can resist a shear stress $\tau_{\mathrm{allow}} = \qty{90}{\MPa}$, determine the maximum shear $V$ that can be applied to the beam.
+\end{problemwithimage}
+
+\begin{derivation}
+  This time we are given a known allowable shear stress and want to find the maximum $V$.
+  Using the shear formula we isolate as:
+  \begin{equation*}
+    \tau_{\mathrm{allow}} = \frac{VQ}{It} \implies V = \frac{\tau_{\mathrm{allow}} \cdot It}{Q}
+  .\end{equation*}
+
+  The cross-sectional areas of each part is:
+  \begin{align*}
+    A_f &= \qty{20}{\mm} \cdot \left( \qty{50}{\mm} + \qty{20}{\mm} + \qty{75}{\mm} + \qty{20}{\mm} + \qty{50}{\mm}  \right)  = \qty{4,3e3}{\mm^2}\\
+    A_w &= \qty{150}{\mm} \cdot \qty{20}{\mm}   = \qty{3e3}{\mm^2}
+  .\end{align*}
+  And the centroid location is therefore:
+  \begin{equation*}
+    \overline{y} = \frac{A_f \cdot y_f + 2 A_w \cdot y_w}{A_f + 2 \cdot A_w} = \frac{\qty{4,3e3}{\mm^2} \cdot \qty{10}{\mm} + 2 \cdot \qty{3e3}{\mm^2} \cdot \qty{95}{\mm} }{\qty{4,3e3}{\mm^2} + 2\cdot \qty{3e3}{\mm^2} } = \qty{59,51}{\mm} 
+  .\end{equation*}
+
+  The second moment about the neutral axis can then be found using the standard formula for a rectangle and the parallel-axis theorem:
+  \begin{align*}
+    I_f &= \frac{bh^3}{12} + A_f d_f^2 = \frac{\qty{215}{\mm} \cdot \left( \qty{20}{\mm}  \right)^3}{12} + \qty{4,3e3}{\mm^2} \cdot \left( \qty{49,51}{\mm}  \right)^2 = \qty{1,06e7}{\mm^{4}}  \\
+    I_w &= \frac{bh^3}{12} + A_w d_w^2 = \frac{\qty{20}{\mm} \cdot \left( \qty{150}{\mm}  \right)^3}{12} + \qty{3e3}{\mm^2} \cdot \left( \qty{35,49}{\mm}  \right)^2 = \qty{9,4e6}{\mm^{4}} \\
+    I &= I_f + 2I_w = \qty{1,06e7}{\mm^{4}}  + 2\cdot \qty{9,4e6}{\mm^{4}} = \qty{2,9e7}{\mm^{4}} 
+  .\end{align*}
+  
+  The shear in this case happens just below the flange, meaning the moment of the area above the shear line is:
+  \begin{equation*}
+    Q = A_f \cdot d_f = \qty{4,3e3}{\mm^2} \cdot \qty{49,51}{\mm} = \qty{2,1e5}{\mm^3} 
+  .\end{equation*}
+  
+  Therefore the maximum allowable shear $V$ is:
+  \begin{align*}
+    V_{\mathrm{max}} &= \frac{\tau_{\mathrm{allow}} \cdot I \cdot t}{Q} \\
+    &= \frac{\qty{90}{\MPa} \cdot \qty{2,9e7}{\mm^{4}} \cdot 2\cdot \qty{20}{\mm} }{\qty{2,1e5}{\mm^3} } \\
+    &= \qty{497}{\kN} 
+  .\end{align*}
+\end{derivation}
+
+\finalresult{V_{\mathrm{max}} = \qty{497}{\kN}}
+

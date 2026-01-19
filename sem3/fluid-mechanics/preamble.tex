@@ -7,17 +7,17 @@
 \Addlcwords{a an the and but for or nor as at by for in of on per to via vs off up out}
 
 \usepackage{parskip} 
-\usepackage[T1]{fontenc}
 \usepackage{microtype}
 \usepackage{setspace}
 \setstretch{1.2}
-
 
 \usepackage{mathtools, amssymb}
 \usepackage{bm}
 \renewcommand{\Vec}[1]{\boldsymbol{#1}}
 \let\oldhat\hat
 \renewcommand{\hat}[1]{\oldhat{\mathbf{#1}}}
+
+\DeclareMathOperator{\grad}{grad}
 
 \usepackage{fourier}
 
@@ -64,7 +64,7 @@
 \fancyhead[C]{\small\ReportTitle}
 \fancyhead[R]{\small\TheDate}
 \usepackage{lastpage}
-\fancyfoot[R]{\small\thepage{} of \pageref{LastPage}}
+\fancyfoot[R]{\small\thepage{} of \pageref*{LastPage}}
 \fancyfoot[L]{\small\CourseName}
 
 \newcommand{\PdfTitle}{Lecture Notes}
@@ -102,6 +102,7 @@
 
 \usepackage{caption}
 \captionsetup{font=small}
+\usepackage{subcaption} 
 
 \newenvironment{problem}[1]%
 {%

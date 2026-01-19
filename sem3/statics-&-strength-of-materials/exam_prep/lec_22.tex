@@ -1,0 +1,91 @@
+\lecture{22}{20. November 2025}{Combined Loading}
+
+\begin{problemwithimage}{f13_5}{13-5}
+  The cylindrical tank is fabricated by welding a strip of thin plate helically, making an angle $\theta$ with the longitudinal axis of the tank.
+  If the strip has a width $w$ and thickness $t$, and the gas within the tank of diameter $d$ is subjected to a pressure $p$, show that the normal stress developed along the strip is given by $\sigma_{\theta} = \left( p d / 8 t\right) \left( 3 - \cos 2\theta \right)$
+\end{problemwithimage}
+
+\begin{derivation}
+  We have the general results, that the longitudinal stress is:
+  \begin{equation*}
+    \sigma_x = \frac{p d}{4t}
+  \end{equation*}
+  and the hoop stress is
+  \begin{equation*}
+    \sigma_{\phi} = \frac{p d}{2t}
+  \end{equation*}
+  whilst the torsion in the vessel is zero in the ideal case:
+  \begin{equation*}
+    \tau_{x\phi} = 0
+  .\end{equation*}
+  
+  The strip is rotated at an angle $\theta$ to the hoop.
+  Here we can use the stress-transformation formula:
+  \begin{align*}
+    \sigma_{\theta} &= \sigma_x \cos^2 \theta + \sigma_{\phi} \sin^2 \theta + 2 \tau_{x \phi} \cos \theta \sin \theta \\
+    &= \sigma_x \cos^2 \theta + \sigma_{\phi} \sin^2\theta \\
+    &= \frac{p d}{4t} \cos^2 \theta + \frac{p d}{2t} \sin^2 \theta \\
+    &= \frac{p d}{4t} \left( \cos^2 \theta + 2 \sin^2 \theta \right) \\
+    &= \frac{p d}{4t} \left( 1 + \sin^2 \theta \right) \\
+    1 + \sin^2 \theta &= \frac{3 - \cos 2\theta}{2} \\
+    \sigma_{\theta} &= \frac{p d}{4t} \cdot \frac{3 - \cos 2\theta}{2} \\
+    &= \frac{p d}{8t} \cdot \left( 3 - \cos 2\theta \right)
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+  \sigma_{\theta} = \frac{p d}{8t} \cdot \left( 3 - \cos 2\theta \right)
+}
+
+
+\begin{problemwithimage}{f13_11}{13-11}
+  The staves or vertical members of the wooden tank are held together using semicircular hoops having a thickness of \qty{12}{\mm} and a width of \qty{50}{\mm}.
+  Determine the normal stress in hoop $AB$ if the tank is subjected to an internal gauge pressure of \qty{14}{\kPa} and this loading is transmitted directly to the hoops.
+  Also, if \qty{6}{\mm} diameter bolts are used to connect each hoop together, determine the tensile stress in each bolt at $A$ and $B$.
+  Assume hoop $AB$ supports the pressure loading within a \qty{300}{\mm} length of the tank as shown.
+\end{problemwithimage}
+
+\begin{derivation}
+  We have a ring-shaped slice of length $L = \qty{300}{\mm}$, diameter $d = \qty{450}{\mm}$ and an internal gauge pressure of $p = \qty{14}{\kPa} $.
+
+  We now split the barrel in half and consider equilibrium for one half.
+  Here the projected area is:
+  \begin{equation*}
+    A_{\mathrm{proj}} = d L = \qty{300}{\mm} \cdot \qty{450}{\mm} = \qty{135e3}{\mm^2} 
+  .\end{equation*}
+  The pressure force on this side is just the pressure times the area:
+  \begin{equation*}
+    F_p = p \cdot A_{\mathrm{proj}} = \qty{14}{\kPa} \cdot \qty{135e3}{\mm^2} = \qty{1890}{\N} 
+  .\end{equation*}
+  The only thing resisting this pressure force is the hoop tension.
+  As the hoop pulls both on the front and backside of the barrel the tension in the hoop must be:
+  \begin{align*}
+    \sum F_x &= 0 \\
+    F_p - 2 T &= 0 \\
+    T &= \frac{F_p}{2} \\
+      &= \frac{\qty{1890}{\N} }{2} = \qty{945}{\N}
+  .\end{align*}
+  
+  The stress in the hoop is then:
+  \begin{equation*}
+    \sigma_{\mathrm{hoop}} = \frac{T}{A} = \frac{\qty{945}{\N}}{\qty{12}{\mm} \cdot \qty{50}{\mm} } = \qty{1,575}{\MPa}
+  .\end{equation*}
+  
+  The bolts at $A$ and $B$ must transmit the entirety of the hoop force.
+  This means:
+  \begin{equation*}
+    F_{\mathrm{bolt}} = T
+  .\end{equation*}
+  Which means the stress in the bolts are:
+  \begin{equation*}
+    \sigma_{\mathrm{bolt}} = \frac{F_{\mathrm{bolt}}}{\pi \cdot \frac{d_{\mathrm{bolt}}^2}{4}} = \frac{\qty{945}{\N} }{\pi \cdot \frac{\left( \qty{6}{\mm}  \right)^2}{4}} = \qty{33,4}{\MPa}
+  .\end{equation*}
+  Both of these are in tension.
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  \sigma_{\mathrm{hoop}} &= \qty{1,575}{\MPa} \\
+  \sigma_{\mathrm{bolt}} &= \qty{33,4}{\MPa} 
+.\end{aligned}
+}

@@ -1,13 +1,13 @@
-\lecture{2}{27. August 2025}{Basic equations of fluid statics and buoyancy, surface tension}
+\lecture{2}{27. August 2025}{Basic Equations of Fluid Statics and Buoyancy, Surface Tension}
 
 \section{Fluid Statics} \label{sec:flusta}
 
-\subsection{The basic equations of fluid statics}
-Consider a differential fluid element of mass $\mathrm{d}m = \rho \, \mathrm{d}V$ with sides $\mathrm{d}x $, $\mathrm{d}y$, and $\mathrm{d}z$ as shown on \textbf{\autoref{fig:f3_1}}. The fluid element is stationary relative to the coordinate system shown.
+\subsection{The Basic Equations of Fluid Statics}
+Consider a differential fluid element of mass $\mathrm{d}m = \rho \, \mathrm{d}V$ with sides $\mathrm{d}x $, $\mathrm{d}y$, and $\mathrm{d}z$ as shown on \Cref{fig:f3_1}. The fluid element is stationary relative to the coordinate system shown.
 
 \begin{figure} [htpb]
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f3_1.png}
+  \includegraphics[width=0.8\linewidth]{./figures/f3_1.png}
   \caption{Differential fluid element with pressure forces shown in the $y$-direction}
   \label{fig:f3_1}
 \end{figure}
@@ -30,7 +30,7 @@ Terms of higher order are omitted as they will vanish at a later step anyways. S
 \[ 
 p_R = p \frac{\partial p}{\partial y} \left( y_R - y \right) = p + \frac{\partial p}{\partial y} \frac{\mathrm{d}y}{2}
 .\]
-The pressure \textit{forces} produced by this pressure is shown on \textbf{\autoref{fig:f3_1}}. These consist of three factors. Namely the magnitude of the pressure, the area of the face and a unit vector to indicate direction. A positive pressure here is defined as a compressive pressure on the differential element. The pressure forces in the other directions can be obtained in the same way giving:
+The pressure \textit{forces} produced by this pressure is shown on \Cref{fig:f3_1}. These consist of three factors. Namely the magnitude of the pressure, the area of the face and a unit vector to indicate direction. A positive pressure here is defined as a compressive pressure on the differential element. The pressure forces in the other directions can be obtained in the same way giving:
 \begin{align*}
   \mathrm{d}\textbf{F}_S &= \left( p - \frac{\partial p}{\partial x} \frac{\mathrm{d}x}{2} \right) \left( \mathrm{d}y \, \mathrm{d}z \right) \left( \hat{\textbf{i}} \right) + \left( p + \frac{\partial p}{\partial x} \frac{\mathrm{d}x}{2} \right) \left( \mathrm{d}y \, \mathrm{d}z \right) \left( - \hat{\textbf{i}} \right) \\
                          &+ \left( p - \frac{\partial p}{\partial y} \frac{\mathrm{d}y}{2} \right) \left(\mathrm{d}x \, \mathrm{d}z \right) \left( \hat{\textbf{j}} \right) + \left( p + \frac{\partial p}{\partial y} \frac{\mathrm{d}y}{2} \right) \left( \mathrm{d}x \, \mathrm{d}z \right) \left( - \hat{\textbf{j}} \right) \\
@@ -40,13 +40,13 @@ Simplifying this, we obtain
 \[ 
   \mathrm{d}\textbf{F}_S = - \left( \frac{\partial p}{\partial x} \hat{\textbf{i}} + \frac{\partial p}{\partial y} \hat{\textbf{j}} + \frac{\partial p}{\partial z} \hat{\textbf{k}} \right) \, \mathrm{d}x \, \mathrm{d}y \, \mathrm{d}z
 .\]
-We can now recognize the term in the parentheses as the gradient of the pressure which may be written as either $\mathrm{grad} p$ or $\nabla p$. This is:
+We can now recognize the term in the parentheses as the gradient of the pressure which may be written as either $\grad p$ or $\nabla p$. This is:
 \[ 
-  \mathrm{grad} p \equiv \nabla p \equiv \left( \hat{\textbf{i}} \frac{\partial p}{\partial x} + \hat{\textbf{j}} \frac{\partial p}{\partial y} + \hat{\textbf{k}} \frac{\partial p}{\partial z}  \right) \equiv \left( \hat{\textbf{i}} \frac{\partial }{\partial x} + \hat{\textbf{j}}\frac{\partial }{\partial y} + \hat{\textbf{k}} \frac{\partial }{\partial z} \right) p
+  \grad p \equiv \nabla p \equiv \left( \hat{\textbf{i}} \frac{\partial p}{\partial x} + \hat{\textbf{j}} \frac{\partial p}{\partial y} + \hat{\textbf{k}} \frac{\partial p}{\partial z}  \right) \equiv \left( \hat{\textbf{i}} \frac{\partial }{\partial x} + \hat{\textbf{j}}\frac{\partial }{\partial y} + \hat{\textbf{k}} \frac{\partial }{\partial z} \right) p
 .\]
 Using this notation we can rewrite the expression as:
 \[ 
-\mathrm{d}\textbf{F}_S = - \mathrm{grad} p(\mathrm{d}x \, \mathrm{d}y \, \mathrm{d}z) = - \nabla p \, \mathrm{d}x \, \mathrm{d}y \, \mathrm{d}z
+\mathrm{d}\textbf{F}_S = - \grad p(\mathrm{d}x \, \mathrm{d}y \, \mathrm{d}z) = - \nabla p \, \mathrm{d}x \, \mathrm{d}y \, \mathrm{d}z
 .\]
 Note that the pressure magnitude is not relevant when computing the net pressure force -- instead only the rate of change of pressure with distance, the pressure gradient, is needed. 
 
@@ -88,12 +88,12 @@ This means that the pressure depends on one variable only and the total derivati
 .\]
 This is the basic pressure-height relation of fluid statics. 
 
-\subsection{Pressure variation in a static fluid}
+\subsection{Pressure Variation in a Static Fluid}
 
-\subsubsection{Incompressible fluids}
-For an incompressible fluid $\rho = \mathrm{constant}$. If we assume the gravity to be constant with elevation then we get
+\subsubsection{Incompressible Fluids}
+For an incompressible fluid $\rho = \text{constant}$. If we assume the gravity to be constant with elevation then we get
 \[ 
-\frac{\partial p}{\partial z} = - \rho g = \mathrm{constant}
+\frac{\partial p}{\partial z} = - \rho g = \text{constant}
 .\]
 Now we can easily integrate this as
 \[
@@ -136,11 +136,11 @@ p = p_0 \left( 1 - \frac{mz}{T_0} \right)^{\frac{g}{mR}} = p_0 \left( \frac{T}{T
 .\]
 
 \subsection{Buoyancy}
-Any object submerged in a liquid will experience a vertical force acting on it due to liquid pressure -- this is termed \textit{buoyancy}. Consider the object on \textbf{\autoref{fig:f3_9}} which is split into cylindrical volume elements.
+Any object submerged in a liquid will experience a vertical force acting on it due to liquid pressure -- this is termed \textit{buoyancy}. Consider the object on \Cref{fig:f3_9} which is split into cylindrical volume elements.
 
 \begin{figure} [ht]
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/f3_9.png}
+  \includegraphics[width=0.7\linewidth]{./figures/f3_9.png}
   \caption{Immersed body in a static liquid.}
   \label{fig:f3_9}
 \end{figure}

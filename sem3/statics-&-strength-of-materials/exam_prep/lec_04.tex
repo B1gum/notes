@@ -1,0 +1,61 @@
+\lecture{4}{4. September 2025}{Center of Gravity}
+
+\begin{problemwithimage}{f6_3}{F6-3}
+  Determine the centroid $\overline{y}$ of the area.
+\end{problemwithimage}
+
+\begin{derivation}
+  We start by calculating the area $A$ of the shaded area
+  \begin{equation*}
+    A = \int_{- 1}^{1} 2 - 2x^2 \, \mathrm{d}x  = \frac{8}{3}
+  .\end{equation*}
+  Hence, the area is $A = 8 / 3 \, \unit{\m^2}$.
+  Furthermore, $\tilde{y}(x)$ is the halfway point between the top and bottom of the area as
+  \begin{equation*}
+    \tilde{y}(x) = \frac{2+2x^2}{2} = 1 + x^2
+  .\end{equation*}
+  Hence,
+  \begin{equation*}
+    \overline{y} = \frac{\int_{-1}^{1} (1 + x^2)(2-2x^2) \, \mathrm{d}x}{\frac{8}{3}}  = \frac{6}{5} 
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{\overline{y} = \qty{1,2}{\m}}
+
+\begin{problemwithimage}{f6_50}{6-50}
+  The assembly is made from a steel hemisphere, $\rho_{\mathrm{st}} = \qty{7,8}{\mega\g\per\cubic\m}$, and an aluminum cylinder, $\rho_{\mathrm{al}} = \qty{2,70}{\mega\g\per\cubic\m}$.
+  Determine the center of gravity of the assembly if the height of the cylinder is $h = \qty{200}{\mm}$.
+\end{problemwithimage}
+
+\begin{derivation}
+  We start by finding the volumes of the steel hemisphere and aluminum cylinder as:
+  \begin{align*}
+    V_{\mathrm{st}} &= \frac{2}{3} \pi \left( \qty{160}{\mm}  \right)^3 = \qty{8,58e6}{\mm^3}\\
+    V_{\mathrm{al}} &= \pi \cdot \left( \qty{80}{\mm}  \right)^2 \cdot \qty{200}{\mm} = \qty{4,02e6}{\mm^3} 
+  .\end{align*}
+  Which means their individual masses are:
+  \begin{align*}
+    m_{\mathrm{st}} &= V_{\mathrm{st}} \cdot \rho_{\mathrm{st}} = \qty{8,58e6}{\mm^3} \cdot \qty{7,8}{\mega\g\per\m^3} = \qty{66,92}{\kg}  \\
+    m_{\mathrm{al}} &= V_{\mathrm{al}} \cdot \rho_{\mathrm{al}} = \qty{4,02e6}{\mm^3} \cdot \qty{2,7}{\mega\g\per\m^3} = \qty{10,85}{\kg} 
+  .\end{align*}
+  Hence, the total mass of the assembly is:
+  \begin{equation*}
+    m = m_{\mathrm{st}} + m_{\mathrm{al}} = \qty{66.92}{\kg} + \qty{10.85}{\kg}  = \qty{77.77}{\kg}
+  .\end{equation*}
+  The centroid of the steel hemisphere is placed at:
+  \begin{equation*}
+    \overline{z}_{\mathrm{st}} = \qty{160}{\mm} - \frac{3}{8} \cdot \qty{160}{\mm}  = \qty{100}{\mm}
+  .\end{equation*}
+  And the centroid of the aluminum cylinder is at
+  \begin{equation*}
+    \overline{z}_{\mathrm{al}} = \qty{160}{\mm} + \frac{\qty{200}{\mm} }{2} = \qty{260}{\mm} 
+  .\end{equation*}
+  Which means the centroid is at:
+  \begin{equation*}
+    \overline{z} = \frac{\overline{z}_{\mathrm{st}} \cdot m_{\mathrm{st}} + z_{\mathrm{al}} \cdot m_{\mathrm{al}}}{m} = \frac{\qty{100}{\mm} \cdot \qty{66.92}{\kg} + \qty{260}{\mm} \cdot \qty{10.85}{\kg}}{\qty{77.77}{\kg} } = \qty{122,3}{\mm}
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{
+\overline{z} = \qty{122,3}{\mm}
+}

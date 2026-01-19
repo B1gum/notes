@@ -1,0 +1,160 @@
+\lecture{18}{6. November 2025}{Deflection of Beams}
+
+\begin{problemwithimage}{f11_83}{11-83}
+  If the beam is subjected to the internal moment of $M = \qty{1200}{\kN.\m}$, determine the maximum bending stress acting on the beam and the orientation of the neutral axis.
+\end{problemwithimage}
+
+\begin{derivation}
+  The beam will be modelled as an outer beam with an inner notch removed.
+  The outer beam has an area of
+  \begin{equation*}
+    A_0 = \qty{300}{\mm} \cdot \qty{600}{\mm}  = \qty{180e3}{\mm^2}
+  .\end{equation*}
+  And the notch has an area of
+  \begin{equation*}
+    A_n = \qty{150}{\mm} \cdot \qty{150}{\mm}  = \qty{22,5e3}{mm^2}
+  .\end{equation*}
+  Which means the actual cross-sectional area is
+  \begin{equation*}
+    A = A_0 - A_n = \qty{180e3}{\mm^2} - \qty{22,5e3}{\mm^2}  = \qty{157,5e3}{\mm^2} 
+  .\end{equation*}
+  Removing the notch shifts the centroid of the remaining section a distance of
+  \begin{equation*}
+    \overline{y} = \frac{0 \cdot A_0 - A_n y_n}{A} = \frac{- \qty{22.5e3}{\mm^2} \cdot \qty{-75}{\mm}}{\qty{157.5 e3}{\mm^2} } = \qty{10.71}{\mm} 
+  .\end{equation*}
+  That means the centroid is moved a distance of \qty{10.71}{\mm} in the $y$-direction compared to what it would be without the notch.
+
+  We will now calculate the second moments about the neutral axis.
+  The second moments for the outer rectangle is:
+  \begin{equation*}
+    I_{y0} = \frac{bh^3}{12} = \frac{\qty{600}{\mm} \cdot \left( \qty{300}{\mm}  \right)^3}{12} = \qty{1.35e9}{\mm^4} \qquad I_{z0} = \frac{bh^3}{12} = \frac{\qty{300}{\mm} \cdot \left( \qty{600}{\mm}  \right)^3}{12} = \qty{5.4e9}{\mm^4}
+  .\end{equation*}
+  
+  The second moment of the notch is:
+  \begin{equation*}
+    I_{yn} = I_{zn} = \frac{bh^3}{12} = \frac{\qty{150}{\mm} \left( \qty{150}{\mm}  \right)^3}{12} = \qty{4.22e7}{\mm^4}
+  .\end{equation*}
+  Their individual $y$-offsets are
+  \begin{equation*}
+    d_0 = y_0 - \overline{y} = - \qty{10,71}{\mm} \qquad d_n = y_n - \overline{y} = - \qty{85,71}{\mm} 
+  .\end{equation*}
+  So, using the parallel-axis theorem:
+  \begin{align*}
+    I_{z} &= I_{z0} + A_0 d_0^2 - \left( I_{zn} + A_n d_n^2 \right) \\
+    &= \qty{5,4e9}{\mm^{4}} + \qty{180e3}{\mm^2} \cdot \left( \qty{10,71}{\mm}  \right)^2 - \left( \qty{4,22e7}{\mm^{4}} + \qty{22,5e3}{\mm^2} \cdot \left( \qty{85,71}{\mm}  \right)^2 \right) \\
+    &= \qty{5,214e9}{\mm^{4}} 
+  .\end{align*}
+  And about the centroidal $y$ axis it is:
+  \begin{equation*}
+    I_y = I_{y0} + I_{yn} = \qty{1,35e9}{\mm^{4}} -  \qty{4,22e7}{\mm^{4}} = \qty{1,308e9}{\mm^{4}} 
+  .\end{equation*}
+
+  We now split the moment into components as:
+  \begin{align*}
+    M_z &= \cos \ang{150} \cdot \qty{1200}{\kN.\m} = -\qty{1,039e6}{\N.\m} \\
+    M_y &= \sin \ang{150} \cdot \qty{1200}{\kN.\m} = \qty{6e5}{\N.\m} 
+  .\end{align*}
+
+  We can now use the flexure formula:
+  \begin{equation*}
+    \sigma = \frac{M_y}{I_y}z - \frac{M_z}{I_z}y
+  .\end{equation*}
+  The neutral axis is where $\sigma = 0$, so the neutral axis is when:
+  \begin{align*}
+    0 &= \frac{M_y}{I_y}z - \frac{M_z}{I_z} y \\
+    \frac{y}{z} &= \frac{M_y I_z}{M_z I_y} \\
+    \frac{y}{z} &= \frac{ \qty{6e5}{\N.\m} \cdot \qty{5,214e9}{\mm^{4}}}{\qty{-1,039e6}{\N.\m} \cdot \qty{1,308e9}{\mm^{4}} } \\
+    \frac{y}{z} &= \num{-2,30} 
+  .\end{align*}
+  Which corresponds to the neutral axis lying at an angle to the positive $z$-axis of:
+  \begin{equation*}
+    \theta = \tan^{-1} \num{-2,30} = \ang{-66,5} 
+  .\end{equation*}
+ 
+  Using the flexure formula, we can also find the maximum stress.
+  The outermost fiber is in one of the bottom corners (we take the bottom left for convenience) and get:
+  \begin{align*}
+    \sigma_{\mathrm{max}} &= \frac{M_y}{I_y} \cdot \qty{150}{\mm} - \frac{M_z}{I_z} \cdot (\qty{-310,71}{\mm}) \\
+    &= \frac{\qty{6e5}{\N.\m}}{\qty{1,308e9}{\mm^{4}} }\cdot \qty{150}{\mm} + \frac{(\qty{- 1,039e6}{\N.\m} )}{\qty{5,214e9}{\mm^{4}} } \cdot \left( - \qty{310,71}{\mm}  \right) \\
+    &= \qty{130,7}{\MPa } 
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  \theta &= - \ang{66,5}  \\
+  \sigma_{\mathrm{max}} &= \qty{130,7}{\MPa} 
+.\end{aligned}
+}
+
+\begin{problemwithimage}{f16_15}{16-15}
+  The bar is supported by a roller constraint at $B$, which allows vertical displacement but resists axial load and moment.
+  If the bar is subjected to the loading shown, determine the slope at $A$ and the deflection at $C$.
+  $EI$ is constant.
+\end{problemwithimage}
+
+\begin{derivation}
+  The only support with a vertical force component is $A$, meaning a vertical force equilibrium gives:
+  \begin{equation*}
+    A_y - P = 0 \implies A_y = P
+  .\end{equation*}
+  Which means the shear is:
+  \begin{itemize}
+    \item $0 < x < \frac{L}{2}$: $V = P$
+    \item $\frac{L}{2} < x < L$: $V = 0$
+  \end{itemize}
+  And our moment is:
+  \begin{itemize}
+    \item $0 < x < \frac{L}{2}$: $M = Px$
+    \item $\frac{L}{2}< x < L$: $M = P \frac{L}{2}$
+  \end{itemize}
+  
+  We have that:
+  \begin{equation*}
+    EI v''(x) = M(x)
+  \end{equation*}
+  which will be integrated piecewise.
+  For $0 < x < \frac{L}{2}$ we get:
+  \begin{align*}
+    v_1''(x) &= \frac{Px}{EI} \\
+    v'_1 (x) &= \frac{P}{2EI}x^2 + C_1 \\
+    v_1 (x) &= \frac{P}{6EI}x^3 + C_1 x + C_2
+  \end{align*}
+  as $v(0) = 0 \implies C_2 = 0$.
+
+  For $\frac{L}{2}<x<L$ we get:
+  \begin{align*}
+    v_2''(x) &= \frac{P}{EI}\frac{L}{2} \\
+    v_2'(x) &= \frac{PL}{2EI}x + C_3 \\
+    v_2(x) &= \frac{PL}{4EI}x^2 + C_3 x + C_4
+  \end{align*}
+  as rotation is fixed at $B$ we have $v'_2(L) = 0$
+  \begin{equation*}
+    0 = \frac{PL}{2EI} L + C_3 \implies C_3 = - \frac{PL^2}{2EI}
+  .\end{equation*}
+  To get continuity at $x = \frac{L}{2}$ we have $v_1' = v_2'$ so:
+  \begin{align*}
+    \frac{P}{2EI} \left( \frac{L}{2} \right)^2 + C_1 &= \frac{PL}{2EI} \frac{L}{2} - \frac{PL^2}{2EI} \\
+    \frac{PL^2}{8EI} + C_1 &= \frac{PL^2}{4EI} - \frac{PL^2}{2EI} \\
+    C_1 &= - \frac{PL^2}{4EI} - \frac{PL^2}{8EI} \\
+    C_1 &= - \frac{3PL^2}{8EI}
+  .\end{align*}
+  This means that, the slope at $A$ is:
+  \begin{equation*}
+    \theta_A = v'(0) = C_1 = - \frac{3PL^2}{8EI}
+  .\end{equation*}
+  And the deflection at $C$ is:
+  \begin{align*}
+    v_C &= v \left( \frac{L}{2} \right) \\
+    &= \frac{P}{6EI} \left( \frac{L}{2} \right)^3 + C_1 \frac{L}{2} + C_2 \\
+    &= \frac{PL^3}{48 EI} - \frac{3 PL^3}{16 EI} \\
+    &= - \frac{PL^3}{6 EI}
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  \theta_A &= - \frac{3PL^2}{8EI} \\
+  v_C &= - \frac{PL^3}{6EI}
+.\end{aligned}
+}

@@ -1,0 +1,117 @@
+\lecture{7}{15. September 2025}{Structural Analysis -- Simple trusses}
+
+\begin{problemwithimage}{f5_6}{F5-6}
+  Determine the force in each member of the truss.
+  State if the members are in tension or compression.
+\end{problemwithimage}
+
+\begin{derivation}
+  We start by realizing that $F_{BD} = 0$ as $DE$ and $CD$ are colinear.
+  This also means that $F_{BE} = 0$ as $AB$ and $BC$ are colinear.
+  Hence, the only members supporting a force are those shown on \autoref{fig:f5-6fbd}
+  \begin{figure}[ht]
+    \centering
+    \incfig[0.75]{f5_6fbd}
+    \caption{Free-body diagram.}
+    \label{fig:f5-6fbd}
+  \end{figure}
+  We start by finding $F_{DE}$ using trigonometry as
+  \begin{align*}
+    \qty{4,5}{\kN} + \cos \ang{30} \cdot F_{DE} &= 0 \\
+    F_{DE} &= - \frac{\qty{4.5}{\kN} }{\cos \ang{30} } = \qty{-5.2}{\kN}
+  .\end{align*}
+  For $F_{CD}$, we get
+  \begin{equation*}
+    F_{CD} + F_{DE} = 0 \implies F_{CD} = F_{DE} = \qty{-5,2}{\kN}
+  .\end{equation*}
+  $F_{BC}$ can be found as:
+  \begin{align*}
+    F_{BC} + \cos \ang{30} \cdot F_{CD} &= 0 \\
+    F_{BC} &= \qty{5.2}{\kN} \cdot \cos \ang{30}  = \qty{4.5}{\kN}
+  .\end{align*}
+  Hence,
+  \begin{equation*}
+    F_{BC} + F_{AB} = 0 \implies F_{AB} = F_{BC} = \qty{4,5}{\kN} 
+  .\end{equation*}
+  Now, we just need $F_{AE}$, which is found as
+  \begin{align*}
+    - \qty{6}{\kN} - F_{AE} - \sin \ang{30} \cdot F_{DE} &= 0 \\
+    F_{AE} &= \qty{5.2}{\kN} \cdot \sin \ang{30} - \qty{6}{\kN} = -\qty{3,4}{\kN}
+  .\end{align*}
+  Here a sign of $+$ indicates a member being in tension and $-$ indicates a member being in compression
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  F_{AB} &= \qty{4,5}{\kN} (\text{t})  \\
+  F_{BC} &= \qty{4,5}{\kN} (\text{t})  \\
+  F_{CD} &= -\qty{5,2}{\kN} (\text{c})  \\
+  F_{DE} &= -\qty{5,2}{\kN} (\text{c})  \\
+  F_{AE} &= - \qty{3,4}{\kN} (\text{c}) \\
+  F_{BE} &= \qty{0}{\kN} \\
+  F_{BD} &= \qty{0}{\kN} 
+.\end{aligned}
+}
+
+
+\begin{problemwithimage}{f5_14}{5-14}
+  If the maximum force that any member can support is \qty{8}{\kN} in tension and \qty{6}{\kN} in compression, determine the maximum force $P$ that can be supported at joint $D$.
+\end{problemwithimage}
+
+\begin{derivation}
+  We take a moment equilibrium about $A$ to get
+  \begin{equation*}
+    E_y \cdot \qty{4}{\m} - P \cdot \qty{8}{\m} = 0 \implies E_y = 2P
+  .\end{equation*}
+  And now a force equilibrium of the entire truss yields
+  \begin{equation*}
+    A_y + E_y - P = 0 \implies A_y = - P
+  .\end{equation*}
+
+  Taking a force equilibrium at joint $D$ in the $y$ direction we obtain $F_{CD}$ as:
+  \begin{equation*}
+    F_{CD} \cdot \sin \ang{60} - P = 0 \implies F_{CD} = \frac{P}{\sin \ang{60 } } = \num{1,15} P
+  .\end{equation*}
+  And a force equilibrium in the $x$ direction now gives
+  \begin{equation*}
+    F_{ED} + F_{CD} \cdot \cos \ang{60} = 0 \implies F_{ED} = - \num{1,15} P \cdot \cos \ang{60} = - \num{0,575} P
+  .\end{equation*}
+  For joint $C$ a force equilibrium in the $y$ direction gives
+  \begin{equation*}
+    - F_{CD} \cdot \sin \ang{60} - F_{CE} \cdot \sin \ang{60} = 0 \implies F_{CE} = - F_{CD} = - \num{1,15} P
+  .\end{equation*}
+  And in the $x$ direction we get
+  \begin{equation*}
+    - F_{BC} - F_{CE} \cdot \cos \ang{60} + F_{CD} \cdot \cos \ang{60} = 0 \implies F_{BC} = F_{CD} = \num{1,15} P
+  .\end{equation*}
+  At joint $E$ in the $y$ direction we get
+  \begin{equation*}
+    2 P + F_{BE} \cdot \sin \ang{60} + F_{CE} \cdot \sin \ang{60} \implies F_{BE} = - \num{1,15} P
+  .\end{equation*}
+  And in the $x$ direction we get
+  \begin{equation*}
+    - F_{AE} + F_{ED} + F_{BE} \cdot \cos \ang{60} + F_{CE}\cdot \cos \ang{60} \implies F_{AE} = - \num{0,575} P 
+  .\end{equation*}
+  And lastly, a force equilibrium in the $y$ direction at $A$ yields
+  \begin{equation*}
+    F_{AB} \cdot \sin \ang{60} + A_y = 0 \implies F_{AB} = \num{1,15} P
+  .\end{equation*}
+  Therefore, the members in tension are $F_{AB} = F_{BC} = F_{CD} = \num{1,15} P$ and the members in compression are $F_{BE} = F_{EC} = \num{1,15} P$ and $F_{AE} = F_{ED} = \num{0,575}P$.
+
+  For the members in tension, we have:
+  \begin{align*}
+    \num{1,15} \cdot P &\leq \qty{8}{\kN} \\
+    P &\leq \frac{\qty{8}{\kN}}{\num{1,15}} \\
+    P &\leq \qty{6,93}{\kN} 
+  .\end{align*}
+  
+  And for the members in compression, we have:
+  \begin{align*}
+    \num{1,15} P &\leq \qty{6}{\kN} \\
+    P &\leq \frac{\qty{6}{\kN}}{\num{1,15}} \\
+    P &\leq \qty{5,196}{\kN}
+  .\end{align*}
+  Therefore, the maximum allowable size of $P = P_{\mathrm{max}} = \qty{5,196}{\kN}$.
+\end{derivation}
+
+\finalresult{P_{\mathrm{max}} = \qty{5,20}{\kN}}

@@ -38,14 +38,35 @@ For incompressible flow over a smooth plate with zero pressure gradient, in the 
 For calculation purposes, under typical conditions, transition usually occurs at a length Reynolds number of \num{5e5}.
 For air at standard conditions with free stream velocity $U = \qty{30}{\m\per\s}$, this corresponds to $x \approx \qty{0,24}{\m}$.
 
-As the boundary layer is defined as the area where viscous forces are present, as opposed to the free stream, where viscous forces are negligible, it is not unambigous exactly where the border between the two regions is drawn.
+As the boundary layer is defined as the area where viscous forces are present, as opposed to the free stream, where viscous forces are negligible, it is not unambiguous exactly where the border between the two regions is drawn.
 Also, as (in the mathematically idealized situation shown on \Cref{fig:f9_2}) the velocity as a function of distance from the boundary layer will asymptotically approach the free stream velocity, the boundary layer cannot simply be defined as stopping at the point where the local velocity equals the free stream velocity $u = U$.
 Therefore, \href{https://xkcd.com/927/}{several different standards are in use} such as: the boundary layer thickness $\delta$, the displacement thickness $\delta^{*}$, and the momentum thickness $\theta$.
 These are all shown in comparison on \Cref{fig:f9_3}.
 
 \begin{figure} [ht]
-  \centering
-  \includegraphics[width=0.8\linewidth]{./figures/f9_3.png}
+  \begin{subfigure}{0.23\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{./figures/f9_3a.png}
+    \caption{Displacement thickness, $\delta^{*}$}  
+  \end{subfigure}
+  \begin{subfigure}{0.15\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{./figures/f9_3ab.png}
+  \end{subfigure}
+  \begin{subfigure}{0.23\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{./figures/f9_3b.png}
+    \caption{Disturbance thickness, $\delta$}  
+  \end{subfigure}
+  \begin{subfigure}{0.13\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{./figures/f9_3bc.png}
+  \end{subfigure}
+  \begin{subfigure}{0.23\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{./figures/f9_3c.png}
+    \caption{Momentum thickness, $\theta$}  
+  \end{subfigure}
   \caption{Comparison between the different standards for boundary-layer thickness.}
   \label{fig:f9_3}
 \end{figure}

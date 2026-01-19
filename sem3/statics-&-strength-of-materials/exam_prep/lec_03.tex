@@ -1,0 +1,141 @@
+\lecture{3}{1. September 2025}{Systems of forces and moments}
+
+\begin{problemwithimage}{f3_92}{*3-92}
+  Replace the force system by an equivalent resultant force and couple moment at point $O$.
+  Take $\Vec{F}_3 = \{ -200 \Vec{i} + 500 \Vec{j} - 300 \Vec{k} \} \,  \unit{\N}$.
+\end{problemwithimage}
+
+\begin{derivation}
+  The resultant force can be found by summing all of the individual forces as:
+  \begin{equation*}
+    \Vec{F}_{\mathrm{res}} = \begin{pmatrix}
+    \qty{0}{\N}\\
+    \qty{0}{\N} \\
+    -\qty{300}{\N} \\
+    \end{pmatrix} + \begin{pmatrix}
+      \qty{0}{\N} \\
+    \qty{200}{\N} \\
+    \qty{0}{\N} \\
+    \end{pmatrix} + \begin{pmatrix}
+      - \qty{200}{\N} \\
+    \qty{500}{\N} \\
+    - \qty{300}{\N} \\
+    \end{pmatrix} = \begin{pmatrix}
+      - \qty{200}{\N} \\
+    \qty{700}{\N} \\
+    -\qty{600}{\N} \\
+    \end{pmatrix}
+  .\end{equation*}
+  Each of the three moments can be found as
+  \begin{align*}
+    \Vec{M}_1 &= \begin{pmatrix}
+      \qty{0}{\m} \\
+    \qty{2}{\m} \\
+    \qty{0}{\m} \\
+    \end{pmatrix} \times \begin{pmatrix}
+      \qty{0}{\N} \\
+    \qty{0}{\N} \\
+    - \qty{300}{\N} \\
+    \end{pmatrix} = \begin{pmatrix}
+      -\qty{600}{\N.\m} \\
+    \qty{0}{\N.\m} \\
+    \qty{0}{\N.\m} \\
+    \end{pmatrix} \\
+    \Vec{M}_2 &= \begin{pmatrix}
+      \qty{1.5}{\m} \\
+    \qty{3.5}{\m} \\
+    \qty{0}{\m} \\
+    \end{pmatrix} \times \begin{pmatrix}
+      \qty{0}{\N} \\
+    \qty{200}{\N} \\
+    \qty{0}{\N} \\
+    \end{pmatrix}  = \begin{pmatrix}
+      \qty{0}{\N.\m} \\
+    \qty{0}{\N.\m} \\
+    \qty{300}{\N.\m} \\
+    \end{pmatrix} \\
+    \Vec{M}_3 &= \begin{pmatrix}
+      \qty{1.5}{\m} \\
+    \qty{2}{\m} \\
+    \qty{0}{\m} \\
+    \end{pmatrix} \times \begin{pmatrix}
+      - \qty{200}{\N} \\
+    \qty{500}{\N} \\
+    - \qty{300}{\N} \\
+    \end{pmatrix} = \begin{pmatrix}
+      -\qty{600}{\N.\m} \\
+    \qty{450}{\N.\m} \\
+    \qty{1,15e3}{\N.\m} \\
+    \end{pmatrix}
+  .\end{align*}
+  Summing these three our resultant moment $\Vec{M}_{\mathrm{res}}$ can be found as:
+  \begin{equation*}
+    \Vec{M}_{\mathrm{res}} = \begin{pmatrix}
+      - \qty{600}{\N.\m} \\
+    \qty{0}{\N.\m} \\
+    \qty{0}{\N.\m} \\
+    \end{pmatrix} + \begin{pmatrix}
+      \qty{0}{\N.\m} \\
+    \qty{0}{\N.\m} \\
+    \qty{300}{\N.\m} \\
+    \end{pmatrix} + \begin{pmatrix}
+      - \qty{600}{\N.\m} \\
+    \qty{450}{\N.\m} \\
+    \qty{1.15}{\kN.\m} \\
+    \end{pmatrix} = \begin{pmatrix}
+      - \qty{1200}{\N.\m} \\
+    \qty{450}{\N.\m} \\
+    \qty{1450}{\N.\m} \\
+    \end{pmatrix}
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{
+  \begin{aligned}
+    \Vec{F}_{\mathrm{res}} &= \begin{pmatrix}
+      - 200 \\
+      700 \\
+      -600 \\
+    \end{pmatrix} \, \unit{\N} \\
+    \Vec{M}_{\mathrm{res}} &= \begin{pmatrix}
+      -1200 \\
+      450\\
+      1450\\
+    \end{pmatrix} \, \unit{\N.\m}
+  .\end{aligned}
+}
+
+\begin{problemwithimage}{f3_134}{3-134}
+  Replace the loading by a single resultant force, and specify the location of the force measured from point $O$.
+\end{problemwithimage}
+
+\begin{derivation}
+  First we will find the position of the resultant of the distributed loading.
+  To do this, we split the distributed loading into two parts $P_1$ and $P_2$ split at the top point of the distributed loading.
+  We get
+  \begin{align*}
+    \left( P_1 \right)_{\mathrm{res}} &= \frac{1}{2}\cdot \qty{7.5}{\m} \cdot \left( - \qty{6}{\kN\per\m} \right) = - \qty{225}{\kN} \\
+    \left( P_2 \right)_{\mathrm{res}} &= \frac{1}{2} \cdot \qty{4,5}{\m} \cdot \left( - \qty{6}{\kN\per\m}  \right) = -\qty{135}{\kN} 
+  .\end{align*}
+  The total resultant force is therefore:
+  \begin{equation*}
+    F_{\mathrm{res}} = -\qty{225}{\kN} - \qty{135}{\kN} - \qty{15}{\kN}  = \qty{-375}{\kN}
+  .\end{equation*}
+  
+  To find the location of this force we must find the position to place this force at to give the same couple moment. 
+  We add all the individual moments:
+  \begin{equation*}
+    M_{\mathrm{res}} = -\qty{500}{\kN.\m} + \left( \qty{5}{\m} \cdot (- \qty{225}{\kN})  \right) + \left( \qty{9}{\m} \cdot (-\qty{135}{\kN})  \right) + \left( \qty{12}{\m} \cdot(- \qty{15}{\kN})  \right) = -\qty{3020}{\kN.\m} 
+  .\end{equation*}
+  Now we divide this by the magnitude of the force to find the required distance from $O$:
+  \begin{equation*}
+    x_{F_{\mathrm{res}}} = \frac{\qty{3020}{\kN.\m} }{\qty{375}{\kN} } = \qty{8.05}{\meter}
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  F_{\mathrm{res}} &= - \qty{375}{\kN} \\
+  x_{F_{\mathrm{res}}} &= \qty{8,05}{\m} 
+.\end{aligned}
+}

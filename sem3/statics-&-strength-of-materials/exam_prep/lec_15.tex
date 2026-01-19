@@ -1,0 +1,89 @@
+\lecture{15}{27. Oktober 2025}{Statically Indeterminate Torque-loaded Members}
+
+\begin{problemwithimage}{f10_41}{10-41}
+  The \qty{60}{\mm} diameter shaft is made of 6061--T6 aluminum.
+  If the allowable shear stress is $\tau_{\mathrm{allow}} = \qty{80}{\MPa}$, and the angle of twist of disk $A$ relative to disk $C$ is limited so that it does not exceed \qty{0,06}{rad}, determine the maximum allowable torque $T$.
+\end{problemwithimage}
+
+\begin{derivation}
+  We remember that, by convention, the internal torque is the sum of the torques applied to the left of a cut, hence
+  \begin{equation*}
+    T_{AB} = \frac{2}{3}T
+  .\end{equation*}
+  And
+  \begin{equation*}
+    T_{BC} = - \frac{1}{3}T
+  .\end{equation*}
+  Which means the maximum magnitude of the internal torque is
+  \begin{equation*}
+    \left| T \right|_{\mathrm{max}} = \frac{2}{3}T
+  .\end{equation*}
+  
+  We now use the torsion formula to find the maximum allowable torque as
+  \begin{align*}
+    \tau_{\mathrm{allow}} &= \frac{16 \cdot \frac{2}{3} T}{\pi d^3} \\
+    T &\leq  \frac{3\pi \tau_{\mathrm{allow}} d^3}{32} \\
+    &\leq \frac{3\pi \cdot \qty{80}{\MPa} \cdot \left( \qty{60}{\mm}  \right)^3}{32}  = \qty{5.09e3}{\N.\m}\\
+  .\end{align*}
+  Which means the maximum allowable torque $T$ to not exceed the stress limit is \qty{5,09e3}{\N.\m}.
+
+  To not exceed the angle of twist limit we need to check the allowable torque $T$ for this also.
+  The angle of twist is:
+  \begin{equation*}
+    \phi_{AC} = \sum \frac{T_{\mathrm{int}} L}{JG} = \frac{\frac{2}{3}T \cdot \qty{1,2}{\m} - \frac{1}{3} T \cdot \qty{1,2}{\m} }{JG} = \frac{\frac{1}{3}T \cdot \qty{1,2}{\m}}{JG} = \frac{\qty{0,4}{\m}}{JG} T
+  .\end{equation*}
+  
+  For 6061--T6 aluminum $G \approx \qty{26}{\GPa}$ and the polar moment of inertia is:
+  \begin{equation*}
+    J = \frac{\pi d^{4}}{32} = \frac{\pi \cdot \left( \qty{60}{\mm}  \right)^{4}}{32} = \qty{1,272e6}{\mm^4}
+  .\end{equation*}
+  
+  Now we apply the limit $\phi_{AC} \leq \qty{0,06}{rad}$ and get
+  \begin{align*}
+    \num{0,06} &\geq \frac{\qty{0,4}{\m}}{JG} T \\
+    T &\leq \frac{\num{0.06} \cdot \qty{1,272e6}{\mm^{4}} \cdot \qty{26}{\GPa}}{\qty{0,4}{\m} } \\
+      &\leq \qty{4960,8}{\N.\m} 
+  .\end{align*}
+  Since $\qty{4,96e3}{\N.\m} < \qty{5,09e3}{\N.\m}$ we have that $T = \qty{4,96e3}{\N.\m}$.
+\end{derivation}
+
+\finalresult{T = \qty{4,96e3}{\N.\m}}
+
+\begin{problemwithimage}{r10_5}{R10-5}
+  The tapered shaft has a length $L$ and a radius $r$ at end $A$ and $2r$ at end $B$.
+  If it is fixed at end $B$ and is subjected to a torque $T$, determine the angle of twist of end $A$.
+  The shear modulus is $G$.
+\end{problemwithimage}
+
+\begin{derivation}
+  We model the shaft as a circular shaft with radius varying linearly from $r$ at $A$ to $2r$ at $B$.
+  The differential twist is
+  \begin{equation*}
+    \mathrm{d}\phi = \frac{T}{GJ(x)} \, \mathrm{d}x 
+  \end{equation*}
+  with
+  \begin{equation*}
+    J(x) = \frac{\pi}{2} r(x)^{4}
+  .\end{equation*}
+  
+  The radius of the shaft as a function of $x$ $\rho(x)$ is
+  \begin{equation*}
+    \rho(x) = r + \frac{2r - 2}{L}x = r \left( 1 + \frac{x}{L} \right)
+  .\end{equation*}
+  Which means:
+  \begin{equation*}
+    J(x) = \frac{\pi}{2} r^{4} \left( 1 + \frac{x}{L} \right)^{4}
+  .\end{equation*}
+  Inserting this into the differential twist gives us:
+  \begin{equation*}
+    \mathrm{d}\phi = \frac{T}{G \frac{\pi}{2} r^{4} \left( 1 + \frac{x}{L} \right)^{4}} \, \mathrm{d}x 
+  .\end{equation*}
+  By integration we get
+  \begin{align*}
+    \phi = \frac{2T}{G \pi r^{4}} \int_{0}^{L} \frac{1}{\left( 1 + \frac{x}{L} \right)^{4}}\, \mathrm{d}x  = \frac{2T}{G \pi r^{4}} \cdot \frac{7}{24} L = \frac{7 TL}{12 G \pi r^{4}}
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+  \phi = \frac{7TL}{12 G \pi r^{4}}
+}

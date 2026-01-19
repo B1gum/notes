@@ -1,0 +1,67 @@
+\lecture{13}{16. Oktober 2025}{Moment of Inertia}
+
+\begin{problemwithimage}{f13_1}{F13-1}
+  Determine the second moment of area about the $x$ axis of the cross-section of the I-beam.
+  \textit{Remark}: Regions located symmetrically about the $x$-axis provide the same contribution to $I_x$.
+\end{problemwithimage}
+
+\begin{derivation}
+  We know that the second moment of area of a rectangle is
+  \begin{equation*}
+    \overline{I}_{x'} = \frac{1}{12} bh^3
+  .\end{equation*}
+  For each of the three parts this corresponds to:
+  \begin{align*}
+    \overline{I}_{\mathrm{flange}_{x'}} &= \frac{1}{12} \cdot \qty{200}{\mm} \cdot \left( \qty{50}{\mm}  \right)^3  = \qty{2.0833e6}{\mm^4} \\
+    I_{\mathrm{mid}_{x'}} &= \frac{1}{12} \cdot \qty{50}{\mm} \cdot \left( \qty{300}{\mm}  \right)^3  = \qty{1.125e8}{\mm^4}
+  .\end{align*}
+  To use the parallel axis theorem on the top and bottom flanges we must know their cross sectional areas:
+  \begin{equation*}
+    A_{\mathrm{flange}} = \qty{50}{\mm} \cdot \qty{200}{\mm}  = \qty{100}{\cm^2}
+  .\end{equation*}
+  Hence, using the parallel axis theorem
+  \begin{align*}
+    I_{\mathrm{flange}_{x'}} &= \overline{I}_{\mathrm{flange}_{x'}} + d_y^2 A_{\mathrm{flange}} \\
+    &= \qty{2.0833e6}{\mm^{4}} + \left( \qty{175}{\mm}  \right)^2 \cdot \qty{100}{\cm^2}  \\
+    &= \qty{308,333e6}{\mm^{4}} 
+  .\end{align*}
+  
+  Hence
+  \begin{align*}
+    I_{\mathrm{tot}_{x'}} &= I_{\mathrm{mid}_{x'}} + 2 \cdot I_{\mathrm{flange}_{x'}} \\
+    &= \qty{1.125e8}{\mm^{4}} + 2 \cdot \qty{308,333e6}{\mm^{4}}  \\
+    &= \qty{729e6}{\mm^{4}} 
+  .\end{align*}
+\end{derivation}
+
+\finalresult{I_{\mathrm{tot}_{x'}} = \qty{729e6}{\mm^{4}}}
+
+\begin{problemwithimage}{f6_59}{6-59}
+  Determine the moment of inertia for the shaded area about the $y$ axis.
+\end{problemwithimage}
+
+\begin{derivation}
+  The formula for the second moment of area is
+  \begin{equation*}
+    I_y = \int_A x^2 \, \mathrm{d}A
+  .\end{equation*}
+  We therefore need to find an expression for our differential element $\mathrm{d}A$.
+
+  We choose to use vertical strips with thickness $\mathrm{d}x$.
+  At a given $x$, the shaded height is
+  \begin{equation*}
+    h(x) = 8 - \frac{1}{8}x^3
+  .\end{equation*}
+  So
+  \begin{equation*}
+    \mathrm{d}A = h(x) \, \mathrm{d}x = \left( 8 - \frac{1}{8} x^3 \right) \, \mathrm{d}x
+  .\end{equation*}
+  
+  Our integral is then
+  \begin{equation*}
+    I_y = \int_{0}^{4} x^2 \left( 8 - \frac{1}{8} x^3 \right) \, \mathrm{d}x  = \num{85,33} 
+  .\end{equation*}
+  As our units are all in \unit{\m} this must be with dimension \unit{\m^4}.
+\end{derivation}
+
+\finalresult{I_y = \qty{85,33}{\m^4}}

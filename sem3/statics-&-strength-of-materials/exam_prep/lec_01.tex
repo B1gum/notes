@@ -1,0 +1,80 @@
+\lecture{1}{25. August 2025}{Intro + Force \& position vectors}
+
+\begin{problemwithimage}{f2_24}{F2-24}
+  Determine the resultant force at $A$.
+\end{problemwithimage}
+
+\begin{derivation}
+  We find a unit vector pointing in each of the force directions as
+  \begin{align*}
+    \hat{F}_B &= \frac{\begin{pmatrix}
+      - 1\\
+    2\\
+    -2\\
+\end{pmatrix}}{\sqrt{1^2 + 2^2 + 2^2}}  = \left(
+\begin{array}{c}
+ -\frac{1}{3} \\
+ \frac{2}{3} \\
+ -\frac{2}{3} \\
+\end{array}
+        \right) \\ \qquad \hat{F}_C &= \frac{\begin{pmatrix}
+  -3\\
+1.5\\
+-1\\
+\end{pmatrix}}{\sqrt{9 + 2.25 + 1}} = \left(
+\begin{array}{c}
+ -0.857143 \\
+ 0.428571 \\
+ -0.285714 \\
+\end{array}
+\right)
+.\end{align*}
+Multiplying these by the force magnitudes we get the two force vectors:
+\begin{align*}
+  \Vec{F}_B &= \hat{F}_B \cdot F_B \\
+  &= \begin{pmatrix}
+    - \frac{1}{3}\\
+  \frac{2}{3}\\
+  - \frac{2}{3}\\
+  \end{pmatrix} \cdot \qty{3}{\kN}  = \begin{pmatrix}
+    - \qty{1}{\kN} \\
+  \qty{2}{\kN} \\
+  -\qty{2}{\kN} \\
+  \end{pmatrix},
+  \\
+  \Vec{F}_C &= \hat{F}_C \cdot F_C\\
+  &= \begin{pmatrix}
+    - \num{0.857143} \\
+  \num{0.428571} \\
+  -\num{0.285714} \\
+  \end{pmatrix} \cdot \qty{2.45}{\kN} = \begin{pmatrix}
+    - \qty{2,1}{\kN} \\
+  \qty{1,05}{\kN} \\
+  - \qty{0,70}{\kN} \\
+  \end{pmatrix}
+.\end{align*}
+Adding these we get the resultant:
+\begin{equation*}
+  \Vec{R}_A = \begin{pmatrix}
+    - \qty{1}{\kN} \\
+  \qty{2}{\kN} \\
+  - \qty{2}{\kN} \\
+  \end{pmatrix} + \begin{pmatrix}
+    - \qty{2.1}{\kN} \\
+  \qty{1.05}{\kN} \\
+  - \qty{0.70}{\kN} \\
+  \end{pmatrix} = \begin{pmatrix}
+    -\qty{3,1}{\kN} \\
+  \qty{3,05}{\kN} \\
+  - \qty{2,7}{\kN} \\
+  \end{pmatrix}
+.\end{equation*}
+\end{derivation}
+
+\finalresult{
+\Vec{R}_A = \begin{pmatrix}
+  - \qty{3,1}{\kN} \\
+\qty{3,05}{\kN} \\
+- \qty{2,7}{\kN} \\
+\end{pmatrix}
+}
