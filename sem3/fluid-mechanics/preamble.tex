@@ -64,7 +64,7 @@
 \fancyhead[C]{\small\ReportTitle}
 \fancyhead[R]{\small\TheDate}
 \usepackage{lastpage}
-\fancyfoot[R]{\small\thepage{} of \pageref*{LastPage}}
+\fancyfoot[R]{\small p. \thepage{} of \pageref*{LastPage}}
 \fancyfoot[L]{\small\CourseName}
 
 \newcommand{\PdfTitle}{Lecture Notes}
@@ -285,7 +285,7 @@
   \refstepcounter{section}%
   \phantomsection
   % Typeset like a subsection (no numbering in the heading)
-  \subsection*{\makebox[\textwidth][l]{\@lecture \hfill \normalfont\small\textsf{#2}}}
+  \subsection*{\makebox[\textwidth][l]{\@lecture \hfill \color{AUblueDark}\normalfont\small{#2}}}
   % Add a section-level TOC entry with the section number
   \addcontentsline{toc}{section}{\protect\numberline{\thesection}\@lecture}%
 }
