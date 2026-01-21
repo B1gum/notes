@@ -1,0 +1,213 @@
+\lecture{25+}{January, 21 2026}{Exam 2024}
+
+
+\begin{problemwithimage}{e2024_1}{1}
+  For the static system shown in Figure 1, determine the gage pressure in \unit{\kPa} at point $a$.
+  Liquid $A$ has an $\mathrm{SG} = \num{1,2} $ and liquid $B$ has an $\mathrm{SG} = \num{0,75}$.
+  The liquid surrounding point $a$ is water ($\rho = \qty{1000}{\kg\per\m^3} $) and the tank on the left is open to atmosphere
+\end{problemwithimage}
+
+\begin{assumptions}
+  \item Hydrostatic equilibrium
+  \item All fluids are at rest and will not mix and will not exert any capillary effects on each other
+  \item All liquids have constant densities 
+  \item The left tank is open to the atmosphere, i.e. $p_b = 0$ gauge at the surface
+\end{assumptions}
+
+\begin{derivation}
+  The heights of the different liquid-interfaces is understood as:
+  \begin{itemize}
+    \item Free surface of $B$ is at $z = \qty{0,9}{\m}$
+    \item $AB$ interface is at $z = \qty{0,4}{\m}$
+    \item $AW$ interface is at $z = \qty{0,4}{\m} + \qty{0,25}{\m} = \qty{0,65}{\m}$
+    \item Point $a$ is at $z = \qty{0,125}{\m}$
+  \end{itemize}
+  We perform a ``hydrostatic walk'' from the free surface to point $a$.
+  From the free surface to the $AB$ interface we move vertically downwards a distance if $B_z - AB = \qty{0,9}{\m} - \qty{0,4}{\m} = \qty{0,5}{\m}$. 
+  This corresponds to a pressure change of:
+  \begin{equation*}
+    p_{AB} = \rho_B g \cdot (B_z - AB) = \num{0,75} \cdot \qty{1000}{\kg\per\m^3} \cdot \qty{9,82}{\m\per\s^2} \cdot \qty{0,5}{\m}   = \qty{3.6825}{\kilo\pascal}
+  .\end{equation*}
+  Then we ``move'' a distance of $AB - AW = \qty{0,4}{\m} - \qty{0,65}{\m} = -\qty{0,25}{\m}$ which corresponds to a pressure
+  \begin{equation*}
+    p_{AW} = p_{AB}- \rho_{A} \cdot g (AB - AW) = \qty{3,6825}{\kPa} - \num{1,2} \cdot \qty{1000}{\kg\per\m^3} \cdot \qty{9,82}{\m\per\s^2} \cdot \qty{0,25}{\m} = \qty{0.7365}{\kilo\pascal}
+  .\end{equation*}
+  Then we move a distance of $AW - a_z = \qty{0,65}{\m} - \qty{0,125}{\m} =  \qty{0,525}{\m}$ which corresponds to a pressure
+  \begin{equation*}
+    p_a = p_{AW} + \rho_w g (AW - a_z) = \qty{0,7365}{\kPa} + \qty{1000}{\kg\per\m^3} \cdot \qty{9,82}{\m\per\s^2} \cdot \qty{0,525}{\m}  = \qty{5.892}{\kilo\pascal}
+  .\end{equation*}
+  Hence, the gauge pressure at $a$ is about $p_a = \qty{5,89}{\kPa} (\text{gage})$.  
+\end{derivation}
+
+\finalresult{
+p_a = \qty{5,89}{\kPa} 
+}
+
+\begin{problemwithimage}{e2024_2}{2}
+  Water ($\rho = \qty{1000}{\kg\per\m^3}$) is flowing steadily through the \ang{180} elbow shown in Figure 2. 
+  At the inlet to the elbow the gage pressure is \qty{103}{\kPa}. 
+  The water discharges into atmospheric pressure. 
+  Assume that the flow properties are uniform over the inlet and outlet areas; $A_1 = \qty{2500}{\mm^2}$, $A_2 = \qty{650}{\mm^2 }$, and $V_1 = \qty{3}{\m\per\s}$ are given.
+  Find the horizontal component of force required to hold the elbow in place.
+\end{problemwithimage}
+
+\begin{assumptions}
+  \item Steady, uniform flow at each section
+  \item Incompressible fluid
+  \item Negligible wall shear
+\end{assumptions}
+
+\begin{derivation}
+  Due to mass conservation, the mass flow rate must be constant, $Q = \text{const.}$
+  I.e.
+  \begin{equation*}
+    Q = A_1 V_1 = \qty{2500}{\mm^2} \cdot \qty{3}{\m\per\s} = \qty{0.0075}{\meter^3\per\second} \quad \implies \quad V_2 = \frac{Q}{A_2} = \frac{\qty{0,0075}{\m^3\per\second}}{\qty{650}{\mm^2} } = \qty{11.538}{\meter\per\second}
+  .\end{equation*}
+  As the outlet points left $V_{2x} = - \qty{11,54}{\m\per\s}$-
+  This means the mass flow is
+  \begin{equation*}
+    \dot{m} = \rho Q = \qty{1000}{\kg\per\m^3} \cdot \qty{0,0075}{\m^3\per\s}  = \qty{7.5}{\kilogram\per\second}
+  .\end{equation*}
+  
+  For steady flow, the linear momentum balance in $x$ is:
+  \begin{equation*}
+    \sum F_x = \int_{\mathrm{CS}} u \rho \Vec{V} \cdot \mathrm{d} \Vec{A} = \dot{m} \left( V_{2x} - V_{1x} \right) = \qty{7,5}{\kg\per\s} \cdot \left( - \qty{11,538}{\m\per\s} - \qty{3}{\m\per\s}  \right) = \qty{-109.035}{\newton}
+  .\end{equation*}
+  The negative sign indicates, that the net external force on the fluid points to the left.
+
+  At the inlet the pressure acts normal into the elbow as the outward normal points to the left:
+  \begin{equation*}
+    F_{p_1, x} = p_1 A_1
+  .\end{equation*}
+  At the outlet the water discharges to the atmosphere so here the pressure $F_{p_2, x} = 0$ as $p_2 = 0$. This means, that the full force balance on the elbow in the $x$-direction is
+  \begin{equation*}
+    \sum F_x = p_1 A_1 + F_{\text{wall}, x}
+  .\end{equation*}
+  The sum of forces in the $x$-direction was previously found to be $\sum F_x = - \qty{109,035}{\N}$, meaning
+  \begin{equation*}
+    p_1 A_1 + F_{\text{wall}, x} = - \qty{109,035}{\N} \implies F_{\text{wall}, x} = - \qty{109,035}{\N} - p_1 A_1 = -\qty{109,035}{\N} - \qty{103}{\kPa} \cdot \qty{2500}{\mm^2}  = \qty{-0.36653500000000006}{\kilo\newton}
+  .\end{equation*}
+  Hence, the elbow will be pushed into the wall with a force of $F_{\text{fluid}} = \qty{366,5}{\N}$  and the wall must supply a force $F_{\text{wall}, x} = - \qty{366,5}{\N}$ 
+\end{derivation}
+
+\finalresult{
+  F_{\text{wall}, x} = - \qty{366,5}{\N} 
+}
+
+\begin{problem}{3}
+  Consider the velocity field $\Vec{V} = A \left( x^{4} - 6x^2 y^2 + y^{4} \right) \hat{i} + A \left( 4xy^3 - 4x^3 y \right) \hat{j}$, where $A = \qty{0,25}{\per\m^3\per\s}$.
+  Show that the flow field is incompressible. Calculate the acceleration of a fluid particle at point $(x,y) = (2,1)$.
+\end{problem}
+
+\begin{assumptions}
+  \item As no $t$ components are present in the velocity field it is implied to be steady
+\end{assumptions}
+
+\begin{derivation}
+   For an incompressible flow the continuity equation simplifies to
+   \begin{equation*}
+     \nabla \cdot \Vec{V} = 0 \implies \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = 0
+   .\end{equation*}
+   We compute the partial derivatives:
+   \begin{align*}
+     u &= A \left( x^{4} - 6x^2 y^2 + y^{4} \right) & \implies& & \frac{\partial u}{\partial x} &= A \left( 4x^3 - 12 xy^2 \right) \\
+     v &= A \left( 4xy^3 - 4x^3 y \right) & \implies& & \frac{\partial v}{\partial y} &= A \left( 12 xy^2 - 4x^3 \right)
+   .\end{align*}
+   I.e.
+   \begin{equation*}
+     \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = A \left( 4x^3 - 4x^3 + 12xy^2 - 12xy^2 \right) = 0
+   \end{equation*}
+   meaning the flow field is incompressible everywhere.
+   
+   For the acceleration we use that:
+   \begin{equation*}
+     \Vec{a} = (\Vec{V} \cdot \nabla ) \Vec{V}
+   \end{equation*}
+   which, in Cartesian coordinates is
+   \begin{equation*}
+     a_x = u \frac{\partial u}{\partial x} + v \frac{\partial u}{\partial y}, \qquad a_y = u \frac{\partial v}{\partial x} + v \frac{\partial v}{\partial y} 
+   .\end{equation*}
+   We compute the two missing derivatives as:
+   \begin{align*}
+     \frac{\partial u}{\partial y} &= A \left( 4 y^3 - 12 x^2 y \right) \\
+     \frac{\partial v}{\partial x} &= A \left( 4y^3 - 12x^2 y \right)
+   .\end{align*}
+   So the acceleration components are
+   \begin{align*}
+     a_x &= u \frac{\partial u}{\partial x} + v \frac{\partial u}{\partial y}  \\
+     &= A^2 \left( x^{4} - 6 x^2 y^2 + y^{4} \right) \left( 4 x^3 - 12 x y^2 \right) + A^2 \left( 4 x y^3 - 4 x^3 y \right) \left( 4 y^3 - 12 x^2 y \right) \\
+     &=4 A^2 x \left(x^2+y^2\right)^3\\
+     a_y &= u \frac{\partial v}{\partial x} + v \frac{\partial v}{\partial y}  \\
+     &= A^2 \left( x^{4} - 6 x^2 y^2 + y^{4} \right) \left( 4 y^3 - 12 x^2 y \right) + A^2 \left( 4 x y^3 - 4 x^3 y \right) \left( 12 x y^2 - 4 x^3 \right) \\
+     &= 4 A^2 y \left(x^2+y^2\right)^3
+   .\end{align*}
+   So,
+   \begin{align*}
+     a_x(2,1) &= 4 \cdot \left( \num{0,25}  \right)^2 \cdot 2 \left( 4 + 1  \right)^3 = 62.5 \\
+     a_y(2,1) &= 4 \cdot \left( \num{0,25} \right)^2 \cdot 1\cdot  \left( 4 + 1 \right)^3    = 31.25
+   .\end{align*}
+   So,
+   \begin{equation*}
+     a(2,1) = \qty{62,5}{\m\per\s^2} \hat{i} + \qty{31,25}{\m\per\s^2} \hat{j}
+   .\end{equation*}
+\end{derivation}
+
+\finalresult{
+\begin{gathered}
+  \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = 0 \\
+  a(2,1) = \qty{62,5}{\m\per\s^2} \hat{i} + \qty{31,25}{\m\per\s^2} \hat{j}
+.\end{gathered}
+}
+
+\begin{problem}{4}
+  A model airplane has a span of \qty{120}{\cm}  and a chord of \qty{25}{\cm}.
+  The model flies in air at standard atmospheric conditions (i.e., $\rho = \qty{1,2}{\kg\per\m^3}, \nu = \qty{1,5e-5}{\m^2\per\s} $).
+  The wing can be regarded as a flat plate so far as drag is concerned.
+  At what speed will a transition to a turbulent boundary layer start?
+  What is the total drag force on the wing just before the transition to turbulence happens?
+\end{problem}
+
+\begin{assumptions}
+  \item The wing is flat and has zero thickness
+  \item Flow is parallel to the wing, meaning to lift effects are present
+  \item The freestream is uniform incompressible ($M \ll \num{0,3}$), and low-turbulence
+  \item The surface of the wing is assumed smooth
+  \item Transition to turbulent flow happens at $\mathrm{Re}_{x, \mathrm{cr}} = \num{5e5}$
+\end{assumptions}
+
+\begin{derivation}
+  The Reynolds number for the flow over the flat plate (the wing) is
+  \begin{equation*}
+    \mathrm{Re}_{x} = \frac{V x}{\nu}, \qquad \mathrm{Re}_{x, \mathrm{cr}} \approx \num{5e5}
+  .\end{equation*}
+  Due to the length-parameter of the Reynolds number transition to turbulent flow will happen at the trailing edge first.
+  Inserting the chord length as our characteristic length and solving for the critical speed we obtain:
+  \begin{equation*}
+    V_{\mathrm{cr}} = \frac{\mathrm{Re}_{x, \mathrm{cr}} \nu}{L} = \frac{\num{5e5} \cdot \qty{1,5e-5}{\m^2\per\s}}{\qty{0,25}{\m} } = \qty{30}{\m\per\s} 
+  .\end{equation*}
+  
+  The drag coefficient for flow with free stream velocity $V$, over a flat plate of length $L$ and width $b$ is:
+  \begin{equation*}
+    C_d = \frac{\num{1,33} }{\sqrt{\mathrm{Re}_L}} = \frac{\num{1,33} }{\sqrt{\num{5e5} }} = \num{1,88e-3} 
+  .\end{equation*}
+  
+  The drag force $F_D$ is
+  \begin{equation*}
+    F_D = \frac{1}{2} \rho V^2 A C_D
+  .\end{equation*}
+  The area which the friction applies over $A$ is in this case both the bottom and top of the wing, hence:
+  \begin{equation*}
+    A = 2 \cdot \qty{120}{\cm} \cdot \qty{25}{\cm}  = \qty{0,6}{\meter^2}
+  .\end{equation*}
+  So
+  \begin{equation*}
+    F_D = \frac{1}{2} \cdot \qty{1,2}{\kg\per\m^3} \cdot \left( \qty{30}{\m\per\s}  \right)^2 \cdot \qty{0,6}{\m^2} \cdot \num{1,88e-3}  = \qty{0,61}{\N} 
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  V_{\mathrm{cr}} &= \qty{30}{\m\per\s} \\
+  F_D &= \qty{0,61}{\N} 
+.\end{aligned}
+}
