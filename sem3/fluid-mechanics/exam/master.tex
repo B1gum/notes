@@ -1,7 +1,718 @@
 \input{./preamble.tex}
 \begin{document}
-    \input{titlepage.tex}
-    \tableofcontents
-    \newpage
-    Held og lykke brormand
+  \input{titlepage.tex}
+  \newpage
+  \begin{figure} [ht]
+    \centering
+    \includegraphics[width=0.5\linewidth]{./figures/e2025_1.png}
+  \end{figure}
+  A cylinder (diameter: \qty{63,5}{\mm} , length: \qty{300}{\mm}) in crossflow is tested in a wind tunnel ($T = \qty{20}{\celsius} , p = \qty{101,325}{\kPa} $).
+  The following data is provided in the attached file “Fluidmekanik, V25-26-0,bilag.xlsx”:
+  \begin{itemize}
+    \item  Wake velocity profile at 5 diameters downstream
+    \item Surface pressure distribution
+    \item Direct force measurement
+  \end{itemize}
+  Wake velocities and surface pressures are measured with the same liquid manometer ($\rho_{\text{liquid}} = \qty{871}{\kg\per\m^3}$). 
+  The upstream manometer measures \qty{44}{\mm} for all experiments.
+
+  \begin{problem}{1.1}
+    Compute $C_D$ using wake velocity measurements.
+    Show the derivation of the respective equation.
+    Explain why the result represents total drag.
+    Carry out an uncertainty analysis. Select type B uncertainties based on your previous experience from the laboratory session.
+  \end{problem}
+  
+  \begin{assumptions}
+    \item Steady, incompressible flow ($M \ll \num{0,3}$)
+    \item The control volume boundaries are sufficiently far from the cylinder, such that static pressure is uniform and equal to the free stream pressure
+    \item Viscous forces on the outer control surface are negligible
+  \end{assumptions}
+
+  \begin{derivation}
+    In general, the drag coefficient is given as:
+    \begin{equation*}
+      C_D = \frac{F_D}{\frac{1}{2} \rho U^2 A}
+    .\end{equation*}
+    For a cylinder of length $L$ and diameter $D$, the frontal area is $A = LD$ so
+    \begin{equation*}
+      C_D = \frac{F_D}{\frac{1}{2} \rho U^2 \left( L \cdot D \right)}
+    .\end{equation*}
+    
+    Furthermore, the wall shear stress $\tau_w$ is related to the change in momentum thickness $\theta$ as
+    \begin{equation*}
+      \tau_w = \rho U^2 \frac{\mathrm{d}\theta}{\mathrm{d}x} 
+    .\end{equation*}
+    The total drag force $F_D$ is then the integral of this stress over the entire surface.
+    Integrating both sides reveals that
+    \begin{equation*}
+      F_D = \rho U^2 \cdot \theta \cdot L
+    .\end{equation*}
+    This means the drag coefficient can be written as
+    \begin{equation*}
+      C_D = \frac{\rho U^2 \theta L}{\frac{1}{2} \rho U^2 L D} = \frac{2}{D} \theta
+    .\end{equation*}
+    The momentum thickness is defined as
+    \begin{equation*}
+      \theta = \int_{0}^{\delta} \frac{u}{U} \left( 1 - \frac{u}{U} \right) \, \mathrm{d}y
+    .\end{equation*}
+    So
+    \begin{equation*}
+      C_D = \frac{2}{D} \int_{0}^{\delta}  \frac{u}{U} \left( 1 - \frac{u}{U} \right) \, \mathrm{d}y 
+    .\end{equation*}
+    
+    
+    Based on this, the following MatLab code has been written:
+    \begin{verbatim}
+      clear; clc; close all;
+
+      %Experimental Data
+      % Cylinder dimensions
+      D_mm = 63.5;            % Diameter
+      h_up_mm = 44.0;         % Upstream dynamic pressure head
+
+      % Wake velocity profile (Position, Manometer)
+      y_mm = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50,...
+               55, 60, 65, 70, 75, 80, 85, 90, 95, ...
+               100, 105, 110, 115, 120, 125, 130, 135, ...
+               140, 145, 150, 155, 160, 165, 170, 175, ...
+               180, 185, 190, 195, 200, 205, 210];
+
+      h_wake_mm = [45, 44, 45, 45, 44, 42, 41, 40, 39, ...
+                37, 35, 34, 31, 30, 28, 25, 25, 23, 21, 20, ...
+                19, 19, 19, 19, 19, 19, 20, 21, 23, 25, 25, ...
+                28, 30, 31, 34, 35, 37, 39, 40, 41, 42, 44, 45];
+
+      % Convert to SI
+      D = D_mm / 1000;         % [m]
+      y = y_mm / 1000;         % [m]
+      h_up = h_up_mm / 1000;   % [m]
+      h_w = h_wake_mm / 1000;  % [m]
+
+      % Type B Uncertainty estimates
+      u_h = 1.0 / 1000;   % Manometer reading uncertainty (+/- 1 mm)
+      u_D = 0.1 / 1000;   % Diameter uncertainty (+/- 0.1 mm)
+
+      % Drag Coefficient Calculation
+      % Velocity Ratio (u/U = sqrt(h_wake / h_up))
+      u_ratio = sqrt(h_w ./ h_up);
+
+      % Integrand(f = (u/U) * (1 - u/U))
+      integrand = u_ratio .* (1 - u_ratio);
+
+      % Integration (using trapezoidal Rule)
+      integral_val = trapz(y, integrand);
+
+      % Cd found as (2/D) * Integral
+      Cd = (2 / D) * integral_val;
+
+      fprintf('Calculated Drag Coefficient (Cd): %.3f\n', Cd);
+    \end{verbatim}
+    Running this code gives the result
+    \begin{verbatim}
+      Calculated Drag Coefficient (Cd): 0.799
+    \end{verbatim}
+    Hence, $C_D = \num{0,799}$ has been found using the above MatLab code based on the derivation of the formula for $C_D$. This drag coefficient represents the total drag acting on the cylinder. This is due to the fact, that as the fluid flows over the cylinder it loses momentum both due to skin friction and pressure (form) drags. Both of these mechanisms extract energy and momentum from the fluid.
+    This cumulative loss manifests as a velocity deficit $u(y) < U_{\infty}$ in the wake. 
+    By integrating the difference between the upstream momentum flux and downstream momentum flux, we capture the total momentum lost by the fluid.
+    By Newton's third law, this must correspond to the total force exerted by the fluid on the cylinder.
+
+    Based on standard lab equipment, the following Type B uncertainties are assigned
+    \begin{itemize}
+      \item Manometer reading $u_h$: $\pm \qty{1,0}{\mm}$
+      \item Cylinder diameter reading $u_D$: $\pm \qty{0,1}{\mm}$
+    \end{itemize}
+    The drag coefficient equation from above is:
+    \begin{equation*}
+      C_D = \frac{2}{D} \int \sqrt{\frac{h_{\mathrm{wake}}}{h_{\text{up}}}} \left( 1 - \sqrt{\frac{h_{\text{wake}}}{h_{\text{up}}}} \right) \, \mathrm{d}y 
+    .\end{equation*}
+    We treat the error sources as:
+    \begin{itemize}
+      \item Upstream head $h_{\mathrm{up}}$ is systematic, as this single measurement affects every point in the integration profile
+      \item Wake heads $h_{\text{wake}, i}$ is random (unsystematic), as each data point in the wake is an independent measurement
+      \item Diameter $D$ is systematic as a single measurement error scales the entire result.
+    \end{itemize}
+    Based on this the individual uncertainty components for our systematic errors can be calculated as (using the example with $h_{\text{up}}$ as an example):
+    \begin{equation*}
+      u = \left| \sum_{i = 1}^{N} \left( \frac{\partial C_D}{\partial h_{\text{up}}}  \right)_i \right| \cdot u_{\text{manometer}}
+    .\end{equation*}
+    
+    For our random error $h_{\mathrm{wake}}$ we use the formula:
+    \begin{equation*}
+      u_{\text{wake}} = \sum_{i = 1}^{N} \left( \text{Sensitivity}_i \cdot u_{\text{manometer}} \right)^2
+    .\end{equation*}
+    Where our sensitivity for point $i$ is
+    \begin{equation*}
+      G_i = \frac{2}{D} \cdot \Delta y \cdot \left( 1 - 2 R_i \right) \cdot \left( \frac{\num{0,5} R_i}{h_{\text{wake}, i}} \right)
+    .\end{equation*}
+
+    Finally all these uncertainty components are combined to find the combined uncertainty as the root-sum-square of the components:
+    \begin{equation*}
+      u_c \left( C_D \right) = \sqrt{u^2_D + u^2_{h_{\text{up}}} + u^2_{\text{wake}}}
+    .\end{equation*}
+    
+    This has been implemented in the MatLab code below, which continues upon the previous code:
+    \begin{verbatim}
+      % Analytical Uncertainty Propagation
+      % Cd = (2/D) * Sum( w_i * f_i * dy )
+      % We calculate sensitivity coefficients (derivatives) for each source.
+
+      % 1. Sensitivity to Diameter
+      % d(Cd)/dD = -Cd / D
+      sens_D = -Cd / D;
+      u_Cd_D = abs(sens_D) * u_D;
+
+      % 2. Sensitivity to Upstream Head (h_up)
+      % h_up affects every point in the profile (so it i)
+      % f = sqrt(h/h_up) - h/h_up
+      % df/dh_up = (1/2)*(h/h_up)^(-0.5)*(-h/h_up^2) - (-h/h_up^2) ??
+      % Simplified: let r = sqrt(h/h_up). f = r - r^2.
+      % dr/dh_up = -0.5 * r / h_up
+      % df/dh_up = (1 - 2r) * dr/dh_up = (1 - 2r) * (-0.5 * r / h_up)
+      r = u_ratio;
+      df_dhup = (1 - 2*r) .* (-0.5 * r ./ h_up);
+
+      % Integrate the sensitivity across the wake
+      % d(Integral)/dh_up = Integral( df/dh_up dy )
+      dInt_dhup = trapz(y, df_dhup);
+      sens_hup = (2 / D) * dInt_dhup;
+
+      % Uncertainty contribution from h_up
+      u_Cd_hup = abs(sens_hup) * u_h;
+
+      % C. Sensitivity to Wake Heads (h_w_i)
+      % Each h_w_i is an independent measurement (Random/Uncorrelated error)
+      % dr/dh_w = 0.5 * r / h_w
+      % df/dh_w = (1 - 2r) * (0.5 * r / h_w)
+      df_dhw = (1 - 2*r) .* (0.5 * r ./ h_w);
+
+      % Handling the integration weights for Trapezoidal rule:
+      % Integral ~ sum( w_i * f_i ) where w_i involves delta_y
+      % Sensitivity for point i: d(Cd)/dh_wi = (2/D) * weight_i * (df/dh_w)_i
+      N = length(y);
+      sens_hw = zeros(1, N);
+      dy = diff(y);
+
+      for i = 1:N
+          % Determine trapezoidal weight for point i
+          if i == 1
+              weight = dy(1) / 2;
+          elseif i == N
+              weight = dy(end) / 2;
+          else
+              weight = (dy(i-1) + dy(i)) / 2;
+          end
+          
+          sens_hw(i) = (2 / D) * weight * df_dhw(i);
+      end
+
+      % Uncertainty contribution from all h_w points (Root Sum Square)
+      u_Cd_hw = sqrt(sum((sens_hw * u_h).^2));
+
+
+      % --- 5. Total Combined Uncertainty ---
+      % u_total^2 = u_D^2 + u_hup^2 + sum(u_hw_i^2)
+      u_Cd_total = sqrt(u_Cd_D^2 + u_Cd_hup^2 + u_Cd_hw^2);
+      u_Cd_expanded = 2 * u_Cd_total; % 95% Confidence (k=2)
+
+      % --- 6. Display Results ---
+      fprintf('\n--- Uncertainty Analysis (Analytical Method) ---\n');
+      fprintf('Uncertainty Contributions:\n');
+      fprintf('  Diameter (D):       %.4f\n', u_Cd_D);
+      fprintf('  Upstream Head (h0): %.4f (Correlated)\n', u_Cd_hup);
+      fprintf('  Wake Heads (h_i):   %.4f (Uncorrelated Sum)\n', u_Cd_hw);
+      fprintf('-------------------------------------------\n');
+      fprintf('Combined Standard Uncertainty (u_Cd): %.3f\n', u_Cd_total);
+      fprintf('Expanded Uncertainty (k=2, 95%%):     %.3f\n', u_Cd_expanded);
+    \end{verbatim}
+    Running this gives the output:
+    \begin{verbatim}
+      --- Uncertainty Analysis (Analytical Method) ---
+      Uncertainty Contributions:
+        Diameter (D):       0.0013
+        Upstream Head (h0): 0.0447 (Correlated)
+        Wake Heads (h_i):   0.0092 (Uncorrelated Sum)
+      -------------------------------------------
+      Combined Standard Uncertainty (u_Cd): 0.046
+      Expanded Uncertainty (k=2, 95%):     0.091
+
+      Final Result:
+      Cd = 0.80 +/- 0.09 (95%)
+    \end{verbatim}
+  \end{derivation}
+
+  \finalresult{
+  C_D = \num{0,80} \pm \num{0,09}
+  }
+
+  \begin{problem}{1.2}
+  Compute $C_D$ using surface pressure measurement. Show the derivation of the respective equation. Carry out an uncertainty analysis. Select type B uncertainties based on your previous experience from the laboratory session. Explain what is missing.
+  \end{problem}
+
+  \begin{assumptions}
+    \item Steady, incompressible flow ($M \ll \num{0,3}$)
+    \item The control volume boundaries are sufficiently far from the cylinder, such that static pressure is uniform and equal to the free stream pressure
+    \item Viscous forces on the outer control surface are negligible
+  \end{assumptions}
+
+  \begin{derivation}
+    Here, we will calculate the pressure drag (form drag) by integrating the pressure distribution around the cylinder surface.
+
+    The drag force is the component of the total fluid force acting parallel to the free-stream direction ($x$-axis).
+    For a small element of suface area $\mathrm{d}A = L D / 2 d\theta$ located at an angle $\theta$ (measured from the stagnation point at the front) we get the drag force:
+    \begin{equation*}
+      \mathrm{d}F_P = P (\theta) \, \mathrm{d}A
+    .\end{equation*}
+    The $x$-component of this force is $\mathrm{d}F_x = \mathrm{d}F_P \cos \theta$
+    \begin{equation*}
+      \mathrm{d}F_x = P(\theta \cos \theta \left( L \frac{D}{2} \, \mathrm{d}\theta \right)
+    .\end{equation*}
+    Integrating over the full cylinder ($0$ to $2 \pi$) we get
+    \begin{equation*}
+      F_D = \int_{0}^{2\pi} P(\theta) \cos \theta \frac{LD}{2} \, \mathrm{d}\theta
+    .\end{equation*}
+    This means the drag coefficient is:
+    \begin{align*}
+      C_D &= \frac{F_D}{\frac{1}{2} \rho U^2_{\infty} LD} \\
+      &= \int_{0}^{2\pi} \frac{P(\theta) - P_{\infty}}{\frac{1}{2}\rho U^2_{\infty}} \cos \theta \cdot \frac{1}{2} \, \mathrm{d}\theta \\
+      &= \frac{1}{2} \int_{0}^{2\pi} C_P \left( \theta \right) \cos \theta \, \mathrm{d}\theta
+    .\end{align*}
+    This has been implemented in MatLab as:
+    \begin{verbatim}
+      clear; clc; close all;
+
+      % Input Data
+      % Upstream Dynamic Head
+      h_up_mm = 44.0; 
+
+      % Surface Pressure Data
+      % Theta [degrees], Manometer h [mm]
+      theta_deg = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, ...
+                   110, 120, 130, 140, 150, 160, 170, 180, ...
+                   190, 200, 210, 220, 230, 240, 250, 260, ...
+                   270, 280, 290, 300, 310, 320, 330, 340, 350, 360];
+
+      h_surf_mm = [38, 36, 26, 10, -14, -36, -53, -70, -78, -69, ...
+                   -62, -47, -38, -35, -35, -34, -34, -34, -34, ...
+                   -34, -34, -34, -34, -35, -35, -38, -47, -62, ...
+                   -69, -78, -70, -53, -36, -14, 10, 26, 36];
+
+      % Convert to SI / Radians
+      h_up = h_up_mm / 1000;      % [m]
+      h_s = h_surf_mm / 1000;     % [m]
+      theta = deg2rad(theta_deg); % [rad]
+
+      % Calculate Cd
+      % Formula: Cd = 0.5 * Integral( (h_s / h_up) * cos(theta) dtheta )
+      Cp = h_s ./ h_up;
+      integrand = Cp .* cos(theta);
+
+      % Integrate using Trapezoidal Rule
+      integral_val = trapz(theta, integrand);
+      Cd = 0.5 * integral_val;
+
+      fprintf('Calculated Cd (Pressure): %.3f\n', Cd);
+    \end{verbatim}
+    Which gives:
+    \begin{verbatim}
+      Cd (Pressure): 0.598
+    \end{verbatim}
+    This is slightly lower than the total drag calculated from the wake, which is expected as this method ignores skin friction.
+
+    We follow the same method for the uncertainty analysis as above.
+    This time we have the same systematic error of $\pm \qty{1,0}{\mm}$ for the upstream head $u_{h_{\text{up}}}$, but we also assume an uncorrelated error of the surface pressure measurements $u_{h_\theta}$ of $\pm \qty{1,0}{\mm}$.
+
+    This gives the same $u_{C_d, h_{\text{up}}}$ as above if ignoring the change in $C_D$, i.e. the method of calculation and the code is the same.
+    For the surface pressures we get:
+    \begin{equation*}
+      \frac{\partial C_D}{\partial h_i} = \frac{1}{2 h_{\text{up}}} \cdot w_i \cos \theta_i
+    \end{equation*}
+    where $w_i$ is the integration weight ($w_i = \pi / 18$ for my code).
+    This is then squared and summed for each point.
+    Lastly, the uncertainty components are squared, summed and rooted.
+    This is done in MatLab as
+    \begin{verbatim}
+      % Uncertainty Analysis (Analytical)
+      % Type B Estimates
+      u_h = 1.0 / 1000;   % Manometer uncertainty [m] (+/- 1 mm)
+
+      % A. Uncertainty due to Upstream Head (h_up) - COR
+      % h_up is in the denominator of the whole integral.
+      % dCd/dh_up = -Cd / h_up
+      sens_hup = -Cd / h_up;
+      u_Cd_hup = abs(sens_hup) * u_h;
+
+      % B. Uncertainty due to Surface Pressures (h_s) - UNCOR
+      % Each tap is independent. We use RSS (Root Sum Square).
+      % dCd/dh_i = (1 / 2 h_up) * weight_i * cos(theta_i)
+
+      % Calculate integration weights (d_theta)
+      N = length(theta);
+      weights = zeros(1, N);
+      dt = diff(theta);
+      % Trapezoidal weights: half interval on ends, full interval in middle
+      weights(1) = dt(1)/2;
+      weights(end) = dt(end)/2;
+      weights(2:end-1) = (dt(1:end-1) + dt(2:end)) / 2;
+
+      % Sensitivity for each point
+      sens_hs = (weights .* cos(theta)) ./ (2 * h_up);
+
+      % Combine random errors (RSS)
+      u_Cd_surf = sqrt(sum((sens_hs * u_h).^2));
+
+      % Total uncertainty
+      u_combined = sqrt(u_Cd_hup^2 + u_Cd_surf^2);
+      u_expanded = 2 * u_combined; % k=2 (95%)
+
+      fprintf('\n--- Uncertainty Analysis ---\n');
+      fprintf('Uncertainty Contributions:\n');
+      fprintf('  Upstream Head (h_up): %.4f (Systematic)\n', u_Cd_hup);
+      fprintf('  Surface Heads (h_i):  %.4f (Random RSS)\n', u_Cd_surf);
+      fprintf('----------------------------------------\n');
+      fprintf('Combined Standard Uncertainty: %.3f\n', u_combined);
+      fprintf('Expanded Uncertainty (95%%):     %.3f\n', u_expanded);
+      fprintf('\nFinal Result:\n');
+      fprintf('Cd (Pressure) = %.2f +/- %.2f\n', Cd, u_expanded);
+    \end{verbatim}
+    Running this gives
+    \begin{verbatim}
+      --- Uncertainty Analysis ---
+      Uncertainty Contributions:
+        Upstream Head (h_up): 0.0136 (Systematic)
+        Surface Heads (h_i):  0.0083 (Random RSS)
+      ----------------------------------------
+      Combined Standard Uncertainty: 0.016
+      Expanded Uncertainty (95%):     0.032
+
+      Final Result:
+      Cd (Pressure) = 0.60 +/- 0.03
+    \end{verbatim}
+    This $C_D$ value does not include the contribution from skin friction as explained above.
+  \end{derivation}
+
+  \finalresult{
+      C_D = \num{0,60} \pm \num{0,03} 
+  }
+
+  \begin{problem}{1.3}
+    Compute $C_D$ based on the direct measurement of the drag force. Carry out an uncertainty analysis. Select type B uncertainties based on your previous experience from the laboratory session.
+  \end{problem}
+
+  \begin{assumptions}
+    \item Steady, incompressible flow ($M \ll \num{0,3}$)
+    \item The control volume boundaries are sufficiently far from the cylinder, such that static pressure is uniform and equal to the free stream pressure
+    \item Viscous forces on the outer control surface are negligible
+  \end{assumptions}
+
+  \begin{derivation}
+    The drag force is given as:
+    \begin{equation*}
+      C_D = \frac{F_{\text{drag}}}{\frac{1}{2} \rho U^2 A}
+    .\end{equation*}
+    Here, we use the mean force $F_{\text{mean}} = \qty{5,76}{\N} $ (computed from the appendix) as our $F_{\text{drag}}$ and we realise $1 / 2 \rho U^2 = q_{\text{dyn}} = \rho g h_{\mathrm{up}}$. Using our manometer reading $h_{\text{up}} = \qty{44}{\mm}$ we find $q_{\text{dyn}}$ as
+    \begin{equation*}
+      q_{\text{dyn}} = \rho \cdot g \cdot h_{\text{up}} = \qty{871}{\kg\per\m^3}  \cdot \qty{9,81}{\m\per\s^2} \cdot \qty{44}{\mm} = \qty{376}{\Pa} 
+    .\end{equation*}
+    Hence,
+    \begin{equation*}
+      C_D = \frac{F_{\text{mean}}}{q_{\text{dyn}} \cdot A} = \frac{\qty{5,76}{\N}}{\qty{376}{\Pa} \cdot \qty{300}{\mm} \cdot \qty{63,5}{\mm} } = \num{0,804} 
+    .\end{equation*}
+    
+    We choose the following 4 type B uncertainties
+    \begin{itemize}
+      \item Manometer ($u_h$): $\pm \qty{1,0}{\mm} $
+      \item Cylinder length $u_L$: $\pm \qty{1,0}{\mm}$
+      \item Cylinder diameter $u_D$: $\pm \qty{0,1}{\mm}$
+      \item Force balance $u_{F, B}$: $\pm \qty{0,1}{\N} $
+    \end{itemize}
+    This gives the relative uncertainty contributions:
+    \begin{itemize}
+      \item Force: $\num{0,1} / \num{5,76} = \num{1,7} \%$
+      \item Head: $\num{1,0} / \num{44,0} = \num{2,3} \%$
+      \item Length: $\num{1,0} / \num{300} = \num{0,3} \%$
+      \item Diameter: $\num{0,1} / \num{63,5} = \num{0,2} \%$
+    \end{itemize}
+    This gives a combined uncertainty of
+    \begin{equation*}
+      \frac{u_{C_D}}{C_D} = \sqrt{\num{0,017}^2 + \num{0,023}^2 + \num{0,003}^2 + \num{0,002}^2} = \num{2,9} \%
+    .\end{equation*}
+    Hence, the absolute uncertainty is
+    \begin{equation*}
+      u_{C_D} = \num{2,9} \% \cdot C_D = \num{0,029} \cdot \num{0,804} = \num{0,023}  
+    .\end{equation*}
+    The expanded uncertainty ($k = 2$ for 95\% confidence) is then
+    \begin{equation*}
+      U_{C_D} = 2 \cdot \num{0,023}  = \num{0,046} 
+    .\end{equation*}
+    Hence,
+  \end{derivation}
+
+  \finalresult{
+  C_D = \num{0,80} \pm \num{0,046}  
+  }
+
+  \begin{problem}{1.4}
+    Compare the results of parts 1-3 and discuss discrepancies, pros and cons between the methods.
+  \end{problem}
+
+  \begin{derivation}
+    For the wake-momentum method we calculated a $C_D = \num{0,8}  \pm \num{0,09}$ which includes both pressure and friction drag.
+    Using the direct force measurement we got a result of $C_D = \num{0,8} \pm \num{0,05}$ which also includes both contributions from pressure and friction drag.
+    The surface pressure method left us with a $C_D = \num{0,60} \pm \num{0,04}$, which is significantly lower than the other two, however, this method does not take the friction drag into account and only finds the form drag, which explains the deviation.
+
+    The difference in the magnitudes of the frictions suggests that skin friction contributes roughly 25\% of the total drag under the given conditions. 
+
+    The wake velocity profile method is characterized by it being non-intrusive, i.e. it does not require modifying the test model with pressure taps or force balances and it avoids mechanical contact minimizing the effects of friction.
+    However, this method is highly sensitive to the upstream dynamic pressure reading. Furthermore, it is assumed the wake pressure has recovered to ambient $P_{\text{wake}} = P_{\infty}$. 
+
+    The surface pressure distribution method gives a detailed flow visualization, where one clearly can identify flow features such as stagnation point (highest pressure), and the separation point (where pressure levels off).
+    Further, this allows you to isolate the form drag component from the total drag.
+    However, this also means this method cannot give insights into the effects of pressure drag.
+    Also, the accuracy depends on the number of taps.
+    A small number of taps near the separation point leads to an inaccurate integration.
+
+    The direct force measurement is probable the fastest and easiest way to find the total drag, however it is also a bit of a ``black box'' meaning none of the reasons for the drag are illuminated.
+    Further, it requires a force-balance which is prone to mechanical errors due to friction, hysteresis, etc.
+
+  In short, the direct force method is likely the fastest and most accurate, the wake method validates the result from this and the pressure method provides insight into form drag effects. 
+  \end{derivation}
+
+  \begin{problem}{1.5}
+    Discuss two assumptions in the wake method and their implications.
+  \end{problem}
+
+  \begin{derivation}
+    \begin{enumerate}
+      \item Assumption of static pressure recovery ($P_{\text{wake}} = P_{\infty}$).
+        The formula used in the code, $C_D = 2 / D \int  u / U (1 - u / U) \, \mathrm{d}y$ assumes that the static pressure at the measurement location (in this case, the wake) has fully recovered to ambient pressure.
+        This means that the streamlines in theory are parallel and that there is no pressure gradient across the wake.
+        In reality, some turbulence is expected in the wake, which means the local static pressure is often slightly lower than ambient.
+        As the measurements were taken at 5D downstream the pressure should have recovered mostly at this point however a longer distance gives a more accurate result.
+      \item Assumption of 2D-flow.
+        The calculations assumes that the flow is perfectly two-dimensional, meaning the wake profile is identical at every point along the length of the cylinder.
+        In reality, end-effects of the cylinder will cause the wake to not be two-dimensional.
+        A higher aspect ratio of the cylinder had given a more precise result.
+    \end{enumerate}
+  \end{derivation}
+
+  \newpage
+
+  \begin{problem}{1.6}
+    [Bonus] Prepare a plot of pressure coefficient against angular position comparing the provided data and the ideal inviscid solution. Explain the differences. Why does separation occur at \ang{80} and how does Reynolds number influence this?
+  \end{problem}
+
+  \begin{derivation}
+    As explained in problem 1.2 the experimental $C_P$ is simply
+    \begin{equation*}
+      C_{P} = \frac{h_{\mathrm{surf}}}{h_{\mathrm{up}}}
+    .\end{equation*}
+    
+    In the ideal situation, the tangential velocity $u_{\theta}$ on the surface of the cylinder is
+    \begin{equation*}
+            u_{\theta} = 2 U_{\infty} \sin \theta
+    .\end{equation*}
+    We now apply Bernoulli's equation between the free stream and a point on the surface:
+    \begin{align*}
+      P_{\infty} + \frac{1}{2} \rho U^2_{\infty} &= P + \frac{1}{2} \rho u^2_{\theta} \\
+      P - P_{\infty} &= \frac{1}{2} \rho \left( U^2_{\infty} - u_{\theta}^2 \right)
+    .\end{align*}
+    Substituting $u_{\theta} = 2U_{\infty} \sin \theta$ we get
+    \begin{equation*}
+      P - P_{\infty} = \frac{1}{2} \rho U^2_{\infty} \left( 1 - 4 \sin^2 \theta \right)
+    .\end{equation*}
+    Dividing by the dynamic pressure gives $C_P$ as
+    \begin{equation*}
+       C_P (\theta) = 1 - 4 \sin^2 \theta
+    .\end{equation*}
+    These two $C_P$'s have been plotted using the following MatLab code
+    \begin{verbatim}
+      clear; clc; close all;
+
+      % --- 1. Experimental Data ---
+      % Theta [degrees], Manometer h [mm]
+      theta_exp = [0, 10, 20, 30, 40, 50, 60, 70, 80, ...
+                   90, 100, 110, 120, 130, 140, 150, 160, 170, 180, ...
+                   190, 200, 210, 220, 230, 240, 250, 260, 270, 280, ...
+                   290, 300, 310, 320, 330, 340, 350, 360];
+
+      h_surf = [38, 36, 26, 10, -14, -36, -53, -70, -78, -69, -62, ...
+                -47, -38, -35, -35, -34, -34, -34, -34, ...
+                -34, -34, -34, -34, -35, -35, -38, -47, -62, ...
+                -69, -78, -70, -53, -36, -14, 10, 26, 36];
+
+      h_up = 44.0; % Upstream dynamic head [mm]
+
+      % Calculate Experimental Cp
+      Cp_exp = h_surf / h_up;
+
+      % --- 2. Ideal Inviscid Theory ---
+      % Theory: Cp = 1 - 4*sin^2(theta)
+      theta_ideal = linspace(0, 360, 360); % 0 to 360 degrees
+      Cp_ideal = 1 - 4 * sind(theta_ideal).^2;
+
+      % --- 3. Plotting ---
+      figure('Color', 'w');
+      plot(theta_ideal, Cp_ideal, 'k--', 'LineWidth', 1.5, 'DisplayName', ...
+             'Ideal Inviscid Solution');
+      hold on;
+      plot(theta_exp, Cp_exp, 'ro-', 'LineWidth', 1.5, 'MarkerFaceColor', ... 
+              'r', 'DisplayName', 'Experimental Data');
+
+      % Formatting
+      xlabel('Angular Position \theta [deg]');
+      ylabel('Pressure Coefficient C_p');
+      title('Pressure Distribution on a Cylinder');
+      legend('Location', 'South');
+      grid on;
+      axis([0 360 -3.5 1.5]);
+
+      % Mark Separation Region
+      xline(80, 'b:', 'LineWidth', 1.5, 'DisplayName', 'Separation ~80^\circ');
+      text(85, -2.5, 'Separation', 'Color', 'b');
+    \end{verbatim}
+    Running this code produces the figure seen on \Cref{fig:e2025_6}
+
+    \begin{figure} [ht]
+      \centering
+      \includegraphics[width=0.5\linewidth]{./figures/e2025_6.png}
+      \caption{Plot of ideal $C_P$ versus experimental $C_P$}
+      \label{fig:e2025_6}
+    \end{figure}
+    On the figure, we see that for the front of the cylinder (\ang{0} to \ang{70}), the experimental data matches the ideal inviscid solution reasonably well.
+    This is because the boundary layer here is thin and laminar closely mimicking the inviscid case.
+
+    At the minimum pressure point (\ang{70} to \ang{80}) the experimental $C_P$ reaches a minimum of about \num{-1,8} whereas the ideal case predicts a minimum of \num{-3}.
+    This happens because viscosity causes the boundary layer to grow, displacing the streamlines slightly away from the surface, which reduces the effective acceleration of the fluid preventing the pressure from dropping to the theoretical limit.
+
+    In the separation region (>\ang{80}) the curves diverge drastically.
+    The ideal theory predicts complete pressure recovery, meaning the pressure should rise back to $C_P = +1$ at the rear stagnation point (\ang{180}), however this would result in no drag and is known as D'Alembert's paradox.
+    Instead of recovering, the pressure plateaus at a constant negative value $C_p \approx \num{0,8}$ from roughly \ang{90}  to \ang{270}.
+    This indicates flow separation.
+
+    Sepearation is driven by an adverse pressure gradient.
+    For the front $\ang{0} \to \ang{90}$ the fluid pressure gradient is favorable.
+    However for $> \ang{90}$ the fluid must decelerate meaning the presure must rise leading to a negative pressure gradient. This explains why the separation happens at \ang{80} which is close to \ang{90}.
+
+    For a subcritical Reynolds number $\mathrm{Re} < \num{3e5}$, the boundary layer remains laminar up to separation. Laminar layers have low momentum near the wall and separate easily against an adverse pressure gradient which results in early separation, wide wake, and high drag.
+
+    For supercritical flow ($\mathrm{Re}> \num{3e5}$ the boundary layer becomes turbulent before separation. This leads to a high-momentum flow from the free stream down to the wall, resulting in delayed separation, narrower wake and a dramatic drop in drag. 
+  \end{derivation}
+
+  \newpage
+
+  An extra-corporeal circulation refers to the process of diverting blood outside the body through a closed circuit of tubes and devices before returning it to the body. This system allows open-chest surgeries, where the heart is stopped. From a fluid mechanics perspective, it involves: 
+  \begin{itemize}
+    \item Pumping blood through an artificial circuit (using centrifugal or roller pumps).
+    \item Laminar vs. turbulent flow considerations in tubing and devices.
+    \item Pressure drops across components like oxygenators and filters.
+    \item Shear stress on blood cells due to flow and pump design.
+    \item Heat and mass transfer for gas exchange and temperature control
+  \end{itemize}
+  
+  \begin{problem}{2.1}
+    Derive and explain the equation for the mechanical energy balance of the circuit, described for each component.
+  \end{problem}
+
+  \begin{assumptions}
+    \item Steady, newtonian and incompressible fluid flow
+    \item Negligible viscosity
+    \item Rigid boundaries
+  \end{assumptions}
+
+  \begin{derivation}
+    We derive the mechanical force balance by applying the Bernoulli equation between two specific points in the system.
+
+    For any incompressible fluid flowing between two points the energy balance is:
+    \begin{equation*}
+      \frac{P_1}{\rho g} + \frac{V_1^2}{2g} + z_1 + H_{\text{pump}} = \frac{P_2}{\rho g} + \frac{V_2^2}{2g} + z_2 + \sum H_{\text{losses}}
+    .\end{equation*}
+    
+    Starting at the blood surface in VR (B) we have
+    \begin{align*}
+      P_1 &= P_{\mathrm{atm}} = 0 \\
+      V_1 &= 0 \\
+      z_1 &= h_{VR}
+    .\end{align*}
+    And enting at the patient's return cannula (A) we have
+    \begin{align*}
+      P_2 &= P_{\text{patient}} \\
+      V_2 &= 0 \\
+      z_2 &= h_{\text{patient}} = \qty{120}{\cm} 
+    .\end{align*}
+
+    I.e.
+    \begin{equation*}
+      0 + 0 + h_{VR} + H_{\text{pump}} = \frac{P_{\text{patient}}}{\rho g} + 0 + h_{\text{patient}} + \Delta H_{\text{total losses}}
+    .\end{equation*}
+    Solving for $H_{\text{pump}}$ we get
+    \begin{equation*}
+      H_{\text{pump}} = \left( h_{\text{patient}}  - h_{VR} \right) + \frac{P_{\text{patient}}}{\rho g} + \Delta H_{\text{losses}}
+    .\end{equation*}
+    This expression consists of a static elevation head ($h_{\text{patient}} - h_{VR}$) corresponding to the energy the pump must use to lift the blood, a pressure head ($P_{\text{patient}} / \rho g$) which corresponds to the increase in pressure the pump must make and friction losses $\Delta H_{\text{losses}}$ which explains all hydraulic resistances. 
+  \end{derivation}
+
+  \finalresult{H_{\text{pump}} = \left( h_{\text{patient}}  - h_{VR} \right) + \frac{P_{\text{patient}}}{\rho g} + \Delta H_{\text{losses}}}
+
+  \begin{problem}{2.2}
+    Compute the height of VR to obtain a flow-rate of $Q_{\text{patient}} = \qty{3}{\L\per\min} $ and draw the energy grade line of the system.
+  \end{problem}
+
+  \begin{assumptions}
+    \item Negligible minor losses
+  \end{assumptions}
+
+  \begin{derivation}
+    We start by converting the patient's height into equivalent pressure:
+    \begin{equation*}
+      P_{\text{height}} = \rho \cdot g \cdot h_{\text{patient}} = \qty{1050}{\kg\per\m^3} \cdot \qty{9,81}{\m\per\s^2}  \cdot \qty{1,2}{\m} = \qty{92,7}{mmHg} 
+    .\end{equation*}
+    Solving our energy equation for the hydrostatic pressure at $VR$ $\rho g h_{VR}$ as:
+    \begin{equation*}
+      \mathrm{Head}_{VR} = P_A + \rho g h_{\text{patient}} - \Delta P_{\text{pump}}
+    .\end{equation*}
+    Using $\Delta P_{\text{pump}} = \qty{400}{mmHg}$ we get
+    \begin{equation*}
+      H_{VR} = P_A + P_{height} - \Delta P_{\text{pump}} =  \qty{95}{mmHg} + \qty{92,7}{mmHg} - \qty{400}{mmHg} = \qty{-213,3}{mmHg} 
+    .\end{equation*}
+    Hence
+    \begin{equation*}
+      h_{VR} = \frac{H_{VR}}{\rho g} = \frac{- \qty{213,3}{mmHg}}{\qty{1050}{\kg\per\m^3} \cdot \qty{9,81}{\m\per\s^2} } = - \qty{2,76}{\m} 
+    .\end{equation*}
+  \end{derivation}
+
+  \finalresult{h_{VR} = \qty{- 2,76}{\m} }
+
+\begin{problem}{2.3}
+  Compute the height of VR to obtain a flow-rate of $Q_{\mathrm{patient}} = \qty{5}{\L\per\min} $ and draw the energy grade line of the system.
+\end{problem}
+
+\begin{assumptions}
+    \item Negligible minor losses
+\end{assumptions}
+
+\begin{derivation}
+  Neglecting minor losses, might have been a mistake as without these I can run the same calculation as above and get the same result: $h_{VR} = \qty{-2,76}{\m}$, but I do not have time to try incorporating these.
+\end{derivation}
+
+\finalresult{h_{VR} = -\qty{2,76}{\m}}
+
+\begin{problem}{2.4}
+  After computing the hydraulic power for the optimal pump head, determine the power input at realistic flow-rate conditions obtained at points (2) and (3). Assume to fix VR height at \qty{0,8}{\m} from the ground.
+\end{problem}
+
+\begin{derivation}
+  \begin{equation*}
+    W_{\text{opt}} = Q \Delta P \approx \qty{3,56}{\W} 
+  .\end{equation*}
+  \begin{equation*}
+    \Delta P_{\text{pump}} = P_{\text{out}} - P_{\text{VR}} + \Delta P_{\text{losses}}
+  .\end{equation*}
+  
+\end{derivation}
+
+\begin{problem}{2.5}
+  Given the realistic pump head obtained at point (4) at fixed VR height and given that outlet circuit pipe has a diameter of \qty{15}{\mm} , suggest some designing limit conditions in terms of rpm and/or pump outlet radius. Draw velocity diagrams to support your discussion. Assume uniform, steady flow and radial exit blades; and consider that shear stress should not exceed \qty{150}{\Pa} to avoid hemolysis.
+\end{problem}
+
 \end{document}
