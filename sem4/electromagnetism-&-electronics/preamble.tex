@@ -1,0 +1,238 @@
+\documentclass[a4paper]{article}
+
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage[english]{babel}
+
+\usepackage{parskip} 
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.2}
+
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+\usepackage{sectsty}
+\subsectionfont{\color{AUblueDark}}
+
+\usepackage{mathtools, amssymb}
+\usepackage{bm}
+\renewcommand{\Vec}[1]{\boldsymbol{#1}}
+\let\oldhat\hat
+\renewcommand{\hat}[1]{\oldhat{\mathbf{#1}}}
+
+\DeclareMathOperator{\grad}{grad}
+
+\usepackage{fourier}
+
+\usepackage[dvipsnames]{xcolor}
+\definecolor{AUblue}{RGB}{0,61,115}
+\definecolor{AUblueDark}{RGB}{0,37,70}
+
+
+\usepackage{graphicx}
+\graphicspath{{./figures/}}
+\usepackage{tikz}
+\usetikzlibrary{calc, arrows.meta}
+
+\usepackage{enumitem}
+\setlist{topsep=4pt,itemsep=2pt,parsep=0pt}
+
+\usepackage{siunitx}
+\sisetup{
+  exponent-product = \cdot,
+  output-decimal-marker = {,},
+  per-mode = fraction,
+  round-mode = figures,
+  round-precision = 3,
+  round-pad = false,
+}
+
+%Giles Castelles incfig
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+  \def\svgwidth{#1\columnwidth}
+  \import{./figures/}{#2.pdf_tex}
+}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AUblueDark}\leaders\hrule height 0.6pt\hfill}}
+\setlength{\headheight}{20pt}
+\fancyhead[L]{\small\AuthorName}
+\fancyhead[C]{\small\ReportTitle}
+\fancyhead[R]{\small\TheDate}
+\usepackage{lastpage}
+\fancyfoot[R]{\small p. \thepage{} of \pageref*{LastPage}}
+\fancyfoot[L]{\small\CourseName}
+
+\newcommand{\Dept}{Department of Mechanical and Production Engineering}
+\newcommand{\Uni}{Aarhus University}
+\newcommand{\ReportTitle}{\NoteType}
+\newcommand{\AuthorName}{Noah Rahbek Bigum Hansen}
+\newcommand{\StudentID}{202405538}
+\newcommand{\Course}{\CourseName{} --- \CourseNumber}
+\newcommand{\TheDate}{\today}
+\newcommand{\Logo}{figures/AU}
+
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=AUblue,
+  citecolor=AUblue,
+  urlcolor=AUblue,
+  pdftitle={\NoteType},
+  pdfauthor={\AuthorName},
+  pdfsubject={\NoteType by \AuthorName{} (\StudentID) for the course \CourseName{} taught at the \Dept{} of \Uni. Last updated on \TheDate{}.},
+  pdfcreator={pdfTeX + newtx},
+}
+
+\newcommand{\mref}[1]{\hyperref[#1]{\ref*{#1}~\nameref*{#1}}}
+\newcommand{\Mref}[1]{\hyperref[#1]{\ref*{#1}~\nameref*{#1}}}
+
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage{chngcntr}
+
+\crefname{pluralequation}{equations}{equations}
+\Crefname{pluralequation}{Equations}{Equations}
+
+\usepackage{caption}
+\captionsetup{font=small}
+\usepackage{subcaption} 
+
+\newenvironment{problem}[1]%
+{%
+  \par\vspace{0pt}%
+  {\large\bfseries\sffamily\color{AUblueDark}%
+    Problem #1%
+  }%
+  \par\vspace{.35\baselineskip}%
+}%
+{%
+  \par\vspace{.6\baselineskip}%
+  {\color{AUblueDark}\rule{\linewidth}{0.8pt}}%
+  \vspace{.6\baselineskip}\par%
+}
+
+\newcommand{\AUheading}[1]{%
+  \par\vspace{.4\baselineskip}%
+  {\sffamily\bfseries\color{AUblueDark}#1\par}%
+  \nobreak%
+}
+
+\newenvironment{assumptions}[1][Assumptions]{%
+  \AUheading{#1}
+  \begin{itemize}[leftmargin=*,nosep]
+}{\end{itemize}}
+
+\newenvironment{symbols}{%
+  \AUheading{Symbols}
+  \begin{itemize}[leftmargin=3cm, labelwidth=2.5cm, align=left, nosep]
+    \newcommand{\sym}[3]{\item[##1] ##2 \hfill ##3}
+}{%
+  \end{itemize}\par\medskip
+}
+
+\usepackage{xstring}
+
+\newcommand{\InsertSym}[1]{%
+    \IfStrEqCase{#1}{%
+        % --- Constants & Fundamental Quantities ---
+        {coucon}{\sym{$k$}{Coulomb constant}{\qty{8,99e9}{\N.\m^2/\C^2}}}%
+        {percon}{\sym{$\epsilon_0$}{Permittivity constant}{\qty{8,85e-12}{\C^2\per\N.\m^2}}}%
+        {echar}{\sym{$e$}{Elementary charge}{\qty{1,6e-19}{\C}}}%
+        {zz}{\sym{$n$}{Integer number ($n \in \mathbb{Z}$)}{---}}%
+        % --- Charge & Geometry ---
+        {q}{\sym{$q$}{Charge}{\unit{\C}}}%
+        {q0}{\sym{$q_0$}{Test charge}{\unit{\C}}}%
+        {q1q2}{\sym{$q_1, q_2$}{Charges}{\unit{\C}}}%
+        {qenc}{\sym{$q_{\mathrm{enc}}$}{Enclosed charge}{\unit{\C}}}%
+        {sigma}{\sym{$\sigma$}{Surface charge density}{\unit{\C\per\m^2}}}%
+        {p}{\sym{$p$}{Electric dipole moment ($p=qd$)}{\unit{\C.\m}}}%
+        {r}{\sym{$r$}{Distance}{\unit{\m}}}%
+        {d}{\sym{$d$}{Separation distance}{\unit{\m}}}%
+        {z}{\sym{$z$}{Distance along axis}{\unit{\m}}}%
+        {R}{\sym{$R$}{Radius}{\unit{\m}}}%
+        {rhat}{\sym{$\hat{r}$}{Unit vector}{\text{---}}}%
+        {Avec}{\sym{$\Vec{A}$}{Area vector}{\unit{\m^2}}}%
+        % --- Forces & Fields ---
+        {estatfor}{\sym{$\Vec{F}$}{Electrostatic force}{\unit{\N}}}%
+        {F1net}{\sym{$\Vec{F}_{1, \mathrm{net}}$}{Net force}{\unit{\N}}}%
+        {F1i}{\sym{$\Vec{F}_{1i}$}{Force contribution on particle 1 from particle $i$}{\unit{\N}}}%
+        {Fxyz}{\sym{$\Vec{F}(x,y,z)$}{Force on test particle at point $(x,y,z)$}{\unit{\N}}}%
+        {Estr}{\sym{$E$}{Electric field strength}{\unit{\N\per\C}}}%
+        {Evec}{\sym{$\Vec{E}$}{Electric field vector}{\unit{\N\per\C}}}%
+        {Exyz}{\sym{$\Vec{E}(x,y,z)$}{Electric field at point $(x,y,z)$}{\unit{\N\per\C}}}%
+        % --- Flux & Potential ---
+        {Eflux}{\sym{$\Phi$}{Electric flux}{\unit{\V.\m}}}%
+        {UE}{\sym{$U_E$}{Electric potential energy}{\unit{\J}}}%
+        {VE}{\sym{$V_E$}{Electrostatic potential}{\unit{\V}}}%
+    }[\PackageError{InsertSym}{Undefined symbol: #1}{Add it to the preamble list!}]%
+}
+
+\newenvironment{derivation}[1][Derivation]{%
+  \AUheading{#1}
+  \begingroup\allowdisplaybreaks
+  \setlength{\abovedisplayskip}{6pt}%
+  \setlength{\belowdisplayskip}{6pt}%
+  \setlength{\abovedisplayshortskip}{4pt}%
+  \setlength{\belowdisplayshortskip}{4pt}%
+}{\par\endgroup\medskip}
+
+\newcommand{\finalresult}[1]{%
+  \vspace{.2\baselineskip}%
+  \begin{equation}
+    {\color{AUblueDark}\boxed{\displaystyle #1}}
+    \tag*{\textsc{\textcolor{AUblueDark}{Result}}}
+  \end{equation}
+  \newpage
+}
+
+\usepackage{environ}
+\newlength{\pbfigsep}
+\setlength{\pbfigsep}{8mm}
+
+\NewEnviron{problemwithimage}[3][0.38\linewidth]{%
+  \begin{problem}{#3}%
+    \noindent
+    \begin{minipage}[t]{\dimexpr\linewidth-#1-\pbfigsep\relax}
+      \vspace{-0.2\baselineskip}\BODY
+    \end{minipage}\hfill
+    \begin{minipage}[t]{#1}
+      \vspace{-\baselineskip}\centering
+      \includegraphics[width=\linewidth]{#2}%
+    \end{minipage}%
+  \end{problem}%
+}
+
+\makeatother
+\def\@lecture{}%
+\newcommand{\lecture}[3]{
+  \ifthenelse{\isempty{#3}}{%
+    \def\@lecture{Lecture #1}%
+  }{%
+    \def\@lecture{Lecture #1: #3}%
+  }%
+  \refstepcounter{section}%
+  \phantomsection
+  % Typeset like a subsection (no numbering in the heading)
+  \subsection*{\makebox[\textwidth][l]{\@lecture \hfill \color{AUblueDark}\normalfont\small{#2}}}
+  % Add a section-level TOC entry with the section number
+  \addcontentsline{toc}{section}{\protect\numberline{\thesection}\@lecture}%
+}
+
+\makeatletter
+
+\newcommand{\exercise}[1]{%
+ \def\@exercise{#1}%
+ \subsection{Exercise #1}
+}
+
+\makeatother
+
+

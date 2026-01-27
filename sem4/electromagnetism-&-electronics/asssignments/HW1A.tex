@@ -1,0 +1,195 @@
+\newcommand{\NoteType}{Assignment 1}
+\newcommand{\CourseName}{Electromagnetism \& Electronics}
+\newcommand{\CourseNumber}{290231U007}
+\input{./preamble.tex}
+\begin{document}
+  \input{../titlepage.tex}
+  \newpage
+
+  \begin{quiz}
+    \begin{enumerate}
+      \item By convention what is the charge of glass and amber?
+      \item Why do conductors conduct electricity better than insulators?
+      \item The electric field between two charged plates is $E = \sigma / (2 \epsilon_0)$.
+        True or false?
+      \item Which of the following statements are correct regarding Gauss' Law (Select all that apply)
+        \begin{enumerate}
+          \item Gauss's Law states that the net electric flux through any closed surface is equal to the enclosed electric charge divided by the permittivity of the medium.
+          \item Gauss's Law applies only to isolated point charges.
+          \item Gauss's Law can be used to determine the electric field produced by continuous charge distributions, such as charged wires or planes.
+          \item Gauss's Law is a consequence of Coulomb's Law.
+          \item Gauss's Law holds true for any shape of the closed surface.
+          \item Gauss's Law is applicable to situations involving both electric and magnetic fields.
+        \end{enumerate}
+      \item What are the three types of electrostatic charging?
+    \end{enumerate}
+  \end{quiz}
+
+  \begin{answers}
+    \begin{enumerate}
+      \item Following Benjamin Franklins convention, glass becomes positively charged and amber becomes negatively charged, when charged.
+        This charge results from the triboelectric effect and is therefore not present before rubbing the materials. 
+      \item Conductors conduct electricity as they have mobile electrons (i.e. no real band gap for metals).
+        For insulators the opposite is the case -- these have no mobile electrons and can therefore not carry a current (i.e. a large band gap between the valence and conduction bands)
+      \item False, the electric field between two plates with charge density $\sigma$ is $E = \sigma / \epsilon_0$.
+        $E = \sigma / (2 \epsilon_0)$ is the formula for the electric field due to an infinite sheet.
+      \item \begin{enumerate}
+          \item False, Gauss' law states that net electric flux through any closed surface equals the enclosed charge divided by the permittivity of free space $\epsilon_0$. 
+          \item False, Gauss' law applies for all charge configurations
+          \item True
+          \item True,
+            \begin{equation*}
+              \Phi = \frac{q}{\epsilon_0}
+            \end{equation*}
+            can be directly calculated using the flux integral (assuming rotational symmetry about the middle of ones conductor)
+            \begin{equation*}
+              \Phi = \oint \Vec{E} \cdot \mathrm{d} \Vec{A}
+            \end{equation*}
+            and Coulomb's law
+            \begin{equation*}
+              E = \frac{1}{4\pi \epsilon_0} \frac{q}{r^2}
+            .\end{equation*}
+          \item True, as long as the surface is closed.
+          \item False, Gauss' law only concerns itself with electric fields. No contribution from the magnetic field is present anywhere.
+            For magnetism Gauss' law sounds
+            \begin{equation*}
+              \oint \Vec{B} \cdot \mathrm{d}\Vec{A} = 0
+            \end{equation*}
+            i.e. the magnetic flux through a closed surface is zero (law of no magnetic monopoles).
+        \end{enumerate}
+      \item The three types are:
+        \begin{enumerate}
+          \item Charging by friction (Triboelectric effect)
+          \item Charging by contact
+          \item Charging by induction
+        \end{enumerate}
+    \end{enumerate}
+  \end{answers}
+  
+
+  \begin{problemwithimage}{h1a1}{1}
+    Consider $q_1 = \qty{1,6e-19}{\C}$, $q_2 = \qty{3,2e-19}{\C}$, and $q_3 = \qty{-3,2e-19}{\C} $ with distance $R = \qty{0,02}{\m}$ and $\theta = \ang{60} $.
+    What is the net electrostatic force on particle 1 from particles 2 and 3?
+  \end{problemwithimage}
+
+  \begin{givens}
+    q_1 = \qty{1,6e-19}{\C} & Charge of particle 1 \\
+    q_2 = \qty{3,2e-19}{\C} & Charge of particle 2 \\
+    q_3 = \qty{-3,2e-19}{\C} & Charge of particle 3 \\
+    R = \qty{0,02}{\m} & Distance between particles 1 and 2 \\
+    \theta = \ang{60} & Angle between charges 2 and 3 measured from charge 1 \\
+\end{givens}
+  
+  \begin{derivation}
+    Coulomb's law states that the electrostatic force $\Vec{F}_{12}$ between two point charges $q_1$ and $q_2$ separated by $\Vec{r}_{12}$ is
+    \begin{equation*}
+      \Vec{F}_{12} = k \frac{q_1 q_2}{r_{12}^2} \hat{r}_{12}
+    .\end{equation*}
+    We first find the unit vectors $\hat{r}_{12}$ and $\hat{r}_{13}$ as
+    \begin{align*}
+      \hat{r}_{12} &= -1 \hat{i} \\
+      \hat{r}_{13} &= -\cos \ang{60} \hat{i} - \sin \ang{60} \hat{j} = -\num{0,5} \hat{i} - \num{0,866}  \hat{j}
+    .\end{align*}
+    This means that the force on particle 1 from particle 2 and 3 is:
+    \begin{align*}
+      \Vec{F}_{12} &= \qty{8,99e9}{\N.\m^2\per\C^2} \cdot \frac{\qty{1,6e-19}{\C} \cdot \qty{3,2e-19}{\C}}{\left( \qty{0,2}{\m}  \right)^2} \cdot (\hat{-i}) \\
+      &= - \qty{1,15072e-24}{\N} \hat{i} \\
+      \Vec{F}_{13} &= \qty{8,99e9}{\N.\m^2\per\C^2} \cdot \frac{\qty{1,6e-19}{\C} \cdot \left( - \qty{3,2e-19}{\C} \right)}{\left( \qty{0,015}{\m}  \right)^2} \cdot \left( \num{-0,5} \hat{i} - \num{0,866} \hat{j} \right)  \\
+      &= -\qty{2,05e-24}{\N} \left( \num{-0,5} \hat{i} - \num{0,866} \hat{j} \right) \\
+      &= \qty{1,0229e-24}{\N} \hat{i} + \qty{1,772e-24}{\N} \hat{j}
+    .\end{align*}
+
+    Using the principle of superposition the total force on particle 1 is then:
+    \begin{equation*}
+      \Vec{F}_{1, \mathrm{net}} = \Vec{F}_{12} + \Vec{F}_{13} = \left( \qty{1,02e-24}{\N} - \qty{1,15e-24}{\N}  \right) \hat{i} + \qty{1,77e-24}{\N} \hat{j} = -\qty{0,13e-24}{\N} \, \hat{i} + \qty{1,77e-24}{\N} \hat{j}
+    .\end{equation*}
+  \end{derivation}
+
+  \finalresult{
+    \Vec{F}_{1, \mathrm{net}} = -\qty{0,13e-24}{\N} \, \hat{i} + \qty{1,77e-24}{\N} \hat{j}
+  }
+
+  \begin{problemwithimage}{h1a2}{2}
+    The figure on the right, gives the magnitude of the electric field inside and outside a sphere with a positive charge distributed uniformly throughout its volume.
+    The scale of the vertical axis is set by $E_s = \qty{10e7}{\N\per\C}$.
+
+    \begin{enumerate}
+      \item What is the charge on the sphere?
+      \item What is the field magnitude at $r = \qty{8,0}{\m}$?
+    \end{enumerate}
+  \end{problemwithimage}
+
+  \begin{givens}
+    E_s = \qty{10e7}{\N\per\C}  & Scale of vertical axis \\
+    R = \qty{2}{\cm} & Radius of sphere
+  \end{givens}
+
+  \begin{derivation}
+    As charge exists in the sphere the sphere itself must be insulating (no charge exists within a conducting sphere) from the figure we see that the radius of the sphere is \qty{2}{\cm} .
+    Just on the edge (or outside) of a uniformly charged sphere, the field will be as if the sphere was a point charge:
+    \begin{equation*}
+      E_s = \frac{1}{4\pi \epsilon_0} \frac{Q}{R^2}
+    .\end{equation*}
+    Solving for the charge $Q$ we obtain
+    \begin{equation*}
+      Q_s = 4 \pi \epsilon_0 R^2 E_s = 4\pi \cdot \qty{8,85e-12}{\C^2\per\N\m^2}  \cdot \left( \qty{2}{\cm}  \right)^2 \cdot \qty{10e7}{\N\per\C} = \qty{4,4e-7}{\C} 
+    .\end{equation*}
+    
+    At $r = \qty{8,0}{\m}$ we're outside of the sphere, where the E-field is:
+    \begin{equation*}
+      E(\qty{8,0}{\m})= \frac{1}{4\pi \epsilon_0} \frac{Q_s}{r^2}
+    .\end{equation*}
+    Plugging in all the known values we get:
+    \begin{equation*}
+      E (\qty{8,0}{\m} )= \frac{1}{4\pi \cdot \qty{8,85e-12}{\C^2\per\N\m^2} } \cdot \frac{\qty{4,4e-7}{\C}}{(\qty{8,0}{\m}) ^2} = \qty{61,8187}{\N\per\C} 
+    .\end{equation*}
+  \end{derivation}
+
+  \finalresult{
+  \begin{aligned}
+    Q_s &= \qty{4,4e-7}{\C} \\
+    E(\qty{8,0}{\m} ) &= \qty{61,8187}{\N\per\C} 
+  .\end{aligned}
+  }
+
+  \begin{problemwithimage}{h1a3}{3}
+    The figure on the right gives the electric potential $V(x)$ along a copper wire carrying a uniform current, from a point of higher potential, $V_s = \qty{12}{\micro\V}$ at $x = 0$ to a point of zero potential at $x_s = \qty{3}{\m}$.
+    The wire has a radius of \qty{2,20}{\mm}.
+    What is the current in the wire?
+
+    \textit{Hint}: Use the resistivity of the copper $\rho_{\mathrm{Cu}} = \qty{1,68e-8}{\ohm.\m} $
+  \end{problemwithimage}
+
+  \begin{givens}
+    V_s = \qty{12}{\micro\V}  & Potential at $x = 0$ \\
+    x_s = \qty{3}{\m} & Distance for $V = 0$ \\
+    r = \qty{2,20}{\mm} & Radius of wire \\
+    \rho_{\mathrm{cu}} = \qty{1,68e-8}{\ohm\m} & Resistivity of copper \\
+  \end{givens}
+  
+  \begin{derivation}
+    Resistivity is defined as:
+    \begin{equation*}
+      \rho = \frac{R A}{l}
+    \end{equation*}
+    where $R$ is resistance, $A$ is cross-sectional area and $l$ is length.
+    Solving this for the resistance $R$ we obtain:
+    \begin{equation*}
+      R = \frac{\rho_{\mathrm{cu}} x_s}{\pi \cdot r^2}
+    .\end{equation*}
+    Plugging in known values we get:
+    \begin{equation*}
+      R = \frac{\qty{1,68e-8}{\ohm\m} \cdot \qty{3}{\m}}{\pi \cdot (\qty{2,20}{\mm})^2} = \qty{3,3e-3}{\ohm} 
+    .\end{equation*}
+    Ohm's law states that the current is given by the ratio of the voltage difference and the resistance:
+    \begin{equation*}
+      I = \frac{U}{R}
+    .\end{equation*}
+    Which gives:
+    \begin{equation*}
+      I = \frac{V_s}{R} = \frac{\qty{12}{\micro\V}}{\qty{3,3e-3}{\ohm} } = \qty{3,64}{\milli\A} 
+    .\end{equation*}
+  \end{derivation}
+
+  \finalresult{I = \qty{3,64}{\milli\A}}
+\end{document}
