@@ -1,0 +1,63 @@
+\lecture{1}{26. Januar 2026}{Introduction}
+
+\begin{problem}{1.1a}
+  Show that
+  \begin{equation*}
+    \delta_{ij} \delta_{ij} = 3
+  .\end{equation*}
+\end{problem}
+
+\begin{derivation}
+  Expanding $\delta_{ij} \delta_{ij}$ we get
+  \begin{equation*}
+    \delta_{ij} \delta_{ij} = \delta_{11} \delta_{11} + \delta_{12} \delta_{12} + \delta_{13} \delta_{13} + \delta_{21} \delta_{21} + \delta_{22} \delta_{22} + \delta_{23} \delta_{23} + \delta_{31} \delta_{31} + \delta_{32} \delta_{32} + \delta_{33} \delta_{33}
+  .\end{equation*}
+  As $\delta_{11} = \delta_{22} = \delta_{33} = 1$ the above becomes:
+  \begin{equation*}
+    \delta_{ij} \delta_{ij} = 1 \cdot 1 + 1\cdot 1 + 1\cdot 1 = 3
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{
+\delta_{ij} \delta_{ij} = 3
+}
+
+\begin{problem}{1.1c}
+  Show that
+  \begin{equation*}
+    \alpha_{ij} b_{jk} = \alpha_{in} b_{nk}
+  .\end{equation*}
+\end{problem}
+
+\begin{derivation}
+  We expand by summing over the common index $j$:
+  \begin{equation*}
+    \alpha_{ij} b_{jk} = \sum_j \alpha_{ij} b_{jk} = \alpha_{i1} b_{1k} + \alpha_{21} b_{2k} + \alpha_{i3} b_{3k}
+  .\end{equation*}
+  Now we sum over $n$ instead:
+  \begin{equation*}
+    \alpha_{i1} b_{1k} + \alpha_{i2} b_{2k} + \alpha_{i3} b_{3k} = \sum_n \alpha_{in} b_{nk}
+  .\end{equation*}
+  Q.E.D.
+\end{derivation}
+
+\finalresult{\alpha_{ij} b_{jk} = \alpha_{in} b_{nk}}
+
+
+\begin{problem}{1.1e}
+  Show that
+  \begin{equation*}
+    \delta_{ij} C_{jkl} = C_{ikl}
+  .\end{equation*}
+\end{problem}
+
+\begin{derivation}
+  Expanding we get
+  \begin{align*}
+    \delta_{ij} C_{jkl} = \delta_{11} C_{1kl} + \delta_{22} C_{2kl} + \delta_{33} C_{3kl} = C_{ikl}
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\delta_{ij} C_{jkl} = C_{ikl}
+}
