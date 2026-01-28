@@ -67,7 +67,7 @@
   \end{answers}
   
 
-  \begin{problemwithimage}{h1a1}{1}
+  \begin{problemwithimage}{h1a1}{1A}
     Consider $q_1 = \qty{1,6e-19}{\C}$, $q_2 = \qty{3,2e-19}{\C}$, and $q_3 = \qty{-3,2e-19}{\C} $ with distance $R = \qty{0,02}{\m}$ and $\theta = \ang{60} $.
     What is the net electrostatic force on particle 1 from particles 2 and 3?
   \end{problemwithimage}
@@ -109,7 +109,7 @@
     \Vec{F}_{1, \mathrm{net}} = -\qty{0,13e-24}{\N} \, \hat{i} + \qty{1,77e-24}{\N} \hat{j}
   }
 
-  \begin{problemwithimage}{h1a2}{2}
+  \begin{problemwithimage}{h1a2}{2A}
     The figure on the right, gives the magnitude of the electric field inside and outside a sphere with a positive charge distributed uniformly throughout its volume.
     The scale of the vertical axis is set by $E_s = \qty{10e7}{\N\per\C}$.
 
@@ -152,7 +152,7 @@
   .\end{aligned}
   }
 
-  \begin{problemwithimage}{h1a3}{3}
+  \begin{problemwithimage}{h1a3}{3A}
     The figure on the right gives the electric potential $V(x)$ along a copper wire carrying a uniform current, from a point of higher potential, $V_s = \qty{12}{\micro\V}$ at $x = 0$ to a point of zero potential at $x_s = \qty{3}{\m}$.
     The wire has a radius of \qty{2,20}{\mm}.
     What is the current in the wire?
@@ -192,4 +192,170 @@
   \end{derivation}
 
   \finalresult{I = \qty{3,64}{\milli\A}}
+
+
+  \begin{quiz}
+    \begin{enumerate}
+      \item Resitivity is a temperature-independent quantity. True or False?
+      \item Kirchoff's current law states that the current flowing into a node (or a junction) must be equal to the current flowing out of it. True or False?
+      \item Kirchhoff's voltage law states that the sum of the voltage differences around any closed loop in a circuit must be zero. True or False?
+      \item The Earth is not an example of a reference voltage. True or False?
+      \item The ammeter must be placed in series with the element whose voltage is measured.
+    \end{enumerate}
+  \end{quiz}
+
+  \begin{answers}
+    \begin{enumerate}
+      \item False. Resistivity varies with temperature approximately according to $\rho - \rho_0 = \rho_0 \alpha (T - T_0)$ from a value $\rho_0$ at temperature $T_0$ to $\rho$ at temperature $T$.
+      \item True.
+      \item True.
+      \item False, the earth is an example of a reference voltage (commonly called ground or zero volts).
+      \item True, an ammeter must always be connected in series as it has a very small internal resistance meaning placing it in parallel short-circuits the circuit. 
+    \end{enumerate}
+  \end{answers}
+
+  \begin{problemwithimage}{h1b1}{1B}
+    Use KVL to determine the unknown voltages $V_1$ and $V_4$ in the circuit.
+    Known quantities in the circuit are $V_{S1} = \qty{12}{\V} , V_{S2} = \qty{-4}{\V}, V_2 = \qty{2}{\V}, V_3 = \qty{6}{\V},$ and $V_5 = \qty{12}{\V}$.
+  \end{problemwithimage}
+
+  \begin{givens}
+    V_{S1} = \qty{12}{\V}  & Voltage supplied by source $S1$ \\
+    V_{S2} = \qty{-4}{\V}  & Voltage supplied by source $S2$ \\
+    V_2 = \qty{2}{\V} & Voltage drop across resistor $R2$ \\
+    V_3 = \qty{6}{\V} & Voltage drop across resistor $R3$ \\
+    V_5 = \qty{12}{\V} & Voltage drop across resistor $R5$ \\
+  \end{givens}
+
+  \begin{derivation}
+    Using KVL we observe the closed loop containing source $S1$ and resistors $R1, R2,$ and $R3$.
+    KVL states that the sum of the voltage differences around this loop must be zero.
+    Hence,
+    \begin{equation*}
+      V_{S1} - V_1 - V_2 - V_3 = 0 \implies V_1 = V_{S1} - V_2 - V_3
+    .\end{equation*}
+    So
+    \begin{equation*}
+      V_1 = \qty{12}{\V} - \qty{2}{\V} - \qty{6}{\V}  = \qty{4}{\V}
+    .\end{equation*}
+    We now consider the loop containing source $S2$ and resistors $R2$ and $R4$ and use KVL to get
+    \begin{equation*}
+      V_{S2} - V_2 - V_4 = 0 \implies V_4 = V_{S2} - V_2
+    .\end{equation*}
+    So
+    \begin{equation*}
+      V_4 = \qty{-4}{\V}  - \qty{2}{\V}  = \qty{-6}{\V} 
+    .\end{equation*}
+  \end{derivation}
+
+  \finalresult{
+    \begin{aligned}
+      V_1 &= \qty{4}{\V}  \\
+      V_4 &= \qty{-6}{\V} 
+    .\end{aligned}
+  }
+
+  \begin{problemwithimage}{h12b}{2B}
+    Solve for the equivalent resistance $R_{\mathrm{eq}}$ of the whole circuit on the Figure on the right.
+  \end{problemwithimage}
+  
+  \begin{derivation}
+    For resistors in series the equivalent resistance is
+    \begin{equation*}
+      R_{\mathrm{eq}} = R_1 + R_2
+    .\end{equation*}
+    And for resistors in parallel their equivalent resistance is
+    \begin{equation*}
+      R_{\mathrm{eq}} = \frac{1}{\frac{1}{R_1} + \frac{1}{R_2}}
+    .\end{equation*}
+    
+    We start by considering the series resistors $R3$ and $R4$ and find their equivalent resistance as:
+    \begin{equation*}
+      R_{34} = R_3 + R_4 = 2R
+    .\end{equation*}
+
+    For the three paralell resistors $R34$, $R5$ and $R6$ we obatin
+    \begin{align*}
+      R_{3456} &= \frac{1}{\frac{1}{R_{34}} + \frac{1}{R_{5}} + \frac{1}{R_6}} \\
+               &= \frac{1}{\frac{1}{2R} + 2 \cdot \frac{1}{R}} \\
+               &= \frac{1}{\frac{5}{2R}} \\
+               &= \frac{2}{5} R
+    .\end{align*}
+    Now we are left with the three resistors $R1, R2$, and $R3456$ in series, which gives the total equivalent resistance:
+    \begin{equation*}
+      R_{\mathrm{eq}} = R_1 + R_2 + R_{3456} = 2R + \frac{2}{5} R = \num{2,4} R
+    .\end{equation*}
+  \end{derivation}
+
+  \finalresult{R_{\text{eq}} = \num{2,4} R}
+  
+
+  \begin{problemwithimage}{h1b3}{3B}
+    In the circuit on the figure the power absorbed by the \qty{15}{\ohm} resistor is \qty{15}{\W}. Find $R$.
+  \end{problemwithimage}
+
+  \begin{givens}
+    R_2 = \qty{15}{\ohm}  & Resistance of R2 \\
+    R_3 = \qty{4}{\ohm}  & Resistance of R3 \\
+    R_4 = \qty{6}{\ohm}  & Resistance of R4 \\
+    R_5 = \qty{4}{\ohm}  & Resistance of R5 \\
+    R_6 = \qty{4}{\ohm}  & Resistance of R6 \\
+    R_7 = \qty{24}{\ohm}  & Resistance of R7 \\
+  \end{givens}
+
+  \begin{derivation}
+    We use the formula for parallel resistors introduced in the last problem the equivalent resistance $R_{56}$ of resistors $R5$ and $R6$ is
+    \begin{equation*}
+      R_{56} = \frac{1}{\frac{1}{R_5} + \frac{1}{R_6}} = \frac{1}{\frac{1}{\qty{4}{\ohm} } + \frac{1}{\qty{4}{\ohm}}} = \qty{2}{\ohm} 
+    .\end{equation*}
+    Which means the equivalent resistance $R_{456}$ becomes:
+    \begin{equation*}
+      R_{456} = R_4 + R_{56} = \qty{2}{\ohm} + \qty{6}{\ohm} = \qty{8}{\ohm} 
+    .\end{equation*}
+    Now, we realize R7 is in parallel with the above equivalent resistance giving $R_{4567}$ as
+    \begin{equation*}
+      R_{4567} = \frac{1}{\frac{1}{R_{456}} + \frac{1}{R_7}} = \frac{1}{\frac{1}{\qty{8}{\ohm}} + \frac{1}{\qty{24}{\ohm}}} = \qty{6}{\ohm} 
+    .\end{equation*}
+    $R3$ is in series with this so $R_{34567}$ is
+    \begin{equation*}
+      R_{34567} = R_3 + R_{4567} = \qty{4}{\ohm} + \qty{6}{\ohm} = \qty{10}{\ohm}  
+    .\end{equation*}
+    Which is in parallel with $R2$ giving $R_{234567}$ as:
+    \begin{equation*}
+      R_{234567} = \frac{1}{\frac{1}{R_2} + \frac{1}{R_{34567}}} = \frac{1}{\frac{1}{\qty{10}{\ohm} + \frac{1}{\qty{15}{\ohm}}}} = \qty{6}{\ohm} 
+    .\end{equation*}
+    So the total equivalent resistance of the circuit is:
+    \begin{equation*}
+      R_{\mathrm{eq}} = R_1 + R_{234567} = R_1 + \qty{6}{\ohm} 
+    .\end{equation*}
+
+    The voltage drop across R2 can be found using the power law as:
+    \begin{equation*}
+      P_2 = \frac{U_2^2}{R_2} \implies U_2 = \sqrt{P_2R_2} = \sqrt{\qty{15}{\ohm} \cdot \qty{15}{\W}} = \qty{15}{\V} 
+    .\end{equation*}
+    Using KVL this means that the voltage drop across $R1$ is
+    \begin{equation*}
+      V_s - V_1 - V_2 \implies V_1 = V_s - V_2 = \qty{25}{\V}  - \qty{15}{\V}  = \qty{10}{\V} 
+    .\end{equation*}
+    This means the current over $R1$ is
+    \begin{equation*}
+      I_1 = \frac{U_1}{R_1} = \frac{\qty{10}{\V}}{R_1}
+    .\end{equation*}
+
+    The current supplied by the source is
+    \begin{equation*}
+      I = \frac{U_s}{R_{\text{eq}}} = \frac{\qty{25}{\V} }{R_1 + \qty{6}{\ohm}} 
+    .\end{equation*}
+
+    From KCL the current at the source must equal the current at $R1$, hence $I = I_1$ so
+    \begin{align*}
+      \frac{\qty{10}{\V}}{R_1} &= \frac{\qty{25}{\V}}{ R_1 + \qty{6}{\ohm} } \\
+      \frac{R_1}{\qty{10}{\V}} &= \frac{R_1}{\qty{25}{\V} } + \frac{\qty{6}{\ohm} }{\qty{25}{\C} }\\
+      \frac{3}{\qty{50}{\V} } R_1 &= \frac{\qty{6}{\ohm} }{\qty{25}{\V} } \\
+      R_1 &= \frac{\qty{50}{\V} }{3} \cdot \frac{\qty{6}{\ohm} }{\qty{25}{\V} } \\
+      R_1 &= \qty{4}{\ohm} 
+    .\end{align*}
+  \end{derivation}
+
+  \finalresult{R_1 = \qty{4}{\ohm} }
 \end{document}

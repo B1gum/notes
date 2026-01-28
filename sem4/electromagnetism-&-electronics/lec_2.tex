@@ -1,0 +1,169 @@
+\section{Fundamentals of Electric Circuits}
+
+\subsection{Current, Voltage, and Resistance}
+
+\subsubsection{Electric Current}
+\begin{equation*}
+  I = \frac{\mathrm{d}q}{\mathrm{d}t} 
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{I}
+\InsertSym{q}
+\InsertSym{t}
+\end{symbols}
+
+\subsubsection{Electric Voltage}
+\begin{equation*}
+  V = \frac{\mathrm{d}W}{\mathrm{d}Q} 
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{V}
+\InsertSym{W}
+\InsertSym{Q}
+\end{symbols}
+
+\subsubsection{Electric Resistance}
+\begin{equation*}
+  R = \frac{V}{I}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{R}
+\InsertSym{V}
+\InsertSym{I}
+\end{symbols}
+
+\subsubsection{Current Density}
+\begin{equation*}
+  J = \frac{I}{A}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{J}
+\InsertSym{I}
+\InsertSym{Acs}
+\end{symbols}
+
+\subsubsection{Resistivity}
+\begin{equation*}
+  \rho = \frac{E}{J}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{rho}
+\InsertSym{Estr}
+\InsertSym{J}
+\end{symbols}
+
+\subsubsection{Conductivity}
+\begin{equation*}
+  \sigma = \frac{1}{\rho}
+.\end{equation*}
+\begin{symbols}
+\InsertSym{sigmacon}
+\InsertSym{rho}
+\end{symbols}
+
+\subsubsection{Resistance From Resistivity}
+\begin{equation*}
+  R = \frac{\rho L}{A}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{R}
+\InsertSym{rho}
+\InsertSym{Llength}
+\InsertSym{Acs}
+\end{symbols}
+
+\subsubsection{Ohm's Law}
+\begin{equation*}
+  I \propto V
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{I}
+\InsertSym{V}
+\end{symbols}
+
+\subsubsection{Electric Power}
+\begin{equation*}
+  P = VI = I^2 R = \frac{V^2}{R}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{P}
+\InsertSym{V}
+\InsertSym{I}
+\InsertSym{R}
+\end{symbols}
+
+
+\subsection{Kirchoff's Circuit Laws}
+
+\subsubsection{Kirchoff's Current Law (KCL)}
+\begin{equation*}
+  \sum_{n = 1}^{N} I_n = 0
+.\end{equation*}
+
+\begin{symbols}
+  \sym{$I_n$}{Current at node $n$}{\unit{\A}}
+  \sym{$N$}{Amount of nodes}{---}
+\end{symbols}
+
+\subsubsection{Kirchoff's Voltage Law (KVL)}
+\begin{equation*}
+  \sum_{n = 1}^{N} V_n = 0
+.\end{equation*}
+
+\begin{symbols}
+  \sym{$V_n$}{Voltage difference between two points}{\unit{\V}}
+  \sym{$N$}{Amount of points}{\unit{\N}}
+\end{symbols}
+
+\subsubsection{Resistors in Series}
+\begin{equation*}
+  R_{\mathrm{EQ}} = \sum_{n = 1}^{N} R_n
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{Req}
+\sym{$R_n$}{Resistance of resistor $n$}{\unit{\ohm}}
+\sym{$N$}{Amount of resistors in series}{---}
+\end{symbols}
+
+\subsubsection{Voltage Divider Rule}
+\begin{equation*}
+  V_n = \frac{R_n}{\sum_{n = 1}^{N} R_n} V_s
+.\end{equation*}
+
+\begin{symbols}
+  \sym{$V_n$}{Voltage difference over resistor $n$}{\unit{\V}}
+  \sym{$R_n$}{Resistance over resistor $n$}{\unit{\ohm}}
+  \InsertSym{Vs}
+\end{symbols}
+
+\subsubsection{Resistors in Parallel}
+\begin{equation*}
+  R_{\mathrm{EQ}} = \frac{1}{\sum_{n = 1}^{N} \frac{1}{R_n}}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{Req}
+\sym{$R_n$}{Resistance of resistor $n$}{\unit{\ohm}}
+\sym{$N$}{Amount of resistors in parallel}{---}
+\end{symbols}
+
+\subsubsection{Current Divider Rule}
+\begin{equation*}
+  I_n = \frac{\frac{1}{R_n}}{\sum_{n = 1}^{N} \frac{1}{R_n}} I_s
+.\end{equation*}
+
+\begin{symbols}
+  \sym{$I_n$}{Current difference over resistor $n$}{\unit{\A}}
+  \sym{$R_n$}{Resistance over resistor $n$}{\unit{\ohm}}
+  \InsertSym{Is}
+\end{symbols}
+
