@@ -27,7 +27,8 @@
 \usepackage[dvipsnames]{xcolor}
 \definecolor{AUblue}{RGB}{0,61,115}
 \definecolor{AUblueDark}{RGB}{0,37,70}
-
+\definecolor{AUred}{RGB}{226,0,26}
+\definecolor{AUyellow}{RGB}{250,187,0}
 
 \usepackage{graphicx}
 \graphicspath{{./figures/}}
@@ -144,7 +145,7 @@
 
 \newcommand{\AUheading}[1]{%
   \par\vspace{.4\baselineskip}%
-  {\sffamily\bfseries\color{AUblueDark}#1\par}%
+  {\sffamily\bfseries\color{AUred}#1\par}%
   \nobreak%
 }
 
@@ -182,8 +183,12 @@
 \newcommand{\finalresult}[1]{%
   \vspace{.2\baselineskip}%
   \begin{equation}
-    {\color{AUblueDark}\boxed{\displaystyle #1}}
-    \tag*{\textsc{\textcolor{AUblueDark}{Result}}}
+    {\color{AUred}%
+      \fcolorbox{AUred}{AUyellow}{%
+        $\displaystyle #1$%
+      }%
+    }
+    \tag*{\textsc{\textcolor{AUred}{Result}}}
   \end{equation}
   \newpage
 }

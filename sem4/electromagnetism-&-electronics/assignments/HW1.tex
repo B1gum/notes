@@ -3,7 +3,7 @@
 \newcommand{\CourseNumber}{290231U007}
 \input{./preamble.tex}
 \begin{document}
-  \input{../titlepage.tex}
+  \input{./titlepage.tex}
   \newpage
 
   \begin{quiz}
@@ -25,6 +25,7 @@
     \end{enumerate}
   \end{quiz}
 
+{\color{AUred}
   \begin{answers}
     \begin{enumerate}
       \item Following Benjamin Franklins convention, glass becomes positively charged and amber becomes negatively charged, when charged.
@@ -65,6 +66,7 @@
         \end{enumerate}
     \end{enumerate}
   \end{answers}
+}
   
 
   \begin{problemwithimage}{h1a1}{1A}
@@ -72,6 +74,7 @@
     What is the net electrostatic force on particle 1 from particles 2 and 3?
   \end{problemwithimage}
 
+  {\color{AUred}
   \begin{givens}
     q_1 = \qty{1,6e-19}{\C} & Charge of particle 1 \\
     q_2 = \qty{3,2e-19}{\C} & Charge of particle 2 \\
@@ -104,6 +107,7 @@
       \Vec{F}_{1, \mathrm{net}} = \Vec{F}_{12} + \Vec{F}_{13} = \left( \qty{1,02e-24}{\N} - \qty{1,15e-24}{\N}  \right) \hat{i} + \qty{1,77e-24}{\N} \hat{j} = -\qty{0,13e-24}{\N} \, \hat{i} + \qty{1,77e-24}{\N} \hat{j}
     .\end{equation*}
   \end{derivation}
+}
 
   \finalresult{
     \Vec{F}_{1, \mathrm{net}} = -\qty{0,13e-24}{\N} \, \hat{i} + \qty{1,77e-24}{\N} \hat{j}
@@ -119,6 +123,7 @@
     \end{enumerate}
   \end{problemwithimage}
 
+  {\color{AUred}
   \begin{givens}
     E_s = \qty{10e7}{\N\per\C}  & Scale of vertical axis \\
     R = \qty{2}{\cm} & Radius of sphere
@@ -144,6 +149,7 @@
       E (\qty{8,0}{\m} )= \frac{1}{4\pi \cdot \qty{8,85e-12}{\C^2\per\N\m^2} } \cdot \frac{\qty{4,4e-7}{\C}}{(\qty{8,0}{\m}) ^2} = \qty{61,8187}{\N\per\C} 
     .\end{equation*}
   \end{derivation}
+}
 
   \finalresult{
   \begin{aligned}
@@ -160,6 +166,7 @@
     \textit{Hint}: Use the resistivity of the copper $\rho_{\mathrm{Cu}} = \qty{1,68e-8}{\ohm.\m} $
   \end{problemwithimage}
 
+  {\color{AUred}
   \begin{givens}
     V_s = \qty{12}{\micro\V}  & Potential at $x = 0$ \\
     x_s = \qty{3}{\m} & Distance for $V = 0$ \\
@@ -190,6 +197,7 @@
       I = \frac{V_s}{R} = \frac{\qty{12}{\micro\V}}{\qty{3,3e-3}{\ohm} } = \qty{3,64}{\milli\A} 
     .\end{equation*}
   \end{derivation}
+}
 
   \finalresult{I = \qty{3,64}{\milli\A}}
 
@@ -204,6 +212,7 @@
     \end{enumerate}
   \end{quiz}
 
+  {\color{AUred}
   \begin{answers}
     \begin{enumerate}
       \item False. Resistivity varies with temperature approximately according to $\rho - \rho_0 = \rho_0 \alpha (T - T_0)$ from a value $\rho_0$ at temperature $T_0$ to $\rho$ at temperature $T$.
@@ -213,12 +222,14 @@
       \item True, an ammeter must always be connected in series as it has a very small internal resistance meaning placing it in parallel short-circuits the circuit. 
     \end{enumerate}
   \end{answers}
+}
 
   \begin{problemwithimage}{h1b1}{1B}
     Use KVL to determine the unknown voltages $V_1$ and $V_4$ in the circuit.
     Known quantities in the circuit are $V_{S1} = \qty{12}{\V} , V_{S2} = \qty{-4}{\V}, V_2 = \qty{2}{\V}, V_3 = \qty{6}{\V},$ and $V_5 = \qty{12}{\V}$.
   \end{problemwithimage}
 
+  {\color{AUred}
   \begin{givens}
     V_{S1} = \qty{12}{\V}  & Voltage supplied by source $S1$ \\
     V_{S2} = \qty{-4}{\V}  & Voltage supplied by source $S2$ \\
@@ -247,6 +258,7 @@
       V_4 = \qty{-4}{\V}  - \qty{2}{\V}  = \qty{-6}{\V} 
     .\end{equation*}
   \end{derivation}
+}
 
   \finalresult{
     \begin{aligned}
@@ -259,6 +271,7 @@
     Solve for the equivalent resistance $R_{\mathrm{eq}}$ of the whole circuit on the Figure on the right.
   \end{problemwithimage}
   
+  {\color{AUred}
   \begin{derivation}
     For resistors in series the equivalent resistance is
     \begin{equation*}
@@ -286,6 +299,7 @@
       R_{\mathrm{eq}} = R_1 + R_2 + R_{3456} = 2R + \frac{2}{5} R = \num{2,4} R
     .\end{equation*}
   \end{derivation}
+}
 
   \finalresult{R_{\text{eq}} = \num{2,4} R}
   
@@ -294,6 +308,7 @@
     In the circuit on the figure the power absorbed by the \qty{15}{\ohm} resistor is \qty{15}{\W}. Find $R$.
   \end{problemwithimage}
 
+  {\color{AUred}
   \begin{givens}
     R_2 = \qty{15}{\ohm}  & Resistance of R2 \\
     R_3 = \qty{4}{\ohm}  & Resistance of R3 \\
@@ -356,6 +371,7 @@
       R_1 &= \qty{4}{\ohm} 
     .\end{align*}
   \end{derivation}
+}
 
   \finalresult{R_1 = \qty{4}{\ohm} }
 \end{document}

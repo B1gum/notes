@@ -1,0 +1,35 @@
+\begin{titlepage}
+\thispagestyle{empty}
+\onehalfspacing
+
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[AUblue] ([xshift=-8mm]current page.west |- current page.north)
+       rectangle ([xshift=7mm]current page.west |- current page.south);
+\end{tikzpicture}
+
+\vspace*{8mm}
+{\large\bfseries \Dept}\\[2pt]
+{\normalsize \Uni}
+\hfill
+
+\vspace{28mm}
+{\fontsize{30pt}{32pt}\selectfont\bfseries \ReportTitle\par}
+\vspace{12mm}
+{\color{AUblueDark}\rule{\linewidth}{1.5pt}}
+
+\vspace{10mm}
+\begin{tabular}{@{}ll}
+  \textbf{Author:}     & {\color{AUred} \AuthorName} \\
+  \textbf{Student ID:} & {\color{AUred} \StudentID} \\
+\textbf{Course:}     & \Course \\
+\textbf{Date:}       & \TheDate \\
+\end{tabular}
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=south east, inner sep=0] at
+    ($ (current page.south east) + (-20mm, 20mm) $)
+    {\includegraphics[width=42mm]{\Logo}};
+\end{tikzpicture}
+
+\vfill
+\end{titlepage}

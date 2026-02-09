@@ -1,0 +1,206 @@
+\lecture{2}{9. Februar 2026}{Probability}
+
+\begin{problemwithimage}{e2_1}{2.1}
+  A manufacturer of small motors is concerned with three major types of defects.
+  If $A$ is the event that the shaft size is too large, $B$ is the event that the windings are improper, and $C$ is the event that the electrical connections are unsatisfactory, express in words what events are represented by the following regions of the Venn diagram in the figure:
+  (a) region 5, (b) regions 4 and 6 together, (c) regions 7 and 8 together, (d) regions 1, 2, 3 and 5 together
+\end{problemwithimage}
+
+\begin{derivation}
+  \begin{enumerate}[label=(\alph*)]
+    \item Only improper windings.
+    \item Components with unsatisfactory electrical connections only and components with both unsatisfactory electrical connections and too large shaft size.
+    \item Components with too large shaft size as well as components without defects.
+    \item All components with improper windings.
+  \end{enumerate}
+\end{derivation}
+
+\begin{problem}{2.2}
+  Describe the sample space for Exercise 1, Lecture 1.
+\end{problem}
+
+\begin{derivation}
+  Exercise 1, Lecture 1 is:
+  \textit{Suppose you are interested in the speed of cars passing by a certain point on a certain road within a specific hour. To get information about that, you are measuring the speed of 3 cars passing by during that hour. Identify the variable, population and sample.}
+  Hence
+  \begin{equation*}
+    \mathcal{S} = \left\{ (x,y,z) | 0 \leq x, 0 \leq y, 0 \leq z \right\}
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{\mathcal{S} = \left\{ (x,y,z) | 0 \leq x, 0 \leq y, 0 \leq z \right\}}
+
+\begin{problem}{2.3}
+  Describe the sample space for Exercise 2, Lecture 1.
+\end{problem}
+
+\begin{derivation}
+  Exercise 2, Lecture 1 is:
+  \textit{For ceiling fans to rotate effectively, the bending angle of the individual paddles of the fan must remain between tight limits. Each fan has two paddles. From a monthly production (in some company), 25 fans are selected and the angles are measured. The purpose of the investigation is to find out about fans working properly or not. Identify the variable, population, and sample}.
+  Hence
+  \begin{equation*}
+    \mathcal{S} = \left\{ (x_i, y_i) | 0 \leq x_i \leq 2\pi, 0 \leq y_i \leq 2\pi, 1 \leq i \leq 25 \right\}
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{\mathcal{S} = \left\{ (x_i, y_i) | 0 \leq x_i \leq 2\pi, 0 \leq y_i \leq 2\pi, 1 \leq i \leq 25 \right\}}
+
+
+\begin{problem}{2.4}
+  Consider the experiment of tossing a well-balanced die twice (all outcomes are equally probable).
+  What is the probability that the sum is (a) 7, (b) 11 and (c) 7 or 11?
+\end{problem}
+
+\begin{derivation}
+  The sample space in all three cases consists of 36 equally probable outcomes each corresponding to a specific configuration of pips on each die.
+  \begin{enumerate}[label=(\alph*)]
+    \item In this case the ``desired'' outcomes are either of $(6,1), (5,2), (4,3), (3,4), (2,5), (1,6)$.
+      This means there are 6 ``desired'' outcomes out of 36 total outcomes meaning the probability of getting exactly 7 pips in total is $P(7) = 6 / 36 = 1 / 6$.
+    \item In this case the ``desired'' outcomes are $(6,5), (5,6)$ meaning $P(11) = 2 / 36 = 1 / 18$ outcomes are ``desired''.
+    \item As there is no overlap between the outcomes which yield 7 or 11 eyes the chances of getting either can simply be summed as $P(7 \text{ or } 11) = 1 / 6 + 1 / 18 = 2 / 9$.
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &\mathrm{(a)} & P(7) &= \frac{1}{6} \\
+  &(\mathrm{b}) & P(11) &= \frac{1}{18} \\
+  &(\mathrm{c}) & P(7 \text{ or } 11) &= \frac{2}{9}
+.\end{aligned}
+}
+
+\begin{problem}{2.5}
+  Suppose a car rental agency has 31 cars where 19 are type A, 12 are type B and 4 cars are selected at random (all outcomes are equally probable).
+  What is the probability that 2 of each type are selected
+\end{problem}
+
+\begin{derivation}
+  The number of possible choices of 4 random cars out of the 31 is
+  \begin{equation*}
+    \binom{31}{4} = 31465
+  .\end{equation*}
+  This means that the probability of making any specific selection is
+  \begin{equation*}
+    \frac{1}{\binom{31}{4}} = \frac{1}{31465}
+  .\end{equation*}
+  The number of possibilities of selecting two cars of type $A$ of the 19 possible is
+  \begin{equation*}
+    \binom{19}{2} = 171
+  .\end{equation*}
+  And the number of possibilities of selecting two cars of type $B$ of the 12 possible are
+  \begin{equation*}
+    \binom{12}{2} = 66
+  .\end{equation*}
+  This means the total amount of combinations of 2 type $B$ and two type $A$ cars is
+  \begin{equation*}
+    \binom{19}{2} \binom{12}{2} = 11286
+  .\end{equation*}
+  Now the probability of selecting two type $A$ and two type $B$ cars is simply the amount of configurations fulfilling this out of the total amount of combinations:
+  \begin{equation*}
+    P = \frac{\binom{19}{2} \binom{12}{2}}{\binom{31}{4}} = \frac{11286}{31465} \approx \num{0,359} 
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{P = \frac{\binom{19}{2} \binom{12}{2}}{\binom{31}{4}} \approx \num{0,359} }
+
+\begin{problem}{2.6}
+  Let $P(A) = \num{0,60}$, $P(B) = \num{0,40}$, and $P(A \cap B) = \num{0,24}$.
+  Show that (a) $P(A|B) = P(A)$ and (b) $P(A | \overline{B}) = P(A)$.
+\end{problem}
+
+\begin{derivation}
+  We have the general result that $P(A|B)$ is given by
+  \begin{equation*}
+    P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{\num{0,24}}{\num{0,40}} = \num{0,60}
+  .\end{equation*}
+  
+  For $P(A | \overline{B})$ we have that $(A \cap \overline{B}) \cup (A \cap B) = A$. Since $A \cap \overline{B}$ and $A \cap B$ are mutually exclusive we have
+  \begin{equation*}
+    P (A) = P(A \cap \overline{B}) + P(A \cap B)
+  .\end{equation*}
+  From exercise 2.6 we have
+  \begin{equation*}
+    P(A \cap B) = P(A) P(B) 
+  .\end{equation*}
+  and hence it follows that
+  \begin{align*}
+    P(A| \overline{B}) &= \frac{P(A \cap \overline{B})}{P(\overline{B})} \\
+    &= \frac{P(A) - P(A \cap B)}{1 - P(B)} \\
+    &= \frac{P(A) - P(A)P(B)}{1 - P(B)} \\
+    &= \frac{P(A) \left( 1 - P(B) \right)}{1-P(B)} \\
+    &= P(A)
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &(\mathrm{a}) & P(A|B) &= \num{0,60}  \\
+  &(\mathrm{b}) & P(A|\overline{B}) &= P(A)
+.\end{aligned}
+}
+
+\begin{problem}{2.7}
+  Suppose a car dealer has 30 cars where 10 are of type $A$, 20 are of type $B$, 2 of the cars of type $A$ are expensive and 4 of the cars of type $B$ are expensive. 
+  Find the probability that a randomly selected expensive car belongs to type $A$?
+\end{problem}
+
+\begin{derivation}
+  We denote by $P(A)$ the chance that a given car is type $A$, $P(B)$ the chance that a given car is type $B$ and $P(E)$ the chance that a given car is expensive.
+  \begin{equation*}
+    P(A) = \frac{1}{3} \quad P(B) = \frac{2}{3} \quad P(E) = \frac{1}{5}
+  .\end{equation*}
+  We have
+  \begin{equation*}
+    P(A \cap E) = \frac{2}{30} = \frac{1}{15}
+  .\end{equation*}
+  So we get:
+  \begin{equation*}
+    P(A|E) = \frac{P(A \cap E)}{P(E)} = \frac{\frac{1}{15}}{\frac{1}{5}} = \frac{1}{3}
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{P(A |E) = \frac{1}{3}}
+
+\begin{problem}{2.8}
+  Suppose that 3 events $A$, $B$, and $C$ are mutually independent (all possible pairs of these events are independent).
+  Suppose that $P (A) = \num{0,5}$, $P (C) = \num{0,3}$ and $P ( A \cap B ) = \num{0,1} $.
+  Find $P (B)$, $P (B \cap C)$ and $P (A \cap C)$.
+\end{problem}
+
+\begin{derivation}
+  As the events are mutually exclusive we have:
+  \begin{align*}
+    P(A \cap B) &= P(A)P(B) \\
+    P(A \cap C) &= P(A) P(C) \\
+    P(B \cap C) &= P(B)P(C)
+  .\end{align*}
+  So $P(B)$ is
+  \begin{align*}
+    P(B) P(A) &= P(A \cap B) \\
+    P(B) &= \frac{A \cap B}{P(A)}\\
+    &= \frac{\num{0,1}}{\num{0,5} } \\
+    &= \num{0,2}
+  .\end{align*}
+  $P(B \cap C)$ is
+  \begin{align*}
+    P(B \cap C) &= P(B)P(C) \\
+    &= \num{0,2} \cdot \num{0,3} \\
+    &= \num{0,06} 
+  .\end{align*}
+  And $P(A \cap C)$ is
+  \begin{align*}
+    P(A \cap C) &= P(A) P(C) \\
+    &= \num{0,5} \cdot \num{0,3}  \\
+    &= \num{0,15} 
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+  \begin{aligned}
+    P(B) &= \num{0,2}  \\
+    P(B \cap C) &= \num{0,06}  \\
+    P(A \cap C) &= \num{0,15}
+  .\end{aligned}
+}
+
+
