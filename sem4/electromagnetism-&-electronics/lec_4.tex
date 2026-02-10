@@ -1,0 +1,244 @@
+\lecture{4}{9. Februar 2026}{Capacitors \& Inductors}
+
+\subsection{Capacitors}
+
+\subsubsection{Capacitance}
+\begin{equation*}
+  C = \frac{q}{V}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{C}
+\InsertSym{q}
+\InsertSym{V}
+\end{symbols}
+
+\subsubsection{Capacitance of a Parallel-Plate Capacitor}
+\begin{equation*}
+  C = \epsilon_0 \frac{A}{d}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{C}
+\InsertSym{percon}
+\InsertSym{Acs}
+\InsertSym{d}
+\end{symbols}
+
+\subsubsection{I-V Relation for an Ideal Capacitor}
+\begin{equation*}
+  I_C (t) = C \frac{\mathrm{d}V_C (t)}{\mathrm{d}t} \iff V_C (t) = \frac{1}{C} \int_{-\infty}^{t} I_C (t') \, \mathrm{d}t'
+.\end{equation*}
+
+\begin{symbols}
+\sym{$I_C$}{Current through capacitor}{\unit{\A}}
+\sym{$V_C$}{Voltage over capacitor}{\unit{\V}}
+\InsertSym{C}
+\InsertSym{t}
+\end{symbols}
+
+\subsubsection{Capacitance of a Cylindrical Capacitor}
+\begin{equation*}
+  C = 2 \pi \epsilon_0 \frac{L}{\ln \frac{b}{a}}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{C}
+\InsertSym{percon}
+\InsertSym{Llength}
+\sym{$a$}{Radius of the inner post}{\unit{\m}}
+\sym{$b$}{Radius of the outer post}{\unit{\m}}
+\end{symbols}
+
+\subsubsection{Capacitance of a Cylindrical Capacitor}
+\begin{equation*}
+  C = 4 \pi \epsilon_0 \frac{ab}{b-a}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{C}
+\InsertSym{percon}
+\sym{$a$}{Radius of the inner sphere}{\unit{\m}}
+\sym{$b$}{Radius of the outer sphere}{\unit{\m}}
+\end{symbols}
+
+
+\subsubsection{Parallel Capacitance}
+\begin{equation*}
+  C_{\mathrm{eq}} = \sum_{i = 1}^{n} C_i
+.\end{equation*}
+
+\begin{symbols}
+  \sym{$n$}{Number of capacitors}{---}
+  \sym{$C_{eq}$}{Equivalent capacitance}{\unit{\F}}
+  \sym{$C_i$}{Capacitance of capacitor $i$}{\unit{\F}}
+\end{symbols}
+
+\subsubsection{Capacitors in Series}
+\begin{equation*}
+  \frac{1}{C_{\mathrm{eq}}} = \sum_{i = 1}^{n} \frac{1}{C_i}
+.\end{equation*}
+
+\begin{symbols}
+  \sym{$n$}{Number of capacitors}{---}
+  \sym{$C_{eq}$}{Equivalent capacitance}{\unit{\F}}
+  \sym{$C_i$}{Capacitance of capacitor $i$}{\unit{\F}}
+\end{symbols}
+
+\subsubsection{Potential Energy in a Capacitor}
+\begin{equation*}
+  U_E = \frac{1}{2} C V^2
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{UE}
+\InsertSym{C}
+\InsertSym{V}
+\end{symbols}
+
+\subsection{Inductors}
+\subsubsection{Inductance}
+\begin{equation*}
+  L = n \frac{\Phi_B}{I}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{Lind}
+\InsertSym{nwind}
+\InsertSym{PhiB}
+\InsertSym{I}
+\end{symbols}
+
+\subsubsection{I-V Relation for an Ideal Inductor}
+\begin{equation*}
+  V_L (t) = L \frac{\mathrm{d}I_L(t)}{\mathrm{d}t} \iff I_L (t) = \frac{1}{L} \int_{t_0}^{t} V_L (t') \, \mathrm{d}t' + I_0
+.\end{equation*}
+
+
+\begin{symbols}
+\sym{$I_L$}{Current through inductor}{\unit{\A}}
+\sym{$V_L$}{Voltage over inductor}{\unit{\V}}
+\InsertSym{Lind}
+\InsertSym{t}
+\end{symbols}
+
+
+\subsubsection{Magnetic Field of an Inductor}
+\begin{equation*}
+  \Vec{B} = \mu_0 I n
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{Bvec}
+\InsertSym{magper}
+\InsertSym{I}
+\InsertSym{nwind}
+\end{symbols}
+
+\subsubsection{Inductors in Series}
+\begin{equation*}
+  L_{\mathrm{eq}} = \sum_{i = 1}^{n} L_i
+.\end{equation*}
+
+\begin{symbols}
+  \sym{$n$}{Number of inductors}{---}
+  \sym{$L_{eq}$}{Equivalent Inductance}{\unit{\H}}
+  \sym{$L_i$}{Inductance of inductor $i$}{\unit{\H}}
+\end{symbols}
+
+\subsubsection{Parallel Inductors}
+\begin{equation*}
+  \frac{1}{L_{\mathrm{eq}}} = \sum_{i = 1}^{n} \frac{1}{L_i}
+.\end{equation*}
+
+\begin{symbols}
+  \sym{$n$}{Number of inductors}{---}
+  \sym{$L_{eq}$}{Equivalent Inductance}{\unit{\H}}
+  \sym{$L_i$}{Inductance of inductor $i$}{\unit{\H}}
+\end{symbols}
+
+\subsubsection{Energy Stored in an Inductor}
+\begin{equation*}
+  U_L = \frac{1}{2} L I^2
+.\end{equation*}
+\begin{symbols}
+\sym{$U_L$}{Potential energy stored in inductor}{\unit{\J}}
+\InsertSym{Llength}
+\InsertSym{I}
+\end{symbols}
+
+\subsubsection{Energy Density in an Inductor}
+\begin{equation*}
+  u_L = \frac{\Vec{B}}{2 \mu_0}
+.\end{equation*}
+
+\begin{symbols}
+\sym{$u_L$}{Energy density of inductor}{\unit{\J\per\m^3}}
+\InsertSym{Bvec}
+\InsertSym{magper}
+\end{symbols}
+
+\subsection{RC and RL Circuits in the DC Regime}
+
+\subsubsection{Charge in a (Charging) Capacitor as a Function of Time}
+\begin{equation*}
+  q(t) = C V_s \left( 1 - e^{- \frac{t}{RC}} \right)
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{q}
+\InsertSym{C}
+\InsertSym{Vs}
+\InsertSym{t}
+\InsertSym{R}
+\InsertSym{C}
+\end{symbols}
+
+\subsubsection{Current in a (Charging) Capacitor as a Function of Time}
+\begin{equation*}
+  I_C(t) = \frac{V_s}{R} e^{- \frac{t}{RC}}
+.\end{equation*}
+
+\begin{symbols}
+\sym{$I_C$}{Current through capacitor}{\unit{\A}}
+\InsertSym{C}
+\InsertSym{Vs}
+\InsertSym{t}
+\InsertSym{R}
+\InsertSym{C}
+\end{symbols}
+
+\subsubsection{Capacitive Time Constant}
+\begin{equation*}
+  \tau_C = RC
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{tauC}
+\InsertSym{R}
+\InsertSym{C}
+\end{symbols}
+
+\subsubsection{Inductive Time Constant}
+\begin{equation*}
+  \tau_L = \frac{L}{R}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{tauL}
+\InsertSym{Lind}
+\InsertSym{R}
+\end{symbols}
+
+\subsubsection{Current in an Inductor}
+\begin{equation*}
+  I = \frac{V_s}{R} \left( 1 - e^{- \frac{t}{\tau_L}} \right)
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{I}
+\InsertSym{Vs}
+\InsertSym{R}
+\InsertSym{t}
+\InsertSym{tauL}
+\end{symbols}

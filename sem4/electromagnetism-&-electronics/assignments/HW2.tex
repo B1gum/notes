@@ -1,0 +1,179 @@
+\newcommand{\NoteType}{Assignment 2}
+\newcommand{\CourseName}{Electromagnetism \& Electronics}
+\newcommand{\CourseNumber}{290231U007}
+\input{./preamble.tex}
+\begin{document}
+  \input{./titlepage.tex}
+  \newpage
+
+  \begin{problem}{1A}
+    A parallel-plate air-filled capacitor having area \qty{40}{\cm^2} and plate spacing \qty{1,0}{\mm} is charged to a potential difference of \qty{500}{\V}.
+    Find:
+    \begin{enumerate}[label=(\alph*)]
+      \item the capacitance,
+      \item the magnitude of the charge on each plate,
+      \item the stored energy,
+      \item the electric field between the plates, and
+      \item the energy density between the plates.
+    \end{enumerate}
+  \end{problem}
+
+  {\color{AUred}
+  \begin{assumptions}
+    \item The air can be modelled as a vacuum ($\kappa = \num{1,00054} \approx1$)
+  \end{assumptions}
+
+  \begin{givens}
+    A = \qty{40}{\cm^2}  & Area of capacitor plates \\
+    d = \qty{1,0}{\mm} & Plate spacing \\
+    V = \qty{500}{\V} & Potential difference
+  \end{givens}
+
+  \begin{derivation}
+    \begin{enumerate}[label=(\alph*)]
+    \item The capacitance of a parallel-plate capacitor is
+      \begin{equation*}
+        C = \epsilon_0 \frac{A}{d}
+      .\end{equation*}
+      Plugging in known values we get:
+      \begin{equation*}
+        C = \qty{8,85e-12}{\C^2\per\N\m^2} \cdot \frac{\qty{40}{\cm^2} }{\qty{1,0}{\mm}} = \qty{35,4}{\pico\F} 
+      .\end{equation*}
+    \item The capacitance is defined as
+      \begin{equation*}
+        C = \frac{Q}{V} \implies Q = CV
+      .\end{equation*}
+      Where $Q$ is the charge and $V$ the voltage difference.
+      Hence,
+      \begin{equation*}
+        Q = \qty{35,4}{\pico\F} \cdot \qty{500}{\V} = \qty{17,7}{\nano\C}  
+      .\end{equation*}
+    \item The stored electrical energy in a capacitor is
+      \begin{equation*}
+        U_E  = \frac{1}{2} CV^2
+      .\end{equation*}
+      Hence,
+      \begin{equation*}
+        U_E = \frac{1}{2} \cdot \qty{35,4}{\pico\F} \cdot \left( \qty{500}{\V}  \right)^2 = \qty{4,425}{\micro\J} 
+      .\end{equation*}
+    \item The potential difference of a plate capacitor is the product of the internal electric field and the separation distance:
+      \begin{equation*}
+        V = Ed \implies E = \frac{V}{d} = \frac{\qty{500}{\V} }{\qty{1,0}{\mm} } = \qty{500e3}{\N\per\C} 
+      .\end{equation*}
+    \item The energy stored in the capacitor was found to be $U_E = \qty{4,425}{\micro\J}$ above.
+      The volume inside the capacitor is $Ad = \qty{40}{\cm^2} \cdot \qty{1,00}{\mm}$, hence, the energy per unit volume is:
+      \begin{equation*}
+        u_E = \frac{U_E}{Ad} = \frac{\qty{4,425}{\micro\J}}{\qty{40}{\cm^2} \cdot \qty{1,00}{\mm} } = \qty{1,11}{\J\per\m^3} 
+      .\end{equation*}
+  \end{enumerate}
+  \end{derivation}
+  }
+
+  \finalresult{
+    \begin{aligned}
+      &(\mathrm{a}) & C &= \qty{35,4}{\pico\F}  \\
+      &(\mathrm{b}) & Q &= \qty{17,7}{\nano\C}  \\
+      &(\mathrm{c}) & U_E &= \qty{4,425}{\micro\J} \\
+      &(\mathrm{d}) & E &= \qty{500e3}{\N\per\C} \\
+      &(\mathrm{e}) & u_E &= \qty{1,11}{\J\per\m^3} 
+    .\end{aligned}
+  }
+
+  \begin{problemwithimage}{h2a2}{2A}
+    A dielectric material is to fill the space in a capacitor.
+    Initially, with only air in place, the capacitance is \qty{8,0}{\pico\F}.
+    With the dielectric material in place, the capacitor should store \qty{3,2}{\milli\J} at a maximum potential difference of \qty{350,8}{\V}.
+    \begin{enumerate}[label=(\alph*)]
+      \item What dielectric constant is required?
+      \item Of the materials in the Table on the right, which material should be used?
+    \end{enumerate}
+  \end{problemwithimage}
+
+  {\color{AUred}
+  \begin{assumptions}
+    \item The air can be modelled as a vacuum ($\kappa = \num{1,00054} \approx1$)
+  \end{assumptions}
+
+  \begin{givens}
+    C_0 = \qty{8,0}{\pico\F}  & Capacitance of the capacitor with air inside \\
+    U_E = \qty{3,2}{\micro\J} & Required energy storage of capacitor \\
+    V = \qty{350,8}{\V} & Potential difference across capacitor
+  \end{givens}
+
+  \begin{derivation}
+    \begin{enumerate}[label=(\alph*)]
+      \item The potential energy $U_E$ stored in a capacitor of capacitance $C$ with voltage difference $V$ is
+    \begin{equation*}
+      U_E = \frac{1}{2} CV^2
+    .\end{equation*}
+    Solving for the required capacitance we get:
+    \begin{equation*}
+      C = \frac{2 U_E}{V^2} = \frac{2 \cdot \qty{3,2}{\micro\J} }{\left( \qty{350,8}{\V}  \right)^2} = \qty{52}{\pico\F} 
+    .\end{equation*}
+    Inserting a dielectric in the capacitor raises the vacuum capacitance of the capacitor by a factor $\kappa$:
+    \begin{equation*}
+      C = \kappa C_0 \implies \kappa = \frac{C}{C_0} = \frac{\qty{52}{\pico\F} }{\qty{8,0}{\pico\F} } = \num{6,5} 
+    .\end{equation*}
+  \item Porcelain has a dielectric constant of $\kappa = \num{6,5}$, meaning it is the closest match.
+  \end{enumerate}
+    
+  \end{derivation}
+  }
+
+  \finalresult{
+  \begin{aligned}
+    &(\mathrm{a}) & \kappa &= \num{6,5e3} \\
+    &(\mathrm{b}) & &\text{Porcelain}
+  .\end{aligned}}
+
+  \begin{problem}{3A}
+    A coil is connected in series with a \qty{23}{\kilo\ohm} resistor.
+    An ideal \qty{50,0}{\V} battery is applied across the two devices, and the current reaches a value of \qty{2,00}{\mA} after \qty{5,00}{\milli\s}.
+    \begin{enumerate}[label=(\alph*)]
+      \item Find the inductance of the coil.
+      \item How much energy is stored in the coil at this same moment?
+    \end{enumerate}
+  \end{problem}
+
+  {\color{AUred}
+  \begin{givens}
+    R = \qty{23}{\kilo\ohm}  & Resistance of resistor \\
+    V_s = \qty{50,0}{\V} & Potential difference of battery \\
+    I(\qty{5,00}{\milli\s}) = \qty{2,00}{\milli\A} & Current at $t = \qty{5,00}{\milli\s}$
+  \end{givens}
+
+  \begin{derivation}
+    \begin{enumerate}[label=(\alph*)]
+      \item The current in an inductor follows
+    \begin{equation*}
+      I(t) = \frac{V_s}{R} \left( 1 - e^{-\frac{t \cdot R}{L}} \right)
+    .\end{equation*}
+    Solving this for the inductance $L$ we get:
+    \begin{align*}
+      \frac{R I(t)}{V_s} &= 1 - e^{-\frac{t \cdot R}{L}} \\
+      e^{- \frac{t \cdot R}{L}} &= 1 - \frac{R I(t)}{V_s} \\
+      \frac{t R}{L} &= - \ln \left( 1 - \frac{R I(t)}{V_s} \right) \\
+      \frac{t R}{L} &= \ln \left( \frac{1}{1 - \frac{R I(t)}{V_s}} \right) \\
+      L &= \frac{t R}{\ln \left( \frac{1}{1 - \frac{R I(t)}{V_s}} \right)} \\
+      &= \frac{\qty{5,00}{\milli\s} \cdot \qty{23}{\kilo\ohm} }{\ln \left( \frac{1}{1 - \frac{\qty{23}{\kilo\ohm} \cdot \qty{2,00}{\milli\A}}{\qty{50,0}{\V} }} \right)} \\
+      &= \qty{45}{\H} 
+    .\end{align*}
+  \item The energy stored in an inductor is:
+    \begin{equation*}
+      U_L = \frac{1}{2}L I^2
+    .\end{equation*}
+    Using $L = \qty{45}{\H}$ and $I(\qty{5,00}{\milli\s}) = \qty{2,00}{\milli\A}$ we get:
+    \begin{equation*}
+      U_L = \frac{1}{2} \cdot \qty{45}{\H} \cdot \left( \qty{2,00}{\milli\A}  \right)^2 = \qty{0,18}{\milli\J} 
+    .\end{equation*}
+    \end{enumerate}
+  \end{derivation}
+  }
+
+  \finalresult{
+    \begin{aligned}
+      &(\mathrm{a}) & L &= \qty{45}{\H}  \\
+      &(\mathrm{b}) & U_L &= \qty{0,18}{\milli\J} 
+    .\end{aligned}
+  }
+\end{document}

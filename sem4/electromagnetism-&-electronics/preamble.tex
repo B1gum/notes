@@ -145,9 +145,13 @@
         % --- Constants & Fundamental Quantities ---
         {coucon}{\sym{$k$}{Coulomb constant}{\qty{8,99e9}{\N.\m^2/\C^2}}}%
         {percon}{\sym{$\epsilon_0$}{Permittivity constant}{\qty{8,85e-12}{\C^2\per\N.\m^2}}}%
+        {magper}{\sym{$\mu_0$}{Magnetic vacuum permeability}{\qty{1,257e-6}{\N\per\A^2}}}%
         {echar}{\sym{$e$}{Elementary charge}{\qty{1,6e-19}{\C}}}%
         {zz}{\sym{$n$}{Integer number ($n \in \mathbb{Z}$)}{---}}%
         {t}{\sym{$t$}{Time}{\unit{\s}}}%
+        {nwind}{\sym{$n$}{Number of windings}{---}}%
+        {tauC}{\sym{$\tau_C$}{Capacitive Time Constant}{\unit{\s}}}%
+        {tauL}{\sym{$\tau_L$}{Inductive Time Constant}{\unit{\s}}}%
         % --- Charge & Geometry ---
         {q}{\sym{$q$}{Charge}{\unit{\C}}}%
         {Q}{\sym{$Q$}{Total charge}{\unit{\C}}}%
@@ -159,7 +163,7 @@
         {r}{\sym{$r$}{Distance}{\unit{\m}}}%
         {d}{\sym{$d$}{Separation distance}{\unit{\m}}}%
         {z}{\sym{$z$}{Distance along axis}{\unit{\m}}}%
-        {R}{\sym{$R$}{Radius}{\unit{\m}}}%
+        {Rrad}{\sym{$R$}{Radius}{\unit{\m}}}%
         {rhat}{\sym{$\hat{r}$}{Unit vector}{\text{---}}}%
         {Avec}{\sym{$\Vec{A}$}{Area vector}{\unit{\m^2}}}%
         {Acs}{\sym{$A$}{Cross-sectional area}{\unit{\m^2}}}%
@@ -171,7 +175,9 @@
         {Fxyz}{\sym{$\Vec{F}(x,y,z)$}{Force on test particle at point $(x,y,z)$}{\unit{\N}}}%
         {Estr}{\sym{$E$}{Electric field strength}{\unit{\N\per\C}}}%
         {Evec}{\sym{$\Vec{E}$}{Electric field vector}{\unit{\N\per\C}}}%
+        {Bvec}{\sym{$\Vec{B}$}{Magnetic field vector}{\unit{\T}}}%
         {Exyz}{\sym{$\Vec{E}(x,y,z)$}{Electric field at point $(x,y,z)$}{\unit{\N\per\C}}}%
+        {PhiB}{\sym{$\Phi_B$}{Magnetic flux}{\unit{\T}}}%
         % --- Flux & Potential ---
         {Eflux}{\sym{$\Phi$}{Electric flux}{\unit{\V.\m}}}%
         {UE}{\sym{$U_E$}{Electric potential energy}{\unit{\J}}}%
@@ -182,6 +188,8 @@
         {W}{\sym{$W$}{Work}{\unit{\J}}}%
         {V}{\sym{$V$}{Voltage}{\unit{\V}}}%
         {R}{\sym{$R$}{Resistance}{\unit{\ohm}}}%
+        {C}{\sym{$C$}{Capacitance}{\unit{\farad}}}%
+        {Lind}{\sym{$L$}{Inductance}{\unit{\H}}}%
         {Req}{\sym{$R_{\mathrm{eq}}$}{Equivalent resistance}{\unit{\ohm}}}%
         {rho}{\sym{$\rho$}{Resistivity}{\unit{\ohm.\m}}}%
         {sigmacon}{\sym{$\sigma$}{Conductivity}{\unit{\ohm^{-1}.\m^{-1}}}}%
