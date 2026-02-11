@@ -1,0 +1,131 @@
+\lecture{5}{11. Februar 2026}{AC Circuits}
+
+\subsection{AC Circuits}
+
+\subsubsection{Periodic Signals}
+\begin{equation*}
+  x(t) = x(t + nT), \quad n = 1,2,3,\ldots 
+.\end{equation*}
+
+\begin{symbols}
+\sym{$x(t)$}{Periodic signal $x$ of $t$}{---}
+\InsertSym{t}
+\InsertSym{Tper}
+\end{symbols}
+
+
+\subsubsection{Average Value of a Signal Waveform}
+\begin{equation*}
+  \left\langle x(t) \right\rangle = \frac{1}{T} \int_{0}^{T} x(t') \, \mathrm{d}t'
+.\end{equation*}
+
+\begin{symbols}
+\sym{$x(t)$}{Periodic signal $x$ of $t$}{---}
+\sym{$\left\langle x(t) \right\rangle$}{Average value of $x(t)$}{---}
+\InsertSym{Tper}
+\end{symbols}
+
+\subsubsection{RMS value}
+\begin{equation*}
+  x_{\mathrm{rms}} = \sqrt{\frac{1}{T} \int_{0}^{T} x^2 \left( t' \right) \, \mathrm{d}t'}
+.\end{equation*}
+
+\begin{symbols}
+\sym{$x_{\mathrm{rms}}$}{RMS of $x(t)$}{---}
+\sym{$x(t)$}{Periodic signal $x$ of $t$}{---}
+\InsertSym{Tper}
+\end{symbols}
+
+\subsection{Impedance}
+
+\subsubsection{Impedance of a Resistor}
+\begin{equation*}
+  Z (j \omega) = \frac{\Vec{V}(j \omega)}{\Vec{I} (j \omega)} = R
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{Z}
+\InsertSym{j}
+\InsertSym{omega}
+\InsertSym{V}
+\InsertSym{I}
+\InsertSym{R}
+\end{symbols}
+
+\subsubsection{Impedance of an Inductor}
+\begin{equation*}
+  Z(j \omega) = \frac{\Vec{V} (j \omega)}{\Vec{I} (j\omega)} = \omega L \angle \frac{\pi}{2}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{Z}
+\InsertSym{j}
+\InsertSym{omega}
+\InsertSym{V}
+\InsertSym{I}
+\InsertSym{Lind}
+\end{symbols}
+
+\subsubsection{Impedance of a Capacitor}
+\begin{equation*}
+  Z(j\omega) = \frac{\Vec{V}(j\omega)}{\Vec{I}(j\omega)} = \frac{1}{\omega C} \angle - \frac{\pi}{2} = \frac{1}{j \omega C}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{Z}
+\InsertSym{j}
+\InsertSym{omega}
+\InsertSym{V}
+\InsertSym{I}
+\InsertSym{C}
+\end{symbols}
+
+\subsubsection{Total Impedance}
+\begin{equation*}
+  Z(j\omega) = R(j\omega) + j X (j \omega)
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{Z}
+\InsertSym{j}
+\InsertSym{omega}
+\InsertSym{R}
+\InsertSym{X}
+\end{symbols}
+
+\subsubsection{Admittance}
+\begin{equation*}
+  Y = \frac{1}{Z}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{Y}
+\InsertSym{Z}
+\end{symbols}
+
+\subsection{Transient Analysis}
+
+\subsubsection{1st Order Differential Equation for RC Circuits}
+\begin{equation*}
+  \tau \frac{\mathrm{d}x(t)}{\mathrm{d}t} + x(t) = K_s f(t)
+.\end{equation*}
+
+\begin{symbols}
+\sym{$\tau$}{$\tau = a_1 / a_0$ is a time constant}{---}
+\sym{$x$}{Voltage or current}{---}
+\InsertSym{t}
+\sym{$K_s$}{$K_s = b_0 / a_0$ is DC gain}{---}
+\end{symbols}
+
+\subsubsection{2nd Order Differential Equation for RLC Circuits}
+\begin{equation*}
+  \frac{1}{\omega_n^2} \frac{\mathrm{d}x^2(t)}{\mathrm{d}t^2} + \frac{2 \zeta}{\omega_n } \frac{\mathrm{d}x(t)}{\mathrm{d}t} = K_s f(t)
+.\end{equation*}
+
+\begin{symbols}
+\sym{$\omega_n$}{$\omega_n = \sqrt{a_0 / a_2}$ is the natural frequency}{\unit{\Hz}}
+\sym{$\zeta$}{$\zeta = a_1 / 2 \sqrt{1 / (a_0 a_2)}$ is the damping ratio}{---}
+\sym{$x$}{Voltage or current}{---}
+\InsertSym{t}
+\sym{$K_s$}{$K_s = b_0 / a_0$ is DC gain}{---}
+\end{symbols}
