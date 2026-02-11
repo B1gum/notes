@@ -82,7 +82,7 @@
   \begin{problemwithimage}{h2a2}{2A}
     A dielectric material is to fill the space in a capacitor.
     Initially, with only air in place, the capacitance is \qty{8,0}{\pico\F}.
-    With the dielectric material in place, the capacitor should store \qty{3,2}{\milli\J} at a maximum potential difference of \qty{350,8}{\V}.
+    With the dielectric material in place, the capacitor should store \qty{3,2}{\micro\J} at a maximum potential difference of \qty{350,8}{\V}.
     \begin{enumerate}[label=(\alph*)]
       \item What dielectric constant is required?
       \item Of the materials in the Table on the right, which material should be used?
@@ -175,5 +175,91 @@
       &(\mathrm{a}) & L &= \qty{45}{\H}  \\
       &(\mathrm{b}) & U_L &= \qty{0,18}{\milli\J} 
     .\end{aligned}
+  }
+
+  \begin{problem}{1B}
+    Find the average and rms value of $x(t) = 2 \cos \left( \omega t + \pi / 3 \right) + 6$.
+  \end{problem}
+
+  {\color{AUred}
+  \begin{derivation}
+    For a periodic function $x(t)$ with period $T$, the average value $\left\langle x(t) \right\rangle$ is
+    \begin{equation*}
+      \left\langle x(t) \right\rangle = \frac{1}{T} \int_{0}^{T} x(t') \, \mathrm{d}t'
+    .\end{equation*}
+    Inserting known values we get:
+    \begin{align*}
+      \left\langle x(t) \right\rangle &= \frac{1}{T} \int_{0}^{T} \left( 2 \cos \left( \omega t + \frac{\pi}{3} \right) + 6 \right) \, \mathrm{d}t   \\
+      &= \frac{1}{T} \left(2 \int_{0}^{T} \cos \left( \omega t + \frac{\pi}{3} \right) \, \mathrm{d}t + 6\int_{0}^{T} \, \mathrm{d}t  \right)\\
+      &= \frac{1}{T} \left( 2 \cdot 0 + 6T \right) \\
+      &= 6
+    .\end{align*}
+    
+    The rms value is
+    \begin{equation*}
+      x_{\mathrm{rms}} = \sqrt{\frac{1}{T} \int_{0}^{T} x^2 (t') \, \mathrm{d}t'}
+    .\end{equation*}
+    We let $\alpha = \omega t + \pi / 3$ and get:
+    \begin{align*}
+      x_{\mathrm{rms}} &= \sqrt{\frac{1}{T} \int_{0}^{T} 4 \cos^2(\alpha) + 24 \cos(\alpha) + 36 \, \mathrm{d}t}  \\
+      &= \sqrt{\frac{1}{T} \left( 4 \int_{0}^{T} \cos^2(\alpha) \, \mathrm{d}t + 24 \int_{0}^{T} \cos (\alpha) \, \mathrm{d}t  + 36 \int_{0}^{T} \, \mathrm{d}t  \right)} \\
+      &= \sqrt{\frac{1}{T} \left( 4 \frac{T}{2}  + 24 \cdot 0 + 36 T \right)} \\
+      &= \sqrt{\frac{1}{T} \left( 2 T + 36 T \right)} \\
+      &= \sqrt{38}
+    .\end{align*}
+  \end{derivation}
+  }
+
+  \finalresult{
+    \begin{aligned}
+      \left\langle x(t) \right\rangle &= 6 \\
+      x_{\mathrm{rms}} &= \sqrt{38}
+    .\end{aligned}
+  }
+
+  \begin{problemwithimage}{h2b2}{2B}
+    Find the equivalent impedance of the circuit shown on the Figure on the right.
+  \end{problemwithimage}
+
+  {\color{AUred}
+  \begin{derivation}
+    The impedance of a resistor $Z_R$ is simply its resistance:
+    \begin{equation*}
+      Z_R = R
+    .\end{equation*}
+    For the inductor the impedance $Z_L$ is
+    \begin{equation*}
+      Z_L = \omega L \angle \frac{\pi}{2} = j \omega L
+    .\end{equation*}
+    Hence, the total impedance of the middle branch is:
+    \begin{equation*}
+      Z_m = R + j \omega L
+    .\end{equation*}
+    
+    For the right branch we have two capacitors in series, which we will replace with an equivalent capacitor:
+    \begin{equation*}
+      C_{\mathrm{eq}} = \frac{C \cdot 2C}{C + 2C} = \frac{2}{3}C
+    .\end{equation*}
+    The impedance of a capacitor $Z_C$ is simply
+    \begin{equation*}
+      Z_C = \frac{1}{\omega C} \angle - \frac{\pi}{2} = \frac{1}{j \omega C}
+    .\end{equation*}
+    Which means the equivalent impedance of the right branch is:
+    \begin{equation*}
+      Z_r = Z_{C_{\mathrm{eq}}} = \frac{1}{j \omega \frac{2}{3} C} = \frac{3}{2 j \omega C}
+    .\end{equation*}
+    
+    Now we combine the impedances of the middle branch $Z_m$ and the right branch $Z_r$ using the formula for equivalent parallel impedance:
+    \begin{align*}
+      Z_{\mathrm{eq}} &= \frac{1}{\frac{1}{Z_m} + \frac{1}{Z_r}} \\
+      &= \frac{Z_m Z_r}{Z_m + Z_r} \\
+      &= \frac{\left( R + j \omega L \right) \left( \frac{3}{2} j\omega C \right)}{R + j \omega L + \frac{3}{2} j \omega C} \\
+      &= \frac{3 \left( R_1 + j \omega L \right)}{2 j \omega C \left( R_1 + j \omega L \right) + 3}
+    .\end{align*}
+  \end{derivation}
+  }
+
+  \finalresult{
+    Z_{\mathrm{eq}} = \frac{3 \left( R_1 + j \omega L \right)}{2 j \omega C \left( R_1 + j \omega L \right) + 3}
   }
 \end{document}
