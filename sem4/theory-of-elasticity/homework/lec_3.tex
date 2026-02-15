@@ -1,0 +1,118 @@
+\lecture{3}{9. Februar 2026}{The Cauchy Theorem \& Principal Stresses}
+
+\begin{problem}{2.1}
+  Find the components of the traction on a plane defined by $n_1 = 1 / \sqrt{2}$, $n_2 = 1 / \sqrt{2}$, and $n_3 = 0$ for the following states of stress:
+  \begin{enumerate}[label=(\alph*)]
+    \item $\sigma_{11} = \sigma, \sigma_{12} = 0, \sigma_{13} = 0$, $\sigma_{21} = \sigma$, $\sigma_{22} = 0$, $\sigma_{33} = \sigma$.
+    \item $\sigma_{11} = \sigma$, $\sigma_{12} = \sigma$, $\sigma_{13} = 0$, $\sigma_{22} = \sigma$, $\sigma_{23} = 0$, $\sigma_{33} = 0$.
+  \end{enumerate}
+\end{problem}
+
+\begin{derivation}
+  \begin{enumerate}[label=(\alph*)]
+    \item The stress state in (a) is
+      \begin{equation*}
+        \sigma = \begin{bmatrix}
+          \sigma & 0 & 0\\
+        \sigma & 0 & \sigma_{23}\\
+        \sigma_{31} & \sigma_{32} & \sigma\\
+        \end{bmatrix}
+      .\end{equation*}
+      The Cauchy Theorem states that
+      \begin{equation*}
+        T_i = \sigma_{ji} n_j \implies T = \sigma \cdot n
+      .\end{equation*}
+      Our plane is:
+      \begin{equation*}
+              n = \begin{bmatrix}
+                \frac{1}{\sqrt{2}}\\
+              \frac{1}{\sqrt{2}}\\
+              0\\
+              \end{bmatrix}
+      .\end{equation*}
+      Hence,
+      \begin{equation*}
+        T = \begin{bmatrix}
+          \sigma & 0 & 0\\
+        \sigma & 0 & \sigma_{23}\\
+        \sigma_{31} & \sigma_{32} & \sigma\\
+        \end{bmatrix} \cdot \begin{bmatrix}
+          \frac{1}{\sqrt{2}}\\
+        \frac{1}{\sqrt{2}}\\
+        0\\
+        \end{bmatrix} = \left(
+\begin{array}{c}
+ \frac{\sigma }{\sqrt{2}} \\
+ \frac{\sigma }{\sqrt{2}} \\
+ \frac{\sigma _{31}}{\sqrt{2}}+\frac{\sigma _{32}}{\sqrt{2}} \\
+\end{array}
+\right)
+      .\end{equation*}
+    \item For $(b)$ our stress state is:
+      \begin{equation*}
+        \sigma = \begin{bmatrix}
+          \sigma & \sigma & 0\\
+        \sigma_{21} & \sigma & 0\\
+        \sigma_{31} & \sigma_{32} & 0\\
+        \end{bmatrix}
+      ,\end{equation*}
+      so
+      \begin{equation*}
+        T = \begin{bmatrix}
+          \sigma & \sigma & 0\\
+        \sigma_{21} & \sigma & 0\\
+        \sigma_{31} & \sigma_{32} & 0\\
+        \end{bmatrix} \cdot \begin{bmatrix}
+          \frac{1}{\sqrt{2}}\\
+        \frac{1}{\sqrt{2}}\\
+        0\\
+        \end{bmatrix} = \left(
+\begin{array}{c}
+ \sqrt{2} \sigma  \\
+ \frac{\sigma }{\sqrt{2}}+\frac{\sigma _{21}}{\sqrt{2}} \\
+ \frac{\sigma _{31}}{\sqrt{2}}+\frac{\sigma _{32}}{\sqrt{2}} \\
+\end{array}
+\right)
+      .\end{equation*}
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+  \begin{aligned}
+    &(\mathrm{a}) & T &= \begin{bmatrix}
+      \frac{\sigma}{\sqrt{2}}\\
+    \frac{\sigma}{\sqrt{2}}\\
+    \frac{\sigma_{31}}{\sqrt{2}} + \frac{\sigma_{32}}{\sqrt{2}}\\
+    \end{bmatrix} \\
+    &(\mathrm{b}) & T &= \begin{bmatrix}
+      \sqrt{2}\sigma\\
+    \frac{\sigma}{\sqrt{2}} + \frac{\sigma_{21}}{\sqrt{2}}\\
+    \frac{\sigma_{31}}{\sqrt{2}} + \frac{\sigma_{32}}{\sqrt{2}}\\
+    \end{bmatrix}
+  .\end{aligned}
+}
+
+\begin{problem}{2.6}
+  At a given point in a body,
+  \begin{align*}
+    \sigma_{11} = \sigma_{22} = \sigma_{33} &= -p, \\
+    \sigma_{12} = \sigma_{23} = \sigma_{31} &= 0
+  .\end{align*}
+  Show that the normal stresses are equal to $-p$ and that the shearing stresses vanish for any other Cartesian coordinate system.
+\end{problem}
+
+\begin{derivation}
+  Here, our stress tensor is
+  \begin{equation*}
+    \Vec{\sigma} = \begin{bmatrix}
+      -p & 0 & 0\\
+    0 & -p & 0\\
+    0 & 0 & -p\\
+    \end{bmatrix} = -p \Vec{I}
+  .\end{equation*}
+  Using the Cauchy theorem $\Vec{T} = \Vec{\sigma} \cdot \Vec{n}$ we get:
+  \begin{equation*}
+    \Vec{T} = (-p \Vec{I}) \cdot \Vec{n} = -p \Vec{n}
+  .\end{equation*}
+  Hence, $\Vec{T}$ is parallel to $\Vec{n}$ meaning the traction does not have any components tangent to the plane and hence the stress is entirely normal with size $-p$.
+\end{derivation}
