@@ -1,0 +1,223 @@
+\lecture{6}{16. Februar 2026}{Frequency Analysis}
+
+\subsection{Frequency Response Function}
+\begin{equation*}
+  H_V(j\omega) = \frac{V_L (j\omega)}{V_S(j\omega)}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{Hv}
+\InsertSym{j}
+\InsertSym{omega}
+\InsertSym{Vl}
+\InsertSym{Vs}
+\end{symbols}
+
+\subsubsection{Phase Shift due to the Frequency Response Function}
+\begin{equation*}
+  V_L e^{j \phi_L} = \left| H_V \right| V_S e^{j \left( \angle H_V + \phi_S \right)}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{Vl}
+\InsertSym{j}
+\InsertSym{phil}
+\sym{$\phi_L$}{Output phase, $\phi_L = \angle H_V + \phi_s$}{---}
+\InsertSym{Hv}
+\InsertSym{Vs}
+\InsertSym{phis}
+\end{symbols}
+
+
+\subsection{Passive Filters}
+
+\subsubsection{Cutoff Frequency}
+\begin{equation*}
+  \omega_0 = \frac{1}{RC}
+.\end{equation*}
+\begin{symbols}
+\InsertSym{omega0}
+\InsertSym{R}
+\InsertSym{C}
+\end{symbols}
+
+\subsubsection{Low-Pass Filter}
+
+\paragraph{Frequency Response}
+\begin{equation*}
+  H_V( j \omega) = \frac{1}{1 + j \omega CR} = \left| H_V ( j \omega) \right| e^{j \angle H_V(j \omega)}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{Hv}
+\InsertSym{j}
+\InsertSym{omega}
+\InsertSym{C}
+\InsertSym{R}
+\end{symbols}
+
+\paragraph{Magnitude of the Frequency Response}
+\begin{equation*}
+  \left| H_V(j\omega) \right| = \frac{1}{\sqrt{1 + \left( \omega CR \right)^2}} = \frac{1}{\sqrt{1 + \left( \frac{\omega}{\omega_0} \right)^2}}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{Hv}
+\InsertSym{j}
+\InsertSym{omegarad}
+\InsertSym{C}
+\InsertSym{R}
+\InsertSym{omega0}
+\end{symbols}
+
+\paragraph{Phase of the Frequency Response}
+\begin{equation*}
+  \angle H_V(j\omega) = - \tan^{-1} \left( \omega CR \right) = - \tan^{-1} \frac{\omega}{\omega_0}
+.\end{equation*}
+
+\begin{symbols}
+  \InsertSym{Hv}
+  \InsertSym{j}
+  \InsertSym{omegarad}
+  \InsertSym{C}
+  \InsertSym{R}
+  \InsertSym{omega0}
+\end{symbols}
+
+
+\subsubsection{High-Pass Filter}
+
+\paragraph{Frequency Response}
+\begin{equation*}
+  H_V( j \omega) = \frac{j \omega CR}{1 + j \omega CR} = \left| H_V ( j \omega) \right| e^{j \angle H_V(j \omega)}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{Hv}
+\InsertSym{j}
+\InsertSym{omega}
+\InsertSym{C}
+\InsertSym{R}
+\end{symbols}
+
+\paragraph{Magnitude of the Frequency Response}
+\begin{equation*}
+  \left| H_V(j\omega) \right| = \frac{\omega CR}{\sqrt{1 + \left( \omega CR \right)^2}}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{Hv}
+\InsertSym{j}
+\InsertSym{omegarad}
+\InsertSym{C}
+\InsertSym{R}
+\end{symbols}
+
+\paragraph{Phase of the Frequency Response}
+\begin{equation*}
+  \angle H_V(j\omega) = \ang{90} - \tan^{-1} \left( \omega CR \right)
+.\end{equation*}
+
+\begin{symbols}
+  \InsertSym{Hv}
+  \InsertSym{j}
+  \InsertSym{omegarad}
+  \InsertSym{C}
+  \InsertSym{R}
+\end{symbols}
+
+
+\subsubsection{Bandpass Filter}
+
+\paragraph{Frequency Response}
+\begin{equation*}
+  H_V (j\omega) = \frac{j \omega CR}{1 + j \omega CR + \left( j \omega \right)^2 LC} = \frac{j CR \omega}{\left( j \frac{\omega}{\omega_1} + 1 \right) \left( j \frac{\omega}{\omega_2} + 1 \right)}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{Hv}
+\InsertSym{j}
+\InsertSym{omegarad}
+\InsertSym{C}
+\InsertSym{R}
+\InsertSym{Lind}
+\sym{$\omega_1$}{Lower angular cutoff frequency}{\unit{rad/\s}}
+\sym{$\omega_2$}{Upper angular cutoff frequency}{\unit{rad/\s}}
+\end{symbols}
+
+\paragraph{Magnitude of the Frequency Response}
+\begin{equation*}
+  \left| H_V(j\omega) \right| = \frac{CR \omega}{\sqrt{\left( 1 + \left( \frac{\omega}{\omega_1} \right)^2 \right) \left( 1 + \left( \frac{\omega}{\omega_2} \right)^2 \right)}}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{Hv}
+\InsertSym{j}
+\InsertSym{omegarad}
+\InsertSym{C}
+\InsertSym{R}
+\sym{$\omega_1$}{Lower angular cutoff frequency}{\unit{rad/\s}}
+\sym{$\omega_2$}{Upper angular cutoff frequency}{\unit{rad/\s}}
+\end{symbols}
+
+\paragraph{Phase of the Frequency Response}
+\begin{equation*}
+  \angle H_V(j\omega) = \frac{\pi}{2} - \tan^{-1} \frac{\omega}{\omega_1} - \tan^{-1} \frac{\omega}{\omega_2}
+.\end{equation*}
+
+\begin{symbols}
+  \InsertSym{Hv}
+  \InsertSym{j}
+  \InsertSym{omegarad}
+  \sym{$\omega_1$}{Lower angular cutoff frequency}{\unit{rad/\s}}
+  \sym{$\omega_2$}{Upper angular cutoff frequency}{\unit{rad/\s}}
+\end{symbols}
+
+\paragraph{Natural or Resonant Frequency}
+\begin{equation*}
+  \omega_n = \sqrt{\frac{1}{LC}}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{omegan}
+\InsertSym{Lind}
+\InsertSym{C}
+\end{symbols}
+
+\paragraph{Quality Factor}
+\begin{equation*}
+  Q = \frac{2}{\zeta} = \frac{1}{\omega_n CR} = \frac{1}{R} \sqrt{\frac{L}{C}}
+.\end{equation*}
+
+\begin{symbols}
+  \InsertSym{Qqual}
+  \InsertSym{zeta}
+  \InsertSym{omegan}
+  \InsertSym{C}
+  \InsertSym{R}
+  \InsertSym{Lind}
+\end{symbols}
+
+\paragraph{Damping Ratio}
+\begin{equation*}
+  \zeta = \frac{1}{2Q} = \frac{R}{2} \sqrt{\frac{C}{L}}
+.\end{equation*}
+'
+\begin{symbols}
+\InsertSym{zeta}
+\InsertSym{Qqual}
+\InsertSym{R}
+\InsertSym{C}
+\InsertSym{Lind}
+\end{symbols}
+
+\paragraph{Bandwidth}
+\begin{equation*}
+  B = \frac{\omega_n}{Q}
+.\end{equation*}
+
+\begin{symbols}
+\InsertSym{bandwidth}
+\InsertSym{omegan}
+\InsertSym{Qqual}
+\end{symbols}
