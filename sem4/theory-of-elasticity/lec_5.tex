@@ -1,0 +1,146 @@
+\lecture{5}{23. Februar 2026}{The Strain Tensor}
+
+\section{Deformations}
+
+\subsection{Strain}
+Consider the undeformed and deformed positions of an elastic body shown on \Cref{fig:f3_1}.
+It is convenient to designate two sets of Cartesian coordinates $x_i$ and $X_i$ with $i = 1,2,3,$ called \textit{initial} coordinates and \textit{final} coordinates, respectively.
+Now, we designate a reference point $P(\overline{x}_i)$ on the undeformed body and $p(\overline{X}_i)$ on the deformed body, where $\overline{x}_i$ and $\overline{X}_i$ indicate specific values of the coordinates $x_i$ and $X_i$.
+Also we locate the neighbouring points $Q(\overline{x}_i + \mathrm{d}\overline{x}_i)$ and $Q(\overline{X}_i + \mathrm{d}\overline{X}_i)$, separated from $P$ and $p$ by $\mathrm{d}s$ and $\mathrm{d}S$ respectively. 
+The latter are given in component form by
+\begin{align*}
+  \left( \mathrm{d}s \right)^2 &= \mathrm{d}\overline{x}_1^2 + \mathrm{d}\overline{x}_2^2 + \mathrm{d}\overline{x}_3^2 = \mathrm{d}\overline{x}_i \mathrm{d}\overline{x}_i \\
+  \left( \mathrm{d}S \right)^2 &= \mathrm{d}\overline{X}_1^2 + \mathrm{d}\overline{X}_2^2 + \mathrm{d}\overline{X}_3^2 = \mathrm{d}\overline{X}_i \mathrm{d}\overline{X}_i
+.\end{align*}
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.8\linewidth]{./figures/f3_1.png}
+  \caption{Displacement vector}
+  \label{fig:f3_1}
+\end{figure}
+
+In \Cref{fig:f3_1}, $\Vec{u}$ represents the displacement of $P$ to $p$ and $\Vec{u} + \mathrm{d}\Vec{u}$ is the displacement of $Q$ to $q$. From the vector diagram we note
+\begin{equation*}
+  \mathrm{d}\Vec{s} + \left( \Vec{u} + \mathrm{d}\Vec{u} \right) = \Vec{u} + \mathrm{d}\Vec{S} \implies \mathrm{d}\Vec{u} = \mathrm{d}\Vec{S} - \mathrm{d}\Vec{s}
+.\end{equation*}
+
+We consider the relationship in component form:
+\begin{equation*}
+  \left( \mathrm{d}S \right)^2 - \left( \mathrm{d}s \right)^2 = \mathrm{d}\overline{X}_i \, \mathrm{d}\overline{X}_i - \mathrm{d}\overline{x}_i \, \mathrm{d}\overline{x}_i
+.\end{equation*}
+
+Now, we only consider the initial coordinates $x_i$ in this next step, so that
+\begin{align*}
+  \overline{X}_i &= \overline{X}_i (x_1, x_2, x_3) \\
+  \mathrm{d}\overline{X}_i &= \frac{\partial X_i}{\partial x_1} \mathrm{d}\overline{x}_1 + \frac{\partial X_i}{\partial x_2} \mathrm{d}\overline{x}_2 + \frac{\partial X_i}{\partial x_3} \mathrm{d}\overline{x}_3 \\
+  &= X_{i,j} \, \mathrm{d}\overline{x}_j \\
+  \Vec{u} &= u_1 \Vec{e}_{x_1} + u_2 \Vec{e}_{x_2} + u_3 \Vec{e}_{x_3} = u_i \Vec{e}_{x_i} \\
+  u_i &= X_i - x_i
+.\end{align*}
+
+Applying this to the component form relationship:
+\begin{align*}
+  \left( \mathrm{d}S \right)^2 - \left( \mathrm{d}s \right)^2 &= X_{i,j} \, \mathrm{d}\overline{x}_j X_{i,k} \, \mathrm{d}\overline{x}_k - \mathrm{d}\overline{x}_i \, \mathrm{d}\overline{x}_i \\
+  &= \left( X_{i,j} X_{i,k} - \delta_{ij} \delta_{ik} \right) \, \mathrm{d}\overline{x}_j \, \mathrm{d}\overline{x}_k \\
+  &= \left( \left( x_i + u_i \right)_{,j} \left( x_i + u_i \right)_{,k} - \delta_{jk} \right) \, \mathrm{d}\overline{x}_j \, \mathrm{d}\overline{x}_k \\
+  &= \left( \left( \delta_{ij} + u_{i,j} \right) \left( \delta_{ik} + u_{i,k} \right) - \delta_{ik} \right) \, \mathrm{d}\overline{x}_j \, \mathrm{d}\overline{x}_k \\
+  &= \left( \delta_{jk} + u_{j,k} + u_{k,j} + u_{i,j} u_{i,k} - \delta_{jk} \right) \, \mathrm{d}\overline{x}_{j} \, \mathrm{d}\overline{x}_k \\
+  &= \left( u_{j,k} + u_{k,j} + u_{i,j} u_{i,k} \right) \, \mathrm{d}\overline{x}_j \, \mathrm{d}\overline{x}_k \\
+  &= 2 \epsilon^{L}_{ij} \, \mathrm{d}\overline{x}_i \, \mathrm{d}\overline{x}_j
+\end{align*}
+in which
+\begin{equation*}
+  \epsilon_{ij}^{L} = \frac{1}{2} \left( u_{i,j} + u_{j,i} + u_{k,i} u_{k,j} \right)
+\end{equation*}
+are components of the Lagrangian strain tensor $\Vec{\epsilon}^{L}$.
+
+Doing the same for the final coordinates $X_i$ as the basis we obtain
+\begin{align*}
+  \left( \mathrm{d}S \right)^2 - \left( \mathrm{d}s \right)^2 &= \left( u_{i,j} + u_{j,i} - u_{k,i} u_{k,j} \right) \, \mathrm{d}\overline{X}_i \, \mathrm{d}\overline{X}_j \\
+  &= 2 \epsilon_{ij}^{E} \, \mathrm{d}\overline{X}_i \, \mathrm{d}\overline{X}_j \\
+\end{align*}
+where
+\begin{equation*}
+  \epsilon_{ij}^{E} = \frac{1}{2} \left( u_{i,j} + u_{j,i} - u_{k,i} u_{k,j} \right)
+\end{equation*}
+are components of the \textit{Eulerian} strain tensor $\Vec{\epsilon}^{E}$.
+
+If the displacement gradients $u_{k,i}$ are small, then their products are so too and may be dropped. For such cases:
+\begin{equation*}
+  \epsilon_{ij}^{L} = \epsilon_{ij}^{E} = \epsilon_{ij} = \frac{1}{2} \left( u_{i,j} + u_{j,i} \right)
+.\end{equation*}
+
+The components $\epsilon_{ij}$ refer to the small strain tensor $\Vec{\epsilon}$.
+
+
+\subsection{Physical Interpretation of Strain Tensor}
+Consider the components $\epsilon_{(ii)}$ called \textit{extensional} strains.
+E.g. a fiber parallel to $x_2$ with initial length $\mathrm{d}s$ and final length $\mathrm{d}S$, giving $\mathrm{d}x_1 = \mathrm{d}x_2 = 0$ and $\mathrm{d}x_2 = \mathrm{d}s$.
+Hence,
+\begin{equation*}
+  (\mathrm{d}S)^2 - (\mathrm{d}s)^2 = 2 \epsilon_{22} \, \mathrm{d}s^2
+\end{equation*}
+for the case of infinitesimal strain.
+
+This gives:
+\begin{align*}
+  \frac{\mathrm{d}S - \mathrm{d}s}{\mathrm{d}s} &= \frac{2\epsilon_{22} \, \mathrm{d}s^2}{\mathrm{d}s \left( \mathrm{d}S + \mathrm{d}s \right)} \\
+  &= \frac{2 \epsilon_{22} \, \mathrm{d}s^2}{2 \, \mathrm{d}s^2} \\
+  &= \epsilon_{22} \\
+  \implies \epsilon_{22} &= \frac{\mathrm{d}S - \mathrm{d}s}{\mathrm{d}s}
+\end{align*}
+which is the relative elongation of the fiber.
+
+The components $\epsilon_{ij}$ are called \textit{shearing strains} and may be interpreted by considering intersecting fibers initially parallel to two of the coordinate axes. E.g. the $x_1$- and $x_3$-axes as shown in \Cref{fig:f3_2}.
+These fibers have initial lengths $\mathrm{d}s^{(1)}$ and $\mathrm{d}s^{(3)}$, final length $\mathrm{d}S^{(1)}$ and $\mathrm{d}S^{(3)}$ and have rotated through angles $\beta^{(1)}$ and $\beta^{(3)}$, respectively.
+The total change in the initially right angle is
+\begin{equation*}
+  \beta^{(1)} + \beta^{(3)} = \beta
+.\end{equation*}
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.8\linewidth]{./figures/f3_2.png}
+  \caption{Shearing strains}
+  \label{fig:f3_2}
+\end{figure}
+
+Vectors coinciding with the fibers can be written in component form as:
+\begin{equation*}
+  \mathrm{d}\Vec{S}^{(1)} = \mathrm{d}S_i^{(1)} \Vec{e}_{x_i}
+\end{equation*}
+and
+\begin{equation*}
+  \mathrm{d}\Vec{S}^{(3)} = \mathrm{d}S_i^{(3)} \Vec{e}_{x_i}
+.\end{equation*}
+Using these, we can show that
+\begin{equation*}
+  \beta = (u_{1,3} + u_{3,1}) = 2 \epsilon_{13}
+.\end{equation*}
+I.e. the strain component $\epsilon_{13}$ is one half the increase in the angle between two fibers initially parallel to the $x_1$- and $x_3$-axes.
+
+Since the strain tensor is formed from the displacement gradients, it is interesting to separate $u_{i,j}$ into two parts:
+\begin{equation*}
+  u_{i,j} = \epsilon_{ij} + \omega_{ij}
+\end{equation*}
+where
+\begin{equation*}
+  \omega_{ij} = \frac{1}{2} \left( u_{i,j} - u_{j,i} \right)
+.\end{equation*}
+For $i = j, \omega_{ij} = 0$, while for $i \neq j$, $\omega_{ij} = -\omega_{ji}$; thus, the $\omega_{ij}$ are elements of a skew-symmetric tensor $\Vec{\omega}$.
+Using the example from before,
+\begin{equation*}
+  \omega_{13} = \frac{1}{2} \left( u_{1,3} - u_{3,1} \right)
+.\end{equation*}
+
+Also
+\begin{equation*}
+  \beta = \beta^{(1)} + \beta^{(3)} = (u_{1,3} + u_{3,1}) = 2\epsilon_{13}
+.\end{equation*}
+By comparison we get
+\begin{equation*}
+  \omega_{13} = \frac{\beta^{(1)} - \beta^{(3)}}{2}
+\end{equation*}
+which can be interpreted as the average rotation of all fibers around the $x_2$ axis.
+For a rigid body rotation, $\epsilon_{13 } = 0, \beta^{(1)} = -\beta^{(3)}$, and $\omega_{13} = \beta^{(1)}$. Hence, $\Vec{\omega}$ is called the rotation tensor.
