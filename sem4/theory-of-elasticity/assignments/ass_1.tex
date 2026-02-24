@@ -1,0 +1,581 @@
+\newcommand{\NoteType}{Assignment 1: State of Stress}
+\newcommand{\TheDate}{March 8, 2026}
+\input{./preamble.tex}
+\begin{document}
+  \input{./titlepage.tex}
+  \newpage
+
+  \begin{probdef}
+    Let us consider a continuum and a Cartesian reference system $(O; \Vec{e}_1, \Vec{e}_2, \Vec{e}_3)$.
+    In this system, the Cauchy stress tensor has the following representation:
+    \begin{equation*}
+      \left[ \Vec{\sigma} \right] = \begin{pmatrix}
+        x_1^2 + x_2^2 & x_2^2 & x_3^2 + x_1 x_2\\
+      x_2^2 & 0 & 2x_3^2\\
+      x_3^2 + x_1 x_2 & 2x_3^2 & x_3^2 - x_1^2\\
+      \end{pmatrix}
+    ,\end{equation*}
+    where $(x_1, x_2, x_3)$ are the Cartesian coordinates of a point within the continuum.
+    So for example, the position vector of a point $\Vec{P}$ can be written as $\Vec{P} = x_i \Vec{e}_i$.
+    Its components can be arranged in an array $\Vec{x}$.
+  \end{probdef}
+
+  \begin{problem}{1}
+    Consider three material points on the continuum
+    \begin{itemize}
+      \item $\Vec{P}_1$, with coordinates: $\begin{pmatrix}
+        1 & 1 & 1\\
+      \end{pmatrix}$;
+      \item $\Vec{P}_2$, with coordinates: $\begin{pmatrix}
+        1 & 1 & 2\\
+      \end{pmatrix}$;
+      \item $\Vec{P}_3$, with coordinates: $\begin{pmatrix}
+        1 & 0 & 0\\
+      \end{pmatrix}$;
+    \end{itemize}
+    and perform the following for each of the material points above:
+    \begin{itemize}
+      \item compute the principal stresses and the principal directions of stress
+      \item form the rotation matrix that diagonalizes the Cauchy stress tensor, once represented in the bases of the eigenvectors
+      \item describe the state of stress: Is it plane stress? Hydrostatic stress?
+    \end{itemize}
+  \end{problem}
+
+  \begin{derivation}
+    We start by computing the three stress tensors
+    \begin{align*}
+      \Vec{\sigma}_1 &= \begin{pmatrix}
+        2 & 1 & 2\\
+      1 & 0 & 2\\
+      2 & 2 & 0\\
+      \end{pmatrix} & \Vec{\sigma}_2 &= \begin{pmatrix}
+ 2 & 1 & 5 \\
+ 1 & 0 & 8 \\
+ 5 & 8 & 3 \\
+\end{pmatrix} & \Vec{\sigma}_3 &= \begin{pmatrix}
+  1 & 0 & 0\\
+0 & 0 & 0\\
+  0& 0 & -1\\
+\end{pmatrix}
+    .\end{align*}
+
+    \paragraph{$\Vec{P}_1$} To find the principal stresses we must solve the eigenvalue problem:
+    \begin{equation*}
+      \left| \sigma_{ji} - \lambda \delta_{ij} \right| = 0
+    .\end{equation*}
+    Which for $\Vec{\sigma}_1$ is:
+    \begin{align*}
+      \begin{vmatrix}
+        2 - \lambda & 1 & 2\\
+      1 & 0 - \lambda & 2\\
+      2 & 2 & 0 - \lambda\\
+    \end{vmatrix} &= 0 \\
+      -1\lambda ^3+2\lambda ^2+9\lambda &= 0
+   .\end{align*}
+   Solving this gives $\lambda_1 = 0, \lambda_2 = 1 - \sqrt{10}, \lambda_3 = 1 + \sqrt{10}$. These correspond to the principal stress at $\Vec{P}_1$, i.e. $\sigma^{(1)} = 0, \sigma^{(2)} = 1 - \sqrt{10}, \sigma^{(3)} = 1 + \sqrt{10}$ at $\Vec{P}_1$.
+
+   To find the principal directions we solve the eigenvector problem:
+   \begin{equation*}
+     (\Vec{\sigma} - \lambda \Vec{I}) \Vec{v}^{(j)} = 0
+   .\end{equation*}
+   For $\lambda_1 = 0$ we get:
+   \begin{equation*}
+     \begin{pmatrix}
+       2 & 1 & 2\\
+     1 & 0 & 2\\
+     2 & 2 & 0\\
+     \end{pmatrix} \begin{pmatrix}
+       x_1 \\
+     x_2\\
+     x_3\\
+     \end{pmatrix} = 0 \implies \Vec{v}^{(1)} = \begin{pmatrix}
+       -2\\
+     2\\
+     1\\
+     \end{pmatrix}
+   .\end{equation*}
+   Which normalizes to:
+   \begin{equation*}
+     \hat{v}^{(1)} = \frac{\Vec{v}^{(1)}}{\left| \Vec{v}^{(1)} \right|} = \frac{\begin{pmatrix}
+       -2\\
+     2\\
+     1\\
+     \end{pmatrix}}{\sqrt{2^2 + 2^2 + 1^2}} = \left(
+\begin{array}{c}
+ -\frac{2}{3} \\
+ \frac{2}{3} \\
+ \frac{1}{3} \\
+\end{array}
+\right)
+   .\end{equation*}
+   
+   For $\lambda_2 = 1 - \sqrt{10}$ we get
+   \begin{equation*}
+     \begin{pmatrix}
+       2 - 1 - \sqrt{10} & 1 & 2\\
+     1 & 0 - 1 - \sqrt{10} & 2\\
+     2 & 2 & 0 - 1 - \sqrt{10}\\
+     \end{pmatrix} \begin{pmatrix}
+       x_1\\
+     x_2\\
+     x_3\\
+     \end{pmatrix} = 0 \implies \Vec{v}^{(2)} = \begin{pmatrix}
+       \frac{1}{4} \left( 2 - \sqrt{10} \right)\\
+     - \frac{\sqrt{\frac{5}{2}}}{2}\\
+     1\\
+     \end{pmatrix}
+   .\end{equation*}
+   Which normalises to
+   \begin{equation*}
+     \hat{v}^{(2)} = \frac{\begin{pmatrix}
+       \frac{1}{4}(2 - \sqrt{10})\\
+     - \frac{\sqrt{\frac{5}{2}}}{2}\\
+     1\\
+     \end{pmatrix}}{\sqrt{\left( \frac{1}{4} \left( 2 - \sqrt{10} \right) \right)^2 + \left( - \frac{\sqrt{\frac{5}{2}}}{2} \right)^2 + 1^2}} = \begin{pmatrix}
+       \num{-0,222} \\
+     \num{-0,605} \\
+     \num{0,765} \\
+     \end{pmatrix}
+   .\end{equation*}
+
+   For $\lambda_3 = 1 + \sqrt{10}$ we eget:
+   \begin{equation*}
+     \begin{pmatrix}
+       2 - 1 + \sqrt{10} & 1 & 2\\
+     1 & 0 - 1 + \sqrt{10} & 2\\
+     2 & 2 & 0 - 1 + \sqrt{10}\\
+     \end{pmatrix} \begin{pmatrix}
+       x_1\\
+     x_2\\
+     x_3\\
+     \end{pmatrix} = 0 \implies \Vec{v}^{(3)} = \begin{pmatrix}
+       \frac{1}{4} (2 + \sqrt{10})\\
+     \frac{\sqrt{\frac{5}{2}}}{2}\\
+     1\\
+     \end{pmatrix}
+   .\end{equation*}
+   Which normalizes to:
+   \begin{equation*}
+     \hat{v}^{(3)} = \begin{pmatrix}
+       \num{0,711} \\
+     \num{0,436} \\
+     \num{0,551} \\
+     \end{pmatrix}
+   .\end{equation*}
+   
+   We know that the rotation matrix that diagonalizes the stress tensor is
+   \begin{equation*}
+     \Vec{R}_1 = \begin{pmatrix}
+       \hat{v}^{(1)}& \hat{v}^{(2)} & \hat{v}^{(3)}\\
+     \end{pmatrix}
+   .\end{equation*}
+   I.e.
+   \begin{equation*}
+     \Vec{R}_1 = \begin{pmatrix}
+       - \frac{2}{3} & - \num{0,222}  & \num{0,711} \\
+     \frac{2}{3} & \num{-0,605}  & \num{0,436} \\
+     \frac{1}{3} & \num{0,765}  & \num{0,551} \\
+     \end{pmatrix}
+   .\end{equation*}
+   
+   As one of the principal stresses $\sigma^{(1)} = 0$ the stress state must be plane stress at $\Vec{P}_1$.
+   
+    
+  \paragraph{$\Vec{P}_2$}
+  Here, our eigenvalue problem is:
+  \begin{align*}
+    \begin{vmatrix}
+      2-\lambda & 1 & 5\\
+    1 & 0 - \lambda & 8\\
+    5 & 8 & 3 - \lambda\\
+  \end{vmatrix} &= 0 \\
+  -1 \lambda ^3+5 \lambda ^2+84 \lambda -51 &= 0
+  .\end{align*}
+  which gives the eigenvalues $\lambda_1 = \num{-7,358}, \lambda_2 = \num{0,589}$, and $\lambda_3 = \num{11,769}$
+  
+  For $\lambda_1 = \num{-7,358}$ our eigenvector is:
+  \begin{align*}
+    \begin{pmatrix}
+      2 + \num{7,358}  & 1 & 5\\
+    1 & \num{7,358}  & 8\\
+    5 & 8 & 3 + \num{7,358} \\
+    \end{pmatrix} \begin{pmatrix}
+      x_1\\
+    x_2\\
+    x_3\\
+    \end{pmatrix} = 0 &\implies \Vec{v}^{(1)} = \begin{pmatrix}
+      \num{-0,424} \\
+    \num{-1,030} \\
+    1\\
+    \end{pmatrix} \\
+    \hat{v}^{(1)} = \frac{\begin{pmatrix}
+     - \num{0.424} \\
+    -\num{1.030} \\
+    1\\
+\end{pmatrix}}{\sqrt{\num{0,424} ^2 + \num{1,03} ^2 + 1^2}}  &= \left(
+\begin{array}{c}
+  \num{-0.283} \\
+\num{ -0.688} \\
+\num{ 0.668} \\
+\end{array}
+\right)
+  .\end{align*}
+  
+  For $\lambda_2 = \num{0,589}$ our eigenvector is:
+    \begin{align*}
+    \begin{pmatrix}
+      2 - \num{0,589}  & 1 & 5\\
+    1 & \num{0,589}  & 8\\
+    5 & 8 & 3 - \num{0,589} \\
+    \end{pmatrix} \begin{pmatrix}
+      x_1\\
+    x_2\\
+    x_3\\
+    \end{pmatrix} = 0 &\implies \Vec{v}^{(2)} = \begin{pmatrix}
+      \num{-5,977} \\
+    \num{3,434} \\
+    1\\
+    \end{pmatrix} \\
+    \hat{v}^{(2)} = \frac{\begin{pmatrix}
+     - \num{5,977} \\
+    \num{3,434} \\
+    1\\
+\end{pmatrix}}{\sqrt{\num{5,977} ^2 + \num{3,434} ^2 + 1^2}} &= \left(
+\begin{array}{c}
+  \num{-0.858} \\
+\num{0.493 }\\
+\num{0.144} \\
+\end{array}
+\right)
+.\end{align*}
+
+For $\lambda_3 = \num{11,769}$ our eigenvector is:
+    \begin{align*}
+    \begin{pmatrix}
+      2 - \num{11,769}  & 1 & 5\\
+    1 & \num{11,769}  & 8\\
+    5 & 8 & 3 - \num{11,769} \\
+    \end{pmatrix} \begin{pmatrix}
+      x_1\\
+    x_2\\
+    x_3\\
+    \end{pmatrix} = 0 &\implies \Vec{v}^{(3)} = \begin{pmatrix}
+      \num{0,586} \\
+    \num{0,730} \\
+    1\\
+    \end{pmatrix} \\
+    \hat{v}^{(3)} = \frac{\begin{pmatrix}
+     \num{0,586} \\
+    \num{0,730} \\
+    1\\
+\end{pmatrix}}{\sqrt{\num{0,586} ^2 + \num{0,730} ^2 + 1^2}} &= \left(
+\begin{array}{c}
+\num{0.428} \\
+\num{ 0.533} \\
+\num{ 0.730} \\
+\end{array}
+\right)
+.\end{align*}
+
+Therefore our rotation matrix is:
+\begin{equation*}
+  \Vec{R}_2 = \begin{pmatrix}
+    \hat{v}^{(1)} & \hat{v}^{(2)} & \hat{v}^{(3)}\\
+  \end{pmatrix} = \Vec{R}_2 = \begin{pmatrix}
+    \num{-0,283}  & -\num{0,858}  & \num{0,428} \\
+  - \num{0,688}  & \num{0,493}  & \num{0,533} \\
+  \num{0,668}  & \num{0,144}  & \num{0,730} \\
+  \end{pmatrix}
+.\end{equation*}
+    
+    This is a general triaxial stress state as all three principal stresses are nonzero. 
+
+    \paragraph{$\Vec{P}_3$} Here our eigenvalue problem is
+    \begin{align*}
+      \begin{vmatrix}
+        1 - \lambda & 0 & 0\\
+      0 & 0 - \lambda & 0\\
+      0 & 0 & -1 - \lambda\\
+      \end{vmatrix} &= 0 \\
+      \lambda -\lambda ^3 &= 0
+    .\end{align*}
+    This gives the eigenvalues $\lambda_1 = -1$, $\lambda_2 = 0$, $\lambda_3 = 1$.
+
+    For $\lambda_1 = -1$ our eigenvector is
+    \begin{equation*}
+      \begin{pmatrix}
+        1 + 1 & 0 & 0\\
+      0 & 1 & 0\\
+      0 & 0 & -1 + 1\\
+      \end{pmatrix} \begin{pmatrix}
+        x_1\\
+      x_2\\
+      x_3\\
+      \end{pmatrix} = 0 \implies \Vec{v}^{(1)} = \begin{pmatrix}
+        0\\
+      0\\
+      1\\
+      \end{pmatrix} = \hat{v}^{(1)}
+    .\end{equation*}
+    
+    For $\lambda_2 = 0$ we get
+    \begin{equation*}
+      \begin{pmatrix}
+        1 & 0 & 0\\
+      0 & 0 & 0\\
+      0 & 0 & -1\\
+      \end{pmatrix} \begin{pmatrix}
+        x_1\\
+      x_2\\
+      x_3\\
+      \end{pmatrix} = 0 \implies \Vec{v}^{(2)} = \begin{pmatrix}
+        0\\
+      1\\
+      0\\
+      \end{pmatrix} = \hat{v}^{(2)}
+    .\end{equation*}
+    
+    For $\lambda_3 = 1$ we get
+    \begin{equation*}
+      \begin{pmatrix}
+        1-1 & 0 & 0\\
+      0 & 0-1 & 0\\
+      0 & 0 & -1-1\\
+      \end{pmatrix} \begin{pmatrix}
+        x_1\\
+      x_2\\
+      x_3\\
+      \end{pmatrix} = 0 \implies \Vec{v}^{(3)} = \begin{pmatrix}
+        1\\
+      0\\
+      0\\
+      \end{pmatrix} = \hat{v}^{(3)}
+    .\end{equation*}
+    
+    Here, our rotation matrix is therefore:
+    \begin{equation*}
+      \Vec{R}_3 = \begin{pmatrix}
+        \hat{v}^{(1)} & \hat{v}^{(2)} & \hat{v}^{(3)}
+      \end{pmatrix} = \begin{pmatrix}
+        0 & 0 & 1\\
+      0 & 1 & 0\\
+      1 & 0 & 0\\
+      \end{pmatrix}
+    .\end{equation*}
+    Here, one of the principal stresses is zero meaning the stress state is plane. Also the other two principal stresses are equal but opposite meaning the stress state is also pure shear. Hence, the stress state at $\Vec{P}_3$ is a pure shear plane stress state.
+  \end{derivation}
+
+  \finalresult{
+    \begin{aligned}
+    &\Vec{P}_1 & &\begin{gathered}
+    \begin{aligned}
+      \sigma^{(1)} &= 0 & \sigma^{(2)} &= 1 - \sqrt{10} & \sigma^{(3)} &= 1 + \sqrt{10} \\
+      \hat{v}^{(1)} &= \begin{pmatrix}
+        - \frac{2}{3}\\
+      \frac{2}{3}\\
+      \frac{1}{3}\\
+    \end{pmatrix} & \hat{v}^{(2)} &= \begin{pmatrix}
+      \num{-0,222} \\
+    \num{-0,605} \\
+    \num{0,765} \\
+  \end{pmatrix} & \hat{v}^{(3)} &= \begin{pmatrix}
+    \num{0,711} \\
+  \num{0,436} \\
+  \num{0,551} \\
+  \end{pmatrix}
+    \end{aligned} \\
+             \Vec{R}_1 = \begin{pmatrix}
+          - \frac{2}{3} & \num{-0,222}  & \num{0,711} \\
+        \frac{2}{3} & \num{-0,605}  & \num{0,436} \\
+        \frac{1}{3} & \num{0,765}  & \num{0,551} \\
+      \end{pmatrix} \\
+      \text{Plane Stress}
+    .\end{gathered} \\ \\ \\
+    &\Vec{P}_2 & &\begin{gathered}
+    \begin{aligned}
+      \sigma^{(1)} &= \num{-7,358}  & \sigma^{(2)} &= \num{0,589}  & \sigma^{(3)} &= \num{11,769}  \\
+      \hat{v}^{(1)} &= \begin{pmatrix}
+        \num{-0,283} \\
+      \num{-0,688} \\
+      \num{0,668} \\
+    \end{pmatrix} & \hat{v}^{(2)} &= \begin{pmatrix}
+      \num{-0,858} \\
+    \num{0,493} \\
+    \num{0,144} \\
+  \end{pmatrix} & \hat{v}^{(3)} &= \begin{pmatrix}
+    \num{0,428} \\
+  \num{0,533} \\
+  \num{0,730} \\
+  \end{pmatrix}
+    \end{aligned} \\
+             \Vec{R}_2 = \begin{pmatrix}
+          \num{-0,283}  & \num{-0,858}  & \num{0,428} \\
+        \num{-0,688}  & \num{0,493}  & \num{0,533} \\
+        \num{0,668}  & \num{0,144}  & \num{0,730} \\
+      \end{pmatrix} \\
+      \text{General triaxial stress}
+    .\end{gathered} \\ \\ \\
+    &\Vec{P}_3 & &\begin{gathered}
+    \begin{aligned}
+      \sigma^{(1)} &= \num{-1}  & \sigma^{(2)} &= \num{0}  & \sigma^{(3)} &= \num{1}  \\
+      \hat{v}^{(1)} &= \begin{pmatrix}
+        \num{0} \\
+      \num{0} \\
+      \num{1} \\
+    \end{pmatrix} & \hat{v}^{(2)} &= \begin{pmatrix}
+      \num{0} \\
+    \num{1} \\
+    \num{0} \\
+  \end{pmatrix} & \hat{v}^{(3)} &= \begin{pmatrix}
+    \num{1} \\
+  \num{0} \\
+  \num{0} \\
+  \end{pmatrix}
+    \end{aligned} \\
+             \Vec{R}_3 = \begin{pmatrix}
+          \num{0}  & \num{0}  & \num{1} \\
+        \num{0}  & \num{1}  & \num{0} \\
+        \num{1}  & \num{0}  & \num{0} \\
+      \end{pmatrix} \\
+      \text{Pure shear plane stress}
+    .\end{gathered}
+    .\end{aligned}
+  }
+
+  \begin{problem}{2}
+    Compute the traction vector at the point $\Vec{P}_i$ on the element of surface with unit normal $\Vec{n}_i$ for the following cases:
+    \begin{itemize}
+      \item $\Vec{P}_1$ and $\Vec{n}_1 = \begin{pmatrix}
+        -\frac{2}{3} & \frac{2}{3} & \frac{1}{3}\\
+      \end{pmatrix}$;
+    \item $\Vec{P}_2$ and $\Vec{n}_2  = \begin{pmatrix}
+      1 & 1 & 0\\
+    \end{pmatrix} / \sqrt{2}$;
+    \item $\Vec{P}_3$ and $\Vec{n}_3 = \begin{pmatrix}
+      1 & 1 & 1\\
+    \end{pmatrix} / \sqrt{3}$.
+    \end{itemize}
+  \end{problem}
+
+  \begin{derivation}
+    The traction vector $\Vec{T}$ caused by the stress $\Vec{\sigma}$ on the plane $\Vec{n}$ is
+    \begin{equation*}
+      \Vec{T} = \Vec{\sigma} \Vec{n}
+    .\end{equation*}
+    So:
+    \begin{align*}
+      \Vec{T}_1 &= \Vec{\sigma}_1 \Vec{n}_1 = \begin{pmatrix}
+        2 & 1 & 2\\
+      1 & 0 & 2\\
+      2 & 2 & 0\\
+      \end{pmatrix} \cdot \begin{pmatrix}
+        - \frac{2}{3}\\
+      \frac{2}{3}\\
+      \frac{1}{3}\\
+      \end{pmatrix} = \left(
+\begin{array}{c}
+ 0 \\
+ 0 \\
+ 0 \\
+\end{array}
+\right) \\
+\Vec{T}_2 &= \Vec{\sigma}_2 \Vec{n}_2 = \begin{pmatrix}
+  2 & 1 & 5\\
+1 & 0 & 8\\
+5 & 8 & 3\\
+\end{pmatrix} \cdot \begin{pmatrix}
+  1\\
+1\\
+0\\
+\end{pmatrix} \cdot \frac{1}{\sqrt{2}} = \left(
+\begin{array}{c}
+ \frac{3}{\sqrt{2}} \\
+ \frac{1}{\sqrt{2}} \\
+ \frac{13}{\sqrt{2}} \\
+\end{array}
+\right) \\
+\Vec{T}_3 &= \Vec{\sigma}_3 n_3 = \begin{pmatrix}
+  1 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & -1\\
+\end{pmatrix} \cdot \begin{pmatrix}
+  1\\
+1\\
+1\\
+\end{pmatrix} \cdot \frac{1}{\sqrt{3}} = \left(
+\begin{array}{c}
+ \frac{1}{\sqrt{3}} \\
+ 0 \\
+ -\frac{1}{\sqrt{3}} \\
+\end{array}
+\right)
+    .\end{align*}
+  \end{derivation}
+
+  \finalresult{
+    \begin{aligned}
+      \Vec{T}_1 &= \begin{pmatrix}
+        0\\
+      0\\
+      0\\
+      \end{pmatrix} \\
+      \Vec{T}_2 &= \frac{1}{\sqrt{2}}\begin{pmatrix}
+       3 \\
+      1\\
+      13\\
+      \end{pmatrix} \\
+        \Vec{T}_3 &= \frac{1}{\sqrt{3}} \begin{pmatrix}
+          1\\
+        0\\
+        -1\\
+        \end{pmatrix}
+    .\end{aligned}
+  }
+
+  \begin{problem}{3}
+    Determine whether the stress field above satisfies the equilibrium (balance) equations in the absence of body forces.
+    Otherwise, compute the body forces that the continuum needs to be subjected to, so as to be in equilibrium.
+  \end{problem}
+
+  \begin{derivation}
+    We know that
+    \begin{equation*}
+      \sigma_{ij,j} + f_i = 0
+    \end{equation*}
+    which is:
+    \begin{align*}
+      \frac{\partial \sigma_{11}}{\partial x_1} + \frac{\partial \sigma_{12}}{\partial x_2} + \frac{\partial \sigma_{13}}{\partial x_3} + f_{x_1} &= 0 \\
+      \frac{\partial \sigma_{21}}{\partial x_1} + \frac{\partial \sigma_{22}}{\partial x_2} + \frac{\partial \sigma_{23}}{\partial x_3} + f_{x_2} &= 0 \\
+      \frac{\partial \sigma_{31}}{\partial x_1} + \frac{\partial \sigma_{32}}{\partial x_2} + \frac{\partial \sigma_{33}}{\partial x_3} + f_{x_3} &= 0
+    .\end{align*}
+
+    In the $x_1$ direction we get
+    \begin{equation*}
+      2x_1 + 2x_2 + 2x_3 + f_{x_1} = 0 
+    .\end{equation*}
+    This is not true in general in the absence of body forces and hence the stress field does not satisfy equilibrium in the absence of body forces. To balance the above,
+    \begin{equation*}
+      f_{x_1} = - 2x_1 - 2x_2 - 2x_3
+    .\end{equation*}
+    
+    In the $x_2$ direction we get:
+    \begin{equation*}
+      0 + 0 + 4x_3 + f_{x_2} = 0 \implies f_{x_2} = - 4x_3
+    .\end{equation*}
+    
+    And in the $x_3$ direction we get
+    \begin{equation*}
+      x_2 + 0 + 2x_3 + f_{x_3} = 0 \implies f_{x_3} = - x_2 - 2x_3
+    .\end{equation*}
+    
+    Therefore, the stress field does not satisfy equilibrium in the absence of body forces and the required body force to maintain equilibrium is:
+  \end{derivation}
+
+  \finalresult{
+    \Vec{f} = \begin{pmatrix}
+        -2x_1 - 2x_2 - 2x_3\\
+      - 4x_3\\
+      - x_2 - 2x_3\\
+    \end{pmatrix}
+  }
+\end{document}
