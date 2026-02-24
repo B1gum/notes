@@ -15,11 +15,191 @@
   \end{enumerate}
 \end{problem}
 
+\begin{derivation}
+  \begin{enumerate}[label=(\alph*)]
+    \item We are given the following stress state:
+      \begin{equation*}
+        \Vec{\sigma} = \begin{bmatrix}
+          \num{20000}  & \num{2000}  & \cdot \\
+        \cdot  & \num{-15000}  & \num{2000} \\
+        \num{1000}  & \cdot  & \num{3000} \\
+        \end{bmatrix}
+      .\end{equation*}
+      We assume this is symmetric i.e. it satisfies the standard case of $\sigma_{ij} = \sigma_{ji}$ and we therefore get:
+      \begin{equation*}
+        \Vec{\sigma} = \begin{bmatrix}
+          \num{20000}  & \num{2000}  & \num{1000} \\
+        \num{2000}  & \num{-15000}  & \num{2000} \\
+        \num{1000}  & \num{2000}  & \num{3000} \\
+        \end{bmatrix}
+      .\end{equation*}
+      
+      As $\Vec{n}$ makes equal angles with $x_1$, $x_2$, and $x_3$, $\Vec{n}$ must be:
+      \begin{equation*}
+        \Vec{n} = \frac{1}{\sqrt{3}} (1,1,1)
+      .\end{equation*}
+      
+      The traction vector on the plane is:
+      \begin{equation*}
+        \Vec{T} = \Vec{\sigma} \Vec{n}
+      \end{equation*}
+      so,
+      \begin{align*}
+        T_1 &= \frac{1}{\sqrt{3}} \left( \num{20000} + \num{2000} + \num{1000}  \right)  = \frac{\num{23000}}{\sqrt{3}} \\
+      T_2 &= \frac{1}{\sqrt{3}} \left( \num{2000} - \num{15000} + \num{2000}  \right)  = -\frac{\num{11000}}{\sqrt{3}}\\
+      T_3 &= \frac{1}{\sqrt{3}} \left( \num{1000} + \num{2000} + \num{3000}   \right) = \frac{\num{6000} }{\sqrt{3}}      .\end{align*}
+    \item The normal stress is given as
+      \begin{equation*}
+        \sigma_{nn} = \Vec{T}_n \cdot \Vec{n}
+      .\end{equation*}
+      I.e.
+      \begin{align*}
+        \sigma_{nn} &= \frac{1}{\sqrt{3}} \left( T_1 + T_2 + T_3 \right) \\
+        &= \frac{1}{3} \left( \num{23000} - \num{11000} + \num{6000}  \right) \\
+        &= \num{6000} 
+      .\end{align*}
+      Hence, the normal traction vector $\Vec{N}$ is
+      \begin{equation*}
+        \Vec{N} = \sigma_{nn} \cdot \Vec{n} = \num{6000} \cdot \frac{1}{\sqrt{3}} \begin{pmatrix}
+          1\\
+        1\\
+        1\\
+        \end{pmatrix}
+      .\end{equation*}
+      
+      As the total traction $\Vec{T}$ is the algebraic sum of the normal traction $\Vec{N}$ and the tangential traction $\Vec{S}$ we get:
+      \begin{equation*}
+        \Vec{T} = \Vec{N} + \Vec{S} \implies \Vec{S} = \Vec{T} - \Vec{N}
+      .\end{equation*}
+      So
+      \begin{equation*}
+        \Vec{S} = \frac{1}{\sqrt{3}} \begin{pmatrix}
+          \num{23000} \\
+        \num{-11000} \\
+        \num{6000} \\
+        \end{pmatrix} - \frac{\num{6000} }{\sqrt{3}} \begin{pmatrix}
+          1\\
+        1\\
+        1\\
+        \end{pmatrix} = \frac{1}{\sqrt{3}} \begin{pmatrix}
+          \num{17000} \\
+        \num{-17000} \\
+        0\\
+        \end{pmatrix}
+      .\end{equation*}
+    \item[(d)] For principal stresses we have the condition:
+      \begin{equation*}
+        \left| \sigma_{ji} - \lambda \delta_{ij} \right| = 0
+      \end{equation*}
+      i.e.:
+      \begin{equation*}
+        \begin{vmatrix} \num{20000} - \lambda & \num{2000}  & \num{1000} \\ \num{2000}  & -\num{15000} - \lambda & \num{2000} \\ \num{1000}  & \num{2000}  & \num{3000} - \lambda\\ \end{vmatrix} = 0 \rightarrow \lambda_1\to \num{-15319.7}, \quad \lambda_2\to \num{3133.4}, \quad \lambda_3\to \num{20186.3}
+      .\end{equation*}
+      Therefore our principal stresses are:
+      \begin{align*}
+        \sigma^{(1)} &= \num{-15319,7}  \\
+        \sigma^{(2)} &= \num{3133,4}  \\
+        \sigma^{(3)} &= \num{20186,3} 
+      .\end{align*}
+    \item[(e)] For the maximum principal stress $\lambda_3 = \num{20186,3}$ we solve
+      \begin{equation*}
+        (\sigma_{ji} - \lambda \delta_{ij}) n_j = 0
+      .\end{equation*}
+      I.e.
+      \begin{equation*}
+        \begin{pmatrix}
+          \num{20000} - \num{20186,3} & \num{2000}  & \num{1000} \\
+        \num{2000}  & - \num{15000} - \num{20186,3} & \num{2000} \\
+        \num{1000}  & \num{2000} & \num{3000} - \num{20186,3} \\
+        \end{pmatrix} \cdot \begin{pmatrix}
+          n_1\\
+        n_2\\
+        n_3\\
+        \end{pmatrix} = \begin{pmatrix}
+          0\\
+        0\\
+        0\\
+        \end{pmatrix}
+    .\end{equation*}
+    Solving this gives $n_1 = \num{15,3299}, \quad n_2 = \num{0,928198}, \quad n_3 = \num{1}$. Now we scale this by the length to get a unit vector:
+    \begin{equation*}
+      \Vec{n}_{\mathrm{max}} = \frac{\begin{pmatrix}
+        \num{15,3299} \\
+      \num{0,928198} \\
+      \num{1} \\
+      \end{pmatrix}}{\sqrt{ \num{15,3299}^2 + \num{0,928198}^2 + \num{1}^2}} = \left(
+\begin{array}{c}
+ 0.996 \\
+ 0.0603\\
+ 0.0650 \\
+\end{array}
+\right)
+    .\end{equation*}
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &(\mathrm{a}) & \Vec{T} &= \frac{1}{\sqrt{3}} \begin{pmatrix}
+   \num{23000}  \\
+  \num{-11000}  \\
+  \num{6000} \\
+  \end{pmatrix} \\
+  &(\mathrm{b}) & \Vec{N} &= \frac{1}{\sqrt{3}} \begin{pmatrix}
+    \num{6000} \\
+  \num{6000} \\
+  \num{6000} \\
+  \end{pmatrix} \\
+  && \Vec{S} &= \frac{1}{\sqrt{3}} \begin{pmatrix}
+    \num{17000} \\
+  \num{-17000} \\
+  0\\
+  \end{pmatrix} \\
+  &(\mathrm{d}) & \sigma^{(1)} &= \num{-15319,7}  \\
+  && \sigma^{(2)} &= \num{3133,4}  \\
+  && \sigma^{(3)} &= \num{20186,3} \\
+  &(\mathrm{e}) & \Vec{n}_{\mathrm{max}} &= \begin{pmatrix}
+    \num{0,996} \\
+  \num{0,060} \\
+  \num{0,065} \\
+  \end{pmatrix}
+.\end{aligned}
+}
+
 \begin{problem}{2.3}
   The state of stress at a point is given by the components of stress tensor $\sigma_{ij}$.
   A plane is defined by the direction cosines of the normal $\left( 1 / 2, 1 / 2, 1 / \sqrt{2} \right)$.
   State the general conditions for which the traction on the plane has the same direction as the $x_2$-axis and a magnitude of \num{1,0}.
 \end{problem}
+
+\begin{derivation}
+  We use
+  \begin{equation*}
+    \Vec{T}_i = \sigma_{ji} n_j = \Vec{\sigma} \cdot \Vec{n}
+  .\end{equation*}
+  We are given
+  \begin{equation*}
+    \Vec{n} = \begin{pmatrix}
+      \frac{1}{2}\\
+    \frac{1}{2}\\
+    \frac{1}{\sqrt{2}}\\
+    \end{pmatrix}
+  .\end{equation*}
+  The traction should be in the $x_2$ axis and have magnitude \num{1,0} so it must be
+  \begin{equation*}
+    \Vec{T} = \begin{pmatrix}
+      0\\
+    \num{1,0} \\
+    0\\
+    \end{pmatrix} = \Vec{e}_2
+  .\end{equation*}
+  So the condition is simply
+  \begin{equation*}
+    \Vec{\sigma} \Vec{n} = \Vec{e}_2
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{\Vec{\sigma} \Vec{n} = \Vec{e}_2}
 
 \begin{problem}{2.4}
   Determine the body forces for which the following stress field describes a state of equilibrium
@@ -30,6 +210,45 @@
   .\end{align*}
 \end{problem}
 
+\begin{derivation}
+  We have that
+  \begin{equation*}
+    \sigma_{ij,j} + f_i = 0
+  .\end{equation*}
+  which is:
+  \begin{align*}
+    \frac{\partial \sigma_{x x}}{\partial x} + \frac{\partial \sigma_{xy}}{\partial y} + \frac{\partial \sigma_{xz}}{\partial z} + f_x &= 0 \\
+    \frac{\partial \sigma_{y x}}{\partial x} + \frac{\partial \sigma_{yy}}{\partial y} + \frac{\partial \sigma_{yz}}{\partial z} + f_y &= 0 \\
+    \frac{\partial \sigma_{z x}}{\partial x} + \frac{\partial \sigma_{zy}}{\partial y} + \frac{\partial \sigma_{zz}}{\partial z} + f_z &= 0
+  .\end{align*}
+  In the $x$-direction we get
+  \begin{align*}
+    \frac{\partial (-2x^2 - 3y^2 - 5z)}{\partial x} + \frac{\partial (x + 4xy - 6)}{\partial y} + \frac{\partial (-3x +2y + 1)}{\partial z} + f_x &= 0 \\
+    -4x + 4x + f_x &= 0 \\
+    f_x &= 0
+  .\end{align*}
+  In the $y$-direction we get
+  \begin{align*}
+    \frac{\partial (x + 4 xy - 6)}{\partial x}  + \frac{\partial (- 2 y^2 + 7)}{\partial y} + \frac{\partial 0}{\partial z} + f_y &= 0 \\
+    1 + 4y - 4y + f_y &= 0 \\
+    f_y &= -1
+  .\end{align*}
+  And in the $z$-direction we get
+  \begin{align*}
+    \frac{\partial (-3x + 2y + 1)}{\partial x} + \frac{\partial 0}{\partial y} + \frac{\partial (4x + y + 3z - 5)}{\partial z} + f_z &= 0 \\
+    -3 + 3 + f_z &= 0 \\
+    f_z &= 0
+  .\end{align*}
+\end{derivation}
+
+\finalresult{
+  \Vec{f} = \begin{pmatrix}
+    0\\
+  -1\\
+  0\\
+  \end{pmatrix} = - \Vec{e}_2
+}
+
 \begin{problem}{2.5}
   Determine whether the following stress field is admissible in an elastic body when body forces are negligible.
   \begin{equation*}
@@ -38,9 +257,34 @@
     \cdot & xz + 3y & 8x^3\\
     \cdot  & \cdot  & 2xyz\\
     \end{bmatrix}
-  .\end{equation*}
-  
+  .\end{equation*}  
 \end{problem}
+
+\begin{derivation}
+  We once again use
+  \begin{equation*}
+    \sigma_{ij,j} + f_i = 0
+  .\end{equation*}
+  With negligible body forces this becomes
+  \begin{equation*}
+    \sigma_{ij,j} = 0
+  .\end{equation*}
+  I.e.
+  \begin{align*}
+    \frac{\partial \sigma_{ x x}}{\partial x} + \frac{\partial \sigma_{xy}}{\partial y} + \frac{\partial \sigma_{xz}}{\partial z} &= 0 \\
+    \frac{\partial \sigma_{yx}}{\partial x} + \frac{\partial \sigma_{yy}}{\partial y} + \frac{\partial \sigma_{yz}}{\partial z} &= 0 \\
+    \frac{\partial \sigma_{zx}}{\partial x} + \frac{\partial \sigma_{zy}}{\partial y} + \frac{\partial \sigma_{zz}}{\partial z} &= 0
+  .\end{align*}
+  In the $x$-direction we get
+  \begin{align*}
+    \frac{\partial (yz + 4)}{\partial x} + \frac{\partial (z^2 + 2x)}{\partial y} + \frac{\partial (5y + z)}{\partial z} &= 0 \\
+    0 + 0 + 1 &\neq 0
+  .\end{align*}
+  Hence, the stress field is not admissible with negligible body forces.
+\end{derivation}
+
+\finalresult{\text{It is not.}}
+
 
 \begin{problem}{2.8}
   The stress tensor at a point $P(x,y,z)$ in a solid is
@@ -56,6 +300,102 @@
     \item Find the orientation of the principal planes
   \end{enumerate}
 \end{problem}
+
+\begin{derivation}
+  \begin{enumerate}[label=(\alph*)]
+    \item We have the characteristic equation
+      \begin{equation*}
+        \left| \sigma_{ji} - \lambda \delta_{ij} \right| = 0
+      .\end{equation*}
+      I.e.
+      \begin{equation*}
+        \begin{vmatrix}
+          3 - \lambda & 1 & 1\\
+        1 & 0 - \lambda & 2\\
+        1 & 2 & 0 - \lambda\\
+        \end{vmatrix} = 0 \implies \lambda_1\to -2, \quad\lambda_2\to 1, \quad\lambda_3\to 4
+      .\end{equation*}
+    \item The orientation of the principal planes are the eigenvectors of these. I.e. we have to solve
+      \begin{equation*}
+        \left( \sigma_{ji} - \lambda \delta_{ij} \right) n_j = 0 
+      .\end{equation*}
+      For each $\lambda$.
+
+      For $\lambda_1 = -2$ we get
+      \begin{equation*}
+        \begin{bmatrix}
+          5 & 1 & 1\\
+        1 & 2 & 2\\
+        1 & 2 & 2\\
+        \end{bmatrix} \cdot \Vec{n}_1 = 0 \implies \Vec{n}_1 = \begin{pmatrix}
+          0\\
+        -1\\
+        1\\
+        \end{pmatrix}
+      .\end{equation*}
+      \begin{equation*}
+        \hat{n}_1 = \begin{pmatrix}
+          0 & - \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}\\
+        \end{pmatrix}
+      .\end{equation*}
+      
+
+      For $\lambda_2 = 1$ we get
+      \begin{equation*}
+        \begin{bmatrix}
+          2 & 1 & 1\\
+        1 & -1 & 2\\
+        1 & 2 & -1\\
+        \end{bmatrix} \Vec{n}_2 = 0 \implies \Vec{n}_2 = \begin{pmatrix}
+          -1\\
+        1\\
+        1\\
+        \end{pmatrix}
+      .\end{equation*}
+      \begin{equation*}
+        \hat{n}_2 = \begin{pmatrix}
+          - \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}}\\
+        \end{pmatrix}
+      .\end{equation*}
+      
+
+      For $\lambda_3 = 4$ we get
+      \begin{equation*}
+        \begin{bmatrix}
+          -1 & 1 & 1\\
+        1 & -4 & 2\\
+        1 & 2 & -4\\
+        \end{bmatrix} \Vec{n}_3 = 0 \implies \Vec{n}_3 = \begin{pmatrix}
+          2\\
+        1\\
+        1\\
+        \end{pmatrix}
+      .\end{equation*}
+      \begin{equation*}
+        \hat{n}_3 = \begin{pmatrix}
+          \frac{2}{\sqrt{6}} & \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{6}}\\
+        \end{pmatrix}
+      .\end{equation*}
+      
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &(\mathrm{a}) & \sigma^{(1)} &= -2 \\
+  && \sigma^{(2)} &= 1 \\
+  && \sigma^{(3)} &= 4 \\
+  &(\mathrm{b}) & \hat{n}_1 &= \begin{pmatrix}
+    0 & - \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}\\
+  \end{pmatrix} \\
+  && \hat{n}_2 &= \begin{pmatrix}
+    - \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}}\\
+  \end{pmatrix} \\
+  && \hat{n}_3 &= \begin{pmatrix}
+    \frac{2}{\sqrt{6}} & \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{6}}\\
+  \end{pmatrix}
+.\end{aligned}
+}
 
 \begin{problem}{2.9}
   The stress tensor at a point $P(x,y,z)$ in a solid is
@@ -80,3 +420,112 @@
     \item Find the orientation of the principal planes with respect to the $x-$, $y-$, and $z-$axes.
   \end{enumerate}
 \end{problem}
+
+\begin{derivation}
+  \begin{enumerate}[label=(\alph*)]
+    \item To transform coordinates we use
+      \begin{equation*}
+        \Vec{A}' = \Vec{R} \Vec{A} \Vec{A}^{T}
+      .\end{equation*}
+      Hence
+      \begin{equation*}
+        \Vec{\sigma}' = \Vec{\alpha} \Vec{\sigma} \Vec{\alpha}^{T}
+      \end{equation*}
+      which gives
+      \begin{equation*}
+        \Vec{\sigma}'=\begin{pmatrix}
+          \frac{1}{2} & - \frac{\sqrt{3}}{2} & 0\\
+          \frac{\sqrt{3}}{2} & \frac{1}{2} & 0\\
+        0 & 0 & 1\\
+        \end{pmatrix} \cdot \begin{pmatrix}
+          120 & 40 & 30\\
+        40 & 150 & 20\\
+        30 & 20 & 100\\
+        \end{pmatrix} \cdot \begin{pmatrix}
+  \frac{1}{2} &  \frac{\sqrt{3}}{2} & 0\\
+-\frac{\sqrt{3}}{2} & \frac{1}{2} & 0\\
+0 & 0 & 1\\
+\end{pmatrix} = \begin{bmatrix}
+  \num{107,86}  & -\num{32,99}  & -\num{2,32} \\
+-\num{32,99}  & \num{162,14}  & \num{35,98} \\
+\num{-2,32}  & \num{35,98}  & \num{100} \\
+\end{bmatrix}
+      .\end{equation*}
+
+    \item Here we use the characteristic equation from before to find the eigenvalues:
+      \begin{equation*}
+        \begin{bmatrix}
+          120 - \lambda & 40 & 30\\
+        40 & 150 -\lambda & 20\\
+        30 & 20 & 100 - \lambda\\
+    \end{bmatrix} = 0 \implies \lambda_1 = \num{190.405}, \quad \lambda_2 = \num{102.423}, \quad \lambda_3 = \num{77.1724}
+      .\end{equation*}
+      and
+      \begin{equation*}
+        \begin{bmatrix}
+          \num{107,86} -\lambda  & -\num{32,99}  & -\num{2,32} \\
+        -\num{32,99}  & \num{162,14} -\lambda  & \num{35,98} \\
+        -\num{2,32}  & \num{35,98}  & 100 -\lambda\\
+    \end{bmatrix} \rightarrow \lambda_1 = \num{190.403}, \quad \lambda_2 = \num{102.424}, \lambda_3 = {77.1727}
+      .\end{equation*}
+      Which confirms that principal stresses are unchanged by rotation.
+
+    \item Here we solve
+      \begin{equation*}
+        \left| \sigma_{ji} - \lambda \delta_{ij} \right| n_j = 0
+      \end{equation*}
+      for each eigenvalue and get:
+      \begin{equation*}
+        \begin{bmatrix}
+          120 & 40 & 30\\
+        40 & 150 & 20\\
+        30 & 20 & 100\\
+        \end{bmatrix} \rightarrow \left(
+\begin{array}{ccc}
+ 190.405 & 102.423 & 77.1724 \\
+ \{1.61658,2.09537,1.\} & \{0.821389,-1.11094,1.\} & \{-0.911651,0.226096,1.\} \\
+\end{array}
+\right)
+      .\end{equation*}
+      Now we scale each $\Vec{n}$ and get:
+      \begin{align*}
+        \Vec{n}_1 &= \begin{pmatrix}
+          \num{0,5714} \\
+        \num{0,7406} \\
+        \num{0,3535} \\
+        \end{pmatrix} \\
+        \Vec{n}_2 &= \begin{pmatrix}
+          \num{0,4816} \\
+        -\num{0,6514} \\
+        \num{0,5863} \\
+        \end{pmatrix} \\
+        \Vec{n}_3 &= \begin{pmatrix}
+          \num{0,6645} \\
+        -\num{0,1648} \\
+        - \num{0,7289} \\
+        \end{pmatrix}
+      .\end{align*}
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &(\mathrm{a}) & \Vec{\sigma} &= \begin{pmatrix}
+    \num{107,86}  & \num{-32,99}  & \num{-2,32} \\
+  \num{-32,99}  & \num{162,14}  & \num{35,98} \\
+  \num{-2,32}  & \num{35,98}  & 100\\
+  \end{pmatrix} \\
+  &(\mathrm{b}) & \lambda_1 &= \num{190,405}  \\
+  && \lambda_2 &= \num{102,423}  \\
+  && \lambda_3 &= \num{77,1724}  \\
+  &(\mathrm{c}) & \Vec{n}_1 &= \begin{pmatrix}
+    \num{0,5714}  & \num{0,7406}  & \num{0,3535} \\
+  \end{pmatrix}\\
+  && \Vec{n}_2 &= \begin{pmatrix}
+    \num{0,4816}  & \num{-0,6514}  & \num{0,5863} \\
+  \end{pmatrix} \\
+  && \Vec{n}_3 &= \begin{pmatrix}
+    \num{0,6645}  & \num{-0,1648}  &  \num{-0,7289} \\
+  \end{pmatrix}
+.\end{aligned}}
+
