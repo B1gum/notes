@@ -1,0 +1,79 @@
+\lecture{1}{17. Marts 2026}{Introduction}
+
+\begin{exa}[Partial Fraction Decomposition]
+  \begin{align*}
+    G(s) &= \frac{5s + 3}{(s+1)(s+2)(s+3)} \\
+    \frac{5s+3}{(s+1)(s+2)(s+3)} &= \frac{K_{s1}}{s+1} + \frac{K_{s 2}}{s+ 2} + \frac{K_{s 3}}{s + 3} \\
+    K_{-1} &= \frac{p(-1)}{(-1+2)(-1+3)} = -1\\
+    K_{-2} &= \frac{p(-2)}{(-2+1)(-2+3)} = 7 \\
+    K_{-3} &= \frac{p(-3)}{(-3+1)(-3+2)} = -6\\
+    \frac{5s + 3}{(s+1) (s+2)(s+3)} &= - \frac{1}{s+1} + \frac{7}{s+2} - \frac{6}{s+3} \\
+    G(t) &= -e^{-t} + 7 e^{-2t} - 6 e^{-3t}
+  .\end{align*}
+\end{exa}
+
+\begin{exa}[Conversion of ODE to Algebraic Equation using Laplace Transforms]
+  Given the ODE
+  \begin{equation*}
+    \frac{\mathrm{d}^2 y}{\mathrm{d}t^2} + 6 \frac{\mathrm{d}y}{\mathrm{d}t} + 8y = 2 \qquad y(0)=y'(0)=0
+  \end{equation*}
+  we want to find a solution using the Laplace transform to turn the above ODE into an easily-solvable algebraic equation.
+  \tcblower
+  We start by finding the Laplace transform of each term.
+  \begin{align*}
+    \frac{\mathrm{d}^2y}{\mathrm{d}t^2} &= s^2 Y(s) - sy(0) - y'(0) \\
+    6 \frac{\mathrm{d}y}{\mathrm{d}t} &= 6 \left( sY(s) - y(0) \right) \\
+    8y &= 8Y(s) \\
+    2 &= \frac{2}{s} \\
+    s^2 Y(s) - 0 - 0 + 6 \left( sY(s) - 0 \right) + 8Y(s) &= \frac{2}{s} \\
+    s^2 Y(s) + 6sY(s) + 8Y(s) &= \frac{2}{s} \\
+    Y(s) \left( s^2 + 6s + 8 \right) &= \frac{2}{s} \\
+    Y(s) &= \frac{2}{s \left( s+2 \right) \left( s+4 \right)}
+  .\end{align*}
+  We have now found the solution in the Laplace-domain.
+  To find the corresponding time-domain solution we take the inverse Laplace transform.
+  To do this we use Partial Fraction Decomposition:
+  \begin{align*}
+    \frac{2}{s \left( s+2 \right) \left( s+4 \right)} &= \frac{K_{s 1}}{s} + \frac{K_{s 2}}{s + 2} + \frac{K_{s 3}}{s + 4}\\
+    K_{0} &= \frac{2}{2 \cdot 4} = \frac{1}{4} \\
+    K_{-2} &= \frac{2}{-2 \cdot 2} = - \frac{1}{2} \\
+    K_{-4} &= \frac{2}{-4 \cdot -2} = \frac{1}{4} \\
+    \frac{2}{s (s+2)(s+4)} &= \frac{1}{4 s} - \frac{1}{2(s + 2)} + \frac{1}{4(s + 4)}\\
+  .\end{align*}
+  Now, that a partial fraction decomposition has been made we can easily take the inverse laplace of the solution as
+  \begin{align*}
+    g(t) &= \frac{1}{4} - \frac{1}{2} e^{-2t} + \frac{1}{4} e^{-4t} \\
+     &= \frac{1}{4} e^{-4 t} \left(e^{2 t}-1\right)^2
+  .\end{align*}
+\end{exa}
+
+\begin{exa}[In-Class Exercise: Controlling a Laser Printer]
+  A laser printer uses a laser beam to print copy rapidly for a computer. The laser is positioned by a control input $r(t)$, so that we have
+  \begin{equation*}
+    Y(s) = \frac{4(s+50)}{s^2 + 30s + 200}R(s)
+  .\end{equation*}
+  The input $r(t)$ represents the desired position of the laser beam.
+  \begin{enumerate}[label=(\alph*)]
+    \item If $r(t)$ is a unit step input find the output $y(t)$.
+    \item What is the final value of $y(t)$?
+  \end{enumerate}
+  \tcblower
+  \begin{enumerate}[label=(\alph*)]
+    \item   For a unit step $r(t)$, $R(s) = \frac{1}{s}$, so
+  \begin{align*}
+    Y(s) &= \frac{4(s+50)}{s^2 + 30s + 200} \frac{1}{s} \\
+    &= \frac{4(s+50)}{s^3 + 30s^2 + 200s} \\
+    &= \frac{4(s+50)}{s (s+10)(s+20)} \\
+    \frac{4(s+50)}{s(s+10)(s+20)} &= \frac{K_{0}}{s} + \frac{K_{10}}{s+10} + \frac{K_{20}}{s+20} \\
+    K_{0} &= \frac{200}{10 \cdot 20} = 1 \\
+    K_{-10} &= \frac{160}{-10 \cdot 10} = - \frac{8}{5} \\
+    K_{-20} &= \frac{120}{-20 \cdot -10} = \frac{3}{5} \\
+    Y(s) &= \frac{1}{s} - \frac{8}{5(s+10)} + \frac{3}{5(s+20)} \\
+    y(t) &= 1 - \frac{8}{5}e^{-10t} + \frac{3}{5} e^{-20t}
+  .\end{align*}
+  \item We solve:
+    \begin{equation*}
+      \lim_{t \to \infty} 1 - \frac{8}{5} e^{-10t} + \frac{3}{5} e^{-20t} = 1
+    .\end{equation*}
+  \end{enumerate}
+\end{exa}
