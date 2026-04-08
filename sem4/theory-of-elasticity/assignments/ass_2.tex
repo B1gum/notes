@@ -1,0 +1,505 @@
+\newcommand{\NoteType}{Assignment 2: State of Strain}
+\newcommand{\TheDate}{April 5, 2026}
+\input{./preamble.tex}
+\begin{document}
+  \input{./titlepage.tex}
+  \newpage
+
+  \begin{probdef}
+    Let us consider a continuum and a Cartesian reference system $(O; \Vec{e}_1, \Vec{e}_2, \Vec{e}_3)$.
+    The following displacement vector field is measured:
+    \begin{equation}
+      \begin{aligned}
+        u_1(x_1, x_2, x_3) &= x_1x_3 + x_2^2 + 1, \\
+        u_2(x_1, x_2, x_3) &= x_1 x_3^2 + x_1 x_2, \\
+        u_3(x_1, x_2, x_3) &= x_1^2 + 1,
+      \end{aligned}
+    \end{equation}
+    where $(x_1, x_2, x_3)$ are the Cartesian coordinates of a point within the continuum.
+  \end{probdef}
+
+  \begin{problem}{1}
+    Consider three material points on the continuum
+    \begin{itemize}
+      \item $\Vec{P}_1$, with coordinates: $\begin{pmatrix}
+        1 & 0 & 1\\
+      \end{pmatrix}$;
+      \item $\Vec{P}_2$, with coordinates: $\begin{pmatrix}
+        1 & 1 & 1\\
+      \end{pmatrix}$;
+      \item $\Vec{P}_3$, with coordinates: $\begin{pmatrix}
+        0 & 2 & 1\\
+      \end{pmatrix}$;
+    \end{itemize}
+    Then:
+    \begin{itemize}
+      \item determine the components of the infinitesimal strain and rotation tensor for all points;
+      \item determine the principal deformations and principal direction of deformations for all points.
+    \end{itemize}
+  \end{problem}
+
+  \begin{derivation}
+    We start by determining the displacement gradient by finding the first derivatives of the displacement field:
+    \begin{align*}
+      u_{1,1} &= x_3, & u_{1,2} &= 2x_2, & u_{1,3} &= x_1, \\
+      u_{2,1} &= x_3^2 + x_2, & u_{2,2} &= x_1, & u_{2,3} &= 2x_1 x_3, \\
+      u_{3,1} &= 2x_1, & u_{3,2} &= 0, & u_{3,3} &= 0
+    .\end{align*}
+    Meaning
+    \begin{equation*}
+      \nabla \Vec{u} = [u_{i,j}] = \begin{bmatrix}
+        x_3 & 2x_2 & x_1\\
+      x_3^2 + x_2 & x_1 & 2x_1 x_3\\
+      2x_1 & 0 & 0\\
+      \end{bmatrix}
+    .\end{equation*}
+    The infinitesimal strain tensor $\Vec{\epsilon}$ is given by
+    \begin{equation*}
+      \epsilon_{ij} = \frac{1}{2} \left( u_{i,j} + u_{j,i} \right) \implies \Vec{\epsilon} \frac{1}{2} \left( \nabla  \Vec{u} + \left( \nabla \Vec{u} \right)^{\intercal} \right)
+    \end{equation*}
+    and the rotation tensor $\Vec{\omega}$ is given by
+    \begin{equation*}
+      \omega_{ij}  = \frac{1}{2} \left( u_{i,j} - u_{j,i} \right) \implies \Vec{\omega} = \frac{1}{2} \left( \nabla  \Vec{u} - \left( \nabla \Vec{u} \right)^{\intercal} \right)
+    .\end{equation*}
+    So
+    \begin{align*}
+      \Vec{\epsilon} &= \begin{bmatrix}
+        x_3 & \frac{x_3^2 + 3x_2}{2} & \frac{3x_1}{2}\\
+      \frac{x_3^2 + 3x_2}{2} & x_1 & x_1x_3\\
+      \frac{3x_1}{2} & x_1x_3 & 0\\
+      \end{bmatrix} \\
+      \Vec{\omega} &= \begin{bmatrix}
+        0 & \frac{x_2 - x_3^2}{2} & - \frac{x_1}{2}\\
+      \frac{x_3^2 - x_2}{2} & 0 & x_1x_3\\
+      \frac{x_1}{2} & -x_1x_3 & 0\\
+      \end{bmatrix}
+    .\end{align*}
+    Evaluating these at all three material points yields:
+    \begin{align*}
+      \Vec{\epsilon}(P_1) &= \begin{bmatrix}
+        1 & \frac{1}{3} & \frac{3}{2}\\
+      \frac{1}{2} & 1 & 1\\
+      \frac{3}{2} & 1 & 0\\
+    \end{bmatrix} & \Vec{\omega}(P_1) &= \begin{bmatrix}
+      0 & - \frac{1}{2} & - \frac{1}{2}\\
+    \frac{1}{2} & 0 & 1 \\
+    \frac{1}{2} & -1 & 0\\
+    \end{bmatrix}
+    .\end{align*}
+    The principal strains at $P_1$ is simply the eigenvalues of $\Vec{\epsilon}(P_1)$ and the principal directions are their corresponding eigenvectors.
+    Solving the eigenvalue problem gives:
+    \begin{equation*}
+      \mathrm{det}(\Vec{\epsilon}(P_1) - \lambda \Vec{I}) = 0  \rightarrow \left(
+\begin{array}{ccc}
+ 2.62977 & -1.24207 & 0.612303 \\
+ \{1.11589,0.955931,1.\} & \{-0.623383,-0.306997,1.\} &\
+ 
+   \{15.1742,-22.1489,1.\} \\
+\end{array} \right)
+    \end{equation*}
+    The directions here are non-normalized and must therefore each be normalized as:
+    \begin{align*}
+      \frac{ \begin{pmatrix}
+        \num{1,11589}  & \num{0,955931}  & \num{1} \\
+    \end{pmatrix} }{\left|\begin{pmatrix}
+      \num{1,11589}  & \num{0,955931}  & 1\\
+  \end{pmatrix} \right|} &= \left(
+\begin{array}{ccc}
+ 0.627835 & 0.537837 & 0.562632 \\
+\end{array}
+\right) \\
+\frac{\begin{pmatrix}
+  -\num{0,623383}  & -\num{0,306997}  & 1\\
+\end{pmatrix}}{\left| \begin{pmatrix}
+  -\num{0,623383}  & -\num{0,306997}  & 1\\
+\end{pmatrix} \right|} &= \left(
+\begin{array}{ccc}
+ -0.511924 & -0.252107 & 0.821204 \\
+\end{array}
+\right) \\
+\frac{\begin{pmatrix}
+  \num{15,1742}  & -\num{22,1489}  & 1\\
+\end{pmatrix}}{\left| \begin{pmatrix}
+  \num{15,1742}  & -\num{22,1489}  & 1\\
+\end{pmatrix} \right|} &= \left(
+\begin{array}{ccc}
+ 0.564792 & -0.824394 & 0.0372205 \\
+\end{array}
+\right)
+    .\end{align*}
+    Hence the infinitesimal strain and rotation tensor for $P_1$ are
+    \begin{align*}
+      \Vec{\epsilon}(P_1) &= \begin{pmatrix}
+        1 & \frac{1}{2} & \frac{3}{2}\\
+      \frac{1}{2} & 1 & 1\\
+      \frac{3}{2} & 1 & 0\\
+      \end{pmatrix} \\
+        \Vec{\omega}(P_1) &= \begin{bmatrix}
+          0 & -\frac{1}{2} & -\frac{1}{2}\\
+        \frac{1}{2} & 0 & 1\\
+        \frac{1}{2} & -1 & 0\\
+        \end{bmatrix}
+    .\end{align*}
+    And the principal strains and their directions are:
+    \begin{align*}
+      \lambda_1 &= \num{2,630} & \Vec{n}_1 &= \begin{pmatrix}
+       \num{0,628} \\
+      \num{0,538} \\
+      \num{0,563} \\
+      \end{pmatrix} \\
+        \lambda_2 &= -\num{1,242} & \Vec{n}_2 &= \begin{pmatrix}
+          -\num{0,512} \\
+        \num{-0,252} \\
+        \num{0,821} \\
+        \end{pmatrix} \\
+          \lambda_3 &= \num{0,612} & \Vec{n}_3 &= \begin{pmatrix}
+            \num{0,565} \\
+          \num{-0,824} \\
+          \num{0,037} \\
+          \end{pmatrix}
+    .\end{align*}
+    For Point $P_2$ we follow the same procedure, first inserting the point into the strain and rotation tensors found as:
+    \begin{align*}
+      \Vec{\epsilon}(P_2) &= \begin{bmatrix}
+        1 & 2 & \frac{3}{2}\\
+      2 & 1 & 1\\
+      \frac{3}{2} & 1 & 0\\
+      \end{bmatrix} \\
+      \Vec{\omega}(P_2) &= \begin{bmatrix}
+        0 & 0 & -\frac{1}{2}\\
+      0 & 0 & 1\\
+      \frac{1}{2} & -1 & 0\\
+      \end{bmatrix}
+    .\end{align*}
+    Solving the eigenvalue problem yields
+    \begin{equation*}
+      \mathrm{det}(\Vec{\epsilon}(P_2) - \lambda \Vec{I}) = 0 \rightarrow \left(
+\begin{array}{ccc}
+ 3.823 & -1.24542 & -0.577581 \\
+ \{1.57067,1.467,1.\} & \{-1.3131,0.724229,1.\} & \{0.242431,-0.941227,1.\}\
+ 
+   \\
+\end{array}
+\right)
+    .\end{equation*}
+    Normalizing the eigenvectors gives:
+    \begin{align*}
+      \frac{\begin{pmatrix}
+        \num{1,57067}  & \num{1,467}  & 1\\
+      \end{pmatrix}}{\left| \begin{pmatrix}
+        \num{1,57067}  & \num{1,467}  & 1\\
+      \end{pmatrix} \right|} = \left(
+\begin{array}{ccc}
+ 0.662601 & 0.618867 & 0.421859 \\
+\end{array}
+\right) \\
+    \frac{\begin{pmatrix}
+      -\num{1,3131}  & \num{0,724229}  & 1\\
+    \end{pmatrix}}{\left| \begin{pmatrix}
+      \num{1,3131}  & \num{0,724229}  & 1\\
+    \end{pmatrix} \right|} = \left(
+\begin{array}{ccc}
+ -0.728518 & 0.401808 & 0.554808 \\
+\end{array}
+\right) \\
+\frac{\begin{pmatrix}
+  \num{0,242431}  & - \num{0,941227}  & 1\\
+\end{pmatrix}}{\left| \begin{pmatrix}
+  \num{0,242431}  & -\num{0,941227}  & 1\\
+\end{pmatrix} \right|} = \left(
+\begin{array}{ccc}
+ 0.173846 & -0.674948 & 0.717094 \\
+\end{array}
+\right)
+    .\end{align*}
+    The same is done for point $P_3$ yielding
+    \begin{align*}
+      \Vec{\epsilon}(P_3) &= \begin{bmatrix}
+        1 & \frac{7}{2} & 0\\
+      \frac{7}{2} & 0 & 0\\
+      0 & 0 & 0\\
+      \end{bmatrix} \\
+        \Vec{\omega}(P_3) &= \begin{bmatrix}
+          0 & \frac{1}{2} & 0\\
+        -\frac{1}{2} & 0 & 0\\
+        0 & 0 & 0\\
+        \end{bmatrix}
+    .\end{align*}
+    Solving the eigenvalue problem and normalizing the vectors gives:
+    \begin{equation*}
+      \mathrm{det}(\Vec{\epsilon}(P_3) - \lambda \Vec{I}) = 0 \rightarrow \left(
+\begin{array}{ccc}
+ \frac{1}{2} \left(1+5 \sqrt{2}\right) & \frac{1}{2} \left(1-5\
+ 
+   \sqrt{2}\right) & 0 \\
+ \left\{\frac{1}{7} \left(1+5 \sqrt{2}\right),1,0\right\} &\
+ 
+   \left\{\frac{1}{7} \left(1-5 \sqrt{2}\right),1,0\right\} & \{0,0,1\} \\
+\end{array}
+\right)
+    .\end{equation*}
+    \begin{align*}
+      \frac{\begin{pmatrix}
+        \frac{1}{7} \left( 1 + 5 \sqrt{2} \right) & 1 & 0\\
+      \end{pmatrix}}{\left| \begin{pmatrix}
+        \frac{1}{7} \left( 1 + 5 \sqrt{2} \right) & 1 & 0\\
+      \end{pmatrix} \right|} = \left(
+\begin{array}{ccc}
+ 0.755454 & 0.655202 & 0. \\
+\end{array}
+\right) \\
+\frac{\begin{pmatrix}
+  \frac{1}{7} \left( 1 - 5 \sqrt{2} \right) & 1 & 0\\
+\end{pmatrix}}{\left| \begin{pmatrix}
+  \frac{1}{7}\left( 1 - 5 \sqrt{2} \right) & 1 & 0\\
+\end{pmatrix} \right|} = \left(
+\begin{array}{ccc}
+ -0.655202 & 0.755454 & 0. \\
+\end{array}
+\right)
+    .\end{align*}
+  \end{derivation}
+
+  \finalresult{\begin{aligned}
+    P_1 & & & \\
+        &  &\Vec{\epsilon}(P_1) &= \begin{bmatrix}
+      1 & \frac{1}{2} & \frac{3}{2}\\
+    \frac{1}{2} & 1 & 1\\
+    \frac{3}{2} & 1 & 0\\
+  \end{bmatrix} & \Vec{\omega}(P_1) &= \begin{bmatrix}
+    0 & - \frac{1}{2} & - \frac{1}{2}\\
+  \frac{1}{2} & 0 & 1\\
+  \frac{1}{2} & -1 & 0\\
+  \end{bmatrix} \\
+        &&\lambda_1 &= \num{2,630}  & \Vec{n}_1 &= \begin{pmatrix}
+          \num{0,628} \\
+        \num{0,538} \\
+        \num{0,563} \\
+        \end{pmatrix} \\
+        &&\lambda_2 &= -\num{1,242} & \Vec{n}_2 &= \begin{pmatrix}
+          -\num{0,512} \\
+        -\num{0,252} \\
+        \num{0,821} \\
+        \end{pmatrix} \\
+        &&\lambda_3 &= \num{0,612} & \Vec{n}_3 &= \begin{pmatrix}
+          \num{0,565} \\
+        -\num{0,824} \\
+        \num{0,037} \\
+        \end{pmatrix} \\
+    P_2 & & & \\
+        &&\Vec{\epsilon}(P_2) &= \begin{bmatrix}
+          1 & 2 & \frac{3}{2}\\
+        2 & 1 & 1\\
+        \frac{3}{2} & 1 & 0\\
+      \end{bmatrix} & \Vec{\omega}(P_2) &= \begin{bmatrix}
+        0 & 0 & - \frac{1}{2}\\
+      0 & 0 & 1\\
+      \frac{1}{2} & -1 & 0\\
+      \end{bmatrix} \\
+        &&\lambda_1 &= \num{3,823} & \Vec{n}_1 &= \begin{pmatrix}
+          \num{0,662} \\
+        \num{0,619} \\
+        \num{0,422} \\
+        \end{pmatrix}\\
+        &&\lambda_2 &= -\num{1,245} & \Vec{n}_2 &= \begin{pmatrix}
+          -\num{0,729} \\
+        \num{0,402} \\
+        \num{0,555} \\
+        \end{pmatrix} \\
+        &&\lambda_3 &= -\num{0,578} & \Vec{n}_3 &= \begin{pmatrix}
+      \num{0,174} \\
+    -\num{0,675} \\
+    \num{0,717} \\
+    \end{pmatrix} \\
+    P_3 & & & \\
+        &&\Vec{\epsilon}(P_3) &= \begin{bmatrix}
+          1 & \frac{7}{2} & 0\\
+        \frac{7}{2} & 0 & 0\\
+        0 & 0 & 0\\
+      \end{bmatrix} & \Vec{\omega}(P_3) &= \begin{bmatrix}
+        0 & \frac{1}{2} & 0\\
+      - \frac{1}{2} & 0 & 0\\
+      0 & 0 & 0\\
+      \end{bmatrix} \\
+        &&\lambda_1 &= \frac{1}{2} \left( 1 + 5 \sqrt{2} \right) & \Vec{n}_1 &= \begin{pmatrix}
+          \num{0,755} \\
+        \num{0,655} \\
+        \num{0} \\
+        \end{pmatrix} \\
+        &&\lambda_2 &= \frac{1}{2} \left( 1 - 5\sqrt{2}\right) & \Vec{n}_2 &= \begin{pmatrix}
+          -\num{0,655} \\
+        \num{0,755} \\
+        \num{0} \\
+        \end{pmatrix} \\
+        &&\lambda_3 &= \num{0} & \Vec{n}_3 &= \begin{pmatrix}
+          \num{0} \\
+       \num{0} \\
+        \num{1} \\
+        \end{pmatrix}
+    \end{aligned}}
+
+  \begin{problem}{2}
+    Determine the mean normal strain and the strain deviator tensors, for the points $\Vec{p}_1, \Vec{p}_{2}$, and $\Vec{p}_3$.
+  \end{problem}
+
+  \begin{derivation}
+    The strain $\Vec{\epsilon}$ can be decomposed to a mean normal strain $\Vec{\epsilon}_M$ and a strain deviator tensor $\Vec{\epsilon}_D$ as
+    \begin{equation*}
+      \Vec{\epsilon} = \Vec{\epsilon}_M + \Vec{\epsilon}_D 
+    .\end{equation*}
+    The mean normal strain $\Vec{\epsilon}_M$ is defined as
+    \begin{equation*}
+      \Vec{\epsilon}_M = \frac{1}{3} \left( \epsilon_{11} + \epsilon_{22} + \epsilon_{33} \right) = \frac{1}{3} (x_3 + x_1 + 0) = \frac{x_1 + x_3}{3}
+    .\end{equation*}
+    And the deviator is
+    \begin{equation*}
+      \Vec{\epsilon}_D = \Vec{\epsilon} - \Vec{\epsilon}_M \Vec{I} = \begin{bmatrix}
+        x_3 - \frac{x_1 + x_3}{3}  & \frac{x_3^2 + 3x_2}{2} & \frac{3x_1}{2}\\
+      \frac{x_3^2 + 3x_2}{2} & x_1 - \frac{x_1 + x_3}{3} & x_1 x_3\\
+      \frac{3x_1}{2} & x_1x_3 & - \frac{x_1 + x_3}{3}\\
+      \end{bmatrix}
+    .\end{equation*}
+    At $P_1$ we get
+    \begin{gather*}
+      \Vec{\epsilon}(P_1) = \begin{bmatrix}
+        1 & \frac{1}{2} & \frac{3}{2}\\
+      \frac{1}{2} & 1 & 1\\
+      \frac{3}{2} & 1 & 0\\
+      \end{bmatrix} \\
+        \Vec{\epsilon}_M(P_1) = \frac{1}{3}(1+1+0) = \frac{2}{3} \\
+        \Vec{\epsilon}_D (P_1) = \Vec{\epsilon}(P_1) - \frac{2}{3} \Vec{I} = \begin{bmatrix}
+          \frac{1}{3} & \frac{1}{2} & \frac{3}{2}\\
+        \frac{1}{2} & \frac{1}{3} & 1\\
+        \frac{3}{2} & 1 & - \frac{2}{3}\\
+        \end{bmatrix}
+    .\end{gather*}
+    At $P_2$ we get
+    \begin{align*}
+      \Vec{\epsilon}(P_2) &= \begin{bmatrix}
+        1 & 2 & \frac{3}{2}\\
+      2 & 1 & 1\\
+      \frac{3}{2} & 1 & 0\\
+      \end{bmatrix} \\
+      \Vec{\epsilon}_M(P_2) &= \frac{1}{3}(1+1+0) = \frac{2}{3}\\
+      \Vec{\epsilon}_D (P_2) &= \Vec{\epsilon}(P_2) - \frac{2}{3}\Vec{I} = \begin{bmatrix}
+        \frac{1}{3} & 2 & \frac{3}{2}\\
+      2 & \frac{1}{3} & 1\\
+      \frac{3}{2} & 1 & -\frac{2}{3}\\
+      \end{bmatrix} 
+    .\end{align*}
+    At $P_3$ we get
+    \begin{align*}
+      \Vec{\epsilon}(P_3) &= \begin{bmatrix}
+        1 & \frac{7}{2} & 0\\
+      \frac{7}{2} & 0 & 0\\
+      0 & 0 & 0\\
+      \end{bmatrix} \\
+        \Vec{\epsilon}_M(P_3) &= \frac{1}{3} (1) = \frac{1}{3} \\
+        \Vec{\epsilon}_D(P_3) &= \Vec{\epsilon}(P_3) - \frac{1}{3}\Vec{I} = \begin{bmatrix}
+          \frac{2}{3} & \frac{7}{2} & 0\\
+        \frac{7}{2} & - \frac{1}{3} & 0\\
+        0 & 0 & - \frac{1}{3}\\
+        \end{bmatrix}
+    .\end{align*}
+  \end{derivation}
+
+    \finalresult{\begin{aligned}
+    P_1 & & & \\
+        &&\Vec{\epsilon}_M(P_1) &= \frac{2}{3} \\
+        &&\Vec{\epsilon}_D(P_1) &= \begin{bmatrix}
+          \frac{1}{3} & \frac{1}{2} & \frac{3}{2}\\
+        \frac{1}{2} & \frac{1}{3} & 1\\
+        \frac{3}{2} & 1 & - \frac{2}{3}\\
+        \end{bmatrix} \\
+    P_2 & & & \\
+        &&\Vec{\epsilon}_M(P_2) &= \frac{2}{3} \\
+        &&\Vec{\epsilon}_D(P_2) &= \begin{bmatrix}
+          \frac{1}{3} & 2 & \frac{3}{2}\\
+        2 & \frac{1}{3} & 1\\
+        \frac{3}{2} & 1 & - \frac{2}{3}\\
+        \end{bmatrix} \\
+    P_3 & & & \\
+        &&\Vec{\epsilon}_M(P_3) &= \frac{1}{3} \\
+        &&\Vec{\epsilon}_D(P_3) &= \begin{bmatrix}
+          \frac{2}{3} & \frac{7}{2} & 0\\
+        \frac{7}{2} & - \frac{1}{3} & 0\\
+        0 & 0 & - \frac{1}{3}\\
+        \end{bmatrix}
+    \end{aligned}}
+
+  \begin{problem}{3}
+    Discuss whether the small gradient approximation is satisfied for the given displacement field.
+    Can the infinitesimal deformation strain be used?
+    Hint: Consider evaluating the discarded nonlinear (quadratic) term leading to the infinitesimal strain tensor.
+  \end{problem}
+
+  \begin{derivation}
+    The Lagrangian strain is
+    \begin{equation*}
+      \epsilon_{ij}^{L} = \frac{1}{2} \left( u_{i,j} + u_{j,i} + u_{k,i}u_{k,j} \right)
+    \end{equation*}
+    and the infinitesimal strain is
+    \begin{equation*}
+      \epsilon_{ij} = \frac{1}{2} \left( u_{i,j} + u_{j,i} \right)
+    \end{equation*}
+    which means the discarded non-linear term is
+    \begin{equation*}
+      \Delta = \frac{1}{2} u_{k,i} u_{k,j} = \frac{1}{2} \left( \nabla \Vec{u} \right)^{\intercal} \nabla \Vec{u}
+    .\end{equation*}
+    Evaluating this at $P_1$ we obtain
+    \begin{equation*}
+      \Delta (P_1) = \begin{bmatrix}
+        3 & \frac{1}{2} & \frac{3}{2}\\
+      \frac{1}{2} & \frac{1}{2} & 1\\
+      \frac{3}{2} & 1 & \frac{5}{2}\\
+      \end{bmatrix}
+    .\end{equation*}
+    Comparing this with the infinitesimal strain at $P_1$
+    \begin{equation*}
+      \Vec{\epsilon}(P_1) = \begin{bmatrix}
+        1 & \frac{1}{2} & \frac{3}{2}\\
+      \frac{1}{2} & 1 & 1\\
+      \frac{3}{2} & 1 & 0\\
+      \end{bmatrix}
+    \end{equation*}
+    we see that the discarded quadratic term $\Delta(P_1)$ is not small compared to the infinitesimal strain $\Vec{\epsilon}(P_1)$ meaning the small gradient approximation is \textit{not} satisfied at $P_1$.
+
+    At $P_2$ we get
+    \begin{equation*}
+      \Delta (P_2) = \begin{bmatrix}
+        \frac{9}{2} & 2 & \frac{5}{2}\\
+      2 & \frac{5}{2} & 2\\
+      \frac{5}{2} & 2 & \frac{5}{2}\\
+      \end{bmatrix}
+    \end{equation*}
+    compared to the infinitesimal strain at $P_2$
+    \begin{equation*}
+      \Vec{\epsilon}(P_2) = \begin{bmatrix}
+        1 & 2 & \frac{3}{2}\\
+      2 & 1 & 1\\
+      \frac{3}{2} & 1 & 0\\
+      \end{bmatrix}
+    \end{equation*}
+    the discarded quadratic term is not small compared to the infinitesimal strain meaning the small gradient approximation is, once again, \textit{not} applicable at $P_2$.
+
+    At $P_3$ we get
+    \begin{equation*}
+      \Delta (P_3) = \begin{bmatrix}
+        5 & 2 & 0\\
+      2 & 8 & 0\\
+      0 & 0 & 0\\
+      \end{bmatrix}
+    \end{equation*}
+    which is several times larger than the infinitesimal strain at $P_3$
+    \begin{equation*}
+      \Vec{\epsilon}(P_3) = \begin{bmatrix}
+        1 & \frac{7}{2} & 0\\
+      \frac{7}{2} & 0 & 0\\
+      0 & 0 & 0\\
+      \end{bmatrix}
+    \end{equation*}
+    meaning the small gradient approximation is \textit{not} satisfied at $P_3$ either.
+  \end{derivation}
+
+  \finalresult{\text{The small gradient approximation is not satisfied for }P_1, P_2 \text{ or } P_3}
+\end{document}

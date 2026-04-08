@@ -1,0 +1,50 @@
+\lecture{7}{9. Marts 2026}{Volume and shape change}
+
+\subsection{Compatibility}
+Using $\epsilon_{ij} = 1 / 2 \left( u_{i,j} + u_{j,i} \right)$, the components of strain may be easily computed once displacements are known provided they are once differentiable.
+However, the inverse problem of calculating displacements from strains is not as straight forward as there are six independent equations with only three unknowns.
+Conditions of compatibility imposed on the components of strain $\epsilon_{ij}$, are both necessary and sufficient to ensure a continuous single-valued displacement field $\Vec{u}$.
+
+The standard procedure is to eliminate the displacements between the equations repeatedly to produce equations with only strains as unknowns.
+First we take two normal components $\epsilon_{( l l)}$ and $\epsilon_{(mm)}$ and the shearing component $\epsilon_{(lm)}$ with the summation convention suspended.
+
+Taking second partial derivatives, we have
+\begin{align*}
+  \epsilon_{( l l,mm)} &= u_{(l,lmm)} \\
+  \epsilon_{(mm, l l)} &= u_{(m,m l l)} \\
+.\end{align*}
+\begin{align*}
+  \epsilon_{(lm,lm)} &= \frac{1}{2} \left( u_{(l,mlm)} + u_{(m,l lm)} \right) \\
+  &= \frac{1}{2} \left( u_{(l,lmm)} + u_{(m,ml l)} \right)
+.\end{align*}
+Next we equate these to get
+\begin{equation*}
+  \epsilon_{(l l,mm)} + \epsilon_{(mm,l l)} = 2\epsilon_{(lm,lm)}
+.\end{equation*}
+
+Now, taking one normal component $\epsilon_{(l l)}$ and three shearing components $\epsilon_{lm}, \epsilon_{ln}$, and $\epsilon_{n n}$ and write the second partials
+\begin{gather*}
+  \epsilon_{(l l, mm)} = u_{(l,lmn} \\
+  \epsilon_{(lm,l n)} = \frac{1}{2} \left( u_{(l,ml n)} + u_{(m,l l n )} \right) \\
+  \epsilon_{(l n, lm)} = \frac{1}{2} \left( u_{(l, n lm)} + u_{(n,l l m)} \right)
+  \epsilon_{(mn, l l)} = \frac{1}{2} \left( u_{(m, n l l)} + u_{(n, m l l)} \right)
+.\end{gather*}
+These can be equated to give
+\begin{equation*}
+  \epsilon_{(lm, l n)} + \epsilon_{(l n, lm)} - \epsilon_{(m n, l l)} = \epsilon_{(l l, mn)}
+.\end{equation*}
+These are six equations relating the components of strain that ensure that they will integrate into a unique displacement field.
+These can be written explicitly as:
+\begin{gather*}
+  \epsilon_{11,22} + \epsilon_{22,11} = 2 \epsilon_{12,12} \\
+  \epsilon_{22,33} + \epsilon_{33,22} = 2 \epsilon_{23,23} \\
+  \epsilon_{33,11} + \epsilon_{11,33} = 2\epsilon_{31,31} \\
+  \epsilon_{12,13} + \epsilon_{13,12} - \epsilon_{23,11} = \epsilon_{11,23} \\
+  \epsilon_{23,21} + \epsilon_{21,23} - \epsilon_{31,22} = \epsilon_{22,31} \\
+  \epsilon_{31,32} + \epsilon_{32,31} - \epsilon_{12,33} = \epsilon_{33,12}
+.\end{gather*}
+These are known as the \textit{St. Venant} compatibility equations and may also be extracted from the tensor equation
+\begin{equation*}
+  \epsilon_{ij,kl} + \epsilon_{kl,ij} = \epsilon_{ik,jk} + \epsilon_{jl,ik}
+\end{equation*}
+which represents $3^{4} = 81$ equations, where only six are distinct.

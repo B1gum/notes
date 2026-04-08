@@ -1,0 +1,138 @@
+\lecture{6}{2. Marts 2026}{Physical interpretation of the strain tensor}
+
+\subsection{Principal Strain}
+As the strains have the same second-order tensor character as the stresses, it is expected that we are able to identify a system of principal strains that are the eigenvalues, determined from the characteristic equation
+\begin{equation*}
+  \left| \epsilon_{ji} - \lambda \delta_{ji} \right| = 0
+\end{equation*}
+which is analogous to the result for stresses.
+The three roots $\lambda_1$, $\lambda_2$, and $\lambda_3$ are the principal strains $\epsilon^{(k)}$ with $k = 1,2,$ and 3.
+
+The corresponding eigenvectors designate the directions associated with each of the principal strains and are computed from
+\begin{equation*}
+  \left( \epsilon_{ji} - \lambda \delta_{ji} \right)n_j = 0
+.\end{equation*}
+The directions of principal strain are denoted by $n_j^{(k)}$, with $k = 1, 2, $ and 3.
+These directions are mutually perpendicular and, for isotropic materials, conincide with the directions of the principal stresses.
+Which makes logical sense, as the largest stress is also expected to cause the largest strain.
+
+\subsection{Volume and Shape Change}
+Sometimes it is convenient to separate the components of strain into those that cause changes in volume and those that cause change in the shape of a differential element.
+
+Considering a volume element oriented with the principal directions and with shearing stresses equal to zero.
+The original length of each side is $\mathrm{d}x^{(k)}$ and the final length as $\mathrm{d}X^{(k)}$ where
+\begin{equation*}
+  \mathrm{d}X^{(k)} = \mathrm{d}x^{(k)} \left( 1 + \epsilon^{(k)} \right)
+.\end{equation*}
+
+The original volume is found as
+\begin{equation*}
+  \mathrm{d}v = \prod_{k = 1}^{3} \mathrm{d}x^{(k)}
+\end{equation*}
+and the final volume as
+\begin{align*}
+  \mathrm{d}V &= \prod_{k = 1}^{3} \mathrm{d}X^{(k)} \\
+  &= \prod_{k = 1}^{3} \left( 1 + \epsilon^{(k)} \right) \, \mathrm{d}x^{(k)} \\
+  &= \mathrm{d}v \prod_{k = 1}^{3} \left( 1 + \epsilon^{(k)} \right)
+.\end{align*}
+
+We define the \textit{dilation} as the relative change in volume
+\begin{align*}
+  \Delta &= \frac{\mathrm{d}V - \mathrm{d}v}{\mathrm{d}v} \\
+  &= \frac{\mathrm{d}v \left( \left( \prod_{k = 1}^{3} \left( 1 + \epsilon^{(k)} \right) \right) - 1 \right)}{\mathrm{d}v} \\
+  &= \left( \left( 1 + \epsilon^{(1)} \right)\left( 1 + \epsilon^{(2)} \right) \left( 1 + \epsilon^{(3)} \right) \right) - 1 \\
+  &\approx \epsilon^{(1)} + \epsilon^{(2)} + \epsilon^{(3)} \\
+  &= \prod_{k = 1}^{3} \epsilon^{(k)}
+\end{align*}
+which is the sum of the diagonal terms of the principal strain tensor.
+
+The dilation $\Delta$ is also equal to the sum of the diagonal strains $\epsilon_{ii}$, and the divergence of the displacement vector $\nabla  \cdot \Vec{u} = u_{i,j}$.
+
+Changes in shape of the volume element are called \textit{detrusions} and are denoted by shearing strains $\epsilon_{ij}, i \neq j$.
+
+The separation of the strains into dilational and detrusional components can be formalized by resolving the strain tensor into two terms:
+\begin{equation*}
+  \Vec{\epsilon} = \Vec{\epsilon}_M + \Vec{\epsilon}_D
+\end{equation*}
+where
+\begin{gather*}
+  \Vec{\epsilon}_M = \begin{bmatrix}
+    \epsilon_M & 0 & 0\\
+  0 & \epsilon_M & 0\\
+  0 & 0 & \epsilon_M\\
+  \end{bmatrix} = \text{mean normal strain} \\
+  \Vec{\epsilon}_D = \begin{bmatrix}
+    \epsilon_{11} - \epsilon_M & \epsilon_{12} & \epsilon_{13}\\
+  \epsilon_{12} & \epsilon_{22} - \epsilon_M & \epsilon_{23}\\
+  \epsilon_{13} & \epsilon_{23} & \epsilon_{33} - \epsilon_M\\
+  \end{bmatrix} = \text{strain deviator}
+\end{gather*}
+and where
+\begin{align*}
+  \epsilon_M &= \frac{1}{3} \left( \epsilon_{11} + \epsilon_{22} + \epsilon_{33} \right) \\
+  &= \frac{1}{3} \left( \epsilon^{(1)} + \epsilon^{(2)} + \epsilon^{(3)} \right) \\
+  &= \frac{1}{3} R_1
+.\end{align*}
+
+The mean normal strain corresponds to a state of equal elongation in all directions for an element at a given point.
+Only subject to this, the element would maintain original shape but change in volume with dilation $\epsilon_{ii}$.
+Hence, $\Vec{\epsilon}_M$ is the \textit{volumetric} component of strain.
+
+The strain deviator, or \textit{deviatoric} component, $\Vec{\epsilon}_D$, has a dilation of
+\begin{align*}
+  \Delta &= \prod_{i = 1}^{3} \epsilon_D^{(i)} \\
+  &= \epsilon_{D_{ii}} \\
+  &= \left( \epsilon_{11}  -\epsilon_M \right) + \left( \epsilon_{22} - \epsilon_M \right) + \left( \epsilon_{33} - \epsilon_M \right) \\
+  &= \epsilon_{11} + \epsilon_{22} + \epsilon_{33} - 3 \left( \frac{1}{3} \left( \epsilon_{11} + \epsilon_{22} + \epsilon_{33} \right) \right) \\
+  &= 0
+.\end{align*}
+This corresponds to a change in shape with no change in volume of an element.
+
+Corresponding to this, we can also define the principal stresses associated with changes in the volume and shape as
+\begin{equation*}
+  \Vec{\sigma} = \Vec{\sigma}_M + \Vec{\sigma}_D
+\end{equation*}
+defined similarly as the stress, where
+\begin{gather*}
+  \Vec{\sigma}_M = \begin{bmatrix}
+    \sigma_M & 0 & 0\\
+  0 & \sigma_M & 0\\
+  0 & 0 & \sigma_M\\
+  \end{bmatrix} = \text{mean normal stress} \\
+  \Vec{\sigma}_D = \begin{bmatrix}
+    \sigma_{11} - \sigma_M & \sigma_{12} & \sigma_{13}\\
+  \sigma_{12} & \sigma_{22} - \sigma_M & \sigma_{23}\\
+  \sigma_{13} & \sigma_{23} & \sigma_{33} - \sigma_M\\
+  \end{bmatrix} = \text{stress deviator}
+\end{gather*}
+and where
+\begin{align*}
+  \sigma_M &= \frac{1}{3} \left( \sigma_{11} + \sigma_{22} + \sigma_{33} \right) \\
+           &= \frac{1}{3} \left( \sigma^{(1)} + \sigma^{(2)} + \sigma^{(3)} \right)
+.\end{align*}
+
+In indicial form, the volumetric and deviatoric components of stress are, respectively,
+\begin{align*}
+  \sigma_{M_{ij}} &= \frac{1}{3} \sigma_{kk} \delta_{ij} \\
+  \sigma_{D_{ij}} &= \sigma_{ij} - \sigma_{M_{ij}} \\
+  &= \sigma_{ij} - \frac{1}{3} \sigma_{kk} \delta_{ij}
+.\end{align*}
+
+For principal axes, the stress deviator becomes
+\begin{align*}
+  \Vec{\sigma}_D &= \begin{bmatrix}
+    \sigma^{(1)} - \sigma_M & 0 & 0\\
+  0 & \sigma^{(2)} - \sigma_M & 0\\
+  0 & 0 & \sigma^{(3)} - \sigma_M\\
+  \end{bmatrix} \\
+                 &= \begin{bmatrix}
+                   \sigma_D^{(1)} & 0 & 0\\
+                 0 & \sigma_{D}^{(2)} & 0\\
+                 0 & 0 & \sigma_D^{(3)}\\
+                 \end{bmatrix}
+.\end{align*}
+Worth noting here is that the sum of the diagonals of $\Vec{\sigma}_D$ is zero as
+\begin{equation*}
+  \sigma_{D_{ii}} = \sigma^{(1)} + \sigma^{(2)} + \sigma^{(3)} - 3 \cdot \frac{1}{3} \left( \sigma^{(1)} + \sigma^{(2)} + \sigma^{(3)} \right) = 0
+.\end{equation*}
+

@@ -1,0 +1,308 @@
+\lecture{8}{16. Marts 2026}{Linear isotropic materials and the uniaxial stress}
+
+\section{Material Behavior}
+
+\subsection{Uniaxial Behavior}
+The most elementary and well-known description of material behavior is \textit{Hooke's law}:
+\begin{equation*}
+  \sigma_{11} = E \epsilon_{11}
+\end{equation*}
+where $E$ is the modulus of elasticity of Young's modulus.
+This also gives rise to stress strain curves as the one shown on \Cref{fig:f4_1}.
+
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.5\linewidth]{./figures/f4_1.png}
+  \caption{Stress-strain curve for two cycles of loading and unloading for mild steel.}
+  \label{fig:f4_1}
+\end{figure}
+
+Branch (1) is the initial elastic response, from which $E$ may be calculated as the slope.
+In the vicinity of (2), there is a decrease in the slope, commencing at the \textit{proportional limit} and progressing until the \textit{yield point} is reached at (3).
+Yielding progresses along (4) until unloading commences at (5) and continues along (6).
+The unloading ceases and reloading begins at (7) to initiate another cycle that extends through (13) when the test is terminated.
+Region (14) is known as a \textit{hysteresis loop} and is a measure of the energy dissipated through one excursion beyond the yield point.
+
+\subsection{Generalized Hooke's Law}
+We will now introduce the \textit{strain energy density} $W$ that is a homogeneous quadratic function of the strain components $W(\epsilon_{ij})$.
+For a body that is slightly strained by gradual application of the loading while the temperature remains constant, a stress component will be produced derivable as
+\begin{equation*}
+  \sigma_{ij} = \frac{\partial W}{\partial \epsilon_{ij}} 
+.\end{equation*}
+Here, it is convenient to write $W$ in terms of the engineering strains $ \overline{\epsilon}_{ij}$.
+Thus
+\begin{equation*}
+  \sigma_{ij} = \frac{\partial W \left( \overline{\epsilon}_{ij} \right)}{\partial \overline{\epsilon}_{ij}} 
+\end{equation*}
+where $\overline{\epsilon}_{ij} = \left( 2 - \delta_{ij} \right) \epsilon_{ij}$.
+
+The function should have coefficients such that $W \geq 0$ in order to ensure the stability of the body, with $W(0) = 0$ corresponding to a \textit{natural of zero energy state}.
+
+Now, the generalized Hooke's law is written in the form of a fourth-order tensor
+\begin{equation*}
+  \sigma_{ij} = E_{ijkl} \epsilon_{kl}
+\end{equation*}
+in which the 81 coefficients $E_{ijkl}$ are called the elastic constants.
+Since $W$ is continuous the order of differentiation does not matter and $E_{ijkl}$ is symmetric.
+Thus the number of independent equations is reduced from nine to six, the elastic constants from 81 to 36, and then further to $\left( \left( 36 - 6 \right) / 2 \right) + 6 = 21$, when only half of the off-diagonal constants are counted.
+We represent this relationship in matrix form in terms of the engineering strains as
+\begin{equation*}
+  \Vec{\sigma} = \Vec{E} \overline{\Vec{\epsilon}}
+\end{equation*}
+where
+\begin{equation*}
+  \left\{ \begin{array}{cccccc}
+    \sigma_{11}\\
+  \sigma_{22}\\
+  \sigma_{33}\\
+  \sigma_{12}\\
+  \sigma_{23}\\
+  \sigma_{31}\\
+  \end{array} \right\} = \begin{bmatrix}
+    E_{1111} & E_{1122} & E_{1133} & E_{1112} & E_{1123} & E_{1131}\\
+   & E_{2222} & E_{2233} & E_{2212} & E_{2223} & E_{2231}\\
+   &  & E_{3333} & E_{3312} & E_{3323} & E_{3331}\\
+   &  &  & E_{1212} & E_{1223} & E_{1231}\\
+   &  &  &  & E_{2323} & E_{2331}\\
+   &  &  &  &  & E_{3131}\\
+  \end{bmatrix} \left\{ \begin{array}{cccccc}
+    \overline{\epsilon}_{11}\\
+  \overline{\epsilon}_{22}\\
+  \overline{\epsilon}_{33}\\
+  \overline{\epsilon}_{12}\\
+  \overline{\epsilon}_{23}\\
+  \overline{\epsilon}_{31}\\
+  \end{array} \right\}
+.\end{equation*}
+Which can also be written as
+\begin{equation*}
+  \left\{ \begin{array}{cccccc}
+    \sigma_{11}\\
+  \sigma_{22}\\
+  \sigma_{33}\\
+  \sigma_{12}\\
+  \sigma_{23}\\
+  \sigma_{31}\\
+  \end{array} \right\} = \begin{bmatrix}
+    C_{11} & C_{12} & C_{13} & C_{14} & C_{15} & C_{16}\\
+   & C_{22} & C_{23} & C_{24} & C_{25} & C_{26}\\
+   &  & C_{33} & C_{34} & C_{35} & C_{36}\\
+   &  &  & C_{44} & C_{45} & C_{46}\\
+   &  &  &  & C_{55} & C_{56}\\
+   &  &  &  &  &C_{66} \\
+  \end{bmatrix} \left\{ \begin{array}{cccccc}
+    \overline{\epsilon}_{11}\\
+  \overline{\epsilon}_{22}\\
+  \overline{\epsilon}_{33}\\
+  \overline{\epsilon}_{12}\\
+  \overline{\epsilon}_{23}\\
+  \overline{\epsilon}_{31}\\
+  \end{array} \right\}
+\end{equation*}
+or
+\begin{equation*}
+  \Vec{\sigma} =\Vec{C} \overline{\epsilon}
+.\end{equation*}
+The corresponding strain energy function is
+\begin{align*}
+  2W =& C_{11} \overline{\epsilon}_{11}^2 + 2C_{12} \overline{\epsilon}_{11} \overline{\epsilon}_{22} + 2C_{13} \overline{\epsilon}_{11} \overline{\epsilon}_{33} + 2C_{14} \overline{\epsilon}_{11} \overline{\epsilon}_{12} + 2C_{15} \overline{\epsilon}_{11} \overline{\epsilon}_{23} \\
+      &+ 2C_{16} \overline{\epsilon}_{11} \overline{\epsilon}_{31} + C_{22} \overline{\epsilon}_{22}^2 + 2C_{23} \overline{\epsilon}_{22} \overline{\epsilon}_{33} + 2C_{24} \overline{\epsilon}_{22} \overline{\epsilon}_{12} + 2C_{25} \overline{\epsilon}_{22} \overline{\epsilon}_{23} \\
+      &+ 2C_{26} \overline{\epsilon}_{22} \overline{\epsilon}_{31} + C_{33} \overline{\epsilon}_{33}^2 + 2C_{34} \overline{\epsilon}_{33} + \overline{\epsilon}_{12} + 2C_{35} \overline{\epsilon}_{33} \overline{\epsilon}_{23} + 2C_{36} \overline{\epsilon}_{33} \overline{\epsilon}_{31} \\
+      &+ C_{44}\overline{\epsilon}_{12}^2 + 2C_{45}\overline{\epsilon}_{12} \overline{\epsilon}_{23} + 2C_{46} \overline{\epsilon}_{12} \overline{\epsilon}_{31} \\
+      &+ C_{55} \overline{\epsilon}_{23}^2 + 2C_{56} \overline{\epsilon}_{23} \overline{\epsilon}_{31} \\
+      &+ C_{66} \overline{\epsilon}_{31}^2
+.\end{align*}
+
+The preceding characterization is the most general with which we need to be concerned; such a material is termed \textit{anisotropic}.
+Fortunately, most engineering materials possess propertied of symmetry about one or more of the planes or axes which allow the number of independent constants to be reduced.
+
+This can be reduced for each plane of symmetry for the material ultimately leading to an isotropic material for three-axed symmetry. 
+
+The stress-strain relationship can be written in terms of the tensor components $\epsilon_{ij}$ using the Lamé constants $\lambda$ and $\mu$:
+\begin{equation*}
+  \left\{ \begin{array}{cccccc}
+    \sigma_{11}\\
+  \sigma_{22}\\
+  \sigma_{33}\\
+  \sigma_{12}\\
+  \sigma_{23}\\
+  \sigma_{31}\\
+  \end{array} \right\} = \begin{bmatrix}
+    2\mu + \lambda & \lambda & \lambda & 0 & 0 & 0\\
+  \lambda  & 2 \mu + \lambda & \lambda & 0 & 0 & 0\\
+  \lambda & \lambda & 2 \mu + \lambda & 0 & 0 & 0\\
+   &  &  & 2\mu & 0 & 0\\
+   &  &  &  & 2\mu & 0\\
+   &  &  &  &  &2\mu \\
+  \end{bmatrix} \left\{ \begin{array}{cccccc}
+    \epsilon_{11}\\
+  \epsilon_{22}\\
+  \epsilon_{33}\\
+  \epsilon_{12}\\
+  \epsilon_{23}\\
+  \epsilon_{31}\\
+  \end{array} \right\}
+\end{equation*}
+or, in indicial form,
+\begin{equation*}
+  \sigma_{ij} = 2\mu \epsilon_{ij} + \lambda \delta_{ij} \epsilon_{kk}
+.\end{equation*}
+This can also be inverted to express the strains in terms of the stresses:
+\begin{equation*}
+  \epsilon_{ij} = \frac{1}{2\mu}\sigma_{ij} - \frac{\lambda}{2\mu \left( 2 \mu + 3\lambda \right)} \delta_{ij} \sigma_{kk}
+.\end{equation*}
+
+Although the Lamé constants are perfectly suitable from a mathematical standpoint, it is often more convenient to use engineering material constants that are related to measurements from elementary tests.
+
+For a uniaxial stress with $\sigma_{11}$ constant and all other $\sigma_{ij} = 0$,
+\begin{align*}
+  \sigma_{11} &= \left( 2\mu + \lambda \right)\epsilon_{11} + \lambda \epsilon_{22} + \lambda\epsilon_{33}, \\
+  0 &= \lambda \epsilon_{11} + \left( 2\mu + \lambda \right)\epsilon_{22} + \lambda \epsilon_{33}, \\
+  0 &= \lambda\epsilon_{11} + \lambda\epsilon_{22} + \left( 2\mu + \lambda \right)\epsilon_{33}
+.\end{align*}
+These can be equated to yield the basic form of Hooke's law:
+\begin{equation*}
+  \sigma_{11} = \frac{\mu \left( 2 \mu + 3\lambda \right)}{\mu + \lambda} \epsilon_{11} = E \epsilon_{11}
+.\end{equation*}
+From the same uniaxial stress state, the \textit{fractional contraction} may be computed as
+\begin{equation*}
+  - \frac{\epsilon_{22}}{\epsilon_{11}} = - \frac{\epsilon_{33}}{\epsilon_{11}} = \frac{\lambda}{2 \left( \mu + \lambda \right)} = \nu
+\end{equation*}
+where $\nu$ is Poisson's ratio.
+
+A third engineering constant is obtained from the state of pure shear in two dimensions, given by $\sigma_{12} = \sigma_{21} = \text{constant}$, all other $\sigma_{ij} = 0$
+\begin{equation*}
+  \sigma_{12} = 2\mu \epsilon_{12} = 2 G \epsilon_{12}
+\end{equation*}
+where $G$ is the shear modulus.
+
+Although $E$, $\nu$, and $G$ aer convenient, we realize only two of these are independent since $G = \mu$ and both $E$ and $\nu$ are defined in terms of $\lambda$ and $\mu$.
+The relationships between the Lamé and engineering constants are collected as:
+\begin{gather*}
+  \mu = \frac{E}{2 \left( 1 + \nu \right)} \\
+  \lambda = \frac{\nu E}{\left( 1 + \nu \right) \left( 1 - 2\nu \right)} \\
+  E = \frac{\mu \left( 2\mu + 3\lambda \right)}{\mu + \lambda} \\
+  \nu = \frac{\lambda}{2 \left( \mu + \lambda \right)} \\
+  G = \mu
+.\end{gather*}
+Another relationship between the constants is defined as the bulk modulus
+\begin{equation*}
+  K = \frac{E}{3 \left( 1 + 2\nu \right)}
+.\end{equation*}
+
+Note that for $\lambda$ to remain finite, Poisson's ratio must lie between
+\begin{equation*}
+  -1 < \nu < \num{0,5} 
+.\end{equation*}
+Also, for $\nu = \num{0,5}$, the upper limit, the dilation $\Delta = 0$, and the material is said to be incompressible.
+
+The explicit form of the generalized Hooke's law in terms of the engineering constants and tensoral strains is best written as
+\begin{equation*}
+  \Vec{\epsilon} = \Vec{C}^{-1} \Vec{\sigma}
+\end{equation*}
+or
+\begin{equation*}
+  \left\{ \begin{array}{cccccc}
+    \epsilon_{11}\\
+  \epsilon_{22}\\
+  \epsilon_{33}\\
+  \epsilon_{12}\\
+  \epsilon_{23}\\
+  \epsilon_{31}\\
+  \end{array} \right\} = \begin{bmatrix}
+    \frac{1}{E} & - \frac{\nu}{E} & - \frac{\nu}{E} & 0 & 0 & 0\\
+  - \frac{\nu}{E} & \frac{1}{E} & - \frac{\nu}{E} & 0 & 0 & 0\\
+  -\frac{\nu}{E} & -\frac{\nu}{E} & \frac{1}{E} & 0 & 0 & 0\\
+  0 & 0 & 0 & \frac{1}{2G} & 0 & 0\\
+  0 & 0 & 0 & 0 & \frac{1}{2G} & 0\\
+  0 & 0 & 0 & 0 & 0 & \frac{1}{2G}\\
+  \end{bmatrix} \left\{ \begin{array}{cccccc}
+    \sigma_{11}\\
+  \sigma_{22}\\
+  \sigma_{33}\\
+  \sigma_{12}\\
+  \sigma_{23}\\
+  \sigma_{31}\\
+  \end{array} \right\}
+.\end{equation*}
+
+The elements of $\Vec{C}^{-1}$ are called \textit{compliances}.
+
+\subsection{Transverse Isotropic Material}
+
+In \Cref{fig:f4_5a}, a configuration with the fibers oriented along the $z$-axis, perpendicular to the symmetric $x-y$-plane is shown.
+These fibers are able to stretch in a single direction as shown on \Cref{fig:f4_5b}.
+This might correspond to the muscle fibers inside a muscle.
+
+\begin{figure}
+     \centering
+     \begin{subfigure}[ht]{0.48\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{f4_5a}
+         \caption{Transverse isotropic material}
+         \label{fig:f4_5a}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[ht]{0.48\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{f4_5b}
+         \caption{Bundled fiber configuration}
+         \label{fig:f4_5b}
+     \end{subfigure}
+        \caption{Transverse isotropic material and bundled fiber configurations}
+        \label{fig:f4_5}
+\end{figure}
+
+This is a transverse isotropic material with five elastic constants, $\lambda_{\perp}, \lambda_{\parallel}, \lambda_M, \mu_{\perp},$ and $\mu_{\parallel}$.
+The $\lambda$ terms are related to the propagation of longitudinal waves in the different directions, while the $\mu$ terms are shear moduli.
+The expanded stress-strain matrix $\Vec{C}_{TI}$ is:
+\begin{equation*}
+  \Vec{C}_{TI} = \begin{bmatrix}
+    2\mu_{\parallel} + \lambda_{\parallel}& \lambda_M & \lambda_M & 0 & 0 & 0\\
+  \lambda_M & 2 \mu_{\perp} + \lambda_{\perp} & \lambda_{\perp} & 0 & 0 & 0\\
+  \lambda_M & \lambda_{\perp} & 2\mu_{\perp} + \lambda_{\perp} & 0 & 0 & 0\\
+  0 & 0 & 0 & \mu_{\perp} & 0 & 0\\
+  0 & 0 & 0 & 0 & \mu_{\parallel} & 0\\
+  0 & 0 & 0 & 0 & 0 & \mu_{\parallel}\\
+  \end{bmatrix}
+.\end{equation*}
+Note, that this is expressed in terms of Lamé constants $\mu$ and $\lambda$.
+An alternate form using engineering constants is
+\begin{equation*}
+  \begin{bmatrix}
+    \epsilon_{11}\\
+  \epsilon_{22}\\
+  \epsilon_{33}\\
+  2\epsilon_{23}\\
+  2\epsilon_{13}\\
+  \epsilon_{12}\\
+  \end{bmatrix} = \begin{bmatrix}
+    \frac{1}{E_t} &  - \frac{\nu_{pt}}{E_{p}} & - \frac{\nu_{pt}}{E_p} & 0 & 0 & 0\\
+  - \frac{\nu_{tp}}{E_t} & \frac{1}{E_p} & - \frac{\nu_p}{E_p} & 0 & 0 & 0\\
+  - \frac{\nu_{tp}}{E_t} & - \frac{\nu_p}{E_p} & \frac{1}{E_p} & 0 & 0 & 0\\
+  0 & 0 & 0 & \frac{1}{\mu_p} & 0 & 0\\
+  0 & 0 & 0 & 0 & \frac{1}{\mu_t} & 0\\
+  0 & 0 & 0 & 0 & 0 & \frac{1}{\mu_t}\\
+  \end{bmatrix} \begin{bmatrix}
+    \sigma_{11}\\
+  \sigma_{22}\\
+  \sigma_{33}\\
+  \sigma_{23}\\
+  \sigma_{13}\\
+  \sigma_{12}\\
+  \end{bmatrix}
+.\end{equation*}
+
+The seven variables in the above compliance matrix are related by the additional equations
+\begin{gather*}
+  \frac{\nu_{pt}}{E_p} = \frac{\nu_{tp}}{E_t} \iff \frac{E_t}{E_p} = \frac{\nu_{tp}}{\nu_{pt}} \\
+  \mu_p = \frac{E_p}{2 \left( 1 + \nu_p \right)}
+.\end{gather*}
+Also, as the compliance matrix should be positive definite, the following five relationships exist for stability
+\begin{align*}
+  E_t, E_p, u_t, u_p &> 0 \\
+  \left| \nu_p \right| &< 1 \\
+  \nu_{pt} &< \sqrt{\frac{E_p}{E_t}} \\
+  \nu_{tp} &< \sqrt{\frac{E_t}{E_p}} \\
+  1 - \nu_p^2 - 2\nu_{pt}\nu_{tp} - 2\nu_{pt}\nu_{tp}\nu_p &> 0
+.\end{align*}
