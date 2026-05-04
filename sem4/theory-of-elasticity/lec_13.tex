@@ -1,0 +1,136 @@
+\lecture{13}{4. Maj 2026}{Plane Stress and Plain Strain}
+
+\section{Two-Dimensional Elasticity}
+
+An elasticity problem may be reduced from three to two dimensions if there is no traction on one plane passing through the body.
+This state is known as \textit{plane stress} since all nonzero stresses are confined to planes parallel to the traction-free plane.
+
+
+\subsection{Plane Stress Equations}
+For plane stress with the $z$-axis stress-free, we have
+\begin{equation*}
+  \sigma_{xz} = \sigma_{yz} = \sigma_{zz} = 0
+.\end{equation*}
+Also, we assume that the remaining stresses do not vary with $z$ but are only functions of $x$ and $y$.
+This gives:
+\begin{align*}
+  \sigma_{x x, x} + \sigma_{xy, y} + f_x &= 0 \\
+  \sigma_{yx, x} + \sigma_{yy,y} + f_y &= 0 \\
+  f_z &= 0 \\
+.\end{align*}
+For some linear problems, it is convenient to specify the body force vector in the form
+\begin{equation*}
+  \Vec{f} = - \nabla V = - V_{,i \Vec{e}_i}
+\end{equation*}
+where $V$ is a potential function.
+This corresponds to a body force field that is conservative.
+Combining the above equations yiel
+\begin{gather*}
+  \sigma_{x x, x} + \sigma_{xy,y} - V_{,x} = 0 \\
+  \sigma_{xy, x} + \sigma_{yy,y} - V_{,y} = 0 \\
+  V_{,z} = 0
+.\end{gather*}
+We can write the stresses as:
+\begin{align*}
+  \sigma_{x x} &= V + \phi_{, yy} \\
+  \sigma_{yy} &= V + \phi_{,x x} \\
+  \sigma_{xy} &= - \phi_{,xy}
+\end{align*}
+where $\phi$ is the Airy stress function.
+Substituting these Airy-forms into the equations above solves them identically.
+
+The constitutive equations are also expressed in terms of $\phi$.
+First the generalized Hooke's law for the plane stress case becomes
+\begin{align*}
+  \epsilon_{x x} &= \frac{1}{E} \left( \sigma_{\times} - \nu \sigma_{yy} \right) \\
+  \epsilon_{yy} &= \frac{\nu}{E} \left( \sigma_{yy} - \nu \sigma_{x x} \right) \\
+  \epsilon_{zz} &=  - \frac{\nu}{E} \left( \sigma_{x x} + \sigma_{yy} \right) \\
+  \epsilon_{xy} &= \frac{1}{2G} \sigma_{xy} \\
+  \epsilon_{xz} = \epsilon_{yz} &= 0
+.\end{align*}
+From these, we see that the strains do not depend on $z$, but only on $x$ and $y$.
+However the equation for $\epsilon_{zz}$ has a nonzero strain in the $z$-direction indicating that a state of plane stress does \textit{not} imply a corresponding state of plane strain.
+
+It is also convenient to write the stresses in terms of the strains by solving the equations for $\epsilon_{x x}, \epsilon_{yy},$ and $\epsilon_{xy}$ for $\sigma_{x x}, \sigma_{yy},$ and $\sigma_{xy}$, respectively:
+\begin{align*}
+  \sigma_{x x} &=  \frac{E}{\left( 1 - \nu^2 \right)} \left( \epsilon_{x x } + \nu \epsilon_{yy} \right) \\
+  \sigma_{yy} &= \frac{E}{\left( 1 - \nu^2 \right)} \left( \epsilon_{yy} + \nu \epsilon_{x x} \right) \\
+  \sigma_{xy} &= 2 G \epsilon_{xy}
+.\end{align*}
+Introducing the equations from before gives:
+\begin{gather*}
+  \epsilon_{x x} = \frac{1}{E} \left(  \left( \phi_{, yy} - \nu \phi_{, \times} \right) + \left( 1 - \nu \right) V \right) \\
+  \epsilon_{yy} = \frac{1}{E} \left( \left( \phi_{, x x} - \nu \phi_{,yy}\right) + \left( 1 - \nu \right)V \right) \\
+  \epsilon_{zz} = - \frac{\nu}{E} \left( \left( \phi_{,x x} + \phi_{,yy} \right) + 2V \right) \\
+  \epsilon_{xy} = - \frac{1}{2G} \phi_{,xy} \\
+  \epsilon_{xz} = \epsilon_{yz} = 0
+.\end{gather*} 
+
+We may now establish the compatibility equations in terms of the stress function.
+First, with substitutions of the strains from above, we get:
+\begin{equation*}
+  \frac{1}{E} \left( \phi_{,yyyy} - \nu \phi_{,x xyy} + \left( 1 - \nu \right) V_{,yy} + \phi_{,x x x x} - \nu \phi_{, x x y y} + \left( 1 - \nu \right) V_{, x x}  \right) = - \frac{1}{G} \phi_{,x x yy}
+.\end{equation*}
+With $E / G = 2 \left( 1 + \nu \right)$, this reduces to
+\begin{equation*}
+  \nabla^{4} \phi = - \left( 1 - \nu \right) \nabla^2 V
+.\end{equation*}
+Where the operator $\nabla^{4}(\ldots )$ is defined as:
+\begin{equation*}
+  \nabla^{4} \left( \ldots  \right) = \left( \ldots  \right)_{, x x x x} + 2 \left( \ldots  \right)_{, x x yy} + \left( \ldots \right)_{,yyyy} 
+.\end{equation*}
+We then get:
+\begin{gather*}
+  \epsilon_{zz, yy} = \phi_{,x x yy} + \phi_{,yyyy} + 2V_{,yy} = 0 \\
+  \epsilon_{zz, x x} = \phi_{, x x x x} + \phi_{, yyx x} + 2V_{, x x} = 0 \\
+  \epsilon_{zz, xy} = \phi_{, x x xy} + \phi_{, yyyx} + 2V_{,xy} = 0
+.\end{gather*}
+The above three equations are normally not considered in elementary plane stress theory, there only $\nabla^{4}\phi = - \left( 1 - \nu \right) \nabla^2 V$ is used instead.
+All of the above three equations contain terms related to $\epsilon_{zz}$ which is just a Poison effect and therefore very small (i.e. negligible especially for thin members).
+
+\subsection{Plane Strain Equations}
+For plane strain with the $z$-axis strain-free, we have
+\begin{equation*}
+  \epsilon_{xz} = \epsilon_{yz} = \epsilon_{zz} = 0
+.\end{equation*}
+As in the case of plane stress, all tractions and body forces are functions of $x$ and $y$ only.
+
+To enforce these conditions, we use the generalized Hooke's law:
+\begin{gather*}
+  \epsilon_{x x} = \frac{1}{E} \left( \sigma_{ x x} - \nu \left( \sigma_{yy} + \sigma_{zz} \right) \right) \\
+  \epsilon_{yy} = \frac{1}{E} \left( \sigma_{yy} - \nu \left( \sigma_{x x} + \sigma_{zz} \right) \right) \\
+  0 = \frac{1}{E} \left( \sigma_{zz} - \nu \left( \sigma_{x x} + \sigma_{yy} \right) \right) \\
+  \epsilon_{xy} = \frac{1}{2G} \sigma_{xy} \\
+  \epsilon_{xz} = \epsilon_{yz} = 0
+.\end{gather*}
+From this, we see that
+\begin{equation*}
+  \sigma_{zz} = \nu \left( \sigma_{x x} + \sigma_{yy} \right)
+\end{equation*}
+so that the strain-free plane is not stress-free, in general.
+We have
+\begin{gather*}
+  \sigma_{x x, x} + \sigma_{xy,y} - V_{,x} = 0 \\
+  \sigma_{xy,x} + \sigma_{yy,y} - V_{,y} = 0  \\
+  \sigma_{zz} = \text{constant}
+.\end{gather*}
+
+Introducing the Airy stress function, the above becomes
+\begin{gather*}
+  \epsilon_{x x} = \frac{1}{E} \left( \left( 1 - \nu^2 \right) \phi_{,yy} - \nu \left( 1 + \nu \right) \phi_{, x x} + \left( 1 - \nu (1 + 2\nu) \right) V \right) \\
+  \epsilon_{yy} = \frac{1}{E} \left( \left( 1 - \nu^2 \right) \phi_{,x x} - \nu \left( 1 + \nu \right) \phi_{,yy} + \left( 1 - \nu \left( 1 + 2\nu \right) \right) V \right) \\
+  \epsilon_{xy} = - \frac{1}{2G} \phi_{, xy}
+.\end{gather*}
+Then we rewrite
+\begin{equation*}
+  \epsilon_{x x , yy} + \epsilon_{yy, x x} = 2\epsilon_{xy,xy}
+\end{equation*}
+using the above to get
+\begin{equation*}
+  \nabla^{4}\phi = - \frac{1 - 2\nu}{1 - \nu} \nabla^2 V
+.\end{equation*}
+The resulting homogeneous compatibility equation:
+\begin{equation*}
+  \nabla^{4}\phi = 0
+\end{equation*}
+is known as the biharmonic equation.

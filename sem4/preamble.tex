@@ -271,23 +271,21 @@
   title=Description of #1,
 }
 
-\makeatother
+\makeatletter
+
 \def\@lecture{}%
-\newcommand{\lecture}[3]{
+\newcommand{\lecture}[3]{%
   \ifthenelse{\isempty{#3}}{%
     \def\@lecture{Lecture #1}%
   }{%
     \def\@lecture{Lecture #1: #3}%
   }%
-  \refstepcounter{section}%
   \phantomsection
-  % Typeset like a subsection (no numbering in the heading)
-  \subsection*{\makebox[\textwidth][l]{\@lecture \hfill \color{AUblueDark}\normalfont\small{#2}}}
-  % Add a section-level TOC entry with the section number
-  \addcontentsline{toc}{section}{\protect\numberline{\thesection}\@lecture}%
+  \subsection*{%
+    \makebox[\textwidth][l]{\@lecture \hfill \color{AUblueDark}\normalfont\small #2}%
+  }%
+  \addcontentsline{toc}{section}{\@lecture}%
 }
-
-\makeatletter
 
 \newcommand{\exercise}[1]{%
  \def\@exercise{#1}%

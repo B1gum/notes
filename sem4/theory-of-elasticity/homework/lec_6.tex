@@ -17,9 +17,149 @@
   \end{enumerate}
 \end{problem}
 
+\begin{derivation}
+  \begin{enumerate}
+    \item[(a)]   The strain invariants are $Q_1, Q_2, Q_3$, which is the sum of the diagonal of $\Vec{\epsilon}$, the sum of the minors of the diagonal of $\Vec{\epsilon}$ and the determinant of $\Vec{\epsilon}$, respectively.
+  The first strain invariant $Q_1$ is simply the sum of the diagonal entries of $\Vec{\epsilon}$ as
+  \begin{equation*}
+    Q_1 = 20 \cdot 10^{-6} + \left( -10 \cdot 10^{-6} \right) + \left( -8 \cdot 10^{-6} \right)  = \num{2e-6} 
+  .\end{equation*}
+  
+  The second strain invariant $Q_2$ is the sum of the minors of the diagonal, as:
+  \begin{equation*}
+    Q_2 = \begin{vmatrix}
+      20 \cdot 10^{-6} & 3 \cdot 10^{-6}\\
+    3 \cdot 10^{-6}& -10 \cdot 10^{-6}\\
+    \end{vmatrix} + \begin{vmatrix}
+      20 \cdot 10^{-6}& 2\cdot 10^{-6}\\
+    2\cdot 10^{-6} & -8\cdot 10^{-6}\\
+    \end{vmatrix} + \begin{vmatrix}
+      -10 \cdot 10^{-6} & 5 \cdot 10^{-6}\\
+    5 \cdot 10^{-6}& -8 \cdot 10^{-6}\\
+  \end{vmatrix} = -\num{3.18e-10}
+.\end{equation*}
+  
+  The third strain invariant is the determinant of $\Vec{\epsilon}$, as
+  \begin{equation*}
+    Q_3 = \begin{vmatrix}
+      20 \cdot 10^{-6} & 3 \cdot 10^{-6} & 2 \cdot 10^{-6}\\
+    3 \cdot 10^{-6}& -10\cdot 10^{-6} & 5\cdot 10^{-6}\\
+    2 \cdot 10^{-6}& 5 \cdot 10^{-6}& -8\cdot 10^{-6}\\
+    \end{vmatrix} = \num{1.272e-15}
+  .\end{equation*}
+  
+    \item[(b)] The principal strains are found by solving the eigenvalue problem:
+      \begin{equation*}
+\begin{bmatrix}
+          20  & 3  & 2 \\
+        3  & -10  & 5 \\
+        2  & 5  & -8 \\
+        \end{bmatrix} \rightarrow \{20.519,-14.1326,-4.38641\}
+      .\end{equation*}
+    \item[(c)] The mean normal strain is simply the mean of the three normal, i.e. $\epsilon_{ii}$ components of $\Vec{\epsilon}$:
+      \begin{equation*}
+        \epsilon_M = \frac{1}{3} \left( \epsilon_{11} + \epsilon_{22} + \epsilon_{33} \right) = \frac{1}{3} \cdot \left( 20 + \num{-10}  + \num{-8}  \right) \cdot \num{e-6}  = \num{0,666e-6} 
+      .\end{equation*}
+      Which means the mean normal strain tensor is:
+      \begin{equation*}
+        \Vec{\epsilon}_M = \begin{bmatrix}
+          \num{0,666e-6}  & 0 & 0\\
+        0 & \num{0,666e-6}  & 0\\
+        0 & 0 & \num{0,666e-6} \\
+        \end{bmatrix}
+      .\end{equation*}
+      The strain deviator tensor is then:
+      \begin{equation*}
+        \Vec{\epsilon}_D = \Vec{\epsilon} - \Vec{\epsilon}_M = \begin{bmatrix}
+          20 - \num{0,666} & 3 & 2\\
+        3 & -10 - \num{0,666}  & 5\\
+        2 & 5 & -8 - \num{0,666} \\
+        \end{bmatrix} \num{e-6} = \left(
+\begin{array}{ccc}
+ 19.334 & 3. & 2. \\
+ 3. & -10.666 & 5. \\
+ 2. & 5. & -8.666 \\
+\end{array}
+\right) \num{e-6} 
+      .\end{equation*}
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+&(\mathrm{a}) &  &\begin{aligned}
+      Q_1 &= \num{2e-6}  \\
+      Q_2 &= \num{-3,18e-10}  \\
+      Q_3 &= \num{1,272e-15} 
+    \end{aligned} \\ \\
+&(\mathrm{b}) &  &\begin{aligned}
+      \epsilon^{(1)} &= \num{20,519}  \\
+      \epsilon^{(2)} &= \num{-14,132}  \\
+      \epsilon^{(3)} &= \num{-4,386} 
+    \end{aligned} \\ \\
+&(\mathrm{c}) &  &\begin{aligned}
+      \Vec{\epsilon}_M &= \begin{bmatrix}
+        \num{0,666e-6}  & 0 & 0\\
+      0 & \num{0,666e-6}  & 0\\
+      0 & 0 & \num{0,666e-6} \\
+      \end{bmatrix} \\
+        \Vec{\epsilon}_D &= \begin{bmatrix}
+          \num{19,334e-6} & \num{3e-6}  & \num{2e-6} \\
+          \num{3e-6}  & \num{-10,666e-6}  & \num{5e-6} \\
+          \num{2e-6}  & \num{5e-6}  & \num{-8,666e-6} \\
+        \end{bmatrix}
+    \end{aligned}
+.\end{aligned}
+}
 \begin{problem}{3.3}
   With reference to Problem 3.2, consider a second coordinate system $x_i'$ in which $x_2'$ is parallel to $x_2$ and $x_1'$ and $x_3'$ arre defined by a \ang{60} counterclockwise rotation about $x_2$. Find the components of strain with reference to the $x_i'$ system using the strain field from Problem 3.2.
 \end{problem}
+
+\begin{derivation}
+  We use the tensor transformation rule
+\begin{equation*}
+    \Vec{A}' = \Vec{R} \Vec{A} \Vec{R}^{\intercal}
+  \end{equation*}
+  where $\Vec{R}$ is the direction cosine matrix whose rows are the new basis vectors written in the old basis.
+  In this case the tensor $\Vec{\epsilon}$ is to be rotated around the $x_2$-axis, which means:
+  \begin{equation*}
+    \Vec{R} = \begin{bmatrix}
+      \cos \ang{60}  & 0 & \sin \ang{60} \\
+    0 & 1 & 0\\
+    - \sin \ang{60}  & 0 & \cos \ang{60} \\
+    \end{bmatrix}
+  .\end{equation*}
+  So
+  \begin{equation*}
+    \Vec{\epsilon}' = \begin{bmatrix}
+      \cos \ang{60}  & 0 & \sin \ang{60} \\
+    0 & 1 & 0\\
+    - \sin \ang{60}  & 0 & \cos \ang{60} \\
+    \end{bmatrix} \cdot \begin{bmatrix}
+      20 & 3 & 2\\
+    3 & -10 & 5\\
+    2 & 5 & -8\\
+    \end{bmatrix} \cdot  \begin{bmatrix}
+  \cos \ang{60}  & 0 & \sin \ang{60} \\
+0 & 1 & 0\\
+- \sin \ang{60}  & 0 & \cos \ang{60} \\
+\end{bmatrix}^{\intercal} = \left(
+\begin{array}{ccc}
+  \num{5.86603} & \num{0}  & \num{5.13397} \\
+ 0 & -10 & 0 \\
+ \num{-14.134} & 0 & \num{ -2.86603} \\
+\end{array}
+\right)
+  .\end{equation*}
+\end{derivation}
+
+\finalresult{
+\begin{bmatrix}
+  \num{5,866} &0 & \num{5,134}  \\
+0 & -10 & 0\\
+\num{-14,134}  & 0 & \num{-2,866} \\
+\end{bmatrix}}
+
 
 \begin{problem}{3.6}
   Compute the infinitesimal strains, and sketch the deformed configuration of an initially rectangular volume element subject to the following displacement fields, where $A$, $B$, and $D_{ij} = \text{constants}$:
@@ -29,3 +169,55 @@
     \item homogeneous deformation: $u_i = D_{ij} x_j$.
   \end{enumerate}
 \end{problem}
+
+\begin{derivation}
+  \begin{enumerate}[label=(\alph*)]
+    \item Here $u_1 = A_1 x_1$ and $u_2 = u_3 = 0$ leading to the following displacement gradient
+      \begin{equation*}
+        \nabla \Vec{u} = \begin{bmatrix}
+          A_1 & 0 & 0\\
+        0 & 0 & 0\\
+        0 & 0 & 0\\
+        \end{bmatrix}
+      .\end{equation*}
+      Here, the block simply stretches/contracts in the $x_1$-direction.
+    \item Here $u_1 = B x_2$ and $u_2 = u_3 = 0$ leading to the following displacement gradient
+      \begin{equation*}
+        \nabla \Vec{u} = \begin{bmatrix}
+          0 & B & 0\\
+        0 & 0 & 0\\
+        0 & 0 & 0\\
+        \end{bmatrix}
+      .\end{equation*}
+      Which is symmetrized as:
+      \begin{equation*}
+        \Vec{\epsilon} = \frac{1}{2} \left( \nabla \Vec{u} + \left( \nabla \Vec{u} \right)^{\intercal} \right) = \frac{1}{2} \begin{bmatrix}
+          0 & \frac{B}{2} & 0\\
+        \frac{B}{2} & 0 & 0\\
+        0 & 0 & 0\\
+        \end{bmatrix}
+      .\end{equation*}
+      here we have a displacement in the $x_1$ direction proportional to $x_2$.
+    \item Here we have the general case with deformation in all directions.
+      The displacement is
+      \begin{equation*}
+        \Vec{\epsilon} = \frac{1}{2} \left( \Vec{D} + \left( \Vec{D} \right)^{\intercal} \right)
+      .\end{equation*}
+  \end{enumerate}
+\end{derivation}
+
+\finalresult{
+\begin{aligned}
+  &(\mathrm{a}) & \Vec{\epsilon} &= \begin{bmatrix}
+          A_1 & 0 & 0\\
+        0 & 0 & 0\\
+        0 & 0 & 0\\
+        \end{bmatrix} \\
+  &(\mathrm{b}) &         \Vec{\epsilon} &= \frac{1}{2} \begin{bmatrix}
+          0 & \frac{B}{2} & 0\\
+        \frac{B}{2} & 0 & 0\\
+        0 & 0 & 0\\
+        \end{bmatrix} \\
+  &(\mathrm{c}) &         \Vec{\epsilon} &= \frac{1}{2} \left( \Vec{D} + \left( \Vec{D} \right)^{\intercal} \right)
+.\end{aligned}
+}

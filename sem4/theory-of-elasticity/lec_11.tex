@@ -1,0 +1,110 @@
+\lecture{11}{20. April 2026}{The De Saint Venant Problem, Pt. II}
+
+\subsection{Finding the Barycenter of a Cross-Section}
+The barycenter $G$, also called the \textit{centroid} for a homogeneous cross-section, is the ``geometric center'' of the area. 
+
+I.e. if we define a local reference frame $\left\{ O; \Vec{e}_1, \Vec{e}_2 \right\}$ in the plane of the cross-section
+Then every point in the cross-section will have a position vector:
+\begin{equation*}
+  \Vec{x} = x_1 \Vec{e}_1 + x_2 \Vec{e}_2
+.\end{equation*}
+The barycenter should then be:
+\begin{equation*}
+  \Vec{x}_G = \frac{1}{A} \int_A \Vec{x} \, \mathrm{d}A
+.\end{equation*}
+Or in component form as:
+\begin{align*}
+  x_{G1} &= \frac{1}{A}\int_A x_1 \, \mathrm{d}A \\
+  x_{G2} &= \frac{1}{A} \int_A x_2 \, \mathrm{d}A
+.\end{align*}
+
+\subsection{Simple Bending: Only One Bending Moment Acts}
+We now consider the special case, where $M_2 \neq 0$, is the only applied moment.
+I.e. the body is only being bent about the $e_2$-axis.
+Here, shear forces are zero, torsional moments are zero and hence only normal stress remains.
+
+So,
+\begin{equation*}
+  \Vec{\tau}_3 = \Vec{0}, \qquad \sigma_{33} \neq 0
+.\end{equation*}
+That means the traction on the cross-section is purely axial:
+\begin{equation*}
+  \Vec{T}_{\Vec{e}_3} = \begin{pmatrix}
+    0\\
+  0\\
+  \sigma_{33}\\
+  \end{pmatrix}
+.\end{equation*}
+
+For Saint-Venant bending, compatibility leads to the fact that axial stress must be linear in the cross-section coordinates:
+\begin{equation*}
+  \sigma_{33} = a + bx_1 + cx_2
+.\end{equation*}
+Physically, this means the beam bends in such a way that one side is stretched and the other side is compressed.
+The axial strain varies linearly across the section, so the axial stress also varies linearly.
+
+Because $M_1 = 0$, the stress cannot vary with $x_2$, so the stress depends only on $x_1$:
+\begin{equation*}
+  \sigma_{33} = \alpha x_1
+.\end{equation*}
+There is no constant term here because there is no axial force $N$.
+If there were a constant term, integrating over the area would give a nonzero axial resultant force.
+
+So for pure bending about $e_2$:
+\begin{equation*}
+  N = 0, \qquad M_1 = 0, \qquad M_2 \geq 0
+.\end{equation*}
+Therefore $\sigma_{33}$ must be linear in $x_1$ only.
+
+From the previous section, the moment resultant about $e_2$ was
+\begin{equation*}
+  M_2 = - \int_A x_1 \sigma_{33} \, \mathrm{d}A
+.\end{equation*}
+Inserting $\sigma_{33} = \alpha x_1$ yields
+\begin{equation*}
+  M_2 = - \int_A x_1 \left( \alpha x_1 \right)\, \mathrm{d}A = - \alpha \int_A x_1^2 \, \mathrm{d}A
+.\end{equation*}
+The integral
+\begin{equation*}
+  I_2 = \int_A x_1^2 \, \mathrm{d}A
+\end{equation*}
+is the second moment of area about $e_2$.
+So
+\begin{equation*}
+  M_2 = - \alpha I_2
+.\end{equation*}
+Therefore:
+\begin{equation*}
+  \alpha = - \frac{M_2}{I_2}
+.\end{equation*}
+Substituting back into the stress expression gives:
+\begin{equation*}
+  \sigma_{33}(x_1) = - \frac{M_2}{I_2}x_1
+.\end{equation*}
+
+\subsubsection{General Case by Superposition}
+Because the problem is linear, we can combine the simpler solutions.
+If we have the axial force $N$ and the bending moments $M_1$ and $M_2$, then the axial stress is the sum of these three contributions.
+
+A pure axial force gives uniform stress:
+\begin{equation*}
+  \sigma_{33}^{(N)} = \frac{N}{A}
+.\end{equation*}
+Here, every fibre carries the same normal stress.
+From above, bending about $e_2$ results in
+\begin{equation*}
+  \sigma_{33}^{(M_2)} = - \frac{M_2}{I_2}x_1
+.\end{equation*}
+And similarly, bending about $e_1$ gives:
+\begin{equation*}
+  \sigma_{33}^{(M_1)} = \frac{M_1}{I_1}x_2
+.\end{equation*}
+
+So the total stress is:
+\begin{equation*}
+  \sigma_{33}(x_1, x_2) = \frac{N}{A} - \frac{M_2}{I_2}x_1 + \frac{M_1}{I_1}x_2
+.\end{equation*}
+Here, $N / A$ shifts the whole stress distribution uniformly up or down.
+It is pure tension or compression.
+
+The term $- M_2 / I_2 x_1$, creates a linear stress variation in $x_1$ caused by bending in about $e_2$ and similarly for $M_1 / I_1 x_2$.
