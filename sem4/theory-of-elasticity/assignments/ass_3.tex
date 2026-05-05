@@ -1,0 +1,412 @@
+\newcommand{\NoteType}{Assignment 3: The Elastic Problem}
+\newcommand{\TheDate}{May 10, 2026}
+\input{./preamble.tex}
+
+\setcounter{figure}{2}
+
+\renewenvironment{probdef}[1]%
+{%
+  \par\vspace{0pt}%
+  {\large\bfseries\sffamily\color{AUblueDark}%
+    Definition of Problem #1%
+  }%
+  \par\vspace{.35\baselineskip}%
+}%
+{%
+  \par\vspace{.6\baselineskip}%
+  {\color{AUblueDark}\rule{\linewidth}{0.8pt}}%
+  \vspace{.6\baselineskip}\par%
+}
+
+\begin{document}
+  \input{./titlepage.tex}
+  \newpage
+
+  \begin{probdef}{1}
+    Consider the bi-layer prismatic bar represented in \Cref{fig:ass3_1}, under tension forces $N$ applied at both ends.
+    Let us assume that the two layers, made of different materials, remain perfectly attached to each other.
+
+    Specifically, we assume both materials to be isotropic linearly elastic, i.e., governed by Hooke's law.
+    We further assume the red material (the top layer) to have a Young modulus $E_1$ and a Poisson ratio $\nu$, and the green material (the bottom layer) to have a Young modulus $E_2$ and a Poisson ratio $\nu$.
+  \end{probdef}
+
+  \begin{figure} [ht]
+    \centering
+    \includegraphics[width=0.8\linewidth]{./figures/ass3_1.png}
+    \caption{Bilayer bar under pulling force $N$.}
+    \label{fig:ass3_1}
+  \end{figure}
+
+  \begin{problem}{1.1}
+    Applying the De Saint Venant principle, determine the states of stress and strain within the continuum.
+    Pay special attention to what happens as the interface between the two materials.
+    Hint: The displacement field should be continuous across the interface while the strain and stress fields need not be.
+  \end{problem}
+
+  \begin{assumptions}
+    \item Any extension of the bar is purely axial, i.e. the bar does not bend
+  \end{assumptions}
+
+  \begin{derivation}
+    \begin{figure}[ht]
+        \renewcommand{\thefigure}{3.1}
+        \centering
+        \incfig[0.6]{ass3_1_1}
+        \caption{Coordinate system for Problem 1.}
+        \label{fig:ass3_1_1}
+    \end{figure}
+    \addtocounter{figure}{-1}
+
+    We employ the coordinate axes shown on \Cref{fig:ass3_1_1}, where we let $x$ be the long direction of the bar and $y$ be the vertical, with the material interface at $y = 0$.
+    We denote by material 1 the red/top layer and by material 2 the green/bottom layer.
+    Each layer has area
+    \begin{equation} \label{eq:31area}
+      A_1 = A_2 = \frac{a^2}{2}
+    .\end{equation}
+    
+    Saint-Venant's principle lets us ignore the local loading effects, far away from the loaded ends, where we can treat the bar as being in a uniform axial extension state.
+
+    Because the two materials are perfectly attached at the interface, they cannot extend by different amount in the $x$-direction.
+    Hence, the axial strain must be the same in both layers
+    \begin{equation*}
+      \epsilon_{x x}^{(1)} = \epsilon_{x x}^{(2)} = \epsilon_0
+    .\end{equation*}
+    So, the displacement field can be written as
+    \begin{equation} \label{eq:31disx}
+      u_x = \epsilon_0 x
+    \end{equation}
+    for both materials.
+    Since the Poisson ratio is the same in both layers, the lateral contraction will also be compatible:
+    \begin{equation} \label{eq:31disyz}
+      u_y = - \nu \epsilon_0 y, \qquad u_z = - \nu \epsilon_0 z
+    .\end{equation}
+    So the displacement field is therefore continuous across the interface.
+
+    For uniaxial stress, Hooke's law gives
+    \begin{equation*}
+      \sigma_{x x}^{(i)} = E_i \epsilon_0
+    \end{equation*}
+    so
+    \begin{equation} \label{eq:31hooke}
+      \sigma_{x x}^{(1)} = E_1 \epsilon_0, \qquad \sigma_{x x}^{(2)} = E_2 \epsilon_0
+    .\end{equation}
+    Also, the total axial force must equal $N$
+    \begin{equation} \label{eq:31axial}
+      N = \sigma_{x x}^{(1)}A_1 + \sigma_{x x}^{(2)} A_2
+    .\end{equation}
+    Substituting \Cref{eq:31area,eq:31hooke} into \Cref{eq:31axial} yields:
+    \begin{equation} \label{eq:31n}
+      N = E_1 \epsilon_0 \frac{a^2}{2} + E_2 \epsilon_0 \frac{a^2}{2}
+    .\end{equation}
+    Now, solving \Cref{eq:31n} for $\epsilon_0$ gives
+    \begin{equation} \label{eq:31ep0}
+      \epsilon_0 = \frac{2N}{a^2 \left( E_1 + E_2 \right)}
+    .\end{equation}
+    Substituting \Cref{eq:31ep0} into \Cref{eq:31hooke} gives the axial stresses in each material:
+    \begin{align} 
+      \sigma_{x x}^{(1)} &= \frac{2N E_1}{a^2 \left( E_1 + E_2 \right)} \label{eq:31sigmaxx1} \\
+      \sigma_{x x}^{(2)} &= \frac{2N E_2}{a^2 \left( E_1 + E_2 \right)} \label{eq:31sigmaxx2}
+    .\end{align}
+    I.e each material will carry a stress proportional to its Young modulus, meaning the stiffer material will carry the most stress.
+
+    From \Cref{eq:31disx,eq:31disyz} the strain tensor is the same for both materials:
+    \begin{equation*}
+      \Vec{\epsilon}^{(1)} = \Vec{\epsilon}^{(2)} = \begin{bmatrix}
+        \epsilon_0 & 0 & 0\\
+      0 & -\nu \epsilon_0 & 0\\
+      0 & 0 & -\nu\epsilon_0\\
+      \end{bmatrix}
+    \end{equation*}
+    where is as defined in \Cref{eq:31ep0}.
+    Explicitly,
+    \begin{equation*}
+      \Vec{\epsilon} = \begin{bmatrix}
+        \frac{2N}{a^2 \left( E_1 + E_2 \right)} & 0 & 0\\
+      0 & -\nu \frac{2N}{a^2 \left( E_1 + E_2 \right)} & 0 \\
+      0 & 0 & - \nu \frac{2N}{a^2 \left( E_1 + E_2 \right)}\\
+      \end{bmatrix}
+    .\end{equation*}
+    
+    As only the axial stress $N$ is applied, the stress state is described completely for each layer by $\sigma_{x x}^{(1)}$ and $\sigma_{x x}^{(2)}$ as given in \Cref{eq:31sigmaxx1,eq:31sigmaxx2},
+    \begin{align*}
+      \Vec{\sigma}^{(1)} &= \begin{bmatrix}
+        \frac{2NE_1}{a^2 \left( E_1 + E_2 \right)} & 0 & 0\\
+      0 & 0 & 0\\
+      0 & 0 & 0\\
+      \end{bmatrix} \\
+        \Vec{\sigma}^{(2)} &= \begin{bmatrix}
+          \frac{2N E_2}{a^2 \left( E_1 + E_2 \right)} & 0 & 0\\
+        0 & 0 & 0\\
+        0 & 0 & 0\\
+        \end{bmatrix}
+    .\end{align*}
+    This means, that for any $E_1 \neq E_2$, the axial stress jumps at the interface as $\sigma_{x x}^{(1)} \neq \sigma_{x x}^{(2)}$.
+
+    At the interface, the displacement must be continuous, $\Vec{u}^{(1)} = \Vec{u}^{(2)}$, however the stress field does not need to be continuous here.
+  \end{derivation}
+
+  \finalresult{
+    \begin{gathered}
+      \Vec{\sigma}^{(1)} = \begin{bmatrix}
+        \frac{2 N E_1}{a^2 \left( E_1 + E_2 \right)} & 0 & 0\\
+      0 & 0 & 0\\
+      0 & 0 & 0\\
+      \end{bmatrix} \\
+      \Vec{\sigma}^{(2)} = \begin{bmatrix}
+        \frac{2N E_2}{a^2 \left( E_1 + E_2 \right)} & 0 & 0\\
+      0 & 0 & 0\\
+      0 & 0 & 0\\
+      \end{bmatrix} \\
+        \Vec{\epsilon}^{(1)} = \Vec{\epsilon}^{(2)} = \begin{bmatrix}
+          \frac{2N}{a^2 \left( E_1 + E_2 \right)} & 0 & 0\\
+        0 & - \nu \frac{2N}{a^2 \left( E_1 + E_2 \right)} & 0\\
+        0 & 0 & - \nu \frac{2N}{a^2 \left( E_1 + E_2 \right)}\\
+        \end{bmatrix}
+    \end{gathered}
+  }
+
+  \begin{problem}{1.2}
+    What is the relationship between the axial load $N$ and the stretch (relative change of length) $\Delta L / L$?
+  \end{problem}
+
+  \begin{derivation}
+    The stretch in this context is just the axial strain
+    \begin{equation*}
+      \frac{\Delta L}{L} = \epsilon_{x x} = \epsilon_0
+    .\end{equation*}
+    As mentioned in Problem 1.1, the two layers are perfectly bonded and must therefore have the same axial stretch
+    \begin{equation*}
+      \epsilon_{x x}^{(1)} = \epsilon_{x x}^{(2)} = \frac{\Delta L}{L} = \epsilon_0
+    .\end{equation*}
+    The size of this quantity $\epsilon_0$ was found in Problem 1.1 to be:
+    \begin{equation*}
+      \epsilon_0 = \frac{\Delta L}{L} = \frac{2N}{a^2 \left( E_1 + E_2 \right)}
+    .\end{equation*}
+  \end{derivation}
+
+  \finalresult{
+    \frac{\Delta L}{L} = \epsilon_0 = \frac{2N}{a^2 \left( E_1 + E_2 \right)}
+  }
+
+  \begin{problem}{1.3}
+    What happens if $E_1 / E_2 \to \infty$?
+  \end{problem}
+
+  \begin{derivation}
+    From Problem 1.2 the extension was shown to be
+    \begin{equation} \label{eq:31ex}
+      \frac{\Delta L}{L} = \frac{2N}{a^2 \left( E_1 + E_2 \right)}
+    .\end{equation}
+    For $E_1 / E_2 \to \infty$, \Cref{eq:31ex} goes toward
+    \begin{equation*}
+      \frac{\Delta L}{L} \approx \frac{2N}{a^2 E_1}
+    .\end{equation*}
+    I.e. the bar behaves almost as if only the top layer exists with a cross-sectional area $a^2 / 2$.
+    In this case the stresses become:
+    \begin{align*}
+      \sigma_{x x}^{(1)} &= \frac{2 N E_1}{a^2 \left( E_1 + E_2 \right)} \to \frac{2N}{a^2} \\
+      \sigma_{x x}^{(2)} &= \frac{2N E_2}{a^2 \left( E_1 + E_2 \right)} \to 0
+    .\end{align*}
+    So, the top layer is load-bearing, while the bottom layer is negligible.
+
+    Further, the ratio $E_1 / E_2$ may go to infinity in two subtly distinct ways.
+    First, $E_1 \to \infty$ with $E_2 \neq 0$ fixed.
+    In this case, the ratio $\Delta L / L \to 0$, meaning the whole bar essentially becomes rigid.
+    If instead, $E_2 \to 0$, while $E_1 \not\to \infty$ (where $\not\to$ signifies a quantity \textit{not} approaching some value), then the stretch goes to
+    \begin{equation*}
+      \frac{\Delta L}{L} = \frac{2N}{a^2 E_1}
+    \end{equation*}
+    which is just the stretch of the top layer alone.
+
+    For both cases, the contribution of the bottom layer becomes negligible compared to that of the top.
+  \end{derivation}
+
+  \finalresult{
+    \frac{\Delta L}{L} \approx \frac{2N}{a^2 E_1}
+  }
+
+  \begin{probdef}{2}
+    Consider the prismatic bar represented in \Cref{fig:ass3_2}, where now the two materials are arranged differently, under tension forces $N$ applied at both ends.
+    Let us assume that the two layers, made of different materials, remain perfectly attached to each other.
+
+    Specifically, the red material (the top layer), is characterized by $E_1$ and $\nu$.
+    The green material (the bottom layer) is characterized by $E_2$ and $\nu$.
+  \end{probdef}
+
+  \begin{figure} [ht]
+    \centering
+    \includegraphics[width=0.8\linewidth]{./figures/ass3_2.png}
+    \caption{Composite bar under pulling force $N$.}
+    \label{fig:ass3_2}
+  \end{figure}
+
+  \begin{problem}{2.1}
+    Applying the De Saint Venant principle, determine the state of stress and strain within the continuum.
+  \end{problem}
+
+  \begin{derivation}
+    \begin{figure}[ht]
+        \renewcommand{\thefigure}{4.1}
+        \centering
+        \incfig[0.6]{ass3_2_1}
+        \caption{Coordinate system for Problem 2.}
+        \label{fig:ass3_2_1}
+    \end{figure}
+    In this case, we employ the coordinate axes shown on \Cref{fig:ass3_2_1}, where the axial direction is $x$.
+    The full cross-section is
+    \begin{equation*}
+      A = a^2
+    .\end{equation*}
+    
+    Because the two materials are in series, the same axial force $N$ must pass through both materials.
+    Therefore, the axial stress will be the same in both materials:
+    \begin{equation} \label{eq:32axstr}
+      \sigma_{x x}^{(1)} = \sigma_{x x}^{(2)} = \frac{N}{a^2}
+    .\end{equation}
+    As $N$ is the only applied, \Cref{eq:32axstr} completely describes the stress state.
+    The stress tensor away from the ends (and away from the interface between the materials) is therefore simply
+    \begin{equation*}
+      \Vec{\sigma}^{(1)} = \Vec{\sigma}^{(2)} = \begin{bmatrix}
+        \frac{N}{a^2} & 0 & 0\\
+      0 & 0 & 0\\
+      0 & 0 & 0\\
+      \end{bmatrix}
+    .\end{equation*}
+    This means the stress, this time, is continuous across the interface opposed to Problem 1.
+
+    Hooke's law gives
+    \begin{equation*}
+      \epsilon_{x x}^{(i)} = \frac{\sigma_{x x}}{E_i}
+    .\end{equation*}
+    So
+    \begin{align}
+      \epsilon_{x x}^{(1)} &= \frac{N}{a^2 E_1} \label{eq:32strx1}\\
+      \epsilon_{x x }^{(2)} &= \frac{N}{a^2 E_2} \label{eq:32strx2}
+    .\end{align}
+    Hence, for any $E_1 \neq E_2$, $\epsilon_{x x}^{(1)} \neq  \epsilon_{x x}^{(2)}$.
+    In this case the elongation of the softer material is not constrained by the stronger one, and the softer material will therefore stretch more, as the applied stress is equal.
+    Including the Poisson contraction, the strain tensors become
+    \begin{align*}
+      \Vec{\epsilon}^{(1)} &= \begin{bmatrix}
+        \frac{N}{a^2 E_1} & 0 & 0\\
+      0 &  - \nu \frac{N}{a^2 E_1} & 0\\
+      0 & 0 & - \nu \frac{N}{a^2 E_1}\\
+      \end{bmatrix} \\
+        \Vec{\epsilon}^{(2)} &= \begin{bmatrix}
+          \frac{N}{a^2 E_2} & 0 & 0\\
+        0 & - \nu \frac{N}{a^2 E_2} & 0\\
+        0 & 0 & - \nu \frac{N}{a^2 E_2}\\
+        \end{bmatrix}
+    .\end{align*}
+
+    Therefore, the strain will be discontinuous at the interface in this case, whilst the stress will be continuous opposed to Problem 1.
+  \end{derivation}
+
+  \finalresult{
+    \begin{gathered}
+      \Vec{\sigma}^{(1)} = \Vec{\sigma}^{(2)} = \begin{bmatrix}
+        \frac{N}{a^2} & 0 & 0\\
+      0 & 0 & 0\\
+      0 & 0 & 0\\
+      \end{bmatrix} \\
+      \Vec{\epsilon}^{(2)} = \begin{bmatrix}
+        \frac{N}{a^2 E_1} & 0 & 0\\
+      0 & - \nu \frac{N}{a^2 E_1} & 0\\
+      0 & 0 & - \nu \frac{N}{a^2 E_1}\\
+      \end{bmatrix}  \\
+      \Vec{\epsilon}^{(3)} = \begin{bmatrix}
+        \frac{N}{a^2 E_2} & 0 & 0\\
+      0 & - \nu \frac{N}{a^2 E_2} & 0\\
+      0 & 0 & - \nu \frac{N}{a^2 E_2}\\
+      \end{bmatrix}
+    .\end{gathered}
+  }
+
+  \begin{problem}{2.2}
+    What is the relationship between $N$ and $\Delta L / L$?
+  \end{problem}
+
+  \begin{assumptions}
+    \item Each material has the same length and thereby occupies half the total length
+  \end{assumptions}
+
+  \begin{derivation}
+    Assuming each material occupies half the length,
+    \begin{equation*}
+      L_1 = L_2 = \frac{L}{2}
+    \end{equation*}
+    the total elongation is then
+    \begin{equation} \label{eq:32deltal}
+      \Delta L = \epsilon_1 \frac{L}{2} + \epsilon_2 \frac{L}{2}
+    .\end{equation}
+    Substituting the strains found in \Cref{eq:32strx1,eq:32strx2} from Problem 2.1 into \Cref{eq:32deltal} we get
+    \begin{equation*}
+      \Delta L = \frac{N}{a^2 E_1} \frac{L}{2} + \frac{N}{a^2 E_2} \frac{L}{2}
+    .\end{equation*}
+    Dividing by $L$, we get the total elongation
+    \begin{equation*}
+      \frac{\Delta L}{L} = \frac{N}{2a^2} \left( \frac{1}{E_1} + \frac{1}{E_2} \right)
+    .\end{equation*}
+    Or, solved for $N$, as
+    \begin{equation*}
+      N = \frac{2a^2 E_1 E_2}{E_1 + E_2} \frac{\Delta L}{L}
+    .\end{equation*}
+  \end{derivation}
+
+  \finalresult{
+    \frac{\Delta L}{L} = \frac{N}{2a^2} \left( \frac{1}{E_1} + \frac{1}{E_2} \right)
+  }
+
+  \begin{problem}{2.3}
+    What happens if $E_1 / E_2 \to \infty$?
+  \end{problem}
+
+  \begin{derivation}
+    From Problem 2.2 we have the elongation as
+    \begin{equation*}
+      \frac{\Delta L}{L} \frac{N}{2a^2} \left( \frac{1}{E_1} + \frac{1}{E_2} \right)
+    .\end{equation*}
+    If we not let $E_1 / E_2 \to \infty$, then
+    \begin{equation*}
+      \frac{\Delta L}{L} \approx \frac{N}{2a^2 E_2} \implies N \approx a^2 E_2 \frac{\Delta L}{L}
+    .\end{equation*}
+    Corresponding to the effective stiffness going towards $E_{\mathrm{eff}} \to 2 E_2$.
+
+    In this case, the stiff material barely stretches
+    \begin{equation*}
+      \epsilon_1 = \frac{N}{a^2 E_1} \to 0
+    \end{equation*}
+    while the soft material still stretches
+    \begin{equation*}
+      \epsilon_2 = \frac{N}{a^2 E_2}
+    .\end{equation*}
+  \end{derivation}
+
+  \finalresult{
+    \frac{\Delta L}{L} \approx \frac{N}{2a^2 E_2}
+  }
+
+  \begin{problem}{2.4}
+    Compare this problem with Problem 1.
+  \end{problem}
+
+  \begin{derivation}
+    For Problem 1 we had a composite bar consisting of two materials in parallel and in Problem 2 the materials were in series.
+
+    In Problem 1, the perfect bond between the materials meant their elongations must always be equal thereby restricting the elongation of the softer material to that of the stiffer one.
+    In this case, the strains were continuous across the interface, whilst the stresses were not.
+
+    In Problem 2, the same force $N$ must pass through both materials in the series configuration, thereby forcing their stresses to be equals.
+    This however leads to unequal elongations, where the softer material is more free to deform.
+
+    In other words, the stiffer material dominates for Problem 1 and the softer dominates for Problem 2.
+  \end{derivation}
+
+  \finalresult{
+    \begin{aligned}
+      &\text{Problem 1}\colon & \text{same strain, }&\text{different stress} \\
+      &\text{Problem 2}\colon & \text{same stress, }& \text{different strain}
+    .\end{aligned}
+  }
+
+\end{document}
