@@ -1,0 +1,539 @@
+\newcommand{\NoteType}{Take-home exam}
+\newcommand{\CourseName}{Statistics \& Experimental Methods}
+\newcommand{\CourseNumber}{290211U006}
+\newcommand{\TheDate}{May 14, 2026}
+\input{./preamble.tex}
+\begin{document}
+    \input{./titlepage.tex}
+    \tableofcontents
+    \newpage
+    \begin{problem}{1}
+      A company producing bottles has purchased a second production line.
+      To assess the properties of the new production line and to compare them to those of the old production line a (random) sample of bottles is selected from each production line and their volume (in units of litre) is measured.
+      These data are listed in the file \verb#Statistik og experimentelle metoder,S26-o,bilag1.csv#, where $x_1$ denote measurements from the old production line, and $x_2$ denote measurements from the new production line.
+
+      \begin{enumerate}[label=\alph*)]
+        \item Let $\mu_1$ be the population mean and $\sigma_1^2$ be the population variance for the old production line.
+          Let $\mu_2$ be the population mean and $\sigma_2^2$ be the population variance for the new production line.
+          Estimate the difference in mean values and the ratio of the variances.
+          Find the corresponding confidence intervals at 95\% level of confidence.
+        \item Perform a suitable hypothesis test corresponding to the claim that the new production line has a larger population variance than the old production line.
+          Use the type I error $\alpha = \num{0,05}$.
+          State the 5 main steps for such a hypothesis test.
+      \end{enumerate}
+    \end{problem}
+
+    \begin{derivation}
+      \begin{enumerate}[label=\alph*)]
+        \item As $n_1 > 30, n_2 > 30$ we are working with large sample sizes.
+        Further, as the old production line does not influence the new production line, the data are independent.
+        The sample mean is defined as
+        \begin{equation*}
+          \overline{x} = \frac{1}{n} \sum_{i = 1}^{n} x_i
+        \end{equation*}
+        Using Excel, the mean values of each sample has been found to be $\overline{x}_1 = \num{1,083953}$ and $\overline{x}_2 = \num{0,975993}$.
+        The difference in mean values, $\delta$, is approximately the difference between the two sample means
+        \begin{equation*}
+          \delta = \mu_1 - \mu_2 \implies \hat{\delta} = \overline{x}_1 - \overline{x}_2 = \num{1,083953}  - \num{0,975993}  = \num{0.10796}
+        .\end{equation*}
+        So, the new production line has a mean volume of the produced bottles about \qty{0,108}{\L} lower than the old. 
+
+        The sample variance is defined as
+        \begin{equation*}
+          s^2 = \frac{1}{n-1} \sum_{i = 1}^{n} \left( x_{1,i} - \overline{x}_{i} \right)^2 
+        .\end{equation*}
+        Using Excel, the variances of each line has been determined to be $s_1^2 = \num{0,044531}$ and $s_2^2 = \num{0,019536}$.
+        The ratios of these variances is
+        \begin{equation*}
+          \frac{s_2^2}{s_1^2} = \frac{\num{0,019536}}{\num{0,044531}  }   = \num{0.438706}
+        .\end{equation*}
+        
+        The 95\% confidence interval for the difference in means is given by
+        \begin{equation*}
+          \overline{x} - \overline{y} \pm z_{\frac{\num{0,05} }{2}} \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
+        .\end{equation*}
+        Using, $z_{\num{0,025}} = \num{1,96}$, the 95\% confidence interval is found to be
+        \begin{equation*}
+          \text{CI}_{\mu, 95\%} = \num{1,08}  - \num{0,976} \pm \num{1,96} \sqrt{\frac{\num{0,0445}^2}{40} + \frac{\num{0,0195}^2}{40}} = [\num{0,0295}; \num{0,1864}]
+        .\end{equation*}
+
+        The 95\% confidence interval in terms of the observed sample variances $s_1^2$ and $s_2^2$ is given by
+        \begin{equation*}
+          F_{1 - \alpha / 2} \frac{s_2^2}{s_1^2} < \frac{\sigma_2^2}{\sigma_1^2} < F_{\alpha / 2}\frac{s_2^2}{s_1^2}
+        .\end{equation*}
+        with $\alpha = \num{0,05}$.
+        We use Matlab to find the values of $F_{1-\alpha / 2}$ and $F_{\alpha / 2}$ for $n_1 - 1 = n_2 - 1 = 39$ degrees of freedom as $F_{\num{0,975}, 39, 39} = \num{0,5289}$ and $F_{\num{0,025}, 39, 39} = \num{1,8907}$.
+        Hence using Matlab, the 95\% confidence interval for the variance ratio is
+        \begin{equation*}
+          \text{CI}_{\sigma, 95\%} = [\num{0,2320}; \num{0,8295}]
+        .\end{equation*}
+        
+       \item The 5 main steps for a hypothesis test is:
+         \begin{enumerate}
+          \item Formulate a null hypothesis $H_0$ and an alternative hypothesis $H_1$.
+          \item Specify the probability of a type I error, and if necessary also the probability of a type II error.
+          \item Construct a statistic and a criterion for testing the null hypothesis against the alternative hypothesis
+          \item Calculate the value of the statistic on which the criterion is based
+          \item Conclude.
+         \end{enumerate}
+         In this case, the null hypothesis $H_0$ is that nothing has changed
+         \begin{equation*}
+           H_0 : \sigma_2^2 = \sigma_1^2
+         \end{equation*}
+         and the alternative hypothesis $H_1$ is that the new production live has a larger variance than the old one
+         \begin{equation*}
+           H_1 : \sigma_{2}^2 > \sigma_1^2
+         .\end{equation*}
+         The probability of a type I error is $\alpha = \num{0,05}$.
+
+         As the ratio of two independent normal sample variations is $F$-distributed, the general statistic is
+         \begin{equation*}
+           F = \frac{S_1^2 \sigma_2^2 }{S_2^2 \sigma_1^2}
+         \end{equation*}
+         with parameters $\nu_1 = n_1 -1 = 39, \nu_2 = n_2 - 1 = 39$.
+         Under $H_0 : \sigma_1^2 = \sigma_2^2$ the test statistic simplifies to
+         \begin{equation*}
+           F = \frac{S_2^2}{S_1^2} \sim F(39,39)
+         .\end{equation*}
+         Since the alternative hypothesis is $H_1 : \sigma_2^2 > \sigma_1^2$, small values of $F$ support $H_1$.
+         Therefore, the rejection region is
+         \begin{equation*}
+           F < F_{1-\num{0,05}} (39,39)
+         .\end{equation*}
+         Hence, we reject $H_0$, if $F < F_{1-\num{0,05}} (39,39)$.
+         Using Matlab we determine $F_{1- \num{0,05} }(39,39) \approx \num{0,5867}$.
+         So,
+         \begin{align*}
+           F &< \num{0,5867} \\
+          F &= \frac{S_2^2}{S_1^2} \approx \num{2,279} \\
+          \num{2,279}  &\not< \num{0,5867}
+         .\end{align*}  
+         So $H_0$ can not be rejected, i.e. there is not evidence to support the new production line having a larger variance than the old one.
+         This is also expected as $s_2^2 / s_1^2 \approx \num{0,439}$, meaning the new production line only has a sample variance of about 44\% of the old one.
+      \end{enumerate}
+    \end{derivation}
+
+    \finalresult{
+      \begin{aligned}
+        &\text{a)} & \overline{x}_1 - \overline{x}_2 &= \num{0,108} \\
+        && \frac{s_2^2}{s_1^2} &= \num{0,438706} \\
+        && \text{CI}_{\mu, 95\%} &= [\num{0,0295} ; \num{0,186}] \\
+        && \text{CI}_{\sigma, 95\%} &= [\num{0,2320}; \num{0,8295}] \\
+        &\text{b)} & F \not< F_{\num{0,095}}(39,39) &\implies H_0 \text{ cannot be rejected}
+      .\end{aligned}
+    }
+
+    \begin{problem}{2}
+      Consider the sample listed in the file \verb#Statistik og experimentelle metoder,S26-o,bilag2.csv#. Perform a polynomial regression of order $p = 4$ for the random variable $Y$ with observations $y$ as the response variable and the data $x$ as the predictor variable. Estimate the coefficients for this polynomial regression.
+      Show a scatter plot of the data together with the fitted polynomial.
+      Briefly comment on the appropriateness of the order $p = 4$.
+    \end{problem}
+
+    \begin{derivation}
+      The polynomial regression model of order $p$ is
+      \begin{equation*}
+        E(Y) = \beta_0 + \beta_1 x + \ldots \beta_p x^{p}
+      .\end{equation*}
+      With order $p = 4$, this is just
+      \begin{equation*}
+        E(Y) = \beta_0 + \beta_1 x + \beta_2x^2 + \beta_3 x^3 + \beta_4 x^{4}
+      \end{equation*}
+      and the fitted polynomial is written on the form
+      \begin{equation*}
+        \hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x + \hat{\beta}_2 x^2 + \hat{\beta}_3 x^3 + \hat{\beta}_4 x^{4}
+      .\end{equation*}
+      
+      We estimate the coefficients $\hat{\beta}$ by the method of least squares.
+      We are therefore trying to minimize
+      \begin{equation*}
+        \text{SSE} = \sum_{i = 1}^{n} \left( y_i - \left( \hat{\beta}_0 + \hat{\beta}_1 x_i + \hat{\beta}_2 x_i^2 + \hat{\beta}_3 x_i^3 + \hat{\beta}_4 x_i^{4}  \right) \right)^2
+      .\end{equation*}
+      This is done by solving the normal equations for $p = 4$.
+      These are
+      \begin{align*}
+        \sum_{i = 1}^{n} y_i &= n \hat{\beta}_0 + \hat{\beta}_1 \sum_{i = 1}^{n} x_i + \hat{\beta}_2 \sum_{i =1}^{n} x_1^2 + \hat{\beta}_3 \sum_{i = 1}^{n} x_i^3 + \hat{\beta}_4 \sum_{i = 1}^{n} x_i^{4}\\
+        \sum_{i = 1}^{n} x_i y_i &= \hat{\beta}_0 \sum_{i = 1}^{n} x_i + \hat{\beta}_1 \sum_{i = 1}^{n} x_i^2 + \hat{\beta_2} \sum_{i = 1}^{n} x_i^3 + \hat{\beta}_3 \sum_{i = 1}^{n} x_i^{4} + \hat{\beta}_4 \sum_{i = 1}^{n} x_i^{5} \\
+        \sum_{i = 1}^{n} x_i^2 y_i &= \hat{\beta}_0 \sum_{i = 1}^{n} x_i^2 + \hat{\beta}_1 \sum_{i = 1}^{n} x_i^3 + \hat{\beta}_2 \sum_{i = 1}^{n} x_i^{4} + \hat{\beta}_3 \sum_{i = 1}^{n} x_i^{5} + \hat{\beta}_4 \sum_{i = 1}^{n} x_i^{6} \\
+        \sum_{i = 1}^{n} x_i^3 y_i &= \hat{\beta}_0 \sum_{i = 1}^{n} x_i^3 + \hat{\beta}_1 \sum_{i = 1}^{n} x_i^{4} + \hat{\beta}_2 \sum_{i = 1}^{n} x_i^{5} + \hat{\beta}_3 \sum_{i = 1}^{n} x_i^{6} + \hat{\beta}_4 \sum_{i = 1}^{n} x_i^{7} \\
+        \sum_{i = 1}^{n} x_i^{4}y_i &= \hat{\beta}_0 \sum_{i = 1}^{n} x_i^{4} + \hat{\beta}_1 \sum_{i = 1}^{n} x_i^{5} + \hat{\beta}_2 \sum_{i = 1}^{n} x_i^{6} + \hat{\beta}_3 \sum_{i = 1}^{n} x_i^{7} + \hat{\beta}_4 \sum_{i = 1}^{n} x_i^{8}
+      .\end{align*}
+      These give a system of $p + 1 = 5$ linear equations in $p + 1$ unknowns.
+
+      Solving these normal equations using Matlab's \verb#polyfit#, gives the coefficients
+      \begin{align*}
+        \hat{\beta}_0 &= \num{2,0912}  \\
+        \hat{\beta}_1 &= \num{-1,7724}  \\
+        \hat{\beta}_2 &= \num{1,8465}  \\
+        \hat{\beta}_3 &= \num{-0,2585}  \\
+        \hat{\beta}_4 &= \num{0,0169}
+      ,\end{align*}
+      which means our fitted fourth-order polynomial is
+      \begin{equation*}
+        \hat{y} = \num{2,0912} - \num{1,7724} x + \num{1,8465} x^2 - \num{0,2585} x^3 + \num{0,0169} x^{4}
+      .\end{equation*}
+      This is plotted on \Cref{fig:p2fit}.
+
+      \begin{figure} [ht]
+        \centering
+        \includegraphics[width=0.8\linewidth]{./figures/p2fit.png}
+        \caption{Fitted fourth-order polynomial for problem 2.}
+        \label{fig:p2fit}
+      \end{figure}
+
+      The coefficient of determination $R^2$ is calculated as
+      \begin{equation*}
+        R^2 = 1 - \frac{\text{SSE}}{\text{SST}}
+      \end{equation*}
+      where $\text{SSE}$ is the sum of squared errors
+      \begin{equation*}
+        \text{SSE} = \sum_{i = 1}^{n} \left( y_i - \hat{y}_i \right)^2
+      \end{equation*}
+      and $\text{SST}$ is the total sum of squares
+      \begin{equation*}
+        \text{SST} = \sum_{i = 1}^{n}  \left( y_i - \overline{y} \right)^2
+      .\end{equation*}
+      The sum of squared errors and total sum of squares is found in Matlab, and the total coefficient of determination is then
+      \begin{equation*}
+        R^2 = 1 - \frac{\num{1,5470}}{\num{2,2329e3}} = \num{0,9993} 
+      .\end{equation*}
+      The adjusted coefficient of determination is
+      \begin{equation*}
+        \overline{R}^2 = 1 - \frac{\text{SSE} / d_{res}}{\text{SST} / d_{tot}}
+      \end{equation*}
+      where $d_{res} = n - p - 1 = 20 - 4 - 1 = 15$ and $d_{tot} = n - 1 = 19$.
+      So
+      \begin{equation*}
+        \overline{R}^2 = 1 - \frac{\num{1,5470} / 15}{\num{2,2329e3} / 19} = \num{0,99912} 
+      .\end{equation*}
+      Based on the close visual fit on \Cref{fig:p2fit} and the very high coefficient of determination and adjusted coefficient of determination the fit appears to be very good. 
+      There is, however, a possibility of over-fitting.
+      Visually it looks as though the points are following a parabolic curve so a 2nd order fit might also be appropriate.
+      Using Matlab a fit for $p = 2$ can easily be made, following the same procedure as above. This gives a polynomial
+      \begin{equation*}
+        \hat{y} = \num{0,634991}  + \num{0,730861} x + \num{0,534677} x^2
+      \end{equation*}
+      as shown on \Cref{fig:p2fit2}.
+      With $R^2 = \num{0,9991}$ and $\overline{R}^2 = \num{0,9990}$.
+
+      \begin{figure} [ht]
+        \centering
+        \includegraphics[width=0.8\linewidth]{./figures/p2fit2.png}
+        \caption{Fitted second-order polynomial for problem 2.}
+        \label{fig:p2fit2}
+      \end{figure}
+
+      As the 2nd order fit is basically just as good as the 4th order fit both visually and by coefficients of determination the 2nd order fit is preferable as this is the simplest model and this helps combat overfitting.
+    \end{derivation}
+
+    \finalresult{
+      \begin{gathered}
+        \begin{aligned}
+          &\text{4th-order fit}\colon & \hat{y} &= \num{2,0912} - \num{1,7724} x + \num{1,8465} x^2 - \num{0,2585} x^3 + \num{0,0169} x^{4} \\ 
+          && R^2_{p = 4} &= \num{0,9993} \\
+          && \overline{R}^2_{p = 4} &= \num{0,99912} \\ \\
+          &\text{2nd-order fit}\colon & \hat{y} &=  \num{0,634991}  + \num{0,730861} x + \num{0,534677} x^2 \\
+          && R^2_{p = 2} &= \num{0,9991}  \\
+          && \overline{R}_{p = 2}^2 &= \num{0,9990}
+        .\end{aligned} \\ \\
+        \parbox{0.6\textwidth}{Hence the 4th-order fit is a very accurate fit, however it is probably overfitted as the 2nd-order fit is as accurate whilst using fewer parameters. The 4th order model should only be used instead of the 2nd order model if there is a theoretical or experimental reason for which we may expect the data to follow a 4th order model.}
+      .\end{gathered}
+    }
+
+    \begin{problem}{3}
+      Consider the sample of three-dimensional data ($x_1,x_2,x_3$) listed in the file \\ \verb#Statistik og experimentelle metoder,S26-o,bilag3.csv#.
+      \begin{enumerate}[label=\alph*)]
+        \item Estimate the correlation coefficient between $x_2$ and $x_3$ and find the corresponding confidence interval at 95\% level of confidence.
+          You may assume that $x_2$ and $x_3$ are a sample of a bivariate normal distribution.
+        \item Find the observed sample covariance matrix and all principal components
+and the variances represented by them.
+      \end{enumerate}
+    \end{problem}
+
+    \begin{derivation}
+      \begin{enumerate}[label=\alph*)]
+        \item The sample correlation coefficient between $X$ and $Y$ is given as
+        \begin{equation*}
+          \rho_s = \frac{\sum_{i = 1}^{n} \left( X_i - \overline{X} \right) \left( Y_i - \overline{Y} \right)}{\sqrt{\sum_{i = 1}^{n} \left( X_i - \overline{X} \right)^2 \sqrt{\sum_{ i = 1}^{n} \left( Y_i - \overline{Y} \right)^2}}}
+        .\end{equation*}
+        So the sample correlation coefficient for $x_2$ and $x_3$ is
+        \begin{equation*}
+          \rho_s = \frac{\sum_{i = 1}^{n} \left( x_{2,i} - \overline{x}_2 \right) \left( x_{3,i} - \overline{x}_3 \right)}{\sqrt{\sum_{i = 1}^{n} \left( x_{2,i} - \overline{x}_2 \right)^2} \sqrt{\sum_{i = 1}^{n} \left( x_{3,i} - \overline{x}_3 \right)^2}} = \frac{\num{96,9213}}{\sqrt{\num{92,3920}} \cdot \sqrt{\num{213,7294}}} = \num{0,6897} 
+        .\end{equation*}
+        So the estimated correlation coefficient between $x_2$ and $x_3$ is $\rho_s = \num{0,6897} $.
+
+        To determine the confidence interval for $\rho_s$, we employ the Fisher transformation:
+        \begin{equation*}
+          \mathcal{Z}_{\text{obs}} = \frac{1}{2} \ln \frac{1 + \rho_s}{1 - \rho_s} = \frac{1}{2} \ln \frac{1 + \num{0,690} }{1 - \num{0,690}} = \num{0.847956}
+        .\end{equation*}
+        For a 95\% CI, $\alpha = \num{0,05}$ and $z_{\alpha / 2} = z_{\num{0,025}} = \num{1,96}$.
+        So, the 95\% CI for $\mu_{\mathcal{Z}}$ is
+        \begin{align*}
+          \mathcal{Z}_{\text{obs}} - \frac{z_{\alpha / 2}}{\sqrt{ n - 3}} < &\mu_{\mathcal{Z}} < \mathcal{Z}_{\text{obs}} + \frac{z_{\alpha / 2}}{\sqrt{n - 3}} \\
+          \num{0,847956} - \frac{\num{1,96}}{\sqrt{35 - 3}} < &\mu_{\mathcal{Z}} < \num{0,847956} + \frac{\num{1,96} }{\sqrt{35 - 3}} \\
+          \num{0,5009} < &\mu_{\mathcal{Z}} < \num{1,1939} 
+        .\end{align*}
+        We now transform back to $\rho$ using
+        \begin{equation*}
+          \rho = \frac{e^{\mu \mathcal{Z}} - e^{-\mu \mathcal{Z}}}{e^{\mu \mathcal{Z} } + e^{-\mu \mathcal{Z}}}
+        .\end{equation*}
+        We get
+        \begin{align*}
+          \rho_{\text{min}} &= \num{0,4629}  \\
+          \rho_{\text{max}} &= \num{0,8318} 
+        .\end{align*}
+        So our 95\% CI is
+        \begin{equation*}
+          \text{CI}_{\rho, 95\%} = [\num{0,4629} ; \num{0,8318}]
+        .\end{equation*}
+
+      \item The sample covariance matrix $c = [c_{kl}]$ has entries
+        \begin{equation*}
+          c_{kl} = \frac{1}{n-1} \sum_{i = 1}^{n} \left( x_{ik} - \overline{x}_k \right) \left( x_{il} - \overline{x}_l \right)
+        .\end{equation*}
+        Using Matlab this is found to be
+        \begin{equation*}
+          c = \begin{pmatrix}
+            \num{3,7380}  & \num{2,6241}  & \num{2,1069} \\
+          \num{2,6241}  & \num{2,7174}  & \num{2,8506} \\
+          \num{2,1069}  & \num{2,8506}  & \num{6,2862} \\
+          \end{pmatrix}
+        .\end{equation*}
+        The principal components are the unit eigenvectors of the covariance matrix ordered by decreasing eigenvalue.
+        To find the eigenvalues of the covariance matrix we solve the eigenvalue problem:
+        \begin{equation*}
+          \det(c - \lambda I) = 0
+        .\end{equation*}
+        Solving this, we get the eigenvalues to be
+        \begin{equation*}
+          \lambda_1 = \num{9,5813}, \qquad \lambda_2 = \num{2,8006}, \qquad \lambda_3 = \num{0,3596}
+        .\end{equation*}
+        The eigenvectors are then found by inserting the eigenvalues into the eigenvector problem
+        \begin{equation*}
+          \left( c - \lambda_i \right)\omega = 0
+        .\end{equation*}
+        Solving this gives
+        \begin{equation*}
+          \omega_1 = \begin{pmatrix}
+            \num{0,4814} \\
+          \num{0,4868} \\
+          \num{0,7289} \\
+          \end{pmatrix}, \qquad \omega_2 = \begin{pmatrix}
+            \num{0,7131} \\
+          \num{0,2661} \\
+          \num{-0,6486} \\
+          \end{pmatrix}, \qquad \omega_3 = \begin{pmatrix}
+            \num{-0,5097} \\
+          \num{0,8320} \\
+          \num{-0,2190} \\
+          \end{pmatrix}
+        .\end{equation*}
+        So, the principal component variables are therefore
+        \begin{align*}
+          y_1 &= \num{0,4814} x_1 + \num{0,4868} x_2 + \num{0,7289} x_3\\
+          y_2 &= \num{0,7131} x_1 + \num{0,2661} x_2 - \num{0,6486} x_3 \\
+          y_3 &= \num{-0,5097} x_1 + \num{0,8320} x_2 - \num{0,219} x_3
+        .\end{align*}
+        The variances represented by these principal components are their corresponding eigenvalues, so the transformed covariance matrix is
+        \begin{equation*}
+          \tilde{c} = \begin{pmatrix}
+            \num{9,5813}  & 0 & 0\\
+          0 & \num{2,8006}  & 0\\
+          0 & 0 & \num{0,3596} \\
+          \end{pmatrix}
+        .\end{equation*}
+        The total variance is then
+        \begin{equation*}
+          \num{9,5813}  + \num{2,8006}  + \num{0,3596}  = \num{12,7416} 
+        .\end{equation*}
+        Meaning the proportions of the variance attributable to each principal component is
+        \begin{align*}
+          \text{PC}_1 : \frac{\num{9,5813}}{\num{12,7416} } &= \num{75,20} \% \\
+          \text{PC}_2 : \frac{\num{2,8006}}{\num{12,7416}} &= \num{21,98} \% \\
+          \text{PC}_3 : \frac{\num{0,3596}}{\num{12,7416}} &= \num{2,82} \%
+        .\end{align*}
+        I.e. the first principal component represent approximately \num{75,20} \% of the total variance, and the 2nd component represents \num{21,98} \% and so on.
+      \end{enumerate}
+    \end{derivation}  
+
+    \finalresult{
+      \begin{gathered}
+      \begin{aligned}
+        &\text{a)} & \rho_s &= \num{0,6897}  \\
+        && \text{CI}_{\rho, 95\%} &= [\num{0,4629} ; \num{0,8318} ] \\ \\
+        &\text{b)} & c &= \begin{pmatrix}
+          \num{3,74}  & \num{2,62}  & \num{2,11} \\
+        \num{2,62}  & \num{2,72}  & \num{2,85} \\
+        \num{2,11}  & \num{2,85}  & \num{6,29} \\
+        \end{pmatrix} \\
+        && y_1 &= \num{0,4814} x_1 + \num{0,4868} x_2 + \num{0,7289} x_3 \\
+        && y_2 &= \num{0,7131} x_1 + \num{0,2661} x_2 - \num{0,6486} x_3 \\
+        && y_3 &= \num{-0,5097} x_1 + \num{0,8320} x_2 - \num{0,2190} x_3
+      \end{aligned} \\
+         \text{PC}_1 : \num{75,20} \% \\
+          \text{PC}_2 : \num{21,98} \% \\
+         \text{PC}_3 : \num{2,82} \%
+      .\end{gathered}
+    }
+
+    \begin{problem}{4}
+      Consider the sample listed in the file \verb#Statistik og experimentelle metoder,S26-o,bilag4.csv#.
+      \begin{enumerate}[label=\alph*)]
+        \item Perform a linear regression analysis for the random variable $Y$ with observations $y$ as the response variable and the data $x$ as the predictor variable.
+          Estimate the coefficients for linear regression and provide the corresponding confidence intervals for these coefficients at 95\% level of confidence.
+        \item Find the confidence interval for the mean value of $Y$ for $x= 10$ at 95\% level of confidence.
+          Find the prediction interval of $Y$ for $x = 10$ at 95\% level of confidence.
+      \end{enumerate}
+    \end{problem}
+
+    \begin{derivation}
+      \begin{enumerate}[label=\alph*)]
+        \item We define
+          \begin{align*}
+            s_{x x} &= \sum_{i = 1}^{n} \left( x_i - \overline{x} \right)^2 \\
+            s_{yy} &= \sum_{i = 1}^{n} \left( y_i  - \overline{y} \right)^2 \\
+            s_{xy} &= \sum_{i = 1}^{n} \left( x_i - \overline{x} \right) \left( y_i - \overline{y} \right)
+          ,\end{align*}
+          the least squares estimate is then
+          \begin{align*}
+            \hat{\beta}_1 &= \frac{s_{xy}}{s_{x x}} \\
+            \hat{\beta}_0 &= \overline{y} - \hat{\beta}_1 \overline{x}
+          \end{align*}
+          for the model 
+          \begin{equation*}
+            \hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x
+          .\end{equation*}
+          Using Matlab, the values of $s_{x x} = \num{38,9333} , s_{xy} = \num{117,9209} , s_{yy} = \num{360,3360}, \overline{x} = \num{3,0667}  \overline{y} = \num{9,2097}  $ is found.
+          So
+          \begin{align*}
+            \hat{\beta}_1 &= \frac{\num{117,9209}}{\num{38,9333} } = \num{3,0288}  \\
+            \hat{\beta}_0 &= \num{9,2097} - \num{3,0288} \cdot \num{3,0667}  = -\num{0,0786} 
+          .\end{align*}
+          Hence, our fitted linear regression model is
+          \begin{equation*}
+            \hat{y} = - \num{0,0786}  + \num{3,0288} x
+          .\end{equation*}
+          The confidence limits for $\beta_0$ and $\beta_1$ are
+          \begin{align*}
+            \hat{\beta}_0 &\pm t_{\alpha / 2} s_e \sqrt{\frac{1}{n} + \frac{\overline{x}^2}{s_{x x}}} \\
+            \hat{\beta}_1 &\pm t_{\alpha / 2}s_e \frac{1}{\sqrt{s_{x x}}}
+          ,\end{align*}
+          where
+          \begin{equation*}
+            s_e = \sqrt{\frac{1}{n-2} \sum_{i = 1}^{n} \left( y_i - \left( \hat{\beta}_0 + \hat{\beta}_1 x_i \right) \right)^2} = \sqrt{\frac{\text{SSE}}{n-2}}
+          .\end{equation*}
+          $s_e$ is found using Matlab to be
+          \begin{equation*}
+            s_e = \sqrt{\frac{\num{3,1783} }{13}} = \num{0,4945} 
+          .\end{equation*}
+          For a 95\% CI, $\alpha = \num{0,05}$ and we have $n - 2 = 15 - 2 = 13$ degrees of freedom, so we use $t_{\num{0,025}, 13 } = \num{2,1604}$.
+          Then, the 95\% CI for the coefficients $\beta_0$ and $\beta_1$ is
+          \begin{align*}
+            \text{CI}_{\beta_{0}, 95\%} &= \hat{\beta}_0 \pm t_{\alpha / 2} s_e \sqrt{\frac{1}{n} + \frac{\overline{x}^2}{s_{x x}}} \\
+              &= \num{-0,0786} \pm \num{2,16} \cdot \num{0,495} \sqrt{\frac{1}{15} + \frac{\num{3,0667}^2 }{\num{38,933} }}  \\
+              &= [\num{-0.6722}; \num{0,515} ]\\
+              \text{CI}_{\beta_1, 95\%} &= \hat{\beta}_1 \pm t_{\alpha / 2} s_e \frac{1}{\sqrt{s_{x x}}} \\
+              &= \num{3,0288} \pm \num{2,16} \cdot \num{0,495} \cdot \frac{1}{\sqrt{\num{38,933} }}  \\
+              &= [\num{2.857}; \num{3.200}]
+          .\end{align*}
+        \item The $(1-\alpha)$ confidence interval for the mean of $Y$ at $x = x_0$ is
+          \begin{equation*}
+            \hat{\beta}_0 + \hat{\beta}_1 x_0 \pm t_{\alpha / 2 } s_e \sqrt{\frac{1}{n} + \frac{(x_0 - \overline{x}) ^2}{s_{x x}}}
+          \end{equation*}
+          and the prediction interval for $Y$ at $x = x_0$ is
+          \begin{equation*}
+            \hat{\beta}_0 + \hat{\beta}_1 x_0 \pm t_{\alpha / 2 } s_e \sqrt{1 + \frac{1}{n} + \frac{(x_0 - \overline{x}) ^2}{s_{x x}}}
+          .\end{equation*}
+          From part a) we have $\hat{\beta}_0 = \num{-0,0786}, \hat{\beta}_1 = \num{3,0288}, n = 15, \overline{x} = \num{3,0667}, s_{x x} = \num{38,9333}, s_e = \num{0,4945}, t_{\num{0,025}, 13 } = \num{2,1604} $ and in this problem we are told $x_0 = 10$.
+          So by insertion, the confidence interval for the mean value of $Y$ at $x = 10$ at 95\% level of confidence is
+          \begin{equation*}
+            \text{CI}_{x_0 = 10, 95\%} = \num{-0,0786} + \num{3,0288} \cdot 10 \pm \num{2,1604} \cdot \num{0,4945} \sqrt{\frac{1}{15} + \frac{(10 - \num{3,0667} )^2}{\num{38,9333} }} = [\num{28,9907}; \num{31.4281}]
+          .\end{equation*}
+          And the prediction interval for the mean value of $Y$ at $x = 10$ at 95\% level of confidence is
+          \begin{equation*}
+            \text{PI}_{x_0 = 10, 95\%} =  \num{-0,0786} + \num{3,0288} \cdot 10 \pm \num{2,1604} \cdot \num{0,4945} \sqrt{1 + \frac{1}{15} + \frac{(10 - \num{3,0667} )^2}{\num{38,9333} }}  = [\num{28.5887}; \num{31.8301}]
+          .\end{equation*}
+          Here, the prediction interval is a bit wider than the confidence interval, which is expected as this includes both uncertainty in the estimated regression line as well as the random variation of a new individual observation.
+      \end{enumerate}
+    \end{derivation}
+
+    \finalresult{
+      \begin{aligned}
+        &\text{a)} & \hat{\beta}_0 &= \num{-0,0786}  \\
+        && \hat{\beta}_1 &= \num{3,0288}  \\
+        && \text{CI}_{\beta_0, 95\%} &= [\num{-0,6722}; \num{0,515}] \\
+        && \text{CI}_{\beta_1, 95\%} &= [\num{2,857}; \num{3,200} ] \\ \\
+        &\text{b)} & \text{CI}_{x_0 = 10, 95\%} &= [\num{28,991}; \num{31,428}]  \\
+        && \text{PI}_{x_0 = 10, 95\%} &= [\num{28,589}; \num{31,830}]  
+      .\end{aligned}
+    }
+
+    \begin{problem}{5}
+      Let $r(x_1,x_2,x_3) = x_1 + x_2x_3$ and $\overline{\Vec{x}} = (1,2,2)$ obtained from a sample of size $n = 20$.
+      The observed sample covariance matrix of $x_1,x_2,x_3$ is
+      \begin{equation*}
+        c = \begin{pmatrix}
+          1 & \num{0,2}  & \num{0,2} \\
+        \num{0,2}  & 2 & \num{0,1} \\
+        \num{0,2}  & \num{0,1}  & 3\\
+        \end{pmatrix}
+      .\end{equation*}
+      \begin{enumerate}[label=\alph*)]
+        \item Calculate $u_{\overline{r}}$ using the observed sample covariance matrix and not taking the observed correlations into account.
+        \item Calculate $u_{\overline{r}}$ taking the observed correlations into account.
+      \end{enumerate}
+    \end{problem}
+
+    \begin{derivation}
+      \begin{enumerate}[label=\alph*)]
+        \item For independent measurement errors, we have
+          \begin{equation*}
+            u_{\overline{r}}^2 = \left( \frac{\partial r}{\partial x_1}  \right)^2 u_{\overline{x}_1}^2 + \ldots + \left( \frac{\partial r}{\partial x_l}  \right)^2 u_{\overline{x}_l}^2
+          \end{equation*}
+          where
+          \begin{equation*}
+            u^2_{\overline{x}_k} = \frac{s_k^2}{n} = \frac{c_{kk}}{n}
+          .\end{equation*}
+          I.e. when ignoring correlations we only use the diagonal elements $c_{kk}$ of $c$, $c_{11} = 1, c_{22} = 2, c_{33} = 3$.
+          The gradient is
+          \begin{equation*}
+            \nabla  r = \left( \frac{\partial r}{\partial x_1} , \frac{\partial r}{\partial x_2} , \frac{\partial r}{\partial x_3}  \right) = (1, x_3, x_2)
+          \end{equation*}
+          which at $\overline{\Vec{x}} = (1,2,2)$ is
+          \begin{equation*}
+            \nabla r \left( \overline{\Vec{x}} \right) = (1,2,2)
+          .\end{equation*}
+          So
+          \begin{align*}
+            u_{\overline{r}}^2 &= 1^2 \frac{1}{20} + 2^2 \frac{2}{20} + 2^2 \frac{3}{20} \\
+            &= \frac{1 + 8 + 12}{20} = \num{1,05}  \\
+            u_{\overline{r}} &= \sqrt{\num{1,05}} = \num{1,025} 
+          .\end{align*}
+        \item Taking the observed correlations into account, we have
+          \begin{equation*}
+            u_{\overline{r}}^2 = \frac{1}{n} \nabla r \left( \overline{\Vec{x}} \right) c \left( \nabla  r \left( \overline{\Vec{x}} \right) \right)^{\intercal}
+          .\end{equation*}
+          Inserting the full covariance matrix we get:
+          \begin{equation*}
+            u_{\overline{r}}^2 = \frac{1}{20} \cdot \begin{pmatrix}
+              1 & 2 & 2\\
+            \end{pmatrix} \cdot \begin{pmatrix}
+              1 & \num{0,2}  & \num{0,2} \\
+            \num{0,2}  & 2 & \num{0,1} \\
+            \num{0,2}  & \num{0,1}  & 3\\
+            \end{pmatrix} \cdot \begin{pmatrix}
+              1\\
+            2\\
+            2\\
+            \end{pmatrix} = \num{1,17}
+          .\end{equation*}
+          So $u_{\overline{r}} = \num{1,17}  = \num{1,082}$ if the correlations are taken into account.
+      \end{enumerate}
+    \end{derivation}
+
+    \finalresult{
+      \begin{aligned}
+        &\text{a)} & u_{\overline{r}} &= \num{1,025}  \\
+        &\text{b)} & u_{\overline{r}} &= \num{1,082}
+      .\end{aligned}
+    }
+\end{document}
