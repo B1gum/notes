@@ -5,7 +5,6 @@
 \input{./preamble.tex}
 \begin{document}
     \input{./titlepage.tex}
-    \tableofcontents
     \newpage
     \begin{problem}{1}
       A company producing bottles has purchased a second production line.
@@ -31,10 +30,10 @@
         \begin{equation*}
           \overline{x} = \frac{1}{n} \sum_{i = 1}^{n} x_i
         \end{equation*}
-        Using Excel, the mean values of each sample has been found to be $\overline{x}_1 = \num{1,083953}$ and $\overline{x}_2 = \num{0,975993}$.
+        Using Excel, the mean values of each sample has been found to be $\overline{x}_1 = \num{1,084}$ and $\overline{x}_2 = \num{0,976}$.
         The difference in mean values, $\delta$, is approximately the difference between the two sample means
         \begin{equation*}
-          \delta = \mu_1 - \mu_2 \implies \hat{\delta} = \overline{x}_1 - \overline{x}_2 = \num{1,083953}  - \num{0,975993}  = \num{0.10796}
+          \delta = \mu_1 - \mu_2 \implies \hat{\delta} = \overline{x}_1 - \overline{x}_2 = \num{1,084}  - \num{0,976}  = \num{0.108}
         .\end{equation*}
         So, the new production line has a mean volume of the produced bottles about \qty{0,108}{\L} lower than the old. 
 
@@ -42,10 +41,10 @@
         \begin{equation*}
           s^2 = \frac{1}{n-1} \sum_{i = 1}^{n} \left( x_{1,i} - \overline{x}_{i} \right)^2 
         .\end{equation*}
-        Using Excel, the variances of each line has been determined to be $s_1^2 = \num{0,044531}$ and $s_2^2 = \num{0,019536}$.
+        Using Excel, the variances of each line has been determined to be $s_1^2 = \num{0,0445}$ and $s_2^2 = \num{0,0195}$.
         The ratios of these variances is
         \begin{equation*}
-          \frac{s_2^2}{s_1^2} = \frac{\num{0,019536}}{\num{0,044531}  }   = \num{0.438706}
+          \frac{s_2^2}{s_1^2} = \frac{\num{0,0195}}{\num{0,0445}  }   = \num{0.4387}
         .\end{equation*}
         
         The 95\% confidence interval for the difference in means is given by
@@ -93,7 +92,7 @@
          with parameters $\nu_1 = n_1 -1 = 39, \nu_2 = n_2 - 1 = 39$.
          Under $H_0 : \sigma_1^2 = \sigma_2^2$ the test statistic simplifies to
          \begin{equation*}
-           F = \frac{S_2^2}{S_1^2} \sim F(39,39)
+           F = \frac{S_1^2}{S_2^2} \sim F(39,39)
          .\end{equation*}
          Since the alternative hypothesis is $H_1 : \sigma_2^2 > \sigma_1^2$, small values of $F$ support $H_1$.
          Therefore, the rejection region is
@@ -116,10 +115,10 @@
     \finalresult{
       \begin{aligned}
         &\text{a)} & \overline{x}_1 - \overline{x}_2 &= \num{0,108} \\
-        && \frac{s_2^2}{s_1^2} &= \num{0,438706} \\
+        && \frac{s_2^2}{s_1^2} &= \num{0,4387} \\
         && \text{CI}_{\mu, 95\%} &= [\num{0,0295} ; \num{0,186}] \\
         && \text{CI}_{\sigma, 95\%} &= [\num{0,2320}; \num{0,8295}] \\
-        &\text{b)} & F \not< F_{\num{0,095}}(39,39) &\implies H_0 \text{ cannot be rejected}
+        &\text{b)} & F \not< F_{\num{0,95}} &\implies H_0 \text{ cannot be rejected}
       .\end{aligned}
     }
 
@@ -151,7 +150,7 @@
       This is done by solving the normal equations for $p = 4$.
       These are
       \begin{align*}
-        \sum_{i = 1}^{n} y_i &= n \hat{\beta}_0 + \hat{\beta}_1 \sum_{i = 1}^{n} x_i + \hat{\beta}_2 \sum_{i =1}^{n} x_1^2 + \hat{\beta}_3 \sum_{i = 1}^{n} x_i^3 + \hat{\beta}_4 \sum_{i = 1}^{n} x_i^{4}\\
+        \sum_{i = 1}^{n} y_i &= n \hat{\beta}_0 + \hat{\beta}_1 \sum_{i = 1}^{n} x_i + \hat{\beta}_2 \sum_{i =1}^{n} x_i^2 + \hat{\beta}_3 \sum_{i = 1}^{n} x_i^3 + \hat{\beta}_4 \sum_{i = 1}^{n} x_i^{4}\\
         \sum_{i = 1}^{n} x_i y_i &= \hat{\beta}_0 \sum_{i = 1}^{n} x_i + \hat{\beta}_1 \sum_{i = 1}^{n} x_i^2 + \hat{\beta_2} \sum_{i = 1}^{n} x_i^3 + \hat{\beta}_3 \sum_{i = 1}^{n} x_i^{4} + \hat{\beta}_4 \sum_{i = 1}^{n} x_i^{5} \\
         \sum_{i = 1}^{n} x_i^2 y_i &= \hat{\beta}_0 \sum_{i = 1}^{n} x_i^2 + \hat{\beta}_1 \sum_{i = 1}^{n} x_i^3 + \hat{\beta}_2 \sum_{i = 1}^{n} x_i^{4} + \hat{\beta}_3 \sum_{i = 1}^{n} x_i^{5} + \hat{\beta}_4 \sum_{i = 1}^{n} x_i^{6} \\
         \sum_{i = 1}^{n} x_i^3 y_i &= \hat{\beta}_0 \sum_{i = 1}^{n} x_i^3 + \hat{\beta}_1 \sum_{i = 1}^{n} x_i^{4} + \hat{\beta}_2 \sum_{i = 1}^{n} x_i^{5} + \hat{\beta}_3 \sum_{i = 1}^{n} x_i^{6} + \hat{\beta}_4 \sum_{i = 1}^{n} x_i^{7} \\
@@ -203,14 +202,14 @@
       where $d_{res} = n - p - 1 = 20 - 4 - 1 = 15$ and $d_{tot} = n - 1 = 19$.
       So
       \begin{equation*}
-        \overline{R}^2 = 1 - \frac{\num{1,5470} / 15}{\num{2,2329e3} / 19} = \num{0,99912} 
+        \overline{R}^2 = 1 - \frac{\num{1,5470} / 15}{\num{2,2329e3} / 19} = \num{0,9991} 
       .\end{equation*}
       Based on the close visual fit on \Cref{fig:p2fit} and the very high coefficient of determination and adjusted coefficient of determination the fit appears to be very good. 
       There is, however, a possibility of over-fitting.
       Visually it looks as though the points are following a parabolic curve so a 2nd order fit might also be appropriate.
       Using Matlab a fit for $p = 2$ can easily be made, following the same procedure as above. This gives a polynomial
       \begin{equation*}
-        \hat{y} = \num{0,634991}  + \num{0,730861} x + \num{0,534677} x^2
+        \hat{y} = \num{0,6350}  + \num{0,7309} x + \num{0,5347} x^2
       \end{equation*}
       as shown on \Cref{fig:p2fit2}.
       With $R^2 = \num{0,9991}$ and $\overline{R}^2 = \num{0,9990}$.
@@ -223,6 +222,7 @@
       \end{figure}
 
       As the 2nd order fit is basically just as good as the 4th order fit both visually and by coefficients of determination the 2nd order fit is preferable as this is the simplest model and this helps combat overfitting.
+      The fourth-order fit is very accurate, but the second-order fit gives almost the same $R^2$ and adjusted $\overline{R}^2$ with fewer parameters. Therefore, the fourth-order model is not necessary unless there is a theoretical or experimental reason to expect fourth-order behaviour.
     \end{derivation}
 
     \finalresult{
@@ -231,7 +231,7 @@
           &\text{4th-order fit}\colon & \hat{y} &= \num{2,0912} - \num{1,7724} x + \num{1,8465} x^2 - \num{0,2585} x^3 + \num{0,0169} x^{4} \\ 
           && R^2_{p = 4} &= \num{0,9993} \\
           && \overline{R}^2_{p = 4} &= \num{0,99912} \\ \\
-          &\text{2nd-order fit}\colon & \hat{y} &=  \num{0,634991}  + \num{0,730861} x + \num{0,534677} x^2 \\
+          &\text{2nd-order fit}\colon & \hat{y} &=  \num{0,6350}  + \num{0,7309} x + \num{0,5347} x^2 \\
           && R^2_{p = 2} &= \num{0,9991}  \\
           && \overline{R}_{p = 2}^2 &= \num{0,9990}
         .\end{aligned} \\ \\
@@ -263,13 +263,13 @@ and the variances represented by them.
 
         To determine the confidence interval for $\rho_s$, we employ the Fisher transformation:
         \begin{equation*}
-          \mathcal{Z}_{\text{obs}} = \frac{1}{2} \ln \frac{1 + \rho_s}{1 - \rho_s} = \frac{1}{2} \ln \frac{1 + \num{0,690} }{1 - \num{0,690}} = \num{0.847956}
+          \mathcal{Z}_{\text{obs}} = \frac{1}{2} \ln \frac{1 + \rho_s}{1 - \rho_s} = \frac{1}{2} \ln \frac{1 + \num{0,690} }{1 - \num{0,690}} = \num{0.8474}
         .\end{equation*}
         For a 95\% CI, $\alpha = \num{0,05}$ and $z_{\alpha / 2} = z_{\num{0,025}} = \num{1,96}$.
         So, the 95\% CI for $\mu_{\mathcal{Z}}$ is
         \begin{align*}
           \mathcal{Z}_{\text{obs}} - \frac{z_{\alpha / 2}}{\sqrt{ n - 3}} < &\mu_{\mathcal{Z}} < \mathcal{Z}_{\text{obs}} + \frac{z_{\alpha / 2}}{\sqrt{n - 3}} \\
-          \num{0,847956} - \frac{\num{1,96}}{\sqrt{35 - 3}} < &\mu_{\mathcal{Z}} < \num{0,847956} + \frac{\num{1,96} }{\sqrt{35 - 3}} \\
+          \num{0,8474} - \frac{\num{1,96}}{\sqrt{35 - 3}} < &\mu_{\mathcal{Z}} < \num{0,8474} + \frac{\num{1,96} }{\sqrt{35 - 3}} \\
           \num{0,5009} < &\mu_{\mathcal{Z}} < \num{1,1939} 
         .\end{align*}
         We now transform back to $\rho$ using
@@ -402,7 +402,7 @@ and the variances represented by them.
           \begin{equation*}
             \hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x
           .\end{equation*}
-          Using Matlab, the values of $s_{x x} = \num{38,9333} , s_{xy} = \num{117,9209} , s_{yy} = \num{360,3360}, \overline{x} = \num{3,0667}  \overline{y} = \num{9,2097}  $ is found.
+          Using Matlab, the values of $s_{x x} = \num{38,9333} , \, s_{xy} = \num{117,9209} ,\,  s_{yy} = \num{360,3360},\,  \overline{x} = \num{3,0667}, \,  \overline{y} = \num{9,2097}  $ is found.
           So
           \begin{align*}
             \hat{\beta}_1 &= \frac{\num{117,9209}}{\num{38,9333} } = \num{3,0288}  \\
@@ -448,7 +448,7 @@ and the variances represented by them.
           \begin{equation*}
             \text{CI}_{x_0 = 10, 95\%} = \num{-0,0786} + \num{3,0288} \cdot 10 \pm \num{2,1604} \cdot \num{0,4945} \sqrt{\frac{1}{15} + \frac{(10 - \num{3,0667} )^2}{\num{38,9333} }} = [\num{28,9907}; \num{31.4281}]
           .\end{equation*}
-          And the prediction interval for the mean value of $Y$ at $x = 10$ at 95\% level of confidence is
+          And the prediction interval for a future observation of $Y$ at $x = 10$ at 95\% level of confidence is
           \begin{equation*}
             \text{PI}_{x_0 = 10, 95\%} =  \num{-0,0786} + \num{3,0288} \cdot 10 \pm \num{2,1604} \cdot \num{0,4945} \sqrt{1 + \frac{1}{15} + \frac{(10 - \num{3,0667} )^2}{\num{38,9333} }}  = [\num{28.5887}; \num{31.8301}]
           .\end{equation*}
