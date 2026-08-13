@@ -1,0 +1,326 @@
+\newcommand{\NoteType}{Exam 2026}
+\newcommand{\CourseName}{Maskinelementer}
+\newcommand{\CourseNumber}{290211U009}
+\input{./preamble.tex}
+\begin{document}
+    \input{./titlepage.tex}
+    \newpage
+
+    \begin{problemwithimage}{e_2026_1}{1}
+      Et ligefortandet tandhjulspar består af:
+      \begin{itemize}
+        \item Kvalitetstal $Q_v = 3$
+        \item Tandantal $N_1 = 18$. $N_2 = 45$
+        \item $n_1 = $ 1800 rpm
+        \item Modul: \qty{4}{\mm}
+        \item Indgrebsvinkel \ang{20} 
+        \item Tandbredden Tandhjul 1: \qty{26}{\mm}
+        \item Tandbredden Tandhjul 2: \qty{24}{\mm}
+      \end{itemize}
+      Bestem det størst tilladelige moment $T_1$, hvis de maksimalt tilladte tandfodsspændinger for tandhjulene er \qty{200}{\MPa}.
+    \end{problemwithimage}
+
+    \begin{derivation}
+      Bøjningsspændingerne i tandfoden er
+      \begin{align*}
+        \sigma_1 &= \frac{K_v K_{F_1} K_{\epsilon} W_t}{b\cdot m} \leq \sigma_{\mathrm{til}}\\
+        \sigma_2 &= \frac{K_v K_{F_2} K_{\epsilon} W_t}{b\cdot m} \leq \sigma_{\mathrm{til}}
+      .\end{align*}
+      Heri isoleres tangentialkraften $W_t$ som
+      \begin{equation*}
+        W_t \leq \frac{\sigma_{\mathrm{til}} \cdot b\cdot m}{K_v \cdot K_{F} \cdot K_{\epsilon}}
+      .\end{equation*}
+      $b_1 = \qty{26}{\mm} $ og $b_2 = \qty{24}{\mm} $ er tandbredden, $m = \qty{4}{\mm}$ er modulet, den maksimalt tilladte tandfodsspænding er $\sigma_{\mathrm{til}} = \qty{200}{\MPa}$.
+      Formfaktoren for bøjning, $K_F$ findes som
+      \begin{align*}
+        K_F &= \num{2,2} + \num{3,1} e^{- \frac{N}{14}} \\
+        K_{F_1} &= \num{2,2} + \num{3,1} \cdot e^{- \frac{18}{14}} \approx \num{3,057}  \\
+        K_{F_2} &= \num{2,2} + \num{3,1} e^{- \frac{45}{14}} \approx \num{2,32} 
+      .\end{align*}
+      Evolventafstanden er
+      \begin{equation*}
+        e = m \cdot \pi \cdot \cos \phi = \qty{4}{\mm} \cdot \pi \cdot \cos \ang{20} = \qty{11,81}{\mm} 
+      .\end{equation*}
+      delecirkeldiameteren er
+      \begin{align*}
+        d_1 &= N_1 \cdot m = 18 \cdot \qty{4}{\mm} = \qty{72}{\mm}   \\
+        d_2 &= N_2 \cdot m = 45 \cdot \qty{4}{\mm} = \qty{180}{\mm}
+      .\end{align*}
+      tandtopdiamteren er
+      \begin{align*}
+        d_{a_1} &= d_1 + 2 m = \qty{72}{\mm} + 2 \cdot \qty{4}{\mm} = \qty{80}{\mm}  \\
+        d_{a_2} &= d_2 + 2 m = \qty{180}{\mm} + 2 \cdot \qty{4}{\mm} = \qty{188}{\mm} 
+      .\end{align*}
+      grundcirkeldiameteren er
+      \begin{align*}
+        d_{b_1} &= d_1 \cdot \cos \phi = \qty{72}{\mm} \cdot \cos \ang{20}  = \qty{67,66}{\mm} \\
+        d_{b_2} &= d_2 \cdot \cos \phi = \qty{180}{\mm} \cdot \cos \ang{20} = \qty{169,14}{\mm} 
+      .\end{align*}
+      dermed kan vi finde indgrebsafstanden
+      \begin{align*}
+        L_{ab} &= \num{0,5} \left( \sqrt{d_{a1}^2 - d_{b1}^2} + \sqrt{d_{a2}^2 - d_{b2}^2} \right) - \frac{d_1 + d_2}{2} \cdot \sin \phi \\
+               &= \num{0,5} \cdot \left( \sqrt{\left( \qty{80}{\mm}  \right)^2 - \left( \qty{67,66}{\mm}  \right)^2} + \sqrt{\left( \qty{188}{\mm}  \right)^2 - (\qty{169,14}{\mm} })^2 \right) - \frac{\qty{72}{\mm} + \qty{180}{\mm} }{2} \cdot \sin \ang{20} \\
+               &= \qty{19,28}{\mm} 
+      .\end{align*}
+      hvilket giver os et udtryk for indgrebdsgraden
+      \begin{equation*}
+        m_c = \frac{L_{ab}}{e} = \frac{\qty{19,28}{\mm} }{\qty{11,81}{\mm}} = \num{1,633} 
+      .\end{equation*}
+      som slutteligt kan bruges til at finde indgrebsfaktoren:
+      \begin{equation*}
+        K_{\epsilon} = \frac{1}{m_c} = \frac{1}{\num{1,633}} = \num{0,612} 
+      .\end{equation*}
+      
+      Den dynamiske faktor er givet som
+      \begin{equation*}
+        K_v = \left( \frac{A + \sqrt{200V}}{A} \right)^{B}
+      \end{equation*}
+      hvor
+      \begin{align*}
+        V &= \frac{d}{2} \cdot \omega & A &= \num{50} + \num{56} (1-B) & B &= \num{0,25} \cdot \left( 12 - Q_v \right)^{\frac{2}{3}}
+      .\end{align*}
+      Faktorerne $B$ og $A$ findes som
+      \begin{align*}
+        B &= \num{0,25} \cdot \left( 12 - 3 \right)^{\frac{2}{3}} = \num{0,75} &         A &= 50 + 56(1-\num{0,75} ) = 64
+      .\end{align*}
+      $V$ kan findes for hvert leje som
+      \begin{align*}
+        V_1 &= d_1 \cdot \frac{2\pi \cdot RPM}{60} = \qty{72}{\mm} \cdot \frac{2 \pi \cdot 1800}{60} = \num{13,57} \\
+        V_2 &= d_2 \cdot \frac{2\pi \cdot RPM}{60} = \qty{180}{\mm} \cdot \frac{2\pi \cdot 1800}{60} = \num{33,93}
+      .\end{align*}
+      Således fås vores dynamiske faktorer til
+      \begin{align*}
+        K_{V_1} &= \left( \frac{64 + \sqrt{200 \cdot \num{13,57}}}{64} \right)^{\num{0,75} } = \num{1,56} \\
+        K_{V_2} &= \left( \frac{64 + \sqrt{200 \cdot \num{33,93}}}{64} \right)^{\num{0,75} } = \num{1,86} 
+      .\end{align*}
+      Dermed kan vi regne den maksimalt tilladte tangentialkraft på begge tandhjul som
+      \begin{align*}
+        W_{t} &\leq \frac{\sigma_{\mathrm{til} \cdot b \cdot m}}{K_v \cdot K_F \cdot K_{\epsilon}} \\
+        W_{t1} &\leq \frac{\qty{200}{\MPa} \cdot \qty{26}{\mm} \qty{4}{\mm} }{\num{1,56} \cdot \num{3,057} \cdot \num{0,612}} = \qty{7,127}{\kN} \\
+        W_{t2} &\leq \frac{\qty{200}{\MPa} \cdot \qty{24}{\mm} \cdot \qty{4}{\mm} }{\num{1,86} \cdot \num{2,32} \cdot \num{0,612} } = \qty{7,27}{\kN} 
+      .\end{align*}
+      Altså har vi at den tangentiale kraft påført det første tandhjul ikke må overstige \qty{7,127}{\kN}. Multipliceres dette med det halve af tandhjulets delecirkeldiameter fås den tilladelige moment:
+      \begin{equation*}
+        T_1 \leq W_{t1} \cdot \frac{d_1}{2} = \qty{7,127}{\kN} \cdot \frac{\qty{72}{\mm} }{2} = \qty{256,57}{\N.\m} 
+      .\end{equation*}
+    \end{derivation}
+
+    \finalresult{T_1 \leq \qty{256,57}{\N.\m}}
+
+    \begin{problemwithimage}{e_2026_2}{2}
+      Beregn den nominelle levetid i timer for ``single row deep groove'' leje 6205 i henhold til ISO's formel for nominel levetid.
+
+      Det kører med 3500 RPM, og de radiale og aksiale belastninger, $F_r$ og $F_a$, varierer i henhold til nedenstående tabel.
+      Belastningsspektret gentages.
+    \end{problemwithimage}
+
+    \begin{derivation}
+      Belastningsmønstret forstås som først at bestå af \num{200000} cykler af lastblok 1, efterfulgt af \num{600000} cykler af lastblok 2, efterfulgt af \num{1200000} cykler af lastblok 3, hvorefter processen gentager sig fra begyndelsen ad infinitum.
+
+      Idet lejet bevæger sig med $n = $ 3500 RPM igennem hele processen vil lejet være i hver tilstandsblok i en tidsmængde der tilsvarer mængden af cyklusser som tilbringes i lastblokken over det samlede antal cyklusser.
+      Altså
+      \begin{align*}
+        t_1 &= \frac{\num{200000}}{\num{2000000}} = \num{0,1} \\
+        t_2 &= \frac{\num{600000}}{\num{2000000}} = \num{0,3} \\
+        t_3 &= \frac{\num{1200000}}{\num{2000000}} = \num{0,6} 
+      .\end{align*}
+    For et SKF6205 leje har vi følgende data fra SKF kataloget, $C = \qty{14,8}{\kN}, C_0 = \qty{7,8}{\kN}$, $f_0 = 14$. 
+
+    Vi kan nu regne faktoren $f_0 F_a / C_0$ for alle tre lastblokke:
+    \begin{align*}
+      \left( \frac{f_0 F_a}{C_0} \right)_{1} &=  \frac{14 \cdot \qty{770}{\N}}{\qty{7,8}{\kN} }  = 1.38205\\
+      \left( \frac{f_0 F_a}{C_0} \right)_{2} &=  \frac{14 \cdot \qty{575}{\N}}{\qty{7,8}{\kN} }  = 1.03205 \\
+      \left( \frac{f_0 F_a}{C_0} \right)_{3} &=  \frac{14 \cdot \qty{385}{\N}}{\qty{7,8}{\kN} }  = 0.691026
+    .\end{align*}
+    Dermed kan vi interpolere følgende værdier for $e$, $X$ og $Y$ for hver tilstand:
+    \begin{align*}
+      e_1 &= \num{0,3} & X_1 &= \num{0,56} & Y_1 &= \num{1,45}  \\
+      e_2 &= \num{0,28} & X_2 &= \num{0,56} & Y_2 &= \num{1,55}  \\
+      e_3 &= \num{0,26} & X_3 &= \num{0,56} & Y_3 &= \num{1,71} 
+    .\end{align*}
+    \begin{align*}
+      \frac{\qty{770}{\N}}{\qty{1200}{\N}} &= \num{0,64} > e_1 \\
+      \frac{\qty{575}{\N} }{\qty{2500}{\N} } &= \num{0,23} < e_2 \\
+      \frac{\qty{385}{\N} }{\qty{1000}{\N} } &= \num{0,385} > e_3
+    .\end{align*}
+    Dermed har vi at
+    \begin{equation*}
+      P_2 = F_{r_2} = \qty{2500}{\N} 
+    .\end{equation*}
+    og
+    \begin{align*}
+      P_{1,3} &= X F_r + Y F_a \\
+      P_1 &= \num{0,56} \cdot \qty{1200}{\N} + \num{1,45} \cdot \qty{770}{\N}   = 1788.5\text{N}\\
+      P_3 &= \num{0,56} \cdot \qty{1000}{\N} + \num{1,71} \cdot \qty{385}{\N}   = 1218.35\text{N}
+    .\end{align*}
+    Levetiden for et kugleleje er
+    \begin{equation*}
+      L_{10} = \left( \frac{C}{P} \right)^{p}, \quad p = 3
+    .\end{equation*}
+    Dermed er levetiden i hver lastblok:
+    \begin{align*}
+      L_{10_1} &= \left( \frac{\qty{14,8}{\kN} }{\qty{1788,5}{\N} } \right)^{3} = \num{567}  \\
+      L_{10_2} &= \left( \frac{\qty{14,8}{\kN} }{\qty{2500}{\N} } \right)^{3} = \num{207,5}  \\
+      L_{10_3} &= \left( \frac{\qty{14,8}{\kN} }{\qty{1218,35}{\N} } \right)^{3} = \num{1793} 
+    .\end{align*}
+    Hvor hver af disse er i enheden millioner af omdrejninger. 
+    Den samlede levetid for lejet idet det arbejder ved alle tre lastblokke er
+    \begin{equation*}
+      L_{10m} = \frac{1}{\frac{U_1}{L_{10_1}} + \frac{U_2}{L_{10_2}} + \frac{U_3}{L_{10_3}}} = \frac{1}{\frac{\num{0,1}}{\num{567} } + \frac{\num{0,3}}{\num{207,5}} + \frac{\num{0,6}}{\num{1793} }} = \num{511,04} 
+    .\end{equation*}
+    Hvilket kan omregnes til timer som
+    \begin{equation*}
+      L_{10h} = \frac{\num{e6}}{60 \cdot n} L_{10m} = \frac{\num{e6} }{60 \cdot 3500 \text{rpm}} \cdot \num{511,04}  = \qty{2433,52}{hr} 
+    .\end{equation*}
+
+    \end{derivation}
+
+    \finalresult{L_{10h} = \qty{2433,5}{hr}}
+
+    \begin{problemwithimage}{e_2026_3}{3}
+      Gokartaksel med en diameter på $D = \qty{25}{\mm}$ og $d = \num{0,6} D$ roterer med en hastighed på 2900 rpm.
+      Den er ophængt i to ``SKF single row deep groove ball bearings''.
+
+      Bestem sikkerhedsfaktor mod udmattelse bed bøjning ved lejer for Gokartakslen.
+      Udelad normalkraften.
+      Flydespænding er \qty{400}{\MPa} (English: Yield stress).
+      Brudstyrke er \qty{640}{\MPa} (English: Ultimate Tensile Strength).
+      Overfladeruhed er \qty{5}{\micro\m} (English: Surface Roughness).
+    \end{problemwithimage}
+
+
+    \begin{derivation}
+      Brudstyrken er givet til $R_m = \qty{640}{\MPa}$. Fillet-radiussen er $\rho = \rho_1 = \qty{5}{\mm}$, hvilket svarer til en notch sensitivity faktor på omtrent $q = \num{0,87}$, jvf. \Cref{fig:e_2026_1_1}. 
+
+      \begin{figure} [ht]
+        \centering
+        \includegraphics[width=0.4\linewidth]{./figures/e_2026_1_1.png}
+        \caption{Notch sensititvity faktor}
+        \label{fig:e_2026_1_1}
+      \end{figure}
+
+      Vores diameterforhold i det givne punkt er $D / d = \qty{25}{\mm}  / (\num{0,6} \qty{25}{\mm} ) = \num{1,666}$ og $\rho / D = \qty{5}{\mm} / \qty{25}{\mm} = \num{0,2} $. Ved aflæsning på \Cref{fig:e_2026_1_2} ses $K_{t} \approx \num{1,45} $.
+      Dermed bliver vores reduktionsfaktor
+      \begin{equation*}
+        K_f = 1 + q \left( K_t - 1 \right) = 1 + \num{0,87} \left( \num{1,45} - 1\right) = \num{1,3915} 
+      .\end{equation*}
+      
+
+      \begin{figure} [ht]
+        \centering
+        \includegraphics[width=0.3\linewidth]{./figures/e_2026_1_2.png}
+        \caption{Spændingskoncentrationsfaktor for bøjning}
+        \label{fig:e_2026_1_2}
+      \end{figure}
+    \end{derivation}
+      Reduktionsfaktoren for overfladeruheden aflæses i \cref{fig:e_2026_1_€} idet vi finder værdi mellem den der tilsvarer \qty{600}{\MPa}  og den der tilsvarer \qty{700}{\MPa} for overfladeruheden $\qty{5}{\micro\m}$ til art være omtrent $\frac{1}{k_r} \approx \num{0,93}$ 
+
+      \begin{figure} [ht]
+        \centering
+        \includegraphics[width=0.4\linewidth]{./figures/e_2026_1_€.png}
+        \caption{Overfladeruhedsreduktionsfaktor}
+        \label{fig:e_2026_1_€}
+      \end{figure}
+
+      Fatigue limit for bøjning i $R = -1$ er i laboratorie-settings:
+      \begin{equation*}
+        \sigma_{ub} = \qty{300}{\MPa} 
+      .\end{equation*}
+      Dermed kan den reducerede fatigue limit findes som
+      \begin{equation*}
+        \sigma_{ub,red} = \frac{1}{K_d \cdot K_f \cdot K_r} \cdot \sigma_{ub} = \frac{1}{1 \cdot \num{1,3915} \cdot \num{1,075}} \cdot \qty{300}{\MPa} = \qty{200}{\MPa} 
+      .\end{equation*}
+      
+      \begin{figure} [ht]
+        \centering
+        \includegraphics[width=0.6\linewidth]{./figures/e_20261.png}
+        \caption{$M_z$ og $M_y$ diagram for akslen}
+        \label{fig:e_20261}
+      \end{figure}
+
+      Fra \Cref{fig:e_20261} ses at momentet er størst ved det venstre leje og den bliver derfor den begrænsende, hvorfor kun denne behandles i det følgende. Fra \Cref{fig:e_20261} ses at $M_{y_1} = \qty{-67,48}{\N.\m} , M_{z_1} = \qty{0,4289}{\N.\m}$. 
+      Dermed er det resulterende bøjningsmoment ved leje 1
+      \begin{equation*}
+        M_b = \sqrt{M_{y_1}^2 + M_{z_1}^2} = \sqrt{\left( \qty{-67,48}{\N.\m}  \right)^2 + \left( \qty{0,4289}{\N.\m}  \right)^2} = \qty{67,48}{\N.\m} 
+      .\end{equation*}
+      Den nominelle bøjespænding er
+      \begin{equation*}
+        \sigma_{b, nom} = \frac{M_b}{W_b}
+      \end{equation*}
+      hvor
+      \begin{equation*}
+        W_b = \frac{\pi d^3}{16} = \frac{\pi \cdot \left( \qty{25}{\mm}  \right)^3}{16} = \qty{3,068e-6}{\m^3} 
+      .\end{equation*}
+      Så
+      \begin{equation*}
+        \sigma_{b, nom} = \frac{\qty{67,48}{\N.\m} }{\qty{3,068e-6}{\m^3} } = \qty{21,995}{\MPa}
+      .\end{equation*}
+      Idet der ses bort fra aksialkraften er der ikke et bidrag herfra til at regne en von mises kraft e.lign.
+      Vores sikkerhedsfaktor bliver mod udmattelse bliver da
+      \begin{equation*}
+        \frac{\sigma_{ub, red}}{\sigma_{b, nom}} = \frac{\qty{200}{\MPa}}{\qty{21,995}{\MPa} } = \num{9,098} > 1 
+      .\end{equation*}
+      Eftersom $9 > 1$ er det ikke forventeligt at akslen fejler omkring lejerne inden omtrent \num{e6}--\num{e7} omdrejninger.
+      
+
+      \finalresult{\text{Safety Factor} = \num{9,098}}
+      
+
+    \begin{problemwithimage}{e_2026_4}{4}
+      En trykbeholder med indvendigt overtryk $p_b = \qty{20}{\bar} $ har et låg monteret for at forhindre trykket i at lække.
+
+      Følgende data gælder:
+      \begin{itemize}
+        \item Låget har 8 stk. M12 bolte i kvalitet \num{9.8} monteret.
+        \item Indvendig diameter på låget er Ø\qty{300}{\mm} 
+        \item Stivheden for 1 bolt er $k_b = \qty{1.5}{\mega\N\per\mm}$ og stivheden for underlaget er $k_m = \qty{3.5}{\mega\N\per\mm}$.
+        \item Boltsamlingerne skal forspændes til ikke at kunne skilles ad
+      \end{itemize}
+
+      \begin{enumerate}
+        \item Bestem forspændingskraften pr. bolt
+        \item Bestem spændinger pr. bolt
+      \end{enumerate}
+    \end{problemwithimage}
+
+    \begin{derivation}
+      Proof strengthen for \num{9,8} bolt er $S_p = \qty{650}{\MPa} $ og det nominelle tværsnitsareal for en M12 bolt er $A_t = \qty{84,3}{\mm^2}$.
+      Således fås proof loaden, $F_P$ som:
+      \begin{equation*}
+        F_P = A_t \cdot S_p = \qty{84,3}{\mm^2} \cdot \qty{650}{\MPa} = \qty{54,8}{\kN}
+      .\end{equation*}
+      For en permanent samling bruger vi en forspænding på \num{0,9} gange proof loaden således at forspændingskraften er
+      \begin{equation*}
+        F_i = \num{0,9} \cdot F_P = \num{0,9} \cdot \qty{54,8}{\kN} = \qty{49,32}{\kN}
+      .\end{equation*}
+      
+      Lågets trykpåvirkede areal er
+      \begin{equation*}
+        A = \frac{\pi D_i^2}{4} = \frac{\pi \cdot \left( \qty{300}{\mm}  \right)^2}{4} = \qty{0,0707}{\m^2} 
+      .\end{equation*}
+      Den separerende kraft er da
+      \begin{equation*}
+        F_{tryk} = p_b \cdot A = \qty{20}{\bar} \cdot \qty{0,0707}{\m^2} = \qty{141,4}{\kN} 
+      .\end{equation*}
+      Idet lasten antages fordelt symmetrisk mellem boltene er kraften pr. bolt da
+      \begin{equation*}
+        P = \frac{F_{tryk}}{8} = \frac{\qty{141,4}{\kN} }{8} = \qty{17,675}{\kN} 
+      .\end{equation*}
+      Samlingens stivhedskonstant er
+      \begin{equation*}
+        C = \frac{k_b}{K_b + k_m} = \frac{\num{1,5}}{\num{5,0}} = \num{0,3}
+      .\end{equation*}
+      
+      Spændingerne i boltene kan beregnes som
+      \begin{equation*}
+        \sigma_b = \frac{F_i + C\cdot P}{A_t} = \frac{\qty{49,32}{\kN} + \num{0,3} \cdot \qty{17,675}{\kN} }{\qty{84,3}{\mm^2}} = \qty{648}{\MPa}
+      .\end{equation*}
+      Dette er under boltens flydespænding på $9 \cdot 8 \cdot \qty{10}{\MPa} = \qty{720}{\MPa}$, hvorfor bolten godt kan holde til belastningen.      
+    \end{derivation}
+
+    \finalresult{
+    \begin{aligned}
+      &1. & F_i &= \qty{49,32}{\kN} \\
+      &2. & \sigma_b &= \qty{648}{\MPa} 
+    .\end{aligned}}
+\end{document}

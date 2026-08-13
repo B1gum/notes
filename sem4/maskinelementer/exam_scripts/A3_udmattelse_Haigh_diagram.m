@@ -1,0 +1,953 @@
+%% TITLE AND PURPOSE
+% A3 - Udmattelsesberegning og Haigh-diagram
+%
+% Brug dette script naar:
+% - belastningen kan beskrives med én uniaxial spaendingstype:
+%   boejning, traek/tryk eller torsion;
+% - maksimal og minimal nominel spaending er kendt, eller middelvaerdi
+%   og amplitude er kendt;
+% - belastningen har konstant middelspaending og amplitude;
+% - der skal reduceres laboratorie-udmattelsesdata med lambda, Kd, Kf
+%   og Kr efter kursusmetoden;
+% - sikkerheden skal aflæses/beregnes i et Haigh-diagram.
+%
+% Brug ikke dette script naar:
+% - belastningen er multiaxial og ikke-proportional;
+% - der skal beregnes levetid ved endeligt antal cykler fra en S-N-kurve;
+% - der forekommer variable belastningsblokke eller Miner-sum;
+% - snitkraefter og nominelle spaendinger foerst skal bestemmes
+%   (brug A1 eller A2 foerst).
+%
+% Det skal bestemmes eller slaas op manuelt:
+% - nominel maksimums- og minimumsspaending i det kritiske snit;
+% - laboratoriets vekslende og pulserende udmattelsesgraenser;
+% - lambda, Kd, Kr, Kt og q fra kursusfigurer/tabeller;
+% - materialets flyde- og brudstyrke;
+% - hvilken definition af sikkerhed der passer til opgaven.
+%
+% Kursusmetode:
+%   Kf = 1 + q*(Kt - 1)
+%   reduktionsfaktor = lambda/(Kd*Kf*Kr)
+%
+% Kun amplitudedata reduceres. Det pulserende materialepunkts
+% middelspaending reduceres ikke.
+%
+% Scriptet er baseret paa FORELASNING_AKSLAR_DEL2 og
+% OVELSE_AKSLAR_v8 - Copy.
+
+clear; clc; close all;
+
+%% ASSUMPTIONS AND MANUAL INPUT
+% Enheder: MPa for spaendinger og mm for en eventuel diameter.
+%
+% Alle paaførte udmattelsesspaendinger skal vaere NOMINELLE.
+% Kf reducerer materialets amplitudegraense. Gang derfor ikke samtidig
+% den paaførte amplitude med Kt eller Kf.
+%
+% Den separate statiske kontrol anvender staticKt paa de nominelle
+% maksimums- og minimumsspaendinger.
+%
+% Haigh-graensen opbygges stykvist gennem punkterne:
+%   P0 = (0, reduceret vekselgraense)
+%   P1 = (pulserende middelspaending, reduceret pulserende amplitude)
+%   P2 = (middelakse-skæring, 0)
+%
+% For normale spaendinger er middelakse-skæringen normalt Rm.
+% For torsion skal den tilsvarende kursusvaerdi indtastes; scriptet
+% opfinder eller omregner ikke en torsionsstyrke.
+%
+% Ved trykkende middelspaending giver scriptet konservativt ingen
+% gunstig middelspaendingseffekt. Den tilladte amplitude saettes da
+% lig den reducerede vekselgraense.
+
+%% INPUT
+% ----- Belastningstype og inputform -----
+loadType = "bending";          % "bending", "axial" eller "torsion"
+stressInputMode = "maxMin";    % "maxMin" eller "meanAmplitude"
+
+% Anvendes naar stressInputMode = "maxMin"
+maximumNominalStress_MPa = 200;  % [MPa] Maksimal nominel spaending
+minimumNominalStress_MPa = -200; % [MPa] Minimal nominel spaending
+
+% Anvendes naar stressInputMode = "meanAmplitude"
+meanNominalStressInput_MPa = 0;       % [MPa] Nominel middelspaending
+amplitudeNominalStressInput_MPa = 200;% [MPa] Nominel amplitude
+
+% ----- Materialedata fra udmattelsesforsøg -----
+fatigueLimitAlternatingLab_MPa = 300; % [MPa] R=-1, fx sigma_ub
+fatigueLimitPulsatingLab_MPa = 250;   % [MPa] R=0, fx sigma_ubp
+meanAxisIntercept_MPa = 640;          % [MPa] Rm eller relevant skæring
+yieldStrength_MPa = 400;              % [MPa] Flydespaending
+
+% ----- Reduktionsfaktorer efter kursusskemaet -----
+castSizeFactorLambda = 1.00;     % [-] lambda, 0<lambda<=1
+surfaceRoughnessFactorKr = 1.24; % [-] Kr >= 1
+
+notchPresent = true;             % [logisk] Er der en lokal kaerv/skulder?
+calculateKfFromKtAndQ = true;    % [logisk] Beregn Kf fra Kt og q
+theoreticalKt = 1.35;            % [-] Kt fra kursusfigur
+notchSensitivityQ = 0.84;        % [-] q fra kursusfigur, 0<=q<=1
+fatigueNotchFactorKfInput = 1.29;% [-] Bruges hvis beregning er false
+
+% Kursusskemaet anvender:
+% - notch: Kf>1 og Kd=1
+% - ingen notch ved boejning/torsion: Kf=1 og Kd>1
+geometricSizeFactorKd = 1.00;    % [-] Kd >= 1
+
+% ----- Sikkerhedsdefinition i Haigh-diagrammet -----
+% "proportional":
+%   sigma_m og sigma_a skaleres proportionalt, konstant R-vaerdi.
+% "fixedMean":
+%   middelspaendingen fastholdes, amplituden skaleres.
+% "fixedAmplitude":
+%   amplituden fastholdes, middelspaendingen skaleres.
+fatigueSafetyDefinition = "proportional";
+
+requiredFatigueSafetyFactor = 1.50; % [-] Kraevet udmattelsessikkerhed
+
+% ----- Separat statisk kontrol -----
+staticKt = 1.35;                    % [-] Lokal Kt for statisk maksimum
+requiredStaticSafetyFactor = 1.00;  % [-] Kraevet sikkerhed mod flydning
+
+% ----- Valgfrit foerste diameterestimat -----
+% Gyldigt naar begge spaendingskoordinater skalerer med d^(-p), og
+% reduktionsfaktorerne midlertidigt antages konstante.
+enableDiameterEstimate = true;      % [logisk] Beregn kontinuerligt estimat
+currentReferenceDiameter_mm = 26.6; % [mm] Nuværende referencediameter
+stressDiameterExponent = 3;         % [-] 3 for boejning/torsion, 2 for aksial
+availableStandardDiameters_mm = []; % [mm] Valgfri, manuelt leveret liste
+
+% ----- Testvalg -----
+runCourseTests = true;              % [logisk] Koer indbyggede tests
+
+%% UNIT CHECK AND VALIDATION
+validLoadTypes = ["bending", "axial", "torsion"];
+validInputModes = ["maxMin", "meanAmplitude"];
+validSafetyDefinitions = ...
+    ["proportional", "fixedMean", "fixedAmplitude"];
+
+assert(ismember(loadType, validLoadTypes), ...
+    'loadType skal vaere "bending", "axial" eller "torsion".');
+assert(ismember(stressInputMode, validInputModes), ...
+    'stressInputMode skal vaere "maxMin" eller "meanAmplitude".');
+assert(ismember(fatigueSafetyDefinition, validSafetyDefinitions), ...
+    'Ukendt fatigueSafetyDefinition.');
+
+numericInputs = [maximumNominalStress_MPa, ...
+    minimumNominalStress_MPa, meanNominalStressInput_MPa, ...
+    amplitudeNominalStressInput_MPa, ...
+    fatigueLimitAlternatingLab_MPa, ...
+    fatigueLimitPulsatingLab_MPa, meanAxisIntercept_MPa, ...
+    yieldStrength_MPa, castSizeFactorLambda, ...
+    surfaceRoughnessFactorKr, theoreticalKt, notchSensitivityQ, ...
+    fatigueNotchFactorKfInput, geometricSizeFactorKd, ...
+    requiredFatigueSafetyFactor, staticKt, ...
+    requiredStaticSafetyFactor, currentReferenceDiameter_mm, ...
+    stressDiameterExponent];
+
+assert(all(isfinite(numericInputs)), ...
+    'Alle numeriske input skal vaere endelige.');
+
+assert(fatigueLimitAlternatingLab_MPa > 0 && ...
+    fatigueLimitPulsatingLab_MPa > 0, ...
+    'Laboratoriets udmattelsesgraenser skal vaere positive.');
+assert(meanAxisIntercept_MPa > fatigueLimitPulsatingLab_MPa, ...
+    ['Middelakse-skaeringen skal vaere stoerre end det ', ...
+     'pulserende materialepunkts middelspaending.']);
+assert(yieldStrength_MPa > 0, ...
+    'Flydespaendingen skal vaere positiv.');
+
+assert(castSizeFactorLambda > 0 && ...
+    castSizeFactorLambda <= 1, ...
+    'lambda skal opfylde 0 < lambda <= 1.');
+assert(surfaceRoughnessFactorKr >= 1, ...
+    'Kr skal vaere >= 1.');
+assert(theoreticalKt >= 1 && staticKt >= 1, ...
+    'Kt-faktorer skal vaere >= 1.');
+assert(notchSensitivityQ >= 0 && notchSensitivityQ <= 1, ...
+    'q skal ligge mellem 0 og 1.');
+assert(fatigueNotchFactorKfInput >= 1 && ...
+    geometricSizeFactorKd >= 1, ...
+    'Kf og Kd skal vaere >= 1.');
+
+assert(requiredFatigueSafetyFactor > 0 && ...
+    requiredStaticSafetyFactor > 0, ...
+    'Kraevet sikkerhed skal vaere positiv.');
+
+assert(islogical(notchPresent) && isscalar(notchPresent), ...
+    'notchPresent skal vaere true eller false.');
+assert(islogical(calculateKfFromKtAndQ) && ...
+    isscalar(calculateKfFromKtAndQ), ...
+    'calculateKfFromKtAndQ skal vaere true eller false.');
+assert(islogical(enableDiameterEstimate) && ...
+    isscalar(enableDiameterEstimate), ...
+    'enableDiameterEstimate skal vaere true eller false.');
+assert(islogical(runCourseTests) && isscalar(runCourseTests), ...
+    'runCourseTests skal vaere true eller false.');
+
+availableStandardDiameters_mm = ...
+    sort(unique(availableStandardDiameters_mm(:).'));
+
+assert(all(isfinite(availableStandardDiameters_mm)) && ...
+    all(availableStandardDiameters_mm > 0), ...
+    'Standarddiametre skal vaere positive, endelige tal.');
+
+%% CALCULATION
+% ----- Omdan input til middelspaending og amplitude -----
+if stressInputMode == "maxMin"
+    assert(maximumNominalStress_MPa >= minimumNominalStress_MPa, ...
+        'Maksimumsspaendingen skal vaere >= minimumsspaendingen.');
+
+    meanNominalStress_MPa = ...
+        (maximumNominalStress_MPa + minimumNominalStress_MPa)/2;
+
+    amplitudeNominalStress_MPa = ...
+        (maximumNominalStress_MPa - minimumNominalStress_MPa)/2;
+else
+    assert(amplitudeNominalStressInput_MPa >= 0, ...
+        'Spaendingsamplituden maa ikke vaere negativ.');
+
+    meanNominalStress_MPa = meanNominalStressInput_MPa;
+    amplitudeNominalStress_MPa = amplitudeNominalStressInput_MPa;
+
+    maximumNominalStress_MPa = ...
+        meanNominalStress_MPa + amplitudeNominalStress_MPa;
+
+    minimumNominalStress_MPa = ...
+        meanNominalStress_MPa - amplitudeNominalStress_MPa;
+end
+
+if abs(maximumNominalStress_MPa) > eps
+    stressRatioR = ...
+        minimumNominalStress_MPa/maximumNominalStress_MPa;
+else
+    stressRatioR = NaN;
+end
+
+% ----- Beregn udmattelsesfaktoren Kf -----
+if notchPresent
+    if calculateKfFromKtAndQ
+        fatigueNotchFactorKf = ...
+            1 + notchSensitivityQ*(theoreticalKt - 1);
+    else
+        fatigueNotchFactorKf = fatigueNotchFactorKfInput;
+    end
+
+    assert(abs(geometricSizeFactorKd - 1) <= 1e-12, ...
+        ['Kursusmetoden bruger Kd=1 ved notch. ', ...
+         'Kd og Kf maa ikke reducere samme notch samtidig.']);
+else
+    fatigueNotchFactorKf = 1;
+
+    if calculateKfFromKtAndQ && theoreticalKt > 1
+        warning(['notchPresent=false: theoreticalKt ignoreres i ', ...
+            'udmattelsesreduktionen.']);
+    end
+end
+
+% ----- Reducer kun materialets amplitudedata -----
+materialAmplitudeReductionFactor = ...
+    castSizeFactorLambda / ...
+    (geometricSizeFactorKd * fatigueNotchFactorKf * ...
+     surfaceRoughnessFactorKr);
+
+fatigueLimitAlternatingReduced_MPa = ...
+    materialAmplitudeReductionFactor * ...
+    fatigueLimitAlternatingLab_MPa;
+
+fatigueLimitPulsatingAmplitudeReduced_MPa = ...
+    materialAmplitudeReductionFactor * ...
+    fatigueLimitPulsatingLab_MPa;
+
+% Middelkoordinaten i det pulserende materialepunkt reduceres ikke.
+fatigueLimitPulsatingMean_MPa = ...
+    fatigueLimitPulsatingLab_MPa;
+
+assert(fatigueLimitAlternatingReduced_MPa >= ...
+    fatigueLimitPulsatingAmplitudeReduced_MPa, ...
+    ['Den anvendte stykvise Haigh-konstruktion forudsaetter, at ', ...
+     'vekselgraensen ikke er lavere end den pulserende amplitude.']);
+
+% ----- Haigh-graense ved det aktuelle middelspændingsniveau -----
+allowableAmplitudeAtCurrentMean_MPa = haighBoundaryAmplitude( ...
+    meanNominalStress_MPa, ...
+    fatigueLimitAlternatingReduced_MPa, ...
+    fatigueLimitPulsatingMean_MPa, ...
+    fatigueLimitPulsatingAmplitudeReduced_MPa, ...
+    meanAxisIntercept_MPa);
+
+% ----- Tre sikkerhedsdefinitioner fra kursusdiagrammet -----
+fatigueSafetyProportional = proportionalHaighSafety( ...
+    meanNominalStress_MPa, amplitudeNominalStress_MPa, ...
+    fatigueLimitAlternatingReduced_MPa, ...
+    fatigueLimitPulsatingMean_MPa, ...
+    fatigueLimitPulsatingAmplitudeReduced_MPa, ...
+    meanAxisIntercept_MPa);
+
+if amplitudeNominalStress_MPa > 0
+    fatigueSafetyFixedMean = ...
+        allowableAmplitudeAtCurrentMean_MPa / ...
+        amplitudeNominalStress_MPa;
+else
+    fatigueSafetyFixedMean = Inf;
+end
+
+[fatigueSafetyFixedAmplitude, ...
+    allowableMeanAtCurrentAmplitude_MPa] = fixedAmplitudeHaighSafety( ...
+    meanNominalStress_MPa, amplitudeNominalStress_MPa, ...
+    fatigueLimitAlternatingReduced_MPa, ...
+    fatigueLimitPulsatingMean_MPa, ...
+    fatigueLimitPulsatingAmplitudeReduced_MPa, ...
+    meanAxisIntercept_MPa);
+
+% ----- Vaelg den sikkerhedsdefinition, opgaven foreskriver -----
+switch fatigueSafetyDefinition
+    case "proportional"
+        fatigueSafetyFactor = fatigueSafetyProportional;
+        boundaryPointMean_MPa = ...
+            fatigueSafetyFactor*meanNominalStress_MPa;
+        boundaryPointAmplitude_MPa = ...
+            fatigueSafetyFactor*amplitudeNominalStress_MPa;
+
+    case "fixedMean"
+        fatigueSafetyFactor = fatigueSafetyFixedMean;
+        boundaryPointMean_MPa = meanNominalStress_MPa;
+        boundaryPointAmplitude_MPa = ...
+            allowableAmplitudeAtCurrentMean_MPa;
+
+    case "fixedAmplitude"
+        assert(isfinite(fatigueSafetyFixedAmplitude), ...
+            ['fixedAmplitude er ikke defineret for dette driftspunkt ', ...
+             'i den ikke-negative del af kursusdiagrammet.']);
+        fatigueSafetyFactor = fatigueSafetyFixedAmplitude;
+        boundaryPointMean_MPa = ...
+            allowableMeanAtCurrentAmplitude_MPa;
+        boundaryPointAmplitude_MPa = ...
+            amplitudeNominalStress_MPa;
+end
+
+% ----- Separat statisk flydekontrol -----
+maximumAbsoluteNominalStress_MPa = max(abs( ...
+    [maximumNominalStress_MPa, minimumNominalStress_MPa]));
+
+if loadType == "torsion"
+    maximumLocalStaticEquivalentStress_MPa = ...
+        sqrt(3)*staticKt*maximumAbsoluteNominalStress_MPa;
+else
+    maximumLocalStaticEquivalentStress_MPa = ...
+        staticKt*maximumAbsoluteNominalStress_MPa;
+end
+
+if maximumLocalStaticEquivalentStress_MPa > 0
+    staticYieldSafetyFactor = ...
+        yieldStrength_MPa/maximumLocalStaticEquivalentStress_MPa;
+else
+    staticYieldSafetyFactor = Inf;
+end
+
+% ----- Valgfrit foerste diameterestimat -----
+requiredContinuousDiameter_mm = NaN;
+chosenStandardDiameter_mm = NaN;
+estimatedSafetyAtChosenDiameter = NaN;
+
+if enableDiameterEstimate
+    assert(currentReferenceDiameter_mm > 0 && ...
+        stressDiameterExponent > 0, ...
+        'Diameter og skaleringseksponent skal vaere positive.');
+
+    if fatigueSafetyDefinition ~= "proportional"
+        warning(['Diameterestimatet springes over, fordi det ', ...
+            'forudsaetter proportional skalering af middelspaending ', ...
+            'og amplitude.']);
+    elseif ~isfinite(fatigueSafetyFactor) || fatigueSafetyFactor <= 0
+        warning(['Diameterestimatet springes over, fordi den beregnede ', ...
+            'sikkerhed ikke er positiv og endelig.']);
+    else
+        requiredContinuousDiameter_mm = ...
+            currentReferenceDiameter_mm * ...
+            (requiredFatigueSafetyFactor/fatigueSafetyFactor)^( ...
+            1/stressDiameterExponent);
+
+        if ~isempty(availableStandardDiameters_mm)
+            candidateIndex = find( ...
+                availableStandardDiameters_mm >= ...
+                requiredContinuousDiameter_mm, 1, 'first');
+
+            if ~isempty(candidateIndex)
+                chosenStandardDiameter_mm = ...
+                    availableStandardDiameters_mm(candidateIndex);
+
+                estimatedSafetyAtChosenDiameter = ...
+                    fatigueSafetyFactor * ...
+                    (chosenStandardDiameter_mm / ...
+                     currentReferenceDiameter_mm)^stressDiameterExponent;
+            end
+        end
+    end
+end
+
+%% RESULTS
+fprintf('\n===== A3: UDMATTELSE OG HAIGH-DIAGRAM =====\n');
+fprintf('Belastningstype:                         %s\n', ...
+    char(loadType));
+fprintf('Inputform:                               %s\n', ...
+    char(stressInputMode));
+fprintf('Nominel maksimumsspaending:              %+.3f MPa\n', ...
+    maximumNominalStress_MPa);
+fprintf('Nominel minimumsspaending:               %+.3f MPa\n', ...
+    minimumNominalStress_MPa);
+fprintf('Nominel middelspaending:                 %+.3f MPa\n', ...
+    meanNominalStress_MPa);
+fprintf('Nominel spaendingsamplitude:             %.3f MPa\n', ...
+    amplitudeNominalStress_MPa);
+
+if isfinite(stressRatioR)
+    fprintf('Spaendingsforhold R:                     %.4f\n', ...
+        stressRatioR);
+else
+    fprintf('Spaendingsforhold R:                     ikke defineret\n');
+end
+
+fprintf('\nReduktion af materialedata:\n');
+fprintf('  Kf:                                    %.4f\n', ...
+    fatigueNotchFactorKf);
+fprintf('  Samlet amplitudefaktor:                %.4f\n', ...
+    materialAmplitudeReductionFactor);
+fprintf('  Reduceret vekselgraense:               %.3f MPa\n', ...
+    fatigueLimitAlternatingReduced_MPa);
+fprintf('  Pulserende middelkoordinat:            %.3f MPa\n', ...
+    fatigueLimitPulsatingMean_MPa);
+fprintf('  Reduceret pulserende amplitude:        %.3f MPa\n', ...
+    fatigueLimitPulsatingAmplitudeReduced_MPa);
+fprintf('  Tilladt amplitude ved aktuelt sigma_m: %.3f MPa\n', ...
+    allowableAmplitudeAtCurrentMean_MPa);
+
+fprintf('\nSikkerheder i Haigh-diagrammet:\n');
+fprintf('  Proportional, konstant R:              %.3f\n', ...
+    fatigueSafetyProportional);
+fprintf('  Fast middelspaending:                  %.3f\n', ...
+    fatigueSafetyFixedMean);
+
+if isfinite(fatigueSafetyFixedAmplitude)
+    fprintf('  Fast amplitude:                        %.3f\n', ...
+        fatigueSafetyFixedAmplitude);
+else
+    fprintf('  Fast amplitude:                        ikke defineret\n');
+end
+
+fprintf('  Valgt definition:                      %s\n', ...
+    char(fatigueSafetyDefinition));
+fprintf('  Valgt udmattelsessikkerhed:            %.3f\n', ...
+    fatigueSafetyFactor);
+fprintf('  Kraevet udmattelsessikkerhed:          %.3f\n', ...
+    requiredFatigueSafetyFactor);
+
+fprintf('\nStatisk kontrol:\n');
+fprintf('  Maks. lokal statisk aequivalentsp.:    %.3f MPa\n', ...
+    maximumLocalStaticEquivalentStress_MPa);
+fprintf('  Sikkerhed mod flydning:                %.3f\n', ...
+    staticYieldSafetyFactor);
+
+if enableDiameterEstimate
+    fprintf('\nFoerste diameterestimat med faste faktorer:\n');
+    fprintf('  Nuværende referencediameter:           %.3f mm\n', ...
+        currentReferenceDiameter_mm);
+    fprintf('  Kontinuerligt kraevet estimat:         %.3f mm\n', ...
+        requiredContinuousDiameter_mm);
+
+    if isfinite(chosenStandardDiameter_mm)
+        fprintf('  Valgt leveret standarddiameter:        %.3f mm\n', ...
+            chosenStandardDiameter_mm);
+        fprintf('  Estimeret sikkerhed ved standardmaal:  %.3f\n', ...
+            estimatedSafetyAtChosenDiameter);
+    elseif ~isempty(availableStandardDiameters_mm)
+        fprintf(['  ADVARSEL: Ingen leveret standarddiameter er ', ...
+            'stor nok.\n']);
+    else
+        fprintf(['  Ingen standarddiametre er leveret; praktisk ', ...
+            'valg udføres manuelt.\n']);
+    end
+end
+
+haighMaterialPoints = table( ...
+    ["Vekslende R=-1"; "Pulserende R=0"; "Middelakse"], ...
+    [0; fatigueLimitPulsatingMean_MPa; meanAxisIntercept_MPa], ...
+    [fatigueLimitAlternatingReduced_MPa; ...
+     fatigueLimitPulsatingAmplitudeReduced_MPa; 0], ...
+    'VariableNames', {'Punkt', 'Middel_MPa', 'Amplitude_MPa'});
+
+fprintf('\nReducerede Haigh-materialepunkter:\n');
+disp(haighMaterialPoints);
+
+results = struct;
+results.maximumNominalStress_MPa = maximumNominalStress_MPa;
+results.minimumNominalStress_MPa = minimumNominalStress_MPa;
+results.meanNominalStress_MPa = meanNominalStress_MPa;
+results.amplitudeNominalStress_MPa = amplitudeNominalStress_MPa;
+results.stressRatioR = stressRatioR;
+results.fatigueNotchFactorKf = fatigueNotchFactorKf;
+results.materialAmplitudeReductionFactor = ...
+    materialAmplitudeReductionFactor;
+results.fatigueLimitAlternatingReduced_MPa = ...
+    fatigueLimitAlternatingReduced_MPa;
+results.fatigueLimitPulsatingMean_MPa = ...
+    fatigueLimitPulsatingMean_MPa;
+results.fatigueLimitPulsatingAmplitudeReduced_MPa = ...
+    fatigueLimitPulsatingAmplitudeReduced_MPa;
+results.allowableAmplitudeAtCurrentMean_MPa = ...
+    allowableAmplitudeAtCurrentMean_MPa;
+results.fatigueSafetyProportional = ...
+    fatigueSafetyProportional;
+results.fatigueSafetyFixedMean = fatigueSafetyFixedMean;
+results.fatigueSafetyFixedAmplitude = ...
+    fatigueSafetyFixedAmplitude;
+results.fatigueSafetyDefinition = fatigueSafetyDefinition;
+results.fatigueSafetyFactor = fatigueSafetyFactor;
+results.boundaryPointMean_MPa = boundaryPointMean_MPa;
+results.boundaryPointAmplitude_MPa = boundaryPointAmplitude_MPa;
+results.maximumLocalStaticEquivalentStress_MPa = ...
+    maximumLocalStaticEquivalentStress_MPa;
+results.staticYieldSafetyFactor = staticYieldSafetyFactor;
+results.requiredContinuousDiameter_mm = ...
+    requiredContinuousDiameter_mm;
+results.chosenStandardDiameter_mm = chosenStandardDiameter_mm;
+results.haighMaterialPoints = haighMaterialPoints;
+
+%% AUTOMATIC CHECKS
+if meanNominalStress_MPa < 0
+    fprintf(['\nADVARSEL: Middelspaendingen er trykkende. Scriptet ', ...
+        'giver konservativt ingen gunstig effekt af tryk.\n']);
+end
+
+if fatigueSafetyFactor >= requiredFatigueSafetyFactor
+    fatigueStatus = "OK";
+    fprintf(['\nOK: Udmattelsessikkerheden %.3f opfylder kravet ', ...
+        '%.3f for den valgte sikkerhedsdefinition.\n'], ...
+        fatigueSafetyFactor, requiredFatigueSafetyFactor);
+else
+    fatigueStatus = "IKKE OK";
+    fprintf(['\nIKKE OK: Udmattelsessikkerheden %.3f er mindre end ', ...
+        'kravet %.3f. Amplitude, middelspaending, geometri eller ', ...
+        'overflade skal aendres.\n'], ...
+        fatigueSafetyFactor, requiredFatigueSafetyFactor);
+end
+
+if staticYieldSafetyFactor >= requiredStaticSafetyFactor
+    staticStatus = "OK";
+    fprintf(['OK: Statisk sikkerhed %.3f opfylder kravet %.3f.\n'], ...
+        staticYieldSafetyFactor, requiredStaticSafetyFactor);
+else
+    staticStatus = "IKKE OK";
+    fprintf(['IKKE OK: Statisk sikkerhed %.3f er mindre end ', ...
+        'kravet %.3f. Lokal flydning kan forekomme.\n'], ...
+        staticYieldSafetyFactor, requiredStaticSafetyFactor);
+end
+
+if maximumNominalStress_MPa > meanAxisIntercept_MPa
+    fprintf(['ADVARSEL: Den nominelle maksimumsspaending overstiger ', ...
+        'middelakse-skaeringen i Haigh-dataene.\n']);
+end
+
+results.fatigueStatus = fatigueStatus;
+results.staticStatus = staticStatus;
+
+%% PLOTS
+% ----- Haigh-diagram -----
+negativeMeanLimit_MPa = -max( ...
+    0.15*meanAxisIntercept_MPa, ...
+    1.20*abs(min(0, meanNominalStress_MPa)));
+
+xNegative_MPa = linspace(negativeMeanLimit_MPa, 0, 80);
+yNegative_MPa = fatigueLimitAlternatingReduced_MPa * ...
+    ones(size(xNegative_MPa));
+
+xSegment1_MPa = linspace( ...
+    0, fatigueLimitPulsatingMean_MPa, 150);
+xSegment2_MPa = linspace( ...
+    fatigueLimitPulsatingMean_MPa, meanAxisIntercept_MPa, 200);
+
+ySegment1_MPa = haighBoundaryAmplitude( ...
+    xSegment1_MPa, fatigueLimitAlternatingReduced_MPa, ...
+    fatigueLimitPulsatingMean_MPa, ...
+    fatigueLimitPulsatingAmplitudeReduced_MPa, ...
+    meanAxisIntercept_MPa);
+
+ySegment2_MPa = haighBoundaryAmplitude( ...
+    xSegment2_MPa, fatigueLimitAlternatingReduced_MPa, ...
+    fatigueLimitPulsatingMean_MPa, ...
+    fatigueLimitPulsatingAmplitudeReduced_MPa, ...
+    meanAxisIntercept_MPa);
+
+% Ureduceret laboratoriegraense til sammenligning
+xLab1_MPa = linspace(0, fatigueLimitPulsatingLab_MPa, 120);
+xLab2_MPa = linspace( ...
+    fatigueLimitPulsatingLab_MPa, meanAxisIntercept_MPa, 160);
+
+labSlope1 = (fatigueLimitPulsatingLab_MPa - ...
+    fatigueLimitAlternatingLab_MPa) / ...
+    fatigueLimitPulsatingLab_MPa;
+
+yLab1_MPa = fatigueLimitAlternatingLab_MPa + ...
+    labSlope1*xLab1_MPa;
+
+labSlope2 = -fatigueLimitPulsatingLab_MPa / ...
+    (meanAxisIntercept_MPa-fatigueLimitPulsatingLab_MPa);
+
+yLab2_MPa = fatigueLimitPulsatingLab_MPa + ...
+    labSlope2*(xLab2_MPa-fatigueLimitPulsatingLab_MPa);
+
+figure('Name', 'A3 - Haigh-diagram');
+plot(xNegative_MPa, yNegative_MPa, 'LineWidth', 1.6);
+hold on;
+plot(xSegment1_MPa, ySegment1_MPa, 'LineWidth', 2.0);
+plot(xSegment2_MPa, ySegment2_MPa, 'LineWidth', 2.0);
+plot([xLab1_MPa, xLab2_MPa], [yLab1_MPa, yLab2_MPa], ...
+    '--', 'LineWidth', 1.2);
+
+plot(meanNominalStress_MPa, amplitudeNominalStress_MPa, ...
+    'o', 'MarkerSize', 8, 'LineWidth', 1.6);
+
+if isfinite(boundaryPointMean_MPa) && ...
+        isfinite(boundaryPointAmplitude_MPa)
+    plot(boundaryPointMean_MPa, boundaryPointAmplitude_MPa, ...
+        's', 'MarkerSize', 8, 'LineWidth', 1.6);
+
+    plot([meanNominalStress_MPa, boundaryPointMean_MPa], ...
+         [amplitudeNominalStress_MPa, ...
+          boundaryPointAmplitude_MPa], ':', 'LineWidth', 1.1);
+end
+
+grid on;
+xlabel('Middelspaending [MPa]');
+ylabel('Spaendingsamplitude [MPa]');
+title('Haigh-diagram med reducerede materialedata');
+legend('Konservativ trykside', ...
+    'Reduceret graense, segment 1', ...
+    'Reduceret graense, segment 2', ...
+    'Laboratoriegraense', 'Driftspunkt', ...
+    'Graensepunkt for valgt sikkerhed', ...
+    'Sikkerhedsretning', 'Location', 'best');
+
+xPlotCandidates_MPa = [ ...
+    1.05*meanAxisIntercept_MPa, ...
+    1.15*meanNominalStress_MPa, ...
+    1.15*boundaryPointMean_MPa];
+xPlotCandidates_MPa = xPlotCandidates_MPa( ...
+    isfinite(xPlotCandidates_MPa));
+xMaximumPlot_MPa = max(xPlotCandidates_MPa);
+
+yPlotCandidates_MPa = [ ...
+    1.15*fatigueLimitAlternatingLab_MPa, ...
+    1.15*amplitudeNominalStress_MPa, ...
+    1.15*boundaryPointAmplitude_MPa];
+yPlotCandidates_MPa = yPlotCandidates_MPa( ...
+    isfinite(yPlotCandidates_MPa));
+yMaximumPlot_MPa = max(yPlotCandidates_MPa);
+
+xlim([negativeMeanLimit_MPa, xMaximumPlot_MPa]);
+ylim([0, yMaximumPlot_MPa]);
+
+% ----- Diameterestimat -----
+if enableDiameterEstimate && isfinite(requiredContinuousDiameter_mm)
+    diameterMinimum_mm = max( ...
+        0.5*currentReferenceDiameter_mm, ...
+        0.75*min(currentReferenceDiameter_mm, ...
+                 requiredContinuousDiameter_mm));
+
+    diameterMaximum_mm = 1.25*max( ...
+        currentReferenceDiameter_mm, requiredContinuousDiameter_mm);
+
+    diameterSweep_mm = linspace( ...
+        diameterMinimum_mm, diameterMaximum_mm, 200);
+
+    estimatedFatigueSafetySweep = fatigueSafetyFactor * ...
+        (diameterSweep_mm/currentReferenceDiameter_mm).^ ...
+        stressDiameterExponent;
+
+    figure('Name', 'A3 - Diameterestimat');
+    plot(diameterSweep_mm, estimatedFatigueSafetySweep, ...
+        'LineWidth', 1.6);
+    hold on;
+    yline(requiredFatigueSafetyFactor, '--', ...
+        'Kraevet sikkerhed');
+    xline(requiredContinuousDiameter_mm, ':', ...
+        'Kontinuerligt estimat');
+    plot(currentReferenceDiameter_mm, fatigueSafetyFactor, ...
+        'o', 'MarkerSize', 8, 'LineWidth', 1.5);
+    grid on;
+    xlabel('Referencediameter [mm]');
+    ylabel('Estimeret udmattelsessikkerhed [-]');
+    title('Diameterestimat med konstante reduktionsfaktorer');
+    legend('Estimeret sikkerhed', 'Krav', ...
+        'Kontinuerligt estimat', 'Nuværende design', ...
+        'Location', 'best');
+end
+
+%% PHYSICAL CONCLUSION
+fprintf('\n===== FYSISK KONKLUSION =====\n');
+
+if fatigueSafetyFactor >= requiredFatigueSafetyFactor
+    fprintf(['Driftspunktet ligger tilstraekkeligt langt inden for ', ...
+        'den reducerede Haigh-graense for den valgte lastvariation.\n']);
+else
+    fprintf(['Driftspunktet har utilstraekkelig afstand til den ', ...
+        'reducerede Haigh-graense. Udmattelsesbrud kan derfor ikke ', ...
+        'udelukkes ved det kraevede sikkerhedsniveau.\n']);
+end
+
+fprintf(['Resultatet er kun saa sikkert som de manuelt aflæste ', ...
+    'materialedata og faktorer lambda, Kd, Kr, Kt og q.\n']);
+
+fprintf(['Kf er anvendt paa materialets amplitude og staticKt kun i ', ...
+    'den separate flydekontrol, saa notch-effekten ikke taelles dobbelt.\n']);
+
+if enableDiameterEstimate
+    fprintf(['Diameterresultatet er et foerste kontinuerligt estimat. ', ...
+        'Efter aendring af diameter skal Kt, q, Kf, Kd og Kr slaas op ', ...
+        'igen, og beregningen skal gentages.\n']);
+end
+
+%% OPTIONAL TEST CASES
+if runCourseTests
+    fprintf('\n===== INDBYGGEDE TESTS =====\n');
+
+    % Test 1: Kursusoevelse ved x=0.1 m og x=0.9 m.
+    % sigma_a=200 MPa, sigma_m=0, sigma_ub=300 MPa,
+    % Kt=1.35, q=0.84, Kd=1, Kr=1.24 og lambda=1.
+    % Slides afrunder den reducerede graense til 189 MPa og n til 0.95.
+    testKf = 1 + 0.84*(1.35-1);
+    testReduction = 1/(1*testKf*1.24);
+    testAlternatingReduced_MPa = testReduction*300;
+
+    testSafetyCourse = proportionalHaighSafety( ...
+        0, 200, testAlternatingReduced_MPa, ...
+        250, testReduction*250, 640);
+
+    testRequiredDiameter_mm = ...
+        26.6*(1.5/testSafetyCourse)^(1/3);
+
+    % Test 2: Det reducerede pulserende materialepunkt skal ligge
+    % praecis paa Haigh-graensen, dvs. proportional sikkerhed = 1.
+    testPulsatingSafety = proportionalHaighSafety( ...
+        250, testReduction*250, ...
+        testAlternatingReduced_MPa, ...
+        250, testReduction*250, 640);
+
+    % Test 3: Simpel fuldt vekslende haandkontrol uden reduktion.
+    % Graense 300 MPa og amplitude 100 MPa giver n=3.
+    testSimpleSafety = proportionalHaighSafety( ...
+        0, 100, 300, 250, 250, 640);
+
+    testName = [ ...
+        "Kursus: Kf"; ...
+        "Kursus: reduceret vekselgraense"; ...
+        "Kursus: sikkerhed"; ...
+        "Diameterestimat ved n_krav=1.5"; ...
+        "Pulserende materialepunkt"; ...
+        "Simpel R=-1 haandkontrol"];
+
+    calculatedValue = [ ...
+        testKf; ...
+        testAlternatingReduced_MPa; ...
+        testSafetyCourse; ...
+        testRequiredDiameter_mm; ...
+        testPulsatingSafety; ...
+        testSimpleSafety];
+
+    referenceValue = [ ...
+        1.29; ...
+        189; ...
+        0.95; ...
+        31.14; ...
+        1.00; ...
+        3.00];
+
+    tolerance = [0.01; 3.0; 0.02; 0.05; 1e-10; 1e-10];
+    passed = abs(calculatedValue-referenceValue) <= tolerance;
+
+    testResults = table( ...
+        testName, calculatedValue, referenceValue, ...
+        tolerance, passed);
+
+    disp(testResults);
+
+    assert(all(passed), ...
+        ['Mindst én A3-test ligger uden for tolerancen. ', ...
+         'Kontroller Haigh-konstruktion og reduktionsfaktorer.']);
+
+    % Kontroller kontinuitet i begge knaekpunkter.
+    boundaryAtZero = haighBoundaryAmplitude( ...
+        0, testAlternatingReduced_MPa, ...
+        250, testReduction*250, 640);
+
+    boundaryAtPulsatingPoint = haighBoundaryAmplitude( ...
+        250, testAlternatingReduced_MPa, ...
+        250, testReduction*250, 640);
+
+    boundaryAtIntercept = haighBoundaryAmplitude( ...
+        640, testAlternatingReduced_MPa, ...
+        250, testReduction*250, 640);
+
+    assert(abs(boundaryAtZero-testAlternatingReduced_MPa) < 1e-10);
+    assert(abs(boundaryAtPulsatingPoint-testReduction*250) < 1e-10);
+    assert(abs(boundaryAtIntercept) < 1e-10);
+
+    fprintf(['OK: Kursuscasen, materialepunkterne og de simple ', ...
+        'Haigh-kontroller ligger inden for tolerancerne.\n']);
+end
+
+%% LOCAL FUNCTIONS
+function allowableAmplitude_MPa = haighBoundaryAmplitude( ...
+    meanStress_MPa, alternatingReduced_MPa, ...
+    pulsatingMean_MPa, pulsatingAmplitudeReduced_MPa, ...
+    meanAxisIntercept_MPa)
+% Stykvis lineær Haigh-graense efter kursusdiagrammet.
+% Trykkende middelspaending krediteres konservativt ikke.
+
+    allowableAmplitude_MPa = zeros(size(meanStress_MPa));
+
+    compressiveRegion = meanStress_MPa <= 0;
+    firstSegment = meanStress_MPa > 0 & ...
+        meanStress_MPa <= pulsatingMean_MPa;
+    secondSegment = meanStress_MPa > pulsatingMean_MPa & ...
+        meanStress_MPa <= meanAxisIntercept_MPa;
+    beyondIntercept = meanStress_MPa > meanAxisIntercept_MPa;
+
+    allowableAmplitude_MPa(compressiveRegion) = ...
+        alternatingReduced_MPa;
+
+    slope1 = (pulsatingAmplitudeReduced_MPa - ...
+        alternatingReduced_MPa)/pulsatingMean_MPa;
+
+    allowableAmplitude_MPa(firstSegment) = ...
+        alternatingReduced_MPa + ...
+        slope1*meanStress_MPa(firstSegment);
+
+    slope2 = -pulsatingAmplitudeReduced_MPa / ...
+        (meanAxisIntercept_MPa-pulsatingMean_MPa);
+
+    allowableAmplitude_MPa(secondSegment) = ...
+        pulsatingAmplitudeReduced_MPa + ...
+        slope2*(meanStress_MPa(secondSegment)-pulsatingMean_MPa);
+
+    allowableAmplitude_MPa(beyondIntercept) = 0;
+    allowableAmplitude_MPa = max(allowableAmplitude_MPa, 0);
+end
+
+function safetyFactor = proportionalHaighSafety( ...
+    meanStress_MPa, amplitudeStress_MPa, ...
+    alternatingReduced_MPa, pulsatingMean_MPa, ...
+    pulsatingAmplitudeReduced_MPa, meanAxisIntercept_MPa)
+% Sikkerhed langs en straale fra origo: konstant R-vaerdi.
+
+    assert(amplitudeStress_MPa >= 0, ...
+        'Amplituden maa ikke vaere negativ.');
+
+    if amplitudeStress_MPa == 0 && meanStress_MPa == 0
+        safetyFactor = Inf;
+        return;
+    end
+
+    if meanStress_MPa <= 0
+        if amplitudeStress_MPa > 0
+            safetyFactor = ...
+                alternatingReduced_MPa/amplitudeStress_MPa;
+        else
+            safetyFactor = Inf;
+        end
+        return;
+    end
+
+    if amplitudeStress_MPa == 0
+        safetyFactor = meanAxisIntercept_MPa/meanStress_MPa;
+        return;
+    end
+
+    slope1 = (pulsatingAmplitudeReduced_MPa - ...
+        alternatingReduced_MPa)/pulsatingMean_MPa;
+
+    denominator1 = amplitudeStress_MPa - ...
+        slope1*meanStress_MPa;
+
+    candidates = [];
+
+    if denominator1 > 0
+        candidate1 = alternatingReduced_MPa/denominator1;
+        candidateMean1 = candidate1*meanStress_MPa;
+
+        if candidate1 >= 0 && ...
+                candidateMean1 >= -1e-10 && ...
+                candidateMean1 <= pulsatingMean_MPa+1e-10
+            candidates(end+1) = candidate1; %#ok<AGROW>
+        end
+    end
+
+    slope2 = -pulsatingAmplitudeReduced_MPa / ...
+        (meanAxisIntercept_MPa-pulsatingMean_MPa);
+
+    intercept2 = pulsatingAmplitudeReduced_MPa - ...
+        slope2*pulsatingMean_MPa;
+
+    denominator2 = amplitudeStress_MPa - ...
+        slope2*meanStress_MPa;
+
+    if denominator2 > 0
+        candidate2 = intercept2/denominator2;
+        candidateMean2 = candidate2*meanStress_MPa;
+
+        if candidate2 >= 0 && ...
+                candidateMean2 >= pulsatingMean_MPa-1e-10 && ...
+                candidateMean2 <= meanAxisIntercept_MPa+1e-10
+            candidates(end+1) = candidate2; %#ok<AGROW>
+        end
+    end
+
+    assert(~isempty(candidates), ...
+        'Kunne ikke finde skaeringen mellem laststraalen og Haigh-graensen.');
+
+    safetyFactor = min(candidates);
+end
+
+function [safetyFactor, allowableMean_MPa] = ...
+    fixedAmplitudeHaighSafety( ...
+    meanStress_MPa, amplitudeStress_MPa, ...
+    alternatingReduced_MPa, pulsatingMean_MPa, ...
+    pulsatingAmplitudeReduced_MPa, meanAxisIntercept_MPa)
+% Sikkerhed naar amplituden fastholdes, og middelspaendingen skaleres.
+
+    safetyFactor = NaN;
+    allowableMean_MPa = NaN;
+
+    if meanStress_MPa <= 0
+        return;
+    end
+
+    if amplitudeStress_MPa > alternatingReduced_MPa
+        return;
+    end
+
+    slope1 = (pulsatingAmplitudeReduced_MPa - ...
+        alternatingReduced_MPa)/pulsatingMean_MPa;
+
+    slope2 = -pulsatingAmplitudeReduced_MPa / ...
+        (meanAxisIntercept_MPa-pulsatingMean_MPa);
+
+    if amplitudeStress_MPa >= ...
+            pulsatingAmplitudeReduced_MPa
+        if abs(slope1) < eps
+            allowableMean_MPa = pulsatingMean_MPa;
+        else
+            allowableMean_MPa = ...
+                (amplitudeStress_MPa-alternatingReduced_MPa)/slope1;
+        end
+    else
+        allowableMean_MPa = pulsatingMean_MPa + ...
+            (amplitudeStress_MPa- ...
+             pulsatingAmplitudeReduced_MPa)/slope2;
+    end
+
+    allowableMean_MPa = max(0, min( ...
+        allowableMean_MPa, meanAxisIntercept_MPa));
+
+    safetyFactor = allowableMean_MPa/meanStress_MPa;
+end

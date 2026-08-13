@@ -1,0 +1,123 @@
+\newcommand{\NoteType}{Exam 2025}
+\newcommand{\CourseName}{Maskinelementer}
+\newcommand{\CourseNumber}{290211U009}
+\input{./preamble.tex}
+\begin{document}
+    \input{./titlepage.tex}
+    \newpage
+    \begin{problemwithimage}{e_2025_1}{1}
+      Gokrataksel med en diameter på $D = \qty{25}{\mm} $ og $d = \num{0,6} D$ roterer med en hastighed på 2900 RPM.
+      Den er ophængt i to SKF single row deep groove ball bearings (se SKF Katalog på Brightspace).
+      Beregn den nominelle levetid i henhold til ISO for begge lejerne, se diagram.
+    \end{problemwithimage}
+
+    \begin{figure}[ht]
+      \centering
+      \begin{subfigure}[b]{0.5\textwidth}
+          \centering
+          \includegraphics[height=2.2in]{e_2025_1_2}
+          \caption{$T_z$ og $T_y$ diagram for gokartakslen.}
+      \end{subfigure}%
+      ~ 
+      \begin{subfigure}[b]{0.5\textwidth}
+          \centering
+          \includegraphics[height=2.2in]{e_2025_1_3}
+          \caption{$M_z$ og $M_y$ diagram for gokartakslen.}
+      \end{subfigure}
+  \end{figure}
+
+    \begin{figure} [ht]
+      \centering
+      \includegraphics[width=0.5\linewidth]{./figures/e_2025_1_4.png}
+      \caption{$M_v$ og $N_x$ diagram for gokartakslen.}
+      \label{fig:e_2025_1_4}
+    \end{figure}
+
+    \begin{derivation}
+      Figuren aflæses som, at den indre diameter i kuglejet skal have en diameter på $D = \qty{25}{\mm}$.
+      Et kugleje, der overholder dette er SKF6205 (s. 272 i SKF-kataloget).
+
+      Lejereaktionerne, for hvert leje kan aflæses som springene i forskydningsdiagrammet.
+      Således,
+      \begin{align*}
+        R_{z_1} &= \qty{10,4617}{\N} - ( - \qty{537,452}{\N} ) = \qty{547.914}{\N} \\
+        R_{z_2} &= \qty{794,036}{\N} - \qty{10,4617}{\N} = \qty{783.574}{\N} \\
+        R_{y_1} &= \qty{2,41252}{\N} - ( - \qty{4,28892}{\N} )  = \qty{6.70144}{\N}\\
+        R_{y_2} &= \qty{4,28892}{\N} - (- \qty{4,02086}{\N} ) = \qty{8.30978}{\N}
+      .\end{align*}
+      De resulterende radialkrafter bliver således
+      \begin{align*}
+        R_{1} &= \sqrt{R_{y_1}^2 + R_{z_1}s^2} = \sqrt{\left( \qty{547,914}{\N}  \right)^2 + ( \qty{6,70144}{\N} )^2}  = \qty{547.955}{\N}\\
+        R_{2} &= \sqrt{R_{y_2}^2 + R_{z_2}^2} = \sqrt{\left( \qty{783,574}{\N}  \right)^2 + (\qty{8,30978}{\N} )^2} = \qty{783.618}{\N}
+      .\end{align*}
+
+      Aksialkraften for hvert leje aflæses som springet på $N_x$ diagrammet som omtrent
+      \begin{align*}
+        A_1 &= \qty{228,921}{\N} - \qty{330}{\N}  = \qty{-101.079}{\N} \\
+        A_2 &= \qty{0}{\N} 
+      .\end{align*}
+
+      For SKF6205 har vi $f_0 = 14$, $C = \qty{14,8}{\kN} $, $p = 3$, og $C_0 = \qty{7,8}{\kN}$ så vores calculation factors skal findes fra
+      \begin{equation*}
+        \frac{f_0 F_A}{C_0} = \frac{14 \cdot \qty{101,079}{\N} }{\qty{7,8}{\kN}} = 0.181424
+      .\end{equation*}
+      således får vi $e = \num{0,19}$, $X = \num{0,56}$ $Y = \num{2,3}$. 
+
+      Vi kan da regne
+      \begin{equation*}
+        P = X F_r + Y \cdot  F_A
+      .\end{equation*}
+      for hvert leje til
+      \begin{align*}
+        P_1 &= \num{0,56} \cdot \qty{547,955}{\N} - \num{2,3} \cdot \qty{101,079}{\N}   = 74.3731\text{N}\\
+        P_2 &= \num{0,56} \cdot \qty{783,618}{\N} + \num{2,3} \cdot 0  = 438.826\text{N}
+      .\end{align*}
+      Således kan levetiden i millioner af omdrejninger for hvert leje regnes som
+      \begin{align*}
+        L_{10_1} &= \left( \frac{C}{P} \right)^{p} = (\frac{\qty{14,8}{\kN}}{\qty{74,3731}{\N}})^{3} = \num{7,88e6}  \\
+        L_{10_2} &= \left( \frac{\qty{14,8}{\kN} }{\qty{438,826}{\N} } \right) = \num{38400} 
+      .\end{align*}
+      Så i timer er dette
+      \begin{align*}
+        L_{10h_1} &= \frac{10^6}{60\cdot 2900} \cdot \num{7.88} \cdot 10^6  = \qty{4.52874e7}{hr}\\
+        L_{10h_2} &= \frac{10^6}{60 \cdot 2900} \cdot \num{38400} = \qty{220690}{hr}
+      .\end{align*}
+    \end{derivation}
+
+
+    \begin{problemwithimage}{e_2025_2}{2}
+      Bestem sikkerhedsfaktor mod flydning (English: Plastic yielding) ved lejer for Gokartakslen i Problem 1.
+      Flydespænding er \qty{400}{\MPa} (English: Yield stress).
+    \end{problemwithimage}
+
+    \begin{problem}{3}
+      Bestem sikkerhedsfaktor mod udmattelse ved bøjning ved lejer for Gokartakslen i Problem 1.
+      Udelad normalklart.
+      Brudstyrke er \qty{640}{\MPa}.
+      Overfladeruhed er \qty{5}{\micro\m} (English: Surface roughness).
+    \end{problem}
+
+    \begin{figure} [ht]
+      \centering
+      \includegraphics[width=0.8\linewidth]{./figures/e_2025_3.png}
+    \end{figure}
+
+    \begin{problemwithimage}{e_2025_4}{4}
+      En trykbeholder med indvendigt overtryk $P_b$ har et låg monteret for at forhindre trykket i at lække.
+      
+      Følgende data gælder:
+      \begin{itemize}
+        \item Låget har 8 stk. M10 bolte i kvalitet \num{5,8} monteret
+        \item Indvendig diameter på låget er Ø\qty{200}{\mm}
+        \item Stivheden for 1 bolt er $k_b = \qty{1}{\mega\N\per\mm}$ og stivheden for underlaget er $k_m = \qty{2,5}{\mega\N\per\mm}$
+        \item Boltsamlingerne skal forspændes til at kunne skilles ad
+      \end{itemize}
+
+      \begin{enumerate}
+        \item Bestem forspændingskraften pr. bolt
+        \item Bestem det maksimale indvendige overtryk $P_b$ i \unit{\bar} i beholderen hvis Proof Strength i boltene ikke må overskrides
+      \end{enumerate}
+
+      Hint: $P = \frac{F}{A}$.
+    \end{problemwithimage}
+\end{document}
