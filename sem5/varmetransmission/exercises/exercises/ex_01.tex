@@ -1,0 +1,101 @@
+% !TeX root = ../master.tex
+
+\begin{problemwithimage}{p1-31}{1--31}
+  A hair dryer is basically a duct in which a few layers of electric resistors are placed.
+  A small fan pulls the air in and forces it to flow over the resistors where it is heated.
+  Air enters a \qty{900}{\W} hair dryer at \qty{100}{\kPa} and \qty{25}{\celsius}, and leaves at \qty{50}{\celsius}.
+
+  The cross-sectional area of the hair dryer at the exit is \qty{60}{\cm\squared}.
+  Neglecting the power consumed by the fan and the heat losses through the walls of the hair dryer, determine
+
+  \begin{subproblems}
+    \subproblem the volume flow rate of air at the inlet and
+    \subproblem the velocity of the air at the exit.
+  \end{subproblems}
+\end{problemwithimage}
+
+\begin{givens}
+  \dot{W}_e = \qty{900}{\W} & Power consumption of the hair dryer \\
+  P_1 = \qty{100}{\kPa}  & Pressure at the inlet \\
+  T_1 = \qty{25}{\celsius}  & Temperature at the inlet \\
+  T_2 = \qty{50}{\celsius}  & Temperature of the outlet \\
+  A_2 = \qty{60}{\cm^2}  & Area of the outlet
+\end{givens}
+
+\begin{assumptions}
+  \item The air is an ideal gas
+  \item The system is at steady state, $\frac{\mathrm{d}}{\mathrm{d}t} = 0$
+  \item The fan does not consume power and no heat is lost through the wall
+  \item $c_p$ is assumed constant such that the enthalpy change is simply $c_p (T_2 - T_1)$
+  \item The change in pressure and potential and kinetic energy of the air is negligible
+\end{assumptions}
+
+\begin{derivation}
+
+  \derivationpart
+
+  Using the ideal gas law
+  \begin{equation*}
+    p = \rho R T
+  \end{equation*}
+  we can solve for the density of the air at the inlet and outlet respectively, remembering we assume the pressure is the same at both places
+  \begin{align*}
+    \rho &= \frac{p}{R T} \\
+  \rho_1 &= \frac{\qty{100}{\kPa}}{\qty{298,15}{\K} \cdot \qty{0,287}{\kPa.\m^3\per\kg.\K}} = \qty{1,169}{\kg\per\m^3} \\
+  \rho_2 &= \frac{\qty{100}{\kPa}}{\qty{323,15}{\K} \cdot \qty{0,287}{\kPa.\m^3\per\kg.\K} } = \qty{1,078}{\kg\per\m^3} 
+  .\end{align*}
+  As the entirety of the heat supplied by the heating element is assumed to go into the air stream the energy balance becomes
+  \begin{equation*}
+    \dot{W}_e = \dot{m} c_p (T_2 - T_1) = \rho_1 Q_{V} c_p (T_2 - T_1)
+  .\end{equation*}
+  We can now solve for the volume flow rate, $Q_V$ as
+  \begin{equation*}
+    Q_V = \frac{\dot{W}_e}{(T_2 - T_1) c_p \cdot \rho_1} = \frac{\qty{900}{\W}}{\qty{25}{\K} \cdot \qty{1007}{\J\per\kg\per\K} \cdot \qty{1,169}{\kg\per\m^3} } =\qty{0.03058}{\m^3\per\s} 
+  .\end{equation*}
+ 
+  \begin{subresult}
+    The volume flow rate through the hair dryer is
+    \begin{equation*}
+      Q_V = \qty{0,031}{\m^3\per\s} 
+    .\end{equation*}
+  \end{subresult}
+
+  \derivationpart
+
+  We can use a similar formula as above, however, this time dividing by the outlet area as well to obtain the outlet flow speed:
+  \begin{equation*}
+    V_2 = \frac{\dot{W}_e}{(T_2 - T_1) c_p \cdot \rho_2 \cdot A_2} = \frac{\qty{900}{\W}}{\qty{25}{\K} \cdot \qty{1007}{\J\per\kg\per\K} \cdot \qty{1,078}{\kg\per\m^3} \cdot \qty{60}{\cm^2} } = \qty{5,526}{\m\per\s} 
+  .\end{equation*}
+  \begin{subresult}
+    The outlet flow speed of the air is
+    \begin{equation*}
+      V_2 = \qty{5,526}{\m\per\s} 
+    .\end{equation*}
+  \end{subresult}
+\end{derivation}
+
+\begin{problemwithimage}{p1-59}{1--59}
+  One way of measuring the thermal conductivity of a material is to sandwich an electric thermofoil heater between two identical rectangular samples of the material and to heavily insulate the four outer edges, as shown in the figure.
+  Thermocouples attached to the inner and outer surfaces of the samples record the temperatures.
+  
+  During an experiment, two \qty{0,5}{\cm} thick samples $\qty{10}{\cm} \times \qty{10}{\cm}$ in size are used.
+  When steady operation is reached, the heater is observed to draw \qty{25}{\W} of electric power, and the temperature of each sample is observed to drop from \qty{82}{\celsius} at the inner surface to \qty{74}{\celsius} at the outer surface.
+  Determine the thermal conductivity of the material at the average temperature.
+\end{problemwithimage}
+
+
+\begin{problemwithimage}{p1-100}{1--100}
+  The inner and outer surfaces of a \qty{25}{\cm} thick wall in summer are at \qty{27}{\celsius}  and \qty{44}{\celsius}, respectively.
+  The outer surface of the wall exchanges heat by radiation with surrounding surfaces at \qty{40}{\celsius}, and convection heat transfer coefficient of \qty{8}{\W\per\m\squared\per\K}.
+  Solar radiation is incident on the surface at a rate of \qty{150}{\W\per\m\squared}.
+  If both the emissivity and the solar absorptivity of the outer surface are \num{0,8}, determine the effective thermal conductivity of the wall.
+\end{problemwithimage}
+
+\begin{problemwithimage}{p1-106}{1--106}
+  A flat-plate solar collector is used to heat water by having water flow through tubes attached at the back of the thin solar absorber plate.
+  The absorber plate has a surface area of \qty{2}{\m\squared} with emissivity and absorptivity of \num{0,9}.
+  The surface temperature of the absorber is \qty{35}{\celsius}, and solar radiation is incident on the absorber at \qty{500}{\W\per\m\squared} with a surrounding temperature of \qty{0}{\celsius}.
+  Convection heat transfer coefficient at the absorber surface is \qty{5}{\W\per\m\squared\per\K}, while the ambient temperature is \qty{25}{\celsius}.
+  Net heat rate absorbed by the solar collector heats the water from an inlet temperature ($T_{\mathrm{in}}$) to an outlet temperature ($T_{\mathrm{out}}$).
+  If the water flow rate is \qty{5}{\g\per\s} with specific heat of \qty{4,2}{\kJ\per\kg\per\K}, determine the temperature rise of the water.
+\end{problemwithimage}

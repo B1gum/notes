@@ -55,3 +55,13 @@ logfile
 *.out
 *.synctex.gz
 *.toc
+
+# BibLaTeX / logreq generated request files
+*.run.xml
+
+# MATLAB autosave files
+*.asv
+*.kicad_prl
+~*.kicad_*.lck
+
+private/

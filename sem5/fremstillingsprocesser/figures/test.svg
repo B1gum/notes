@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="160mm"
+   height="100mm"
+   viewBox="0 0 160 100"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   sodipodi:docname="noah-technical-full.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="false"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.91589859"
+     inkscape:cx="315.53712"
+     inkscape:cy="193.79875"
+     inkscape:window-width="1440"
+     inkscape:window-height="900"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer4"
+     showguides="true"
+     inkscape:lockguides="true"
+     showgrid="true"
+     guidecolor="#0086e5"
+     guideopacity="0.29803922">
+    <inkscape:grid
+       id="grid14"
+       units="mm"
+       originx="0"
+       originy="0"
+       spacingx="2"
+       spacingy="2"
+       empcolor="#0099e5"
+       empopacity="0.12156863"
+       color="#0099e5"
+       opacity="0.05882353"
+       empspacing="2"
+       enabled="true"
+       visible="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="30 - LaTeX" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="20 – Construction" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="10 – Guides"
+     style="display:inline;fill:#003d73"
+     sodipodi:insensitive="true">
+    <rect
+       style="fill:none;stroke:#878787;stroke-width:0.2;stroke-miterlimit:35.2;stroke-dasharray:0.8, 0.8;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect14"
+       width="156"
+       height="96"
+       x="2"
+       y="2" />
+    <path
+       style="fill:#878787;stroke:#878787;stroke-width:0.2;stroke-miterlimit:35.2;stroke-dasharray:0.8, 0.8;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 0,50 H 160.00001"
+       id="path14" />
+    <path
+       style="fill:#878787;stroke:#878787;stroke-width:0.2;stroke-miterlimit:35.2;stroke-dasharray:0.8, 0.8;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 80,0 V 100"
+       id="path15" />
+  </g>
+  <g
+     inkscape:label="00 - Background"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline" />
+</svg>
