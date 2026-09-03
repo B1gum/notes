@@ -1,0 +1,80 @@
+% !TeX root = ../master.tex
+
+\lecture{4}{3. September 2026}{Mikromekanik, Pt. I}
+
+\begin{problemwithimage}{e4_2}{4.2}
+  \begin{subproblems}
+    \subproblem Beregn stivheden i 1-retningen for et unidirektionelt glas/epoxy lamina med en fibervolumenfraktion på \num{0,7} vha. materialeegenskaberne fra tabellen.
+    \subproblem Hvor meget ville stivheden stive hvis kulfiber blev brugt i stedet for glas?
+  \end{subproblems}
+\end{problemwithimage}
+
+\begin{derivation}
+
+  \derivationpart
+
+  Vi bruger rule of mixture, for glasset først:
+  \begin{equation*}
+    E_{1g} = \qty{85}{\GPa} \cdot \num{0,7} + \qty{3,4}{\GPa} \cdot \num{0,3}  = \qty{60.52}{\GPa}
+  .\end{equation*}
+
+  \begin{subresult}
+    Stivheden af glaskompositten i 1-retningen er:
+    \begin{equation*}
+      E_{1\mathrm{g}} = \qty{60,52}{\GPa} 
+    .\end{equation*}
+  \end{subresult}
+
+  \derivationpart
+
+  Og dernæst for kulfiberkompositten:
+  \begin{equation*}
+    E_{1c} = \qty{230}{\GPa} \cdot \num{0,7} + \qty{3,4}{\GPa} \cdot \num{0,3}  = \qty{162}{\GPa}
+  .\end{equation*}
+
+  \begin{subresult}
+    Stivheden af kulfiberkompositten i 1-retningen er:
+    \begin{equation*}
+      E_{1\mathrm{c}} = \qty{162}{\GPa} 
+    .\end{equation*}
+  \end{subresult}
+\end{derivation}
+
+
+\begin{problemwithimage}{e4_3}{4.3}
+  \begin{subproblems}
+    \subproblem Beregn stivheden i 2-retningen for en unidirektionel glas/epoxy lamina med fibervolumenfraktion på \num{0,7} vha. materialeegenskaberne i tabellen.
+    \subproblem Hvor meget ville stivheden stige, hvis kulfiber brugtes i stedet
+  \end{subproblems}
+\end{problemwithimage}
+
+\begin{derivation}
+
+  \derivationpart
+
+  Vi bruger her den inverse rule of mixture:
+  \begin{equation*}
+    E_{\mathrm{2}g} = \frac{\qty{85}{\GPa} \cdot \qty{3,4}{\GPa} }{\qty{85}{\GPa} \cdot \num{0,3} + \qty{3,4}{\GPa} \cdot \num{0,7} } = \qty{10.3659}{\GPa}
+  .\end{equation*}
+
+  \begin{subresult}
+    Stivheden af glaskompositten i 2-retningen er:
+    \begin{equation*}
+      E_{1\mathrm{g}} = \qty{10,37}{\GPa} 
+    .\end{equation*}
+  \end{subresult}
+
+  \derivationpart
+  
+  Hvis kulfiber brugtes i stedet:
+  \begin{equation*}
+  E_{\mathrm{2}c} = \frac{\qty{230}{\GPa} \cdot \qty{3,4}{\GPa} }{\qty{230}{\GPa} \cdot \num{0,3} + \qty{3,4}{\GPa} \cdot \num{0,7} }  = \qty{10.9554}{\GPa}
+  .\end{equation*}
+
+  \begin{subresult}
+    Stivheden af kulfiberkompositten i 2-retningen er:
+    \begin{equation*}
+      E_{1\mathrm{c}} = \qty{10,96}{\GPa} 
+    .\end{equation*}
+  \end{subresult}
+\end{derivation}
