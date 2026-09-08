@@ -1,0 +1,40 @@
+% !TeX root = ../master.tex
+
+\lecture{5}{2026-09-08}{Mikromekanik, Pt. II}
+Vi søger nu at regne den termiske udvidelseskoefficient $\alpha$ og fugtudvidelseskoefficienten $\beta$, de såkaldte hygroskopiske egenskaber, for et fiberkomposit efter samme metode som \Mref{sec:e1,sec:e2}.
+
+\subsection{Termisk udvidelseskoefficient}
+I 1-retningen bliver den termiske udvidelseskoefficient $\alpha_1$ for et fiberkomposit, idet vi antager fælles tøjning for matrix og fiber,
+\begin{equation*}
+  \alpha_1 = \left( \frac{\alpha_f E_f}{E_1} \right) V_f + \left( \frac{\alpha_m E_m}{E_1} \right) V_m
+\end{equation*}
+i 2- retningen er dette:
+\begin{equation*}
+  \alpha_2 = \left( 1 +\nu_f \right)\alpha_f V_f + \left( 1 + \nu_m \right) \alpha_m V_m - \alpha_1 \nu_{12}
+.\end{equation*}
+
+\subsection{Fugtudvidelseskoefficienten}
+Givet fugtindholdet, $\Delta C \left[ \unit{\kg\per\kg} \right]$, kan fugtudvidelseskoefficienten i 1-retningen, $\beta_1$, for et fiberkomposit bestemmes som
+\begin{equation*}
+  \beta_1 = \frac{\beta_f \Delta C_f V_f E_f + \beta_m \Delta C_m V_m E_m}{E_1 \left( \Delta C_f \rho_f V_f + \Delta C_m \rho_m V_m \right)} \rho_{\text{total}}
+\end{equation*}
+og selvsamme i 2-retningen, $\beta_2$, kan findes som:
+\begin{equation*}
+  \beta_2 = \frac{\beta_f \Delta C_f V_f (1 + \nu_f ) + \beta_m \Delta C_m V_m (1 + \nu_m)}{\Delta C_f \rho_f V_f + \Delta C_m \rho_m V_m} \rho_{\text{total}} - \beta_1 \nu_{12}
+.\end{equation*}
+
+For fibre, der ikke optager fugt, d.v.s. $\Delta C_f = 0$ gælder:
+\begin{align*}
+  \beta_1 &= \frac{E_m \rho_{\text{total}}}{E_1 \rho_m} \beta_m \\
+  \beta_2 &= \frac{(1+\nu_m) \rho_{\text{total}}}{\rho_m}\beta_m - \beta_1 \nu_{12}
+.\end{align*}
+
+\subsection{Chop Strand Mats}
+For \textit{Chop Strand Mats}, hvor fibre bindes sammen i ``tilfældige'' retninger kan de ovenstående approksimationer ikke benyttes idet disse ikke er ortotrope, i stedet kan disse approksimeres som \cite{lavengood1971stiffnessnonalignedfiber}:
+\begin{align*}
+  E_{\mathrm{CSM}} &= \frac{3}{8} E_1 + \frac{5}{8} E_2 \\
+  G_{\mathrm{CSM}} &= \frac{1}{8} E_1 + \frac{1}{4}E_2 \\
+  \nu_{\mathrm{CSM}} &= \frac{E_1 + E_2}{2 E_1 + 4E_2} \\
+  \alpha_{\mathrm{CSM}} &= \frac{\alpha_1 + \alpha_2}{2} + \frac{E_1 - E_2}{E_1 + \left( 1 + 2\nu_{12} \right) E_2} \cdot \frac{\alpha_1 - \alpha_2}{2}
+\end{align*}
+hvor $E_1, E_2, G_{12}, \alpha_1$ og $\alpha_2$ er egenskaberne fra en ækvivalent UD-lamina. 
