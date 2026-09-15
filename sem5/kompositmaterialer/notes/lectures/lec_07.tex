@@ -1,0 +1,91 @@
+% !TeX root = ../master.tex
+
+\lecture{7}{2026-09-15}{Makromekanik af Lamina, Pt. II}
+
+\subsection{Arbitrær orientering}
+For fiberretninger og belastninger med ``arbitrære'' lokationer må vi transformere fra det lokale $(1,2,3)$-koordinatsystem til et globalt $(x,y,z)$ koordinatsystem:
+\begin{equation*}
+  \begin{bmatrix}
+    \sigma_x\\
+  \sigma_y\\
+  \tau_{xy}\\
+\end{bmatrix} = [T]^{-1} \begin{bmatrix}
+  \sigma_1\\
+\sigma_2\\
+\tau_{12}\\
+\end{bmatrix}
+\end{equation*}
+hvor $\left[ T \right]$ er tranformationsmatricen bestående af $\cos$ og $\sin$ led samt vinklen $\theta$ mellem $(1,2,3)$- og $(x,y,z)$-systemerne.
+
+Det samme kan gøres for tøjninger idet vi bruger $\epsilon_{12}$
+\begin{equation*}
+  \begin{bmatrix}
+    \epsilon_x\\
+  \epsilon_y\\
+  \frac{1}{2}\gamma_{xy}\\
+  \end{bmatrix} = \left[ T \right]^{-1} \begin{bmatrix}
+    \epsilon_1\\
+  \epsilon_2\\
+  \frac{1}{2}\gamma_{12}\\
+  \end{bmatrix}
+.\end{equation*}
+Idet vi introducerer Reuter matricen $R$:
+\begin{equation*}
+  \left[ R \right] = \begin{bmatrix}
+    1 & 0 & 0\\
+  0 & 1 & 0\\
+  0 & 0 & 2\\
+  \end{bmatrix}
+\end{equation*}
+kan $\frac{1}{2}$ fjernes:
+\begin{equation*}
+  \begin{bmatrix}
+    \epsilon_x\\
+  \epsilon_y\\
+  \gamma_{xy}\\
+  \end{bmatrix} = \left[ R \right]\left[ T \right]^{-1} \left[ R \right]^{-1} \begin{bmatrix}
+    \epsilon_1\\
+  \epsilon_2\\
+  \gamma_{12}\\
+  \end{bmatrix}
+.\end{equation*}
+
+Spændings-tøjningerelationen for et lamina med $\theta$ rotation er
+\begin{equation*}
+  \begin{bmatrix}
+    \sigma_x\\
+  \sigma_y\\
+  \tau_{xy}\\
+\end{bmatrix} = \left[ T \right]^{-1} \left[ Q \right] \underbracket{\left[ R \right]\left[ T \right]\left[ R \right]^{-1}}_{\left[ T \right]^{-T}} \begin{bmatrix}
+  \epsilon_x\\
+\epsilon_y\\
+\gamma_{xy}\\
+\end{bmatrix}
+\end{equation*}
+eller
+\begin{align*}
+  \begin{bmatrix}
+    \sigma_x\\
+  \sigma_y\\
+  \tau_{xy}\\
+  \end{bmatrix} &= \left[ T \right]^{-1} \left[ Q \right] \underbracket{\left[ T \right]^{-1} \left[ Q \right]\left[ T \right]^{-T}}_{\left[ \overline{Q} \right]} \begin{bmatrix}
+  \epsilon_x\\
+\epsilon_y\\
+\gamma_{xy}\\
+\end{bmatrix} \\
+\begin{bmatrix}
+  \sigma_x\\
+\sigma_y\\
+\tau_{xy}\\
+\end{bmatrix} &= \begin{bmatrix}
+  \overline{Q}_{11} & \overline{Q}_{12} & \overline{Q}_{16}\\
+\overline{Q}_{12} & \overline{Q}_{22} & \overline{Q}_{26}\\
+\overline{Q}_{16} & \overline{Q}_{26} & \overline{Q}_{66}\\
+\end{bmatrix} \begin{bmatrix}
+  \epsilon_x\\
+\epsilon_y\\
+\gamma_{xy}\\
+\end{bmatrix}
+\end{align*}
+hvor $[\overline{Q}]$ er den transformerede reducerede planstress stivhedsmatrice.
+
