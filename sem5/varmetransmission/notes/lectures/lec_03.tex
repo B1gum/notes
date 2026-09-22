@@ -1,0 +1,204 @@
+% !TeX root = ../master.tex
+
+\lecture{3}{2026-09-8}{Conduction, Pt. II}
+
+\subsection{Steady Heat Conduction in 2D \& 3D}
+
+\subsubsection{Analytical and Numerical Solutions}
+For multidimensional steady conduction, the governing equation is the steady heat conduction equation,
+\begin{equation*}
+   \nabla^2 T + \frac{\dot e_\mathrm{gen}}{k}=0.
+.\end{equation*}
+Analytical solutions exist for relatively simple geometries and boundary conditions, but rapidly become cumbersome.
+Practical multidimensional problems are therefore commonly solved numerically or by use of existing analytical solutions.
+These existing analytical solution are often given in term of a shape factor $S [\unit{\m}]$.
+
+\subsubsection{Conduction Shape Factors}
+The shape factor is defined such, that the stationary heat flow:
+\begin{align*}
+  q''_x &= -k \frac{\partial T}{\partial x} \\
+  q''_y &= -k \frac{\partial T}{\partial y} 
+\end{align*}
+can be written on a simple form:
+\begin{equation} \label{eq:condshape}
+  Q = S k \Delta T_{1-2}
+.\end{equation}
+Hence, the shape factors can only be used when considering conduction between two surfaces with constant temperature.
+The conduction shape factors depend only on the \textit{geometry} of the system.
+These conduction shape factors $S$ have been determined for a number of standard configurations and a small excerpt of these are shown in \citepage{cengel2015heatmasstransfer}{Table 3--7}.
+These are also only applicable when the mode of heat transfer is conduction and they are therefore not useful for liquids or gasses.
+By observation of \Mref{eq:condshape} it is evident that the conduction shape factor $S$ is related to thermal resistance $R$ by
+\begin{equation*}
+  R = \frac{1}{kS} \qquad \iff \qquad S = \frac{1}{kR}
+.\end{equation*}
+
+
+\subsection{Extended and Finned Surfaces}
+As mentioned previously, the rate of heat transfer from a surface at temperature $T_s$ to the surrounding medium at temperature $T_{\infty}$ is per Newton's law of cooling, \Mref{eq:newtoncool}:
+\begin{equation*}
+  \dot{Q}_{\text{conv}} = h A_s \left( T_s - T_{\infty} \right)
+.\end{equation*}
+Hence, the heat transfer rate can be increased by either increasing the temperature difference, the convection heat transfer coefficient $h$ or the surface area $A_s$.
+The temperature difference is often fixed by design constraints and increasing $h$ may require installing a pump or fan or replacing an existing one with a larger one, but this may also not always be practical.
+The other alternative is increasing surface area by attaching \textit{extended surfaces} called \textit{fins} made of highly conductive material to the surface.
+The addition of fins often increase the heat transfer from a surface severalfold.
+
+\subsubsection{Fin Equation}
+From an energy balance on a fin, using Fourier's law of heat conduction it can be shown that the differential equation governing heat transfer in fins is:
+\begin{equation*}
+  \frac{\mathrm{d}}{\mathrm{d}x} \left( k A_c \frac{\mathrm{d}T}{\mathrm{d}x}  \right) = h p \left( T - T_{\infty} \right)
+.\end{equation*}
+In general, the cross sectional area $A_c$ and the perimeter $p$ of a fin vary with $x$ which makes the above differential equation hard to solve.
+For \textit{constant cross section} and \textit{constant thermal conductivity} the above reduces to:
+\begin{equation*}
+  \frac{\mathrm{d}^2 T}{\mathrm{d}x^2} = \frac{h p}{k A_c} \left( T - T_{\infty} \right)
+.\end{equation*}
+This can also be expressed as
+\begin{equation} \label{eq:reducedfinm}
+  \frac{\mathrm{d}^2 \theta}{\mathrm{d}x^2} = m^2 \theta
+\end{equation}
+where
+\begin{equation*}
+  m^2 = \frac{hp}{k A_c}
+\end{equation*}
+and $\theta = T - T_{\infty}$ is the \textit{temperature excess}.
+As $m$ in \Mref{eq:reducedfinm} is assumed constant the differential equation can be solved yielding
+\begin{equation*}
+  \theta(x) = C_1 e^{mx} + C_2 e^{-mx}
+\end{equation*}
+where $C_1$ and $C_2$ are arbitrary constants whose values depend on the boundary conditions at the base and at the tip of the fin.
+
+The temperature of the plate to which the fin is attached is normally known in advance.
+Therefore, at the fin base we have a Dirichlet BC, expressed as
+\begin{equation*}
+  \theta(0) = \theta_b = T_b - T_{\infty}
+.\end{equation*}
+At the fin tip, however, we have several possibilities, which are explained in \Mref{sec:bc}.
+
+\subsubsection{Boundary Conditions for Fins} \label{sec:bc}
+
+\paragraph{Infinitely Long Fins}
+For a sufficiently long fin of uniform cross section, the temperature of the fin at the fin tip $T(L)$ approaches the environment temperature $T_{\infty}$ and thus $\theta = T(L) - T_{\infty} \to 0$.
+Therefore, for an infinitely long fin we have the boundary condition at the fin tip:
+\begin{equation*}
+  \theta(L) = T(L)- T_{\infty} = 0, \qquad L \to \infty
+.\end{equation*}
+In this case our general solution after applying BC's become:
+\begin{equation*}
+  \theta(x) = \theta_b e^{-m x} = \theta_b e^{-x \sqrt{\frac{h p}{k A_{c}}}}
+.\end{equation*}
+This corresponds to the temperature decreasing exponentially from $T_b$ to $T_{\infty}$.
+The steady rate of heat transfer for an infinitely long fin can be determined from Fourier's law of heat conduction
+\begin{equation*}
+  \dot{Q}_{\text{long fin}} = - k A_{c} \frac{\mathrm{d}T}{\mathrm{d}x} \bigg|_{x = 0} = \sqrt{h p k A_c} \theta_b
+\end{equation*}
+where $p$ is the perimeter, $A_c$ is the cross-sectional area of the fin, and $x$ is the distance from the fin base.
+
+\paragraph{Negligible Heat Loss from the Fin Tip}
+Few fins are actually sufficiently long that their temperature approaches the surrounding temperature at the tip.
+A more realistic expectation is for heat transfer from the fin tip to be negligible since the heat transfer is proportional to surface area and little of the total surface area is in the tip.
+In such cases, the fin tip can be assumed adiabatic yielding the following boundary condition at the fin tip:
+\begin{equation*}
+  \frac{\mathrm{d}\theta}{\mathrm{d}x} \bigg|_{x = L} = 0
+.\end{equation*}
+After applying both BCs to the solution to the differential equation we get the following expression for the temperature excess along the fin:
+\begin{equation*}
+  \theta(x) = \theta_b \frac{\cosh m (L-x)}{\cosh m L}
+\end{equation*}
+and the rate of heat transfer can, again, be determined from Fourier's law of heat conduction:
+\begin{equation*}
+  \dot{Q}_{\text{adiabatic tip}} = - k A_c \frac{\mathrm{d}T}{\mathrm{d}x} \bigg|_{x = 0} = \sqrt{h p k A_c} \theta_b \tanh m L
+.\end{equation*}
+
+\paragraph{Specified Temperature}
+Instead of assuming the fin tip does not transfer heat or that the fin is sufficiently long for the fin tip to reach the surrounding temperature, it is often more accurate to specify a temperature at the fin tip which is assumed to be fixed.
+This temperature is often a bit higher than room temperature but the temperature excess at the tip under normal operating conditions must often be determined exponentially.
+In this case, the boundary condition for the fin tip is
+\begin{equation*}
+  \theta(L) = \theta_L = T_L - T_{\infty}
+.\end{equation*}
+In this case the temperature distribution along the wing is described by
+\begin{equation*}
+  \theta(x) = \theta_b \frac{\left( \frac{\theta_L}{\theta_b} \right) \sinh m x + \sinh m (L-x)}{\sinh m L}
+.\end{equation*}
+From Fourier's law of heat condution, the rate of heat transfer from the fin in this case is
+\begin{equation*}
+  \dot{Q}_{\text{specified temperature}} = - k A_{c} \frac{\mathrm{d}T}{\mathrm{d}x} \bigg|_{x = 0} = \sqrt{h p k A_c} \theta_b \frac{\cosh m L - \frac{\theta_L}{\theta_b}}{\sinh m L}
+.\end{equation*}
+
+\paragraph{Convection from Fin Tip}
+In actuality, fin tips are exposed to the surroundings, and thus the proper boundary conditions for the fin tip is convection that also may include the effects of radiation.
+In this case, the boundary condition at the fin tip can be obtained from an energy balance at the fin tip ($\dot{Q}_{\text{cond}} = \dot{Q}_{\text{conv}}$.
+This yields the boundary condition:
+\begin{equation*}
+  - k A_c \frac{\mathrm{d}T}{\mathrm{d}x} \bigg|_{x = L} = h A_c \theta_L
+.\end{equation*}
+In this case, the temperature profile across the fin is
+\begin{equation*}
+  \theta(x) = \theta_b \frac{\cosh m (L-x) + \left( \frac{h}{m k} \right) \sinh m (L-x)}{\cosh m L + \left( \frac{h}{m k} \right) \sinh m L}
+.\end{equation*}
+The rate of heat transfer here is
+\begin{equation*}
+\dot{Q}_{\text{convection}} = - k A_c \frac{\mathrm{d}T}{\mathrm{d}x} \bigg|_{x = 0} = \sqrt{h p k A_c } \theta_b \frac{\sinh m L + \frac{h}{m k} \cosh m L}{\cosh m L + \frac{h}{m k} \sinh m L}
+.\end{equation*}
+
+\subsubsection{Fin Efficiency}
+We now consider the surface of a \textit{plane wall} at temperature $T_b$ exposed to a medium at temperature $T_{\infty}$.
+Heat is lost from the surface to the surrounding medium by convection with a heat tranfer coefficient of $h$.
+Disregarding radiation, heat transfer from a surface area $A_s$ is $\dot{Q} = h A_s (T_s - T_{\infty})$.
+
+Now we attach a fin of constant cross sectional-area $A_c$ and length $L$ to the surface with perfect contact.
+Now, heat is transferred from the surface to the fin by conduction and from the fin to the medium by convection with the same heat transfer coefficient $h$.
+The temperature of the fin is $T_b$ at the base and gradually decreases toward the tip.
+Convection from the fin causes the temperature to drop somewhat from the midsection toward the outer surface.
+However, the cross-sectional area of the fin is usually very small and thus the temperature at any cross section can be assumed uniform.
+
+In the limiting case of zero thermal resistance or infinite thermal conductivity, the temperature of the fin is uniform at the base at $T_b$.
+The heat transfer from the fin is maximum in this case and can be expressed as
+\begin{equation*}
+  \dot{Q}_{\text{fin, max}}  = h A_{\text{fin}} (T_b - T_{\infty})
+.\end{equation*}
+In reality, the temperatyre of the fin drops along the fin and thus the heat transfer from the fin is less because of the decreasing temperature excess $T(x) - T_{\infty}$.
+To account for this, we define fin efficiency as
+\begin{equation*}
+  \eta_{\text{fin}} = \frac{\dot{Q}_{\text{fin}}}{\dot{Q}_{\text{fin, max}}} = \frac{\text{actual heat transfer rate from the fin}}{\text{Heat transfer rate from the fin if the entire fin was at base temperature}}
+.\end{equation*}
+
+Hence, the total heat transfer from a finned surface is
+\begin{equation*}
+  \dot{Q}_{\text{fin}} = \eta_{\text{fin}} \underbracket{A_{\text{fin}} h \theta_b}_{\dot{Q}_{\text{fin max}}}
+.\end{equation*}
+And the total heat transfer is
+\begin{align*}
+  Q_{\text{total,fin}} &= \dot{Q}_{\text{fin}} + \dot{Q}_{\text{unfin}} \\
+  &= \eta_{\text{fin}} A_{\text{fin}} h \theta_b + A_{\text{unfin}} h \theta_b \\
+  &= \left( \eta_{\text{fin}} A_{\text{fin}} + A_{\text{unfin}} \right) h \theta_b
+.\end{align*}
+
+The fin efficiency in the cases of \textit{very long fins} and \textit{adiabatic tips} can be expressed as:
+\begin{align*}
+  \eta_{\text{ling fin}} &= \frac{1}{mL} \\
+  \eta_{\text{adiabatic tip}} &= \frac{\tanh mL}{mL}
+.\end{align*}
+
+
+\subsubsection{Fin Effectiveness}
+There is no assurance that adding fins to a surface will \textit{enhance} heat transfer.
+The performance of the fins is judged on the basis of the enhancement in heat transfer relative to the \textit{no-fin} case.
+The performance of fins is expressed in terms of the fin effectiveness $\epsilon_{\text{fin}}$:
+\begin{equation*}
+  \epsilon_{\text{fin}} = \frac{\dot{Q}_{\text{fin}}}{\dot{Q}_{\text{no fin}}} = \frac{\dot{Q}_{\text{fin}}}{h A_b \theta_b}
+.\end{equation*}
+Hence, $A_b$ is the cross sectional area of the fin at the base and $\dot{Q}_{\text{no fin}}$ represents the rate of heat transfer from this area if no fin were attached.
+An effectiveness of $\epsilon_{\text{fin}} = 1$ indicates that the addiction of fins to the surface does not affect heat transfer at all.
+
+The fin efficiency and fin effectiveness are different quantities but related to each other by:
+\begin{equation*}
+  \epsilon_{\text{fin}} = \frac{A_{\text{fin}}}{A_b} \theta_{\text{fin}}
+.\end{equation*}
+
+The overall effectiveness, $\epsilon_{\text{fin, overall}}$ is the effectiveness of the addition of fins to the entire area:
+\begin{equation*}
+  \epsilon_{\text{fin, overall}} = \frac{\dot{Q}_{\text{total, fin}}}{\dot{Q}_{\text{total, no fin}}} = \frac{\eta_{\text{fin}} A_{\text{fin}} + A_{\text{unfin}}}{A_b + A_{\text{unfin}}}
+.\end{equation*}
+

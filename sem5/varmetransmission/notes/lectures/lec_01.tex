@@ -41,7 +41,8 @@ This also implies that the rate of energy transfer equals the rate of change in 
 We mainly work with three different heat transfer mechanisms.
 These are \textit{Conduction}, \textit{Convection}, and \textit{Radiation}.
 
-\subsection{Conduction}
+\subsection{Conduction} \label{sec:condintroduction}
+
 \begin{wrapfigure}{r}{0.4\textwidth}
   \vspace{-1.5cm}
   \centering
@@ -62,9 +63,9 @@ This can be qualified by including the \textit{thermal conductivity} $\left[ \un
   \dot{Q}_{\mathrm{cond}} = -k A \frac{\Delta T}{\Delta x}
 .\end{equation*}
 As $\Delta x \to 0$ this turns into \textit{Fourier's law of conduction (1D)}, given as:
-\begin{equation*}
+\begin{equation} \label{eq:fourierlawconduction}
   \dot{q}_{\mathrm{cond}} = -k \frac{\mathrm{d}T}{\mathrm{d}x} 
-\end{equation*}
+\end{equation}
 or in general vector form as 
 \begin{equation*}
   \Vec{\dot{q}} = -k \nabla T
@@ -83,7 +84,7 @@ Roughly speaking, the thermal diffusivity determines how fast heat diffuses in a
   \centering
   \includegraphics[width=\linewidth]{./figures/convection.png}
   \caption{Cross section of a material displaying convection.}
-  \label{fig:conduction}
+  \label{fig:convection}
 \end{wrapfigure}
 Convection is the transfer of energy as a result of bulk motion of fluid.
 This always happens between a solid surface and a flowing fluid.
@@ -96,9 +97,9 @@ The convection rate $\dot{Q}_{\mathrm{conv}}$ is normally given in a form such a
 \end{equation*}
 where $T_{\infty}$ is the far field temperature (or some other reference temperature), $T_s$ is the surface temperature, and $A_s$ is the heat transfer surface area. 
 By introducing the heat transfer coefficient $h \left[ \unit{\W\per\m\squared\per\K}  \right]$ we arrive at Newton's law of cooling:
-\begin{equation*}
+\begin{equation} \label{eq:newtoncool}
   \dot{Q}_{\mathrm{conv}} = h A_s \left( T_s - T_{\infty} \right)
-.\end{equation*}
+.\end{equation}
 It is important to remember the difference between the thermal conductivity $k$ and the heat transfer coefficient $h$.
 Whereas the thermal conductivity is a material property the heat transfer coefficient is a property of the specific flow and must therefore be experimentally determined in all but the simplest cases.
 

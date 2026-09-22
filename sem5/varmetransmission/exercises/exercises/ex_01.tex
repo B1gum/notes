@@ -1,5 +1,7 @@
 % !TeX root = ../master.tex
 
+\lecture{1}{2026-08-25}{Introduction to Heat Transfer}
+
 \begin{problemwithimage}{p1-31}{1--31}
   A hair dryer is basically a duct in which a few layers of electric resistors are placed.
   A small fan pulls the air in and forces it to flow over the resistors where it is heated.
@@ -41,8 +43,8 @@
   we can solve for the density of the air at the inlet and outlet respectively, remembering we assume the pressure is the same at both places
   \begin{align*}
     \rho &= \frac{p}{R T} \\
-  \rho_1 &= \frac{\qty{100}{\kPa}}{\qty{298,15}{\K} \cdot \qty{0,287}{\kPa.\m^3\per\kg.\K}} = \qty{1,169}{\kg\per\m^3} \\
-  \rho_2 &= \frac{\qty{100}{\kPa}}{\qty{323,15}{\K} \cdot \qty{0,287}{\kPa.\m^3\per\kg.\K} } = \qty{1,078}{\kg\per\m^3} 
+  \rho_1 &= \frac{\qty{100}{\kPa}}{\qty{298,15}{\K} \cdot \qty{0,287}{\kPa.\m\cubed\per\kg.\K}} = \qty{1,169}{\kg\per\m^3} \\
+  \rho_2 &= \frac{\qty{100}{\kPa}}{\qty{323,15}{\K} \cdot \qty{0,287}{\kPa.\m\cubed\per\kg.\K} } = \qty{1,078}{\kg\per\m^3} 
   .\end{align*}
   As the entirety of the heat supplied by the heating element is assumed to go into the air stream the energy balance becomes
   \begin{equation*}
@@ -50,13 +52,13 @@
   .\end{equation*}
   We can now solve for the volume flow rate, $Q_V$ as
   \begin{equation*}
-    Q_V = \frac{\dot{W}_e}{(T_2 - T_1) c_p \cdot \rho_1} = \frac{\qty{900}{\W}}{\qty{25}{\K} \cdot \qty{1007}{\J\per\kg\per\K} \cdot \qty{1,169}{\kg\per\m^3} } =\qty{0.03058}{\m^3\per\s} 
+    Q_V = \frac{\dot{W}_e}{(T_2 - T_1) c_p \cdot \rho_1} = \frac{\qty{900}{\W}}{\qty{25}{\K} \cdot \qty{1007}{\J\per\kg\per\K} \cdot \qty{1,169}{\kg\per\m\cubed} } =\qty{0.03058}{\m\cubed\per\s} 
   .\end{equation*}
  
   \begin{subresult}
     The volume flow rate through the hair dryer is
     \begin{equation*}
-      Q_V = \qty{0,031}{\m^3\per\s} 
+      Q_V = \qty{0,031}{\m\cubed\per\s} 
     .\end{equation*}
   \end{subresult}
 
@@ -64,7 +66,7 @@
 
   We can use a similar formula as above, however, this time dividing by the outlet area as well to obtain the outlet flow speed:
   \begin{equation*}
-    V_2 = \frac{\dot{W}_e}{(T_2 - T_1) c_p \cdot \rho_2 \cdot A_2} = \frac{\qty{900}{\W}}{\qty{25}{\K} \cdot \qty{1007}{\J\per\kg\per\K} \cdot \qty{1,078}{\kg\per\m^3} \cdot \qty{60}{\cm^2} } = \qty{5,526}{\m\per\s} 
+    V_2 = \frac{\dot{W}_e}{(T_2 - T_1) c_p \cdot \rho_2 \cdot A_2} = \frac{\qty{900}{\W}}{\qty{25}{\K} \cdot \qty{1007}{\J\per\kg\per\K} \cdot \qty{1,078}{\kg\per\m\cubed} \cdot \qty{60}{\cm\squared} } = \qty{5,526}{\m\per\s} 
   .\end{equation*}
   \begin{subresult}
     The outlet flow speed of the air is
@@ -83,6 +85,41 @@
   Determine the thermal conductivity of the material at the average temperature.
 \end{problemwithimage}
 
+\begin{givens}
+  h = \qty{0,5}{\cm} & Height of specimen \\
+  w = \qty{10}{\cm} & Width of specimen \\
+  \dot{Q}_{\text{heater}} = \qty{25}{\W} & Power-consumption of heater \\
+  \Delta T = \qty{8}{\celsius} & Temperature drop across specimen
+\end{givens}
+
+\begin{assumptions}
+  \item Perfectly insulated outer edges
+\end{assumptions}
+
+\begin{derivation}
+  As the heater is always heating two samples at a time the power of the heater is split evenly between the two samples:
+  \begin{equation*}
+    \dot{Q}_{\text{sample}} = \frac{\dot{Q}_{\text{heater}}}{2} = \qty{12,5}{\W} 
+  .\end{equation*}
+  This flow of $\dot{Q}_{\text{sample}} = \qty{12,5}{\W}$ is what sustains the temperature of the samples.
+  The thermal conductivity of a material is defined from:
+  \begin{equation*}
+    \dot{Q}_{\text{cond}} = - kA \frac{\Delta T}{\Delta x}
+  .\end{equation*}
+  Hence,
+  \begin{equation*}
+    k = \frac{\dot{Q}_{\text{cond}} \cdot h}{A \cdot \Delta T} = \frac{\qty{12,5}{\W} \cdot \qty{0,5}{\cm}}{\qty{10}{\cm} \cdot \qty{10}{\cm} \cdot \qty{8}{\K} }  = \qty{0,78}{\W\per\m\per\K} 
+  .\end{equation*}
+\end{derivation}
+
+\begin{finalresult}
+  Hence the thermal conductivity of each sample is:
+  \begin{equation*}
+    k = \qty{0,78}{\W\per\m\per\K} 
+  .\end{equation*}
+\end{finalresult}
+
+
 
 \begin{problemwithimage}{p1-100}{1--100}
   The inner and outer surfaces of a \qty{25}{\cm} thick wall in summer are at \qty{27}{\celsius}  and \qty{44}{\celsius}, respectively.
@@ -90,6 +127,62 @@
   Solar radiation is incident on the surface at a rate of \qty{150}{\W\per\m\squared}.
   If both the emissivity and the solar absorptivity of the outer surface are \num{0,8}, determine the effective thermal conductivity of the wall.
 \end{problemwithimage}
+
+\begin{givens}
+  w = \qty{25}{\cm}  & Thickness of wall \\
+  T_{\text{inner}} = \qty{27}{\celsius} & Inner temperature of wall \\
+  T_{\text{outer}} = \qty{44}{\celsius} & Outer temperature of wall \\
+  T_{\infty, \text{outer}} = \qty{40}{\celsius} & Ambient temperature outside wall \\
+  h = \qty{8}{\W\per\m^2\per\K} & Heat transfer coefficient \\
+  \dot{q}_{\text{indicent}} = \qty{150}{\W\per\m\squared} & Solar radiation incident on outer wall \\
+  \epsilon = \alpha = \num{0,8} & Solar emissivity and absorptivity of wall
+\end{givens}
+
+\begin{assumptions}
+  \item The system has reached steady-state
+\end{assumptions}
+
+\begin{derivation}
+  The radiation heat transfer rate on a solid surface is:
+  \begin{equation*}
+    \dot{q}_{\text{rad}} = \dot{q}_{\text{emit}} - \dot{q}_{\text{abs}}
+  .\end{equation*}
+  Here, the net emitted radiation can be found using Boltzmann's law:
+  \begin{equation*}
+    \dot{q}_{\text{emit}} = \epsilon \sigma \left( T_{s}^{4} - T_{\infty}^{4} \right) = \num{0,8} \cdot \qty{5,670e-8}{\W\per\m\squared\per\K\tothe{4}} \cdot \left( \left( \qty{44}{\celsius} \right)^4 - \left( \qty{40}{\celsius}  \right)^4 \right) = \qty{22,7}{\W\per\m\squared} 
+  .\end{equation*}
+  The absorbed radiation is found as:
+  \begin{equation*}
+    \dot{q}_{\text{abs}} = \alpha \cdot \dot{q}_{\text{incident}} = \num{0,8} \cdot \qty{150}{\W\per\m\squared}  = \qty{120}{\W\per\m\squared} 
+  .\end{equation*}
+  Hence, the radiation heat transfer rate on the outside of the wall is:
+  \begin{equation*}
+    \dot{q}_{\text{rad}} = \qty{22,7}{\W\per\m\squared} - \qty{120}{\W\per\m\squared} = \qty{97,3}{\W\per\m\squared} 
+  .\end{equation*}
+  
+  From Newton's law of cooling, the convection heat transfer rate is:
+  \begin{equation*}
+    \dot{q}_{\text{conv}} = h \left( T_{\text{outer}} - T_{\infty} \right) = \qty{8}{\W\per\m\squared\per\K}  \cdot \left( \qty{44}{\K} - \qty{40}{\K}  \right)  = \qty{31}{\W\per\m\squared} 
+  .\end{equation*}
+  
+  Hence, the outside of the wall is gaining heat at a rate of:
+  \begin{equation*}
+    \dot{q}_{\text{outer}} = \dot{q}_{\text{rad}} - \dot{q}_{\text{conv}} = \qty{97,3}{\W\per\m\squared} - \qty{31}{\W\per\m\squared}  = \qty{66,3}{\W\per\m\squared} 
+  .\end{equation*}
+  
+  Now, the thermal conductivity is easily found as:
+  \begin{equation*}
+    k = \frac{\dot{q}_{\text{outer}} \cdot w}{ T_{\text{outer}} - T_{\text{inner}}} = \frac{\qty{66,3}{\W\per\m\squared} \cdot \qty{25}{\cm} }{\qty{44}{\celsius} -\qty{27}{\celsius} } = \qty{0,975}{\W\per\m\per\K}
+  .\end{equation*}
+\end{derivation}
+
+\begin{finalresult}
+  Hence, the thermal conductivity of the wall is
+  \begin{equation*}
+    k = \qty{0,975}{\W\per\m\per\K} 
+  .\end{equation*}
+  
+\end{finalresult}
 
 \begin{problemwithimage}{p1-106}{1--106}
   A flat-plate solar collector is used to heat water by having water flow through tubes attached at the back of the thin solar absorber plate.
@@ -99,3 +192,55 @@
   Net heat rate absorbed by the solar collector heats the water from an inlet temperature ($T_{\mathrm{in}}$) to an outlet temperature ($T_{\mathrm{out}}$).
   If the water flow rate is \qty{5}{\g\per\s} with specific heat of \qty{4,2}{\kJ\per\kg\per\K}, determine the temperature rise of the water.
 \end{problemwithimage}
+
+\begin{assumptions}
+  \item The system has reached steady-state
+\end{assumptions}
+
+\begin{givens}
+  A_s = \qty{2}{\m\squared}  & Surface area of absorber \\
+  \epsilon = \alpha = \num{0,9} & Emissivity and absorptivity of absorber \\
+  T_{\text{absorber}} = \qty{35}{\celsius} & Temperature of absorber \\
+  \dot{q}_{\text{incident}} = \qty{500}{\W\per\m\squared} & Solar radiation incident at absorber \\
+  T_{\text{rad}, \infty} = \qty{0}{\celsius} & Effective surrounding temperature for radiation \\
+  h = \qty{5}{\W\per\m\squared\per\K} & Heat transfer coefficient \\
+  T_{\text{conv.}, \infty} = \qty{25}{\celsius} & Ambient temperature for convection \\
+  \dot{m} = \qty{5}{\g\per\s} & Mass flow rate of water \\
+  c_p = \qty{4,2}{\kJ\per\kg\per\K} & Specific heat capacity of water.
+\end{givens}
+
+\begin{derivation}
+  For radiation we use the same procedure as above and get:
+  \begin{equation*}
+    \dot{q}_{\text{rad}} = \epsilon \sigma \left( T_{\text{absorber}}^{4} - T_{\text{rad}, \infty}^{4} \right) = \num{0,9} \cdot \qty{5,670e-8}{\W\per\m\squared\per\K\tothe{4}} \cdot \left( \left( \qty{35}{\celsius}  \right)^{4} - \left( \qty{0}{\celsius}  \right)^{4} \right) = \qty{176,05}{\W\per\m\squared} 
+  .\end{equation*}
+  For convection, we also use the same procedure as above, which yields:
+  \begin{equation*}
+    \dot{q}_{\text{conv}} = h \left( T_{\text{absorber}} - T_{\text{conv.}, \infty} \right) = \qty{5}{\W\per\m\squared\per\K} \cdot \left( \qty{35}{\celsius} - \qty{25}{\celsius}  \right) = \qty{50}{\W\per\m\squared} 
+  .\end{equation*}
+  Hence, the total energy balance is:
+  \begin{equation*}
+    \dot{q}_{\text{absorber}} = \dot{q}_{\text{rad}} - \dot{q}_{\text{conv}} = \qty{176,05}{\W\per\m\squared}  - \qty{50}{\W\per\m\squared}  = \qty{126,05}{\W\per\m\squared} 
+  .\end{equation*}
+  This means the total absorbed power over the entire area of the absorber is:
+  \begin{equation*}
+    \dot{Q}_{\text{absorber}} = \dot{q}_{\text{absorber}} \cdot A_s = \qty{126,05}{\W\per\m\squared} \cdot \qty{2}{\m\squared}  = \qty{252.1}{\W}
+  .\end{equation*}
+  
+  As the system is assumed to be at steady state none of this heat will go to warming the absorber -- instead all the $\dot{Q}_{\text{absorber}} = \qty{252,1}{\W}$ goes towards heating the water.
+  Using the formula for temperature change as a result of added thermal energy we arrive at:
+  \begin{align*}
+    \dot{Q}_{\text{absorber}} &= \dot{m} c_p \cdot \Delta T \\
+    \Delta T &= \frac{\dot{Q}_{\text{absorber}}}{\dot{m} \cdot c_p} \\
+    &= \frac{\qty{252,1}{\W}}{\qty{5}{\g\per\s} \cdot \qty{4,2}{\kJ\per\kg\per\K}} \\
+    &= \qty{12}{\K}
+  .\end{align*}
+\end{derivation}
+
+\begin{finalresult}
+  Hence the temperature of the water will increase by:
+  \begin{equation*}
+    \Delta T = \qty{12}{\K}
+  \end{equation*}
+  when passing through the absorber.
+\end{finalresult}

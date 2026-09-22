@@ -1,0 +1,60 @@
+% !TeX root = ../master.tex
+
+\begin{problemwithimage}{p9_1}{9.1}
+  En plade er udsat for et bøjningsmoment $M$ resulterende i en kurvet plade med radius $R = \qty{11}{\m}$.
+  Hvad er den resulterende normale tøjning i $x$-aksen i toppen og bunden af pladen.
+\end{problemwithimage}
+
+\begin{assumptions}
+  \item Vi antager at CLT er brugbart, idet pladen er tynd
+\end{assumptions}
+
+\begin{givens}
+  R = \qty{11}{\m}  & Krumningsradius \\
+  t = \qty{4}{\mm} & Pladetykkelse
+\end{givens}
+
+\begin{derivation}
+  Vi ved fra CLT at
+  \begin{equation*}
+    \begin{bmatrix}
+      \epsilon_x\\
+    \epsilon_y\\
+    \gamma_{xy}\\
+    \end{bmatrix} = \begin{bmatrix}
+      \epsilon_{x}^{\circ}\\
+    \epsilon_{y}^{\circ}\\
+    \gamma_{xy}^{\circ}\\
+    \end{bmatrix} + z \begin{bmatrix}
+      \kappa_{x}\\
+    \kappa_y\\
+    \kappa_{xy}\\
+    \end{bmatrix}
+  \end{equation*}
+  Hvilket i 1D er
+  \begin{equation*}
+    \epsilon_x = \epsilon_x^{\circ} + z\cdot \kappa_{x} 
+  .\end{equation*}
+
+  Ved pladens midterlinje er pladens neutralakse placeret idet den er symmetrisk så her er ingen spænding og derfor ingen tøjning $\epsilon_x^{\circ} = 0$.
+  Den ekstra tøjning ved hver side som følge af kurvaturen er
+  \begin{equation*}
+    \frac{z}{2} \cdot \kappa_x = \qty{2}{\mm} \cdot \frac{1}{\qty{11,002}{\m} }  = \num{1,81785e-4}
+  .\end{equation*}
+  Altså er den samlede tøjning i toppen:
+  \begin{equation*}
+  \epsilon_{x-t / 2} = 0 - \frac{1}{5500} = \num{-1,81785e-4} = \num{0,018}\%
+  \end{equation*}
+  og den samlede tøjning i bunden
+  \begin{equation*}
+    \epsilon_{x+t / 2} = 0 + \frac{1}{5500} = \num{1,81785e-4} = \num{0,018} \%
+  .\end{equation*}
+\end{derivation}
+
+\begin{finalresult}
+  Tøjningen ved pladens top $\epsilon_{x - t / 2}$ og ved pladens bund $\epsilon_{x + t / 2}$ er altså hhv.
+  \begin{align*}
+    \epsilon_{x - t / 2} &= \num{1,81875e-4}  \\
+    \epsilon_{x + t / 2} &= \num{1,81875e-4} 
+  .\end{align*}
+\end{finalresult}

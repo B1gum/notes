@@ -1,0 +1,267 @@
+% !TeX root = ../master.tex
+
+\lecture{3}{2026-09-8}{Conduction, Pt. II}
+\begin{problemwithimage}{p3_1}{2--97}
+  A long homogeneous resistance wire of radius $r_o = \qty{0,6}{\cm} $ and thermal conductivity $k = \qty{15,2}{\W\per\m\per\K}$ is being used to boil water at atmospheric pressure by the passage of electric current.
+  Heat is generated in the wire uniformly as a result of resistance heating at a rate of \qty{16,4}{\W\per\cm\cubed}.
+  The heat generated is transferred to water at \qty{100}{\celsius} convection with an average heat transfer coefficient of $h = \qty{3200}{\W\per\m\squared\per\K} $.
+  Assuming steady one-dimensional heat transfer,
+  \begin{subproblems}
+    \subproblem express the differential equation and the boundary conditions for heat conduction through the wire,
+    \subproblem obtain a relation for the variation of temperature in the wire by solving the differential equation, and
+    \subproblem determine the temperature at the centerline of the wire.
+  \end{subproblems}
+\end{problemwithimage}
+
+\begin{assumptions}
+  \item The system is at steady-state
+\end{assumptions}
+
+\begin{givens}
+  r_o=\qty{0,6}{\cm}  & Outer radius of wire \\
+  k = \qty{15,2}{\W\per\m\per\K} & Thermal conductivity of wire \\
+  \dot{e}_{\text{gen}} = \qty{16,4}{\W\per\cm\cubed} & Energy created in wire due to resistive heating \\
+  T_{\infty} = \qty{100}{\celsius} & Temperature of water \\
+  h = \qty{3200}{\W\per\m\squared\per\K} & Heat transfer coefficient
+\end{givens}
+
+\clearpage
+\begin{derivation}
+  \derivationpart
+  The heat conduction equation on cylindrical coordinates is:
+  \begin{equation*}
+    \frac{1}{r} \frac{\partial }{\partial r} \left( k r^2 \frac{\partial T}{\partial r}  \right)+ \frac{1}{r^2 \sin^2 \theta} \frac{\partial }{\partial \phi} \left( k \frac{\partial T}{\partial \phi}  \right) + \frac{1}{r^2 \sin^2 \theta} \frac{\partial }{\partial \theta}  \left( k \sin \theta \frac{\partial T}{\partial \theta}  \right) + \dot{e}_{\text{gen}} = \rho c \frac{\partial T}{\partial t}
+  .\end{equation*}
+  As we assume the wire is infinitely long $\frac{\partial T}{\partial z}  = 0$, as we assume the wire is homogeneous $\frac{\partial T}{\partial \phi}  = 0$ and as we assume steady state $\frac{\partial T}{\partial t} = 0$.
+  Hence the differential equation reduces to:
+  \begin{equation*}
+    \frac{1}{r} \frac{\partial }{\partial r} \left( k r \frac{\partial T}{\partial r}  \right) + \dot{e}_{\text{gen}} = 0 \qquad \iff \qquad \frac{1}{r} \frac{\partial }{\partial r} \left( k \frac{\partial T}{\partial r}  \right) + \frac{\dot{e}_{\text{gen}}}{k} = 0
+  .\end{equation*}
+  
+  We need two boundary conditions to fully define this.
+  Due to symmetry, $\frac{\mathrm{d}T}{\mathrm{d}r} \bigg|_{r = 0} = 0$.
+  Our second boundary condition comes from the specified conduction to the surrounding media, which corresponds to:
+  \begin{equation*}
+    -k \frac{\mathrm{d}T}{\mathrm{d}r} \bigg|_{r = r_o}  = h \left( T(r_o) - T_{\infty} \right)
+  .\end{equation*}
+  
+  \begin{subresult}
+    Differential Equation:
+    \begin{equation*}
+      \frac{1}{r} \frac{\partial }{\partial r} \left( k \frac{\partial T}{\partial r}  \right) + \frac{\dot{e}_{\text{gen}}}{k} = 0
+    .\end{equation*}
+    Boundary Condition 1:
+    \begin{equation*}
+      \frac{\mathrm{d}T}{\mathrm{d}r}\bigg|_{r = 0} = 0 
+    .\end{equation*}
+    Boundary Condition 2:
+    \begin{equation*}
+      -k \frac{\mathrm{d}T}{\mathrm{d}r} \bigg|_{r = r_o} = h \left( T (r_o) - T_{\infty} \right)
+    .\end{equation*}
+  \end{subresult}
+
+  \derivationpart
+  We start with our differential equation:
+  \begin{align*}
+    \frac{1}{r} \frac{\mathrm{d}}{\mathrm{d}r} \left( r \frac{\mathrm{d}T}{\mathrm{d}r} \right) + \frac{\dot{e}_{\text{gen}}}{k} &= 0 \\
+    \frac{\mathrm{d}}{\mathrm{d}r} \left( r \frac{\mathrm{d}T}{\mathrm{d}r} \right) &= - \frac{\dot{e}_{\text{gen}}}{k}r \\
+    r \frac{\mathrm{d}T}{\mathrm{d}r} &= - \frac{\dot{e}_{\text{gen}}}{k} \frac{r^2}{2} + C_1
+  .\end{align*}
+  Our first boundary condition gives:
+  \begin{equation*}
+    \frac{\mathrm{d}T}{\mathrm{d}r} \bigg|_{r = 0} = 0 \quad \implies \quad C_1 = 0 \quad \implies \quad \frac{\mathrm{d}T}{\mathrm{d}r} = - \frac{\dot{e}_{\text{gen}}}{k} \frac{r}{2}
+  .\end{equation*}
+  A second integration yields:
+  \begin{equation*}
+    T(r) = - \frac{\dot{e}_{\text{gen}}}{k} \frac{r^2}{4} + C_2
+  .\end{equation*}
+  Now, we apply the second boundary condition.
+  At $r_o$:
+  \begin{equation*}
+    -k \frac{\mathrm{d}T}{\mathrm{d}r} \bigg|_{r = r_o} = -k \left( - \frac{\dot{e}_{\text{gen}}}{k} \frac{r_o}{2} \right) = \frac{\dot{e}_{\text{gen}}r_o}{2}
+  .\end{equation*}
+  Hence,
+  \begin{align*}
+    \frac{\dot{e}_{\text{gen}}r_o}{2} &= h \left( T(r_o) - T_{\infty} \right) \\
+    T(r_o) &= T_{\infty} + \frac{\dot{e}_{\text{gen}} r_o}{2h} \\
+    - \frac{\dot{e}_{\text{gen}}}{4k} r_o^2 + C_2 &= T_{\infty} + \frac{\dot{e}_{\text{gen}} r_o}{2h} \\
+    C_2 &= T_{\infty} + \frac{\dot{e}_{\text{gen}} r_o}{2h} + \frac{\dot{e}_{\text{gen}} r_o^2}{4k} \\
+    T(r) &= - \frac{\dot{e}_{\text{gen}}}{4k} r^2 + T_{\infty} + \frac{\dot{e}_{\text{gen}} r_o}{2h} + \frac{\dot{e}_{\text{gen}} r_o^2}{4k} \\
+         &= T_{\infty} + \frac{\dot{e}_{\text{gen}}}{2} \left( \frac{r_o}{h} + \frac{1}{2k} \left( r_o^2 - r^2 \right) \right)
+  .\end{align*}
+  
+  \begin{subresult}
+    The temperature distribution within the wire is given by:
+    \begin{equation*}
+      T(r) = T_{\infty} + \frac{\dot{e}_{\text{gen}}}{2} \left( \frac{r_o}{h} + \frac{1}{2k} \left( r_o^2 - r^2 \right) \right)
+    .\end{equation*}
+  \end{subresult}
+  
+  \derivationpart
+
+  The temperature at the centerline is simply the temperature $T(0)$.
+  Hence:
+  \begin{align*}
+    T(0) &= T_{\infty} + \frac{\dot{e}_{\text{gen}}}{2} \left( \frac{r_o}{h} + \frac{1}{2k} r_o^2 \right) \\ 
+         &= \qty{100}{\celsius} + \frac{\qty{16,4}{\W\per\cm\cubed}}{2} \left( \frac{\qty{0,6}{\cm}}{\qty{3200}{\W\per\m\squared\per\K}} + \frac{1}{2 \cdot \qty{15,2}{\W\per\m\per\K}} \cdot \left( \qty{0,6}{\cm}  \right)^2 \right) \\
+         &= \qty{125}{\celsius} 
+  .\end{align*}
+
+  \begin{subresult}
+    Hence, the centerline temperature of the resistive wire is:
+    \begin{equation*}
+      T(0) = \qty{125}{\celsius} 
+    .\end{equation*}
+  \end{subresult}
+\end{derivation}
+
+\begin{problem}{3--5}
+  Derive the optimal radius for
+  \begin{equation*}
+    \dot{Q} = \frac{T_1 - T_{\infty}}{R_{\text{ins}} + R_{\text{conv}}} = \frac{T_1 - T_{\infty}}{\frac{\ln (r_2 / r_1)}{2\pi L k} + \frac{1}{h \left( 2\pi r_2 L \right)}}
+  .\end{equation*}
+\end{problem}
+
+\begin{assumptions}
+  \item The optimal radius is the one that maximizes heat transfer rate
+\end{assumptions}
+
+\begin{derivation}
+  This is the critical radius of insulation problem from \citepage{cengel2015heatmasstransfer}{Ch. 3--5}.
+  We note that the variable radius here is the radius of insulation, $r_2$.
+  Hence, we are optimizing $\dot{Q}$ with respect to $r_2$ and therefore we apply derivation w.r.t. $r_2$ and then set $\mathrm{d}\dot{Q} / \mathrm{d} r_2 = 0$.
+  We note that only $r_2$ is variable and everything else is constant under the added insulation.
+  We set $T_1 - T_{\infty} = k_1, 2\pi L k = k_2,$ and $ 2 h\pi L = k_3$ and differentiate as:
+  \begin{align*}
+    \frac{\mathrm{d}\dot{Q}}{\mathrm{d}r_2} &= \frac{\mathrm{d}}{\mathrm{d}r_2} \frac{k_1}{\frac{\ln(\frac{r_2}{r_1})}{k_2} + \frac{1}{k_3 \cdot r_2}} \\ 
+      &= \frac{k_1 k_2 k_3 \left(k_2-k_3 r_2\right)}{\left(k_3 r_2 \ln\left(\frac{r_2}{r_1}\right)+k_2\right)^2} \\
+      &= \frac{\left( T_1 - T_{\infty} \right) \cdot 2 \pi L k \cdot 2 h \pi L \left( 2 \pi L k - 2 h \pi L r_2 \right)}{\left(2 h \pi L r_2 \ln \left( \frac{r_2}{r_1} \right) + 2\pi L k \right)^2 } \\ 
+      &= -\frac{2 \pi  h k L \left(T_1-T_{\infty }\right) \left(h r_2-k\right)}{\left(h r_2 \ln \left(\frac{r_2}{r_1}\right)+k\right)^2} \\
+    0 &= -\frac{2 \pi  h k L \left(T_1-T_{\infty }\right) \left(h r_2-k\right)}{\left(h r_2 \ln \left(\frac{r}{r_1}\right)+k\right)^2}  \\
+    \implies r_2 &\to \frac{k}{h}
+    .\end{align*}
+\end{derivation}
+
+\begin{finalresult}
+  The optimal radius for insulation is therefore:
+  \begin{equation*}
+    r_2 = \frac{k}{h}
+  .\end{equation*}
+\end{finalresult}
+
+\begin{problemwithimage}{p3_2}{3--67}
+  A \qty{4}{\m} high and \qty{6}{\m} wide wall consists of a long $\qty{18}{\cm} \times \qty{30}{\cm} $ cross section of horizontal bricks ($k = \qty{0,72}{\W\per\m\per\K}$) separated by \qty{3}{\cm} thick plaster layers ($k = \qty{0,22}{\W\per\m\per\K}$).
+  There are also \qty{2}{\cm} thick plaster layers on each side of the wall, and a \qty{2}{\cm} thick rigid foam ($k = \qty{0,026}{\W\per\m\per\K}$) on the inner side of the wall.
+  The indoor and the outdoor temperatures are \qty{22}{\celsius} and \qty{-4}{\celsius}, and the convection heat transfer coefficients on the inner and the outer sies are $h_1 = \qty{10}{\W\per\m\squared\per\K}$ and $h_2 = \qty{20}{\W\per\m\squared\per\K}$, respectively.
+  Assuming one-dimensional heat transfer and disregarding radiation, determine the rate of heat transfer through the wall.
+\end{problemwithimage}
+
+\begin{assumptions}
+  \item The system is at steady state
+  \item There are no contact resistances
+\end{assumptions}
+
+\begin{givens}
+  h_{\text{wall}} = \qty{4}{\m} & Height of wall \\
+  w_{\text{wall}} = \qty{6}{\m} & Width of wall \\
+  w_{\text{brick}} = \qty{18}{\cm} & Width of brick \\
+  h_{\text{brick}} = \qty{30}{\cm}  & Height of brick \\
+  k_{\text{brick}} = \qty{0,72}{\W\per\m\per\K} & Thermal conductivity of brick \\
+  h_{\text{plaster}} = \qty{3}{\cm} & Height of plaster layer between bricks \\
+  w_{\text{plaster}} = \qty{4}{\cm} & Total width of plaster on both sides of the bricks \\
+  k_{\text{plaster}} = \qty{0,22}{\W\per\m\per\K} & Thermal conductivity of plaster \\
+  w_{\text{foam}} = \qty{2}{\cm} & Width of foam \\
+  k_{\text{foam}} = \qty{0,026}{\W\per\m\per\K} & Thermal conductivity of foam \\
+  T_{\text{in}} = \qty{22}{\celsius} & Indoor temperature \\
+  T_{\text{out}} = \qty{-4}{\celsius} & Outdoor temperature \\
+  h_1 = \qty{10}{\W\per\m\squared\per\K} & Inner heat convection heat transfer coefficient \\
+  h_2 = \qty{20}{\W\per\m\squared\per\K} & Outer heat convection heat transfer coefficient.
+\end{givens}
+
+\begin{derivation}
+  The heat transfer rate is simply the quotient of the temperature difference over the interface $\Delta T_{\text{interface}} = T_{\text{in}} - T_{\text{out}} = \qty{26}{\kelvin}$ and the thermal resistance $R_{\text{wall}}$:
+  \begin{equation*}
+    \dot{Q} = \frac{\Delta T_{\text{interface}}}{R_{\text{wall}}}
+  .\end{equation*}
+
+  We only consider the area around one brick and its associated plaster.
+  The thermal resistance network kan then be seen as a series connection of \qty{2}{\cm} foam, $2\times\qty{2}{\cm}$ plaster which is then connected to a \qty{18}{\cm} parallel connection of \qty{30}{\cm} height of brick and \qty{3}{\cm} height of plaster.
+
+  The middle parallel section has area fraction of bricks of
+  \begin{equation*}
+    f_{\text{brick}} = \frac{30}{33}
+  \end{equation*}
+  and of plaster of
+  \begin{equation*}
+    f_{\text{plaster}} = \frac{3}{33}
+  .\end{equation*}
+  The total wall area, $A$, is
+  \begin{equation*}
+    A = \qty{4}{\m} \cdot \qty{6}{\m} = \qty{24}{\m\squared} 
+  .\end{equation*}
+  We are now able to replace the middle parallel section with an equivalent thermal conductivity
+  \begin{equation*}
+    k_{\text{eq}} = f_{\text{brick}} k_{\text{brick}} + f_{\text{plaster}} k_{\text{plaster}} = \frac{30}{33} \cdot \qty{0,72}{\W\per\m\per\K} + \frac{3}{33} \qty{0,22}{\W\per\m\per\K} = \qty{0,6745}{\W\per\m\per\K}
+  .\end{equation*}
+  
+  Now we can calculate the value area-normalized value of $R$ to avoid having to multiply everything by the area $A$ thorughout, as:
+  \begin{align*}
+    R &= \frac{1}{h_1} + \frac{w_{\text{foam}}}{k_{\text{foam}}} + 2 \cdot \frac{w_{\text{plaster}}}{k_{\text{plaster}}} + \frac{w_{\text{brick}}}{k_{eq}} + \frac{1}{h_2} \\
+      &= \frac{1}{\qty{10}{\W\per\m\squared\per\K}} + \frac{\qty{2}{\cm}}{\qty{0,026}{\W\per\m\per\K} } + 2 \cdot \frac{\qty{2}{\cm}}{\qty{0,22}{\W\per\m\per\K}} + \frac{\qty{18}{\cm}}{\qty{0,6745}{\W\per\m\per\K} } + \frac{1}{\qty{20}{\W\per\m\squared\per\K} } \\
+      &= \qty{1.368}{\m\squared\K\per\W}
+    .\end{align*}
+    
+    Hence, the total heat transfer rate is:
+    \begin{equation*}
+      \dot{Q} = \frac{A \Delta T}{R} = \frac{\qty{24}{\m\squared} \cdot \qty{26}{\K}}{\qty{1,368}{\m\squared\K\per\W}} = \qty{456}{\W} 
+    .\end{equation*}
+\end{derivation}
+
+\begin{finalresult}
+  The total heat transfer rate over the entire wall is:
+  \begin{equation*}
+    \dot{Q} = \qty{456}{\W} 
+  .\end{equation*}
+\end{finalresult}
+
+
+\begin{problemwithimage}{p3_3}{3--128}
+  Steam in a heating system flows through tubes whose outer diameter is \qty{5}{\cm} and whose walls are maintained at a temperature of \qty{180}{\celsius}.
+  Circular aluminum alloy 2024--T6 fins ($k = \qty{186}{\W\per\m\per\K}$) of outer diameter \qty{6}{\cm} and constant thickness \qty{1}{\mm} are attached to the tube.
+  The space between the fins is \qty{3}{\mm}, and thus there are 250 fins per meter length of the tube.
+  Heat is transferred to the surrounding air at $T_{\infty} = \qty{25}{\celsius}$, with a heat transfer coefficient of \qty{40}{\W\per\m\squared\per\K}.
+  Determine the increase in heat transfer from the tube per meter of its length as a result of adding fins.
+\end{problemwithimage}
+
+\begin{givens}
+  r_{\text{tube, outer}} & \qty{2,5}{\cm} \\
+  t = \qty{1}{\mm} & Thickness of fins \\
+  T_{\text{wall}} = \qty{180}{\celsius} & Temperature of the tube walls \\
+  k_{\text{fins}} = \qty{186}{\W\per\m\per\K} & Thermal conductivity of fins \\
+  r_{\text{fin, outer}} = \qty{3}{\cm} & outer diameter of fin \\
+  N = 250 & Amount of fins per meter \\
+  T_{\infty} = \qty{25}{\celsius} & Temperature of surrounding air \\
+  h = \qty{40}{\W\per\m\squared\per\K} & Heat transfer coefficient
+\end{givens}
+
+\begin{derivation}
+  Here, we are looking to determine the fin effectiveness $\epsilon_{\text{fin}}$:
+  \begin{equation*}
+    \epsilon_{\text{fin}} = \frac{\dot{Q}_{\text{fin}}}{\dot{Q}_{\text{no fin}}} = \frac{\dot{Q}_{\text{fin}}}{h A_b \theta_b}
+  .\end{equation*}
+  The base area being covered by one fin is:
+  \begin{equation*}
+    A_b = 2\pi r_{\text{tube, outer}} t = 2 \cdot \pi \cdot \qty{2,5}{\cm} \cdot \qty{1}{\mm} = \qty{1.5708}{\cm\squared}
+  .\end{equation*}
+  So without any fins, this little piece of pipe would transfer heat at a rate of
+  \begin{equation*}
+    \dot{Q}_{\text{no fin}} = h A_b \theta_b = \qty{40}{\W\per\m\squared\per\K} \cdot \qty{1,571}{\cm\squared} \cdot \qty{155}{\K} = \qty{0.97402}{\W}
+  .\end{equation*}
+  
+  
+\end{derivation}
+
+\begin{problemwithimage}{p3_4}{3--146E}
+  A row of \qty{1}{\m} long and \qty{2,5}{\cm} diameter used uranium fuel rods that are still radioactive are buried in the ground parallel to each other with a center-to-center distance of \qty{20}{\cm} at a depth of \qty{4,5}{\m} from the ground surface at a location where the thermal conductivity of the soil is \qty{1,1}{\W\per\m\per\K}.
+  If the surface temperature of the rods and the ground are \qty{175}{\celsius} and \qty{15}{\celsius} respectively, determine the rate of heat transfer from the fuel rods to the atmosphere through the soil.
+\end{problemwithimage}
