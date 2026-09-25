@@ -58,6 +58,8 @@ logfile
 
 # BibLaTeX / logreq generated request files
 *.run.xml
+*.bbl-SAVE-ERROR
+*.bcf-SAVE-ERROR
 
 # MATLAB autosave files
 *.asv
