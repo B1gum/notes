@@ -245,23 +245,116 @@
 \end{givens}
 
 \begin{derivation}
-  Here, we are looking to determine the fin effectiveness $\epsilon_{\text{fin}}$:
+  Here, we are looking to first determine the fin effectiveness $\epsilon_{\text{fin}}$:
   \begin{equation*}
     \epsilon_{\text{fin}} = \frac{\dot{Q}_{\text{fin}}}{\dot{Q}_{\text{no fin}}} = \frac{\dot{Q}_{\text{fin}}}{h A_b \theta_b}
   .\end{equation*}
-  The base area being covered by one fin is:
+  The base area covered by one fin is:
   \begin{equation*}
-    A_b = 2\pi r_{\text{tube, outer}} t = 2 \cdot \pi \cdot \qty{2,5}{\cm} \cdot \qty{1}{\mm} = \qty{1.5708}{\cm\squared}
+    A_b = 2\pi r_{\text{tube, outer}} t = 2\pi \cdot \qty{2,5}{\cm} \cdot \qty{1}{\mm}  = \qty{1.5708}{\centi\meter^2}
   .\end{equation*}
   So without any fins, this little piece of pipe would transfer heat at a rate of
   \begin{equation*}
-    \dot{Q}_{\text{no fin}} = h A_b \theta_b = \qty{40}{\W\per\m\squared\per\K} \cdot \qty{1,571}{\cm\squared} \cdot \qty{155}{\K} = \qty{0.97402}{\W}
+    \dot{Q}_{\text{no fin}} = h A_b \theta_b = \qty{40}{\W\per\m\squared\per\K} \cdot \qty{1,571}{\cm\squared} \cdot \qty{155}{\K}  = \qty{0.974}{\watt}
   .\end{equation*}
   
-  
+  Now, we need to determine the heat transfer from a single fin $\dot{Q}_{\text{fin}}$.
+  This is given as:
+  \begin{equation*}
+    \dot{Q}_{\text{fin}} = \eta_{\text{fin}} A_{\text{fin}} h \theta_b
+  .\end{equation*}
+  From the course book we know that for circular fins of rectangular profile the fin parameter $m$, the corrected outer radius $r_{2c}$, the fin area $A_{\text{fin}}$, the fin efficiency $\eta_{\text{fin}}$, and the constant $C_2$ are respectively \citepage{cengel2015heatmasstransfer}{200}:
+  \begin{align*}
+    m &= \sqrt{\frac{2h}{kt}} \\
+    r_{2c} &= r_2 + \frac{t}{2} \\
+    \eta_{\text{fin}} &= C_2 \frac{K_1 (m r_1) I_1 (mr_{2c}) - I_1 (mr_1) K_1(mr_{2c})}{I_0 (mr_{1}) K_1(mr_{2c}) + K_0 (mr_1) I_1 (mr_{2c})} \\
+    C_2 &= \frac{\frac{2r_1}{m}}{r^2_{2c} - r_1^2}
+  .\end{align*}
+  We start by finding the fin parameter, the corrected outer radius, the fin area, and the constant $C_2$ as:
+  \begin{align*}
+    m &= \sqrt{\frac{2 \cdot \qty{40}{\W\per\m\squared\per\K}}{\qty{186}{\W\per\m\per\K} \cdot \qty{1}{\mm} }} = \qty{20.739}{\per\m} \\
+    r_{2c} &= \qty{3}{\cm} + \frac{\qty{1}{\mm} }{2}  = \qty{30.5}{\mm}\\
+    A_{\text{fin}} &= 2\pi \cdot \left( (\qty{30,5}{\mm} )^2 - \left( \qty{2,5}{\cm} \right)^2 \right) = \qty{1917.94}{\mm^2}\\
+    C_2 &= \frac{\frac{2 \cdot \qty{2,5}{\cm}}{\qty{20,739}{\per\m}}}{(\qty{30,5}{\mm})^2 - (\qty{2,5}{\cm})^2} = \num{7,89} 
+  .\end{align*}
+  The parameters $I_1, I_0, K_1$, and $K_0$ are the modified Bessel functions. The arguments to these are:
+  \begin{align*}
+    mr_1 &= \qty{20,739}{\per\m} \cdot \qty{2,5}{\cm} = \num{0,5185}  \\
+    m r_{2c} &= \qty{20,739}{\per\m} \cdot \qty{30,5}{\mm} = \num{0,6325}
+  .\end{align*}
+  The modified Bessel functions can then be evaluated at these points using the Wolfram engine, which allows is to calculate the fin efficiency:
+  \begin{equation*}
+    \eta_{\text{fin}} = \num{7,89} \cdot \frac{K_1(\num{0,5185}) I_1(\num{0,6325}) - I_1(\num{0,5185}) K_1(\num{0,6325})}{I_0(\num{0,5185}) K_1(\num{0,6325}) + K_0(\num{0,5185}) I_1(\num{0,6325})} = \num{0.993586}
+  .\end{equation*}
+  Hence, the heat transfer from a single fin is:
+  \begin{equation*}
+    \dot{Q}_{\text{fin}} = \eta_{\text{fin}} A_{\text{fin}} h \theta_b = \num{0,993586} \cdot \qty{1917,94}{\mm\squared} \cdot \qty{40}{\W\per\m\squared\per\K} \cdot \qty{155}{\K}  = \qty{11.815}{\watt}
+  .\end{equation*}
+  Hence, the fin effectiveness is:
+  \begin{equation*}
+    \epsilon_{\text{fin}} = \frac{\dot{Q}_{\text{fin}}}{\dot{Q}_{\text{no fin}}} = \frac{\qty{11,815}{\W}}{\qty{0,974}{\W}} = \num{12.130}
+  .\end{equation*}
+  The increase in heat transfer caused by a single fin is:
+  \begin{equation*}
+    \dot{Q}_{one fin} = \dot{Q}_{\text{fin}} - \dot{Q}_{\text{no fin}} = \qty{11,815}{\W} - \qty{0,974}{\W}  = \qty{10.841}{\watt}
+  .\end{equation*}
+  There are $N = \qty{250}{\per\m}$ fins so:
+  \begin{equation*}
+    \Delta \dot{Q}_{\text{per meter}} = N \cdot \dot{Q}_{\text{one fin}} = \qty{250}{\per\m} \cdot \qty{10,841}{\W} = \qty{2,710}{\kW\per\meter} 
+  .\end{equation*}
 \end{derivation}
+
+\begin{finalresult}
+  The increase in heat transfer rate per meter as a result of adding fins is thus
+  \begin{equation*}
+    \Delta \dot{Q}_{\text{per meter}} = \qty{2,710}{\kW\per\m}
+  .\end{equation*}
+\end{finalresult}
 
 \begin{problemwithimage}{p3_4}{3--146E}
   A row of \qty{1}{\m} long and \qty{2,5}{\cm} diameter used uranium fuel rods that are still radioactive are buried in the ground parallel to each other with a center-to-center distance of \qty{20}{\cm} at a depth of \qty{4,5}{\m} from the ground surface at a location where the thermal conductivity of the soil is \qty{1,1}{\W\per\m\per\K}.
   If the surface temperature of the rods and the ground are \qty{175}{\celsius} and \qty{15}{\celsius} respectively, determine the rate of heat transfer from the fuel rods to the atmosphere through the soil.
 \end{problemwithimage}
+
+\begin{assumptions}
+  \item The system is at steady state
+\end{assumptions}
+
+\begin{givens}
+  L = \qty{1}{\m}  & Length of rods \\
+  D = \qty{2,5}{\cm} & Diameter of rods \\
+  w = \qty{20}{\cm} & Center-to-center distance between rods \\
+  z = \qty{4,5}{\m} & Depth of rods \\
+  k = \qty{1,1}{\W\per\m\per\K} & Thermal conductivity of the soil \\
+  T_1 = \qty{175}{\celsius} & Temperature of rods \\
+  T_2 = \qty{15}{\celsius} & Temperature of ground \\
+  N = 4 & Amount of rods
+\end{givens}
+
+\begin{derivation}
+  Here we need to use the conduction shape factor $S$ to find the rate of heat transfer using \citepage{cengel2015heatmasstransfer}{Eq. 3--93}:
+  \begin{equation*}
+    \dot{Q} = S k \left( T_1 - T_2 \right)
+  .\end{equation*}
+  For a row of equally spaced parallel isothermal cylinders buried in a semi-infinite medium, where $L \gg D,z$, and $w > \num{1,5}D$ (as in this case) the conduction shape factor is given by \citepage{cengel2015heatmasstransfer}{Table~3--7(4)}:
+  \begin{equation*}
+    S = \frac{2 \pi L}{\ln \left( \frac{2 w}{\pi D} \sinh \frac{2\pi z}{w} \right)} = \frac{2 \cdot \pi \cdot \qty{1}{\m}}{\ln \left( \frac{2 \cdot \qty{20}{\cm}}{\pi \cdot \qty{2,5}{\cm}} \cdot \sinh \left( \frac{2\cdot \pi \cdot \qty{4,5}{\m}}{\qty{20}{\cm} } \right) \right)} = \qty{4.4153}{\centi\meter}
+  \end{equation*}
+  per cylinder.
+  Hence,
+  \begin{equation*}
+    \dot{Q}_{\text{per cylinder}} = \qty{4,4153}{\cm} \cdot \qty{1,1}{\W\per\m\per\K} \cdot \left( \qty{175}{\celsius} - \qty{15}{\celsius}  \right) = \qty{7.7709}{\watt}
+  .\end{equation*}
+  So the total rate of heat transfer is:
+  \begin{equation*}
+    \dot{Q}_{\text{total}} = \dot{Q}_{\text{per cylinder}} \cdot N = \qty{7,7709}{\W} \cdot 4 = \qty{31.0836}{\watt}
+  .\end{equation*}
+\end{derivation}
+
+\begin{finalresult}
+  The total rate of heat transfer is therefore
+  \begin{equation*}
+    \dot{Q}_{\text{total}} = \qty{31,084}{\W} 
+  .\end{equation*}
+  
+\end{finalresult}

@@ -8,11 +8,121 @@
   If the initial temperature of the plates is \qty{20}{\celsius}, determine the temperature of the plates when they are removed from the oven.
 \end{problem}
 
+\begin{assumptions}
+  \item The metal plates are lumped
+\end{assumptions}
+
+\begin{givens}
+  k = \qty{180}{\W\per\m\per\K}  & Thermal conductivity of metal plates \\
+  \rho = \qty{2800}{\kg\per\m\cubed} & Density of metal plates \\
+  c_p = \qty{880}{\J\per\kg\per\K} & Heat capacity of metal plates \\
+  z = \qty{1}{\cm} & Thickness of metal plates \\
+  t = \qty{2}{\min} & Heating time \\
+  T_{\infty} = \qty{800}{\celsius} & Temperature of oven \\
+  h = \qty{200}{\W\per\m\squared\per\K} & Convection heat transfer coefficient \\ 
+  T_i = \qty{20}{\celsius} & Initial temperature of metal plates
+\end{givens}
+
+\begin{derivation}
+  From \citepage{cengel2015heatmasstransfer}{Eqs.~4--4~\&~4--5} the temperature $T(t)$ is:
+  \begin{equation*}
+    T(t) = T_{\infty} + \left( T_i - T_{\infty} \right) e^{- b t}
+  \end{equation*}
+  where
+  \begin{equation*}
+    b = \frac{h A_s}{\rho \mathscr{V} c_p} = \frac{h}{\rho \cdot L_c \cdot c_p}
+  \end{equation*}
+  is the reciprocal of the time constant.
+
+  The characteristic length $L_c$ for a thin plate heated from both sides will be $L_c = z / 2 = \qty{0,5}{\cm}$
+  The reciprocal of the time constant is determined to be:
+  \begin{equation*}
+  b = \frac{\qty{200}{\W\per\m\squared\per\K}}{\qty{2800}{\kg\per\m\cubed} \cdot \qty{0,5}{\cm} \cdot \qty{880}{\J\per\kg\per\K} } = \qty{0.01623}{\hertz}
+  .\end{equation*}
+  Hence the temperature after $t = \qty{2}{\minute}$ is:
+  \begin{equation*}
+    T(\qty{2}{\minute}) = \qty{800}{\celsius} + \left( \qty{20}{\celsius} - \qty{800}{\celsius} \right) \cdot e^{\qty{-0,01623}{\hertz} \cdot \qty{2}{\minute} } = \qty{688.8}{\celsius}
+  .\end{equation*}
+\end{derivation}
+
+\begin{finalresult}
+  Hence, the temperaure of the metal plates, when they are removed from the oven after \qty{2}{\minute} is
+  \begin{equation*}
+    T(\qty{2}{\minute}) = \qty{688,8}{\celsius}
+  .\end{equation*}
+\end{finalresult}
+
 \begin{problemwithimage}{p4_1}{4--34}
   Carbon steel balls ($\rho = \qty{7833}{\kg\per\m\cubed}, k = \qty{54}{\W\per\m\per\K}, c_p = \qty{0,465}{\kJ\per\kg\per\celsius}$, and $\alpha = \qty{1,474e-6}{\m\squared\per\s}$) \qty{8}{\mm} in diameter are annealed by heating them first to \qty{900}{\celsius} in a furnace and then allowing them to cool slowly to \qty{100}{\celsius} in ambient air at \qty{35}{\celsius}.
   If the average heat transfer coefficient is \qty{75}{\W\per\m\squared\per\K}, determine how long the annealing process will take.
   If \num{2500} balls are to be annealed per hour, determine the total rate of heat transfer from the balls to the ambient air.
 \end{problemwithimage}
+
+\begin{givens}
+  \rho = \qty{7833}{\kg\per\m\cubed}  & Density of carbon steel \\
+  k = \qty{54}{\W\per\m\per\K} & Thermal conductivity of carbon steel \\
+  c_p = \qty{0,465}{\kJ\per\kg\per\celsius} & Heat capacity of carbon steel \\
+  \alpha = \qty{1,474e-6}{\m\squared\per\s} & Thermal diffusivity of carbon steel \\
+  d = \qty{8}{\mm} & Diameter of steel balls \\
+  T_1 = \qty{900}{\celsius} & Temperature before cooling \\
+  T_2 = \qty{100}{\celsius} & Temperature after cooling \\
+  T_{\infty} = \qty{35}{\celsius} & Ambient temperature \\
+  h = \qty{75}{\W\per\m\squared\per\K} & Heat transfer coefficient \\
+  n = \qty{2500}{\per\hour} & Rate of balls to be annealed
+\end{givens}
+
+\begin{derivation}
+  We start by determining whether the steel balls can be viewed as lumped.
+  For a sphere of radius $r_o$, the characteristic length is $L_c = r_o / 3$.
+  Hence,
+  \begin{equation*}
+    L_c = \frac{r_o}{3} = \frac{d}{6} = \frac{\qty{8}{\mm} }{6} = \qty{1.333}{\milli\meter}
+  .\end{equation*}
+  The Biot number can then be calculated to be:
+  \begin{equation*}
+    \mathrm{Bi} = \frac{h L_c}{k} = \frac{\qty{75}{\W\per\m\squared\per\K} \cdot \qty{1,333}{\mm}}{\qty{54}{\W\per\m\per\K} } = \num{0.00185}
+  .\end{equation*}
+  As $\mathrm{Bi} = \num{0,0019} < \num{0,1}$ the system can be viewed as being lumped. 
+
+  We once again employ:
+  \begin{equation*}
+    T(t) = T_{\infty} + \left( T_i - T_{\infty} \right) e^{-bt}
+  \end{equation*}
+  and solve for the required time to obtain:
+  \begin{equation*}
+    t = \frac{\ln \left( \frac{T_2 - T_{\infty}}{\left( T_1 - T_{\infty} \right)} \right)}{b}
+  .\end{equation*}
+  The reciprocal of the time constant is:
+  \begin{equation*}
+    b = \frac{h}{\rho L_c c_p} = \frac{\qty{75}{\W\per\m\squared\per\K}}{\qty{7833}{\kg\per\m\cubed} \cdot \qty{1,333}{\mm} \cdot \qty{0,465}{\kJ\per\kg\per\celsius} } = \qty{0.01545}{\hertz}
+  .\end{equation*}
+  Hence, the time required to cool down the balls during the annealing is:
+  \begin{equation*}
+    t = -\frac{\ln \left( \frac{\qty{100}{\celsius} - \qty{35}{\celsius}}{\qty{900}{\celsius} - \qty{35}{\celsius}} \right)}{\qty{0,01545}{\hertz} } = \qty{2.79}{Minutes} \rightarrow \qty{167.4}{\second}
+  .\end{equation*}
+
+  The total rate of heat transfer over the time interval $t = 0$ to $t$ is:
+  \begin{equation*}
+    \dot{Q} = \dot{m} c_p \left( T(t) - T_i \right) \implies \dot{Q} = N \cdot \rho \cdot \frac{4}{3} \pi \cdot \left( \frac{d}{2} \right)^3 \cdot c_p \left( T_2 - T_{1}\right)
+  .\end{equation*}
+  Hence,
+  \begin{equation*}
+  \dot{Q} = \qty{2500}{\per\hour} \cdot  \qty{7833}{\kg\per\m\cubed} \cdot \frac{4}{3} \cdot \pi \cdot \left( \frac{\qty{8}{\mm}}{2} \right)^3 \cdot \qty{0,465}{\kJ\per\kg\per\celsius} \cdot \left( \qty{100}{\celsius} - \qty{900}{\celsius}  \right)  = \qty{-0.5425}{\kilo\watt}
+.\end{equation*}
+\end{derivation}
+
+\begin{finalresult}
+  The cooling part of the annealing process will take:
+  \begin{equation*}
+    t = \qty{167,4}{\second}
+  \end{equation*}
+  not enough information is known about the heating part to estimate the duration of this part.
+  The \qty{2500}{\per\hour} balls will give of heat at a rate of
+  \begin{equation*}
+    \dot{Q} = \qty{0,5425}{\kW}
+  \end{equation*}
+  to the surroundings.
+\end{finalresult}
 
 \begin{problemwithimage}{p4_2}{4--47}
   A hot brass plate is having its upper surface cooled by impinging jet of air at temperature of \qty{15}{\celsius} and convection heat transfer coefficient of \qty{220}{\W\per\m\squared\per\K}.
@@ -21,15 +131,155 @@
   Solve this problem using analytical one-term approximation (not the Heisler charts).
 \end{problemwithimage}
 
+\begin{assumptions}
+  \item No heat is lost through the insulated bottom portion
+\end{assumptions}
+
+\begin{givens}
+  T_{\infty} = \qty{15}{\celsius}  & Temperature of air jet \\
+  h = \qty{220}{\W\per\m\squared\per\K} & Convection heat transfer coefficient \\
+  z = \qty{10}{\cm} & Thickness of brass plate \\
+  \rho = \qty{8530}{\kg\per\m\cubed} & Density of brass \\
+  c_p = \qty{380}{\J\per\kg\per\K} & Heat capacity of brass \\
+  k = \qty{110}{\W\per\m\per\K} & Thermal conductivity of brass \\
+  \alpha = \qty{33,9e-6}{\m\squared\per\s} & Thermal diffusivity of brass \\
+  T_i = \qty{650}{\celsius} & Initial temperature \\
+  t = \qty{3}{\minute} & Time
+\end{givens}
+
+\begin{derivation}
+  For good measure, we start by determining whether the system can be viewed as lumped as above. In this case the characteristic length is $L_c = z = \qty{10}{\cm}$ as no heating occurs from underneath.
+  Hence
+  \begin{equation*}
+    \mathrm{Bi} = \frac{h L_c}{k} = \frac{\qty{220}{\W\per\m\squared\per\K} \cdot \qty{10}{\cm}}{\qty{110}{\W\per\m\per\K} } = 0.2
+  .\end{equation*}
+  As $\mathrm{Bi} = \num{0,2} \not\leq \num{0,1}$ the system can not be regarded as being lumped. 
+
+  The analytical one term solution for a plane wall is (in that we regard it as a symmetrically bounded wall with twice the thickness):
+  \begin{equation*}
+    \theta = A_1 e^{-\lambda_1^2 \mathrm{Fo}} \cdot \cos \left( \lambda_1 \frac{x}{L} \right)
+  .\end{equation*}
+  The values $\lambda_1(\mathrm{Bi})$ and $A_1(\mathrm{Bi})$ are found in \citepage{cengel2015heatmasstransfer}{Table 4--2} for a plane wall to be $\lambda_1(\num{0,2}) = \num{0,4328}$ and $A_1 (\num{0,2} ) = \num{1,0311}$.
+  The Fourier number $\mathrm{Fo}$ is defined as:
+  \begin{equation*}
+    \mathrm{Fo} = \frac{\alpha t}{L^2} \implies \mathrm{Fo} = \frac{\qty{33,9e-6}{\m\squared\per\s} \cdot \qty{3}{\minute}}{(\qty{10}{\cm})^2 }  = \num{0.6102}
+  .\end{equation*}
+  The location we are requested to find the temperature at is the midline $x = z / 2 = \qty{5}{\cm}$.
+  Hence,
+  \begin{equation*}
+    \theta = \num{1,0311} \cdot e^{-\num{0,4328}^2 \cdot \num{0,6102} } \cdot \cos \left( \num{0,4328} \cdot \frac{\qty{5}{\cm}}{\qty{10}{\cm} } \right) = \num{0.898}
+  .\end{equation*}
+  Hence, the temperature excess $\theta = \num{0,898}$.
+  This is defined as:
+  \begin{equation*}
+    \theta = \frac{T - T_{\infty}}{T_i - T_{\infty}}
+  .\end{equation*}
+  Hence, the temperature at the center is:
+  \begin{equation*}
+    T = T_{\infty} + \left( T_i - T_{\infty} \right) \cdot \num{0,898} = \qty{15}{\celsius} + \left( \qty{650}{\celsius} - \qty{15}{\celsius} \right) \cdot \num{0,898}  = \qty{555.23}{\celsius}
+  .\end{equation*}
+\end{derivation}
+
+\begin{finalresult}
+  The temperature at the center of the brass after $t = \qty{3}{\minute}$ is
+  \begin{equation*}
+    T = \qty{555}{\celsius} 
+  .\end{equation*}
+  
+\end{finalresult}
+
 \begin{problemwithimage}{p4_3}{4-66}
   A father and son conducted the following simple experiment on a hot dog which measured \qty{12,5}{\cm} in length and \qty{2,2}{\cm} in diameter.
   They inserted one food thermometer into the midpoint of the hot dog and another one was placed just under the skin of the hot dog.
   The temperature of the thermometers were monitored until both temperatures read \qty{20}{\celsius}  which is the ambient temperature.
   The hot dog was then placed in \qty{94}{\celsius} boiling water and after exactly 2 minutes they recorded the center temperature and the skin temperature of the hot dog to be \qty{59}{\celsius} and \qty{88}{\celsius}, respectively.
-  Assuming the following properties for the hot god: $\rho = \qty{980}{\kg\per\m\cubed}$ and $c_p = \qty{3900}{\J\per\kg\per\K} $ and using transient temperature charts, determine
+  Assuming the following properties for the hot dog: $\rho = \qty{980}{\kg\per\m\cubed}$ and $c_p = \qty{3900}{\J\per\kg\per\K} $ and using transient temperature charts, determine
   \begin{subproblems}
     \subproblem the thermal diffusivity of the hot dog,
     \subproblem the thermal conductivity of the hot dog, and
     \subproblem the convection heat transfer coefficient.
   \end{subproblems}
 \end{problemwithimage}
+
+\begin{assumptions}
+  \item The properties of the hotdog are totally uniform throughout
+  \item The hotdog is cylindrical
+\end{assumptions}
+
+\begin{givens}
+  l = \qty{12,5}{\cm}  & Length of hotdog \\
+  d = \qty{2,2}{\cm} & Diameter of hotdog \\
+  T_{i} = \qty{20}{\celsius} & Air temperature and initial temperature of hotdog \\
+  T_{\infty} = \qty{94}{\celsius} & Temperature of water \\
+  T_{s} = \qty{89}{\celsius} & Skin temperature of hotdog after heating \\
+  T_{\text{center}} = \qty{59}{\celsius} & Center temperature of hotdog after heating \\
+  t = \qty{2}{\minute} & Duration of heating \\
+  \rho = \qty{980}{\kg\per\m\cubed} & Density of hotdog \\
+  c_p = \qty{3900}{\J\per\kg\per\K} & Heat capacity of hotdog
+\end{givens}
+
+\begin{derivation}
+  \derivationpart
+  We start by determining the dimensionless temperature at the surface of the hotdog and at its center respectively as:
+  \begin{gather*}
+    \theta_s = \frac{T_{s} - T_{\infty}}{T_i - T_{\infty}} = \frac{\qty{89}{\celsius} - \qty{94}{\celsius}}{\qty{20}{\celsius} - \qty{94}{\celsius} } = \num{0.06757} \\
+    \theta_0 = \frac{T_{\text{center}} - T_{\infty}}{T_i - T_{\infty}} = \frac{\qty{59}{\celsius} - \qty{94}{\celsius}}{\qty{20}{\celsius} - \qty{94}{\celsius} } = \num{0.47297}
+  .\end{gather*}
+  The ratio between these is:
+  \begin{equation*}
+    \frac{\theta_s}{\theta_0} = \frac{\num{0,06757}}{\num{0,47297} } = \num{0.142863}
+  .\end{equation*}
+  At the surface $r / r_o = 1$, hence we find the intersection between the \num{1,0} curve and $\theta / \theta_0 = \num{0,143}$ on \citepage{cengel2015heatmasstransfer}{Fig. 4--18(b)}.
+  Here, we see that $\mathrm{Bi}^{-1} = \num{0,14} \implies \mathrm{Bi} \approx \num{7}$.
+  Now, we use \citepage{cengel2015heatmasstransfer}{Fig 4--18(a)} where we use $\mathrm{Bi}^{-1} = \num{0,14}$ and $\theta_s / \theta_0 = \num{0,1428}$ and find $\mathrm{Fo} = \num{0,45}$.
+  Hence:
+  \begin{align*}
+    \mathrm{Fo} &= \alpha \frac{t}{r_o^2} \\
+    \alpha &= \frac{\mathrm{Fo} \cdot r_o^2}{t} \\
+    &= \frac{\num{0,45} \cdot (\qty{1,1}{\cm})^2}{\qty{2}{\minute} }  \\
+    &= \qty{0.27225}{\centi\meter^2\per\minute} = \qty{4.5375e-7}{\meter\squared\per\second}
+  .\end{align*}
+
+  \begin{subresult}
+    The thermal diffusivity of the hotdog is approximately
+    \begin{equation*}
+      \alpha = \qty{4.54e-7}{\meter\squared\per\second}
+    .\end{equation*}
+  \end{subresult}
+
+  \derivationpart
+
+  The thermal diffusivity is related to the thermal conductivity as:
+  \begin{equation*}
+    \alpha = \frac{k}{\rho c_p} \implies k = \alpha \rho c_p
+  .\end{equation*}
+  Hence,
+  \begin{equation*}
+    k = \qty{4,5375e-7}{\m\squared\per\second} \cdot \qty{980}{\kg\per\m\cubed} \cdot \qty{3900}{\J\per\kg\per\K}  = \qty{1.734}{\W\per\kelvin\per\meter}
+  .\end{equation*}
+  
+  \begin{subresult}
+    The thermal conductivity of the hotdog is
+    \begin{equation*}
+      k = \qty{1,734}{\W\per\K\per\m}
+    .\end{equation*}
+  \end{subresult}
+
+  \derivationpart
+
+  The convection heat transfer coefficient is related to the Biot number and thermal conductivity through:
+  \begin{equation*}
+    \mathrm{Bi} = \frac{h L_c}{k} \implies h = \frac{\mathrm{Bi} \cdot k}{L_c}
+  .\end{equation*}
+  Hence,
+  \begin{equation*}
+    h = \frac{7 \cdot \qty{1,734}{\W\per\K\per\m}}{\frac{\qty{1,1}{\cm}}{2}} = \qty{0.22}{\W\per\cm\squared\per\K} \rightarrow \qty{2200}{\W\per\m\squared\per\K} 
+  .\end{equation*}
+  
+  \begin{subresult}
+    The conduction heat transfer coefficient is:
+    \begin{equation*}
+      h = \qty{2200}{\W\per\m\squared\per\K} 
+    .\end{equation*}
+  \end{subresult}
+\end{derivation}
