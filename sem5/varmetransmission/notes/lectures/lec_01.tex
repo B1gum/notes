@@ -26,7 +26,7 @@ The change in internal energy $u$ and enthalpy $h=u+p / \rho$ with temperature i
   \item Ideal Gasses:
     \begin{align*}
       \mathrm{d}u &= c_v \, \mathrm{d}T \\
-      \mathrm{d}h = c_p \, \mathrm{d}T
+      \mathrm{d}h &= c_p \, \mathrm{d}T
     .\end{align*}
   \item Incompressible substances:
     \begin{equation*}
@@ -47,7 +47,7 @@ These are \textit{Conduction}, \textit{Convection}, and \textit{Radiation}.
   \vspace{-1.5cm}
   \centering
   \includegraphics[width=\linewidth]{./figures/conduction.png}
-  \caption{Cross section of a material displaying thermal conduction \citepage{cengel2015heatmasstransfer}{fig.~1--23}.}
+  \caption{Cross section of a material displaying thermal conduction. Reproduced from \citepage{cengel2015heatmasstransfer}{fig.~1--23}.}
   \label{fig:conduction}
 \end{wrapfigure}
 Conduction is the transfer of energy from more energetic particles of a substance to the adjacent less energetic ones.
@@ -58,7 +58,7 @@ The rate of conduction $\dot{Q}_{\mathrm{cond}}$ is generally given on a form re
   \dot{Q}_{\mathrm{cond}} \propto A \frac{\Delta T}{\Delta x}
 \end{equation*}
 where $A$ is the conducting area, $\Delta T$ is the change in temperature and $\Delta x$is the thickness of the cross-section.
-This can be qualified by including the \textit{thermal conductivity} $\left[ \unit{\W\per\m\per\K} \right]$ which gives:
+This can be qualified by including the \textit{thermal conductivity} $k = \left[ \unit{\W\per\m\per\K} \right]$ which gives:
 \begin{equation*}
   \dot{Q}_{\mathrm{cond}} = -k A \frac{\Delta T}{\Delta x}
 .\end{equation*}
@@ -70,7 +70,7 @@ or in general vector form as
 \begin{equation*}
   \Vec{\dot{q}} = -k \nabla T
 .\end{equation*}
-The thermal conductivity is a material property which varies with temperature.
+The thermal conductivity varies with temperature.
 
 We also define the \textit{thermal diffusivity} $\alpha$ as
 \begin{equation*}
@@ -145,7 +145,7 @@ We have an important special case of the above for a surface entirely enclosed b
 
 \begin{figure} [ht]
   \centering
-  \includegraphics[width=0.5\linewidth]{./figures/radiation.png}
-  \caption{Radiation between enclosed and enclosing body\citepage{cengel2015heatmasstransfer}{fig.~1--40}.}
+  \includegraphics[width=0.4\linewidth]{./figures/radiation.png}
+  \caption{Radiation between enclosed and enclosing body. Reproduced from \citepage{cengel2015heatmasstransfer}{fig.~1--40}.}
   \label{fig:radiation}
 \end{figure}
