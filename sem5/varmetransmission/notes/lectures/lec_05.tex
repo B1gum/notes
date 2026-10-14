@@ -1,0 +1,170 @@
+% !TeX root = ../master.tex
+
+\lecture{5}{2026-09-22}{Convection, Pt. I}
+\section{Convection}
+In \mref{sec:conduction} we have only considered conduction, i.e. the mechanism of heat transfer in a solid or still liquid.
+We now turn our focus to convection, which is the mechanism of heat transfer through a fluid in the presence of bulk fluid motion.
+
+Convection can be classified as either \textit{natural} or \textit{free} and \textit{forced convection} depending on how the motion of the fluid is initiated.
+\begin{definition}[Natural or free convection]
+  In natural convection, any fluid motion is caused by natural means such as buoyancy effects between a warmer and cooler fluid.
+\end{definition}
+
+\begin{definition}[Forced convection]
+  In forced convection, the fluid is forced to flow over a surface or through a pipe by external means such as a pump or a fan.
+\end{definition}
+Convection may also be classified as either \textit{external} or \textit{internal}, depending on whether the fluid is forced to flow over a surface or through a pipe \citepage{cengel2015heatmasstransfer}{379}.
+
+\subsection{The Energy Equation}
+Using energy conservation for an incompressible flow it can be shown that \citepage{cengel2015heatmasstransfer}{Sec.~6--6}
+\begin{equation} \label{eq:convheateqincomp}
+  \underbracket{\rho c \frac{\partial T}{\partial t}}_{\mathlabel{\nameref*{sec:unsteady}}} + \underbracket{\rho c \left( u \frac{\partial T}{\partial x} + v \frac{\partial T}{\partial y} + w \frac{\partial T}{\partial z}  \right)}_{\mathlabel{\nameref*{sec:advection}}} = \underbracket{k \left( \frac{\partial ^2 T}{\partial x^2} + \frac{\partial ^2 T}{\partial y^2} + \frac{\partial ^2 T}{\partial z^2}  \right)}_{\mathlabel{\nameref{sec:diffusion}}} + \underbracket{\dot{e}_{\mathrm{gen}}}_{\mathlabel{\nameref{sec:heatgen}}}
+.\end{equation}
+All the terms in \mref{eq:convheateqincomp} will be explained in \mref{sec:unsteady}, \mref{sec:advection}, \mref{sec:diffusion} and \mref{sec:heatgen}.
+
+\subsubsection{Unsteadiness} \label{sec:unsteady}
+The unsteadiness term $\rho c \partial T / \partial t$, describes how fast the temperature at a fixed point changes with time.
+Here, $\rho c$ is the energy stored per unit volume per degree of temperature rise.
+This is the only term in \mref{eq:convheateqincomp} that contains a time derivative and therefore the only term that becomes zero for steady-state.
+
+\subsubsection[Advection]{Advection (Convection)} \label{sec:advection}
+The advection or convection term $\rho c \Vec{u} \cdot \nabla T$ is a measure of heat physically carried along by the moving fluid.
+For this term to survive, both a velocity $\Vec{u}$ and a temperature gradient $\nabla T$ are needed.
+No motion means nothing carries the heat and uniform temperature means the moving fluid changes nothing.
+This term is the whole reason convection transfers heat far better than conduction.
+
+\subsubsection[Diffusion]{Diffusion (Conduction)} \label{sec:diffusion}
+The diffusion or conduction term $k \nabla^2 T$ describes the molecule-to-molecule conduction -- it is exactly Fourier's law from \mref{eq:fourierlawconduction}.
+Positive curvature of the temperature means the element is cooler than its surroundings so heat flows in and the temperature rises.
+
+\subsubsection{Heat Generation} \label{sec:heatgen}
+Heat generated inside the element is described by $\dot{e}_{\mathrm{gen}}$.
+This covers resistive, chemical, nuclear, and all other forms of internal heating.
+It also contains viscous dissipation, i.e. friction between fluid layers turning mechanical energy into heat.
+
+\subsection[Conservation of Mass and Momentum]{Conservation of Mass and Momentum (Continuity and Navier-Stokes)}
+The continuity equation from fluid mechanics is a representation of conservation of mass.
+This can be represented as \citepage{hansen2026fluidmechanics}{Eq.~(15)}
+\begin{equation} \label{eq:contcomp}
+  \nabla \cdot \rho \Vec{V} + \frac{\partial \rho}{\partial t} =0
+.\end{equation}
+For incompressible flow, which we are assuming in this analysis \mref{eq:contcomp} reduces to
+\begin{equation} \label{eq:contincomp}
+  \nabla \cdot \Vec{V} = 0
+.\end{equation}
+
+Conservation of momentum is encapsulated by the Navier-Stokes equations, i.e. Newton's  second law for a fluid element, represented as \citepage{hansen2026fluidmechanics}{Eqs.~(27)--(28)}
+\begin{equation} \label{eq:navstokes}
+  \rho \frac{\partial \Vec{u}}{\partial t} + \rho \left( \Vec{u} \cdot \nabla  \right)\Vec{u} = \mu \nabla^2 \Vec{u} - \nabla  p 
+.\end{equation}
+Here, the terms can be viewed in the same manner as for \mref{eq:convheateqincomp} with an unsteadiness, advection, viscous and pressure term representing the same basic ideas as the corresponding terms in \mref{eq:convheateqincomp}.
+
+To use \mref{eq:convheateqincomp} one must first apply the four equations represented by \mref{eq:contincomp} and \mref{eq:navstokes}.
+This gives the three velocity composants $u$, $v$, $w$ and the pressure $p$.
+Only then can the energy equation \mref{eq:convheateqincomp} be used to solve for $T$.
+
+\subsection{Reynolds Number}
+As explained in the fluid mechanics course \cite{hansen2026fluidmechanics} flow can either be turbulent or laminar and normally slow velocity flows will stay laminar whereas faster flows quickly turn chaotic.
+This is described by the Reynolds number, $\mathrm{Re}$, defined as the ratio of inertia forces to viscous forces as \citepage{cengel2015heatmasstransfer}{Eq.~(6--13)}
+\begin{equation*}
+  \mathrm{Re} = \frac{V L_c}{\nu} = \frac{\rho V L_c}{\mu}
+\end{equation*}
+where $V$ is the upstream velocity, $L_c$ the characteristic length, and $\nu = \mu / \rho$ is the kinematic viscosity of the plate.
+Likewise, the local Reynolds number $\mathrm{Re}_x$ is defined as
+\begin{equation*}
+  \mathrm{Re}_x = \frac{Vx}{\nu}
+,\end{equation*}
+where $x$ is the distance from the plates leading edge.
+
+The Reynolds number at which a flow turns turbulent is called the \textit{critical Reynolds number}, the size of which is determined by the geometry and flow conditions.
+For flow over a flat plate the generally accepted value for the critical Reynolds number is $\mathrm{Re}_{\mathrm{cr}} = V x_{\mathrm{cr}} / \nu = \num{5e5}$, where $x_{\mathrm{cr}}$ is the distance from the leading edge of the plate at which transition from laminar to turbulent flow occurs \citepage{cengel2015heatmasstransfer}{391--392}.
+
+\subsection{Prandtl Number}
+The relative thickness of the velocity and thermal boundary layers is best described by the dimensionless parameter Prandtl number, $\mathrm{Pr}$, defined as \citepage{cengel2015heatmasstransfer}{Eq. (6--12)}.
+\begin{equation*}
+  \mathrm{Pr} = \frac{\nu}{\alpha} = \frac{\mu c_p}{k}
+.\end{equation*}
+The Prandtl numbers of fluids range from less than \num{0,01} for liquid metals to more than \num{100000} for heavy oils.
+The Prandtl number for water is $\mathrm{Pr} =$ \numrange{1,7}{13,7} \citepage{cengel2015heatmasstransfer}{Tab.~6--2}.
+
+The Prandtl numbers of gasses are about 1, which indicate that moth momentum and heat dissipate through the fluid at the same rate.
+Heat diffuses very quickly in liquid metal ($\mathrm{Pr} \ll 1$) and very slowly in oils ($\mathrm{Pr} \gg 1$) relative to momentum.
+Hence, the thermal boundary layer is much thicker in a liquid metal and much thinner in oils relative to the velocity boundary layer \citepage{cengel2015heatmasstransfer}{390}.
+
+\subsection{Nusselt Number}
+In convection, the heat transfer coefficient $h$ is often nondimensionalized through the Nusselt number, defined as \citepage{cengel2015heatmasstransfer}{Eq.~(6--5)}:
+\begin{equation*}
+  \mathrm{Nu} = \frac{h L_c}{k}
+.\end{equation*}
+The Nusselt number can be seen as the ratio between the convective heat flux $\dot{q}_{\mathrm{conv}}$ and the conductive heat flux $\dot{q}_{\mathrm{cond}}$ as \citepage{cengel2015heatmasstransfer}{Eqs. (6--6---6--8)}
+\begin{align*}
+  \dot{q}_{\mathrm{conv}} &= h \Delta t \\
+  \dot{q}_{\mathrm{cond}} &= k \frac{\Delta T}{L} \\
+  \frac{\dot{q}_{\mathrm{conv}}}{\dot{q}_{\mathrm{cond}}} &= \frac{h L}{k} = \mathrm{Nu}
+,\end{align*}
+hence, the Nusselt number represents the enhancement of heat transfer through a fluid layer as a result of convection relative to static conduction across the same fluid layer.
+A large Nusselt number implies a more effective convection and a Nusselt number of $\mathrm{Nu} = 1$ represents purely conductive heat transfer across a fluid layer.
+
+\subsection{Boundary Layers in Heat Transfer}
+In Fluid mechanics it was shown how a velocity boundary layer arises when a fluid flow over a surface as a result of the fluid velocity being zero at the interface \cite{hansen2026fluidmechanics}.
+Likewise, for a flow of a fluid at a uniform temperature $T_{\infty}$ over an isothermal plate at temperature $T_s$, the temperature profile in the flow field ranges from $T_s$ at the surface to $T_{\infty}$ sufficiently far from the interface.
+Normally the thickness of the thermal boundary layer $\delta_t$ at any location along the surface is defined as the distance from the surface at which the temperature difference $T-T_s = \num{0,99} (T_{\infty}- T_s)$, i.e. \qty{99}{\percent} of the temperature difference is already ``covered''.
+The rate of convective heat transfer is related to the temperature gradient at any given location along the surface, hence the shape of the temperature profile in the thermal boundary layer dictates the convection heat transfer between the surface and the fluid \citepage{cengel2015heatmasstransfer}{389}.
+
+The thickness of the velocity boundary layer $\delta$ over a flat plate, defined as the distance from the surface for which $u / V = \num{0,99}$ is given by \citepage{cengel2015heatmasstransfer}{Eq.~(6--51)}
+\begin{equation*}
+  \delta = \frac{\num{4,91}}{\sqrt{\frac{V}{\nu x}}} = \frac{\num{4,91} x}{\sqrt{\mathrm{Re}_x}}
+\end{equation*}
+where $x$ is the distance from the leading edge of the plate.
+It is worth noting that the boundary layer thickness increases with kinematic viscosity $\nu$ and with increasing distance from the leading edge $x$, but decreases with increasing free-stream velocity $V$ \citepage{cengel2015heatmasstransfer}{403}.
+Conversely, the thickness of the thermal boundary layer $\delta_t$, for laminar flow over an isothermal flat plate is given by \citepage{cengel2015heatmasstransfer}{Eq.~(6--63)}
+\begin{equation*}
+  \delta_t = \frac{\delta}{\sqrt[3]{\mathrm{Pr}}} = \frac{\num{4,91} x}{\sqrt[3]{\mathrm{Pr}} \sqrt{\mathrm{Re}_x}}
+\end{equation*}
+Where $\mathrm{Pr}$ is the Prandtl number.
+
+\subsubsection{Local Skin Friction and Heat Transfer}
+For laminar flow over an isothermal flat plate, the local skin-friction
+coefficient is \citepage{cengel2015heatmasstransfer}{...}
+\begin{equation*}
+  C_{f,x}
+  = \frac{\tau_w}{\frac{1}{2}\rho V^2}
+  = \frac{0.664}{\sqrt{\mathrm{Re}_x}}
+.\end{equation*}
+Here, $\tau_w$ is the wall shear stress and $V$ is the free-stream velocity.
+
+For the same flow, the local Nusselt number is \citepage{cengel2015heatmasstransfer}{...}
+\begin{equation*}
+  \mathrm{Nu}_x
+  = \frac{h_x x}{k}
+  = 0.332\,\mathrm{Re}_x^{1/2}\mathrm{Pr}^{1/3},
+  \qquad \mathrm{Pr} > 0.6
+.\end{equation*}
+Here, $h_x$ is the local convection heat-transfer coefficient.
+
+\subsubsection{Stanton Number and Reynolds Analogies}
+The Stanton number relates the local convection heat-transfer coefficient
+to the heat-capacity flow of the fluid:
+\begin{equation*}
+  \mathrm{St}_x
+  = \frac{h_x}{\rho c_p V}
+  = \frac{\mathrm{Nu}_x}{\mathrm{Re}_x\mathrm{Pr}}
+.\end{equation*}
+
+For flow with $\mathrm{Pr}=1$, the Reynolds analogy relates heat transfer
+to skin friction:
+\begin{equation*}
+  \mathrm{St}_x = \frac{C_{f,x}}{2}.
+\end{equation*}
+
+The Chilton--Colburn analogy extends this comparison to other Prandtl numbers:
+\begin{equation*}
+  j_H
+  = \mathrm{St}_x\mathrm{Pr}^{2/3}
+  = \frac{C_{f,x}}{2}.
+\end{equation*}
+Equivalently,
+\begin{equation*}
+  \frac{C_{f,x}}{2}\,\mathrm{Re}_x
+  = \mathrm{Nu}_x\mathrm{Pr}^{-1/3}.
+\end{equation*}
