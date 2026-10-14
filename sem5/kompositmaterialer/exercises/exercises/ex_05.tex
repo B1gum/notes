@@ -1,0 +1,176 @@
+% !TeX root = ../master.tex
+
+\begin{problem}{5--4}
+  A lamina with discontinues random oriented fibers is to be produced. The materials are glassfibers and epoxy. Compute the Young’s modulus, shear modulus, and Poisson’s ratio for the lamina if the fiber volume fraction is \qty{35}{\%}. Use the material properties from the tables in exercise 5.2.
+\end{problem}
+
+\begin{derivation}
+  For \textit{chop strand mats} gælder at Young's modul, forskydningsmodul og poissons forhold tilnærmelsesvist kan regnes som hhv.
+  \begin{align*}
+    E_{\mathrm{CSM}} &= \frac{3}{8}E_1 + \frac{5}{8}E_2 \\
+    G_{\mathrm{CSM}} &= \frac{1}{8}E_1 + \frac{1}{4}E_2 \\
+    \nu_{CSM} &= \frac{E_1 + E_2}{2 E_1 + 4 E_2}
+  \end{align*}
+  UD-stivhederne er hhv.
+  \begin{align*}
+    E_1 &= E_f V_f + E_m V_m \\
+    E_2 &= \frac{E_f E_m}{E_m V_f + E_f V_m}
+  .\end{align*}
+  I dette tilfælde har vi at $E_{\text{glass}} = \qty{85}{\GPa}$ og $E_{\text{epoxy}} = \qty{3,4}{\GPa}$ samt $V_f = \num{0,35} \implies V_m = \num{0,65} $. Altså:
+  \begin{align*}
+    E_1 &= \qty{85}{\GPa} \cdot \num{0,35} + \qty{3,4}{\GPa} \cdot \num{0,65} = \qty{31.96}{\giga\pascal}\\
+    E_2 &= \frac{\qty{85}{\GPa} \cdot \qty{3,4}{\GPa}}{\qty{3,4}{\GPa} \cdot \num{0,35} + \qty{85}{\GPa} \cdot \num{0,65} } = \qty{5.12}{\giga\pascal}\\
+    E_{\mathrm{CSM}} &= \frac{3}{8} \cdot \qty{31,96}{\GPa} + \frac{5}{8} \cdot \qty{5,12}{\GPa} =\qty{15.185}{\giga\pascal}\\
+    G_{\mathrm{CSM}} &= \frac{1}{8} \cdot \qty{31,96}{\GPa} + \frac{1}{4} \cdot \qty{5,12}{\GPa} = \qty{5.275}{\giga\pascal}\\
+    \nu_{\mathrm{CSM}} &= \frac{\qty{31,96}{\GPa} + \qty{5,12}{\GPa}}{2 \cdot \qty{31,96}{\GPa} + 4 \cdot \qty{5,12}{\GPa} } = 0.439
+  .\end{align*}
+\end{derivation}
+
+\begin{finalresult}
+  CSM-laminatet vil approksimativt have følgende egenskaber:
+  \begin{align*}
+    E_{\mathrm{CSM}} &= \qty{15,185}{\GPa}  \\
+    G_{\mathrm{CSM}} &= \qty{5,275}{\GPa} \\
+    \nu_{\mathrm{CSM}} &= \num{0,439} 
+  .\end{align*}
+\end{finalresult}
+
+\begin{problem}{5.5}
+  \begin{subproblems}
+    \subproblem Udled et udtryk for volumenfraktionen af fibre givet den termiske udvidelseskoefficient i 1-retningen for et UD-lamina
+    \subproblem Beregn fibervolumenfraktionen påkrævet for et kulfiber-epoxy UD-lamnia og et aramid-epoxy- UD-lamina ikke udvider sig i 1-retningen under termperaturændring
+    \subproblem Bestem hvilket af laminaene i b) der er stivest i 1-retningen
+    \subproblem Bestem $\alpha_2$ for laminaet fra c)
+    \subproblem Bestem $E_1, E_2,$ og $G_{12}$ for laminaet fra c)
+    \subproblem Bestem $\beta_1$ og $\beta_2$ for laminaet fra c)
+  \end{subproblems}
+\end{problem}
+
+\begin{derivation}
+  \derivationpart
+  Vi har fra \cite{jones2021mechanicscompositematerials} at
+  \begin{equation*}
+    \alpha_1 = \frac{\alpha_f E_f}{E_1} V_f + \frac{\alpha_m E_m}{E_1} V_m
+  .\end{equation*}
+  Hvilket omskrives til:
+  \begin{equation*}
+    \alpha_1 = \frac{\alpha_f E_f}{E_f \cdot V_f + E_m \cdot (1-V_f)} V_f + \frac{\alpha_m E_m}{E_f V_f + E_m \cdot (1-V_f)} (1-V_f)
+  .\end{equation*}
+  Vi løser heri for $V_f$:
+  \begin{gather*}
+    \alpha_1 = \frac{\alpha_f E_f}{E_f \cdot V_f + E_m \cdot (1-V_f)} V_f + \frac{\alpha_m E_m}{E_f V_f + E_m \cdot (1-V_f)} (1-V_f) \\ 
+    V_f = \frac{E_m \left(\alpha _m-\alpha _1\right)}{\alpha _1 \left(E_f-E_m\right)-E_f \alpha _f + E_m \alpha _m}
+  .\end{gather*}
+  
+  \begin{subresult}
+    Fiber-volumenfraktionen givet den termiske udvidelseskoefficient i 1-retningen er
+    \begin{equation*}
+      V_f = \frac{E_m \left(\alpha _m-\alpha _1\right)}{\alpha _1 \left(E_f-E_m\right)-E_f \alpha _f + E_m \alpha _m}
+    .\end{equation*}
+  \end{subresult}
+
+  \derivationpart
+
+  Her kræver vi at $\alpha_1 = 0$, altså:
+  \begin{equation*}
+    V_f = \frac{E_m \alpha_m}{E_m \alpha_m - E_f \alpha_f}
+  .\end{equation*}
+  For materialerne i opgaven har vi hhv. $E_{\text{epoxy}} = \qty{3,4}{\GPa}$, $E_{\text{kulfiber}} = \qty{220}{\GPa}$, $E_{\text{aramid}} = \qty{124}{\GPa}$, $\alpha_{\text{epoxy}} = \qty{63}{\micro\m\per\m\per\celsius}, \alpha_{\text{kulfiber}} = \qty{-1,3}{\micro\m\per\m\per\celsius}$ og $\alpha_{\text{aramid}} = \qty{-5,0}{\micro\m\per\m\per\celsius}$.
+  Altså:
+  \begin{align*}
+    \left( V_f \right)_{\text{carbon-epoxy}} &= \frac{\qty{3,4}{\GPa} \cdot \qty{63}{\micro\m\per\m\per\celsius}}{\qty{3,4}{\GPa} \cdot \qty{63}{\micro\m\per\m\per\celsius} - \qty{220}{\GPa} \cdot \qty{-1,3}{\micro\m\per\m\per\celsius}} = \num{0.428} \\
+    \left( V_f \right)_{\text{aramid-epoxy}} &= \frac{\qty{3,4}{\GPa} \cdot \qty{63}{\micro\m\per\m\per\celsius}}{\qty{3,4}{\GPa} \cdot \qty{63}{\micro\m\per\m\per\celsius} - \qty{124}{\GPa} \cdot \qty{-5}{\micro\m\per\m\per\celsius}} =\num{0.257}
+  .\end{align*}
+  
+  \begin{subresult}
+    For et kulfiber-epoxy lamina og et aramid-epoxy lamina er det påkrævet at fibervolumenfraktionen er hhv.:
+    \begin{align*}
+      \left( V_f \right)_{\text{carbon-epoxy}} &= \num{0,428}  \\
+      \left( V_f \right)_{\text{aramid-epoxy}} &= \num{0,257} 
+    \end{align*}
+    for at den termiske ekspansion i 1-retningen er 0.
+  \end{subresult}
+
+  \derivationpart
+
+  Stivheden i 1-retningen findes som:
+  \begin{equation*}
+    E_1 = E_f V_f + E_m V_m
+  .\end{equation*}
+  For carbon-epoxy laminatet er stivheden i 1-retningen:
+  \begin{equation*}
+    \left( E_1 \right)_{\text{carbon-epoxy}} = \qty{220}{\GPa} \cdot \num{0,428} + \qty{3,4}{\GPa} \cdot \left( 1 - \num{0,428}  \right) = \qty{96.105}{\giga\pascal}
+  .\end{equation*}
+  For aramid-epoxy laminatet er samme stivhed i stedet:
+  \begin{equation*}
+    \left( E_1 \right)_{\text{aramid-epoxy}} = \qty{124}{\GPa} \cdot \num{0,257} + \qty{3,4}{\GPa} \cdot \left( 1 - \num{0,257}  \right) = \qty{34.394}{\giga\pascal}
+  .\end{equation*}
+  Da $\left( E_1 \right)_{\text{carbon-epoxy}} > \left( E_1 \right)_{\text{aramid-epoxy}}$ er kulfiber laminaet stivest.
+
+  \begin{subresult}
+    Kulfiber-epoxy laminaet er stivest i 1-retningen.
+    \begin{equation*}
+      \left( E_1 \right)_{\text{carbon-epoxy}} = \qty{96,105}{\GPa}
+    .\end{equation*}
+  \end{subresult}
+
+  \derivationpart
+
+  Her har vi at:
+  \begin{equation*}
+    \alpha_2 = \left( 1 + \nu_f \right) \alpha_f V_f + \left( 1 + \nu_m \right) \alpha_m V_m - \alpha_1 \nu_{12}
+  .\end{equation*}
+  Bemærk det sidste led udgår idet $\alpha_1 = 0$.
+  $\alpha_2$ bestemmes som:
+  \begin{equation*}
+    \alpha_2 = \left( 1 + \num{0,3}  \right) \cdot \qty{-1,3}{\micro\m\per\m\per\celsius} \cdot \num{0,428}  + \left( 1 + \num{0,3}  \right) \cdot \qty{63}{\micro\m\per\m\per\celsius} \cdot \left( 1 - \num{0,428}  \right) = \qty{47,5}{\micro\m\per\m\per\celsius}
+  .\end{equation*}
+
+  \begin{subresult}
+    Altså er den termiske udvidelseskoefficient for UD-laminaet på tværs af fiberretningen:
+    \begin{equation*}
+      \alpha_2 = \qty{47,5}{\micro\m\per\m\per\celsius} 
+    .\end{equation*}
+  \end{subresult}
+  
+  \derivationpart
+
+  Vi har tidligere bestemt $E_1 = \qty{96,105}{\GPa}$. $E_2$ og $G_{12}$ er hhv:
+  \begin{align*}
+    E_2 &= \frac{E_f E_m}{E_m V_f + E_f V_m} \\
+    G_{12} &= \frac{G_m G_f}{V_m G_f + V_f G_m}
+  .\end{align*}
+  Altså:
+  \begin{align*}
+    E_2 &= \frac{\qty{230}{\GPa} \cdot \qty{3,4}{\GPa} }{\qty{3,4}{\GPa} \cdot \num{0,428} + \qty{230}{\GPa} \cdot \left( 1 - \num{0,428}  \right)}  = \qty{5.879}{\giga\pascal}\\
+    G_{12} &= \frac{\qty{22}{\GPa} \cdot \qty{3,4}{\GPa}}{\left( 1- \num{0,428}  \right) \cdot \qty{22}{\GPa}  + \num{0,428} \cdot \qty{3,4}{\GPa} } = \qty{5.328}{\giga\pascal}
+  .\end{align*}
+
+  \begin{subresult}
+    $E_1$, $E_2$ og $G_{12}$ er for kulfiber-epoxy UD-laminaet er hhv.
+    \begin{align*}
+      E_1 &= \qty{96,105}{\GPa}  \\
+      E_2 &= \qty{5,879}{\GPa}  \\
+      G_{12} &= \qty{5,328}{\GPa}
+    .\end{align*}
+  \end{subresult}
+
+  \derivationpart
+
+  Her antager vi at fibrene ikke optager vand.
+  Idet har vi at:
+  \begin{align*}
+    \beta_1 &= \frac{E_m \rho_{\text{total}}}{E_1 \rho_m} \beta_m = \frac{\qty{3,4}{\GPa} \cdot \left( \num{0,428} \cdot \num{1,8} + \left( 1 - \num{0,428} \right) \cdot \num{1,2} \right) \cdot \qty{1000}{\kg\per\m\cubed} }{\qty{96,105}{\GPa} \cdot \num{1,2} \cdot \qty{1000}{\kg\per\m\cubed} }  = \qty{0.04295}{\m\kg\per\m\per\kg} \\
+    \beta_2 &= \frac{\left( 1 + \nu_m \right)\rho_{\text{total}}}{\rho_m} \beta_m - \beta_1 \nu_{12} \\ 
+    &= \frac{(1 + \num{0,3}) \cdot \left( \num{0,428} \cdot \num{1,8} + \left( 1 - \num{0,428}  \right) \cdot \num{1,2}  \right) }{\num{1,2}} \cdot \qty{0,33}{\m\kg\per\m\per\kg}  -  \qty{0,04295}{\m\kg\per\m\per\kg} \cdot \num{0,3} = \qty{0,507}{\m\kg\per\m\per\kg} 
+  .\end{align*}
+
+  \begin{subresult}
+    Fugtudvidelseskoefficienterne for kulfiber-epoxy laminaet er:
+    \begin{align*}
+      \beta_1 &= \qty{0,04295}{\m\kg\per\m\per\kg} \\
+      \beta_2 &= \qty{0,507}{\m\kg\per\m\per\kg} 
+    .\end{align*}
+  \end{subresult}
+\end{derivation}
+

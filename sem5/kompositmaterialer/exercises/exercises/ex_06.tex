@@ -1,0 +1,103 @@
+% !TeX root = ../master.tex
+
+\begin{problem}{6--1}
+  Verify whether the measured values from a series of tensile tests on glass/epoxy specimens are valid or not.
+
+  \begin{subproblems}
+    \subproblem \(\nu_{12} = 0.29\), \(\nu_{13} = 0.25\), \(\nu_{21} = 0.10\), \(E_1 = \qty{56}{GPa}\), \(E_2 = \qty{19.4}{GPa}\), and \(E_3 = \qty{19.4}{GPa}\).
+    \subproblem \(\nu_{12} = 2.30\), \(\nu_{13} = 1.99\), \(\nu_{21} = 0.42\), \(E_1 = \qty{81.3}{GPa}\), \(E_2 = \qty{12}{GPa}\), and \(E_3 = \qty{12}{GPa}\).
+    \subproblem \(\nu_{12} = 4.05\), \(\nu_{13} = 0.79\), \(\nu_{21} = 0.01\), \(E_1 = \qty{67.1}{GPa}\), \(E_2 = \qty{10}{GPa}\), and \(E_3 = \qty{8.9}{GPa}\).
+  \end{subproblems}
+\end{problem}
+
+\begin{derivation}
+  \derivationpart
+    Vi har for ortotropiske materialer at:
+    \begin{align*}
+      \left| \nu_{12} \right| &< \sqrt{\frac{E_1}{E_2}} & \left| \nu_{23} \right| &< \sqrt{\frac{E_2}{E_3}} & \left| \nu_{13} \right| &< \sqrt{\frac{E_1}{E_3}} \\
+      \left| \nu_{21} \right| &< \sqrt{\frac{E_2}{E_1}} & \left| \nu_{32} \right| &< \sqrt{\frac{E_3}{E_2}} & \left| \nu_{31} \right| &< \sqrt{\frac{E_3}{E_1}}
+    .\end{align*}
+    Vi undersøger:
+    \begin{gather*}
+    \nu_{12} < \sqrt{\frac{\qty{56}{\GPa}}{\qty{19,4}{\GPa} }} = \num{1.699}\\
+    \nu_{13} < \sqrt{\frac{\qty{56}{\GPa}}{\qty{19,4}{\GPa}}} = \num{1,699} \\
+  \nu_{21} < \sqrt{\frac{\qty{19,4}{\GPa}}{\qty{56}{\GPa}}} = \num{0.589}
+    .\end{gather*}
+    Altså er Poisson forholdende indbyrdes konsistente.
+
+    \begin{subresult}
+      De målte værdier er indbyrdes konsistente
+    \end{subresult}
+
+  \derivationpart
+    Igen
+    \begin{gather*}
+      \nu_{12} < \sqrt{\frac{\qty{81,3}{\GPa}}{\qty{12}{\GPa}}} = \num{2.603} \\
+      \nu_{13} < \sqrt{\frac{\qty{81,3}{\GPa}}{\qty{12}{\GPa}}} = \num{2.603} \\
+      \nu_{21} \not< \sqrt{\frac{\qty{12}{\GPa}}{\qty{81,3}{\GPa}}} = \num{0.384}
+    .\end{gather*}
+
+    \begin{subresult}
+      De målte værdier er ikke indbyrdes konsistente
+    \end{subresult}
+
+  \derivationpart
+    Igen,
+    \begin{gather*}
+      \nu_{12} \not< \sqrt{\frac{\qty{67,1}{\GPa}}{\qty{10}{\GPa} }} = \num{2.59} \\
+      \nu_{13} \not< \sqrt{\frac{\qty{67,1}{\GPa}}{\qty{8,9}{\GPa}}} = \num{2.75}    
+      \nu_{21} \not< \sqrt{\frac{\qty{10}{\GPa}}{\qty{67,1}{\GPa}}} = \num{0.386}
+    .\end{gather*}
+
+    \begin{subresult}
+      De målte værdier er ikke indbyrdes konsistente.
+    \end{subresult}
+\end{derivation}
+
+\begin{problem}{6--2}
+  Compute the reduced stiffness matrix $[Q]$ for a BF-Ep lamina with the material properties found in the table in exercise 6.3.
+\end{problem}
+
+\begin{derivation}
+  Den reducerede stivhedsmatrice $\Mat{Q}$ er:
+  \begin{equation*}
+    \Mat{Q} = \begin{bmatrix}
+      Q_{11} & Q_{12} & 0\\
+    Q_{12} & Q_{22} & 0\\
+    0 & 0 & Q_{66}\\
+    \end{bmatrix}
+  .\end{equation*}
+  Heri, er:
+  \begin{align*}
+    Q_{11} &= \frac{E_1}{1 - \nu_{12}\nu_{21}} \\
+    Q_{22} &= \frac{E_2}{1 - \nu_{12}\nu_{21}} \\
+    Q_{12} &= \frac{\nu_{21} E_1}{ 1 - \nu_{12} \nu_{21}} = \frac{\nu_{12} E_2}{1  - \nu_{12} \nu_{21}} \\
+    Q_{66} &= G_{12}
+  .\end{align*}
+  For BF-Ep har vi $E_1 = \qty{206,9}{\GPa}, E_2 = \qty{20,7}{\GPa}, \nu_{12} = \num{0,30}, G_{12} = \qty{6,9}{\GPa}$. Derfor får vi $\nu_{21} = \nu_{12} E_2 / E_1 = \num{0,03}$.
+  \begin{align*}
+    Q_{11} &= \frac{\qty{206,9}{\GPa}}{1 - \num{0,03} \cdot \num{0,3}}  = \qty{208.78}{\giga\pascal} \\
+    Q_{22} &= \frac{\qty{20,7}{\GPa}}{1 - \num{0,03} \cdot \num{0,3} }  = \qty{20.89}{\giga\pascal}  \\
+    Q_{12} &= \frac{\num{0,03} \cdot \qty{206,9}{\GPa}}{1 - \num{0,03} \cdot \num{0,3} }  = \qty{6.266}{\giga\pascal}    \\
+    Q_{66} &= \qty{6,9}{\GPa} 
+  .\end{align*}
+  Således:
+  \begin{equation*}
+    \Mat{Q} = \begin{bmatrix}
+      \qty{207,78}{\GPa} & \qty{6,266}{\GPa} & 0\\
+    \qty{6,266}{\GPa} & \qty{20,89}{\GPa} & 0\\
+    0 & 0 & \qty{6,9}{\GPa} \\
+    \end{bmatrix}
+  .\end{equation*}
+\end{derivation}  
+
+\begin{finalresult}
+  Den reducerede stivhedmatrice $\Mat{Q}$ er:
+  \begin{equation*}
+    \Mat{Q} = \begin{bmatrix}
+      \qty{207,78}{\GPa} & \qty{6,266}{\GPa} & 0\\
+    \qty{6,266}{\GPa} & \qty{20,89}{\GPa} & 0\\
+    0 & 0 & \qty{6,9}{\GPa} \\
+    \end{bmatrix}
+  .\end{equation*}
+\end{finalresult}
