@@ -1,3 +1,223 @@
 % !TeX root = ../master.tex
 
 \lecture{7}{2026-10-13}{Convection, Pt. III}
+
+\section{Internal Forced Convection}
+In \mref{lec:convectionextforced} we covered external flows, where the fluid has a free surface and thus the boundary layer is free to grow indefinitely.
+In this lecture we will consider internal flow, where the fluid is completely confined by the inner surfaces of a tube, which limits the growth of the boundary layer.
+For a more general description of internal flows than the one provided in the following sections, I refer to my Fluid Mechanics notes \citepage{hansen2026fluidmechanics}{Ch.~18}.
+
+\subsection{Average Velocity and Temperature}
+In internal flow, there is no free stream and thus no free-stream velocity.
+An often used alternative for this is the \textit{average velocity} $V_{\mathrm{avg}}$, which, for incompressible flow, remains constant for constant tubular cross-section.
+The average velocity can be found using the principle of conservation of mass \citepage{cengel2015heatmasstransfer}{Eq.~(8--1)}
+\begin{equation*}
+  \dot{m} = \rho V_{\mathrm{avg}} A_c = \int_{A_c} \rho u(r) \, \mathrm{d}A_c
+\end{equation*}
+and for incompressible flow in a circular pipe of radius $R$, the aberage velocity is \citepage{cengel2015heatmasstransfer}{Eq.~(8--2)}
+\begin{equation*}
+  V_{\mathrm{avg}} = \frac{2}{R^2} \int_{0}^{R} u(r) r \, \mathrm{d}r
+.\end{equation*}
+Hence, the average velocity can either be found using the flow rate or the velocity profile.
+
+Likewise, a fluid moving through a tube undergoing heating or cooling will have different temperatures across the cross section of the tube.
+Therefore, it is convenient to introduce the \textit{average temperature} $T_{\mathrm{avg}}$, which remains constant at a cross section.
+Opposed to the average velocity, the average temperature changes in the flow direction when the fluid is heated or cooled.
+The value of the average temperature can be determined using the principle of conservation of energy as \citepage{cengel2015heatmasstransfer}{Eq.~(8--3)}
+\begin{equation*}
+  \dot{E}_{\mathrm{fluid}} = \dot{m} c_p T_{\mathrm{avg}} = \int_{\dot{m}} c_p T(r) \delta \dot{m} = \int_{A_c} \rho c_p T(r) u(r) \, \mathrm{d}A_c
+.\end{equation*}
+For a fluid with constant density and specific heat flowing in a circular pipe of radius $R$, the average temperature can be expressed as \citepage{cengel2015heatmasstransfer}{Eq.~(8--4)}
+\begin{equation*}
+  T_{\mathrm{avg}} = \frac{2}{V_{\mathrm{avg}} R^2} \int_{0}^{R} T(r) u(r) r \, \mathrm{d}r
+.\end{equation*}
+The fluid properties in internal flow is conveniently evaluated at the \textit{bulk mean fluid temperature} $T_b$ which is the arithmetic mean of the average temperatures at the inlet $T_i$ and the exit $T_e$ \citepage{cengel2015heatmasstransfer}{475--476}
+\begin{equation*}
+  T_b = \frac{T_i + T_e}{2}
+.\end{equation*}
+
+\subsubsection{Laminar and Turbulent Flow in Tubes}
+Flow in a tube may, like external flow, be either laminar or turbulent depending on the flow conditions.
+Most pipe flows are in practice turbulent and laminar flow is encountered only when highly viscous fluids such as oils flow in small diameter tubes.
+For flow in a circular tube, the Reynolds number is given by \citepage{cengel2015heatmasstransfer}{Eq.~(8--5)}
+\begin{equation*}
+  \mathrm{Re} = \frac{V_{\mathrm{avg}} D}{\nu} = \frac{\rho V_{\mathrm{avg}} D}{\mu} = \frac{\rho D}{\mu} \left( \frac{\dot{m}}{\rho \pi \frac{D^2}{4}} \right) = \frac{4\dot{m}}{\mu \pi D}
+,\end{equation*}
+where $D$ is the tube diameter.
+
+For flow through non-circular tubes, the Reynolds number, the Nusselt number, and the friction factor are based on the \textit{hydraulic diameter} $D_h$ defined as \citepage{cengel2015heatmasstransfer}{Eq.~(8--6)}
+\begin{equation*}
+  D_h = \frac{4 A_c}{p}
+,\end{equation*}
+where $A_c$ is the cross-sectional area of the tube and $p$ is its wetted perimeter.
+
+Under most normal conditions, flow in tubes is laminar for $\mathrm{Re} < \num{2300} $ and fully turbulent for $\num{10000} < \mathrm{Re}$ \citepage{cengel2015heatmasstransfer}{476}.
+
+\paragraph{Laminar Flow}
+For Laminar flow in tubes of various geometries the friction factors and Nusselt numbers are given in \mref{tab:laminar-tube-correlations} \citepage{cengel2015heatmasstransfer}{491}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Nusselt number and friction factor for fully developed laminar flow
+    in tubes of various cross-sections. Adapted from \citepage{cengel2015heatmasstransfer}{Tab.~8--1}.}
+  \label{tab:laminar-tube-correlations}
+  \small
+  \begin{tabularx}{\linewidth}{
+    @{}
+    >{\raggedright\arraybackslash}p{0.22\linewidth}
+    >{\centering\arraybackslash}p{0.12\linewidth}
+    *{3}{>{\centering\arraybackslash}X}
+    @{}
+  }
+    \toprule
+    & & \multicolumn{2}{c}{\textit{Nusselt number}}
+      & \multirow{2}{*}{Friction factor $f$} \\
+    \cmidrule(lr){3-4}
+    Tube geometry
+      & \makecell{$a/b$\\or $\theta$}
+      & $T_s = \text{const.}$
+      & $\dot{q}_s = \text{const.}$
+      & \\
+    \midrule
+
+    Circle
+      & ---
+      & \num{3,66} 
+      & \num{4,36} 
+      & $\num{64,00} /\mathrm{Re}$ \\
+    \midrule
+
+    \multirow{7}{*}{Rectangle}
+      & \num{1}       & \num{2,98}  & \num{3,61}  & $\num{56,92} /\mathrm{Re}$ \\
+      & \num{2}       & \num{3,39}  & \num{4,12}  & $\num{62,20} /\mathrm{Re}$ \\
+      & \num{3}       & \num{3,96}  & \num{4,79}  & $\num{68,36} /\mathrm{Re}$ \\
+      & \num{4}       & \num{4,44}  & \num{5,33}  & $\num{72,92} /\mathrm{Re}$ \\
+      & \num{6}       & \num{5,14}  & \num{6,05}  & $\num{78,80} /\mathrm{Re}$ \\
+      & \num{8}       & \num{5,60}  & \num{6,49}  & $\num{82,32} /\mathrm{Re}$ \\
+      & $\infty$ & \num{7,54}  & \num{8,24}  & $\num{96,00} /\mathrm{Re}$ \\
+    \midrule
+
+    \multirow{5}{*}{Ellipse}
+      & \num{1}   & \num{3.66} & \num{4.36} & $\num{64.00}/\mathrm{Re}$ \\
+      & \num{2}   & \num{3.74} & \num{4.56} & $\num{67.28}/\mathrm{Re}$ \\
+      & \num{4}   & \num{3.79} & \num{4.88} & $\num{72.96}/\mathrm{Re}$ \\
+      & \num{8}   & \num{3.72} & \num{5.09} & $\num{76.60}/\mathrm{Re}$ \\
+      & \num{16}  & \num{3.65} & \num{5.18} & $\num{78.16}/\mathrm{Re}$ \\
+    \midrule
+
+    \multirow{5}{*}{Isosceles triangle}
+      & \qty{10}{\degree}  & \num{1.61} & \num{2.45} & $\num{50.80}/\mathrm{Re}$ \\
+      & \qty{30}{\degree}  & \num{2.26} & \num{2.91} & $\num{52.28}/\mathrm{Re}$ \\
+      & \qty{60}{\degree}  & \num{2.47} & \num{3.11} & $\num{53.32}/\mathrm{Re}$ \\
+      & \qty{90}{\degree}  & \num{2.34} & \num{2.98} & $\num{52.60}/\mathrm{Re}$ \\
+      & \qty{120}{\degree} & \num{2.00} & \num{2.68} & $\num{50.96}/\mathrm{Re}$ \\
+
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\paragraph{Turbulent Flow}
+It is often desirable to use turbulent flow due to the higher heat transfer coefficients asssociated with it.
+
+For smooth tubes, the friction factor for turbulent flow can be determined from the first Pethukov equation \citepage{cengel2015heatmasstransfer}{Eq.~(8--65)}
+\begin{equation} \label{eq:petukhov1}
+  f_{\text{smooth tube}} = \left( \num{0,790} \ln \mathrm{Re} - \num{1,64}  \right)^{-2}, \qquad \num{3000} < \mathrm{Re} < \num{5e6} 
+.\end{equation}
+The Nusselt number in turbulent flow is related to the friction factor through the Chilton-Colburn analogy as \citepage{cengel2015heatmasstransfer}{Eq.~(8--66)}
+\begin{equation} \label{eq:nusseltturbulent}
+  \mathrm{Nu} = \num{0,125} f \mathrm{Re} \sqrt[3]{\mathrm{Pr}}
+.\end{equation}
+\Mref{eq:nusseltturbulent} is applicable for both smooth and rough tubes.
+For fully developed turbulent flow in smooth tubes, the Nusselt number can be found using the Dittus-Boelter equation \citepage{cengel2015heatmasstransfer}{Eq.~(8--68)}
+\begin{equation} \label{eq:dittus-boelter}
+  \mathrm{Nu}_{\text{smooth}} = \num{0,023} \mathrm{Re}^{\num{0,8} } \mathrm{Pr}^{n}
+\end{equation}
+where $n = \num{0,4}$ for heating and $n = \num{0,3}$ for cooling.
+
+A more accurate relation than \mref{eq:dittus-boelter} is the Gnielinski equation \citepage{cengel2015heatmasstransfer}{Eq.~(8--71)}
+\begin{equation*}
+  \mathrm{Nu} = \frac{\frac{f}{8} \left( \mathrm{Re} - \num{1000} \right) \mathrm{Pr}}{1 + \num{12,7} \sqrt{\frac{f}{8}} \left( \sqrt[3]{\mathrm{Pr}^2} - 1 \right)} \qquad \num{0,5} \leq \mathrm{Pr} \leq \num{2000} \quad \num{3e3} < \mathrm{Re} < \num{5e6} 
+,\end{equation*}
+where the friction factor must first be determined from another relation such as the first Petukhov equation \mref{eq:petukhov1}.
+
+The above relations do not apply to liquid metals due to their very low Prandtl numbers.
+For liquid metals with $\num{0,004} < \mathrm{Pr} < \num{0,01}$ the Sleicher-Rouse equations are recommended for $\num{e4} < \mathrm{Re} < \num{e6}$ \citepage{cengel2015heatmasstransfer}{Eqs.~(8--72)~\&~(8--73)}
+\begin{align*}
+  T_s &= \text{constant}\colon & \mathrm{Nu} &= \num{4,8} + \num{0,0156} \mathrm{Re}^{\num{0,85}} \mathrm{Pr}^{\num{0,93}}_s, \\
+  \dot{q}_s &= \text{constant}\colon & \mathrm{Nu} &= \num{6,3}  + \num{0,0167} \mathrm{Re}^{\num{0,85}} \mathrm{Pr}^{\num{0,93}}_s
+,\end{align*}
+where the subscript $s$ indicates that the Prandtl number is to be evaluated at the surface temperature \citepage{cengel2015heatmasstransfer}{496--497}.
+
+\subsection{The Entrance Region and Entry Lengths}
+As explained in \citepage{hansen2026fluidmechanics}{Ch. 17} flow in a pipe will at some point become fully-developed at which point the velocity profile stops changing along the length of the pipe.
+The region between the inlet and the point at which the velocity profile is fully-developed is termed the \textit{hydrodynamic entrance region} and the length of this region is the \textit{hydrodynamic entry length} $L_h$
+
+The region of flow over which the thermal boundary layer develops and reaches the tube center is termed the \textit{thermal entrance region} and the length of this region is called the \textit{thermal entry length} $L_t$.
+
+In laminar flow the hydrodynamic and thermal entry lengths are approximately \citepage{cengel2015heatmasstransfer}{Eqs.~(8--11)~\&~(8--12)}
+\begin{align*}
+  L_{h, \text{laminar}} &\approx \num{0,05} \mathrm{Re} D \\
+  L_{t, \text{laminar}} &\approx \num{0,05}  \mathrm{Re} \mathrm{Pr} D = \mathrm{Pr} L_{h, \text{laminar}}
+.\end{align*}
+
+In turbulent flow the hydrodynamic and thermal entry lengths are approximately of the same size due to the intense mixing that occurs and it relies a lot less on the Reynolds number instead being given as \citepage{cengel2015heatmasstransfer}{Eq.~(8--13); pp.~477--479}
+\begin{equation*}
+  L_{h, \text{turbulent}} \approx L_{t, \text{turbulent}} \approx 10 D
+.\end{equation*}
+
+
+\subsection{Thermal Analysis}
+In the absence of work interactions, the conservation of energy equation for steady flow of a fluid in a tube can be expressed as \citepage{cengel2015heatmasstransfer}{Eq.~(8--14)}
+\begin{equation*}
+  \dot{Q} = \dot{m} c_p \left( T_e - T_i \right)
+,\end{equation*}
+where $T_i$ and $T_e$ are the average fluid temperatures at the inlet and exit of the tube, respectively, and $\dot{Q}$ is the rate of heat transfer to or from the fluid.
+
+The surface heat flux can be expressed as \citepage{cengel2015heatmasstransfer}{Eq.~(8--15)}
+\begin{equation*}
+  \dot{q}_s = h_x \left( T_s - T_{\mathrm{avg}} \right)
+,\end{equation*}
+where $h_x$ is the \textit{local} heat transfer coefficient and $T_s$ and $T_{\mathrm{avg}}$ are the surface and average fluid temperatures at that location respectively \citepage{cengel2015heatmasstransfer}{480--481}.
+
+\subsubsection{Constant Surface Heat Flux}
+For constant surface heat flux $\dot{q}_s = \mathrm{constant}$ like in the case of uniform resistive heating the rate of heat transfer is \citepage{cengel2015heatmasstransfer}{Eq.~(8--16)}
+\begin{equation*}
+  \dot{Q} = \dot{q}_s A_s = \dot{m} c_p (T_e - T_i)
+\end{equation*}
+and the average fluid temperature at the tube exit is \citepage{cengel2015heatmasstransfer}{Eq.~(8--17)}
+\begin{equation*}
+  T_e = T_i + \frac{\dot{q}_s A_s}{\dot{m} c_p}
+.\end{equation*}
+Hence, the average fluid temperature will increase linearly in the flow direction in the case of constant surface heat flux, since the surface area increases linearly in the flow direction ($A_s$ is equal to perimeter times tube length).
+
+The surface temperature for constant surface heat flux $\dot{q}_s$ is given by \citepage{cengel2015heatmasstransfer}{Eq.~(8--18)}
+\begin{equation*}
+  \dot{q}_s = h (T_s - T_{\mathrm{avg}}) \quad \implies \quad T_s = T_{\mathrm{avg}} + \frac{\dot{q}_s}{h}
+.\end{equation*}
+Also worth noting, is that the rate of change of the average temperature is equal the rate of change of the surface temperature in the flow direction \citepage{cengel2015heatmasstransfer}{Eq.(8--22)}
+\begin{equation*}
+  \frac{\mathrm{d}T_{\mathrm{avg}}}{\mathrm{d}x} = \frac{\mathrm{d}T_s}{\mathrm{d}x} = \frac{\dot{q}_s p}{\dot{m} c_p} = \mathrm{constant}
+.\end{equation*}
+Hence, for fully developed flus in a tube subject to constant surface heat flux, the temperature gradient is independent of $x$ and therefore the shape of the temperature profile is invariant across the length of the tube \citepage{cengel2015heatmasstransfer}{481--482}.
+
+\subsubsection{Constant Surface Temperature}
+In the case of constant surface temperature, such as when phase change happens at the surface, the rate of heat transfer to or from the flowing fluid can be found using Newton's law of cooling \mref{eq:newtoncool}
+\begin{equation*}
+  \dot{Q} = h A_s \Delta T_{\mathrm{avg}} = h A_s \left( T_s - T_{\mathrm{avg}} \right)_{\mathrm{avg}}
+.\end{equation*}
+
+The average fluid temperature at the tube exit is \citepage{cengel2015heatmasstransfer}{Eq.~(8--30)}
+\begin{equation*}
+  T_e = T_s - (T_s - T_i) \exp \left( - \frac{h A_s}{\dot{m} c_p} \right)
+.\end{equation*}
+Hence, the temperature difference between the fluid and the surface will decay exponentially in the flow direction.
+
+The rate of heat transfer can also be expressed as \citepage{cengel2015heatmasstransfer}{Eq.~(8--32)}
+\begin{equation*}
+  \dot{Q} = h A_s \Delta T_{1m}
+,\end{equation*}
+where \citepage{cengel2015heatmasstransfer}{Eq.~(8--33)}
+\begin{equation*}
+  \Delta T_{1m} = \frac{\Delta T_e - \Delta T_i}{\ln \left( \frac{\Delta T_e}{\Delta T_i} \right)}
+\end{equation*}
+is the \textit{log mean temperature difference}, where $\Delta T_i = T_s - T_i$ and $\Delta T_e = T_s - T_e$ are the temperature differences between the surface and the fluid at the inlet and exit of the tube, respectively \citepage{cengel2015heatmasstransfer}{482--484}.
